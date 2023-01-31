@@ -16,6 +16,23 @@ description here ...
 3) make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
 
+#### WebSocket solution
+##### Hierarchy of classes and methods
+- Connection Manager:
+  - Connect()
+  - SendData()
+  - ReceiveData()
+  - CloseConnection()
+- Message Factory:
+  - CreateRequestMessage()
+  - CreateResponseMessage()
+- Message Processor:
+  - ParseMessage()
+  - ProcessMessage()
+- Error Handler:
+  - HandleException()
+  - LogError()
+  - SendErrorInformation()
 
 ### part 2 - PlutoWallet
 TBD ...
