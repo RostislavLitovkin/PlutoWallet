@@ -2,7 +2,7 @@
 
 description here ...
 
-# Resources to use:
+# Resources to use
 
 ### Hackathon:
 - https://www.polkadotglobalseries.com/
@@ -13,3 +13,6 @@ description here ...
 
 ### Polkadot solutions:
 - https://github.com/ajuna-network
+
+### Inspiration:
+- https://walletconnect.com/
