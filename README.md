@@ -17,6 +17,8 @@ description here ...
   - make this better compatible with Ajuna.NetApi???
 4) [ ] generate QR
 
+100) [ ] create a very detailed (and begginer friendly) docs with how to use it and add examples
+
 #### WebSocket solution
 ##### Hierarchy of classes and methods
 - Connection Manager:
