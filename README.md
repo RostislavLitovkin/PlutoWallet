@@ -15,6 +15,7 @@ description here ...
   - ??? maybe more
 3) make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
+4) generate QR
 
 #### WebSocket solution
 ##### Hierarchy of classes and methods
@@ -35,7 +36,20 @@ description here ...
   - SendErrorInformation()
 
 ### part 2 - PlutoWallet
-TBD ...
+1) generate privateKey and show it to the user
+2) save the privateKey securely
+3) generate a publicKey from the privateKey
+4 extra) make ss58 encoded publicKeys
+5) get the current balance
+6 extra) show the balance in USD (use coingecko free api)
+7) add a transfer functionality
+8) add the ability to sign any transaction
+9) implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
+10) QR scanner
+11) improve UI
+12) add multiple chain support
+13 extra) NFT implementation
+14 extra) secure with password/biometrics
 
 # Resources to use
 
