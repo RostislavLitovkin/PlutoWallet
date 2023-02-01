@@ -30,6 +30,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 ##### Hierarchy of classes and methods
 - Connection Manager:
   - Connect()
+  - Listen()
   - SendData()
   - ReceiveData()
   - CloseConnection()
