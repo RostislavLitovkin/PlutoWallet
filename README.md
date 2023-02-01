@@ -1,6 +1,11 @@
 # PlutoWallet
+A sample wallet that implements PlutoConnector.
 
-description here ...
+# PlutoConnector
+Allows any dApp to communicate with the supported wallets without compromising privateKeys.
+
+# Terminology
+- dApp = any application that wants to use the crypto functulionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your privateKey (very insecure).
 
 # Work / milestones
 
