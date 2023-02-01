@@ -64,8 +64,8 @@ description here ...
 - https://github.com/ajuna-network
 
 ### parity signer
-[] https://www.parity.io/technologies/signer/
-[] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
+- [ ] https://www.parity.io/technologies/signer/
+- [ ] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
 
 ### Inspiration:
 - https://walletconnect.com/
