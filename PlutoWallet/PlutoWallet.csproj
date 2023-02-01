@@ -53,4 +53,8 @@
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
+	</ItemGroup>
+
 </Project>

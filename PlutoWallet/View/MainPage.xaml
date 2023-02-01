@@ -27,7 +27,7 @@
 
             <Button
                 
-                Text="Increment"
+                Text="Test Connection"
                 Command="{Binding IncrementCounterCommand}"
                 />
 
