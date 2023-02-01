@@ -19,6 +19,8 @@ description here ...
 
 100) [ ] create a very detailed (and begginer friendly) docs with how to use it and add examples
 
+101) [ ] polkadot js integration (ask Rosťa for more)
+
 #### WebSocket solution
 ##### Hierarchy of classes and methods
 - Connection Manager:
