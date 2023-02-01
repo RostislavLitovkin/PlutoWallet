@@ -5,17 +5,17 @@ description here ...
 # Work / milestones
 
 ### part 1 - PlutoConnector
-0) create 2 new projects inside this solution:
+0) [ ] create 2 new projects inside this solution:
   - 1 a class library (later on will be a Nuget package)
   - 2 mock dApp (testing app) - a simple console app that will connect to the wallet
-1) find out how to connect the 2 apps via websocket (look into resources)
-2) create the 2 basic call operations/methods:
+1) [ ] find out how to connect the 2 apps via websocket (look into resources)
+2) [ ] create the 2 basic call operations/methods:
   - OnConnect - 1st thing called when connection is successful - wallet returns publicKey to the dApp
   - RequestSign - dApp sends a sing request with the transaction data to the wallet and the wallet returns the signed data
   - ??? maybe more
-3) make this a modular package -> release to Nuget
+3) [ ] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) generate QR
+4) [ ] generate QR
 
 #### WebSocket solution
 ##### Hierarchy of classes and methods
