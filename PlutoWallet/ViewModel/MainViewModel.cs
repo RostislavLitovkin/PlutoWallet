@@ -37,11 +37,11 @@ namespace PlutoWallet.ViewModel
             Socket soc = ConnectionManager.Connect(ipAddr, port);
             if (soc != null)
             {
-                Response = "socket opened";
+                Response = "socket connected";
             }
             else
             {
-                Response = "socket failed to open :(";
+                Response = "socket failed to connect :(";
             }
         }
         private void TestListen()
