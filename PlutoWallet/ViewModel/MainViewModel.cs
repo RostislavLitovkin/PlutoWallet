@@ -18,7 +18,8 @@ namespace PlutoWallet.ViewModel
         [RelayCommand]
         private void IncrementCounter()
         {
-            Response = NetworkingModel.RequestSample();
+            //Response = NetworkingModel.RequestSample();
+            //Response = KeysModel.GenerateMnemonicsArray();
         }
 
         public MainViewModel()
