@@ -72,6 +72,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 ### Polkadot solutions:
 - https://github.com/ajuna-network
+- Ajuna transaction example: https://github.com/ajuna-network/SubstrateNetApi/issues/21#issuecomment-940421149
 
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
