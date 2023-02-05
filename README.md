@@ -51,19 +51,20 @@ Allows any dApp to communicate with the supported wallets without compromising p
 1) [ ] enter private key
 1) [ ] show the user raw privateKey
 2) [ ] save the privateKey securely (probably always ask for password)
-3) [x] generate a publicKey from the privateKey
-4) [ ] (extra - EASY) make ss58 encoded publicKeys
-5) [ ] get the current balance
-6) [ ] (extra) show the balance in USD (use coingecko free api)
-7) [ ] add a transfer functionality
-8) [ ] add the ability to sign any transaction
-9) [ ] implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
-10) [ ] QR scanner
-11) [ ] improve UI
-12) [x] add multiple chain support
-13) [ ] (extra) the ability to add multiple chains
-14) [ ] (extra) NFT implementation
-15) [ ] (extra) secure with password/biometrics
+3) [ ] (extra) secure with password/biometrics
+4) [x] generate a publicKey from the privateKey
+5) [ ] (extra - EASY) make ss58 encoded publicKeys
+6) [ ] get the current balance
+7) [ ] (extra) show the balance in USD (use coingecko free api)
+8) [ ] add a transfer functionality
+9) [ ] add the ability to sign any transaction
+10) [ ] implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
+11) [ ] QR scanner
+12) [ ] improve UI
+13) [x] add multiple chain support
+14) [ ] (extra) the ability to add other unknown chains manually
+15) [ ] (extra) NFT implementation
+
 
 # Resources to use
 
