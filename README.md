@@ -46,10 +46,10 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - SendErrorInformation()
 
 ### part 2 - PlutoWallet
-1.1) [x] generate mnemonics and show it to the user
-1.2) [ ] enter mnemonics
-1.3) [ ] enter private key
-1.4) [ ] show the user raw privateKey
+1) [x] generate mnemonics and show it to the user
+1) [ ] enter mnemonics
+1) [ ] enter private key
+1) [ ] show the user raw privateKey
 2) [ ] save the privateKey securely
 3) [ ] generate a publicKey from the privateKey
 4) [ ] (extra - EASY) make ss58 encoded publicKeys
