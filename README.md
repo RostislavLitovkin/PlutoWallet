@@ -86,3 +86,15 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 ### Inspiration:
 - https://walletconnect.com/
+
+### Sample transfer to be implemented:
+
+```
+public static Method Transfer(AjunaExample.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> value)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(dest.Encode());
+            byteArray.AddRange(value.Encode());
+            return new Method(5, "Balances", 0, "transfer", byteArray.ToArray());
+        }
+```
