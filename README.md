@@ -83,6 +83,10 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 #### #4 Voting
 
+#### #5 ink!
+
+#### #6 buy crypto
+
 # Resources to use
 
 ### Hackathon:
