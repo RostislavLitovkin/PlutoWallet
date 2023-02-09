@@ -26,7 +26,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 101) [ ] polkadot js integration (ask Rosťa for more)
 
-#### WebSocket solution
+#### Socket solution
 ##### Hierarchy of classes and methods
 - Connection Manager:
   - Connect()
@@ -44,6 +44,14 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - HandleException()
   - LogError()
   - SendErrorInformation()
+##### Usecases
+1. pair devices (inlude send public key <string> from wallet to dApp)
+2. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
+  - wallet y/n -> response (failed due sth/rejected/accepted <enum>)
+  - dApp: display status of transaction (response)
+3. close connection (from both sides):
+ - on connection lost event
+ - send to other client message about cancelation ?
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
