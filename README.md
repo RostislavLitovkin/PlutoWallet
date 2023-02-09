@@ -64,7 +64,22 @@ Allows any dApp to communicate with the supported wallets without compromising p
 13) [x] add multiple chain support
 14) [ ] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
+16) [ ] show other funganble tokens
 
+### Other milestones
+
+#### #1 NFTs integration
+- show all owned NFTs
+- allow minting your own NFTs
+- NFT dex implementation
+
+#### #2 Staking
+- show stake pools
+- show gains
+- more...
+
+#### #3 dApp gallery
+- dApp promotion page
 
 # Resources to use
 
