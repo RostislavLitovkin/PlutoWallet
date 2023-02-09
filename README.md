@@ -81,6 +81,8 @@ Allows any dApp to communicate with the supported wallets without compromising p
 #### #3 dApp gallery
 - dApp promotion page
 
+#### #4 Voting
+
 # Resources to use
 
 ### Hackathon:
