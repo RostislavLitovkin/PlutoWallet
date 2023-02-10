@@ -9,22 +9,24 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 # Work / milestones
 
-### part 1 - PlutoConnector
-0) [ ] create 2 new projects inside this solution:
+### part 1 - Plutonication (Pluto connector)
+0) [-] create 2 new projects inside this solution:
   - 1 a class library (later on will be a Nuget package)
   - 2 mock dApp (testing app) - a simple console app that will connect to the wallet
-1) [ ] find out how to connect the 2 apps via websocket (look into resources)
-2) [ ] create the 2 basic call operations/methods:
+1) [x] find out how to connect the 2 apps via websocket (look into resources)
+2) [x] create the 2 basic call operations/methods:
   - OnConnect - 1st thing called when connection is successful - wallet returns publicKey to the dApp
   - RequestSign - dApp sends a sing request with the transaction data to the wallet and the wallet returns the signed data
   - ??? maybe more
-3) [ ] make this a modular package -> release to Nuget
+3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR
+4) [ ] generate QR ~ not important
 
-100) [ ] create a very detailed (and begginer friendly) docs with how to use it and add examples
+50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
 101) [ ] polkadot js integration (ask Rosťa for more)
+
+102) [ ] make a javascript version
 
 #### Socket solution
 ##### Hierarchy of classes and methods
@@ -73,6 +75,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 14) [ ] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
 16) [ ] show other funganble tokens
+17) [ ] plutonication deep link
 
 ### Other milestones
 
