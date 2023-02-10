@@ -109,6 +109,9 @@ Allows any dApp to communicate with the supported wallets without compromising p
 - Ajuna transaction example: https://github.com/ajuna-network/SubstrateNetApi/issues/21#issuecomment-940421149
 - reading storage: https://www.shawntabrizi.com/substrate/querying-substrate-storage-via-rpc/
 
+### Blockchain communication tools
+- https://polkadot.js.org/apps/
+
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
 - [ ] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
