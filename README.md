@@ -97,6 +97,10 @@ Allows any dApp to communicate with the supported wallets without compromising p
 #### #5 ink!
 
 #### #6 buy crypto
+  
+### (extra) part 3 - browser extension
+
+- Not a priority right now.
 
 # Resources to use
 
