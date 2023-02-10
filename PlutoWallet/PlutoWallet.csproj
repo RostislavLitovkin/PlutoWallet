@@ -147,4 +147,7 @@
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
     </PropertyGroup>-->
+<ItemGroup>
+	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
+	</ItemGroup>
 </Project>

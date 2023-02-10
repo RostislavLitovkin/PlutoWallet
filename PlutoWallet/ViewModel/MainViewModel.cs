@@ -1,4 +1,4 @@
-﻿using Ajuna.NetApi;
+using Ajuna.NetApi;
 using Ajuna.NetApi.Model.Extrinsics;
 using Ajuna.NetApi.Model.Meta;
 using Ajuna.NetApi.Model.Types;
@@ -15,9 +15,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace PlutoWallet.ViewModel
 {
@@ -56,18 +58,18 @@ namespace PlutoWallet.ViewModel
         [RelayCommand]
         private void IncrementCounter()
         {
-            
             //Response = NetworkingModel.RequestSample();
             //Response = KeysModel.GenerateMnemonicsArray();
+            
         }
 
         public MainViewModel()
         {
 
-
             //GetMetadataAsync();
 
             response = "request me ^^";
+
         }
 
         public async Task GetMetadataAsync()

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView" xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView" xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView" xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page" BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
@@ -73,6 +74,4 @@
                                    IsVisible="false" Opacity="0" />
     </AbsoluteLayout>
     
-    
-
 </ContentPage>

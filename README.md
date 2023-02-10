@@ -26,10 +26,11 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 101) [ ] polkadot js integration (ask Rosťa for more)
 
-#### WebSocket solution
+#### Socket solution
 ##### Hierarchy of classes and methods
 - Connection Manager:
   - Connect()
+  - Listen()
   - SendData()
   - ReceiveData()
   - CloseConnection()
@@ -43,22 +44,56 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - HandleException()
   - LogError()
   - SendErrorInformation()
+##### Usecases
+1. pair devices (inlude send public key <string> from wallet to dApp)
+2. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
+  - wallet y/n -> response (failed due sth/rejected/accepted <enum>)
+  - dApp: display status of transaction (response)
+3. close connection (from both sides):
+ - on connection lost event
+ - send to other client message about cancelation ?
 
 ### part 2 - PlutoWallet
-1) generate privateKey and show it to the user
-2) save the privateKey securely
-3) generate a publicKey from the privateKey
-4) (extra) make ss58 encoded publicKeys
-5) get the current balance
-6) (extra) show the balance in USD (use coingecko free api)
-7) add a transfer functionality
-8) add the ability to sign any transaction
-9) implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
-10) QR scanner
-11) improve UI
-12) add multiple chain support
-13) (extra) NFT implementation
-14) (extra) secure with password/biometrics
+1) [x] generate mnemonics and show it to the user
+1) [ ] enter mnemonics
+1) [ ] enter private key
+1) [ ] show the user raw privateKey
+2) [ ] save the privateKey securely (probably always ask for password)
+3) [ ] (extra) secure with password/biometrics
+4) [x] generate a publicKey from the privateKey
+5) [x] (extra - EASY) make ss58 encoded publicKeys
+6) [x] get the current balance
+7) [ ] (extra) show the balance in USD (use coingecko free api)
+8) [x] add a transfer functionality
+9) [ ] add the ability to sign any transaction
+10) [ ] implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
+11) [ ] QR scanner
+12) [ ] improve UI
+13) [x] add multiple chain support
+14) [ ] (extra) the ability to add other unknown chains manually
+15) [ ] (extra) NFT implementation
+16) [ ] show other funganble tokens
+
+### Other milestones
+
+#### #1 NFTs integration
+- show all owned NFTs
+- allow minting your own NFTs
+- NFT dex implementation
+
+#### #2 Staking
+- show stake pools
+- show gains
+- more...
+
+#### #3 dApp gallery
+- dApp promotion page
+
+#### #4 Voting
+
+#### #5 ink!
+
+#### #6 buy crypto
 
 # Resources to use
 
@@ -71,6 +106,11 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 ### Polkadot solutions:
 - https://github.com/ajuna-network
+- Ajuna transaction example: https://github.com/ajuna-network/SubstrateNetApi/issues/21#issuecomment-940421149
+- reading storage: https://www.shawntabrizi.com/substrate/querying-substrate-storage-via-rpc/
+
+### Blockchain communication tools
+- https://polkadot.js.org/apps/
 
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
@@ -78,3 +118,15 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 ### Inspiration:
 - https://walletconnect.com/
+
+### Sample transfer to be implemented:
+
+```
+public static Method Transfer(AjunaExample.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> value)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(dest.Encode());
+            byteArray.AddRange(value.Encode());
+            return new Method(5, "Balances", 0, "transfer", byteArray.ToArray());
+        }
+```
