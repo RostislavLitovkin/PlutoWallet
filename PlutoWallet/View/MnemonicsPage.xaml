@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             x:Class="PlutoWallet.View.MnemonicsPage"
+             Title="Mnemonics">
+    <ContentPage.BindingContext>
+        <viewmodel:MnemonicsViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+    <VerticalStackLayout>
+        <Grid Margin="20,35,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[0]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="0"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[1]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="1"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[2]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="1"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[3]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="2"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[4]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="2"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[5]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="3"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[6]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="3"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[7]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="4"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[8]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="4"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[9]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="5"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[10]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="5"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[11]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="6"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[12]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="6"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[13]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="0"
+                   Grid.Row="7"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[14]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Label Grid.Column="1"
+                   Grid.Row="7"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[15]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+             <Label Grid.Column="0"
+                   Grid.Row="8"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[16]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+             <Label Grid.Column="1"
+                   Grid.Row="8"
+                   Style="{StaticResource mnemonicLabel}"
+                   Text="{Binding MnemonicsArray[17]}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+
+        <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
+        <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
+        <Label Text="" Margin="20, 0, 20, 0" />
+
+
+         <Button Text="Continue" IsEnabled="{Binding IsStrongPassword}" Margin="20, 10, 20, 0"
+                 Clicked="ContinueToMainPageClicked" />
+         <Button Text="Use existing mnemonics" Margin="20, 10" Clicked="GoToEnterMnemonics" />
+    </VerticalStackLayout>
+</ContentPage>

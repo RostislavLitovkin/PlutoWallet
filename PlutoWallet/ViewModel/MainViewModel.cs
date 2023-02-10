@@ -1,12 +1,21 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Ajuna.NetApi;
+using Ajuna.NetApi.Model.Extrinsics;
+using Ajuna.NetApi.Model.Meta;
+using Ajuna.NetApi.Model.Types;
+using Ajuna.NetApi.Model.Types.Base;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Plutonication;
+using Newtonsoft.Json;
+using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Types;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,46 +25,122 @@ namespace PlutoWallet.ViewModel
 {
     internal partial class MainViewModel : ObservableObject
     {
+        public string PublicKey => KeysModel.GetPublicKey();//.Substring(0, 6) + "..." + KeysModel.GetPublicKey().Substring(62, 4);
+
+        public string SubstrateKey => KeysModel.GetSubstrateKey();
+
+        /*public string ChainKey => Utils.GetAddressFrom(
+            Utils.HexToByteArray(KeysModel.GetPublicKey()),
+            Metadata.Origin.
+        );*/
+
         [ObservableProperty]
         private string response;
+
+        [ObservableProperty]
+        private Metadata metadata;
+
+        [ObservableProperty]
+        private bool loading;
+
+        [ObservableProperty]
+        private string metadataLabel;
+
+        public string Test
+        {
+            get
+            {
+                //var methods = new Method();
+                return "";
+            }
+        }
 
         [RelayCommand]
         private void IncrementCounter()
         {
-            TestConnect();
+            //Response = NetworkingModel.RequestSample();
+            //Response = KeysModel.GenerateMnemonicsArray();
+            
         }
 
         public MainViewModel()
         {
-            TestListen();
+
+            //GetMetadataAsync();
+
+            response = "request me ^^";
+
         }
 
-        private void TestConnect()
+        public async Task GetMetadataAsync()
         {
-            IPAddress ipAddr = IPAddress.Parse("127.0.0.1");
-            int port = 8080;
-            Socket soc = ConnectionManager.Connect(ipAddr, port);
-            if (soc != null)
+            Loading = true;
+            Console.WriteLine(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io"));
+            try
             {
-                Response = "socket connected";
+                var client = new SubstrateClient(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), null);
+                await client.ConnectAsync();
+
+                Metadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
+
+                Console.WriteLine("Success");
+
+                Loading = false;
+
+                /*var modules = metadata.NodeMetadata.Modules;
+
+                string moduleKey = "";
+                long callKey = 0;
+
+                foreach (string i in modules.Keys)
+                {
+                    if (modules[i.ToString()].Name == "Balances")
+                    {
+                        moduleKey = i;
+                    }
+                }
+
+                string callsTypeId = modules[moduleKey].Calls.TypeId.ToString();
+                var calls = metadata.NodeMetadata.Types[callsTypeId];
+
+                foreach (var variant in calls.Variants)
+                {
+                    if (variant.Name == "transfer")
+                    {
+                        callKey = variant.Index;
+                    }
+                }
+                //MetadataLabel = "Data: " + modules[moduleKey].Name + " " + metadata.NodeMetadata.Types[callsTypeId].Variants[callKey].Name;
+
+                Console.WriteLine();*/
             }
-            else
+            catch (Exception ex)
             {
-                Response = "socket failed to connect :(";
+                Console.WriteLine(ex.Message);
             }
         }
-        private void TestListen()
+
+        public async Task GetBalanceAsync()
         {
-            int port = 8080;
-            Socket soc = ConnectionManager.Listen(port);
-            if (soc != null)
+            Response = "loading";
+            try
             {
-                Response = "socket listening";
+                var client = new AjunaClientExt(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), ChargeTransactionPayment.Default());
+
+                await client.ConnectAsync();
+
+                var accountInfo = await client.SystemStorage.Account(KeysModel.GetSubstrateKey());
+
+                Response = Utils.Bytes2HexString(KeysModel.GetAccount().Bytes);
+                Response = "Balance: " + accountInfo.Data.Free.Value;
+
             }
-            else
+            catch (Exception ex)
             {
-                Response = "socket failed to listen :(";
+                MetadataLabel = ex.Message;
             }
         }
+
+        
     }
 }

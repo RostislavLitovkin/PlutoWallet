@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
 		<OutputType>Exe</OutputType>
@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>PlutoWallet</ApplicationTitle>
+		<ApplicationTitle>Pluto wallet</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.plutowallet</ApplicationId>
+		<ApplicationId>com.rostislavlitovkin.plutowallet</ApplicationId>
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -30,6 +30,18 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -38,10 +50,11 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+		<MauiImage Include="Resources\Images\*png" />
+		<MauiImage Include="Resources\Images\*jpg" />
+		<MauiImage Include="Resources\Images\*svg" />
 
-		<!-- Custom Fonts -->
+		<!-- fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
@@ -51,10 +64,90 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
+	  <PackageReference Include="Ajuna.NetApi" Version="0.3.3" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
+	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Ajuna.NetApi" />
+	  <None Remove="Ajuna.NetWallet" />
+	  <None Remove="Constants\" />
+	  <None Remove="Types\" />
+	  <None Remove="Components\" />
+	  <None Remove="Components\NetworkSelect\" />
+	  <None Remove="Components\AddressView\" />
+	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="SubstrateNetApi" />
+	  <None Remove="Model\AjunaExt\" />
+	  <None Remove="Types\AjunaExtTypes\" />
+	  <None Remove="Components\TransferView\" />
+	  <None Remove="ZXing.Net.Maui" />
+	  <None Remove="Components\ScannerView\" />
+	  <None Remove="Components\ConnectionRequestView\" />
+	  <None Remove="Components\StakingDashboard\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="View\MnemonicsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\EnterMnemonics.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="View\AppShell.xaml">
+	    <SubType>Designer</SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\CustomCallPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MainTabbedPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\NetworkSelect\NetworkSelectView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\AddressView\AddressView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\TransferView\TransferView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\ScannerView\ScannerView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\StakingDashboard\StakingDashboardView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\SettingsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Constants\" />
+	  <Folder Include="Types\" />
+	  <Folder Include="Components\" />
+	  <Folder Include="Components\NetworkSelect\" />
+	  <Folder Include="Components\AddressView\" />
+	  <Folder Include="Model\AjunaExt\" />
+	  <Folder Include="Types\AjunaExtTypes\" />
+	  <Folder Include="Components\TransferView\" />
+	  <Folder Include="Components\ScannerView\" />
+	  <Folder Include="Components\ConnectionRequestView\" />
+	  <Folder Include="Components\StakingDashboard\" />
+	</ItemGroup>
+	<!--<PropertyGroup>
+		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
+    </PropertyGroup>-->
+<ItemGroup>
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
 	</ItemGroup>
-
 </Project>

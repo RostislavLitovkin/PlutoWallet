@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.TransferView.TransferView">
+    
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+
+            <VerticalStackLayout>
+                <AbsoluteLayout x:Name="qrLayout">
+
+
+                </AbsoluteLayout>
+
+                <Label 
+                    Text="Transfer"
+                    HorizontalOptions="Center" />
+
+                <HorizontalStackLayout FlowDirection="LeftToRight">
+                    <Entry Placeholder="Address" Text="{Binding Address}" Margin="20" />
+                    <Button Text="QR" Clicked="OnShowQRClicked" />
+                </HorizontalStackLayout>
+                <Entry Placeholder="Amount" Text="{Binding Amount}" Margin="20"
+                       Keyboard="Numeric"/>
+
+                <Label Text="" x:Name="errorLabel" TextColor="Red" />
+
+                <Button Text="Sign and transfer"
+                        Clicked="SignAndTransferClicked"/>
+            </VerticalStackLayout>
+
+            <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
+                   Text="&lt;" FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+        </AbsoluteLayout>
+        
+    </Frame>
+    
+</ContentView>
+
