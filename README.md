@@ -20,7 +20,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - ??? maybe more
 3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR ~ not important
+4) [ ] generate QR ~ not important. May use [this](https://github.com/codebude/QRCoder) package.
 
 50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
