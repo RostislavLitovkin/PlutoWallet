@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.StakingDashboard.StakingDashboardView">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+            <VerticalStackLayout>
+                <Label 
+                    Text="Staking dashboard"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="To be implemented later"
+                    HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </AbsoluteLayout>
+    </Frame>
+</ContentView>
+

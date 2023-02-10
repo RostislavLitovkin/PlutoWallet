@@ -1,49 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
-             x:Class="PlutoWallet.View.MainPage">
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView" xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView" xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView" xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard"
+             x:Class="PlutoWallet.View.MainPage"
+             Title="Main page" BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
 
-    <Shell.BackButtonBehavior>
-        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
-    </Shell.BackButtonBehavior>
+    <AbsoluteLayout>
+        
+        <ScrollView>
+            <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
 
-    <ContentPage.BindingContext>
-        <viewmodel:MainViewModel/>
-    </ContentPage.BindingContext>
+                <networkselect:NetworkSelectView />
+                <Image
+                    Source="dotnet_bot.png"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    WidthRequest="200"
+                    HeightRequest="200"
+                    HorizontalOptions="Center" />
+                <addressview:AddressView
+                    Title="Public key"
+                    Address="{Binding PublicKey}"/>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+                <addressview:AddressView
+                    Title="Substrate key"
+                    Address="{Binding SubstrateKey}"/>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+                <Button Text="Transfer"
+                        Clicked="TransferClicked"/>
 
-            <Label
-                Text="{Binding Response}"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                <Label
+                    Text="{Binding Response}"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" />
+                <Button Text="Reload"
+                        Clicked="ReloadClicked" />
 
-            <Button
-                
-                Text="Increment"
-                Command="{Binding IncrementCounterCommand}"
-                />
+                <Label
+                    Text="{Binding MetadataLabel}"
+                    SemanticProperties.HeadingLevel="Level1"
+                    FontSize="32"
+                    HorizontalOptions="Center" />
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+                <stakingdashboard:StakingDashboardView />
 
-        </VerticalStackLayout>
-    </ScrollView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Button Text="QR"
+                AbsoluteLayout.LayoutBounds="1,0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Clicked="OnQRClicked" />
+
+        <Button Text="Settings"
+                AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Clicked="OnSettingsClicked" />
+
+        <transferview:TransferView x:Name="transferView"
+                                   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   IsVisible="false" Opacity="0" />
+
+        <connectionrequestview:ConnectionRequestView
+                                   x:Name="connectionRequestView"
+                                   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   IsVisible="false" Opacity="0" />
+    </AbsoluteLayout>
+    
+    
 
 </ContentPage>

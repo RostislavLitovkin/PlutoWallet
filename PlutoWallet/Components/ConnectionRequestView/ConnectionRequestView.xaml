@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.ConnectionRequestView.ConnectionRequestView">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+            <VerticalStackLayout>
+                <Image x:Name="icon"
+                       WidthRequest="100"
+                       HeightRequest="100" />
+                <Label 
+                    x:Name="dAppNameLabel"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+                <Label 
+                    Text="Would you like to connect to this dApp?"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center" />
+                <Button Text="Accept"
+                        Clicked="AcceptClicked" />
+                <Button Text="Reject" BackgroundColor="DarkRed" TextColor="White"
+                        Clicked="RejectClicked"/>
+            </VerticalStackLayout>
+        </AbsoluteLayout>
+    </Frame>
+</ContentView>
+

@@ -10,6 +10,6 @@ public partial class AppShell : Shell
 
         Routing.RegisterRoute("GenerateMnemonics", typeof(MnemonicsPage));
         Routing.RegisterRoute("EnterMnemonics", typeof(EnterMnemonicsPage));
-        Routing.RegisterRoute("MainPage", typeof(MainPage));
+        Routing.RegisterRoute("MainPage", typeof(MainTabbedPage));
     }
 }

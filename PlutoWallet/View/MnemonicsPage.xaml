@@ -135,6 +135,8 @@
 
         <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
         <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
+        <Label Text="" Margin="20, 0, 20, 0" />
+
 
          <Button Text="Continue" IsEnabled="{Binding IsStrongPassword}" Margin="20, 10, 20, 0"
                  Clicked="ContinueToMainPageClicked" />

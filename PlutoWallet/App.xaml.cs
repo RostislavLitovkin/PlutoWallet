@@ -1,4 +1,9 @@
-﻿namespace PlutoWallet;
+﻿using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.TransferView;
+using PlutoWallet.View;
+using PlutoWallet.ViewModel;
+
+namespace PlutoWallet;
 
 public partial class App : Application
 {
@@ -6,6 +11,22 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+        DependencyService.Register<NetworkSelectViewModel>();
+
+        DependencyService.Register<CustomCallsViewModel>();
+
+        DependencyService.Register<MainViewModel>();
+
+        DependencyService.Register<TransferViewModel>();
+
+
+        if (Preferences.ContainsKey("privateKey") && false)
+        {
+            MainPage = new NavigationPage(new MainTabbedPage());
+        }
+        else
+        {
+            MainPage = new NavigationPage(new MnemonicsPage());
+        }
 	}
 }

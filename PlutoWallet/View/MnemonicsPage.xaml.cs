@@ -9,12 +9,12 @@ public partial class MnemonicsPage : ContentPage
 
 	private async void GoToEnterMnemonics(System.Object sender, System.EventArgs e)
     {
-		await Shell.Current.GoToAsync("EnterMnemonics");
+		await Navigation.PushAsync(new EnterMnemonicsPage());
     }
 
     private async void ContinueToMainPageClicked(System.Object sender, System.EventArgs e)
 	{
-		viewModel.Continue();
-        await Shell.Current.GoToAsync("MainPage");
+        viewModel.Continue();
+		await Navigation.PushAsync(new MainTabbedPage());
     }
 }
