@@ -61,12 +61,14 @@ Allows any dApp to communicate with the supported wallets without compromising p
 2) Query parameters:
   - url = dApp url to connect to (with port),
     example: ``` url=192.168.0.1:1234 ```
+   - key (optional) = password key to connect,
+    example: ``` key=password123 ```
   - name = dApp name,
     example: ``` name=Galaxy logic game ```
-  - icon = dApp icon url (optional)
+  - icon (optional) = dApp icon url
     example: ``` icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
-A complete example: ``` plutonication:?url=192.168.0.1:8000&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
+A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
