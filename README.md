@@ -46,6 +46,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - HandleException()
   - LogError()
   - SendErrorInformation()
+
 ##### Usecases
 1. pair devices (inlude send public key <string> from wallet to dApp)
 2. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
@@ -54,6 +55,9 @@ Allows any dApp to communicate with the supported wallets without compromising p
 3. close connection (from both sides):
  - on connection lost event
  - send to other client message about cancelation ?
+
+##### QR code docs (format):
+example: ``` plutonication:?url=192.168.0.1&param2=bad ```
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
