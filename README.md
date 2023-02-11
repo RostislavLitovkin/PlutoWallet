@@ -57,12 +57,16 @@ Allows any dApp to communicate with the supported wallets without compromising p
  - send to other client message about cancelation ?
 
 ##### QR code docs (format):
-1) Starts with **plutonication** 
+1) Starts with ``` plutonication: ```
 2) Query parameters:
-  - url = dApp url to connect to (with port)
+  - url = dApp url to connect to (with port),
     example: ``` url=192.168.0.1:1234 ```
+  - name = dApp name,
+    example: ``` name=Galaxy logic game ```
+  - icon = dApp icon url (optional)
+    example: ``` icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
-example: ``` plutonication:?url=192.168.0.1:1234&param2=bad ```
+A complete example: ``` plutonication:?url=192.168.0.1:8000&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
