@@ -22,7 +22,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 4) [ ] generate QR.
   - URI link with ip address, port and authentification token
 5) [ ] nuget package
-6) [ ] convert to async
+6) [X] convert to async
 7) [ ] create safe listen+connection
   - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
   - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
