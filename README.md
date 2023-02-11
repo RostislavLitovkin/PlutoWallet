@@ -138,6 +138,9 @@ It will then pass all the requested data to the PlutoWallet.
 - [ ] https://www.parity.io/technologies/signer/
 - [ ] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
 
+### NFTs
+- https://wiki.polkadot.network/docs/learn-nft
+
 ### Inspiration:
 - https://walletconnect.com/
 
