@@ -10,17 +10,21 @@ Allows any dApp to communicate with the supported wallets without compromising p
 # Work / milestones
 
 ### part 1 - Plutonication (Pluto connector)
-0) [-] create 2 new projects inside this solution:
-  - 1 a class library (later on will be a Nuget package)
-  - 2 mock dApp (testing app) - a simple console app that will connect to the wallet
-1) [x] find out how to connect the 2 apps via websocket (look into resources)
+0) [-] create simple dApp to test connection between Wallet and dApp
+1) [x] find out how to connect the 2 apps via websocket (look into resources) - solved via TCP protocol
 2) [x] create the 2 basic call operations/methods:
-  - OnConnect - 1st thing called when connection is successful - wallet returns publicKey to the dApp
-  - RequestSign - dApp sends a sing request with the transaction data to the wallet and the wallet returns the signed data
-  - ??? maybe more
+  - SendMessage(PlutoMessage{Code, Data}) 
+  - ReceiveMessage(PlutoMessage{Code, Data})
+    - where code is ID which determinate type of message. Data are content of message.
 3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR ~ not important. May use [this](https://github.com/codebude/QRCoder) package.
+4) [ ] generate QR.
+  - URI link with ip address, port and authentification token
+5) [ ] nuget package
+6) [ ] convert to async
+7) [ ] create safe listen+connection
+  - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
+  - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
 
 50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
@@ -30,22 +34,12 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 #### Socket solution
 ##### Hierarchy of classes and methods
-- Connection Manager:
-  - Connect()
-  - Listen()
+- Pluto Manager:
   - SendData()
   - ReceiveData()
   - CloseConnection()
-- Message Factory:
-  - CreateRequestMessage()
-  - CreateResponseMessage()
-- Message Processor:
-  - ParseMessage()
-  - ProcessMessage()
-- Error Handler:
-  - HandleException()
-  - LogError()
-  - SendErrorInformation()
+- Client Pluto Manager:
+- Server Pluto Manager:
 
 ##### Usecases
 1. pair devices (inlude send public key <string> from wallet to dApp)
