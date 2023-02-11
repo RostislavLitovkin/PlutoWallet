@@ -115,6 +115,8 @@ Web dApps, but instead of storing a private key,
 will generate a QR code for Plutonication. 
 It will then pass all the requested data to the PlutoWallet.
 
+### part 4 - video and presentation
+
 # Resources to use
 
 ### Hackathon:
