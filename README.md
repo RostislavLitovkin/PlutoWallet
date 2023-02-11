@@ -1,7 +1,7 @@
 # PlutoWallet
-A sample wallet that implements PlutoConnector.
+A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
 
-# PlutoConnector
+# [PlutoConnector](https://github.com/cisar2218/Plutonication)
 Allows any dApp to communicate with the supported wallets without compromising privateKeys.
 
 # Terminology
