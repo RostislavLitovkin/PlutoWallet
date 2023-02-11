@@ -36,7 +36,7 @@ public partial class MainPage : ContentPage
     {
        
 
-        await universalScannerView.Appear();
+        //await universalScannerView.Appear();
 
         return;
 

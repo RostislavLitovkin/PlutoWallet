@@ -39,6 +39,9 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string debugText;
 
+        [ObservableProperty]
+        private string[] orderedMnemonicsArray;
+
         public void Continue()
         {
             var mnemonicsString = string.Empty;
@@ -69,8 +72,15 @@ namespace PlutoWallet.ViewModel
         public MnemonicsViewModel()
         {
             mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
+            orderedMnemonicsArray = new string[mnemonicsArray.Count()];
 
             debugText = "Hello";
+
+            int i = 0;
+            foreach (string mnemonic in mnemonicsArray)
+            {
+                orderedMnemonicsArray[i] = ++i + ". " + mnemonic;
+            }
         }
 
         /*private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
