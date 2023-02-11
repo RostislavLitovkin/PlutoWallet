@@ -109,8 +109,11 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 #### #6 buy crypto
   
 ### (extra) part 3 - browser extension
-
-- Not a priority right now.
+Acts like any other browser wallet, 
+with the functionality of connecting to 
+Web dApps, but instead of storing a private key, 
+will generate a QR code for Plutonication. 
+It will then pass all the requested data to the PlutoWallet.
 
 # Resources to use
 
