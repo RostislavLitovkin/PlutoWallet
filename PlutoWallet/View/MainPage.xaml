@@ -2,19 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
-             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView" xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView" xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView" xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView" xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView" xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView" xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard" xmlns:scannerview="clr-namespace:PlutoWallet.Components.ScannerView" xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView" xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              x:Class="PlutoWallet.View.MainPage"
-             Title="Main page" BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
+             x:Name="page"
+             Title="Main page"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
 
-    <AbsoluteLayout>
-        
-        <ScrollView>
+    <AbsoluteLayout x:Name="absoluteLayout">
+        <ScrollView
+            WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+            HeightRequest="{Binding Source={x:Reference absoluteLayout}, Path=Height}">
+
             <VerticalStackLayout
+                WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
                 Spacing="25"
                 Padding="30,0"
                 VerticalOptions="Center">
 
                 <networkselect:NetworkSelectView />
+                <Label
+                    Text="{Binding DAppName}"
+                    FontSize="16"
+                    HorizontalOptions="Center" />
                 <Image
                     Source="dotnet_bot.png"
                     SemanticProperties.Description="Cute dot net bot waving hi to you!"
@@ -33,8 +43,7 @@
                         Clicked="TransferClicked"/>
 
                 <Label
-                    Text="{Binding Response}"
-                    SemanticProperties.HeadingLevel="Level1"
+                    Text="{Binding Balance}"
                     FontSize="32"
                     HorizontalOptions="Center" />
                 <Button Text="Reload"
@@ -42,13 +51,13 @@
 
                 <Label
                     Text="{Binding MetadataLabel}"
-                    SemanticProperties.HeadingLevel="Level1"
                     FontSize="32"
                     HorizontalOptions="Center" />
 
                 <stakingdashboard:StakingDashboardView />
 
-
+                <!-- Just a clear space (needs to be here) -->
+                <AbsoluteLayout HeightRequest="200"/>
             </VerticalStackLayout>
         </ScrollView>
 
@@ -68,10 +77,16 @@
                                    IsVisible="false" Opacity="0" />
 
         <connectionrequestview:ConnectionRequestView
-                                   x:Name="connectionRequestView"
-                                   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   IsVisible="false" Opacity="0" />
+                                   x:Name="connectionRequestView" />
+
+        <universalscannerview:UniversalScannerView
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+             AbsoluteLayout.LayoutFlags="PositionProportional"
+            x:Name="universalScannerView"
+             IsVisible="false" Opacity="0" />
+        
+        <messagepopup:MessagePopupView />
+
     </AbsoluteLayout>
     
 </ContentPage>

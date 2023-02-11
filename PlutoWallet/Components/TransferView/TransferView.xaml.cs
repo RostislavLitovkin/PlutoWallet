@@ -58,9 +58,19 @@ public partial class TransferView : ContentView
 
     async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
+        
         var viewModel = DependencyService.Get<TransferViewModel>();
 
-        viewModel.Address = e.Results[e.Results.Length].Value;
+        try
+        {
+            viewModel.Address = e.Results[e.Results.Length - 1].Value;
+
+            qrLayout.Children.Clear();
+        }
+        catch (Exception ex)
+        {
+
+        }
     }
 
 }

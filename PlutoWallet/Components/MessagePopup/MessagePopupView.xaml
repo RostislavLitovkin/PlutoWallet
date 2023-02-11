@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.MessagePopup.MessagePopupView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+             AbsoluteLayout.LayoutFlags="PositionProportional"
+             IsVisible="{Binding IsVisible}">
+
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+
+            <VerticalStackLayout>
+                 <Label
+                    FontAttributes="Bold"
+                    Text="{Binding Title}"
+                    x:Name="title"
+                    HorizontalOptions="Center" />
+
+                <Label
+                    x:Name="text"
+                    Text="{Binding Text}"
+                    HorizontalOptions="Center" />
+
+                <Button Text="Back"
+                        Clicked="OnBackClicked" />
+            </VerticalStackLayout>
+
+            <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
+                   Text="&lt;" FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+        </AbsoluteLayout>
+    </Frame>
+
+</ContentView>
+

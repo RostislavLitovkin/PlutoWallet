@@ -5,9 +5,11 @@ public partial class ConnectionRequestView : ContentView
 	public ConnectionRequestView()
 	{
 		InitializeComponent();
-	}
 
-    public string IconUrl
+        BindingContext = DependencyService.Get<ConnectionRequestViewModel>();
+    }
+
+    /*public string IconUrl
     {
         set
         {
@@ -21,6 +23,7 @@ public partial class ConnectionRequestView : ContentView
             dAppNameLabel.Text = value;
         }
     }
+    */
 
     void AcceptClicked(System.Object sender, System.EventArgs e)
     {
@@ -29,7 +32,7 @@ public partial class ConnectionRequestView : ContentView
 
     async void RejectClicked(System.Object sender, System.EventArgs e)
     {
-        await this.FadeTo(0, 500);
+        //await this.FadeTo(0, 500);
         this.IsVisible = false;
     }
 }

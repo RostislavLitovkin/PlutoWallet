@@ -25,17 +25,12 @@ namespace PlutoWallet.ViewModel
 {
     internal partial class MainViewModel : ObservableObject
     {
-        public string PublicKey => KeysModel.GetPublicKey();//.Substring(0, 6) + "..." + KeysModel.GetPublicKey().Substring(62, 4);
+        public string PublicKey => KeysModel.GetPublicKey();
 
         public string SubstrateKey => KeysModel.GetSubstrateKey();
 
-        /*public string ChainKey => Utils.GetAddressFrom(
-            Utils.HexToByteArray(KeysModel.GetPublicKey()),
-            Metadata.Origin.
-        );*/
-
         [ObservableProperty]
-        private string response;
+        private string balance;
 
         [ObservableProperty]
         private Metadata metadata;
@@ -46,14 +41,10 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string metadataLabel;
 
-        public string Test
-        {
-            get
-            {
-                //var methods = new Method();
-                return "";
-            }
-        }
+        [ObservableProperty]
+        private string dAppName;
+
+        
 
         [RelayCommand]
         private void IncrementCounter()
@@ -63,13 +54,11 @@ namespace PlutoWallet.ViewModel
             
         }
 
+
+        // constructor
         public MainViewModel()
         {
-
-            //GetMetadataAsync();
-
-            response = "request me ^^";
-
+            balance = "Balance: loading";
         }
 
         public async Task GetMetadataAsync()
@@ -86,33 +75,6 @@ namespace PlutoWallet.ViewModel
                 Console.WriteLine("Success");
 
                 Loading = false;
-
-                /*var modules = metadata.NodeMetadata.Modules;
-
-                string moduleKey = "";
-                long callKey = 0;
-
-                foreach (string i in modules.Keys)
-                {
-                    if (modules[i.ToString()].Name == "Balances")
-                    {
-                        moduleKey = i;
-                    }
-                }
-
-                string callsTypeId = modules[moduleKey].Calls.TypeId.ToString();
-                var calls = metadata.NodeMetadata.Types[callsTypeId];
-
-                foreach (var variant in calls.Variants)
-                {
-                    if (variant.Name == "transfer")
-                    {
-                        callKey = variant.Index;
-                    }
-                }
-                //MetadataLabel = "Data: " + modules[moduleKey].Name + " " + metadata.NodeMetadata.Types[callsTypeId].Variants[callKey].Name;
-
-                Console.WriteLine();*/
             }
             catch (Exception ex)
             {
@@ -122,7 +84,7 @@ namespace PlutoWallet.ViewModel
 
         public async Task GetBalanceAsync()
         {
-            Response = "loading";
+            Balance = "Balance: loading";
             try
             {
                 var client = new AjunaClientExt(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), ChargeTransactionPayment.Default());
@@ -131,12 +93,12 @@ namespace PlutoWallet.ViewModel
 
                 var accountInfo = await client.SystemStorage.Account(KeysModel.GetSubstrateKey());
 
-                Response = Utils.Bytes2HexString(KeysModel.GetAccount().Bytes);
-                Response = "Balance: " + accountInfo.Data.Free.Value;
+                Balance = "Balance: " + accountInfo.Data.Free.Value;
 
             }
             catch (Exception ex)
             {
+                Balance = "Balance: 0";
                 MetadataLabel = ex.Message;
             }
         }

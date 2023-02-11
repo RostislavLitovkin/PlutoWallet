@@ -13,7 +13,8 @@
 
                 </AbsoluteLayout>
 
-                <Label 
+                <Label
+                    FontAttributes="Bold"
                     Text="Transfer"
                     HorizontalOptions="Center" />
 

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:scanner="clr-namespace:PlutoWallet.Components.ScannerView"
+             x:Class="PlutoWallet.Components.UniversalScannerView.UniversalScannerView">
+   <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+
+            <VerticalStackLayout>
+
+                <Label 
+                    Text="Plutonication"
+                    HorizontalOptions="Center" />
+
+                <AbsoluteLayout x:Name="qrLayout">
+
+
+                </AbsoluteLayout>
+            </VerticalStackLayout>
+
+
+             <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
+                   Text="&lt;" FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+
+        </AbsoluteLayout>
+
+    </Frame>
+
+</ContentView>
+

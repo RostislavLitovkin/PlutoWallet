@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using PlutoWallet.Components.NetworkSelect;
-using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace PlutoWallet;
 
@@ -14,7 +14,6 @@ public static class MauiProgram
 
 #if ANDROID || IOS
             .UseBarcodeReader()
-
 #endif
 
 

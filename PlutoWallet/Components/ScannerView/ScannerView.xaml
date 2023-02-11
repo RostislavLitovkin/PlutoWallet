@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="PlutoWallet.Components.ScannerView.ScannerView">
+
     <VerticalStackLayout>
-        <!--<CameraBarcodeReaderView
-          x:Name="cameraBarcodeReaderView" />-->
+        
+        <zxing:CameraBarcodeReaderView
+            WidthRequest="200"
+            HeightRequest="200"
+              x:Name="scanner"
+              IsDetecting="True"
+              Margin="0, 30, 0, 30" />
+        
     </VerticalStackLayout>
 </ContentView>
 

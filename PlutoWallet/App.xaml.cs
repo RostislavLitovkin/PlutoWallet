@@ -1,4 +1,7 @@
-﻿using PlutoWallet.Components.NetworkSelect;
+﻿using PlutoWallet.Components.ConnectionRequestView;
+using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
@@ -18,6 +21,13 @@ public partial class App : Application
         DependencyService.Register<MainViewModel>();
 
         DependencyService.Register<TransferViewModel>();
+
+        DependencyService.Register<ConnectionRequestViewModel>();
+
+        DependencyService.Register<ScannerViewModel>();
+
+        DependencyService.Register<MessagePopupViewModel>();
+
 
 
         if (Preferences.ContainsKey("privateKey") && false)

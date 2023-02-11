@@ -34,11 +34,16 @@ public partial class MainPage : ContentPage
 
     async void OnQRClicked(System.Object sender, System.EventArgs e)
     {
-        connectionRequestView.DAppName = "internal dApp";
+       
+
+        await universalScannerView.Appear();
+
+        return;
+
+
+        //connectionRequestView.DAppName = "internal dApp";
         //connectionRequestView.IconUrl = "internal dApp";
 
-        connectionRequestView.IsVisible = true;
-        await connectionRequestView.FadeTo(1, 500);
     }
 
     async void OnSettingsClicked(System.Object sender, System.EventArgs e)

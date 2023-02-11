@@ -1,21 +1,35 @@
-﻿using ZXing.Net.Maui;
+﻿using Java.Util;
+using ZXing.Net.Maui;
 
 namespace PlutoWallet.Components.ScannerView;
 
 public partial class ScannerView : ContentView
 {
-	public ScannerView()
+	public ScannerView(ScannerViewModel bindingContext)
 	{
 		InitializeComponent();
 
-		/*cameraBarcodeReaderView.Options = new BarcodeReaderOptions
+		BindingContext = bindingContext;
+
+		scanner.Options = new BarcodeReaderOptions
 		{
 			Formats = BarcodeFormats.TwoDimensional,
 		};
-		*/
     }
 
-	public bool HideWhenDetected
+    public ScannerView()
+    {
+        InitializeComponent();
+
+		BindingContext = new ScannerViewModel();
+
+        scanner.Options = new BarcodeReaderOptions
+        {
+            Formats = BarcodeFormats.TwoDimensional,
+        };
+    }
+
+    public bool HideWhenDetected
 	{
 		set
 		{
@@ -30,7 +44,7 @@ public partial class ScannerView : ContentView
 	{
 		set
 		{
-			//cameraBarcodeReaderView.BarcodesDetected += value;
+			scanner.BarcodesDetected += value;
         }
 	}
 
