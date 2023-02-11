@@ -9,41 +9,38 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 # Work / milestones
 
-### part 1 - PlutoConnector
-0) [ ] create 2 new projects inside this solution:
-  - 1 a class library (later on will be a Nuget package)
-  - 2 mock dApp (testing app) - a simple console app that will connect to the wallet
-1) [ ] find out how to connect the 2 apps via websocket (look into resources)
-2) [ ] create the 2 basic call operations/methods:
-  - OnConnect - 1st thing called when connection is successful - wallet returns publicKey to the dApp
-  - RequestSign - dApp sends a sing request with the transaction data to the wallet and the wallet returns the signed data
-  - ??? maybe more
-3) [ ] make this a modular package -> release to Nuget
+### part 1 - Plutonication (Pluto connector)
+0) [-] create simple dApp to test connection between Wallet and dApp
+1) [x] find out how to connect the 2 apps via websocket (look into resources) - solved via TCP protocol
+2) [x] create the 2 basic call operations/methods:
+  - SendMessage(PlutoMessage{Code, Data}) 
+  - ReceiveMessage(PlutoMessage{Code, Data})
+    - where code is ID which determinate type of message. Data are content of message.
+3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR
+4) [ ] generate QR.
+  - URI link with ip address, port and authentification token
+5) [ ] nuget package
+6) [ ] convert to async
+7) [ ] create safe listen+connection
+  - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
+  - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
 
-100) [ ] create a very detailed (and begginer friendly) docs with how to use it and add examples
+50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
 101) [ ] polkadot js integration (ask Rosťa for more)
 
+102) [ ] make a javascript version
+
 #### Socket solution
 ##### Hierarchy of classes and methods
-- Connection Manager:
-  - Connect()
-  - Listen()
+- Pluto Manager:
   - SendData()
   - ReceiveData()
   - CloseConnection()
-- Message Factory:
-  - CreateRequestMessage()
-  - CreateResponseMessage()
-- Message Processor:
-  - ParseMessage()
-  - ProcessMessage()
-- Error Handler:
-  - HandleException()
-  - LogError()
-  - SendErrorInformation()
+- Client Pluto Manager:
+- Server Pluto Manager:
+
 ##### Usecases
 1. pair devices (inlude send public key <string> from wallet to dApp)
 2. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
@@ -52,6 +49,20 @@ Allows any dApp to communicate with the supported wallets without compromising p
 3. close connection (from both sides):
  - on connection lost event
  - send to other client message about cancelation ?
+
+##### QR code docs (format):
+1) Starts with ``` plutonication: ```
+2) Query parameters:
+  - url = dApp url to connect to (with port),
+    example: ``` url=192.168.0.1:1234 ```
+   - key (optional) = password key to connect,
+    example: ``` key=password123 ```
+  - name = dApp name,
+    example: ``` name=Galaxy logic game ```
+  - icon (optional) = dApp icon url
+    example: ``` icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
+
+A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
@@ -73,6 +84,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 14) [ ] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
 16) [ ] show other funganble tokens
+17) [ ] plutonication deep link
 
 ### Other milestones
 
@@ -94,6 +106,10 @@ Allows any dApp to communicate with the supported wallets without compromising p
 #### #5 ink!
 
 #### #6 buy crypto
+  
+### (extra) part 3 - browser extension
+
+- Not a priority right now.
 
 # Resources to use
 
