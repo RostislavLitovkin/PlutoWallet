@@ -23,10 +23,10 @@ Allows any dApp to communicate with the supported wallets without compromising p
  - Also allow params: `Name` (dApp name), `Icon` (url to dApp icon). These to params may help identify nature of comming transaction when scanning QR code.
  - QR code generation will be propably part of PlutoWallet
 6) [X] convert to async
-7) [ ] create safe listen+connection
+7) [X] create safe listen+connection
   - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
   - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
-8) [ ] create client which handles infinite receive loop completely. Event driven architecture:
+8) [X] create client which handles infinite receive loop completely. Event driven architecture:
   - Start (Connect/Listen) which will pair automaticaly using given credentials and setup loop which will recv. messages (until CloseConnection is called)
   - Include Recv. message event
   - ConnectionClosed event
