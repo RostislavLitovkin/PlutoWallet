@@ -87,13 +87,18 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 8) [x] add a transfer functionality
 9) [ ] add the ability to sign any transaction
 10) [ ] implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
-11) [ ] QR scanner
+11) [x] QR scanner
 12) [ ] improve UI
 13) [x] add multiple chain support
 14) [ ] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
 16) [ ] show other funganble tokens
 17) [ ] plutonication deep link
+18) [ ] add loading animations
+19) [ ] icon and splash screen
+20) [ ] implement nicks pallet
+21) [ ] show error messages
+22) [ ] XCM
 
 ### Other milestones
 
