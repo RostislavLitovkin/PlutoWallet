@@ -1,4 +1,4 @@
-﻿using ZXing.Net.Maui;
+using ZXing.Net.Maui;
 
 namespace PlutoWallet.Components.ScannerView;
 

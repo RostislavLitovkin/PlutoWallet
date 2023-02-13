@@ -1,7 +1,7 @@
 # PlutoWallet
-A sample wallet that implements PlutoConnector.
+A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
 
-# PlutoConnector
+# [PlutoConnector](https://github.com/cisar2218/Plutonication)
 Allows any dApp to communicate with the supported wallets without compromising privateKeys.
 
 # Terminology
@@ -10,6 +10,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
 # Work / milestones
 
 ### part 1 - Plutonication (Pluto connector)
+- to update git submodule run: `git submodule update --remote`
 0) [-] create simple dApp to test connection between Wallet and dApp
 1) [x] find out how to connect the 2 apps via websocket (look into resources) - solved via TCP protocol
 2) [x] create the 2 basic call operations/methods:
@@ -18,13 +19,21 @@ Allows any dApp to communicate with the supported wallets without compromising p
     - where code is ID which determinate type of message. Data are content of message.
 3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR.
-  - URI link with ip address, port and authentification token
-5) [ ] nuget package
-6) [ ] convert to async
-7) [ ] create safe listen+connection
+4) [X] class with URI link (containing ip address, port and authentification token).
+ - Also allow params: `Name` (dApp name), `Icon` (url to dApp icon). These to params may help identify nature of comming transaction when scanning QR code.
+ - QR code generation will be propably part of PlutoWallet
+6) [X] convert to async
+7) [X] create safe listen+connection
   - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
   - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
+8) [X] create client which handles infinite receive loop completely. Event driven architecture:
+  - Start (Connect/Listen) which will pair automaticaly using given credentials and setup loop which will recv. messages (until CloseConnection is called)
+  - Include Recv. message event
+  - ConnectionClosed event
+  - IsConnected method + event IsConnected Changed
+9) [ ] experimental object class sending including object serialization
+
+15) [ ] nuget package
 
 50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
@@ -108,8 +117,13 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 #### #6 buy crypto
   
 ### (extra) part 3 - browser extension
+Acts like any other browser wallet, 
+with the functionality of connecting to 
+Web dApps, but instead of storing a private key, 
+will generate a QR code for Plutonication. 
+It will then pass all the requested data to the PlutoWallet.
 
-- Not a priority right now.
+### part 4 - video and presentation
 
 # Resources to use
 
@@ -131,6 +145,9 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
 - [ ] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
+
+### NFTs
+- https://wiki.polkadot.network/docs/learn-nft
 
 ### Inspiration:
 - https://walletconnect.com/
