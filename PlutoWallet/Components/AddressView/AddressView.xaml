@@ -10,15 +10,15 @@
 
         <HorizontalStackLayout HorizontalOptions="FillAndExpand">
 
-        <Label 
-            x:Name="titleLabel"
-            VerticalOptions="Center" 
-            HorizontalOptions="StartAndExpand"
-            MinimumWidthRequest="100"/>
-       <Label 
-            x:Name="addressLabel"
-            VerticalOptions="Center" 
-            HorizontalOptions="Fill" />
+            <Label 
+                x:Name="titleLabel"
+                VerticalOptions="Center" 
+                HorizontalOptions="StartAndExpand"
+                MinimumWidthRequest="100"/>
+           <Label 
+                x:Name="addressLabel"
+                VerticalOptions="Center" 
+                HorizontalOptions="Fill" />
         </HorizontalStackLayout>
         <ContentView.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnTapped"/>

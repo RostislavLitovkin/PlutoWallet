@@ -14,7 +14,13 @@ namespace PlutoWallet.Components.ConnectionRequestView
 		[ObservableProperty]
 		private bool isVisible;
 
-		public ConnectionRequestViewModel()
+		[ObservableProperty]
+		private string url;
+
+        [ObservableProperty]
+        private string key;
+
+        public ConnectionRequestViewModel()
 		{
 			isVisible = false;
 		}

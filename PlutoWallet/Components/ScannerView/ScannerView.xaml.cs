@@ -1,10 +1,12 @@
-﻿using Java.Util;
-using ZXing.Net.Maui;
+﻿using ZXing.Net.Maui;
 
 namespace PlutoWallet.Components.ScannerView;
 
 public partial class ScannerView : ContentView
 {
+	/**
+	 * This one is used, when you want to use Dependency service
+	 */
 	public ScannerView(ScannerViewModel bindingContext)
 	{
 		InitializeComponent();
@@ -29,17 +31,6 @@ public partial class ScannerView : ContentView
         };
     }
 
-    public bool HideWhenDetected
-	{
-		set
-		{
-			if(value)
-			{
-                //cameraBarcodeReaderView.BarcodesDetected += HideWhenDetectedEvent;
-            }
-		}
-	}
-
 	public EventHandler<BarcodeDetectionEventArgs> OnScannedMethod
 	{
 		set
@@ -47,10 +38,4 @@ public partial class ScannerView : ContentView
 			scanner.BarcodesDetected += value;
         }
 	}
-
-    async void HideWhenDetectedEvent(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
-		//
-    }
-
 }

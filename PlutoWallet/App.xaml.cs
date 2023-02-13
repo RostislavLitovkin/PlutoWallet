@@ -1,7 +1,9 @@
-﻿using PlutoWallet.Components.ConnectionRequestView;
+﻿using PlutoWallet.Components.BalanceView;
+using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.ScannerView;
+using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
@@ -27,6 +29,11 @@ public partial class App : Application
         DependencyService.Register<ScannerViewModel>();
 
         DependencyService.Register<MessagePopupViewModel>();
+
+        DependencyService.Register<TransactionRequestViewModel>();
+
+        DependencyService.Register<BalanceViewModel>();
+
 
 
 

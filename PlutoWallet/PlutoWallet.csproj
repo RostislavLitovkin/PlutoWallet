@@ -90,12 +90,17 @@
 	  <None Remove="ZXing.Net.Maui.Controls" />
 	  <None Remove="Components\UniversalScannerView\" />
 	  <None Remove="Components\MessagePopup\" />
+	  <None Remove="Components\TransactionRequest\" />
+	  <None Remove="Components\CalamarView\" />
+	  <None Remove="Components\BalanceView\" />
+	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	  <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -140,6 +145,15 @@
 	  <MauiXaml Update="Components\MessagePopup\MessagePopupView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\TransactionRequest\TransactionRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CalamarView\CalamarView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\BalanceView\BalanceView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />
@@ -155,11 +169,14 @@
 	  <Folder Include="Components\StakingDashboard\" />
 	  <Folder Include="Components\UniversalScannerView\" />
 	  <Folder Include="Components\MessagePopup\" />
+	  <Folder Include="Components\TransactionRequest\" />
+	  <Folder Include="Components\CalamarView\" />
+	  <Folder Include="Components\BalanceView\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
     </PropertyGroup>-->
-<ItemGroup>
+	<ItemGroup>
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
 	</ItemGroup>
 </Project>
