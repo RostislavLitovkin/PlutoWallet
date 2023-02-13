@@ -19,14 +19,21 @@ Allows any dApp to communicate with the supported wallets without compromising p
     - where code is ID which determinate type of message. Data are content of message.
 3) [x] make this a modular package -> release to Nuget
   - make this better compatible with Ajuna.NetApi???
-4) [ ] generate QR.
-  - URI link with ip address, port and authentification token
-5) [ ] nuget package
+4) [X] class with URI link (containing ip address, port and authentification token).
+ - Also allow params: `Name` (dApp name), `Icon` (url to dApp icon). These to params may help identify nature of comming transaction when scanning QR code.
+ - QR code generation will be propably part of PlutoWallet
 6) [X] convert to async
 7) [ ] create safe listen+connection
   - Wallet (client): `Connect(ipAddress, port, auth)`, dApp (server): `StartServer(port, auth)`
   - Listen will compare received `auth` with held `auth`. If match: OK, else: don't match -> kick.
-8) [ ] create client which handles infinite receive loop completely.
+8) [ ] create client which handles infinite receive loop completely. Event driven architecture:
+  - Start (Connect/Listen) which will pair automaticaly using given credentials and setup loop which will recv. messages (until CloseConnection is called)
+  - Include Recv. message event
+  - ConnectionClosed event
+  - IsConnected method + event IsConnected Changed
+9) [ ] experimental object class sending including object serialization
+
+15) [ ] nuget package
 
 50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
