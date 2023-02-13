@@ -1,4 +1,9 @@
 ﻿using PlutoWallet.ViewModel;
+using PlutoWallet.Components.ConnectionRequestView;
+using PlutoWallet.Components.TransactionRequest;
+
+using Ajuna.NetApi.Model.Extrinsics;
+using Plutonication;
 
 namespace PlutoWallet.View;
 
@@ -6,41 +11,19 @@ public partial class MainPage : ContentPage
 {
 	public MainPage()
 	{
-		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
 
-		BindingContext = DependencyService.Get<MainViewModel>();
-    }
+        BindingContext = DependencyService.Get<MainViewModel>();
 
-    async void TransferClicked(System.Object sender, System.EventArgs e)
-    {
-        ((Button)sender).IsEnabled = false;
-
-        transferView.IsVisible = true;
-        await transferView.FadeTo(1, 500);
-
-        ((Button)sender).IsEnabled = true;
-    }
-
-    async void ReloadClicked(System.Object sender, System.EventArgs e)
-    {
-        ((Button)sender).IsEnabled = false;
-
-        var viewModel = DependencyService.Get<MainViewModel>();
-        await viewModel.GetBalanceAsync();
-
-        ((Button)sender).IsEnabled = true;
-
+        InitializeComponent();
     }
 
     async void OnQRClicked(System.Object sender, System.EventArgs e)
     {
-       
-
-        //await universalScannerView.Appear();
+        await universalScannerView.Appear();
 
         return;
-
-
         //connectionRequestView.DAppName = "internal dApp";
         //connectionRequestView.IconUrl = "internal dApp";
 

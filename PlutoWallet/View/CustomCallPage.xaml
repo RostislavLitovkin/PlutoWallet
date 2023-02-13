@@ -1,40 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel" xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              x:Class="PlutoWallet.View.CustomCallPage"
              Title="Custom Call">
+    <AbsoluteLayout x:Name="absoluteLayout"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <ScrollView
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+            WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+            HeightRequest="{Binding Source={x:Reference absoluteLayout}, Path=Height}">
+            <VerticalStackLayout
+                    Spacing="15"
+                    Padding="30,0">
+                <networkselect:NetworkSelectView />
 
-    <VerticalStackLayout>
-        <networkselect:NetworkSelectView
-            />
+                <Picker
+                    Title="Pallet"
+                    ItemsSource="{Binding Pallets}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedPallet}"/>
 
-        <Picker
-            Title="Pallet"
-            ItemsSource="{Binding Pallets}"
-            ItemDisplayBinding="{Binding Name}"
-            SelectedItem="{Binding SelectedPallet}"/>
-        <Label 
-            Text="{Binding Loading}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding CallIndex}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding SelectedNetworkLabel}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+                <Picker
+                    Title="Call"
+                    ItemsSource="{Binding CallsList}"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedCall}"/>
 
-        <Picker
-            Title="Call"
-            ItemsSource="{Binding CallsList}"
-            ItemDisplayBinding="{Binding Name}"
-            SelectedItem="{Binding SelectedCall}"/>
+                <Entry Placeholder="Args" Text="{Binding Password}" Margin="20, 0, 20, 20" />
 
-        <Entry Placeholder="Args" Text="{Binding Password}" Margin="20" />
+                <Button Text="Submit" IsEnabled="{Binding IsSubmitEnabled}"
+                        Clicked="SubmitClicked"/>
 
-        <Button Text="Submit" IsEnabled="{Binding IsSubmitEnabled}"
-                Clicked="SubmitClicked"/>
-    </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <transactionrequest:TransactionRequestView />
+    </AbsoluteLayout>
 </ContentPage>

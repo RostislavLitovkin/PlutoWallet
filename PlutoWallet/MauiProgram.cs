@@ -22,9 +22,10 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("fontawesome-webfont.ttf", "FontAwesome");
             });
 
-        builder.Services.AddSingleton<ViewModel.CustomCallsViewModel>();
+        //builder.Services.AddSingleton<Model.PlutonicationModel>();
 
         return builder.Build();
     }

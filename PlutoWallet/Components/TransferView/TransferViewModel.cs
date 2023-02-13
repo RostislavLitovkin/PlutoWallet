@@ -3,7 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace PlutoWallet.Components.TransferView
 {
-	internal partial class TransferViewModel : ObservableObject
+	public partial class TransferViewModel : ObservableObject
 	{
 		[ObservableProperty]
 		private string address;
@@ -11,6 +11,13 @@ namespace PlutoWallet.Components.TransferView
 		[ObservableProperty]
 		private int amount;
 
+		[ObservableProperty]
+		private bool isVisible;
+
+		public TransferViewModel()
+		{
+			isVisible = false;
+		}
     }
 }
 

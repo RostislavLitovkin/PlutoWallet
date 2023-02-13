@@ -6,6 +6,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
+using Plutonication;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
@@ -102,7 +103,5 @@ namespace PlutoWallet.ViewModel
                 MetadataLabel = ex.Message;
             }
         }
-
-        
     }
 }

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.CalamarView.CalamarView">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20" x:Name="frame"
+           Padding="0"
+           Margin="0"
+           HeightRequest="650">
+        <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                         x:Name="absoluteLayout" WidthRequest="{Binding Source={x:Reference frame}, Path=Width}">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                  >
+                <Label
+                    HeightRequest="30"
+                    VerticalTextAlignment="Center"
+                    Text="Calamar explorer"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" />
+                <WebView HeightRequest="600" WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                         x:Name="calamarWebView"
+                         Margin="0, 0, 0, 20"/>
+            </VerticalStackLayout>
+            <Label Text="Open"
+                    AbsoluteLayout.LayoutBounds="0, 0, AutoSize, 30"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Padding="10, 0, 10, 0"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnOpenClicked"/>
+
+                </Label.GestureRecognizers>
+
+            </Label>
+
+
+            <Label Text="Reload"
+                    x:Name="reloadButton"
+                    AbsoluteLayout.LayoutBounds="1, 0, AutoSize, 30"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Padding="10, 0, 10, 0"
+                    HorizontalTextAlignment="End"
+                    VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnReloadClicked"/>
+
+                </Label.GestureRecognizers>
+
+            </Label>
+        </AbsoluteLayout>
+    </Frame>
+
+</ContentView>
+

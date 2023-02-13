@@ -2,23 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 
-             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView" xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView" xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView" xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard" xmlns:scannerview="clr-namespace:PlutoWallet.Components.ScannerView" xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView" xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView"
+             xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView"
+             xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
+             xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard"
+             xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView"
+             xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
+             xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
+             xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
+             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView"
              x:Class="PlutoWallet.View.MainPage"
-             x:Name="page"
              Title="Main page"
-             NavigationPage.HasNavigationBar="False"
              BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
 
-    <AbsoluteLayout x:Name="absoluteLayout">
+    <AbsoluteLayout
+         AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         <ScrollView
-            WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-            HeightRequest="{Binding Source={x:Reference absoluteLayout}, Path=Height}">
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
             <VerticalStackLayout
-                WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-                Spacing="25"
-                Padding="30,0"
-                VerticalOptions="Center">
+                Spacing="15"
+                Padding="30,0">
 
                 <networkselect:NetworkSelectView />
                 <Label
@@ -26,8 +31,7 @@
                     FontSize="16"
                     HorizontalOptions="Center" />
                 <Image
-                    Source="dotnet_bot.png"
-                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    Source="https://rostislavlitovkin.pythonanywhere.com/logo"
                     WidthRequest="200"
                     HeightRequest="200"
                     HorizontalOptions="Center" />
@@ -39,15 +43,7 @@
                     Title="Substrate key"
                     Address="{Binding SubstrateKey}"/>
 
-                <Button Text="Transfer"
-                        Clicked="TransferClicked"/>
-
-                <Label
-                    Text="{Binding Balance}"
-                    FontSize="32"
-                    HorizontalOptions="Center" />
-                <Button Text="Reload"
-                        Clicked="ReloadClicked" />
+                <balanceview:BalanceView />
 
                 <Label
                     Text="{Binding MetadataLabel}"
@@ -56,13 +52,17 @@
 
                 <stakingdashboard:StakingDashboardView />
 
+                
+
+               <calamar:CalamarView Address="{Binding PublicKey}"/>
+
                 <!-- Just a clear space (needs to be here) -->
-                <AbsoluteLayout HeightRequest="200"/>
+                <AbsoluteLayout HeightRequest="200" WidthRequest="1000"/>
             </VerticalStackLayout>
         </ScrollView>
 
         <Button Text="QR"
-                AbsoluteLayout.LayoutBounds="1,0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="OnQRClicked" />
 
@@ -71,10 +71,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="OnSettingsClicked" />
 
-        <transferview:TransferView x:Name="transferView"
-                                   AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   IsVisible="false" Opacity="0" />
+        <transferview:TransferView x:Name="transferView" />
 
         <connectionrequestview:ConnectionRequestView
                                    x:Name="connectionRequestView" />
@@ -84,6 +81,9 @@
              AbsoluteLayout.LayoutFlags="PositionProportional"
             x:Name="universalScannerView"
              IsVisible="false" Opacity="0" />
+
+        
+        <transactionrequest:TransactionRequestView />
         
         <messagepopup:MessagePopupView />
 

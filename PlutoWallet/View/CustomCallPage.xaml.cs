@@ -5,9 +5,13 @@ public partial class CustomCallPage : ContentPage
     //private ViewModel.CustomCallsViewModel bind;
     public CustomCallPage()
 	{
-		InitializeComponent();
- 
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
+
         BindingContext = DependencyService.Get<ViewModel.CustomCallsViewModel>();
+
+        InitializeComponent();
+ 
     }
     protected override async void OnAppearing()
     {

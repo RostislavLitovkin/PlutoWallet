@@ -1,26 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.rostislavlitovkin.plutowallet" android:versionCode="1" android:versionName="1.0">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true" android:label="Pluto wallet"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.CAMERA" />
-
-	<queries>
-		<intent>
-			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="http"/>
-		</intent>
-		<intent>
-			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="https"/>
-		</intent>
-		<intent>
-			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="ws"/>
-		</intent>
-		<intent>
-			<action android:name="android.intent.action.VIEW" />
-			<data android:scheme="wss"/>
-		</intent>
-	</queries>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33" />
 </manifest>

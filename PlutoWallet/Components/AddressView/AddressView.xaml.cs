@@ -10,9 +10,8 @@ public partial class AddressView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (AddressView)bindable;
 			control.addressLabel.Text = ((string)newValue).Substring(0, 12) + "..";
-            //control.picker.UpdateSelectedIndex(newValue)
         });
-    //private string address;
+
 	public AddressView()
 	{
 		InitializeComponent();
