@@ -33,7 +33,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - IsConnected method + event IsConnected Changed
 9) [ ] experimental object class sending including object serialization
 
-15) [ ] nuget package
+15) [X] nuget package
 
 50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
