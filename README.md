@@ -99,6 +99,10 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 20) [ ] implement nicks pallet
 21) [ ] show error messages
 22) [ ] XCM
+23) [ ] credits
+24) [ ] more animations
+25) [ ] update the color theme
+26) [ ] change button names to an icon 
 
 ### Other milestones
 
