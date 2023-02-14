@@ -1,10 +1,23 @@
 # PlutoWallet
 A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
+
 Supported platforms:
 - Android & WearOS
 - iOS & ipadOS
 - MacCatalyst
 - Windows
+
+The wallet supports these functionalities:
+- generating Mnemonics & creating a privateKey
+- showing and sharing your public key and ss58 key
+- connecting to any substrate based blockchain/parachain
+- getting your actual balance
+- simple transfer
+- calling any pallet functions
+
+3rd party integrations:
+- [Calamar explorer](https://github.com/topmonks/calamar)
+
 
 # [PlutoConnector](https://github.com/cisar2218/Plutonication)
 Allows any dApp to communicate with the supported wallets without compromising privateKeys.
