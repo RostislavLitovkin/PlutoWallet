@@ -1,5 +1,10 @@
 # PlutoWallet
 A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
+Supported platforms:
+- Android & WearOS
+- iOS & ipadOS
+- MacCatalyst
+- Windows
 
 # [PlutoConnector](https://github.com/cisar2218/Plutonication)
 Allows any dApp to communicate with the supported wallets without compromising privateKeys.
