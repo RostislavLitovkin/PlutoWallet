@@ -49,7 +49,7 @@ Allows any dApp to communicate with the supported wallets without compromising p
   - Include Recv. message event
   - ConnectionClosed event
   - IsConnected method + event IsConnected Changed
-9) [ ] experimental object class sending including object serialization
+9) [ ] experimental object class sending including object serialization (Status: deserialization is unrealible. May work on this feature in the future. May use totaly different approach. See issue [here](https://github.com/cisar2218/Plutonication/issues/6), branch here)
 
 15) [X] nuget package
 
