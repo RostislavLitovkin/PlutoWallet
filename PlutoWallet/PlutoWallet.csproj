@@ -94,6 +94,7 @@
 	  <None Remove="Components\CalamarView\" />
 	  <None Remove="Components\BalanceView\" />
 	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
+	  <None Remove="Components\PublicKeyQrCode\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -154,6 +155,9 @@
 	  <MauiXaml Update="Components\BalanceView\BalanceView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\PublicKeyQrCode\PublicKeyQrCode.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />
@@ -172,6 +176,7 @@
 	  <Folder Include="Components\TransactionRequest\" />
 	  <Folder Include="Components\CalamarView\" />
 	  <Folder Include="Components\BalanceView\" />
+	  <Folder Include="Components\PublicKeyQrCode\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
