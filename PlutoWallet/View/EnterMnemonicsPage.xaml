@@ -1,12 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
              x:Class="PlutoWallet.View.EnterMnemonicsPage"
              Title="Enter mnemonics">
+    <ContentPage.BindingContext>
+        <viewmodel:EnterMnemonicsViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label 
-            Text="To be implemented"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Grid Margin="20,35,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="0"
+                Placeholder="Enter your first word here" Text="{Binding MnemonicsArray[0]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="0"
+                Placeholder="Enter your second word here" Text="{Binding MnemonicsArray[1]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="1"
+                Placeholder="Enter your third word here" Text="{Binding MnemonicsArray[2]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="1"
+                Placeholder="Enter your fourth word here" Text="{Binding MnemonicsArray[3]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="2"
+                Placeholder="Enter your fifth word here" Text="{Binding MnemonicsArray[4]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="2"
+                Placeholder="Enter your sixth word here" Text="{Binding MnemonicsArray[5]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="3"
+                Placeholder="Enter your seventh word here" Text="{Binding MnemonicsArray[6]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="3"
+                Placeholder="Enter your eighth word here" Text="{Binding MnemonicsArray[7]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="4"
+                Placeholder="Enter your ninth word here" Text="{Binding MnemonicsArray[8]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="4"
+                Placeholder="Enter your tenth word here" Text="{Binding MnemonicsArray[9]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="5"
+                Placeholder="Enter your eleventh word here" Text="{Binding MnemonicsArray[10]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="5"
+                Placeholder="Enter your twelfth word here" Text="{Binding MnemonicsArray[11]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="6"
+                Placeholder="Enter your thirteenth word here" Text="{Binding MnemonicsArray[12]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="6"
+                Placeholder="Enter your fourtheenth word here" Text="{Binding MnemonicsArray[13]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="7"
+                Placeholder="Enter your fifteenth word here" Text="{Binding MnemonicsArray[14]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="7"
+                Placeholder="Enter your sixteenth word here" Text="{Binding MnemonicsArray[15]}" />
+            <Entry
+                Grid.Column="0"
+                   Grid.Row="8"
+                Placeholder="Enter your seventeenth word here" Text="{Binding MnemonicsArray[16]}" />
+            <Entry
+                Grid.Column="1"
+                   Grid.Row="8"
+                Placeholder="Enter your eighteenth word here" Text="{Binding MnemonicsArray[17]}" />
+        </Grid>
+
+        <Entry Placeholder="Enter your password here" Text="{Binding MnemonicsArray[]}" Margin="20" />
+        <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
+        <Label Text="" Margin="20, 0, 20, 0" />
+
+
+        <Button Text="create" Margin="20, 10, 20, 0" Clicked="ContinueToMainPageClicked" />
     </VerticalStackLayout>
 </ContentPage>

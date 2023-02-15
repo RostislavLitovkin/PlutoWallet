@@ -93,7 +93,7 @@ namespace PlutoWallet.ViewModel
 
                 var accountInfo = await client.SystemStorage.Account(KeysModel.GetSubstrateKey());
 
-                Balance = "Balance: " + accountInfo.Data.Free.Value;
+                // = "Balance: " + accountInfo.Data.Free.Value;
 
             }
             catch (Exception ex)

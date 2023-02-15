@@ -34,6 +34,17 @@ namespace PlutoWallet.Components.NetworkSelect
         {
             networks = Endpoints.GetAllEndpoints;
 
+            int i = 1;
+            while (Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i))
+            {
+                networks.Add(new Endpoint
+                {
+                    Name = Preferences.Get("endpointName" + i, ""),
+                    URL = Preferences.Get("endpointUrl" + i, "")
+                });
+                i++;
+            }
+            
             // set the selected network
             foreach (Endpoint endpoint in networks)
             {
