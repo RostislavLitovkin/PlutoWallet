@@ -59,23 +59,19 @@ Allows any dApp to communicate with the supported wallets without compromising p
 
 102) [ ] make a javascript version
 
-#### Socket solution
-##### Hierarchy of classes and methods
-- Pluto Manager:
-  - SendData()
-  - ReceiveData()
-  - CloseConnection()
-- Client Pluto Manager:
-- Server Pluto Manager:
-
 ##### Usecases
-1. pair devices (inlude send public key <string> from wallet to dApp)
-2. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
+1. pair devices
+2. send publickey to wallet (string)
+3. send transaction <"header",byte, byte, byte[]> from dApp to wallet:
   - wallet y/n -> response (failed due sth/rejected/accepted <enum>)
   - dApp: display status of transaction (response)
-3. close connection (from both sides):
+4. both wallet and dApp are able to send data in form of:
+  - `byte[]` byte array
+  - `string`
+  - alone `MessageCode` enum (can be used for example to send confirmation with `MesageCode.Success`, `MessageCode.Refused`, `MessageCode.FilledOut`)
+4. close connection (from both sides):
  - on connection lost event
- - send to other client message about cancelation ?
+ - throws exceptions in proper cases/places
 
 ##### QR code docs (format):
 1) Starts with ``` plutonication: ```
