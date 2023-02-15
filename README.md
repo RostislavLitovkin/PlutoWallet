@@ -82,9 +82,9 @@ Allows any dApp to communicate with the supported wallets without compromising p
 2) Query parameters:
   - url = dApp url to connect to (with port),
     example: ``` url=192.168.0.1:1234 ```
-   - key (optional) = password key to connect,
+   - key  = password key to connect,
     example: ``` key=password123 ```
-  - name = dApp name,
+  - name (optional) = dApp name,
     example: ``` name=Galaxy logic game ```
   - icon (optional) = dApp icon url
     example: ``` icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
