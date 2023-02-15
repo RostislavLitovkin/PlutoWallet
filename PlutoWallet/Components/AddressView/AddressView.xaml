@@ -12,20 +12,32 @@
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
 
             <Label x:Name="titleLabel"
                    VerticalOptions="Center" 
                    HorizontalOptions="StartAndExpand"
-                   MinimumWidthRequest="100"/>
+                   >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTapped"/>
+
+                </Label.GestureRecognizers>
+
+            </Label>
 
             <Label x:Name="addressLabel"
                    VerticalOptions="Center" 
                    HorizontalOptions="FillAndExpand"
-                   Grid.Column="1"/>
+                   Grid.Column="1">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTapped"/>
+
+                </Label.GestureRecognizers>
+
+            </Label>
 
             <Image WidthRequest="20"
                    Margin="5, 0, 0, 0"
@@ -39,13 +51,14 @@
                                      FontFamily="FontAwesome"
                                      Size="20" />
                 </Image.Source>
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnQRTapped" />
+
+                </Image.GestureRecognizers>
             </Image>
 
         </Grid>
-
-        <ContentView.GestureRecognizers>
-            <TapGestureRecognizer Tapped="OnTapped"/>
-        </ContentView.GestureRecognizers>
 
     </Frame>
 

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.PublicKeyQRCodeView.PublicKeyQRCodeView"
+             IsVisible="{Binding IsVisible}"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+             AbsoluteLayout.LayoutFlags="PositionProportional">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20">
+        <AbsoluteLayout>
+
+            <VerticalStackLayout>
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="Transfer"
+                    HeightRequest="30"
+                    HorizontalOptions="Center" />
+
+                <BoxView WidthRequest="200" HeightRequest="200"
+                         BackgroundColor="LightBlue"/>
+            </VerticalStackLayout>
+
+            <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
+                   Text="&lt;" FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+        </AbsoluteLayout>
+    </Frame>
+</ContentView>
+
