@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.unchecked_extrinsic
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.unchecked_extrinsic
 {
     
     
     /// <summary>
-    /// >> 124 - Composite[sp_runtime.generic.unchecked_extrinsic.UncheckedExtrinsic]
+    /// >> 727 - Composite[sp_runtime.generic.unchecked_extrinsic.UncheckedExtrinsic]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class UncheckedExtrinsic : BaseType

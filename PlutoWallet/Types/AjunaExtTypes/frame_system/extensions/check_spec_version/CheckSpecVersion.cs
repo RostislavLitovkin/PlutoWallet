@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_spec_version
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_spec_version
 {
     
     
     /// <summary>
-    /// >> 131 - Composite[frame_system.extensions.check_spec_version.CheckSpecVersion]
+    /// >> 730 - Composite[frame_system.extensions.check_spec_version.CheckSpecVersion]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckSpecVersion : BaseType

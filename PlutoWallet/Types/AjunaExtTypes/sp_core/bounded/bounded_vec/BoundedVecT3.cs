@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
 {
     
     
     /// <summary>
-    /// >> 74 - Composite[sp_core.bounded.bounded_vec.BoundedVecT3]
+    /// >> 448 - Composite[sp_core.bounded.bounded_vec.BoundedVecT3]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT3 : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> _value;
+        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8> _value;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> Value
+        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public>();
+            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

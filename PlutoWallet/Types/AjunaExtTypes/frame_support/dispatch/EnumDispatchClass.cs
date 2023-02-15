@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
 {
     
     

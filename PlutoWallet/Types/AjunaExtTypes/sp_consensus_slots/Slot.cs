@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_consensus_slots
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
 {
     
     
     /// <summary>
-    /// >> 78 - Composite[sp_consensus_slots.Slot]
+    /// >> 190 - Composite[sp_consensus_slots.Slot]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class Slot : BaseType

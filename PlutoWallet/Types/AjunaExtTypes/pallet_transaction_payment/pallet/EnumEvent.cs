@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_transaction_payment.pallet
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_transaction_payment.pallet
 {
     
     
@@ -22,13 +22,13 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_transaction_payment.pall
     }
     
     /// <summary>
-    /// >> 36 - Variant[pallet_transaction_payment.pallet.Event]
+    /// >> 38 - Variant[pallet_transaction_payment.pallet.Event]
     /// 
     ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128, Ajuna.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128, Ajuna.NetApi.Model.Types.Primitive.U128>>
     {
     }
 }

@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
 {
     
     
@@ -32,7 +32,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
         /// <summary>
         /// >> error
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Types.Base.Arr4U8 _error;
+        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8 _error;
         
         public Ajuna.NetApi.Model.Types.Primitive.U8 Index
         {
@@ -46,7 +46,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Types.Base.Arr4U8 Error
+        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8 Error
         {
             get
             {
@@ -76,7 +76,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
             var start = p;
             Index = new Ajuna.NetApi.Model.Types.Primitive.U8();
             Index.Decode(byteArray, ref p);
-            Error = new AjunaExample.NetApiExt.Generated.Types.Base.Arr4U8();
+            Error = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8();
             Error.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

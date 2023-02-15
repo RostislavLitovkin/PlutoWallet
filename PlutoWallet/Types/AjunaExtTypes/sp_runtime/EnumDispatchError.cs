@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
 {
     
     
@@ -48,7 +48,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
     /// <summary>
     /// >> 24 - Variant[sp_runtime.DispatchError]
     /// </summary>
-    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, AjunaExample.NetApiExt.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, AjunaExample.NetApiExt.Generated.Model.sp_runtime.EnumTokenError, AjunaExample.NetApiExt.Generated.Model.sp_runtime.EnumArithmeticError, AjunaExample.NetApiExt.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumTokenError, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumArithmeticError, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid>
     {
     }
 }

@@ -1,10 +1,12 @@
 ﻿using System;
 using Ajuna.NetApi;
 using Ajuna.NetApi.Model.Extrinsics;
-using AjunaExample.NetApiExt.Generated.Model.pallet_balances;
-using AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec;
-using AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec;
-using PlutoWallet.Types.AjunaExtTypes;
+using PlutoWallet.NetApiExt.Generated.Model.pallet_balances;
+using PlutoWallet.NetApiExt.Generated.Model.pallet_staking;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -21,7 +23,7 @@ namespace PlutoWallet.Model.AjunaExt
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "TotalIssuance"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Ajuna.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Account"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                            Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(Types.AjunaExtTypes.AccountData)));
+                            Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(AccountData)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Locks"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
                             Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(WeakBoundedVecT2)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Reserves"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
@@ -85,7 +87,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  `Balances` pallet, which uses a `StorageMap` to store balances data only.
         ///  NOTE: This is only used in the case that this pallet is used to store balances.
         /// </summary>
-        public static string AccountParams(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string AccountParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Account", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
                         Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
@@ -129,10 +131,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  `Balances` pallet, which uses a `StorageMap` to store balances data only.
         ///  NOTE: This is only used in the case that this pallet is used to store balances.
         /// </summary>
-        public async Task<Types.AjunaExtTypes.AccountData> Account(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<AccountData> Account(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.AccountParams(key);
-            var result = await _client.GetStorageAsync<Types.AjunaExtTypes.AccountData>(parameters, token);
+            var result = await _client.GetStorageAsync<AccountData>(parameters, token);
             return result;
         }
 
@@ -141,7 +143,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public static string LocksParams(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string LocksParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Locks", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
                         Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
@@ -162,10 +164,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public async Task<AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2> Locks(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2> Locks(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.LocksParams(key);
-            var result = await _client.GetStorageAsync<AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2>(parameters, token);
+            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2>(parameters, token);
             return result;
         }
 
@@ -173,7 +175,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ReservesParams
         ///  Named reserves on some account balances.
         /// </summary>
-        public static string ReservesParams(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string ReservesParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Reserves", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
                         Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
@@ -193,10 +195,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Reserves
         ///  Named reserves on some account balances.
         /// </summary>
-        public async Task<AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4> Reserves(AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4> Reserves(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.ReservesParams(key);
-            var result = await _client.GetStorageAsync<AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4>(parameters, token);
+            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4>(parameters, token);
             return result;
         }
 
@@ -226,10 +228,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// 
         ///  This is set to v2.0.0 for new networks.
         /// </summary>
-        public async Task<AjunaExample.NetApiExt.Generated.Model.pallet_balances.EnumReleases> StorageVersion(CancellationToken token)
+        public async Task<EnumReleases> StorageVersion(CancellationToken token)
         {
             string parameters = BalancesStorage.StorageVersionParams();
-            var result = await _client.GetStorageAsync<AjunaExample.NetApiExt.Generated.Model.pallet_balances.EnumReleases>(parameters, token);
+            var result = await _client.GetStorageAsync<EnumReleases>(parameters, token);
             return result;
         }
     }

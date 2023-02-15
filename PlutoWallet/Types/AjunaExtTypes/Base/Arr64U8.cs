@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Types.Base
+namespace PlutoWallet.NetApiExt.Generated.Types.Base
 {
     
     
     /// <summary>
-    /// >> 90 - Array
+    /// >> 102 - Array
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Array)]
     public sealed class Arr64U8 : BaseType

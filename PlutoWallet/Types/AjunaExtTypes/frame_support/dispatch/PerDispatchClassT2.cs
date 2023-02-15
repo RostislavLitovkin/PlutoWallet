@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
 {
     
     
     /// <summary>
-    /// >> 59 - Composite[frame_support.dispatch.PerDispatchClassT2]
+    /// >> 166 - Composite[frame_support.dispatch.PerDispatchClassT2]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT2 : BaseType
@@ -27,19 +27,19 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> normal
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _normal;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _normal;
         
         /// <summary>
         /// >> operational
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _operational;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _operational;
         
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _mandatory;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _mandatory;
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Normal
+        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Normal
         {
             get
             {
@@ -51,7 +51,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Operational
+        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Operational
         {
             get
             {
@@ -63,7 +63,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Mandatory
+        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Mandatory
         {
             get
             {
@@ -92,11 +92,11 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Normal = new AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Normal = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
             Normal.Decode(byteArray, ref p);
-            Operational = new AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Operational = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
             Operational.Decode(byteArray, ref p);
-            Mandatory = new AjunaExample.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Mandatory = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
             Mandatory.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.ArgumentsView.ArgumentsView"
+             >
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="15"
+           Padding="0"
+           Margin="0"
+           x:Name="frame"
+           >
+        <VerticalStackLayout>
+            <CollectionView HeightRequest="300"
+                          ItemsSource="{Binding Args}" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="10, 5, 10, 5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <Label Text="{Binding Name}"
+                                       Grid.Column="0" VerticalOptions="Center"
+                                       HorizontalTextAlignment="End"/>
+                                <Entry Margin="10, 0, 0, 0" Placeholder="{Binding Type}"
+                                       Grid.Column="1" VerticalOptions="Center"/>
+
+                            </Grid>
+
+
+                        </DataTemplate>
+
+
+                    </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </VerticalStackLayout>
+            
+    </Frame>
+</ContentView>
+

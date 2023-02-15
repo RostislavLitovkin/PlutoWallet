@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
 {
     
     
@@ -26,7 +26,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
     }
     
     /// <summary>
-    /// >> 99 - Variant[pallet_balances.Reasons]
+    /// >> 472 - Variant[pallet_balances.Reasons]
     /// </summary>
     public sealed class EnumReasons : BaseEnum<Reasons>
     {

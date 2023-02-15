@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
 {
     
     
@@ -27,19 +27,19 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> weight
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _weight;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _weight;
         
         /// <summary>
         /// >> class
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass _class;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass _class;
         
         /// <summary>
         /// >> pays_fee
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays _paysFee;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays _paysFee;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Weight
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Weight
         {
             get
             {
@@ -51,7 +51,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass Class
+        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass Class
         {
             get
             {
@@ -63,7 +63,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays PaysFee
+        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays PaysFee
         {
             get
             {
@@ -92,11 +92,11 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Weight = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Weight = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             Weight.Decode(byteArray, ref p);
-            Class = new AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass();
+            Class = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumDispatchClass();
             Class.Decode(byteArray, ref p);
-            PaysFee = new AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays();
+            PaysFee = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.EnumPays();
             PaysFee.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

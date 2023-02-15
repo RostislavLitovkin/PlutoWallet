@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
-             xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
+             xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest" xmlns:argumentsview="clr-namespace:PlutoWallet.Components.ArgumentsView"
              x:Class="PlutoWallet.View.CustomCallPage"
              Title="Custom Call">
     <AbsoluteLayout x:Name="absoluteLayout"
@@ -28,10 +28,20 @@
                     ItemDisplayBinding="{Binding Name}"
                     SelectedItem="{Binding SelectedCall}"/>
 
-                <Entry Placeholder="Args" Text="{Binding Password}" Margin="20, 0, 20, 20" />
+                <argumentsview:ArgumentsView />
+
+                <Label Text="{Binding ErrorMessage}"
+                       TextColor="Red"
+                       HorizontalOptions="Center" />
 
                 <Button Text="Submit" IsEnabled="{Binding IsSubmitEnabled}"
-                        Clicked="SubmitClicked"/>
+                        />
+
+                <Label Text="Loading" IsVisible="{Binding Loading}"
+                       HorizontalOptions="Center" />
+
+                <Label Text="Unfortunately this feature is now unavailable." TextColor="Yellow"
+                       HorizontalOptions="Center" />
 
             </VerticalStackLayout>
         </ScrollView>

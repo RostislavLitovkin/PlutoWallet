@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_mortality
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_mortality
 {
     
     
     /// <summary>
-    /// >> 134 - Composite[frame_system.extensions.check_mortality.CheckMortality]
+    /// >> 733 - Composite[frame_system.extensions.check_mortality.CheckMortality]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckMortality : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_m
         /// <summary>
         /// >> value
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra _value;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra _value;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value
+        public PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_m
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra();
+            Value = new PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

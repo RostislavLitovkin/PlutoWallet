@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
 {
     
     
@@ -24,9 +24,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
     }
     
     /// <summary>
-    /// >> 85 - Variant[sp_finality_grandpa.Equivocation]
+    /// >> 218 - Variant[sp_finality_grandpa.Equivocation]
     /// </summary>
-    public sealed class EnumEquivocation : BaseEnumExt<Equivocation, AjunaExample.NetApiExt.Generated.Model.finality_grandpa.EquivocationT1, AjunaExample.NetApiExt.Generated.Model.finality_grandpa.EquivocationT2>
+    public sealed class EnumEquivocation : BaseEnumExt<Equivocation, PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.EquivocationT1, PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.EquivocationT2>
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using PlutoWallet.Components.BalanceView;
+﻿using PlutoWallet.Components.ArgumentsView;
+using PlutoWallet.Components.BalanceView;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
@@ -33,6 +34,9 @@ public partial class App : Application
         DependencyService.Register<TransactionRequestViewModel>();
 
         DependencyService.Register<BalanceViewModel>();
+
+        DependencyService.Register<ArgumentsViewModel>();
+
 
 
 

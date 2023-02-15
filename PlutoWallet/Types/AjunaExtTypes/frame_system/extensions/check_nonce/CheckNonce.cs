@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_nonce
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_nonce
 {
     
     
     /// <summary>
-    /// >> 136 - Composite[frame_system.extensions.check_nonce.CheckNonce]
+    /// >> 735 - Composite[frame_system.extensions.check_nonce.CheckNonce]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckNonce : BaseType

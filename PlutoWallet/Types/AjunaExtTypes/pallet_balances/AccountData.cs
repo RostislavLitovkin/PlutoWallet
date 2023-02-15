@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
 {
     
     

@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.pallet
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.pallet
 {
     
     
@@ -32,7 +32,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.pallet
     }
     
     /// <summary>
-    /// >> 71 - Variant[frame_system.pallet.Error]
+    /// >> 176 - Variant[frame_system.pallet.Error]
     /// Error for the System pallet
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

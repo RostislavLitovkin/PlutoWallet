@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec
 {
     
     
     /// <summary>
-    /// >> 97 - Composite[sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2]
+    /// >> 456 - Composite[sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class WeakBoundedVecT2 : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_ve
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.pallet_balances.BalanceLock> _value;
+        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public, Ajuna.NetApi.Model.Types.Primitive.U64>> _value;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.pallet_balances.BalanceLock> Value
+        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public, Ajuna.NetApi.Model.Types.Primitive.U64>> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_ve
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.pallet_balances.BalanceLock>();
+            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public, Ajuna.NetApi.Model.Types.Primitive.U64>>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

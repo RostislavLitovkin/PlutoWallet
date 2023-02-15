@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
 {
     
     
@@ -26,7 +26,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system
     }
     
     /// <summary>
-    /// >> 45 - Variant[frame_system.Phase]
+    /// >> 156 - Variant[frame_system.Phase]
     /// </summary>
     public sealed class EnumPhase : BaseEnumExt<Phase, Ajuna.NetApi.Model.Types.Primitive.U32, BaseVoid, BaseVoid>
     {

@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
 {
     
     
     /// <summary>
-    /// >> 49 - Composite[frame_system.LastRuntimeUpgradeInfo]
+    /// >> 159 - Composite[frame_system.LastRuntimeUpgradeInfo]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class LastRuntimeUpgradeInfo : BaseType

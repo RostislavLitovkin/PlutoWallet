@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa.pallet
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa.pallet
 {
     
     
@@ -26,10 +26,10 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa.pallet
     }
     
     /// <summary>
-    /// >> 83 - Variant[pallet_grandpa.pallet.Call]
+    /// >> 216 - Variant[pallet_grandpa.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.EquivocationProof, Ajuna.NetApi.Model.Types.Base.BaseVoid>, BaseTuple<AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.EquivocationProof, Ajuna.NetApi.Model.Types.Base.BaseVoid>, BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EquivocationProof, PlutoWallet.NetApiExt.Generated.Model.sp_session.MembershipProof>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EquivocationProof, PlutoWallet.NetApiExt.Generated.Model.sp_session.MembershipProof>, BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

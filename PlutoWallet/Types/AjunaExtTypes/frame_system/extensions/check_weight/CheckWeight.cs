@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_weight
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_weight
 {
     
     
     /// <summary>
-    /// >> 137 - Composite[frame_system.extensions.check_weight.CheckWeight]
+    /// >> 736 - Composite[frame_system.extensions.check_weight.CheckWeight]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckWeight : BaseType

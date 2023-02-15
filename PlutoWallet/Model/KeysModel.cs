@@ -1,7 +1,6 @@
 ﻿using System;
 using Ajuna.NetApi;
 using Ajuna.NetApi.Model.Types;
-using PlutoWallet.Types.AjunaExtTypes;
 using Schnorrkel.Keys;
 using static Ajuna.NetApi.Mnemonic;
 

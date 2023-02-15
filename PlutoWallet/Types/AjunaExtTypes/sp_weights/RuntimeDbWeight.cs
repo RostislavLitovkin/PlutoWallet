@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_weights
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights
 {
     
     
     /// <summary>
-    /// >> 64 - Composite[sp_weights.RuntimeDbWeight]
+    /// >> 171 - Composite[sp_weights.RuntimeDbWeight]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeDbWeight : BaseType

@@ -4,7 +4,8 @@ using Ajuna.NetApi.Model.Extrinsics;
 using Ajuna.NetApi.Model.Types.Base;
 using Ajuna.NetApi.Model.Types.Primitive;
 using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.Types.AjunaExtTypes;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
 
 namespace PlutoWallet.Model
 {
