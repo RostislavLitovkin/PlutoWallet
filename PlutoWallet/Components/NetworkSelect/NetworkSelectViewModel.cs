@@ -30,7 +30,6 @@ namespace PlutoWallet.Components.NetworkSelect
                 var balanceViewModel = DependencyService.Get<BalanceViewModel>();
 
                 customCallsViewModel.GetMetadataAsync();
-                mainViewModel.GetBalanceAsync();
                 balanceViewModel.GetBalanceAsync();
             }
         }

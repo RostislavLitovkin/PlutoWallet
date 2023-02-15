@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
 {
     
     
     /// <summary>
-    /// >> 63 - Composite[frame_support.dispatch.PerDispatchClassT3]
+    /// >> 170 - Composite[frame_support.dispatch.PerDispatchClassT3]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT3 : BaseType

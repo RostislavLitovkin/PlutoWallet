@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_arithmetic.per_things
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things
 {
     
     
     /// <summary>
-    /// >> 54 - Composite[sp_arithmetic.per_things.Perbill]
+    /// >> 40 - Composite[sp_arithmetic.per_things.Perbill]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class Perbill : BaseType

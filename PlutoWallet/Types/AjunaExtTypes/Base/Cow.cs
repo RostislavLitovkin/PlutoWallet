@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Types.Base
+namespace PlutoWallet.NetApiExt.Generated.Types.Base
 {
     
     
     /// <summary>
-    /// >> 66 - Composite[Cow]
+    /// >> 173 - Composite[Cow]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class Cow : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Types.Base
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>> _value;
+        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>> _value;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>> Value
+        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Types.Base
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>>();
+            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8, Ajuna.NetApi.Model.Types.Primitive.U32>>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

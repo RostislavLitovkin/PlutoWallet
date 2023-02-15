@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_timestamp.pallet
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_timestamp.pallet
 {
     
     
@@ -22,7 +22,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_timestamp.pallet
     }
     
     /// <summary>
-    /// >> 73 - Variant[pallet_timestamp.pallet.Call]
+    /// >> 195 - Variant[pallet_timestamp.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
     public sealed class EnumCall : BaseEnumExt<Call, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64>>

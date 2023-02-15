@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
 {
     
     
@@ -27,19 +27,19 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> normal
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _normal;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _normal;
         
         /// <summary>
         /// >> operational
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _operational;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _operational;
         
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _mandatory;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _mandatory;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Normal
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Normal
         {
             get
             {
@@ -51,7 +51,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Operational
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Operational
         {
             get
             {
@@ -63,7 +63,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Mandatory
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Mandatory
         {
             get
             {
@@ -92,11 +92,11 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Normal = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Normal = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             Normal.Decode(byteArray, ref p);
-            Operational = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Operational = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             Operational.Decode(byteArray, ref p);
-            Mandatory = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Mandatory = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             Mandatory.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

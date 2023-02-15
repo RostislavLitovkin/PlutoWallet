@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest
 {
     
     
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest
         /// <summary>
         /// >> logs
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> _logs;
+        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> _logs;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs
+        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Logs = new Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem>();
+            Logs = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem>();
             Logs.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

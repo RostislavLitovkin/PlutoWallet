@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_tx_version
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_tx_version
 {
     
     
     /// <summary>
-    /// >> 132 - Composite[frame_system.extensions.check_tx_version.CheckTxVersion]
+    /// >> 731 - Composite[frame_system.extensions.check_tx_version.CheckTxVersion]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckTxVersion : BaseType

@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
 {
     
     
@@ -26,9 +26,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 125 - Variant[sp_runtime.MultiSignature]
+    /// >> 421 - Variant[sp_runtime.MultiSignature]
     /// </summary>
-    public sealed class EnumMultiSignature : BaseEnumExt<MultiSignature, AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Signature, AjunaExample.NetApiExt.Generated.Model.sp_core.sr25519.Signature, AjunaExample.NetApiExt.Generated.Model.sp_core.ecdsa.Signature>
+    public sealed class EnumMultiSignature : BaseEnumExt<MultiSignature, PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Signature, PlutoWallet.NetApiExt.Generated.Model.sp_core.sr25519.Signature, PlutoWallet.NetApiExt.Generated.Model.sp_core.ecdsa.Signature>
     {
     }
 }

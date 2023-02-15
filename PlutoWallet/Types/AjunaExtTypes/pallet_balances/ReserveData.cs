@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
 {
     
     
     /// <summary>
-    /// >> 102 - Composite[pallet_balances.ReserveData]
+    /// >> 475 - Composite[pallet_balances.ReserveData]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class ReserveData : BaseType
@@ -27,14 +27,14 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
         /// <summary>
         /// >> id
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8 _id;
+        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 _id;
         
         /// <summary>
         /// >> amount
         /// </summary>
         private Ajuna.NetApi.Model.Types.Primitive.U128 _amount;
         
-        public AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8 Id
+        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 Id
         {
             get
             {
@@ -74,7 +74,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8();
+            Id = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8();
             Id.Decode(byteArray, ref p);
             Amount = new Ajuna.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);

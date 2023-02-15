@@ -173,7 +173,7 @@ namespace PlutoWallet.Types
         public TypeParam[] TypeParams { get; set; }
 
         [JsonProperty("Variants")]
-        public Variant[] Variants { get; set; }
+        public Variant[]? Variants { get; set; }
 
         [JsonProperty("Length", NullValueHandling = NullValueHandling.Ignore)]
         public long? Length { get; set; }
@@ -194,7 +194,7 @@ namespace PlutoWallet.Types
         public string TypeName { get; set; }
 
         [JsonProperty("TypeId")]
-        public long TypeId { get; set; }
+        public long? TypeId { get; set; }
 
         [JsonProperty("Name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
@@ -225,9 +225,9 @@ namespace PlutoWallet.Types
 
     public enum StorageType { Map, Plain };
 
-    public enum Hasher { BlakeTwo128Concat, Identity, Twox64Concat };
+    public enum Hasher { BlakeTwo128Concat, Identity, Twox64Concat, Twox128, BlakeTwo128 };
 
-    public enum TypeDef { Array, Compact, Composite, Primitive, Sequence, Tuple, Variant };
+    public enum TypeDef { Array, Compact, Composite, Primitive, Sequence, Tuple, Variant, BitSequence };
 
     internal static class Converter
     {
@@ -344,6 +344,10 @@ namespace PlutoWallet.Types
                     return Hasher.Identity;
                 case "Twox64Concat":
                     return Hasher.Twox64Concat;
+                case "Twox128":
+                    return Hasher.Twox128;
+                case "BlakeTwo128":
+                    return Hasher.BlakeTwo128;
             }
             throw new Exception("Cannot unmarshal type Hasher");
         }
@@ -366,6 +370,9 @@ namespace PlutoWallet.Types
                     return;
                 case Hasher.Twox64Concat:
                     serializer.Serialize(writer, "Twox64Concat");
+                    return;
+                case Hasher.BlakeTwo128:
+                    serializer.Serialize(writer, "BlakeTwo128");
                     return;
             }
             throw new Exception("Cannot marshal type Hasher");
@@ -398,6 +405,8 @@ namespace PlutoWallet.Types
                     return TypeDef.Tuple;
                 case "Variant":
                     return TypeDef.Variant;
+                case "BitSequence":
+                    return TypeDef.BitSequence;
             }
             throw new Exception("Cannot unmarshal type TypeDef");
         }

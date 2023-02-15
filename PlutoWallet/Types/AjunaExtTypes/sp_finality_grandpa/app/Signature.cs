@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app
 {
     
     
     /// <summary>
-    /// >> 88 - Composite[sp_finality_grandpa.app.Signature]
+    /// >> 221 - Composite[sp_finality_grandpa.app.Signature]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class Signature : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
         /// <summary>
         /// >> value
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Signature _value;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Signature _value;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Signature Value
+        public PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Signature Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Signature();
+            Value = new PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Signature();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

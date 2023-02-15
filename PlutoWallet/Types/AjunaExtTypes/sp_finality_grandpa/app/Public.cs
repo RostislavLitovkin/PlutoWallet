@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app
 {
     
     
     /// <summary>
-    /// >> 32 - Composite[sp_finality_grandpa.app.Public]
+    /// >> 50 - Composite[sp_finality_grandpa.app.Public]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class Public : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
         /// <summary>
         /// >> value
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Public _value;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Public _value;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Public Value
+        public PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Public Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.app
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new AjunaExample.NetApiExt.Generated.Model.sp_core.ed25519.Public();
+            Value = new PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Public();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

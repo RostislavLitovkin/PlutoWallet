@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
 {
     
     
     /// <summary>
-    /// >> 84 - Composite[sp_finality_grandpa.EquivocationProof]
+    /// >> 217 - Composite[sp_finality_grandpa.EquivocationProof]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class EquivocationProof : BaseType
@@ -32,7 +32,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
         /// <summary>
         /// >> equivocation
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation _equivocation;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation _equivocation;
         
         public Ajuna.NetApi.Model.Types.Primitive.U64 SetId
         {
@@ -46,7 +46,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation Equivocation
+        public PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation Equivocation
         {
             get
             {
@@ -76,7 +76,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa
             var start = p;
             SetId = new Ajuna.NetApi.Model.Types.Primitive.U64();
             SetId.Decode(byteArray, ref p);
-            Equivocation = new AjunaExample.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation();
+            Equivocation = new PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation();
             Equivocation.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

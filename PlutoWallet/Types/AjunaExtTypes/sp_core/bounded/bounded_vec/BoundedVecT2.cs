@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
 {
     
     
     /// <summary>
-    /// >> 72 - Composite[sp_core.bounded.bounded_vec.BoundedVecT2]
+    /// >> 265 - Composite[sp_core.bounded.bounded_vec.BoundedVecT2]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT2 : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.primitive_types.H256> _value;
+        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData, PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData>> _value;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.primitive_types.H256> Value
+        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData, PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData>> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<AjunaExample.NetApiExt.Generated.Model.primitive_types.H256>();
+            Value = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData, PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData>>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }
