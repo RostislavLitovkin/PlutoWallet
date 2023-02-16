@@ -62,14 +62,14 @@
         </ScrollView>
 
         <!--QR code button-->
-        <Image WidthRequest="36" Margin="20, 0, 20, 0"
-                       AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                AbsoluteLayout.LayoutFlags="PositionProportional">
+        <Image WidthRequest="48" Margin="10, 10, 10, 10"
+                    AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional">
             <Image.Source>
                 <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                                         Glyph="&#xf029;"
                                          FontFamily="FontAwesome"
-                                         Size="36"/>
+                                         Size="56"/>
             </Image.Source>
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnQRClicked" />
@@ -77,10 +77,22 @@
             </Image.GestureRecognizers>
         </Image>
 
-        <Button Text="Settings"
-                AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+        <!--Settings button-->
+        <Image WidthRequest="48" Margin="10, 10, 10, 10"
+                    AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                Clicked="OnSettingsClicked" />
+               >
+            <Image.Source>
+                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                        Glyph="&#xf1de;"
+                                         FontFamily="FontAwesome"
+                                         Size="56"/>
+            </Image.Source>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnSettingsClicked" />
+
+            </Image.GestureRecognizers>
+        </Image>
 
         <transferview:TransferView x:Name="transferView" />
 
