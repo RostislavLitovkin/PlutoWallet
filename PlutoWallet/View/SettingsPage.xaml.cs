@@ -6,6 +6,7 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
     private void SaveEndpoint(System.Object sender, System.EventArgs e)
     {
         viewModel.SaveEndpoint();

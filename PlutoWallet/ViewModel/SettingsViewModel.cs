@@ -1,5 +1,6 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Components.NetworkSelect;
 
 namespace PlutoWallet.ViewModel
 {
@@ -25,6 +26,12 @@ namespace PlutoWallet.ViewModel
                 Preferences.Set("endpointName" + i, Name);
                 Preferences.Set("endpointUrl" + i, Url);
             }
+
+            Name = "";
+            Url = "";
+
+            var networkViewModel = DependencyService.Get<NetworkSelectViewModel>();
+            networkViewModel.UpdateNetworks();
         }
 
         public void ClearEndpoints()
@@ -35,6 +42,9 @@ namespace PlutoWallet.ViewModel
                 Preferences.Remove("endpointUrl" + i);
                 i++;
             }
+
+            var networkViewModel = DependencyService.Get<NetworkSelectViewModel>();
+            networkViewModel.UpdateNetworks();
         }
     }
 }

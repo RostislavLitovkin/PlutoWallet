@@ -36,26 +36,41 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public NetworkSelectViewModel()
         {
-            networks = Endpoints.GetAllEndpoints;
+            UpdateNetworks();
+        }
+
+        public void UpdateNetworks()
+        {
+            List<Endpoint> endpointsList = new List<Endpoint>();
+            endpointsList.AddRange(Endpoints.GetAllEndpoints);
 
             int i = 1;
             while (Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i))
             {
-                networks.Add(new Endpoint
+                endpointsList.Add(new Endpoint
                 {
                     Name = Preferences.Get("endpointName" + i, ""),
                     URL = Preferences.Get("endpointUrl" + i, "")
                 });
                 i++;
             }
-            
+
+            Networks = endpointsList;
+
+            bool found = false;
             // set the selected network
-            foreach (Endpoint endpoint in networks)
+            foreach (Endpoint endpoint in Networks)
             {
                 if (Preferences.Get("selectedNetworkName", "Polkadot") == endpoint.Name)
                 {
-                    selectedEndpoint = endpoint;
+                    SelectedEndpoint = endpoint;
+                    found = true;
                 }
+            }
+
+            if(!found)
+            {
+                SelectedEndpoint = Endpoints.GetAllEndpoints[0];
             }
         }
     }
