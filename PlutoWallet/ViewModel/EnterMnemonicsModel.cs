@@ -9,36 +9,17 @@ using Schnorrkel.Keys;
 
 namespace PlutoWallet.ViewModel
 {
-    public partial class EnterMnemonicsViewModel : ObservableObject //, INotifyPropertyChanged
+    public partial class EnterMnemonicsViewModel : ObservableObject
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
 
 
         [ObservableProperty]
         private string[] mnemonicsArray = new string[18];
 
+        [ObservableProperty]
         private string password;
-        public string Password
-        {
-            get => password;
-            set
-            {
-                if (password == value)
-                    return;
-
-                password = value;
-
-                // tell the user that his password is weak
-
-                //RaisePropertyChanged(nameof(Password));
-                //RaisePropertyChanged(nameof(IsStrongPassword));
-            }
-        }
 
         public bool IsStrongPassword => true;//!(Password == null || Password == "");
-
-        [ObservableProperty]
-        private string debugText;
 
         public void CreateKeys()
         {
@@ -50,12 +31,6 @@ namespace PlutoWallet.ViewModel
 
             var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, ExpandMode.Ed25519);
             var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English);
-
-            debugText = Utils.Bytes2HexString(keyPair.Secret.key.GetBytes()).Substring(0, 8) +
-                "\n" + Utils.Bytes2HexString(secret).Substring(0, 8) +
-                "\n" + Utils.Bytes2HexString(new MiniSecret(secret, ExpandMode.Ed25519).GetPair().Secret.key.GetBytes()).Substring(0, 8);
-
-            Console.WriteLine("I am here");
 
             Preferences.Set(
                 "privateKey",
@@ -71,10 +46,5 @@ namespace PlutoWallet.ViewModel
         {
 
         }
-
-        /*private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }*/
     }
 }

@@ -7,7 +7,7 @@
         <viewmodel:EnterMnemonicsViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Grid Margin="20,35,20,20">
+        <Grid Margin="20,35,20,20" ColumnSpacing="20" RowSpacing="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
@@ -97,10 +97,7 @@
                 Placeholder="Enter your eighteenth word here" Text="{Binding MnemonicsArray[17]}" />
         </Grid>
 
-        <Entry Placeholder="Enter your password here" Text="{Binding MnemonicsArray[]}" Margin="20" />
-        <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
-        <Label Text="" Margin="20, 0, 20, 0" />
-
+        <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
 
         <Button Text="create" Margin="20, 10, 20, 0" Clicked="ContinueToMainPageClicked" />
     </VerticalStackLayout>
