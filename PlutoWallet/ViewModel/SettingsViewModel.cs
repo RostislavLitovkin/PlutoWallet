@@ -11,25 +11,20 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string name;
 
-
-
         public SettingsViewModel() { 
                         
         }
+
         public void SaveEndpoint()
         { 
             int i = 1;
              while(Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i ))
                 i++;
 
-            if(!string.IsNullOrWhiteSpace(url) && !string.IsNullOrWhiteSpace(name)) {
-                Preferences.Set("endpointName" + i, name);
-                Preferences.Set("endpointUrl" + i, url);
+            if(!string.IsNullOrWhiteSpace(Url) && !string.IsNullOrWhiteSpace(Name)) {
+                Preferences.Set("endpointName" + i, Name);
+                Preferences.Set("endpointUrl" + i, Url);
             }
-            int testI = i - 1;
-            string testEndpointName = "endpointName" + testI;
-            string nameTest = Preferences.Get(testEndpointName, "");
-
         }
 
         public void ClearEndpoints()
