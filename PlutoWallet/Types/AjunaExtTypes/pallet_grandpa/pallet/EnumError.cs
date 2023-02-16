@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa.pallet
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa.pallet
 {
     
     
@@ -34,7 +34,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa.pallet
     }
     
     /// <summary>
-    /// >> 96 - Variant[pallet_grandpa.pallet.Error]
+    /// >> 518 - Variant[pallet_grandpa.pallet.Error]
     /// 
     ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
     ///			of this pallet.

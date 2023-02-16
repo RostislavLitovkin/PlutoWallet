@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Primitive;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.era
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era
 {
     
     
@@ -534,7 +534,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.generic.era
     }
     
     /// <summary>
-    /// >> 135 - Variant[sp_runtime.generic.era.Era]
+    /// >> 734 - Variant[sp_runtime.generic.era.Era]
     /// </summary>
     public sealed class EnumEra : BaseEnumExt<Era, BaseVoid>
     {

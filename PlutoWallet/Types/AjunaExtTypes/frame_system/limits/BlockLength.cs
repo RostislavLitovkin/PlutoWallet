@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
 {
     
     
     /// <summary>
-    /// >> 62 - Composite[frame_system.limits.BlockLength]
+    /// >> 169 - Composite[frame_system.limits.BlockLength]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class BlockLength : BaseType
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> max
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 _max;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 _max;
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 Max
+        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 Max
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Max = new AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3();
+            Max = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3();
             Max.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

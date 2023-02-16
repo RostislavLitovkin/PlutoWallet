@@ -13,13 +13,15 @@ public partial class MessagePopupView : ContentView
     {
         // Hide this layout
         //await this.FadeTo(0, 500);
-        this.IsVisible = false;
+        var viewModel = DependencyService.Get<MessagePopupViewModel>();
+        viewModel.IsVisible = false;
     }
 
     async void OnBackClicked(System.Object sender, System.EventArgs e)
     {
         // Hide this layout
         //await this.FadeTo(0, 500);
-        this.IsVisible = false;
+        var viewModel = DependencyService.Get<MessagePopupViewModel>();
+        viewModel.IsVisible = false;
     }
 }

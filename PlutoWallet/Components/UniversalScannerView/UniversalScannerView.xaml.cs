@@ -14,11 +14,6 @@ public partial class UniversalScannerView : ContentView
     public UniversalScannerView()
     {
         InitializeComponent();
-#if ANDROID || IOS
-
-        
-
-#endif
     }
 
     async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
@@ -57,7 +52,7 @@ public partial class UniversalScannerView : ContentView
         try
         {
             // this is just for debugging
-            viewModel.DAppName = e.Results[0].Value;
+            //viewModel.DAppName = e.Results[0].Value;
 
 
             var scannedValue = e.Results[0].Value;
@@ -74,10 +69,15 @@ public partial class UniversalScannerView : ContentView
 
                 var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
 
+
+
+                connectionRequest.IsVisible = true;
                 connectionRequest.Icon = icon;
                 connectionRequest.Name = name;
 
-                connectionRequest.IsVisible = true;
+                connectionRequest.Url = url;
+                connectionRequest.Key = key;
+
             }
             else
             {
@@ -92,7 +92,6 @@ public partial class UniversalScannerView : ContentView
 
             qrLayout.Children.Clear();
 
-            await this.FadeTo(0, 500);
             this.IsVisible = false;
         }
         catch (Exception ex)

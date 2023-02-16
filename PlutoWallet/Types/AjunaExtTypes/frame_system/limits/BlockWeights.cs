@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
 {
     
     
     /// <summary>
-    /// >> 58 - Composite[frame_system.limits.BlockWeights]
+    /// >> 165 - Composite[frame_system.limits.BlockWeights]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class BlockWeights : BaseType
@@ -27,19 +27,19 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> base_block
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _baseBlock;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _baseBlock;
         
         /// <summary>
         /// >> max_block
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _maxBlock;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _maxBlock;
         
         /// <summary>
         /// >> per_class
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 _perClass;
+        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 _perClass;
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseBlock
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseBlock
         {
             get
             {
@@ -51,7 +51,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxBlock
+        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxBlock
         {
             get
             {
@@ -63,7 +63,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass
+        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass
         {
             get
             {
@@ -92,11 +92,11 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            BaseBlock = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            BaseBlock = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             BaseBlock.Decode(byteArray, ref p);
-            MaxBlock = new AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            MaxBlock = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
             MaxBlock.Decode(byteArray, ref p);
-            PerClass = new AjunaExample.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
+            PerClass = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
             PerClass.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

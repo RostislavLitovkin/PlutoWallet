@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_transaction_payment
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_transaction_payment
 {
     
     
     /// <summary>
-    /// >> 138 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
+    /// >> 737 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class ChargeTransactionPayment : BaseType

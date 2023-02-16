@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_transaction_payment
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_transaction_payment
 {
     
     
@@ -24,7 +24,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_transaction_payment
     }
     
     /// <summary>
-    /// >> 112 - Variant[pallet_transaction_payment.Releases]
+    /// >> 479 - Variant[pallet_transaction_payment.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

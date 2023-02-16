@@ -7,6 +7,7 @@
              IsVisible="{Binding IsVisible}">
 
     <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            CornerRadius="20">
         <AbsoluteLayout>
 

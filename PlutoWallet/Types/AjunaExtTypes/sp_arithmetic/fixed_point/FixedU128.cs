@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_arithmetic.fixed_point
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point
 {
     
     
     /// <summary>
-    /// >> 111 - Composite[sp_arithmetic.fixed_point.FixedU128]
+    /// >> 478 - Composite[sp_arithmetic.fixed_point.FixedU128]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class FixedU128 : BaseType

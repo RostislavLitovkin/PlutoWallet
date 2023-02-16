@@ -3,13 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.StakingDashboard.StakingDashboardView">
     <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20">
-        <AbsoluteLayout>
-            <VerticalStackLayout>
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20" HeightRequest="100"
+           Padding="0
+           ">
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
                 <Label 
                     Text="Staking dashboard"
                     FontAttributes="Bold"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    HeightRequest="30"
+                    VerticalTextAlignment="Center"/>
                 <Label 
                     Text="To be implemented later"
                     HorizontalOptions="Center" />

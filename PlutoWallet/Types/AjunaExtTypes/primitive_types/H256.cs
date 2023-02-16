@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.primitive_types
+namespace PlutoWallet.NetApiExt.Generated.Model.primitive_types
 {
     
     
@@ -27,9 +27,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.primitive_types
         /// <summary>
         /// >> value
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Types.Base.Arr32U8 _value;
+        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8 _value;
         
-        public AjunaExample.NetApiExt.Generated.Types.Base.Arr32U8 Value
+        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8 Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.primitive_types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new AjunaExample.NetApiExt.Generated.Types.Base.Arr32U8();
+            Value = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

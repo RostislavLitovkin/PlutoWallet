@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_version
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
 {
     
     
     /// <summary>
-    /// >> 65 - Composite[sp_version.RuntimeVersion]
+    /// >> 172 - Composite[sp_version.RuntimeVersion]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeVersion : BaseType
@@ -52,7 +52,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_version
         /// <summary>
         /// >> apis
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Types.Base.Cow _apis;
+        private PlutoWallet.NetApiExt.Generated.Types.Base.Cow _apis;
         
         /// <summary>
         /// >> transaction_version
@@ -124,7 +124,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Types.Base.Cow Apis
+        public PlutoWallet.NetApiExt.Generated.Types.Base.Cow Apis
         {
             get
             {
@@ -192,7 +192,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_version
             SpecVersion.Decode(byteArray, ref p);
             ImplVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
             ImplVersion.Decode(byteArray, ref p);
-            Apis = new AjunaExample.NetApiExt.Generated.Types.Base.Cow();
+            Apis = new PlutoWallet.NetApiExt.Generated.Types.Base.Cow();
             Apis.Decode(byteArray, ref p);
             TransactionVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
             TransactionVersion.Decode(byteArray, ref p);

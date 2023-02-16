@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
 {
     
     
     /// <summary>
-    /// >> 80 - Composite[pallet_grandpa.StoredPendingChange]
+    /// >> 516 - Composite[pallet_grandpa.StoredPendingChange]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class StoredPendingChange : BaseType
@@ -37,7 +37,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa
         /// <summary>
         /// >> next_authorities
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1 _nextAuthorities;
+        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT4 _nextAuthorities;
         
         /// <summary>
         /// >> forced
@@ -68,7 +68,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1 NextAuthorities
+        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT4 NextAuthorities
         {
             get
             {
@@ -114,7 +114,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_grandpa
             ScheduledAt.Decode(byteArray, ref p);
             Delay = new Ajuna.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);
-            NextAuthorities = new AjunaExample.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1();
+            NextAuthorities = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT4();
             NextAuthorities.Decode(byteArray, ref p);
             Forced = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32>();
             Forced.Decode(byteArray, ref p);

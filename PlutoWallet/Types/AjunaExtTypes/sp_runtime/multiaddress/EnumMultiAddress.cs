@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.multiaddress
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress
 {
     
     
@@ -30,9 +30,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.sp_runtime.multiaddress
     }
     
     /// <summary>
-    /// >> 106 - Variant[sp_runtime.multiaddress.MultiAddress]
+    /// >> 197 - Variant[sp_runtime.multiaddress.MultiAddress]
     /// </summary>
-    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, AjunaExample.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Base.BaseTuple>, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>, AjunaExample.NetApiExt.Generated.Types.Base.Arr32U8, AjunaExample.NetApiExt.Generated.Types.Base.Arr20U8>
+    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Base.BaseTuple>, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>
     {
     }
 }

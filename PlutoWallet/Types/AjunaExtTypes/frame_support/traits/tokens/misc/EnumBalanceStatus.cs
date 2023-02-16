@@ -11,7 +11,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_support.traits.tokens.misc
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.tokens.misc
 {
     
     
@@ -24,7 +24,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_support.traits.tokens.mis
     }
     
     /// <summary>
-    /// >> 35 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
+    /// >> 37 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
     /// </summary>
     public sealed class EnumBalanceStatus : BaseEnum<BalanceStatus>
     {

@@ -6,6 +6,7 @@ using Ajuna.NetApi.Model.Types.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;
+using Plutonication;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
@@ -30,12 +31,6 @@ namespace PlutoWallet.ViewModel
         public string SubstrateKey => KeysModel.GetSubstrateKey();
 
         [ObservableProperty]
-        private string balance;
-
-        [ObservableProperty]
-        private Metadata metadata;
-
-        [ObservableProperty]
         private bool loading;
 
         [ObservableProperty]
@@ -58,8 +53,8 @@ namespace PlutoWallet.ViewModel
         // constructor
         public MainViewModel()
         {
-            balance = "Balance: loading";
         }
+<<<<<<< HEAD
 
         public async Task GetMetadataAsync()
         {
@@ -104,5 +99,7 @@ namespace PlutoWallet.ViewModel
         }
 
         
+=======
+>>>>>>> master
     }
 }

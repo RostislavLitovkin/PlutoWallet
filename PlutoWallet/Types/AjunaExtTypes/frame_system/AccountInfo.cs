@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
 {
     
     
@@ -47,7 +47,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system
         /// <summary>
         /// >> data
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.pallet_balances.AccountData _data;
+        private PlutoWallet.NetApiExt.Generated.Model.pallet_balances.AccountData _data;
         
         public Ajuna.NetApi.Model.Types.Primitive.U32 Nonce
         {
@@ -97,7 +97,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.pallet_balances.AccountData Data
+        public PlutoWallet.NetApiExt.Generated.Model.pallet_balances.AccountData Data
         {
             get
             {
@@ -136,7 +136,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.frame_system
             Providers.Decode(byteArray, ref p);
             Sufficients = new Ajuna.NetApi.Model.Types.Primitive.U32();
             Sufficients.Decode(byteArray, ref p);
-            Data = new AjunaExample.NetApiExt.Generated.Model.pallet_balances.AccountData();
+            Data = new PlutoWallet.NetApiExt.Generated.Model.pallet_balances.AccountData();
             Data.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

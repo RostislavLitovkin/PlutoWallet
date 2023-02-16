@@ -17,7 +17,22 @@ namespace PlutoWallet.Constants
             new Endpoint
 			{
 				Name = "Polkadot",
-				URL = "wss://rpc.polkadot.io",
+				URL = "wss://polkadot.api.onfinality.io/public-ws",
+            },
+			new Endpoint
+			{
+				Name = "Kusama",
+				URL = "wss://kusama-rpc.polkadot.io"
+            },
+			new Endpoint
+			{
+				Name = "Westend Polkadot",
+				URL = "wss://westend-rpc.polkadot.io"
+            },
+			new Endpoint
+			{
+				Name = "Unique",
+				URL = "wss://eu-ws-quartz.unique.network"
             },
 			new Endpoint
 			{

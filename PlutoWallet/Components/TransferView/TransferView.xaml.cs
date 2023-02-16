@@ -23,8 +23,8 @@ public partial class TransferView : ContentView
             await TransferModel.BalancesTransferAsync(viewModel.Address, viewModel.Amount);
 
             // Hide this layout
-            await this.FadeTo(0, 500);
-            this.IsVisible = false;
+
+            viewModel.IsVisible = false;
         }
         catch (Exception ex)
         {
@@ -34,16 +34,14 @@ public partial class TransferView : ContentView
         
     }
 
-    void QRDetected(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
-        var viewModel = DependencyService.Get<TransferViewModel>();
-    }
-
     async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         // Hide this layout
-        await this.FadeTo(0, 500);
-        this.IsVisible = false;
+        var viewModel = DependencyService.Get<TransferViewModel>();
+
+        viewModel.IsVisible = false;
+
+        qrLayout.Children.Clear();
     }
 
     void OnShowQRClicked(System.Object sender, System.EventArgs e)

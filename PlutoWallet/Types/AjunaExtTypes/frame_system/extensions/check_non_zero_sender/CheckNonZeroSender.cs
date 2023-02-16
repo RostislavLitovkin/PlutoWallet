@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.frame_system.extensions.check_non_zero_sender
+namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_non_zero_sender
 {
     
     
     /// <summary>
-    /// >> 130 - Composite[frame_system.extensions.check_non_zero_sender.CheckNonZeroSender]
+    /// >> 729 - Composite[frame_system.extensions.check_non_zero_sender.CheckNonZeroSender]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class CheckNonZeroSender : BaseType

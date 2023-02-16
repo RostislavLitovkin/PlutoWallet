@@ -13,7 +13,7 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.sp_weights.weight_v2
+namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2
 {
     
     

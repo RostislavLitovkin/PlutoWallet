@@ -13,12 +13,12 @@ using Ajuna.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
+namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
 {
     
     
     /// <summary>
-    /// >> 98 - Composite[pallet_balances.BalanceLock]
+    /// >> 471 - Composite[pallet_balances.BalanceLock]
     /// </summary>
     [AjunaNodeType(TypeDefEnum.Composite)]
     public sealed class BalanceLock : BaseType
@@ -27,7 +27,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
         /// <summary>
         /// >> id
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8 _id;
+        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 _id;
         
         /// <summary>
         /// >> amount
@@ -37,9 +37,9 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
         /// <summary>
         /// >> reasons
         /// </summary>
-        private AjunaExample.NetApiExt.Generated.Model.pallet_balances.EnumReasons _reasons;
+        private PlutoWallet.NetApiExt.Generated.Model.pallet_balances.EnumReasons _reasons;
         
-        public AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8 Id
+        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 Id
         {
             get
             {
@@ -63,7 +63,7 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
             }
         }
         
-        public AjunaExample.NetApiExt.Generated.Model.pallet_balances.EnumReasons Reasons
+        public PlutoWallet.NetApiExt.Generated.Model.pallet_balances.EnumReasons Reasons
         {
             get
             {
@@ -92,11 +92,11 @@ namespace AjunaExample.NetApiExt.Generated.Model.pallet_balances
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new AjunaExample.NetApiExt.Generated.Types.Base.Arr8U8();
+            Id = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8();
             Id.Decode(byteArray, ref p);
             Amount = new Ajuna.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);
-            Reasons = new AjunaExample.NetApiExt.Generated.Model.pallet_balances.EnumReasons();
+            Reasons = new PlutoWallet.NetApiExt.Generated.Model.pallet_balances.EnumReasons();
             Reasons.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

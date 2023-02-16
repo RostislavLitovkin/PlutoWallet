@@ -4,32 +4,36 @@ using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using PlutoWallet.Components.BalanceView;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
-    public partial class NetworkSelectViewModel : ObservableObject, INotifyPropertyChanged
+    public partial class NetworkSelectViewModel : ObservableObject
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
         [ObservableProperty]
         private IList<Endpoint> networks;
 
         private Endpoint selectedEndpoint;
+
         public Endpoint SelectedEndpoint
         {
             get => selectedEndpoint;
             set
             {
                 SetProperty(ref selectedEndpoint, value);
+
                 Preferences.Set("selectedNetworkName", value.Name);
                 Preferences.Set("selectedNetwork", value.URL);
 
                 var customCallsViewModel = DependencyService.Get<ViewModel.CustomCallsViewModel>();
                 var mainViewModel = DependencyService.Get<MainViewModel>();
+                var balanceViewModel = DependencyService.Get<BalanceViewModel>();
+
                 customCallsViewModel.GetMetadataAsync();
-                mainViewModel.GetBalanceAsync();
+                balanceViewModel.GetBalanceAsync();
             }
         }
+
         public NetworkSelectViewModel()
         {
             networks = Endpoints.GetAllEndpoints;
@@ -53,11 +57,6 @@ namespace PlutoWallet.Components.NetworkSelect
                     selectedEndpoint = endpoint;
                 }
             }
-        }
-
-        private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
