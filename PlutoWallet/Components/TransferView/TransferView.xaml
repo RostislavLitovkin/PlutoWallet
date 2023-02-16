@@ -31,7 +31,7 @@
                         AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
                         AbsoluteLayout.LayoutFlags="PositionProportional">
                         <Image.Source>
-                            <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                            <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
                                             Glyph="&#xf029;"
                                              FontFamily="FontAwesome"
                                              Size="56"/>
@@ -57,7 +57,7 @@
                     AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
                 >
                 <Image.Source>
-                    <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                    <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
                                     Glyph="&#xf177;"
                                         FontFamily="FontAwesome"
                                         Size="24"/>

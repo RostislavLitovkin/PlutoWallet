@@ -132,9 +132,24 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
         </Grid>
-
+    
         <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
-        <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
+        <StackLayout Orientation="Horizontal" FlowDirection="LeftToRight" Spacing="10" Margin="20, 0, 20, 0" >
+            <Image 
+                   HeightRequest="20"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Start"
+                >
+                <Image.Source>
+                    <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
+                                        Glyph="&#xf06a;"
+                                         FontFamily="FontAwesome"
+                                         Size="20" />
+                </Image.Source>
+            </Image>
+            <Label HorizontalOptions="StartAndExpand" Text="Enter a strong password and remember it along with these 18 words"/>
+        </StackLayout>
+
         <Label Text="" Margin="20, 0, 20, 0" />
 
 

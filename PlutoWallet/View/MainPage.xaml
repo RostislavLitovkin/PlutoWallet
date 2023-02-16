@@ -62,14 +62,14 @@
         </ScrollView>
 
         <!--QR code button-->
-        <Image WidthRequest="48" Margin="10, 10, 10, 10"
+        <Image WidthRequest="36" Margin="10, 10, 10, 10"
                     AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
                     AbsoluteLayout.LayoutFlags="PositionProportional">
             <Image.Source>
-                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
                                         Glyph="&#xf029;"
                                          FontFamily="FontAwesome"
-                                         Size="56"/>
+                                         Size="36"/>
             </Image.Source>
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnQRClicked" />
@@ -78,15 +78,15 @@
         </Image>
 
         <!--Settings button-->
-        <Image WidthRequest="48" Margin="10, 10, 10, 10"
+        <Image WidthRequest="36" Margin="10, 10, 10, 10"
                     AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                >
             <Image.Source>
-                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
                                         Glyph="&#xf1de;"
                                          FontFamily="FontAwesome"
-                                         Size="56"/>
+                                         Size="36"/>
             </Image.Source>
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnSettingsClicked" />
