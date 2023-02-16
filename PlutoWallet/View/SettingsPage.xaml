@@ -12,5 +12,16 @@
             Text="To be implemented later"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+
+        <Label 
+            Text="{Binding Test1}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label 
+            Text="{Binding Test2}"
+            BackgroundColor="Red"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
