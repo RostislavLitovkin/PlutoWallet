@@ -33,7 +33,8 @@ making it clear with examples.
 A lot of time was spent making sure that even
 junior developers can implement it.
 
-
+- The detailed explanation on how this works
+behind the code is also in the docs.
 
 ### Important notes:
 - can be used on any platform - even console like switch
