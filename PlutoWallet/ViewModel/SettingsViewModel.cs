@@ -51,8 +51,8 @@ namespace PlutoWallet.ViewModel
                     allIpInfo += item.ToString() + "---";
                 }
                 Test1 = result.FirstOrDefault()?.ToString();
-
-                Test2 = PlutoManager.GetMyIpAddress().ToString();
+                Test2 = result?.ToString();
+                //Test2 = PlutoManager.GetMyIpAddress().ToString();
             }
         }
     }
