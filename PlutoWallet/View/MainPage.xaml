@@ -52,19 +52,30 @@
 
                 <stakingdashboard:StakingDashboardView />
 
-                
 
-               <calamar:CalamarView Address="{Binding PublicKey}"/>
+
+                <calamar:CalamarView Address="{Binding PublicKey}"/>
 
                 <!-- Just a clear space (needs to be here) -->
                 <AbsoluteLayout HeightRequest="200" WidthRequest="1000"/>
             </VerticalStackLayout>
         </ScrollView>
 
-        <Button Text="QR"
-                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                Clicked="OnQRClicked" />
+        <!--QR code button-->
+        <Image WidthRequest="36" Margin="20, 0, 20, 0"
+                       AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional">
+            <Image.Source>
+                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                        Glyph="&#xf029;"
+                                         FontFamily="FontAwesome"
+                                         Size="36"/>
+            </Image.Source>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnQRClicked" />
+
+            </Image.GestureRecognizers>
+        </Image>
 
         <Button Text="Settings"
                 AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
@@ -82,11 +93,11 @@
             x:Name="universalScannerView"
              IsVisible="false" Opacity="0" />
 
-        
+
         <transactionrequest:TransactionRequestView />
-        
+
         <messagepopup:MessagePopupView />
 
     </AbsoluteLayout>
-    
+
 </ContentPage>
