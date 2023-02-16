@@ -1,6 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 
+
 namespace PlutoWallet.Components.PublicKeyQRCodeView
 {
     public partial class PublicKeyQRCodeViewModel : ObservableObject

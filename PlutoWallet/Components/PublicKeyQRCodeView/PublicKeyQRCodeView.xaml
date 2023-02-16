@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="PlutoWallet.Components.PublicKeyQRCodeView.PublicKeyQRCodeView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
@@ -14,12 +15,12 @@
 
                 <Label
                     FontAttributes="Bold"
-                    Text="Transfer"
+                    Text="Public key"
                     HeightRequest="30"
                     HorizontalOptions="Center" />
 
-                <BoxView WidthRequest="200" HeightRequest="200"
-                         BackgroundColor="LightBlue"/>
+                <zxing:BarcodeGeneratorView Format="QrCode" ForegroundColor="Black" WidthRequest="200"
+                 HeightRequest="200" />
             </VerticalStackLayout>
 
             <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
