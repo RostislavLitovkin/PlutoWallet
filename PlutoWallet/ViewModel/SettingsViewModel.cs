@@ -52,7 +52,7 @@ namespace PlutoWallet.ViewModel
                 }
                 Test1 = result.FirstOrDefault()?.ToString();
 
-                Test2 = PlutoManager.GetMyIpAddress().ToString();
+                //Test2 = PlutoManager.GetMyIpAddress().ToString();
             }
         }
     }
