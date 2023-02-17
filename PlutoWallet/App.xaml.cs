@@ -3,6 +3,7 @@ using PlutoWallet.Components.BalanceView;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.PublicKeyQRCodeView;
 using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
@@ -38,8 +39,9 @@ public partial class App : Application
         DependencyService.Register<ArgumentsViewModel>();
 
 
+        DependencyService.Register<PublicKeyQRCodeViewModel>();
 
-
+       
 
         if (Preferences.ContainsKey("privateKey") && false)
         {

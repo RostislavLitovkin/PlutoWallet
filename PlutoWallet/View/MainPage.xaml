@@ -11,7 +11,7 @@
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
-             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView"
+             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView" xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
              BackgroundColor="Black">
@@ -61,6 +61,8 @@
                 AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="OnSettingsClicked" />
+
+        <publickeyqrcodeview:PublicKeyQRCodeView />
 
         <transferview:TransferView x:Name="transferView" />
 
