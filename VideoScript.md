@@ -5,8 +5,8 @@
 (PlutoWallet, Plutonication package)
 
 ### What is PlutoWallet
-- PlutoWallet is a sample wallet that implements
-Plutonication.
+- Second one is PlutoWallet. It is a sample
+wallet that implements Plutonication.
 
 - It has got all the basic functionalities crypto
 wallet should have.
