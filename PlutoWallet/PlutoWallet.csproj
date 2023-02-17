@@ -15,7 +15,7 @@
 		<ApplicationTitle>Pluto wallet</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.rostislavlitovkin.plutowallettest1</ApplicationId>
+		<ApplicationId>com.rostislavlitovkin.plutowallet</ApplicationId>
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -44,13 +44,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
-
-		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="128,128" />
-
-		<!-- Images -->
-
 		<MauiImage Include="Resources\Images\*svg" />
 		<MauiImage Include="Resources\Images\*png" />
 		<MauiImage Include="Resources\Images\*jpg" />
@@ -101,6 +94,12 @@
 	  <None Remove="Resources\Images\nightskybg.jpg" />
 	  <None Remove="Resources\Images\crop.png" />
 	  <None Remove="Components\PublicKeyQRCodeView\" />
+	  <None Remove="Resources\Splash\" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	  <None Remove="Resources\Splash\splash.svg" />
+	  <None Remove="Resources\AppIcon\" />
+	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -112,6 +111,8 @@
 	  <BundleResource Include="Resources\Images\nightskybgsmall.jpg" />
 	  <BundleResource Include="Resources\Images\nightskybg.jpg" />
 	  <BundleResource Include="Resources\Images\crop.png" />
+	  <BundleResource Include="Resources\Splash\splash.svg" />
+	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -193,6 +194,8 @@
 	  <Folder Include="Components\BalanceView\" />
 	  <Folder Include="Components\ArgumentsView\" />
 	  <Folder Include="Components\PublicKeyQRCodeView\" />
+	  <Folder Include="Resources\Splash\" />
+	  <Folder Include="Resources\AppIcon\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

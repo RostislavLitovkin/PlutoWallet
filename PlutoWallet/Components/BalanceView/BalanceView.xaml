@@ -31,7 +31,7 @@
                        VerticalOptions="Center" 
                        HorizontalOptions="Start">
                     <Image.Source>
-                        <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
+                        <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
                                         Glyph="&#xf021;"
                                          FontFamily="FontAwesome"
                                          Size="20" />
