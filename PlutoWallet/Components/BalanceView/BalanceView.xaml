@@ -31,7 +31,7 @@
                        VerticalOptions="Center" 
                        HorizontalOptions="Start">
                     <Image.Source>
-                        <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                        <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
                                         Glyph="&#xf021;"
                                          FontFamily="FontAwesome"
                                          Size="20" />
@@ -43,7 +43,7 @@
                 </Image>
 
             </HorizontalStackLayout>
-             
+
             <Label
                     HorizontalTextAlignment="End"
                     Text="Transfer"
@@ -57,10 +57,7 @@
 
                 </Label.GestureRecognizers>
             </Label>
-
         </AbsoluteLayout>
-
     </Frame>
-
 </ContentView>
 

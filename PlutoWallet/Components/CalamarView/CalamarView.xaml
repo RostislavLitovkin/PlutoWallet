@@ -35,20 +35,23 @@
 
             </Label>
 
+            <Image WidthRequest="20" Margin="20, 0, 20, 0"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Start"
+                       AbsoluteLayout.LayoutBounds="1, 0, AutoSize, 30"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                       >
+                <Image.Source>
+                    <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                        Glyph="&#xf021;"
+                                         FontFamily="FontAwesome"
+                                         Size="20" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnReloadClicked" />
 
-            <Label Text="Reload"
-                    x:Name="reloadButton"
-                    AbsoluteLayout.LayoutBounds="1, 0, AutoSize, 30"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    Padding="10, 0, 10, 0"
-                    HorizontalTextAlignment="End"
-                    VerticalTextAlignment="Center">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnReloadClicked"/>
-
-                </Label.GestureRecognizers>
-
-            </Label>
+                </Image.GestureRecognizers>
+            </Image>
         </AbsoluteLayout>
     </Frame>
 
