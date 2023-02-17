@@ -42,6 +42,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
