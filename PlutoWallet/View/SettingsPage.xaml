@@ -4,13 +4,15 @@
              x:Class="PlutoWallet.View.SettingsPage"
              Title="Settings">
     <ContentPage.BindingContext>
-        <viewmodel:SettingsViewModel />
+        <viewmodel:SettingsViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
 
     <VerticalStackLayout>
-        <Label 
-            Text="To be implemented later"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Entry
+                Placeholder="Enter endpoint name" Text="{Binding Name}" />
+        <Entry
+                Placeholder="Enter endpoint URL" Text="{Binding Url}" />
+        <Button Text="save endpoint" Margin="20, 10, 20, 0" Command="{Binding SaveEndpointCommand}" />
+        <Button Text="clear all custom endpoints" Margin="20, 10, 20, 0" Clicked="ClearEndpoints" />
     </VerticalStackLayout>
 </ContentPage>
