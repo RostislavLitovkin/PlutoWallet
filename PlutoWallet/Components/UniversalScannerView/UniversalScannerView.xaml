@@ -14,12 +14,13 @@
                     Text="Plutonication"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    HeightRequest="30"/>
+                    HeightRequest="30"
+                    Margin="40, 0, 40, 0"/>
 
                 <AbsoluteLayout x:Name="qrLayout">
 
-
                 </AbsoluteLayout>
+
             </VerticalStackLayout>
 
 

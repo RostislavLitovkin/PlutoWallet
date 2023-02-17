@@ -44,24 +44,19 @@
 
             </HorizontalStackLayout>
 
-            <!--Transfer button-->
-            <Image WidthRequest="24" Margin="10, 10, 10, 10"
+            <Label
+                    HorizontalTextAlignment="End"
+                    Text="Transfer"
                     VerticalOptions="Center"
                     HorizontalOptions="End"
                     AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
                     AbsoluteLayout.LayoutFlags="PositionProportional"
-                    >
-                <Image.Source>
-                    <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
-                                        Glyph="&#xf0ec;"
-                                         FontFamily="FontAwesome"
-                                         Size="30"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
+                    Padding="10, 0, 10, 0">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnTransferClicked" />
 
-                </Image.GestureRecognizers>
-            </Image>
+                </Label.GestureRecognizers>
+            </Label>
         </AbsoluteLayout>
     </Frame>
 </ContentView>

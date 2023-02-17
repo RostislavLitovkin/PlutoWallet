@@ -27,14 +27,14 @@
                     <Entry Placeholder="Address" Text="{Binding Address}" Margin="20" />
 
                     <!--QR code button-->
-                    <Image WidthRequest="48" Margin="10, 10, 10, 10"
-                        AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Image WidthRequest="30" HeightRequest="30" Margin="10, 0, 10, 0"
+                            AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                            AbsoluteLayout.LayoutFlags="PositionProportional">
                         <Image.Source>
-                            <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
+                            <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                                             Glyph="&#xf029;"
                                              FontFamily="FontAwesome"
-                                             Size="56"/>
+                                             Size="30"/>
                         </Image.Source>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnShowQRClicked" />
@@ -52,21 +52,14 @@
                         Clicked="SignAndTransferClicked"/>
             </VerticalStackLayout>
 
-            <!--Go back button-->
-            <Image WidthRequest="24"
-                    AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
-                >
-                <Image.Source>
-                    <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
-                                    Glyph="&#xf177;"
-                                        FontFamily="FontAwesome"
-                                        Size="24"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
+           <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
+                   Text="&lt;" FontAttributes="Bold">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnBackClicked" />
 
-                </Image.GestureRecognizers>
-            </Image>
+                </Label.GestureRecognizers>
+
+            </Label>
         </AbsoluteLayout>
         
     </Frame>
