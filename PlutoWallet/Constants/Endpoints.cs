@@ -36,6 +36,11 @@ namespace PlutoWallet.Constants
             },
 			new Endpoint
 			{
+				Name = "Opal",
+				URL = "wss://eu-ws-opal.unique.network",
+			},
+			new Endpoint
+			{
                 Name = "Rococo Frequency",
                 URL = "wss://rpc.rococo.frequency.xyz",
             },
