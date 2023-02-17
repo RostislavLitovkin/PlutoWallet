@@ -20,6 +20,8 @@ namespace PlutoWallet.Components.NetworkSelect
         public NetworkSelectViewModel()
         {
             UpdatePickerItems();
+
+            selectedEndpoint = Networks[0];
         }
 
         public Endpoint SelectedEndpoint

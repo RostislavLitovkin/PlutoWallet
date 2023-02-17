@@ -14,8 +14,9 @@
             <VerticalStackLayout>
                 <Label
                     FontAttributes="Bold"
-                    Text="TransactionRequest"
-                    HorizontalOptions="Center" />
+                    Text="Transaction request"
+                    HorizontalOptions="Center"
+                    Margin="20, 0, 20, 0"/>
 
                 <Label
                     Text="{Binding PalletIndex}"
@@ -28,6 +29,8 @@
                 <Label
                     Text="{Binding Parameters}"
                     HorizontalOptions="Center" />
+
+                <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
                 <Button Text="Sing and submit"
                         HorizontalOptions="Center"

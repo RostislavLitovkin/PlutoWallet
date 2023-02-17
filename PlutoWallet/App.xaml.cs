@@ -38,12 +38,9 @@ public partial class App : Application
 
         DependencyService.Register<ArgumentsViewModel>();
 
-
         DependencyService.Register<PublicKeyQRCodeViewModel>();
 
-       
-
-        if (Preferences.ContainsKey("privateKey") && false)
+        if (Preferences.ContainsKey("privateKey"))
         {
             MainPage = new NavigationPage(new MainTabbedPage());
         }

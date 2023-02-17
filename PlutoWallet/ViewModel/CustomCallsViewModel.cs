@@ -215,6 +215,8 @@ namespace PlutoWallet.ViewModel
 
                 Console.WriteLine("Success");
                 Args = "";
+
+
             }
             catch(Exception ex)
             {

@@ -46,7 +46,6 @@ namespace PlutoWallet.ViewModel
         {
             //Response = NetworkingModel.RequestSample();
             //Response = KeysModel.GenerateMnemonicsArray();
-            
         }
 
 

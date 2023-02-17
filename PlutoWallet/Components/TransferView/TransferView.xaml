@@ -11,13 +11,14 @@
            CornerRadius="20">
         <AbsoluteLayout>
 
-            <VerticalStackLayout>
+            <VerticalStackLayout MaximumWidthRequest="300">
 
                 <Label
                     FontAttributes="Bold"
                     Text="Transfer"
                     HeightRequest="30"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center"
+                    Margin="20, 0, 20, 0" />
 
                 <AbsoluteLayout x:Name="qrLayout">
 

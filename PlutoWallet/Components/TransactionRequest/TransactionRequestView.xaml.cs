@@ -21,7 +21,37 @@ public partial class TransactionRequestView : ContentView
 
     async void OnSubmitClicked(System.Object sender, System.EventArgs e)
     {
-        await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Success);
+
+        try
+        {
+
+            var viewModel = DependencyService.Get<TransactionRequestViewModel>();
+
+            var client = new Model.AjunaExt.AjunaClientExt(
+                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
+                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            await client.ConnectAsync();
+
+            await client.Author.SubmitExtrinsicAsync(
+                viewModel.AjunaMethod,
+                Model.KeysModel.GetAccount(),
+                Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
+                64
+             );
+
+            
+            // Tell the dApp that the transaction was successfull
+            await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Success);
+
+            // Hide this layout
+            viewModel.IsVisible = false;
+        }
+        catch (Exception ex)
+        {
+            errorLabel.Text = ex.Message;
+        }
+
     }
 
     async void OnRejectClicked(System.Object sender, System.EventArgs e)
