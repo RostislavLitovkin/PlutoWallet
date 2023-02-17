@@ -25,7 +25,7 @@
                 </AbsoluteLayout>
 
                 <HorizontalStackLayout FlowDirection="LeftToRight">
-                    <Entry Placeholder="Address" Text="{Binding Address}" Margin="20" />
+                    <Entry Placeholder="ss58 address" Text="{Binding Address}" Margin="20" />
 
                     <!--QR code button-->
                     <Image WidthRequest="30" HeightRequest="30" Margin="10, 0, 10, 0"

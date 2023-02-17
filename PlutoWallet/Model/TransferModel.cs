@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Linq;
 using Ajuna.NetApi;
 using Ajuna.NetApi.Model.Extrinsics;
+using Ajuna.NetApi.Model.Meta;
 using Ajuna.NetApi.Model.Types.Base;
 using Ajuna.NetApi.Model.Types.Primitive;
+using Newtonsoft.Json;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Model
 {
@@ -28,11 +32,52 @@ namespace PlutoWallet.Model
             var baseComAmount = new BaseCom<U128>();
             baseComAmount.Create(amount);
 
-            Method transfer = BalancesCalls.Transfer(multiAddress, baseComAmount);
-
-
-            var client = new SubstrateClient(new Uri("ws://127.0.0.1:9944"), ChargeTransactionPayment.Default());
+            var client = new SubstrateClient(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), ChargeTransactionPayment.Default());
             await client.ConnectAsync();
+
+            var customMetadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
+
+            var pallets = client.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
+
+            int palletIndex = -1;
+
+            for(int i = 0; i < pallets.Count; i++)
+            {
+                if (pallets[i].Name == "Balances")
+                {
+                    palletIndex = i;
+                    break;
+                }
+            }
+
+            if (palletIndex == -1)
+            {
+                throw new Exception("There is no Balances pallet.");
+            }
+
+            int callIndex = -1;
+
+            for (int i = 0; i < customMetadata.NodeMetadata.Types[pallets[palletIndex].Calls.TypeId.ToString()].Variants.Count(); i++)
+            {
+                if (customMetadata.NodeMetadata.Types[pallets[palletIndex].Calls.TypeId.ToString()].Variants[i].Name == "transfer")
+                {
+                    callIndex = i;
+                    break;
+                }
+            }
+
+            if (palletIndex == -1)
+            {
+                throw new Exception("There is no transfer call.");
+            }
+
+            Console.WriteLine(palletIndex);
+            Console.WriteLine(callIndex);
+
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(multiAddress.Encode());
+            byteArray.AddRange(baseComAmount.Encode());
+            Method transfer = new Method((byte)palletIndex, "Balances", (byte)callIndex, "transfer", byteArray.ToArray());
 
             await client.Author.SubmitExtrinsicAsync(transfer, KeysModel.GetAccount(), ChargeTransactionPayment.Default(), 64);
         } 
