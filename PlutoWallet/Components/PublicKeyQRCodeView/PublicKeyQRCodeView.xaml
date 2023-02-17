@@ -19,8 +19,11 @@
                     HeightRequest="30"
                     HorizontalOptions="Center" />
 
-                <zxing:BarcodeGeneratorView Format="QrCode" ForegroundColor="Black" WidthRequest="200"
-                 HeightRequest="200" />
+                <zxing:BarcodeGeneratorView Format="QrCode"
+                                            ForegroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                            WidthRequest="200"
+                 HeightRequest="200" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                 Value="{Binding PublicKey}"/>
             </VerticalStackLayout>
 
             <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
