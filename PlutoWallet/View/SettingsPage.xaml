@@ -9,10 +9,15 @@
 
     <VerticalStackLayout>
         <Entry
+                Margin="20, 10, 20, 0"
                 Placeholder="Enter endpoint name" Text="{Binding Name}" />
         <Entry
+                Margin="20, 10, 20, 0"
                 Placeholder="Enter endpoint URL" Text="{Binding Url}" />
         <Button Text="save endpoint" Margin="20, 10, 20, 0" Command="{Binding SaveEndpointCommand}" />
         <Button Text="clear all custom endpoints" Margin="20, 10, 20, 0" Clicked="ClearEndpoints" />
+        <Button Text="show private key" Margin="20, 10, 20, 0" Clicked="ShowPrivateKey" />
+        <Button x:Name="copyKey" Text="copy private key" Margin="20, 10, 20, 0" Clicked="CopyText" />
+        <Label  x:Name="showKey" Margin="20, 10, 20, 0" Text=""/>
     </VerticalStackLayout>
 </ContentPage>

@@ -44,6 +44,13 @@ namespace PlutoWallet.ViewModel
             var networkViewModel = DependencyService.Get<NetworkSelectViewModel>();
             networkViewModel.SetupDefaultPickerItems();
         }
+
+        [ObservableProperty]
+        private string privateKey = "eck";
+        public void ShowPrivateKey()
+        {
+            privateKey = Preferences.Get("privateKey", "ikjnhdgkfjdng");
+        }
     }
 }
 
