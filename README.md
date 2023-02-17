@@ -50,8 +50,8 @@ Allows any dApp to communicate with supported wallets without compromising priva
 9) [ ] Experimental object class sending including object serialization (Status: deserialization is unreliable. May work on this feature in the future. May use a totally different approach. See the issue [here](https://github.com/cisar2218/Plutonication/issues/6), branch here)
 
 15) [X] nuget package
-16) [ ] ip address on android devices
-50) [ ] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
+16) [X] ip address on android devices
+50) [X] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
 101) [ ] polkadot js integration (ask Rosťa for more)
 
