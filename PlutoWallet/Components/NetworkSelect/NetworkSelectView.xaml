@@ -8,9 +8,10 @@
                Padding="0"
                BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}">
-        
         </Frame>
-        <Picker
+
+
+        <Picker 
                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 200, AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"
                 BackgroundColor="#00000000"
                 VerticalOptions="Center"
@@ -20,9 +21,11 @@
                 x:Name="picker"
                 Title="Select a network"
                 ItemDisplayBinding="{Binding Name}"
-                ItemsSource="{Binding Networks}"
-                SelectedItem="{Binding SelectedEndpoint}" />
+                ItemsSource="{Binding Networks, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedEndpoint}">
+        </Picker>
+
     </AbsoluteLayout>
-    
+
 </ContentView>
 

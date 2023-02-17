@@ -1,6 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Components.NetworkSelect;
+using CommunityToolkit.Mvvm.Input;
 
 namespace PlutoWallet.ViewModel
 {
@@ -12,11 +13,8 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string name;
 
-        public SettingsViewModel() { 
-                        
-        }
-
-        public void SaveEndpoint()
+        [RelayCommand]
+        private void SaveEndpoint()
         { 
             int i = 1;
              while(Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i ))
@@ -31,7 +29,7 @@ namespace PlutoWallet.ViewModel
             Url = "";
 
             var networkViewModel = DependencyService.Get<NetworkSelectViewModel>();
-            networkViewModel.UpdateNetworks();
+            networkViewModel.UpdatePickerItems();
         }
 
         public void ClearEndpoints()
@@ -44,7 +42,7 @@ namespace PlutoWallet.ViewModel
             }
 
             var networkViewModel = DependencyService.Get<NetworkSelectViewModel>();
-            networkViewModel.UpdateNetworks();
+            networkViewModel.SetupDefaultPickerItems();
         }
     }
 }

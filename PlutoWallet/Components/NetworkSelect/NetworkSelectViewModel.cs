@@ -2,18 +2,25 @@
 using PlutoWallet.ViewModel;
 using System;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using PlutoWallet.Components.BalanceView;
+using System.Collections.ObjectModel;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
     public partial class NetworkSelectViewModel : ObservableObject
     {
         [ObservableProperty]
-        private IList<Endpoint> networks;
+        private ObservableCollection<Endpoint> networks = new ObservableCollection<Endpoint>();
 
         private Endpoint selectedEndpoint;
+
+        public NetworkSelectViewModel()
+        {
+            UpdatePickerItems();
+        }
 
         public Endpoint SelectedEndpoint
         {
@@ -29,50 +36,78 @@ namespace PlutoWallet.Components.NetworkSelect
                 var mainViewModel = DependencyService.Get<MainViewModel>();
                 var balanceViewModel = DependencyService.Get<BalanceViewModel>();
 
-                customCallsViewModel.GetMetadataAsync();
-                balanceViewModel.GetBalanceAsync();
+                Task gettingMetas = customCallsViewModel.GetMetadataAsync();
+                Task gettingBalance = balanceViewModel.GetBalanceAsync();
             }
         }
 
-        public NetworkSelectViewModel()
+        public void UpdatePickerItems()
         {
-            UpdateNetworks();
+            var defaultEndpoints = Endpoints.GetAllEndpoints;
+            var customEndpoints = GetEndpointsFromPreferences();
+
+            Networks = new ObservableCollection<Endpoint>(defaultEndpoints.Concat(customEndpoints));
         }
 
-        public void UpdateNetworks()
+        public void SetupDefaultPickerItems()
         {
-            List<Endpoint> endpointsList = new List<Endpoint>();
-            endpointsList.AddRange(Endpoints.GetAllEndpoints);
+            var defaultEndpoints = Endpoints.GetAllEndpoints;
 
+            Networks = new ObservableCollection<Endpoint>(defaultEndpoints);
+        }
+
+        private List<Endpoint> GetEndpointsFromPreferences()
+        {
+            var list = new List<Endpoint>();
             int i = 1;
             while (Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i))
             {
-                endpointsList.Add(new Endpoint
+                var newEndpoint = new Endpoint
                 {
                     Name = Preferences.Get("endpointName" + i, ""),
                     URL = Preferences.Get("endpointUrl" + i, "")
-                });
+                };
+                list.Add(newEndpoint);
                 i++;
             }
+            return list;
+        }
 
-            Networks = endpointsList;
+        // TODO remove method bellow
+        /*
+        public void UpdateNetworks()
+        {
+            var tmp = new List<Endpoint>();
+            tmp.AddRange(Endpoints.GetAllEndpoints);
 
-            bool found = false;
-            // set the selected network
-            foreach (Endpoint endpoint in Networks)
+            bool isPolkadotInEndpoints = false;
+            int i = 1;
+            while (Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i))
             {
-                if (Preferences.Get("selectedNetworkName", "Polkadot") == endpoint.Name)
+                tmp.Add(new Endpoint
                 {
-                    SelectedEndpoint = endpoint;
-                    found = true;
+                    Name = Preferences.Get("endpointName" + i, "") ?? throw new Exception("Endpoint name not found"),
+                    URL = Preferences.Get("endpointUrl" + i, "") ?? throw new Exception("Endpoint url not found")
+                });
+                if (tmp.Last().Name == Preferences.Get("selectedNetworkName", "Polkadot"))
+                {
+                    SelectedEndpoint = tmp.Last();
+                    isPolkadotInEndpoints = true;
                 }
+                i++;
+            }
+            networks.Clear();
+            for (int j = 0; j < tmp.Count(); ++j)
+            {
+                networks.Insert(j, tmp[j]);
             }
 
-            if(!found)
+            if (!isPolkadotInEndpoints)
             {
                 SelectedEndpoint = Endpoints.GetAllEndpoints[0];
             }
         }
+        */
     }
 }
 
