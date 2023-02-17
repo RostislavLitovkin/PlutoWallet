@@ -15,7 +15,7 @@
 		<ApplicationTitle>Pluto wallet</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.rostislavlitovkin.plutowallet</ApplicationId>
+		<ApplicationId>com.rostislavlitovkin.plutowallettest1</ApplicationId>
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -44,15 +44,16 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="128,128" />
 
 		<!-- Images -->
+
+		<MauiImage Include="Resources\Images\*svg" />
 		<MauiImage Include="Resources\Images\*png" />
 		<MauiImage Include="Resources\Images\*jpg" />
-		<MauiImage Include="Resources\Images\*svg" />
 
 		<!-- fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -84,7 +85,7 @@
 	  <None Remove="Types\AjunaExtTypes\" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
-	  <None Remove="Components\ScannerView\" />
+	  <None Remove="Components\ScannerView\" /> 
 	  <None Remove="Components\ConnectionRequestView\" />
 	  <None Remove="Components\StakingDashboard\" />
 	  <None Remove="ZXing.Net.Maui.Controls" />
@@ -95,6 +96,10 @@
 	  <None Remove="Components\BalanceView\" />
 	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
 	  <None Remove="Components\ArgumentsView\" />
+	  <None Remove="Resources\Images\nightskybgtiny.jpg" />
+	  <None Remove="Resources\Images\nightskybgsmall.jpg" />
+	  <None Remove="Resources\Images\nightskybg.jpg" />
+	  <None Remove="Resources\Images\crop.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -102,6 +107,10 @@
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
+	  <BundleResource Include="Resources\Images\nightskybgtiny.jpg" />
+	  <BundleResource Include="Resources\Images\nightskybgsmall.jpg" />
+	  <BundleResource Include="Resources\Images\nightskybg.jpg" />
+	  <BundleResource Include="Resources\Images\crop.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

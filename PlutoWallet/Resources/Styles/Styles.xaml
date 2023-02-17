@@ -13,6 +13,12 @@
         <Setter Property="Margin" Value="8" />
     </Style>
 
+    <Style x:Key="nightsky" TargetType="Image">
+        <Setter Property="Source" Value="nightskybgtiny.jpg" />
+        <Setter Property="Aspect" Value="AspectFill" />
+        <Setter Property="Opacity" Value="0.5" />
+    </Style>
+
     <!-- custom styles end here -->
 
     <Style TargetType="ActivityIndicator">

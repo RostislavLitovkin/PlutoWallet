@@ -6,140 +6,147 @@
     <ContentPage.BindingContext>
         <viewmodel:MnemonicsViewModel x:Name="viewModel" />
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Grid Margin="20,35,20,20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Column="0"
-                   Grid.Row="0"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[0]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="0"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[1]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="1"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[2]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="1"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[3]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="2"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[4]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="2"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[5]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="3"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[6]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="3"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[7]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="4"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[8]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="4"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[9]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="5"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[10]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="5"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[11]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="6"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[12]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="6"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[13]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="0"
-                   Grid.Row="7"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[14]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1"
-                   Grid.Row="7"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[15]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-             <Label Grid.Column="0"
-                   Grid.Row="8"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[16]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-             <Label Grid.Column="1"
-                   Grid.Row="8"
-                   Style="{StaticResource mnemonicLabel}"
-                   Text="{Binding OrderedMnemonicsArray[17]}"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
-        </Grid>
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-        <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
-        <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
-        <Label Text="" Margin="20, 0, 20, 0" />
+        <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+          <VerticalStackLayout>
+            <Grid Margin="20,35,20,20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Grid.Row="0"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[0]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="0"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[1]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="1"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[2]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[3]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="2"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[4]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="2"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[5]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="3"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[6]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[7]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="4"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[8]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="4"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[9]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="5"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[10]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="5"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[11]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="6"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[12]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="6"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[13]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="0"
+                       Grid.Row="7"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[14]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label Grid.Column="1"
+                       Grid.Row="7"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[15]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                 <Label Grid.Column="0"
+                       Grid.Row="8"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[16]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+                 <Label Grid.Column="1"
+                       Grid.Row="8"
+                       Style="{StaticResource mnemonicLabel}"
+                       Text="{Binding OrderedMnemonicsArray[17]}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+            </Grid>
+
+            <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
+            <Label Text="Enter a strong password and remember it along with these 18 words" Margin="20, 0, 20, 0" />
+            <Label Text="" Margin="20, 0, 20, 0" />
 
 
-         <Button Text="Continue" IsEnabled="{Binding IsStrongPassword}" Margin="20, 10, 20, 0"
-                 Clicked="ContinueToMainPageClicked" />
-         <Button Text="Use existing mnemonics" Margin="20, 10" Clicked="GoToEnterMnemonics" />
-    </VerticalStackLayout>
+             <Button Text="Continue" IsEnabled="{Binding IsStrongPassword}" Margin="20, 10, 20, 0"
+                     Clicked="ContinueToMainPageClicked" />
+             <Button Text="Use existing mnemonics" Margin="20, 10" Clicked="GoToEnterMnemonics" />
+        </VerticalStackLayout>
+
+        </ScrollView>
+       
+    </AbsoluteLayout>
 </ContentPage>

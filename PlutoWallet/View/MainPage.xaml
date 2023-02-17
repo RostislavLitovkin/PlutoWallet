@@ -14,10 +14,12 @@
              xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
-             BackgroundColor="{AppThemeBinding Light={StaticResource GentlePink}, Dark={StaticResource Gray900}}">
+             BackgroundColor="Black">
 
     <AbsoluteLayout
          AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="nightskybg.png" Aspect="AspectFill"/>
         <ScrollView
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
@@ -30,11 +32,7 @@
                     Text="{Binding DAppName}"
                     FontSize="16"
                     HorizontalOptions="Center" />
-                <Image
-                    Source="https://rostislavlitovkin.pythonanywhere.com/logo"
-                    WidthRequest="200"
-                    HeightRequest="200"
-                    HorizontalOptions="Center" />
+
                 <addressview:AddressView
                     Title="Public key"
                     Address="{Binding PublicKey}"/>
@@ -45,14 +43,7 @@
 
                 <balanceview:BalanceView />
 
-                <Label
-                    Text="{Binding MetadataLabel}"
-                    FontSize="32"
-                    HorizontalOptions="Center" />
-
                 <stakingdashboard:StakingDashboardView />
-
-                
 
                <calamar:CalamarView Address="{Binding PublicKey}"/>
 
