@@ -87,34 +87,35 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 
 ### part 2 - PlutoWallet
 1) [x] generate mnemonics and show it to the user
-1) [ ] enter mnemonics
+1) [x] enter mnemonics
 1) [ ] enter private key
-1) [ ] show the user raw privateKey
-2) [ ] save the privateKey securely (probably always ask for password)
+1) [x] show the user raw privateKey
+2) [x] save the privateKey securely
 3) [ ] (extra) secure with password/biometrics
 4) [x] generate a publicKey from the privateKey
 5) [x] (extra - EASY) make ss58 encoded publicKeys
 6) [x] get the current balance
 7) [ ] (extra) show the balance in USD (use coingecko free api)
 8) [x] add a transfer functionality
-9) [ ] add the ability to sign any transaction
-10) [ ] implement the PlutoConnect link (a specialized link that will open PlutoWallet app and pass in all the info needed to allow the connection between the dApp and the wallet)
-11) [x] QR scanner
-12) [ ] improve UI
+9) [ ] add the ability to sign any transaction (Can be done through plutonication)
+10) [x] QR scanner
+11) [x] improve UI
+12) [ ] further improve UI
 13) [x] add multiple chain support
-14) [ ] (extra) the ability to add other unknown chains manually
+14) [x] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
 16) [ ] show other funganble tokens
 17) [ ] plutonication deep link
 18) [ ] add loading animations
-19) [ ] icon and splash screen
+19) [x] icon and splash screen
 20) [ ] implement nicks pallet
-21) [ ] show error messages
-22) [ ] XCM
-23) [ ] credits
-24) [ ] more animations
-25) [ ] update the color theme
-26) [ ] change button names to an icon 
+21) [x] show basic error messages
+22) [ ] show more error messages
+23) [ ] XCM
+24) [ ] credits
+25) [ ] more animations
+26) [x] update the color theme
+27) [x] change button names to icons
 
 ### Other milestones
 
