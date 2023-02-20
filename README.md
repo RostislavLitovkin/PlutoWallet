@@ -28,7 +28,7 @@ Allows any dApp to communicate with supported wallets without compromising priva
 
 ### part 1 - Plutonication (Pluto connector)
 > **Note for development:** to update git submodule, run: `git submodule update --remote`
-0) [-] Create a simple dApp to test the connection between the Wallet and dApp.
+0) [x] Create a simple dApp to test the connection between the Wallet and dApp.
 1) [x] Find out how to connect the 2 apps via WebSocket (look into resources) - solved via TCP protocol.
 2) [x] Create the 2 basic call operations/methods:
   - SendMessage(PlutoMessage{Code, Data}) 
