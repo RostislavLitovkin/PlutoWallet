@@ -1,4 +1,5 @@
 Everything in this master branch was coded until the 17.2.2023 (Polkadot Global Series deadline date).
+
 To see the recent changes, go to the [Devel branch](https://github.com/RostislavLitovkin/PlutoWallet/tree/Devel).
 
 # PlutoWallet
