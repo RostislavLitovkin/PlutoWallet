@@ -1,4 +1,9 @@
 # PlutoWallet
+
+![black_logo_text](https://user-images.githubusercontent.com/77352013/225564640-49486272-bb18-4970-9b4d-0b4635874021.svg)
+
+![white_logo_text](https://user-images.githubusercontent.com/77352013/225564660-60fba903-e981-4a7c-9ad9-81d44feb0c91.svg)
+
 A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
 
 Supported platforms:
