@@ -1,0 +1,23 @@
+(Intro slide)
+Hello everyone!!
+I am super proud to be here!
+
+(Team members slide)
+Unfortunately not all of our team members were able to make it, however I would still like to mention them.
+
+(Two sub-projects slide)
+We have made a clear plan of what we wanted to achieve and that was to create a Plutonication, a standard for cross-platform peer to peer communication and a PlutoWallet, a sample wallet that would act as a good base for utilising the Plutonication.
+
+(Plutonication slide - Dušan)
+Decentralised applications need to get access to the private key in order to realise transactions. However, users do not want to risk getting their private key compromised. The solution to this are crypto wallet connectors, that allow a seamless way for connecting a wallet to the app without sharing the private key. Plutonication is one of these connector standards, that specialises on allowing a cross-platform communication.
+
+(How it works slide part 1 - Dušan)
+The dApp generates a QR code that contains the following information: LAN url with port, key, dApp name and dApp icon. This information is then used to make the connection between the two devices possible.
+
+(How it works slide part 2 - Dušan)
+The wallet then needs to accept the connection request. Once the connection is established, the dApp will receive a public key. Public key is very useful for the dApp, so that it can fetch the data about the connected wallet from the blockchain.
+
+(How it works slide part 3 - Dušan)
+The wallet can then receive any transaction requests and sign them.
+
+As mentioned, Plutonication is a standard for cross-platform peer to peer communication. It is currently available for the use as a NuGet package "and also as an NPM package".
