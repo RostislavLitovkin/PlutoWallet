@@ -169,6 +169,9 @@ It will then pass all the requested data to the PlutoWallet.
 ### Blockchain communication tools
 - https://polkadot.js.org/apps/
 
+### Polkadot JS library
+- https://polkadot.js.org/docs/api/start/api.tx (transaction example)
+
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
 - [ ] https://paritytech.github.io/parity-signer/about/Security-And-Privacy.html
