@@ -50,7 +50,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" Resize="false" />
 
 		<!-- Images -->
 
@@ -99,17 +99,10 @@
 	  <None Remove="Components\BalanceView\" />
 	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
 	  <None Remove="Components\ArgumentsView\" />
-	  <None Remove="Resources\Images\nightskybgtiny.jpg" />
-	  <None Remove="Resources\Images\nightskybgsmall.jpg" />
-	  <None Remove="Resources\Images\nightskybg.jpg" />
-	  <None Remove="Resources\Images\crop.png" />
 	  <None Remove="Components\PublicKeyQRCodeView\" />
 	  <None Remove="Resources\Splash\" />
-	  <None Remove="Resources\Splash\splash.svg" />
-	  <None Remove="Resources\Splash\splash.svg" />
 	  <None Remove="Resources\AppIcon\" />
-	  <None Remove="Resources\AppIcon\appicon.svg" />
-	  <None Remove="Resources\AppIcon\appicon.svg" />
+	  <None Remove="Resources\Fonts\Exodar-Outline.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -117,12 +110,10 @@
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
-	  <BundleResource Include="Resources\Images\nightskybgtiny.jpg" />
-	  <BundleResource Include="Resources\Images\nightskybgsmall.jpg" />
-	  <BundleResource Include="Resources\Images\nightskybg.jpg" />
-	  <BundleResource Include="Resources\Images\crop.png" />
+	  <BundleResource Include="Resources\Fonts\Exodar-Outline.ttf" />
 	  <BundleResource Include="Resources\Splash\splash.svg" />
 	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
+	  <BundleResource Include="Resources\Images\space.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

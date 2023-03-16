@@ -18,6 +18,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("fontawesome-webfont.ttf", "FontAwesome");
+                fonts.AddFont("Exodar-Outline.ttf", "Exodar");
             });
 
         //builder.Services.AddSingleton<Model.PlutonicationModel>();
