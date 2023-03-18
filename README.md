@@ -58,6 +58,8 @@ Allows any dApp to communicate with supported wallets without compromising priva
 16) [X] ip address on android devices
 50) [X] (VERY IMPORTANT) create a very detailed (and begginer friendly) documentation with how to use it and add examples
 
+51) [ ] Send multiple transactions in one
+
 101) [ ] polkadot js integration (ask Rosťa for more)
 
 102) [ ] make a javascript version
@@ -168,6 +170,9 @@ It will then pass all the requested data to the PlutoWallet.
 
 ### Blockchain communication tools
 - https://polkadot.js.org/apps/
+
+### Polkadot JS library
+- https://polkadot.js.org/docs/api/start/api.tx (transaction example)
 
 ### parity signer
 - [ ] https://www.parity.io/technologies/signer/
