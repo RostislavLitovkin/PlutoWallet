@@ -2,10 +2,15 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:scanner="clr-namespace:PlutoWallet.Components.ScannerView"
-             x:Class="PlutoWallet.Components.UniversalScannerView.UniversalScannerView">
+             x:Class="PlutoWallet.Components.UniversalScannerView.UniversalScannerView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             BackgroundColor="#66000000">
    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20">
+           CornerRadius="20"
+           HorizontalOptions="Center"
+           VerticalOptions="Center">
         <AbsoluteLayout>
 
             <VerticalStackLayout>
@@ -24,14 +29,16 @@
             </VerticalStackLayout>
 
 
-             <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
-                   Text="&lt;" FontAttributes="Bold">
-                <Label.GestureRecognizers>
+             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+
+                <AbsoluteLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnBackClicked" />
 
-                </Label.GestureRecognizers>
+                </AbsoluteLayout.GestureRecognizers>
 
-            </Label>
+            </AbsoluteLayout>
 
         </AbsoluteLayout>
 

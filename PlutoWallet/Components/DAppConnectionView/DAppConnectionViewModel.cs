@@ -16,7 +16,7 @@ namespace PlutoWallet.Components.DAppConnectionView
 
         public DAppConnectionViewModel()
         {
-
+            isVisible = false;
         }
     }
 }

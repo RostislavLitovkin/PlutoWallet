@@ -7,6 +7,7 @@ using PlutoWallet.Components.PublicKeyQRCodeView;
 using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
+using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 
@@ -39,6 +40,8 @@ public partial class App : Application
         DependencyService.Register<ArgumentsViewModel>();
 
         DependencyService.Register<PublicKeyQRCodeViewModel>();
+
+        DependencyService.Register<DAppConnectionViewModel>();
 
         if (Preferences.ContainsKey("privateKey"))
         {

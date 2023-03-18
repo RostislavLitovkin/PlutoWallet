@@ -4,11 +4,14 @@
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
              x:Class="PlutoWallet.Components.PublicKeyQRCodeView.PublicKeyQRCodeView"
              IsVisible="{Binding IsVisible}"
-             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-             AbsoluteLayout.LayoutFlags="PositionProportional">
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             BackgroundColor="#66000000">
     <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20">
+           CornerRadius="20"
+           HorizontalOptions="Center"
+           VerticalOptions="Center">
         <AbsoluteLayout>
 
             <VerticalStackLayout>
@@ -26,14 +29,16 @@
                  Value="{Binding PublicKey}"/>
             </VerticalStackLayout>
 
-            <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
-                   Text="&lt;" FontAttributes="Bold">
-                <Label.GestureRecognizers>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+
+                <AbsoluteLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnBackClicked" />
 
-                </Label.GestureRecognizers>
+                </AbsoluteLayout.GestureRecognizers>
 
-            </Label>
+            </AbsoluteLayout>
         </AbsoluteLayout>
     </Frame>
 </ContentView>

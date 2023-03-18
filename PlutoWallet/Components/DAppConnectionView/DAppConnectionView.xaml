@@ -1,12 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlutoWallet.Components.DAppConnectionView.DAppConnectionView">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             x:Class="PlutoWallet.Components.DAppConnectionView.DAppConnectionView"
+             IsVisible="{Binding IsVisible}">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20" HeightRequest="70"
+           Padding="0
+           ">
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <Image AbsoluteLayout.LayoutBounds="10, 10, 50, 50"
+                   Source="{Binding Icon}"/>
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="80, 0, AutoSize, AutoSize">
+                <Label 
+                    Text="{Binding Name}"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Start"
+                    FontSize="30"
+                    HeightRequest="40"
+                    VerticalTextAlignment="End"/>
+                <Label
+                    Text="Connected" TextColor="Green"
+                    HorizontalOptions="Start" />
+            </VerticalStackLayout>
+
+            <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
+                   Aspect="AspectFit"
+                   AbsoluteLayout.LayoutBounds="1, 0.5, 70, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDisconnectClicked" />
+
+                </Image.GestureRecognizers>
+
+            </Image>
+        </AbsoluteLayout>
+    </Frame>
 </ContentView>
 

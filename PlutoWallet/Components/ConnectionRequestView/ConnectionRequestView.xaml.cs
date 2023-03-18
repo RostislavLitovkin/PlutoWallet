@@ -2,6 +2,7 @@
 using Ajuna.NetApi.Model.Extrinsics;
 using Plutonication;
 using PlutoWallet.ViewModel;
+using PlutoWallet.Components.DAppConnectionView;
 
 namespace PlutoWallet.Components.ConnectionRequestView;
 
@@ -16,12 +17,14 @@ public partial class ConnectionRequestView : ContentView
 
     private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
-        var mainViewModel = DependencyService.Get<MainViewModel>();
-        mainViewModel.MetadataLabel = "connection accepted";
         var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
 
         var addressPort = viewModel.Url.Split(":");
 
+        DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+        dAppViewModel.Icon = viewModel.Icon;
+        dAppViewModel.Name = viewModel.Name;
+        dAppViewModel.IsVisible = true;
 
         Model.PlutonicationModel.EventManager = new PlutoEventManager();
 

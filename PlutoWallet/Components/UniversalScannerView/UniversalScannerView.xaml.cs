@@ -91,7 +91,12 @@ public partial class UniversalScannerView : ContentView
         }
         catch (Exception ex)
         {
-            viewModel.MetadataLabel = ex.Message;
+            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+            messagePopup.Title = "Error";
+            messagePopup.Text = ex.Message;
+
+            messagePopup.IsVisible = true;
         }
     }
 }

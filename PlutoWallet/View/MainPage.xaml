@@ -10,7 +10,7 @@
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
-             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView" xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
+             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView" xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView" xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
              BackgroundColor="Black">
@@ -27,10 +27,8 @@
                 Padding="30,0">
 
                 <networkselect:NetworkSelectView />
-                <Label
-                    Text="{Binding DAppName}"
-                    FontSize="16"
-                    HorizontalOptions="Center" />
+
+                <dappconnectionview:DAppConnectionView />
 
                 <addressview:AddressView
                     Title="Public key"
@@ -54,13 +52,10 @@
        <!--QR code button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
                     AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                    AbsoluteLayout.LayoutFlags="PositionProportional">
-            <Image.Source>
-                <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
-                                        Glyph="&#xf029;"
-                                         FontFamily="FontAwesome"
-                                         Size="36"/>
-            </Image.Source>
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Source="qrcodewhite.png"
+                    >
+            
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnQRClicked" />
 
@@ -71,13 +66,8 @@
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
                     AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                Source="settingswhite.png"
                >
-            <Image.Source>
-                <FontImageSource Color="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource DarkThemeWhite}}"
-                                        Glyph="&#xf1de;"
-                                         FontFamily="FontAwesome"
-                                         Size="36"/>
-            </Image.Source>
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnSettingsClicked" />
 
@@ -93,11 +83,8 @@
                                    x:Name="connectionRequestView" />
 
         <universalscannerview:UniversalScannerView
-            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-             AbsoluteLayout.LayoutFlags="PositionProportional"
             x:Name="universalScannerView"
              IsVisible="false" Opacity="0" />
-
         
         <transactionrequest:TransactionRequestView />
         
