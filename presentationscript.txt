@@ -23,5 +23,14 @@ The wallet then needs to accept the connection request. Once the connection is e
 (How it works slide part 4 - Dušan)
 The wallet can then receive any transaction requests and sign them. This is done securely without any risks of compromising your private key. The private key never leaves the wallet.
 
+(The best part! - Dušan/Rosťa)
+The best part about the Plutonication is that you can use it on any device, even the unusual once, like consoles and smartwatches.
+
+(Documentation - Dušan)
+We have also made sure that the documentation was easy to understand. A lot of examples are included.
+
+(Plutonication - Dušan)
+You can download the c# Nuget package. And also as of recently, you can also download the NPM package of Plutonication. They both work cross platform and are interchangeable. (So you can have the NPM package in the dApp side and the NuGet package in the Wallet side and they will work together flawlessly)
+
 
 As mentioned, Plutonication is a standard for cross-platform peer to peer communication. It is currently available for the use as a NuGet package "and also as an NPM package".

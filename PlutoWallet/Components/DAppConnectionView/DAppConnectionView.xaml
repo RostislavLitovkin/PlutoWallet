@@ -16,7 +16,7 @@
                     Text="{Binding Name}"
                     FontAttributes="Bold"
                     HorizontalOptions="Start"
-                    FontSize="30"
+                    FontSize="24"
                     HeightRequest="40"
                     VerticalTextAlignment="End"/>
                 <Label
