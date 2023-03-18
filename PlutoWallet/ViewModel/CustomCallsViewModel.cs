@@ -227,29 +227,25 @@ namespace PlutoWallet.ViewModel
 
         public async Task SubmitTransactionAsync()
         {
-            var client = new SubstrateClient(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), null);
+            var client = Model.AjunaClientModel.Client;
 
-            //new GenericExtrinsicCall("Balances", "transfer", dest, value);
-
+            //..
         }
 
-        public async Task GetMetadataAsync()
+        public void GetMetadata()
         {
             ErrorMessage = "";
+
             Loading = true;
+
             try
             {
-                var client = new SubstrateClient(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), null);
-                await client.ConnectAsync();
+                var client = Model.AjunaClientModel.Client;
 
                 Metadata = client.MetaData.NodeMetadata;
                 CustomMetadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
 
                 Pallets = client.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
-
-                //client.MetaData.NodeMetadata.Types
-
-                //.Select(kvp => kvp.Key).ToList<PalletModule>();
 
                 Loading = false;
             }

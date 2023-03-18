@@ -39,16 +39,6 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string dAppName;
 
-        
-
-        [RelayCommand]
-        private void IncrementCounter()
-        {
-            //Response = NetworkingModel.RequestSample();
-            //Response = KeysModel.GenerateMnemonicsArray();
-        }
-
-
         // constructor
         public MainViewModel()
         {

@@ -22,11 +22,6 @@ public partial class MainPage : ContentPage
     async void OnQRClicked(System.Object sender, System.EventArgs e)
     {
         await universalScannerView.Appear();
-
-        return;
-        //connectionRequestView.DAppName = "internal dApp";
-        //connectionRequestView.IconUrl = "internal dApp";
-
     }
 
     async void OnSettingsClicked(System.Object sender, System.EventArgs e)

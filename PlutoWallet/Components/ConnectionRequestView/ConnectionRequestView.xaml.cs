@@ -14,23 +14,7 @@ public partial class ConnectionRequestView : ContentView
         BindingContext = DependencyService.Get<ConnectionRequestViewModel>();
     }
 
-    /*public string IconUrl
-    {
-        set
-        {
-            icon.Source = value;
-        }
-    }
-    public string DAppName
-    {
-        set
-        {
-            dAppNameLabel.Text = value;
-        }
-    }
-    */
-
-    async void AcceptClicked(System.Object sender, System.EventArgs e)
+    private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
         var mainViewModel = DependencyService.Get<MainViewModel>();
         mainViewModel.MetadataLabel = "connection accepted";
@@ -83,31 +67,13 @@ public partial class ConnectionRequestView : ContentView
             Console.WriteLine("Data: " + msg.CustomDataToString());
         };
 
-        Model.PlutonicationModel.EventManager.SetupReceiveLoopAsync();
-
-
-        /*
-        Model.PlutonicationModel.Manager = new ClientPlutoManager(IPAddress.Parse(addressPort[0]), Int32.Parse(addressPort[1]));
-        Model.PlutonicationModel.Manager.Connect();
-        PlutoMessage msg = new PlutoMessage(MessageCode.PublicKey, Model.KeysModel.GetSubstrateKey());
-        await Model.PlutonicationModel.Manager.SendMessageAsync(msg);
-
-
-        mainViewModel.DAppName = "SENT";
-        await mainViewModel.PlutonicationLoop();
-
-        */
-        //var res = plutonicationManager.ReceiveMessage();
-        //Model.PlutonicationModel.Manager.CloseConnection();
-
-
+        Task setup = Model.PlutonicationModel.EventManager.SetupReceiveLoopAsync();
 
         this.IsVisible = false;
     }
 
-    async void RejectClicked(System.Object sender, System.EventArgs e)
+    private async void RejectClicked(System.Object sender, System.EventArgs e)
     {
-        //await this.FadeTo(0, 500);
         var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
         viewModel.IsVisible = false;
     }

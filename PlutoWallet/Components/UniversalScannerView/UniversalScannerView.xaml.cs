@@ -51,10 +51,6 @@ public partial class UniversalScannerView : ContentView
 
         try
         {
-            // this is just for debugging
-            //viewModel.DAppName = e.Results[0].Value;
-
-
             var scannedValue = e.Results[0].Value;
 
             // trying to connect to a dApp
@@ -81,7 +77,6 @@ public partial class UniversalScannerView : ContentView
             }
             else
             {
-                viewModel.DAppName = "We know we failed";
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
                 messagePopup.Title = "Unable to read QR code";

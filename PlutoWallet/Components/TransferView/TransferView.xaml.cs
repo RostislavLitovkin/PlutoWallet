@@ -21,7 +21,6 @@ public partial class TransferView : ContentView
         try
         {
 
-
             await TransferModel.BalancesTransferAsync(viewModel.Address, viewModel.Amount);
 
             // Hide this layout

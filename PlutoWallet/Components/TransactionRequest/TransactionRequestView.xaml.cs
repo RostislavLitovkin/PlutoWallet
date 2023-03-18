@@ -27,11 +27,7 @@ public partial class TransactionRequestView : ContentView
 
             var viewModel = DependencyService.Get<TransactionRequestViewModel>();
 
-            var client = new Model.AjunaExt.AjunaClientExt(
-                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-            await client.ConnectAsync();
+            var client = Model.AjunaClientModel.Client;
 
             await client.Author.SubmitExtrinsicAsync(
                 viewModel.AjunaMethod,
@@ -40,7 +36,6 @@ public partial class TransactionRequestView : ContentView
                 64
              );
 
-            
             // Tell the dApp that the transaction was successfull
             await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Success);
 

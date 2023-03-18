@@ -33,11 +33,9 @@
                 <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
                 <Button Text="Sing and submit"
-                        HorizontalOptions="Center"
                         Clicked="OnSubmitClicked" />
 
                 <Button Text="Reject" BackgroundColor="DarkRed"
-                        HorizontalOptions="Center"
                         Clicked="OnRejectClicked" />
             </VerticalStackLayout>
 

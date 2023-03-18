@@ -18,16 +18,11 @@ namespace PlutoWallet.Components.BalanceView
             Balance = "Loading";
             try
             {
-                var client = new Model.AjunaExt.AjunaClientExt(
-                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-                await client.ConnectAsync();
+                var client = Model.AjunaClientModel.Client;
 
                 var accountInfo = await client.SystemStorage.Account(Model.KeysModel.GetSubstrateKey());
 
                 Balance = accountInfo.Data.Free.Value.ToString();
-
             }
             catch (Exception ex)
             {

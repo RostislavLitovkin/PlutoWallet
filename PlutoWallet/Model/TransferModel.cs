@@ -32,8 +32,7 @@ namespace PlutoWallet.Model
             var baseComAmount = new BaseCom<U128>();
             baseComAmount.Create(amount);
 
-            var client = new SubstrateClient(new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")), ChargeTransactionPayment.Default());
-            await client.ConnectAsync();
+            var client = Model.AjunaClientModel.Client;
 
             var customMetadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
 

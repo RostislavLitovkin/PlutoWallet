@@ -103,6 +103,7 @@
 	  <None Remove="Resources\Splash\" />
 	  <None Remove="Resources\AppIcon\" />
 	  <None Remove="Resources\Fonts\Exodar-Outline.ttf" />
+	  <None Remove="Components\DAppConnectionView\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -175,6 +176,9 @@
 	  <MauiXaml Update="Components\PublicKeyQRCodeView\PublicKeyQRCodeView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\DAppConnectionView\DAppConnectionView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />
@@ -197,6 +201,7 @@
 	  <Folder Include="Components\PublicKeyQRCodeView\" />
 	  <Folder Include="Resources\Splash\" />
 	  <Folder Include="Resources\AppIcon\" />
+	  <Folder Include="Components\DAppConnectionView\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

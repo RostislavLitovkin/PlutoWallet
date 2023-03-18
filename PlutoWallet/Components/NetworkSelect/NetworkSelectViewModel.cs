@@ -34,12 +34,7 @@ namespace PlutoWallet.Components.NetworkSelect
                 Preferences.Set("selectedNetworkName", value.Name);
                 Preferences.Set("selectedNetwork", value.URL);
 
-                var customCallsViewModel = DependencyService.Get<ViewModel.CustomCallsViewModel>();
-                var mainViewModel = DependencyService.Get<MainViewModel>();
-                var balanceViewModel = DependencyService.Get<BalanceViewModel>();
-
-                Task gettingMetas = customCallsViewModel.GetMetadataAsync();
-                Task gettingBalance = balanceViewModel.GetBalanceAsync();
+                Task changeChain = Model.AjunaClientModel.ChangeChainAsync();
             }
         }
 
@@ -74,42 +69,6 @@ namespace PlutoWallet.Components.NetworkSelect
             }
             return list;
         }
-
-        // TODO remove method bellow
-        /*
-        public void UpdateNetworks()
-        {
-            var tmp = new List<Endpoint>();
-            tmp.AddRange(Endpoints.GetAllEndpoints);
-
-            bool isPolkadotInEndpoints = false;
-            int i = 1;
-            while (Preferences.ContainsKey("endpointName" + i) && Preferences.ContainsKey("endpointUrl" + i))
-            {
-                tmp.Add(new Endpoint
-                {
-                    Name = Preferences.Get("endpointName" + i, "") ?? throw new Exception("Endpoint name not found"),
-                    URL = Preferences.Get("endpointUrl" + i, "") ?? throw new Exception("Endpoint url not found")
-                });
-                if (tmp.Last().Name == Preferences.Get("selectedNetworkName", "Polkadot"))
-                {
-                    SelectedEndpoint = tmp.Last();
-                    isPolkadotInEndpoints = true;
-                }
-                i++;
-            }
-            networks.Clear();
-            for (int j = 0; j < tmp.Count(); ++j)
-            {
-                networks.Insert(j, tmp[j]);
-            }
-
-            if (!isPolkadotInEndpoints)
-            {
-                SelectedEndpoint = Endpoints.GetAllEndpoints[0];
-            }
-        }
-        */
     }
 }
 
