@@ -2,29 +2,35 @@
 Hello everyone!!
 I am super proud to be here!
 
-(Team members slide)
-Unfortunately not all of our team members were able to make it, however I would still like to mention them.
+(The problem we solve - Rosťa)
+Currently, there is no way to allow a communication between wallets and dApps on various platforms.
 
 (Two sub-projects slide)
-We have made a clear plan of what we wanted to achieve and that was to create a Plutonication, a standard for cross-platform peer to peer communication and a PlutoWallet, a sample wallet that would act as a good base for utilising the Plutonication.
+Our solution consists of two sub-projects: Plutonication, a standard for cross-platform peer to peer communication and a PlutoWallet, a sample wallet that would act as a good base for utilising the Plutonication.
 
 (Plutonication slide - Dušan)
-Decentralised applications need to get access to the private key in order to realise transactions. However, users do not want to risk getting their private key compromised. The solution to this are crypto wallet connectors, that allow a seamless way for connecting a wallet to the app without sharing the private key. Plutonication is one of these connector standards, that specialises on allowing a cross-platform communication.
+Decentralised applications need to get access to the private key in order to realise transactions. However, users do not want to risk getting their private key compromised. The solution to this are crypto wallet connectors, that allow a seamless way for connecting a wallet to the dApp without sharing the private key. Plutonication is one of these connector standards, that specialises on allowing a cross-platform communication.
 
 (How it works slide part 1 - Dušan)
-The dApp generates a QR code that contains the following information: LAN url with port, key, dApp name and dApp icon. This information is then used to make the websocket connection between the two devices possible.
+The dApp generates a QR code containing all the info needed for establishing the connection.
 
 (How it works slide part 2 - Rosťa)
-As you can see, we have made sure to make the QR code generation as simple as possible. You just pass all the info and the correct URI will be parsed for you.
+We have made sure the QR code generation is as simple as possible.
 
 (How it works slide part 3 - Dušan)
-The wallet then needs to accept the connection request. Once the connection is established, the dApp will receive a public key. Public key is very useful for the dApp, so that it can fetch the data about the connected wallet from the blockchain.
+Once the connection is established, the dApp will receive a public key.
 
 (How it works slide part 4 - Dušan)
-The wallet can then receive any transaction requests and sign them. This is done securely without any risks of compromising your private key. The private key never leaves the wallet.
+The wallet can then receive any transaction requests and sign them. This is done securely without any risks of compromising your private key.
 
 (The best part! - Dušan/Rosťa)
-The best part about the Plutonication is that you can use it on any device, even the unusual once, like consoles and smartwatches.
+The best part about the Plutonication is that you can use it on any device, even the unusual once, like consoles and smartwatches. (We are bringing Polkadot closer to millions of gamers who use gaming consoles.)
+
+(What value do we bring? - Rosťa)
+Our project is very comparable to WalletConnect protocol on Ethereum. That one is used by millions of people and ours could be used too.
+
+(Comparable projects - Rosťa)
+Our project can be also compared to polkadot.js extensions, however that one is limited to only web.
 
 (Documentation - Dušan)
 We have also made sure that the documentation was easy to understand. A lot of examples are included.
@@ -32,5 +38,15 @@ We have also made sure that the documentation was easy to understand. A lot of e
 (Plutonication - Dušan)
 You can download the c# Nuget package. And also as of recently, you can also download the NPM package of Plutonication. They both work cross platform and are interchangeable. (So you can have the NPM package in the dApp side and the NuGet package in the Wallet side and they will work together flawlessly)
 
+(Future plans - Rosťa)
+In the future, we would like to make a Plutonication browser extension to allow Plutonication on all existing dApps that have already integrated the polkadot.js extension.
 
-As mentioned, Plutonication is a standard for cross-platform peer to peer communication. It is currently available for the use as a NuGet package "and also as an NPM package".
+
+(PlutoWallet - Rosťa)
+The second sub-project - the PlutoWallet, is a sample wallet that utilises Plutonication. It is made in a multiplatform app UI framework which allows a quick development for all major platforms. It makes the whole development process of a wallet more sustainable. Updates do not have to be written twice.
+
+(Future plans - Rosťa)
+And these are our future plans. Today, we of course plan to win this hackathon and then, we will be submitting a w3f grant proposal and completing it.
+
+
+
