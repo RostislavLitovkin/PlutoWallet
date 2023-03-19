@@ -48,17 +48,21 @@ Our project can be also compared to polkadot.js extensions, however that one is 
 
 We have also made sure that the documentation was easy to understand. A lot of examples are included.
 
+
 **Plutonication - Dušan**
 
 Plutonication library can be used as Nuget package in C# projects. Recently we have also added npm package. That can be used to implement plutonication in JS dApp.
+
 
 **Future plans - Rosťa**
 
 In the future, we would like to make a Plutonication browser extension to allow Plutonication on all existing dApps that have already integrated the polkadot.js extension.
 
+
 **PlutoWallet - Rosťa**
 
 The second sub-project - the PlutoWallet, is a sample wallet that utilises Plutonication. It is made in a multiplatform app UI framework which allows a quick development for all major platforms. It makes the whole development process of a wallet more sustainable. Updates do not have to be written twice.
+
 
 **Future plans - Rosťa**
 
