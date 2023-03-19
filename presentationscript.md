@@ -18,15 +18,11 @@ Decentralised applications need to get access to the private key in order to rea
 
 The dApp generates a QR code containing all the info needed for establishing the connection.
 
-## **How it works slide part 2 - Rosťa**
-
-We have made sure the QR code generation is as simple as possible.
-
-## **How it works slide part 3 - Dušan**
+## **How it works slide part 2 - Dušan**
 
 Once the connection is established, the dApp will receive a public key.
 
-## **How it works slide part 4 - Dušan**
+## **How it works slide part 3 - Dušan**
 
 The wallet can then receive any transaction requests and sign them. This is done securely without any risks of compromising your private key.
 
