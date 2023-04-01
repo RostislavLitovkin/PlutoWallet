@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,31 +20,31 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
     /// <summary>
     /// >> 5 - Composite[pallet_balances.AccountData]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AccountData : BaseType
     {
         
         /// <summary>
         /// >> free
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _free;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _free;
         
         /// <summary>
         /// >> reserved
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _reserved;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _reserved;
         
         /// <summary>
         /// >> misc_frozen
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _miscFrozen;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _miscFrozen;
         
         /// <summary>
         /// >> fee_frozen
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _feeFrozen;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _feeFrozen;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Free
+        public Substrate.NetApi.Model.Types.Primitive.U128 Free
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Reserved
+        public Substrate.NetApi.Model.Types.Primitive.U128 Reserved
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 MiscFrozen
+        public Substrate.NetApi.Model.Types.Primitive.U128 MiscFrozen
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 FeeFrozen
+        public Substrate.NetApi.Model.Types.Primitive.U128 FeeFrozen
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Free = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Free = new Substrate.NetApi.Model.Types.Primitive.U128();
             Free.Decode(byteArray, ref p);
-            Reserved = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Reserved = new Substrate.NetApi.Model.Types.Primitive.U128();
             Reserved.Decode(byteArray, ref p);
-            MiscFrozen = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            MiscFrozen = new Substrate.NetApi.Model.Types.Primitive.U128();
             MiscFrozen.Decode(byteArray, ref p);
-            FeeFrozen = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            FeeFrozen = new Substrate.NetApi.Model.Types.Primitive.U128();
             FeeFrozen.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
     /// <summary>
     /// >> 229 - Composite[sp_core.offchain.OpaqueNetworkState]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OpaqueNetworkState : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
         /// <summary>
         /// >> external_addresses
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> _externalAddresses;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> _externalAddresses;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.OpaquePeerId PeerId
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> ExternalAddresses
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> ExternalAddresses
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
             var start = p;
             PeerId = new PlutoWallet.NetApiExt.Generated.Model.sp_core.OpaquePeerId();
             PeerId.Decode(byteArray, ref p);
-            ExternalAddresses = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr>();
+            ExternalAddresses = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr>();
             ExternalAddresses.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

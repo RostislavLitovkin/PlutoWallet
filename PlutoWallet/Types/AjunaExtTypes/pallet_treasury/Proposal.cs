@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
     /// <summary>
     /// >> 555 - Composite[pallet_treasury.Proposal]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Proposal : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _value;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _value;
         
         /// <summary>
         /// >> beneficiary
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
         /// <summary>
         /// >> bond
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _bond;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _bond;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Proposer
         {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Value
+        public Substrate.NetApi.Model.Types.Primitive.U128 Value
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Bond
+        public Substrate.NetApi.Model.Types.Primitive.U128 Bond
         {
             get
             {
@@ -112,11 +112,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
             var start = p;
             Proposer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Proposer.Decode(byteArray, ref p);
-            Value = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Value = new Substrate.NetApi.Model.Types.Primitive.U128();
             Value.Decode(byteArray, ref p);
             Beneficiary = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Beneficiary.Decode(byteArray, ref p);
-            Bond = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Bond = new Substrate.NetApi.Model.Types.Primitive.U128();
             Bond.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
     /// <summary>
     /// >> 170 - Composite[frame_support.dispatch.PerDispatchClassT3]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT3 : BaseType
     {
         
         /// <summary>
         /// >> normal
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _normal;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _normal;
         
         /// <summary>
         /// >> operational
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _operational;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _operational;
         
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _mandatory;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _mandatory;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Normal
+        public Substrate.NetApi.Model.Types.Primitive.U32 Normal
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Operational
+        public Substrate.NetApi.Model.Types.Primitive.U32 Operational
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Mandatory
+        public Substrate.NetApi.Model.Types.Primitive.U32 Mandatory
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Normal = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Normal = new Substrate.NetApi.Model.Types.Primitive.U32();
             Normal.Decode(byteArray, ref p);
-            Operational = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Operational = new Substrate.NetApi.Model.Types.Primitive.U32();
             Operational.Decode(byteArray, ref p);
-            Mandatory = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Mandatory = new Substrate.NetApi.Model.Types.Primitive.U32();
             Mandatory.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

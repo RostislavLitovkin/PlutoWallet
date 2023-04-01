@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,14 +20,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 405 - Composite[polkadot_primitives.v2.PvfCheckStatement]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PvfCheckStatement : BaseType
     {
         
         /// <summary>
         /// >> accept
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Bool _accept;
+        private Substrate.NetApi.Model.Types.Primitive.Bool _accept;
         
         /// <summary>
         /// >> subject
@@ -37,14 +37,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> session_index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _sessionIndex;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _sessionIndex;
         
         /// <summary>
         /// >> validator_index
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex _validatorIndex;
         
-        public Ajuna.NetApi.Model.Types.Primitive.Bool Accept
+        public Substrate.NetApi.Model.Types.Primitive.Bool Accept
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SessionIndex
+        public Substrate.NetApi.Model.Types.Primitive.U32 SessionIndex
         {
             get
             {
@@ -110,11 +110,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Accept = new Ajuna.NetApi.Model.Types.Primitive.Bool();
+            Accept = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Accept.Decode(byteArray, ref p);
             Subject = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash();
             Subject.Decode(byteArray, ref p);
-            SessionIndex = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);
             ValidatorIndex = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex();
             ValidatorIndex.Decode(byteArray, ref p);

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,36 +20,36 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
     /// <summary>
     /// >> 3 - Composite[frame_system.AccountInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AccountInfo : BaseType
     {
         
         /// <summary>
         /// >> nonce
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _nonce;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _nonce;
         
         /// <summary>
         /// >> consumers
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _consumers;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _consumers;
         
         /// <summary>
         /// >> providers
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _providers;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _providers;
         
         /// <summary>
         /// >> sufficients
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _sufficients;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _sufficients;
         
         /// <summary>
         /// >> data
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.pallet_balances.AccountData _data;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Nonce
+        public Substrate.NetApi.Model.Types.Primitive.U32 Nonce
         {
             get
             {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Consumers
+        public Substrate.NetApi.Model.Types.Primitive.U32 Consumers
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Providers
+        public Substrate.NetApi.Model.Types.Primitive.U32 Providers
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Sufficients
+        public Substrate.NetApi.Model.Types.Primitive.U32 Sufficients
         {
             get
             {
@@ -128,13 +128,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Nonce = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Nonce = new Substrate.NetApi.Model.Types.Primitive.U32();
             Nonce.Decode(byteArray, ref p);
-            Consumers = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Consumers = new Substrate.NetApi.Model.Types.Primitive.U32();
             Consumers.Decode(byteArray, ref p);
-            Providers = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Providers = new Substrate.NetApi.Model.Types.Primitive.U32();
             Providers.Decode(byteArray, ref p);
-            Sufficients = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Sufficients = new Substrate.NetApi.Model.Types.Primitive.U32();
             Sufficients.Decode(byteArray, ref p);
             Data = new PlutoWallet.NetApiExt.Generated.Model.pallet_balances.AccountData();
             Data.Decode(byteArray, ref p);

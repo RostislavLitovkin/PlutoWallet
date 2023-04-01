@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
     /// <summary>
     /// >> 712 - Composite[polkadot_runtime_common.crowdloan.FundInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class FundInfo : BaseType
     {
         
@@ -32,27 +32,27 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         /// <summary>
         /// >> verifier
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> _verifier;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> _verifier;
         
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _deposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
         /// <summary>
         /// >> raised
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _raised;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _raised;
         
         /// <summary>
         /// >> end
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _end;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _end;
         
         /// <summary>
         /// >> cap
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _cap;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _cap;
         
         /// <summary>
         /// >> last_contribution
@@ -62,17 +62,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         /// <summary>
         /// >> first_period
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _firstPeriod;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _firstPeriod;
         
         /// <summary>
         /// >> last_period
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _lastPeriod;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _lastPeriod;
         
         /// <summary>
         /// >> fund_index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _fundIndex;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _fundIndex;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Depositor
         {
@@ -86,7 +86,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> Verifier
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> Verifier
         {
             get
             {
@@ -98,7 +98,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Deposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
         {
             get
             {
@@ -110,7 +110,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Raised
+        public Substrate.NetApi.Model.Types.Primitive.U128 Raised
         {
             get
             {
@@ -122,7 +122,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 End
+        public Substrate.NetApi.Model.Types.Primitive.U32 End
         {
             get
             {
@@ -134,7 +134,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Cap
+        public Substrate.NetApi.Model.Types.Primitive.U128 Cap
         {
             get
             {
@@ -158,7 +158,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 FirstPeriod
+        public Substrate.NetApi.Model.Types.Primitive.U32 FirstPeriod
         {
             get
             {
@@ -170,7 +170,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 LastPeriod
+        public Substrate.NetApi.Model.Types.Primitive.U32 LastPeriod
         {
             get
             {
@@ -182,7 +182,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 FundIndex
+        public Substrate.NetApi.Model.Types.Primitive.U32 FundIndex
         {
             get
             {
@@ -220,23 +220,23 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             var start = p;
             Depositor = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Verifier = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner>();
+            Verifier = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner>();
             Verifier.Decode(byteArray, ref p);
-            Deposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Raised = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Raised = new Substrate.NetApi.Model.Types.Primitive.U128();
             Raised.Decode(byteArray, ref p);
-            End = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            End = new Substrate.NetApi.Model.Types.Primitive.U32();
             End.Decode(byteArray, ref p);
-            Cap = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Cap = new Substrate.NetApi.Model.Types.Primitive.U128();
             Cap.Decode(byteArray, ref p);
             LastContribution = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution();
             LastContribution.Decode(byteArray, ref p);
-            FirstPeriod = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            FirstPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             FirstPeriod.Decode(byteArray, ref p);
-            LastPeriod = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            LastPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             LastPeriod.Decode(byteArray, ref p);
-            FundIndex = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            FundIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             FundIndex.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

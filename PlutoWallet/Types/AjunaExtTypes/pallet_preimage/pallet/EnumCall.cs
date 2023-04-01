@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -31,7 +31,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_preimage.pallet
     /// >> 184 - Variant[pallet_preimage.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>
+    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>
     {
     }
 }

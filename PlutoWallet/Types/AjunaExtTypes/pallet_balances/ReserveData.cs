@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
     /// <summary>
     /// >> 475 - Composite[pallet_balances.ReserveData]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReserveData : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
         /// <summary>
         /// >> amount
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _amount;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _amount;
         
         public PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 Id
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Amount
+        public Substrate.NetApi.Model.Types.Primitive.U128 Amount
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances
             var start = p;
             Id = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8();
             Id.Decode(byteArray, ref p);
-            Amount = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Amount = new Substrate.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

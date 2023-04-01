@@ -1,5 +1,5 @@
 ﻿using System;
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Extrinsics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PlutoWallet.Types;

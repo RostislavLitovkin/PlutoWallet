@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,31 +20,31 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
     /// <summary>
     /// >> 502 - Composite[pallet_staking.slashing.SlashingSpans]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SlashingSpans : BaseType
     {
         
         /// <summary>
         /// >> span_index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _spanIndex;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _spanIndex;
         
         /// <summary>
         /// >> last_start
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _lastStart;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _lastStart;
         
         /// <summary>
         /// >> last_nonzero_slash
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _lastNonzeroSlash;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _lastNonzeroSlash;
         
         /// <summary>
         /// >> prior
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U32> _prior;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32> _prior;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SpanIndex
+        public Substrate.NetApi.Model.Types.Primitive.U32 SpanIndex
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 LastStart
+        public Substrate.NetApi.Model.Types.Primitive.U32 LastStart
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 LastNonzeroSlash
+        public Substrate.NetApi.Model.Types.Primitive.U32 LastNonzeroSlash
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U32> Prior
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32> Prior
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            SpanIndex = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SpanIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SpanIndex.Decode(byteArray, ref p);
-            LastStart = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            LastStart = new Substrate.NetApi.Model.Types.Primitive.U32();
             LastStart.Decode(byteArray, ref p);
-            LastNonzeroSlash = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            LastNonzeroSlash = new Substrate.NetApi.Model.Types.Primitive.U32();
             LastNonzeroSlash.Decode(byteArray, ref p);
-            Prior = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            Prior = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>();
             Prior.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

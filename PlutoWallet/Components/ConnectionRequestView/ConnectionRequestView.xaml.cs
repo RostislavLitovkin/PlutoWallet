@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Extrinsics;
 using Plutonication;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.DAppConnectionView;
@@ -55,7 +55,11 @@ public partial class ConnectionRequestView : ContentView
             {
                 case MessageCode.Method:
 
-                    Method method = msg.GetMethod();
+                    // This is temporary
+                    Ajuna.NetApi.Model.Extrinsics.Method tempMethod = msg.GetMethod();
+
+                    Method method = new Method(tempMethod.ModuleIndex, tempMethod.CallIndex, tempMethod.Parameters);
+
                     var transactionRequestViewModel = DependencyService.Get<Components.TransactionRequest.TransactionRequestViewModel>();
                     transactionRequestViewModel.AjunaMethod = method;
                     transactionRequestViewModel.IsVisible = true;

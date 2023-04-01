@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
     /// >> 404 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode, Ajuna.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData>, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.PvfCheckStatement, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData>, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.PvfCheckStatement, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature>>
     {
     }
 }

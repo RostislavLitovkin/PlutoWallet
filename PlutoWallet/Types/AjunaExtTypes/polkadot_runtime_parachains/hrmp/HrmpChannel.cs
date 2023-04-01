@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,51 +20,51 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
     /// <summary>
     /// >> 688 - Composite[polkadot_runtime_parachains.hrmp.HrmpChannel]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HrmpChannel : BaseType
     {
         
         /// <summary>
         /// >> max_capacity
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _maxCapacity;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _maxCapacity;
         
         /// <summary>
         /// >> max_total_size
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _maxTotalSize;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _maxTotalSize;
         
         /// <summary>
         /// >> max_message_size
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _maxMessageSize;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _maxMessageSize;
         
         /// <summary>
         /// >> msg_count
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _msgCount;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _msgCount;
         
         /// <summary>
         /// >> total_size
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _totalSize;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _totalSize;
         
         /// <summary>
         /// >> mqc_head
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> _mqcHead;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> _mqcHead;
         
         /// <summary>
         /// >> sender_deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _senderDeposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _senderDeposit;
         
         /// <summary>
         /// >> recipient_deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _recipientDeposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _recipientDeposit;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MaxCapacity
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxCapacity
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MaxTotalSize
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxTotalSize
         {
             get
             {
@@ -88,7 +88,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MaxMessageSize
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxMessageSize
         {
             get
             {
@@ -100,7 +100,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MsgCount
+        public Substrate.NetApi.Model.Types.Primitive.U32 MsgCount
         {
             get
             {
@@ -112,7 +112,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 TotalSize
+        public Substrate.NetApi.Model.Types.Primitive.U32 TotalSize
         {
             get
             {
@@ -124,7 +124,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> MqcHead
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> MqcHead
         {
             get
             {
@@ -136,7 +136,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 SenderDeposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 SenderDeposit
         {
             get
             {
@@ -148,7 +148,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 RecipientDeposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 RecipientDeposit
         {
             get
             {
@@ -182,21 +182,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            MaxCapacity = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            MaxCapacity = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxCapacity.Decode(byteArray, ref p);
-            MaxTotalSize = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            MaxTotalSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxTotalSize.Decode(byteArray, ref p);
-            MaxMessageSize = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            MaxMessageSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxMessageSize.Decode(byteArray, ref p);
-            MsgCount = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            MsgCount = new Substrate.NetApi.Model.Types.Primitive.U32();
             MsgCount.Decode(byteArray, ref p);
-            TotalSize = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            TotalSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             TotalSize.Decode(byteArray, ref p);
-            MqcHead = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>();
+            MqcHead = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>();
             MqcHead.Decode(byteArray, ref p);
-            SenderDeposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            SenderDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             SenderDeposit.Decode(byteArray, ref p);
-            RecipientDeposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            RecipientDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             RecipientDeposit.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

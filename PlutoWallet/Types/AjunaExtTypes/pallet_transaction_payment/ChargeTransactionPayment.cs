@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,16 +20,16 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_transaction_payment
     /// <summary>
     /// >> 737 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ChargeTransactionPayment : BaseType
     {
         
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> _value;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> _value;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> Value
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_transaction_payment
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

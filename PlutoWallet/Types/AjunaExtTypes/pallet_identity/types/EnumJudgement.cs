@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -36,7 +36,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 302 - Variant[pallet_identity.types.Judgement]
     /// </summary>
-    public sealed class EnumJudgement : BaseEnumExt<Judgement, BaseVoid, Ajuna.NetApi.Model.Types.Primitive.U128, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumJudgement : BaseEnumExt<Judgement, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
     {
     }
 }

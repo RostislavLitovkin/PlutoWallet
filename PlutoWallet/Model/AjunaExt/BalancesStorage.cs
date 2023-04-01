@@ -1,6 +1,6 @@
 ﻿using System;
-using Ajuna.NetApi;
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Extrinsics;
 using PlutoWallet.NetApiExt.Generated.Model.pallet_balances;
 using PlutoWallet.NetApiExt.Generated.Model.pallet_staking;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec;
@@ -21,14 +21,14 @@ namespace PlutoWallet.Model.AjunaExt
         public BalancesStorage(AjunaClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "TotalIssuance"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Ajuna.NetApi.Model.Types.Primitive.U128)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Account"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                            Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(AccountData)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Locks"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                            Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(WeakBoundedVecT2)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Reserves"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                            Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(BoundedVecT4)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "StorageVersion"), new System.Tuple<Ajuna.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(EnumReleases)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "TotalIssuance"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(AccountData)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Locks"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(WeakBoundedVecT2)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Reserves"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(AccountId32), typeof(BoundedVecT4)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "StorageVersion"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(EnumReleases)));
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// </summary>
         public static string TotalIssuanceParams()
         {
-            return RequestGenerator.GetStorage("Balances", "TotalIssuance", Ajuna.NetApi.Model.Meta.Storage.Type.Plain);
+            return RequestGenerator.GetStorage("Balances", "TotalIssuance", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
         }
 
         /// <summary>
@@ -53,10 +53,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> TotalIssuance
         ///  The total units issued in the system.
         /// </summary>
-        public async Task<Ajuna.NetApi.Model.Types.Primitive.U128> TotalIssuance(CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> TotalIssuance(CancellationToken token)
         {
             string parameters = BalancesStorage.TotalIssuanceParams();
-            var result = await _client.GetStorageAsync<Ajuna.NetApi.Model.Types.Primitive.U128>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
             return result;
         }
 
@@ -89,8 +89,8 @@ namespace PlutoWallet.Model.AjunaExt
         /// </summary>
         public static string AccountParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
-            return RequestGenerator.GetStorage("Balances", "Account", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                        Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
+            return RequestGenerator.GetStorage("Balances", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
                         key});
         }
 
@@ -145,8 +145,8 @@ namespace PlutoWallet.Model.AjunaExt
         /// </summary>
         public static string LocksParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
-            return RequestGenerator.GetStorage("Balances", "Locks", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                        Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
+            return RequestGenerator.GetStorage("Balances", "Locks", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
                         key});
         }
 
@@ -177,8 +177,8 @@ namespace PlutoWallet.Model.AjunaExt
         /// </summary>
         public static string ReservesParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
         {
-            return RequestGenerator.GetStorage("Balances", "Reserves", Ajuna.NetApi.Model.Meta.Storage.Type.Map, new Ajuna.NetApi.Model.Meta.Storage.Hasher[] {
-                        Ajuna.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Ajuna.NetApi.Model.Types.IType[] {
+            return RequestGenerator.GetStorage("Balances", "Reserves", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
                         key});
         }
 
@@ -210,7 +210,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// </summary>
         public static string StorageVersionParams()
         {
-            return RequestGenerator.GetStorage("Balances", "StorageVersion", Ajuna.NetApi.Model.Meta.Storage.Type.Plain);
+            return RequestGenerator.GetStorage("Balances", "StorageVersion", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
         }
 
         /// <summary>
@@ -243,7 +243,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Transfer(EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> value)
+        public static Method Transfer(EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -255,7 +255,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_balance
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetBalance(EnumMultiAddress who, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> new_free, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> new_reserved)
+        public static Method SetBalance(EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_reserved)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(who.Encode());
@@ -268,7 +268,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceTransfer(EnumMultiAddress source, EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> value)
+        public static Method ForceTransfer(EnumMultiAddress source, EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(source.Encode());
@@ -281,7 +281,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_keep_alive
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferKeepAlive(EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> value)
+        public static Method TransferKeepAlive(EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -293,7 +293,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_all
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferAll(EnumMultiAddress dest, Ajuna.NetApi.Model.Types.Primitive.Bool keep_alive)
+        public static Method TransferAll(EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -305,7 +305,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_unreserve
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceUnreserve(EnumMultiAddress who, Ajuna.NetApi.Model.Types.Primitive.U128 amount)
+        public static Method ForceUnreserve(EnumMultiAddress who, Substrate.NetApi.Model.Types.Primitive.U128 amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(who.Encode());
@@ -321,9 +321,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ExistentialDeposit
         ///  The minimum amount required to keep an account open.
         /// </summary>
-        public Ajuna.NetApi.Model.Types.Primitive.U128 ExistentialDeposit()
+        public Substrate.NetApi.Model.Types.Primitive.U128 ExistentialDeposit()
         {
-            var result = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            var result = new Substrate.NetApi.Model.Types.Primitive.U128();
             result.Create("0xF4010000000000000000000000000000");
             return result;
         }
@@ -333,9 +333,9 @@ namespace PlutoWallet.Model.AjunaExt
         ///  The maximum number of locks that should exist on an account.
         ///  Not strictly enforced, but used for weight estimation.
         /// </summary>
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MaxLocks()
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxLocks()
         {
-            var result = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x32000000");
             return result;
         }
@@ -344,9 +344,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> MaxReserves
         ///  The maximum number of named reserves that can exist on an account.
         /// </summary>
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MaxReserves()
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxReserves()
         {
-            var result = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x00000000");
             return result;
         }

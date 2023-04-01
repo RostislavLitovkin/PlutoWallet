@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -38,7 +38,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_utility.pallet
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError>, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError, PlutoWallet.NetApiExt.Generated.Types.Base.EnumResult>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError>, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError, PlutoWallet.NetApiExt.Generated.Types.Base.EnumResult>
     {
     }
 }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_no
     /// <summary>
     /// >> 729 - Composite[frame_system.extensions.check_non_zero_sender.CheckNonZeroSender]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckNonZeroSender : BaseType
     {
         

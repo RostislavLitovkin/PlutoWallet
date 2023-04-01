@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
     /// <summary>
     /// >> 610 - Composite[pallet_election_provider_multi_phase.signed.SignedSubmission]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SignedSubmission : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _deposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
         /// <summary>
         /// >> raw_solution
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> call_fee
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _callFee;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _callFee;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Who
         {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Deposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 CallFee
+        public Substrate.NetApi.Model.Types.Primitive.U128 CallFee
         {
             get
             {
@@ -112,11 +112,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             var start = p;
             Who = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Who.Decode(byteArray, ref p);
-            Deposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
             RawSolution = new PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.RawSolution();
             RawSolution.Decode(byteArray, ref p);
-            CallFee = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            CallFee = new Substrate.NetApi.Model.Types.Primitive.U128();
             CallFee.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

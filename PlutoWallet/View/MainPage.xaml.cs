@@ -2,7 +2,7 @@
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.TransactionRequest;
 
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Extrinsics;
 using Plutonication;
 
 namespace PlutoWallet.View;

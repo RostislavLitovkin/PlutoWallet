@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
     /// <summary>
     /// >> 580 - Composite[pallet_proxy.ProxyDefinition]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ProxyDefinition : BaseType
     {
         
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         /// <summary>
         /// >> delay
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _delay;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _delay;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Delegate
         {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Delay
+        public Substrate.NetApi.Model.Types.Primitive.U32 Delay
         {
             get
             {
@@ -96,7 +96,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             Delegate.Decode(byteArray, ref p);
             ProxyType = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumProxyType();
             ProxyType.Decode(byteArray, ref p);
-            Delay = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Delay = new Substrate.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_session
     /// <summary>
     /// >> 191 - Composite[sp_session.MembershipProof]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MembershipProof : BaseType
     {
         
         /// <summary>
         /// >> session
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _session;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _session;
         
         /// <summary>
         /// >> trie_nodes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>> _trieNodes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> _trieNodes;
         
         /// <summary>
         /// >> validator_count
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _validatorCount;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _validatorCount;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Session
+        public Substrate.NetApi.Model.Types.Primitive.U32 Session
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_session
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>> TrieNodes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> TrieNodes
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_session
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ValidatorCount
+        public Substrate.NetApi.Model.Types.Primitive.U32 ValidatorCount
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_session
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Session = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Session = new Substrate.NetApi.Model.Types.Primitive.U32();
             Session.Decode(byteArray, ref p);
-            TrieNodes = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>>();
+            TrieNodes = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>();
             TrieNodes.Decode(byteArray, ref p);
-            ValidatorCount = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ValidatorCount = new Substrate.NetApi.Model.Types.Primitive.U32();
             ValidatorCount.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

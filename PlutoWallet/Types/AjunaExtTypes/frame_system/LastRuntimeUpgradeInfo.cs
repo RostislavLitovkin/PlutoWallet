@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
     /// <summary>
     /// >> 159 - Composite[frame_system.LastRuntimeUpgradeInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class LastRuntimeUpgradeInfo : BaseType
     {
         
         /// <summary>
         /// >> spec_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32> _specVersion;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> _specVersion;
         
         /// <summary>
         /// >> spec_name
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Str _specName;
+        private Substrate.NetApi.Model.Types.Primitive.Str _specName;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32> SpecVersion
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> SpecVersion
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Str SpecName
+        public Substrate.NetApi.Model.Types.Primitive.Str SpecName
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            SpecVersion = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            SpecVersion = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             SpecVersion.Decode(byteArray, ref p);
-            SpecName = new Ajuna.NetApi.Model.Types.Primitive.Str();
+            SpecName = new Substrate.NetApi.Model.Types.Primitive.Str();
             SpecName.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

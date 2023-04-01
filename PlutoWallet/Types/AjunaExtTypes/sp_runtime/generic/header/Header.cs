@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header
     /// <summary>
     /// >> 187 - Composite[sp_runtime.generic.header.Header]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Header : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header
         /// <summary>
         /// >> number
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32> _number;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> _number;
         
         /// <summary>
         /// >> state_root
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32> Number
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> Number
         {
             get
             {
@@ -130,7 +130,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header
             var start = p;
             ParentHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
             ParentHash.Decode(byteArray, ref p);
-            Number = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            Number = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Number.Decode(byteArray, ref p);
             StateRoot = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
             StateRoot.Decode(byteArray, ref p);

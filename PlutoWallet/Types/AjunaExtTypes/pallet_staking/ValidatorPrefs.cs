@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
     /// <summary>
     /// >> 41 - Composite[pallet_staking.ValidatorPrefs]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ValidatorPrefs : BaseType
     {
         
         /// <summary>
         /// >> commission
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> _commission;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> _commission;
         
         /// <summary>
         /// >> blocked
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Bool _blocked;
+        private Substrate.NetApi.Model.Types.Primitive.Bool _blocked;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> Commission
+        public Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> Commission
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Bool Blocked
+        public Substrate.NetApi.Model.Types.Primitive.Bool Blocked
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Commission = new Ajuna.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill>();
+            Commission = new Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill>();
             Commission.Decode(byteArray, ref p);
-            Blocked = new Ajuna.NetApi.Model.Types.Primitive.Bool();
+            Blocked = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Blocked.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

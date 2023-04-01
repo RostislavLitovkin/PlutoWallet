@@ -32,7 +32,7 @@ public partial class TransactionRequestView : ContentView
             await client.Author.SubmitExtrinsicAsync(
                 viewModel.AjunaMethod,
                 Model.KeysModel.GetAccount(),
-                Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
+                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
                 64
              );
 

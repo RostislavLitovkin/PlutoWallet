@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -36,7 +36,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips.pallet
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128>, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>
     {
     }
 }

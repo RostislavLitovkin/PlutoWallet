@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
     /// <summary>
     /// >> 591 - Composite[pallet_bounties.Bounty]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Bounty : BaseType
     {
         
@@ -32,22 +32,22 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _value;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _value;
         
         /// <summary>
         /// >> fee
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _fee;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _fee;
         
         /// <summary>
         /// >> curator_deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _curatorDeposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _curatorDeposit;
         
         /// <summary>
         /// >> bond
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _bond;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _bond;
         
         /// <summary>
         /// >> status
@@ -66,7 +66,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Value
+        public Substrate.NetApi.Model.Types.Primitive.U128 Value
         {
             get
             {
@@ -78,7 +78,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Fee
+        public Substrate.NetApi.Model.Types.Primitive.U128 Fee
         {
             get
             {
@@ -90,7 +90,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 CuratorDeposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 CuratorDeposit
         {
             get
             {
@@ -102,7 +102,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Bond
+        public Substrate.NetApi.Model.Types.Primitive.U128 Bond
         {
             get
             {
@@ -148,13 +148,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             var start = p;
             Proposer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Proposer.Decode(byteArray, ref p);
-            Value = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Value = new Substrate.NetApi.Model.Types.Primitive.U128();
             Value.Decode(byteArray, ref p);
-            Fee = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Fee = new Substrate.NetApi.Model.Types.Primitive.U128();
             Fee.Decode(byteArray, ref p);
-            CuratorDeposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            CuratorDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             CuratorDeposit.Decode(byteArray, ref p);
-            Bond = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Bond = new Substrate.NetApi.Model.Types.Primitive.U128();
             Bond.Decode(byteArray, ref p);
             Status = new PlutoWallet.NetApiExt.Generated.Model.pallet_bounties.EnumBountyStatus();
             Status.Decode(byteArray, ref p);

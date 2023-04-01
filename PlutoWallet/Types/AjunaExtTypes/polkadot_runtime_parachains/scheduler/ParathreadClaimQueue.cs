@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
     /// <summary>
     /// >> 654 - Composite[polkadot_runtime_parachains.scheduler.ParathreadClaimQueue]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParathreadClaimQueue : BaseType
     {
         
         /// <summary>
         /// >> queue
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> _queue;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> _queue;
         
         /// <summary>
         /// >> next_core_offset
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _nextCoreOffset;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _nextCoreOffset;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> Queue
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> Queue
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 NextCoreOffset
+        public Substrate.NetApi.Model.Types.Primitive.U32 NextCoreOffset
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Queue = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread>();
+            Queue = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread>();
             Queue.Decode(byteArray, ref p);
-            NextCoreOffset = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            NextCoreOffset = new Substrate.NetApi.Model.Types.Primitive.U32();
             NextCoreOffset.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

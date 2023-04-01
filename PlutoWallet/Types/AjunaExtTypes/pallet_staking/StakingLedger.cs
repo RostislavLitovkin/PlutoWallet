@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
     /// <summary>
     /// >> 484 - Composite[pallet_staking.StakingLedger]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StakingLedger : BaseType
     {
         
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> total
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> _total;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> _total;
         
         /// <summary>
         /// >> active
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> _active;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> _active;
         
         /// <summary>
         /// >> unlocking
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> Total
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> Total
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128> Active
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> Active
         {
             get
             {
@@ -130,9 +130,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             var start = p;
             Stash = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Stash.Decode(byteArray, ref p);
-            Total = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128>();
+            Total = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Total.Decode(byteArray, ref p);
-            Active = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U128>();
+            Active = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Active.Decode(byteArray, ref p);
             Unlocking = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
             Unlocking.Decode(byteArray, ref p);

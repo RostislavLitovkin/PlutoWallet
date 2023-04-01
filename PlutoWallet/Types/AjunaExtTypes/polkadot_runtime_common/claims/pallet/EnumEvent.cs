@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.claims.p
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Ajuna.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Substrate.NetApi.Model.Types.Primitive.U128>>
     {
     }
 }

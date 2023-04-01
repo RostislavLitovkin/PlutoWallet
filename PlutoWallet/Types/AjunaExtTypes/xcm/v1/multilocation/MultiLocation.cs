@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
     /// <summary>
     /// >> 122 - Composite[xcm.v1.multilocation.MultiLocation]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiLocation : BaseType
     {
         
         /// <summary>
         /// >> parents
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U8 _parents;
+        private Substrate.NetApi.Model.Types.Primitive.U8 _parents;
         
         /// <summary>
         /// >> interior
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation.EnumJunctions _interior;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U8 Parents
+        public Substrate.NetApi.Model.Types.Primitive.U8 Parents
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Parents = new Ajuna.NetApi.Model.Types.Primitive.U8();
+            Parents = new Substrate.NetApi.Model.Types.Primitive.U8();
             Parents.Decode(byteArray, ref p);
             Interior = new PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation.EnumJunctions();
             Interior.Decode(byteArray, ref p);

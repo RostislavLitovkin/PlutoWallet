@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,14 +20,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
     /// <summary>
     /// >> 533 - Composite[pallet_democracy.types.ReferendumStatus]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReferendumStatus : BaseType
     {
         
         /// <summary>
         /// >> end
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _end;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _end;
         
         /// <summary>
         /// >> proposal
@@ -42,14 +42,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
         /// <summary>
         /// >> delay
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _delay;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _delay;
         
         /// <summary>
         /// >> tally
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types.Tally _tally;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 End
+        public Substrate.NetApi.Model.Types.Primitive.U32 End
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Delay
+        public Substrate.NetApi.Model.Types.Primitive.U32 Delay
         {
             get
             {
@@ -128,13 +128,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            End = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            End = new Substrate.NetApi.Model.Types.Primitive.U32();
             End.Decode(byteArray, ref p);
             Proposal = new PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded();
             Proposal.Decode(byteArray, ref p);
             Threshold = new PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold();
             Threshold.Decode(byteArray, ref p);
-            Delay = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Delay = new Substrate.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);
             Tally = new PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types.Tally();
             Tally.Decode(byteArray, ref p);

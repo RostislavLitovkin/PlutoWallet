@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,14 +20,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 696 - Composite[polkadot_primitives.v2.SessionInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SessionInfo : BaseType
     {
         
         /// <summary>
         /// >> active_validator_indices
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex> _activeValidatorIndices;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex> _activeValidatorIndices;
         
         /// <summary>
         /// >> random_seed
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> dispute_period
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _disputePeriod;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _disputePeriod;
         
         /// <summary>
         /// >> validators
@@ -47,12 +47,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> discovery_keys
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public> _discoveryKeys;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public> _discoveryKeys;
         
         /// <summary>
         /// >> assignment_keys
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public> _assignmentKeys;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public> _assignmentKeys;
         
         /// <summary>
         /// >> validator_groups
@@ -62,34 +62,34 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> n_cores
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _nCores;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _nCores;
         
         /// <summary>
         /// >> zeroth_delay_tranche_width
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _zerothDelayTrancheWidth;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _zerothDelayTrancheWidth;
         
         /// <summary>
         /// >> relay_vrf_modulo_samples
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _relayVrfModuloSamples;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _relayVrfModuloSamples;
         
         /// <summary>
         /// >> n_delay_tranches
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _nDelayTranches;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _nDelayTranches;
         
         /// <summary>
         /// >> no_show_slots
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _noShowSlots;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _noShowSlots;
         
         /// <summary>
         /// >> needed_approvals
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _neededApprovals;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _neededApprovals;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex> ActiveValidatorIndices
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex> ActiveValidatorIndices
         {
             get
             {
@@ -113,7 +113,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 DisputePeriod
+        public Substrate.NetApi.Model.Types.Primitive.U32 DisputePeriod
         {
             get
             {
@@ -137,7 +137,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public> DiscoveryKeys
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public> DiscoveryKeys
         {
             get
             {
@@ -149,7 +149,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public> AssignmentKeys
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public> AssignmentKeys
         {
             get
             {
@@ -173,7 +173,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 NCores
+        public Substrate.NetApi.Model.Types.Primitive.U32 NCores
         {
             get
             {
@@ -185,7 +185,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ZerothDelayTrancheWidth
+        public Substrate.NetApi.Model.Types.Primitive.U32 ZerothDelayTrancheWidth
         {
             get
             {
@@ -197,7 +197,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 RelayVrfModuloSamples
+        public Substrate.NetApi.Model.Types.Primitive.U32 RelayVrfModuloSamples
         {
             get
             {
@@ -209,7 +209,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 NDelayTranches
+        public Substrate.NetApi.Model.Types.Primitive.U32 NDelayTranches
         {
             get
             {
@@ -221,7 +221,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 NoShowSlots
+        public Substrate.NetApi.Model.Types.Primitive.U32 NoShowSlots
         {
             get
             {
@@ -233,7 +233,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 NeededApprovals
+        public Substrate.NetApi.Model.Types.Primitive.U32 NeededApprovals
         {
             get
             {
@@ -272,31 +272,31 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ActiveValidatorIndices = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex>();
+            ActiveValidatorIndices = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex>();
             ActiveValidatorIndices.Decode(byteArray, ref p);
             RandomSeed = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8();
             RandomSeed.Decode(byteArray, ref p);
-            DisputePeriod = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            DisputePeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             DisputePeriod.Decode(byteArray, ref p);
             Validators = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.IndexedVecT1();
             Validators.Decode(byteArray, ref p);
-            DiscoveryKeys = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public>();
+            DiscoveryKeys = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public>();
             DiscoveryKeys.Decode(byteArray, ref p);
-            AssignmentKeys = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public>();
+            AssignmentKeys = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public>();
             AssignmentKeys.Decode(byteArray, ref p);
             ValidatorGroups = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.IndexedVecT2();
             ValidatorGroups.Decode(byteArray, ref p);
-            NCores = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            NCores = new Substrate.NetApi.Model.Types.Primitive.U32();
             NCores.Decode(byteArray, ref p);
-            ZerothDelayTrancheWidth = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ZerothDelayTrancheWidth = new Substrate.NetApi.Model.Types.Primitive.U32();
             ZerothDelayTrancheWidth.Decode(byteArray, ref p);
-            RelayVrfModuloSamples = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            RelayVrfModuloSamples = new Substrate.NetApi.Model.Types.Primitive.U32();
             RelayVrfModuloSamples.Decode(byteArray, ref p);
-            NDelayTranches = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            NDelayTranches = new Substrate.NetApi.Model.Types.Primitive.U32();
             NDelayTranches.Decode(byteArray, ref p);
-            NoShowSlots = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            NoShowSlots = new Substrate.NetApi.Model.Types.Primitive.U32();
             NoShowSlots.Decode(byteArray, ref p);
-            NeededApprovals = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            NeededApprovals = new Substrate.NetApi.Model.Types.Primitive.U32();
             NeededApprovals.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

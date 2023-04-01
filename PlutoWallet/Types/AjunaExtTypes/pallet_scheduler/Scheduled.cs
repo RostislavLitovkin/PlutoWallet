@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,19 +20,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
     /// <summary>
     /// >> 179 - Composite[pallet_scheduler.Scheduled]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Scheduled : BaseType
     {
         
         /// <summary>
         /// >> maybe_id
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> _maybeId;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> _maybeId;
         
         /// <summary>
         /// >> priority
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U8 _priority;
+        private Substrate.NetApi.Model.Types.Primitive.U8 _priority;
         
         /// <summary>
         /// >> call
@@ -42,14 +42,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         /// <summary>
         /// >> maybe_periodic
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>> _maybePeriodic;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>> _maybePeriodic;
         
         /// <summary>
         /// >> origin
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumOriginCaller _origin;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> MaybeId
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> MaybeId
         {
             get
             {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U8 Priority
+        public Substrate.NetApi.Model.Types.Primitive.U8 Priority
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>> MaybePeriodic
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>> MaybePeriodic
         {
             get
             {
@@ -128,13 +128,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            MaybeId = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>();
+            MaybeId = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>();
             MaybeId.Decode(byteArray, ref p);
-            Priority = new Ajuna.NetApi.Model.Types.Primitive.U8();
+            Priority = new Substrate.NetApi.Model.Types.Primitive.U8();
             Priority.Decode(byteArray, ref p);
             Call = new PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded();
             Call.Decode(byteArray, ref p);
-            MaybePeriodic = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>>();
+            MaybePeriodic = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>();
             MaybePeriodic.Decode(byteArray, ref p);
             Origin = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumOriginCaller();
             Origin.Decode(byteArray, ref p);

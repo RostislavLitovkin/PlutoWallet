@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2
     /// <summary>
     /// >> 8 - Composite[sp_weights.weight_v2.Weight]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Weight : BaseType
     {
         
         /// <summary>
         /// >> ref_time
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64> _refTime;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64> _refTime;
         
         /// <summary>
         /// >> proof_size
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64> _proofSize;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64> _proofSize;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64> RefTime
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64> RefTime
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64> ProofSize
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64> ProofSize
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            RefTime = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64>();
+            RefTime = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>();
             RefTime.Decode(byteArray, ref p);
-            ProofSize = new Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64>();
+            ProofSize = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>();
             ProofSize.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

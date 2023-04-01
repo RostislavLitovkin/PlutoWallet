@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,31 +20,31 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 379 - Composite[polkadot_primitives.v2.InherentData]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class InherentData : BaseType
     {
         
         /// <summary>
         /// >> bitfields
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned> _bitfields;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned> _bitfields;
         
         /// <summary>
         /// >> backed_candidates
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate> _backedCandidates;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate> _backedCandidates;
         
         /// <summary>
         /// >> disputes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet> _disputes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet> _disputes;
         
         /// <summary>
         /// >> parent_header
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header _parentHeader;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned> Bitfields
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned> Bitfields
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate> BackedCandidates
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate> BackedCandidates
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet> Disputes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet> Disputes
         {
             get
             {
@@ -110,11 +110,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Bitfields = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned>();
+            Bitfields = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed.UncheckedSigned>();
             Bitfields.Decode(byteArray, ref p);
-            BackedCandidates = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate>();
+            BackedCandidates = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.BackedCandidate>();
             BackedCandidates.Decode(byteArray, ref p);
-            Disputes = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet>();
+            Disputes = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.DisputeStatementSet>();
             Disputes.Decode(byteArray, ref p);
             ParentHeader = new PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header();
             ParentHeader.Decode(byteArray, ref p);

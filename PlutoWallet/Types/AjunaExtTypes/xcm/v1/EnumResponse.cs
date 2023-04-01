@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1
     /// <summary>
     /// >> 434 - Variant[xcm.v1.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.MultiAssets, Ajuna.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumResponse : BaseEnumExt<Response, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest
     /// <summary>
     /// >> 15 - Variant[sp_runtime.generic.digest.DigestItem]
     /// </summary>
-    public sealed class EnumDigestItem : BaseEnumExt<DigestItem, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>, BaseVoid, BaseVoid, BaseVoid, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>>, BaseVoid, BaseVoid>
+    public sealed class EnumDigestItem : BaseEnumExt<DigestItem, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, BaseVoid, BaseVoid, BaseVoid, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid, BaseVoid>
     {
     }
 }

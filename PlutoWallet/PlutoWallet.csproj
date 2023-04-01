@@ -68,7 +68,6 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
-	  <PackageReference Include="Ajuna.NetApi" Version="0.3.3" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
@@ -104,6 +103,7 @@
 	  <None Remove="Resources\AppIcon\" />
 	  <None Remove="Resources\Fonts\Exodar-Outline.ttf" />
 	  <None Remove="Components\DAppConnectionView\" />
+	  <None Remove="Substrate.NET.API" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -207,6 +207,7 @@
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
     </PropertyGroup>-->
 	<ItemGroup>
+	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
 	</ItemGroup>
 </Project>

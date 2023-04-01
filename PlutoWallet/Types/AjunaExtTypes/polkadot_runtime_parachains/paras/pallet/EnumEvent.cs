@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, Ajuna.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>>
+    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>>
     {
     }
 }

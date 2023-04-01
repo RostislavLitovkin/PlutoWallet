@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
     /// <summary>
     /// >> 598 - Composite[pallet_tips.OpenTip]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OpenTip : BaseType
     {
         
@@ -42,22 +42,22 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _deposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
         /// <summary>
         /// >> closes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> _closes;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _closes;
         
         /// <summary>
         /// >> tips
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128>> _tips;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> _tips;
         
         /// <summary>
         /// >> finders_fee
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Bool _findersFee;
+        private Substrate.NetApi.Model.Types.Primitive.Bool _findersFee;
         
         public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 Reason
         {
@@ -95,7 +95,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Deposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
         {
             get
             {
@@ -107,7 +107,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> Closes
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> Closes
         {
             get
             {
@@ -119,7 +119,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128>> Tips
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> Tips
         {
             get
             {
@@ -131,7 +131,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Bool FindersFee
+        public Substrate.NetApi.Model.Types.Primitive.Bool FindersFee
         {
             get
             {
@@ -170,13 +170,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             Who.Decode(byteArray, ref p);
             Finder = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Finder.Decode(byteArray, ref p);
-            Deposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Closes = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            Closes = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             Closes.Decode(byteArray, ref p);
-            Tips = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Ajuna.NetApi.Model.Types.Primitive.U128>>();
+            Tips = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>();
             Tips.Decode(byteArray, ref p);
-            FindersFee = new Ajuna.NetApi.Model.Types.Primitive.Bool();
+            FindersFee = new Substrate.NetApi.Model.Types.Primitive.Bool();
             FindersFee.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

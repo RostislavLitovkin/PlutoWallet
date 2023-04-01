@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Types.Base
     /// <summary>
     /// >> 32 - Variant[Result]
     /// </summary>
-    public sealed class EnumResult : BaseEnumExt<Result, Ajuna.NetApi.Model.Types.Base.BaseTuple, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError>
+    public sealed class EnumResult : BaseEnumExt<Result, Substrate.NetApi.Model.Types.Base.BaseTuple, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumDispatchError>
     {
     }
 }

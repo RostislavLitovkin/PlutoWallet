@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,19 +20,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
     /// <summary>
     /// >> 516 - Composite[pallet_grandpa.StoredPendingChange]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StoredPendingChange : BaseType
     {
         
         /// <summary>
         /// >> scheduled_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _scheduledAt;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _scheduledAt;
         
         /// <summary>
         /// >> delay
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _delay;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _delay;
         
         /// <summary>
         /// >> next_authorities
@@ -42,9 +42,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
         /// <summary>
         /// >> forced
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> _forced;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _forced;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ScheduledAt
+        public Substrate.NetApi.Model.Types.Primitive.U32 ScheduledAt
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Delay
+        public Substrate.NetApi.Model.Types.Primitive.U32 Delay
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> Forced
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> Forced
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_grandpa
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ScheduledAt = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ScheduledAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             ScheduledAt.Decode(byteArray, ref p);
-            Delay = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Delay = new Substrate.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);
             NextAuthorities = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT4();
             NextAuthorities.Decode(byteArray, ref p);
-            Forced = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            Forced = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             Forced.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

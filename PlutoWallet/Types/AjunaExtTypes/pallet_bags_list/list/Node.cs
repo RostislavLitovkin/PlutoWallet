@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
     /// <summary>
     /// >> 612 - Composite[pallet_bags_list.list.Node]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Node : BaseType
     {
         
@@ -32,22 +32,22 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
         /// <summary>
         /// >> prev
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _prev;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _prev;
         
         /// <summary>
         /// >> next
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _next;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _next;
         
         /// <summary>
         /// >> bag_upper
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U64 _bagUpper;
+        private Substrate.NetApi.Model.Types.Primitive.U64 _bagUpper;
         
         /// <summary>
         /// >> score
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U64 _score;
+        private Substrate.NetApi.Model.Types.Primitive.U64 _score;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Id
         {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Prev
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Prev
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Next
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Next
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U64 BagUpper
+        public Substrate.NetApi.Model.Types.Primitive.U64 BagUpper
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U64 Score
+        public Substrate.NetApi.Model.Types.Primitive.U64 Score
         {
             get
             {
@@ -130,13 +130,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             var start = p;
             Id = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Id.Decode(byteArray, ref p);
-            Prev = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
+            Prev = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
             Prev.Decode(byteArray, ref p);
-            Next = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
+            Next = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
             Next.Decode(byteArray, ref p);
-            BagUpper = new Ajuna.NetApi.Model.Types.Primitive.U64();
+            BagUpper = new Substrate.NetApi.Model.Types.Primitive.U64();
             BagUpper.Decode(byteArray, ref p);
-            Score = new Ajuna.NetApi.Model.Types.Primitive.U64();
+            Score = new Substrate.NetApi.Model.Types.Primitive.U64();
             Score.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

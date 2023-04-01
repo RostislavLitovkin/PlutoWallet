@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
     /// <summary>
     /// >> 25 - Composite[sp_runtime.ModuleError]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ModuleError : BaseType
     {
         
         /// <summary>
         /// >> index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U8 _index;
+        private Substrate.NetApi.Model.Types.Primitive.U8 _index;
         
         /// <summary>
         /// >> error
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8 _error;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U8 Index
+        public Substrate.NetApi.Model.Types.Primitive.U8 Index
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Index = new Ajuna.NetApi.Model.Types.Primitive.U8();
+            Index = new Substrate.NetApi.Model.Types.Primitive.U8();
             Index.Decode(byteArray, ref p);
             Error = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8();
             Error.Decode(byteArray, ref p);

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 264 - Composite[pallet_identity.types.IdentityInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class IdentityInfo : BaseType
     {
         
@@ -57,7 +57,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> pgp_fingerprint
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> _pgpFingerprint;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> _pgpFingerprint;
         
         /// <summary>
         /// >> image
@@ -141,7 +141,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> PgpFingerprint
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> PgpFingerprint
         {
             get
             {
@@ -212,7 +212,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             Riot.Decode(byteArray, ref p);
             Email = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
             Email.Decode(byteArray, ref p);
-            PgpFingerprint = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>();
+            PgpFingerprint = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>();
             PgpFingerprint.Decode(byteArray, ref p);
             Image = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
             Image.Decode(byteArray, ref p);

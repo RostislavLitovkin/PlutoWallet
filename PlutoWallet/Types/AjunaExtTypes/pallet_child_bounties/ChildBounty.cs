@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,36 +20,36 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
     /// <summary>
     /// >> 595 - Composite[pallet_child_bounties.ChildBounty]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ChildBounty : BaseType
     {
         
         /// <summary>
         /// >> parent_bounty
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _parentBounty;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _parentBounty;
         
         /// <summary>
         /// >> value
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _value;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _value;
         
         /// <summary>
         /// >> fee
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _fee;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _fee;
         
         /// <summary>
         /// >> curator_deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _curatorDeposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _curatorDeposit;
         
         /// <summary>
         /// >> status
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties.EnumChildBountyStatus _status;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ParentBounty
+        public Substrate.NetApi.Model.Types.Primitive.U32 ParentBounty
         {
             get
             {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Value
+        public Substrate.NetApi.Model.Types.Primitive.U128 Value
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Fee
+        public Substrate.NetApi.Model.Types.Primitive.U128 Fee
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 CuratorDeposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 CuratorDeposit
         {
             get
             {
@@ -128,13 +128,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ParentBounty = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ParentBounty = new Substrate.NetApi.Model.Types.Primitive.U32();
             ParentBounty.Decode(byteArray, ref p);
-            Value = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Value = new Substrate.NetApi.Model.Types.Primitive.U128();
             Value.Decode(byteArray, ref p);
-            Fee = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Fee = new Substrate.NetApi.Model.Types.Primitive.U128();
             Fee.Decode(byteArray, ref p);
-            CuratorDeposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            CuratorDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             CuratorDeposit.Decode(byteArray, ref p);
             Status = new PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties.EnumChildBountyStatus();
             Status.Decode(byteArray, ref p);

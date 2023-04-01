@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2
     /// <summary>
     /// >> 148 - Variant[xcm.v2.WeightLimit]
     /// </summary>
-    public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, Ajuna.NetApi.Model.Types.Base.BaseCom<Ajuna.NetApi.Model.Types.Primitive.U64>>
+    public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>
     {
     }
 }

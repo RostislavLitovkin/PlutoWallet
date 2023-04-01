@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,36 +20,36 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
     /// <summary>
     /// >> 666 - Composite[polkadot_runtime_parachains.paras.PvfCheckActiveVoteState]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PvfCheckActiveVoteState : BaseType
     {
         
         /// <summary>
         /// >> votes_accept
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _votesAccept;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _votesAccept;
         
         /// <summary>
         /// >> votes_reject
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _votesReject;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _votesReject;
         
         /// <summary>
         /// >> age
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _age;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _age;
         
         /// <summary>
         /// >> created_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _createdAt;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _createdAt;
         
         /// <summary>
         /// >> causes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> _causes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> _causes;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> VotesAccept
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> VotesAccept
         {
             get
             {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> VotesReject
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> VotesReject
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Age
+        public Substrate.NetApi.Model.Types.Primitive.U32 Age
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 CreatedAt
+        public Substrate.NetApi.Model.Types.Primitive.U32 CreatedAt
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> Causes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> Causes
         {
             get
             {
@@ -128,15 +128,15 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            VotesAccept = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            VotesAccept = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             VotesAccept.Decode(byteArray, ref p);
-            VotesReject = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            VotesReject = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             VotesReject.Decode(byteArray, ref p);
-            Age = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Age = new Substrate.NetApi.Model.Types.Primitive.U32();
             Age.Decode(byteArray, ref p);
-            CreatedAt = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            CreatedAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             CreatedAt.Decode(byteArray, ref p);
-            Causes = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause>();
+            Causes = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause>();
             Causes.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

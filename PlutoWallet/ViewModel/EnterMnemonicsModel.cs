@@ -1,8 +1,8 @@
 ﻿using System;
-using Ajuna.NetApi;
+using Substrate.NetApi;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.ComponentModel;
-using static Ajuna.NetApi.Mnemonic;
+using static Substrate.NetApi.Mnemonic;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.Input;
 using Schnorrkel.Keys;

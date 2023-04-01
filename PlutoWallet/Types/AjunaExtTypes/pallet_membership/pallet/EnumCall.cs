@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_membership.pallet
     /// >> 243 - Variant[pallet_membership.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid>
+    public sealed class EnumCall : BaseEnumExt<Call, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid>
     {
     }
 }

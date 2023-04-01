@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 624 - Composite[pallet_nomination_pools.RewardPool]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RewardPool : BaseType
     {
         
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> last_recorded_total_payouts
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _lastRecordedTotalPayouts;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _lastRecordedTotalPayouts;
         
         /// <summary>
         /// >> total_rewards_claimed
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _totalRewardsClaimed;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _totalRewardsClaimed;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
         {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 LastRecordedTotalPayouts
+        public Substrate.NetApi.Model.Types.Primitive.U128 LastRecordedTotalPayouts
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 TotalRewardsClaimed
+        public Substrate.NetApi.Model.Types.Primitive.U128 TotalRewardsClaimed
         {
             get
             {
@@ -94,9 +94,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             var start = p;
             LastRecordedRewardCounter = new PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
             LastRecordedRewardCounter.Decode(byteArray, ref p);
-            LastRecordedTotalPayouts = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            LastRecordedTotalPayouts = new Substrate.NetApi.Model.Types.Primitive.U128();
             LastRecordedTotalPayouts.Decode(byteArray, ref p);
-            TotalRewardsClaimed = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            TotalRewardsClaimed = new Substrate.NetApi.Model.Types.Primitive.U128();
             TotalRewardsClaimed.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
     /// <summary>
     /// >> 491 - Composite[pallet_staking.ActiveEraInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ActiveEraInfo : BaseType
     {
         
         /// <summary>
         /// >> index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _index;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _index;
         
         /// <summary>
         /// >> start
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U64> _start;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U64> _start;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Index
+        public Substrate.NetApi.Model.Types.Primitive.U32 Index
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U64> Start
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U64> Start
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Index = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Index = new Substrate.NetApi.Model.Types.Primitive.U32();
             Index.Decode(byteArray, ref p);
-            Start = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U64>();
+            Start = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U64>();
             Start.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

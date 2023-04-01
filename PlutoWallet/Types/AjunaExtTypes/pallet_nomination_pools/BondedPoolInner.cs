@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,14 +20,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 622 - Composite[pallet_nomination_pools.BondedPoolInner]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BondedPoolInner : BaseType
     {
         
         /// <summary>
         /// >> points
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _points;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _points;
         
         /// <summary>
         /// >> state
@@ -37,14 +37,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> member_counter
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _memberCounter;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _memberCounter;
         
         /// <summary>
         /// >> roles
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.PoolRoles _roles;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Points
+        public Substrate.NetApi.Model.Types.Primitive.U128 Points
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 MemberCounter
+        public Substrate.NetApi.Model.Types.Primitive.U32 MemberCounter
         {
             get
             {
@@ -110,11 +110,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Points = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Points = new Substrate.NetApi.Model.Types.Primitive.U128();
             Points.Decode(byteArray, ref p);
             State = new PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.EnumPoolState();
             State.Decode(byteArray, ref p);
-            MemberCounter = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            MemberCounter = new Substrate.NetApi.Model.Types.Primitive.U32();
             MemberCounter.Decode(byteArray, ref p);
             Roles = new PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.PoolRoles();
             Roles.Decode(byteArray, ref p);

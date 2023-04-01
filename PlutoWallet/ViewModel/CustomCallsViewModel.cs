@@ -1,17 +1,17 @@
 ﻿
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Ajuna.NetApi;
+using Substrate.NetApi;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Types;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Extrinsics;
 using System.Text;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
-using Ajuna.NetApi.Model.Meta;
+using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Meta;
 using PlutoWallet.Components.ArgumentsView;
 using System.Collections.ObjectModel;
 
@@ -201,7 +201,7 @@ namespace PlutoWallet.ViewModel
             {
                 Console.WriteLine("private key: " + Preferences.Get("privateKey", ""));
                 Console.WriteLine("Call method start");
-                var primVec = new Ajuna.NetApi.Model.Types.Primitive.Str();
+                var primVec = new Substrate.NetApi.Model.Types.Primitive.Str();
                 primVec.Create(Utils.HexToByteArray("0x1862616e616e65"));
 
                 Console.WriteLine((byte)SelectedCall.Index + " " + (byte)SelectedPallet.Index + " " + primVec.Bytes);

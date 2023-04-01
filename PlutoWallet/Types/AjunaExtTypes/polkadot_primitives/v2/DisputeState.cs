@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,31 +20,31 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 701 - Composite[polkadot_primitives.v2.DisputeState]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DisputeState : BaseType
     {
         
         /// <summary>
         /// >> validators_for
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorsFor;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorsFor;
         
         /// <summary>
         /// >> validators_against
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorsAgainst;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorsAgainst;
         
         /// <summary>
         /// >> start
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _start;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _start;
         
         /// <summary>
         /// >> concluded_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> _concludedAt;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _concludedAt;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorsFor
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorsFor
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorsAgainst
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorsAgainst
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Start
+        public Substrate.NetApi.Model.Types.Primitive.U32 Start
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32> ConcludedAt
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> ConcludedAt
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ValidatorsFor = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            ValidatorsFor = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             ValidatorsFor.Decode(byteArray, ref p);
-            ValidatorsAgainst = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            ValidatorsAgainst = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             ValidatorsAgainst.Decode(byteArray, ref p);
-            Start = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Start = new Substrate.NetApi.Model.Types.Primitive.U32();
             Start.Decode(byteArray, ref p);
-            ConcludedAt = new Ajuna.NetApi.Model.Types.Base.BaseOpt<Ajuna.NetApi.Model.Types.Primitive.U32>();
+            ConcludedAt = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             ConcludedAt.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

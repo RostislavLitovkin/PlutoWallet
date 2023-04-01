@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
     /// <summary>
     /// >> 713 - Variant[polkadot_runtime_common.crowdloan.LastContribution]
     /// </summary>
-    public sealed class EnumLastContribution : BaseEnumExt<LastContribution, BaseVoid, Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumLastContribution : BaseEnumExt<LastContribution, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }

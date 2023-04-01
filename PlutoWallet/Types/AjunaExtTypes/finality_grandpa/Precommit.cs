@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
     /// <summary>
     /// >> 225 - Composite[finality_grandpa.Precommit]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Precommit : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
         /// <summary>
         /// >> target_number
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _targetNumber;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _targetNumber;
         
         public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 TargetHash
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 TargetNumber
+        public Substrate.NetApi.Model.Types.Primitive.U32 TargetNumber
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             var start = p;
             TargetHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
             TargetHash.Decode(byteArray, ref p);
-            TargetNumber = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            TargetNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             TargetNumber.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

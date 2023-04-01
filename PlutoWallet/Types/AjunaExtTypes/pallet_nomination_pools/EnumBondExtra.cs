@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 370 - Variant[pallet_nomination_pools.BondExtra]
     /// </summary>
-    public sealed class EnumBondExtra : BaseEnumExt<BondExtra, Ajuna.NetApi.Model.Types.Primitive.U128, BaseVoid>
+    public sealed class EnumBondExtra : BaseEnumExt<BondExtra, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid>
     {
     }
 }

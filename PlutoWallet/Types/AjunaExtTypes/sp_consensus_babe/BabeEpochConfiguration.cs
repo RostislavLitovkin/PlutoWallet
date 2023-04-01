@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe
     /// <summary>
     /// >> 466 - Composite[sp_consensus_babe.BabeEpochConfiguration]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BabeEpochConfiguration : BaseType
     {
         
         /// <summary>
         /// >> c
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U64, Ajuna.NetApi.Model.Types.Primitive.U64> _c;
+        private Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.U64> _c;
         
         /// <summary>
         /// >> allowed_slots
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.EnumAllowedSlots _allowedSlots;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U64, Ajuna.NetApi.Model.Types.Primitive.U64> C
+        public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.U64> C
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            C = new Ajuna.NetApi.Model.Types.Base.BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U64, Ajuna.NetApi.Model.Types.Primitive.U64>();
+            C = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.U64>();
             C.Decode(byteArray, ref p);
             AllowedSlots = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.EnumAllowedSlots();
             AllowedSlots.Decode(byteArray, ref p);

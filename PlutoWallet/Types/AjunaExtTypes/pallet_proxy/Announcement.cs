@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
     /// <summary>
     /// >> 584 - Composite[pallet_proxy.Announcement]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Announcement : BaseType
     {
         
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         /// <summary>
         /// >> height
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _height;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _height;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Real
         {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Height
+        public Substrate.NetApi.Model.Types.Primitive.U32 Height
         {
             get
             {
@@ -96,7 +96,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             Real.Decode(byteArray, ref p);
             CallHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
             CallHash.Decode(byteArray, ref p);
-            Height = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Height = new Substrate.NetApi.Model.Types.Primitive.U32();
             Height.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

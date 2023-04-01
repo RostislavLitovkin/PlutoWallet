@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 657 - Composite[polkadot_primitives.v2.ParathreadEntry]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParathreadEntry : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> retries
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _retries;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _retries;
         
         public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadClaim Claim
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Retries
+        public Substrate.NetApi.Model.Types.Primitive.U32 Retries
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             var start = p;
             Claim = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadClaim();
             Claim.Decode(byteArray, ref p);
-            Retries = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Retries = new Substrate.NetApi.Model.Types.Primitive.U32();
             Retries.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

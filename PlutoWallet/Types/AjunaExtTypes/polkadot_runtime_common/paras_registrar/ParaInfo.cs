@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
     /// <summary>
     /// >> 703 - Composite[polkadot_runtime_common.paras_registrar.ParaInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParaInfo : BaseType
     {
         
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _deposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
         /// <summary>
         /// >> locked
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Bool _locked;
+        private Substrate.NetApi.Model.Types.Primitive.Bool _locked;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Manager
         {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Deposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Bool Locked
+        public Substrate.NetApi.Model.Types.Primitive.Bool Locked
         {
             get
             {
@@ -94,9 +94,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
             var start = p;
             Manager = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Manager.Decode(byteArray, ref p);
-            Deposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Locked = new Ajuna.NetApi.Model.Types.Primitive.Bool();
+            Locked = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Locked.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

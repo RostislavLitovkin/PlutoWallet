@@ -1,8 +1,8 @@
 ﻿using System;
-using Ajuna.NetApi;
-using Ajuna.NetApi.Model.Types;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Types;
 using Schnorrkel.Keys;
-using static Ajuna.NetApi.Mnemonic;
+using static Substrate.NetApi.Mnemonic;
 
 namespace PlutoWallet.Model
 {

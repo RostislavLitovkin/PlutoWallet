@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 388 - Composite[polkadot_primitives.v2.BackedCandidate]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BackedCandidate : BaseType
     {
         
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> validity_votes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation> _validityVotes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation> _validityVotes;
         
         /// <summary>
         /// >> validator_indices
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorIndices;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _validatorIndices;
         
         public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CommittedCandidateReceipt Candidate
         {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation> ValidityVotes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation> ValidityVotes
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorIndices
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> ValidatorIndices
         {
             get
             {
@@ -94,9 +94,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             var start = p;
             Candidate = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CommittedCandidateReceipt();
             Candidate.Decode(byteArray, ref p);
-            ValidityVotes = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation>();
+            ValidityVotes = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumValidityAttestation>();
             ValidityVotes.Decode(byteArray, ref p);
-            ValidatorIndices = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            ValidatorIndices = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             ValidatorIndices.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

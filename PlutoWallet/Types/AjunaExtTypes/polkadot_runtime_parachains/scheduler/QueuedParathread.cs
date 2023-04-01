@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
     /// <summary>
     /// >> 656 - Composite[polkadot_runtime_parachains.scheduler.QueuedParathread]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class QueuedParathread : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         /// <summary>
         /// >> core_offset
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _coreOffset;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _coreOffset;
         
         public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry Claim
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 CoreOffset
+        public Substrate.NetApi.Model.Types.Primitive.U32 CoreOffset
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             var start = p;
             Claim = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry();
             Claim.Decode(byteArray, ref p);
-            CoreOffset = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            CoreOffset = new Substrate.NetApi.Model.Types.Primitive.U32();
             CoreOffset.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

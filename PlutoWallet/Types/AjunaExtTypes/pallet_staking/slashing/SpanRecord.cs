@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
     /// <summary>
     /// >> 503 - Composite[pallet_staking.slashing.SpanRecord]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SpanRecord : BaseType
     {
         
         /// <summary>
         /// >> slashed
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _slashed;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _slashed;
         
         /// <summary>
         /// >> paid_out
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _paidOut;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _paidOut;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Slashed
+        public Substrate.NetApi.Model.Types.Primitive.U128 Slashed
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 PaidOut
+        public Substrate.NetApi.Model.Types.Primitive.U128 PaidOut
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.slashing
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Slashed = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Slashed = new Substrate.NetApi.Model.Types.Primitive.U128();
             Slashed.Decode(byteArray, ref p);
-            PaidOut = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            PaidOut = new Substrate.NetApi.Model.Types.Primitive.U128();
             PaidOut.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

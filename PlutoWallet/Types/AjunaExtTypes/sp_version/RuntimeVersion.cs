@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,34 +20,34 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
     /// <summary>
     /// >> 172 - Composite[sp_version.RuntimeVersion]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeVersion : BaseType
     {
         
         /// <summary>
         /// >> spec_name
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Str _specName;
+        private Substrate.NetApi.Model.Types.Primitive.Str _specName;
         
         /// <summary>
         /// >> impl_name
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Str _implName;
+        private Substrate.NetApi.Model.Types.Primitive.Str _implName;
         
         /// <summary>
         /// >> authoring_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _authoringVersion;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _authoringVersion;
         
         /// <summary>
         /// >> spec_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _specVersion;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _specVersion;
         
         /// <summary>
         /// >> impl_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _implVersion;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _implVersion;
         
         /// <summary>
         /// >> apis
@@ -57,14 +57,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
         /// <summary>
         /// >> transaction_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _transactionVersion;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _transactionVersion;
         
         /// <summary>
         /// >> state_version
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U8 _stateVersion;
+        private Substrate.NetApi.Model.Types.Primitive.U8 _stateVersion;
         
-        public Ajuna.NetApi.Model.Types.Primitive.Str SpecName
+        public Substrate.NetApi.Model.Types.Primitive.Str SpecName
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Str ImplName
+        public Substrate.NetApi.Model.Types.Primitive.Str ImplName
         {
             get
             {
@@ -88,7 +88,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 AuthoringVersion
+        public Substrate.NetApi.Model.Types.Primitive.U32 AuthoringVersion
         {
             get
             {
@@ -100,7 +100,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SpecVersion
+        public Substrate.NetApi.Model.Types.Primitive.U32 SpecVersion
         {
             get
             {
@@ -112,7 +112,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ImplVersion
+        public Substrate.NetApi.Model.Types.Primitive.U32 ImplVersion
         {
             get
             {
@@ -136,7 +136,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 TransactionVersion
+        public Substrate.NetApi.Model.Types.Primitive.U32 TransactionVersion
         {
             get
             {
@@ -148,7 +148,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U8 StateVersion
+        public Substrate.NetApi.Model.Types.Primitive.U8 StateVersion
         {
             get
             {
@@ -182,21 +182,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            SpecName = new Ajuna.NetApi.Model.Types.Primitive.Str();
+            SpecName = new Substrate.NetApi.Model.Types.Primitive.Str();
             SpecName.Decode(byteArray, ref p);
-            ImplName = new Ajuna.NetApi.Model.Types.Primitive.Str();
+            ImplName = new Substrate.NetApi.Model.Types.Primitive.Str();
             ImplName.Decode(byteArray, ref p);
-            AuthoringVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            AuthoringVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             AuthoringVersion.Decode(byteArray, ref p);
-            SpecVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SpecVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             SpecVersion.Decode(byteArray, ref p);
-            ImplVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ImplVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             ImplVersion.Decode(byteArray, ref p);
             Apis = new PlutoWallet.NetApiExt.Generated.Types.Base.Cow();
             Apis.Decode(byteArray, ref p);
-            TransactionVersion = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            TransactionVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             TransactionVersion.Decode(byteArray, ref p);
-            StateVersion = new Ajuna.NetApi.Model.Types.Primitive.U8();
+            StateVersion = new Substrate.NetApi.Model.Types.Primitive.U8();
             StateVersion.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

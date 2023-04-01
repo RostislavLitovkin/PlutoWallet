@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
     /// <summary>
     /// >> 217 - Composite[sp_finality_grandpa.EquivocationProof]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EquivocationProof : BaseType
     {
         
         /// <summary>
         /// >> set_id
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U64 _setId;
+        private Substrate.NetApi.Model.Types.Primitive.U64 _setId;
         
         /// <summary>
         /// >> equivocation
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation _equivocation;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U64 SetId
+        public Substrate.NetApi.Model.Types.Primitive.U64 SetId
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            SetId = new Ajuna.NetApi.Model.Types.Primitive.U64();
+            SetId = new Substrate.NetApi.Model.Types.Primitive.U64();
             SetId.Decode(byteArray, ref p);
             Equivocation = new PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation();
             Equivocation.Decode(byteArray, ref p);

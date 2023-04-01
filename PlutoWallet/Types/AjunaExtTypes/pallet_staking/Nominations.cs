@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
     /// <summary>
     /// >> 489 - Composite[pallet_staking.Nominations]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Nominations : BaseType
     {
         
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> submitted_in
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _submittedIn;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _submittedIn;
         
         /// <summary>
         /// >> suppressed
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.Bool _suppressed;
+        private Substrate.NetApi.Model.Types.Primitive.Bool _suppressed;
         
         public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10 Targets
         {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SubmittedIn
+        public Substrate.NetApi.Model.Types.Primitive.U32 SubmittedIn
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.Bool Suppressed
+        public Substrate.NetApi.Model.Types.Primitive.Bool Suppressed
         {
             get
             {
@@ -94,9 +94,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             var start = p;
             Targets = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10();
             Targets.Decode(byteArray, ref p);
-            SubmittedIn = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SubmittedIn = new Substrate.NetApi.Model.Types.Primitive.U32();
             SubmittedIn.Decode(byteArray, ref p);
-            Suppressed = new Ajuna.NetApi.Model.Types.Primitive.Bool();
+            Suppressed = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Suppressed.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

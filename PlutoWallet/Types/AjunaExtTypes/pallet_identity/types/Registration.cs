@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 567 - Composite[pallet_identity.types.Registration]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Registration : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _deposit;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
         /// <summary>
         /// >> info
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Deposit
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
         {
             get
             {
@@ -94,7 +94,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             var start = p;
             Judgements = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19();
             Judgements.Decode(byteArray, ref p);
-            Deposit = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
             Info = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.IdentityInfo();
             Info.Decode(byteArray, ref p);

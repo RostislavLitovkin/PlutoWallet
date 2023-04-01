@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections
     /// <summary>
     /// >> 88 - Composite[sp_npos_elections.ElectionScore]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ElectionScore : BaseType
     {
         
         /// <summary>
         /// >> minimal_stake
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _minimalStake;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _minimalStake;
         
         /// <summary>
         /// >> sum_stake
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _sumStake;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _sumStake;
         
         /// <summary>
         /// >> sum_stake_squared
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _sumStakeSquared;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _sumStakeSquared;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 MinimalStake
+        public Substrate.NetApi.Model.Types.Primitive.U128 MinimalStake
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 SumStake
+        public Substrate.NetApi.Model.Types.Primitive.U128 SumStake
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 SumStakeSquared
+        public Substrate.NetApi.Model.Types.Primitive.U128 SumStakeSquared
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            MinimalStake = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            MinimalStake = new Substrate.NetApi.Model.Types.Primitive.U128();
             MinimalStake.Decode(byteArray, ref p);
-            SumStake = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            SumStake = new Substrate.NetApi.Model.Types.Primitive.U128();
             SumStake.Decode(byteArray, ref p);
-            SumStakeSquared = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            SumStakeSquared = new Substrate.NetApi.Model.Types.Primitive.U128();
             SumStakeSquared.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
     /// <summary>
     /// >> 681 - Composite[polkadot_runtime_parachains.initializer.BufferedSessionChange]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BufferedSessionChange : BaseType
     {
         
         /// <summary>
         /// >> validators
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _validators;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _validators;
         
         /// <summary>
         /// >> queued
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _queued;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _queued;
         
         /// <summary>
         /// >> session_index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _sessionIndex;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _sessionIndex;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Validators
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Validators
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Queued
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Queued
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SessionIndex
+        public Substrate.NetApi.Model.Types.Primitive.U32 SessionIndex
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Validators = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
             Validators.Decode(byteArray, ref p);
-            Queued = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
             Queued.Decode(byteArray, ref p);
-            SessionIndex = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

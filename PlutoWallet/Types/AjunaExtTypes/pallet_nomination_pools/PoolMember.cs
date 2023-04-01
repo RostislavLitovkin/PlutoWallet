@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,19 +20,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 617 - Composite[pallet_nomination_pools.PoolMember]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PoolMember : BaseType
     {
         
         /// <summary>
         /// >> pool_id
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _poolId;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _poolId;
         
         /// <summary>
         /// >> points
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _points;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _points;
         
         /// <summary>
         /// >> last_recorded_reward_counter
@@ -44,7 +44,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1 _unbondingEras;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 PoolId
+        public Substrate.NetApi.Model.Types.Primitive.U32 PoolId
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Points
+        public Substrate.NetApi.Model.Types.Primitive.U128 Points
         {
             get
             {
@@ -110,9 +110,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            PoolId = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            PoolId = new Substrate.NetApi.Model.Types.Primitive.U32();
             PoolId.Decode(byteArray, ref p);
-            Points = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Points = new Substrate.NetApi.Model.Types.Primitive.U128();
             Points.Decode(byteArray, ref p);
             LastRecordedRewardCounter = new PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
             LastRecordedRewardCounter.Decode(byteArray, ref p);

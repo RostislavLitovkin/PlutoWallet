@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Primitive;
+using Substrate.NetApi.Model.Types;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Primitive;
 using System.Collections.Generic;
 
 
@@ -549,7 +549,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era
             TypeSize = p - start;
         }
         
-        private Ajuna.NetApi.Model.Types.IType DecodeOneOf(byte value, byte[] byteArray, ref int p)
+        private Substrate.NetApi.Model.Types.IType DecodeOneOf(byte value, byte[] byteArray, ref int p)
         {
             IType result;
             if (value == 0) { return null; };

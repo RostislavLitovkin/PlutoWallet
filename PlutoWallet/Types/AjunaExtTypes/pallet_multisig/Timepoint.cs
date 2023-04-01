@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
     /// <summary>
     /// >> 82 - Composite[pallet_multisig.Timepoint]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Timepoint : BaseType
     {
         
         /// <summary>
         /// >> height
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _height;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _height;
         
         /// <summary>
         /// >> index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _index;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _index;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Height
+        public Substrate.NetApi.Model.Types.Primitive.U32 Height
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Index
+        public Substrate.NetApi.Model.Types.Primitive.U32 Index
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Height = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Height = new Substrate.NetApi.Model.Types.Primitive.U32();
             Height.Decode(byteArray, ref p);
-            Index = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Index = new Substrate.NetApi.Model.Types.Primitive.U32();
             Index.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

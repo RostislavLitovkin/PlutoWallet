@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using Ajuna.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Extrinsics;
 using Plutonication;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.TransactionRequest;

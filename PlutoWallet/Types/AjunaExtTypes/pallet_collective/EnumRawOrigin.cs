@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_collective
     /// <summary>
     /// >> 259 - Variant[pallet_collective.RawOrigin]
     /// </summary>
-    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseTuple<Ajuna.NetApi.Model.Types.Primitive.U32, Ajuna.NetApi.Model.Types.Primitive.U32>, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
     {
     }
 }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 575 - Composite[pallet_identity.types.RegistrarInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RegistrarInfo : BaseType
     {
         
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> fee
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _fee;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _fee;
         
         /// <summary>
         /// >> fields
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Fee
+        public Substrate.NetApi.Model.Types.Primitive.U128 Fee
         {
             get
             {
@@ -94,7 +94,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             var start = p;
             Account = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
             Account.Decode(byteArray, ref p);
-            Fee = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Fee = new Substrate.NetApi.Model.Types.Primitive.U128();
             Fee.Decode(byteArray, ref p);
             Fields = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.BitFlags();
             Fields.Decode(byteArray, ref p);

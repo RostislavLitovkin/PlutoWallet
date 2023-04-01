@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives
     /// <summary>
     /// >> 691 - Composite[polkadot_core_primitives.InboundHrmpMessage]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class InboundHrmpMessage : BaseType
     {
         
         /// <summary>
         /// >> sent_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _sentAt;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _sentAt;
         
         /// <summary>
         /// >> data
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8> _data;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> _data;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 SentAt
+        public Substrate.NetApi.Model.Types.Primitive.U32 SentAt
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8> Data
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> Data
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            SentAt = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            SentAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             SentAt.Decode(byteArray, ref p);
-            Data = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>();
+            Data = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>();
             Data.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

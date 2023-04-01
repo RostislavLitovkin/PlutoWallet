@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
     /// <summary>
     /// >> 534 - Composite[pallet_democracy.types.Tally]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Tally : BaseType
     {
         
         /// <summary>
         /// >> ayes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _ayes;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _ayes;
         
         /// <summary>
         /// >> nays
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _nays;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _nays;
         
         /// <summary>
         /// >> turnout
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _turnout;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _turnout;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Ayes
+        public Substrate.NetApi.Model.Types.Primitive.U128 Ayes
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Nays
+        public Substrate.NetApi.Model.Types.Primitive.U128 Nays
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Turnout
+        public Substrate.NetApi.Model.Types.Primitive.U128 Turnout
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Ayes = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Ayes = new Substrate.NetApi.Model.Types.Primitive.U128();
             Ayes.Decode(byteArray, ref p);
-            Nays = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Nays = new Substrate.NetApi.Model.Types.Primitive.U128();
             Nays.Decode(byteArray, ref p);
-            Turnout = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Turnout = new Substrate.NetApi.Model.Types.Primitive.U128();
             Turnout.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,24 +20,24 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 390 - Composite[polkadot_primitives.v2.CandidateCommitments]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidateCommitments : BaseType
     {
         
         /// <summary>
         /// >> upward_messages
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>> _upwardMessages;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> _upwardMessages;
         
         /// <summary>
         /// >> horizontal_messages
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> _horizontalMessages;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> _horizontalMessages;
         
         /// <summary>
         /// >> new_validation_code
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> _newValidationCode;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> _newValidationCode;
         
         /// <summary>
         /// >> head_data
@@ -47,14 +47,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> processed_downward_messages
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _processedDownwardMessages;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _processedDownwardMessages;
         
         /// <summary>
         /// >> hrmp_watermark
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _hrmpWatermark;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpWatermark;
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>> UpwardMessages
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> UpwardMessages
         {
             get
             {
@@ -66,7 +66,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> HorizontalMessages
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> HorizontalMessages
         {
             get
             {
@@ -78,7 +78,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> NewValidationCode
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> NewValidationCode
         {
             get
             {
@@ -102,7 +102,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ProcessedDownwardMessages
+        public Substrate.NetApi.Model.Types.Primitive.U32 ProcessedDownwardMessages
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 HrmpWatermark
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpWatermark
         {
             get
             {
@@ -146,17 +146,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            UpwardMessages = new Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Base.BaseVec<Ajuna.NetApi.Model.Types.Primitive.U8>>();
+            UpwardMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>();
             UpwardMessages.Decode(byteArray, ref p);
-            HorizontalMessages = new Ajuna.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage>();
+            HorizontalMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage>();
             HorizontalMessages.Decode(byteArray, ref p);
-            NewValidationCode = new Ajuna.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>();
+            NewValidationCode = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>();
             NewValidationCode.Decode(byteArray, ref p);
             HeadData = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData();
             HeadData.Decode(byteArray, ref p);
-            ProcessedDownwardMessages = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ProcessedDownwardMessages = new Substrate.NetApi.Model.Types.Primitive.U32();
             ProcessedDownwardMessages.Decode(byteArray, ref p);
-            HrmpWatermark = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            HrmpWatermark = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpWatermark.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

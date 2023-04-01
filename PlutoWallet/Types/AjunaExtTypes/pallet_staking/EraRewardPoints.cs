@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
     /// <summary>
     /// >> 494 - Composite[pallet_staking.EraRewardPoints]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EraRewardPoints : BaseType
     {
         
         /// <summary>
         /// >> total
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _total;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _total;
         
         /// <summary>
         /// >> individual
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT1 _individual;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 Total
+        public Substrate.NetApi.Model.Types.Primitive.U32 Total
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Total = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            Total = new Substrate.NetApi.Model.Types.Primitive.U32();
             Total.Decode(byteArray, ref p);
             Individual = new PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT1();
             Individual.Decode(byteArray, ref p);

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
     /// <summary>
     /// >> 674 - Composite[polkadot_runtime_parachains.paras.ReplacementTimes]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReplacementTimes : BaseType
     {
         
         /// <summary>
         /// >> expected_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _expectedAt;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _expectedAt;
         
         /// <summary>
         /// >> activated_at
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _activatedAt;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _activatedAt;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ExpectedAt
+        public Substrate.NetApi.Model.Types.Primitive.U32 ExpectedAt
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 ActivatedAt
+        public Substrate.NetApi.Model.Types.Primitive.U32 ActivatedAt
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ExpectedAt = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ExpectedAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             ExpectedAt.Decode(byteArray, ref p);
-            ActivatedAt = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            ActivatedAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             ActivatedAt.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

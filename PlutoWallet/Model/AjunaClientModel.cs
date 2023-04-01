@@ -14,7 +14,7 @@ namespace PlutoWallet.Model
 		{
             Client = new AjunaClientExt(
                     new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             Task connectTask = ConnectAsync();
         }
@@ -23,7 +23,7 @@ namespace PlutoWallet.Model
         {
             Client = new AjunaClientExt(
                     new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             await ConnectAsync();
         }

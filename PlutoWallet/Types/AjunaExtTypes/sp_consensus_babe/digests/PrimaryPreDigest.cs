@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,14 +20,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
     /// <summary>
     /// >> 463 - Composite[sp_consensus_babe.digests.PrimaryPreDigest]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PrimaryPreDigest : BaseType
     {
         
         /// <summary>
         /// >> authority_index
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _authorityIndex;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _authorityIndex;
         
         /// <summary>
         /// >> slot
@@ -44,7 +44,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
         /// </summary>
         private PlutoWallet.NetApiExt.Generated.Types.Base.Arr64U8 _vrfProof;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 AuthorityIndex
+        public Substrate.NetApi.Model.Types.Primitive.U32 AuthorityIndex
         {
             get
             {
@@ -110,7 +110,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            AuthorityIndex = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            AuthorityIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             AuthorityIndex.Decode(byteArray, ref p);
             Slot = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot();
             Slot.Decode(byteArray, ref p);

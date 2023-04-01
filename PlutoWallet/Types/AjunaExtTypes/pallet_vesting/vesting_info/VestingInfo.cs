@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,26 +20,26 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_vesting.vesting_info
     /// <summary>
     /// >> 253 - Composite[pallet_vesting.vesting_info.VestingInfo]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class VestingInfo : BaseType
     {
         
         /// <summary>
         /// >> locked
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _locked;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _locked;
         
         /// <summary>
         /// >> per_block
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _perBlock;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _perBlock;
         
         /// <summary>
         /// >> starting_block
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _startingBlock;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _startingBlock;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Locked
+        public Substrate.NetApi.Model.Types.Primitive.U128 Locked
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_vesting.vesting_info
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 PerBlock
+        public Substrate.NetApi.Model.Types.Primitive.U128 PerBlock
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_vesting.vesting_info
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 StartingBlock
+        public Substrate.NetApi.Model.Types.Primitive.U32 StartingBlock
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_vesting.vesting_info
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Locked = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Locked = new Substrate.NetApi.Model.Types.Primitive.U128();
             Locked.Decode(byteArray, ref p);
-            PerBlock = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            PerBlock = new Substrate.NetApi.Model.Types.Primitive.U128();
             PerBlock.Decode(byteArray, ref p);
-            StartingBlock = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            StartingBlock = new Substrate.NetApi.Model.Types.Primitive.U32();
             StartingBlock.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

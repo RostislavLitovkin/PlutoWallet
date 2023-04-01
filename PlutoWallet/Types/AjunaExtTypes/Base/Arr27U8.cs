@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,11 +20,11 @@ namespace PlutoWallet.NetApiExt.Generated.Types.Base
     /// <summary>
     /// >> 291 - Array
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Array)]
+    [SubstrateNodeType(TypeDefEnum.Array)]
     public sealed class Arr27U8 : BaseType
     {
         
-        private Ajuna.NetApi.Model.Types.Primitive.U8[] _value;
+        private Substrate.NetApi.Model.Types.Primitive.U8[] _value;
         
         public override int TypeSize
         {
@@ -34,7 +34,7 @@ namespace PlutoWallet.NetApiExt.Generated.Types.Base
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U8[] Value
+        public Substrate.NetApi.Model.Types.Primitive.U8[] Value
         {
             get
             {
@@ -48,7 +48,7 @@ namespace PlutoWallet.NetApiExt.Generated.Types.Base
         
         public override string TypeName()
         {
-            return string.Format("[{0}; {1}]", new Ajuna.NetApi.Model.Types.Primitive.U8().TypeName(), this.TypeSize);
+            return string.Format("[{0}; {1}]", new Substrate.NetApi.Model.Types.Primitive.U8().TypeName(), this.TypeSize);
         }
         
         public override byte[] Encode()
@@ -61,15 +61,15 @@ namespace PlutoWallet.NetApiExt.Generated.Types.Base
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            var array = new Ajuna.NetApi.Model.Types.Primitive.U8[TypeSize];
-            for (var i = 0; i < array.Length; i++) {var t = new Ajuna.NetApi.Model.Types.Primitive.U8();t.Decode(byteArray, ref p);array[i] = t;};
+            var array = new Substrate.NetApi.Model.Types.Primitive.U8[TypeSize];
+            for (var i = 0; i < array.Length; i++) {var t = new Substrate.NetApi.Model.Types.Primitive.U8();t.Decode(byteArray, ref p);array[i] = t;};
             var bytesLength = p - start;
             Bytes = new byte[bytesLength];
             System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
             Value = array;
         }
         
-        public void Create(Ajuna.NetApi.Model.Types.Primitive.U8[] array)
+        public void Create(Substrate.NetApi.Model.Types.Primitive.U8[] array)
         {
             Value = array;
             Bytes = Encode();

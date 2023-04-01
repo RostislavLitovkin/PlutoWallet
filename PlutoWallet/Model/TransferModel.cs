@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
-using Ajuna.NetApi;
-using Ajuna.NetApi.Model.Extrinsics;
-using Ajuna.NetApi.Model.Meta;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Primitive;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Meta;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Primitive;
 using Newtonsoft.Json;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
@@ -78,7 +78,19 @@ namespace PlutoWallet.Model
             byteArray.AddRange(baseComAmount.Encode());
             Method transfer = new Method((byte)palletIndex, "Balances", (byte)callIndex, "transfer", byteArray.ToArray());
 
-            await client.Author.SubmitExtrinsicAsync(transfer, KeysModel.GetAccount(), ChargeTransactionPayment.Default(), 64);
+            var charge = ChargeTransactionPayment.Default();
+
+            var extrinsic = await client.GetExtrinsicParametersAsync(
+                transfer,
+                KeysModel.GetAccount(),
+                charge,
+                lifeTime: 64,
+                signed: true,
+                CancellationToken.None);
+
+            
+
+            await client.Author.SubmitExtrinsicAsync(Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
         } 
 	}
 }

@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,7 +20,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
     /// <summary>
     /// >> 645 - Composite[polkadot_runtime_parachains.inclusion.CandidatePendingAvailability]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidatePendingAvailability : BaseType
     {
         
@@ -42,22 +42,22 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
         /// <summary>
         /// >> availability_votes
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _availabilityVotes;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _availabilityVotes;
         
         /// <summary>
         /// >> backers
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _backers;
+        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> _backers;
         
         /// <summary>
         /// >> relay_parent_number
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _relayParentNumber;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _relayParentNumber;
         
         /// <summary>
         /// >> backed_in_number
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U32 _backedInNumber;
+        private Substrate.NetApi.Model.Types.Primitive.U32 _backedInNumber;
         
         /// <summary>
         /// >> backing_group
@@ -100,7 +100,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> AvailabilityVotes
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> AvailabilityVotes
         {
             get
             {
@@ -112,7 +112,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> Backers
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0> Backers
         {
             get
             {
@@ -124,7 +124,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 RelayParentNumber
+        public Substrate.NetApi.Model.Types.Primitive.U32 RelayParentNumber
         {
             get
             {
@@ -136,7 +136,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U32 BackedInNumber
+        public Substrate.NetApi.Model.Types.Primitive.U32 BackedInNumber
         {
             get
             {
@@ -188,13 +188,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
             Hash.Decode(byteArray, ref p);
             Descriptor = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateDescriptor();
             Descriptor.Decode(byteArray, ref p);
-            AvailabilityVotes = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            AvailabilityVotes = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             AvailabilityVotes.Decode(byteArray, ref p);
-            Backers = new Ajuna.NetApi.Model.Types.Base.BaseBitSeq<Ajuna.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
+            Backers = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Model.bitvec.order.Lsb0>();
             Backers.Decode(byteArray, ref p);
-            RelayParentNumber = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            RelayParentNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             RelayParentNumber.Decode(byteArray, ref p);
-            BackedInNumber = new Ajuna.NetApi.Model.Types.Primitive.U32();
+            BackedInNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             BackedInNumber.Decode(byteArray, ref p);
             BackingGroup = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex();
             BackingGroup.Decode(byteArray, ref p);

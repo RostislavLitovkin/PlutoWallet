@@ -1,8 +1,8 @@
-using Ajuna.NetApi;
-using Ajuna.NetApi.Model.Extrinsics;
-using Ajuna.NetApi.Model.Meta;
-using Ajuna.NetApi.Model.Types;
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Meta;
+using Substrate.NetApi.Model.Types;
+using Substrate.NetApi.Model.Types.Base;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Newtonsoft.Json;

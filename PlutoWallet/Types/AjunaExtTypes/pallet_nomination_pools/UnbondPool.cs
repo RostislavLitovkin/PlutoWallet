@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Attributes;
-using Ajuna.NetApi.Model.Types.Base;
-using Ajuna.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Attributes;
+using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
@@ -20,21 +20,21 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 626 - Composite[pallet_nomination_pools.UnbondPool]
     /// </summary>
-    [AjunaNodeType(TypeDefEnum.Composite)]
+    [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UnbondPool : BaseType
     {
         
         /// <summary>
         /// >> points
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _points;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _points;
         
         /// <summary>
         /// >> balance
         /// </summary>
-        private Ajuna.NetApi.Model.Types.Primitive.U128 _balance;
+        private Substrate.NetApi.Model.Types.Primitive.U128 _balance;
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Points
+        public Substrate.NetApi.Model.Types.Primitive.U128 Points
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public Ajuna.NetApi.Model.Types.Primitive.U128 Balance
+        public Substrate.NetApi.Model.Types.Primitive.U128 Balance
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Points = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Points = new Substrate.NetApi.Model.Types.Primitive.U128();
             Points.Decode(byteArray, ref p);
-            Balance = new Ajuna.NetApi.Model.Types.Primitive.U128();
+            Balance = new Substrate.NetApi.Model.Types.Primitive.U128();
             Balance.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

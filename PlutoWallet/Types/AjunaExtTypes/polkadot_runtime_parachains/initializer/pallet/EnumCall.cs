@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ajuna.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
@@ -25,7 +25,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
     /// >> 406 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Ajuna.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }
