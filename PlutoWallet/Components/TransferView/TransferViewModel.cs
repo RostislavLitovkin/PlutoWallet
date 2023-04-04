@@ -11,13 +11,36 @@ namespace PlutoWallet.Components.TransferView
 		[ObservableProperty]
 		private int amount;
 
-		[ObservableProperty]
+        [ObservableProperty]
+        private string fee;
+
+        [ObservableProperty]
 		private bool isVisible;
 
 		public TransferViewModel()
 		{
-			isVisible = false;
+			SetToDefault();
 		}
+
+		public async Task GetFeeAsync()
+		{
+			try
+			{
+				Fee = await Model.FeeModel.GetTransferFeeAsync();
+			}
+			catch (Exception ex)
+			{
+				Fee = ex.Message;
+			}
+        }
+
+        public void SetToDefault()
+        {
+			Address = "";
+			Amount = 0;
+			IsVisible = false;
+            Fee = "Fee: loading";
+        }
     }
 }
 

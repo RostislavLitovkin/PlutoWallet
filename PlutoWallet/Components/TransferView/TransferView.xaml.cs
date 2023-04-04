@@ -10,6 +10,19 @@ public partial class TransferView : ContentView
 		InitializeComponent();
 
         BindingContext = DependencyService.Get<TransferViewModel>();
+
+        var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+        //CounterLabel.Text = $"width: {mainDisplayInfo.Width} height :{mainDisplayInfo.Height} density:{mainDisplayInfo.Density}";
+
+        verticalStackLayout.MaximumWidthRequest = mainDisplayInfo.Width / mainDisplayInfo.Density - 20;
+        SizeChanged += OnDisplaySizeChanged;
+    }
+
+    private void OnDisplaySizeChanged(object sender, EventArgs args)
+    {
+        var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+        verticalStackLayout.MaximumWidthRequest = mainDisplayInfo.Width / mainDisplayInfo.Density - 20;
+
     }
 
     async void SignAndTransferClicked(System.Object sender, System.EventArgs e)
@@ -25,7 +38,7 @@ public partial class TransferView : ContentView
 
             // Hide this layout
 
-            viewModel.IsVisible = false;
+            viewModel.SetToDefault();
         }
         catch (Exception ex)
         {
@@ -40,7 +53,7 @@ public partial class TransferView : ContentView
         // Hide this layout
         var viewModel = DependencyService.Get<TransferViewModel>();
 
-        viewModel.IsVisible = false;
+        viewModel.SetToDefault();
 
         qrLayout.Children.Clear();
     }
@@ -57,7 +70,6 @@ public partial class TransferView : ContentView
 
     async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
-        
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         try

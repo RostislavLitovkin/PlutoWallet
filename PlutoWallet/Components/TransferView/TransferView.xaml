@@ -14,7 +14,7 @@
            VerticalOptions="Center">
         <AbsoluteLayout>
 
-            <VerticalStackLayout MaximumWidthRequest="300">
+            <VerticalStackLayout x:Name="verticalStackLayout">
 
                 <Label
                     FontAttributes="Bold"
@@ -50,10 +50,13 @@
                 <Entry Placeholder="Amount" Text="{Binding Amount}" Margin="20"
                        Keyboard="Numeric"/>
 
+                <Label Text="{Binding Fee}" TextColor="Orange" />
+
                 <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
                 <Button Text="Sign and transfer"
                         Clicked="SignAndTransferClicked"/>
+
             </VerticalStackLayout>
 
            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">

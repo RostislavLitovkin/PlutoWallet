@@ -80,15 +80,13 @@ namespace PlutoWallet.Model
 
             var charge = ChargeTransactionPayment.Default();
 
-            var extrinsic = await client.GetExtrinsicParametersAsync(
+            UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 transfer,
                 KeysModel.GetAccount(),
                 charge,
                 lifeTime: 64,
                 signed: true,
                 CancellationToken.None);
-
-            
 
             await client.Author.SubmitExtrinsicAsync(Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
         } 

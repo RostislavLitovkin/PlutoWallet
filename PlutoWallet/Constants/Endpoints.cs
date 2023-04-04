@@ -29,7 +29,12 @@ namespace PlutoWallet.Constants
 				Name = "Westend Polkadot",
 				URL = "wss://westend-rpc.polkadot.io"
             },
-			new Endpoint
+            new Endpoint
+            {
+                Name = "Rococo Polkadot",
+                URL = "wss://rococo-rpc.polkadot.io"
+            },
+            new Endpoint
 			{
 				Name = "Unique",
 				URL = "wss://eu-ws-quartz.unique.network"

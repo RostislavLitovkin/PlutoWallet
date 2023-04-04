@@ -44,9 +44,11 @@ namespace PlutoWallet.Model
                 var customCallsViewModel = DependencyService.Get<ViewModel.CustomCallsViewModel>();
                 var mainViewModel = DependencyService.Get<ViewModel.MainViewModel>();
                 var balanceViewModel = DependencyService.Get<Components.BalanceView.BalanceViewModel>();
+                var transferViewModel = DependencyService.Get<Components.TransferView.TransferViewModel>();
 
                 customCallsViewModel.GetMetadata();
-                Task gettingBalance = balanceViewModel.GetBalanceAsync();
+                Task getBalance = balanceViewModel.GetBalanceAsync();
+                Task getTransfer = transferViewModel.GetFeeAsync();
             }
             else
             {
