@@ -1,6 +1,6 @@
 ﻿using PlutoWallet.Components.TransferView;
 
-namespace PlutoWallet.Components.BalanceView;
+namespace PlutoWallet.Components.Balance;
 
 public partial class BalanceView : ContentView
 {

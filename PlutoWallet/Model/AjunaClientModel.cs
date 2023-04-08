@@ -43,7 +43,7 @@ namespace PlutoWallet.Model
                 // Setup things, like balances..
                 var customCallsViewModel = DependencyService.Get<ViewModel.CustomCallsViewModel>();
                 var mainViewModel = DependencyService.Get<ViewModel.MainViewModel>();
-                var balanceViewModel = DependencyService.Get<Components.BalanceView.BalanceViewModel>();
+                var balanceViewModel = DependencyService.Get<Components.Balance.BalanceViewModel>();
                 var transferViewModel = DependencyService.Get<Components.TransferView.TransferViewModel>();
 
                 customCallsViewModel.GetMetadata();

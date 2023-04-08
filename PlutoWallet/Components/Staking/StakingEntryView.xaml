@@ -20,10 +20,16 @@
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                                      AbsoluteLayout.LayoutFlags="SizeProportional"
                                      Spacing="0">
-                    <Label 
-                        Text="GLG stakers"
-                        FontAttributes="Bold"
-                        FontSize="24"/>
+                    <HorizontalStackLayout>
+                        <Label 
+                            Text="GLG stakers"
+                            FontAttributes="Bold"
+                            FontSize="24"/>
+                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
+                               VerticalOptions="Center"
+                               Margin="5, 0, 0, 0"
+                               HeightRequest="15" WidthRequest="15"/>
+                    </HorizontalStackLayout>
                     <Label 
                         Text="Commission: 10%" TextColor="#888" />
                 </VerticalStackLayout>
@@ -42,13 +48,8 @@
        <switch:MiniDualSwitch FirstOption="Easy" SecondOption="Pro"
                                AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
                                AbsoluteLayout.LayoutFlags="PositionProportional"
-                               Margin="0, 5, 25, 0"
+                               Margin="0, 5, 0, 0"
                                x:Name="easyProSwitch"/>
-
-       <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
-               AbsoluteLayout.LayoutBounds="1, 0, 20, 20"
-               AbsoluteLayout.LayoutFlags="XProportional"
-               Margin="0, 5, 0, 0"/>
 
         <AbsoluteLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnInfoClicked" />

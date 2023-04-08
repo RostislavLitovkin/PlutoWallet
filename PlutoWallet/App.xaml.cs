@@ -1,5 +1,5 @@
 ﻿using PlutoWallet.Components.ArgumentsView;
-using PlutoWallet.Components.BalanceView;
+using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;

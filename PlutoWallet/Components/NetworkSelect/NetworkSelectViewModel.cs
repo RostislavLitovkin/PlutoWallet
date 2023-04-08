@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using PlutoWallet.Components.BalanceView;
+using PlutoWallet.Components.Balance;
 using System.Collections.ObjectModel;
 
 namespace PlutoWallet.Components.NetworkSelect

@@ -94,7 +94,6 @@
 	  <None Remove="Components\MessagePopup\" />
 	  <None Remove="Components\TransactionRequest\" />
 	  <None Remove="Components\CalamarView\" />
-	  <None Remove="Components\BalanceView\" />
 	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
 	  <None Remove="Components\ArgumentsView\" />
 	  <None Remove="Components\PublicKeyQRCodeView\" />
@@ -219,7 +218,6 @@
 	  <Folder Include="Components\MessagePopup\" />
 	  <Folder Include="Components\TransactionRequest\" />
 	  <Folder Include="Components\CalamarView\" />
-	  <Folder Include="Components\BalanceView\" />
 	  <Folder Include="Components\ArgumentsView\" />
 	  <Folder Include="Components\PublicKeyQRCodeView\" />
 	  <Folder Include="Resources\Splash\" />

@@ -9,10 +9,11 @@
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
-             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView"
+             xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
              xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
+             xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
              BackgroundColor="Black">
@@ -40,7 +41,17 @@
                     Title="Substrate key"
                     Address="{Binding SubstrateKey}"/>
 
-                <balanceview:BalanceView />
+                <balance:BalanceView />
+
+                <extrinsic:ExtrinsicStatusView
+                    ExtrinsicId="0015001148-000001-0e737"
+                    Status="Pending" />
+                <extrinsic:ExtrinsicStatusView
+                    ExtrinsicId="0015001148-000001-0e736"
+                    Status="Success" />
+                <extrinsic:ExtrinsicStatusView
+                    ExtrinsicId="0015001148-000001-0e735"
+                    Status="Failed" />
 
                 <staking:StakingDashboardView />
 

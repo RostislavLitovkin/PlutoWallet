@@ -1,7 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace PlutoWallet.Components.BalanceView
+namespace PlutoWallet.Components.Balance
 {
 	public partial class BalanceViewModel : ObservableObject
 	{

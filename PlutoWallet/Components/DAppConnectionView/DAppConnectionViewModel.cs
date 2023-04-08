@@ -16,7 +16,9 @@ namespace PlutoWallet.Components.DAppConnectionView
 
         public DAppConnectionViewModel()
         {
-            isVisible = false;
+            isVisible = true;
+            name = "Galaxy Logic Game";
+            icon = "https://rostislavlitovkin.pythonanywhere.com/logo";
         }
     }
 }
