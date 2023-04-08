@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Balance.UsdBalanceView"
+             xmlns:switch="clr-namespace:PlutoWallet.Components.Switch"
+             xmlns:webview="clr-namespace:PlutoWallet.Components.WebView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             HeightRequest="95">
+    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+           CornerRadius="20" x:Name="frame"
+           Padding="10, 0, 10, 0"
+           Margin="0">
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">
+                <Label 
+                    Text="Total balance"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    HeightRequest="25"
+                    VerticalTextAlignment="Center"/>
+            
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand" HeightRequest="60"
+                                x:Name="valueLayout">
+                    <Label Text="187.76 USD"
+                           FontAttributes="Bold"
+                           FontSize="24"
+                           AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                </AbsoluteLayout>
+                <webview:AdvancedWebView HeightRequest="600"
+                                 Address="https://www.coingecko.com/en/coins/polkadot"
+                                 x:Name="graphLayout"
+                                 IsVisible="False" />
+           </VerticalStackLayout>
+
+           <switch:MiniDualSwitch FirstOption="Value" SecondOption="Graph"
+                                   AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   Margin="0, 5, 0, 0"
+                                   x:Name="valueGraphSwitch"/>
+        </AbsoluteLayout>
+    </Frame>
+</ContentView>
+

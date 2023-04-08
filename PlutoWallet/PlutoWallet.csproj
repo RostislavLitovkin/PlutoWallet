@@ -202,6 +202,9 @@
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicStatusView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Balance\UsdBalanceView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />

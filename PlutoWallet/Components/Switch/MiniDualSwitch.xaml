@@ -39,14 +39,15 @@
                       HorizontalTextAlignment="Center"
                       VerticalTextAlignment="Center"/>
             </Frame>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClicked" />
+
+            </AbsoluteLayout.GestureRecognizers>
         </AbsoluteLayout>
 
     </Frame>
 
-    <ContentView.GestureRecognizers>
-        <TapGestureRecognizer Tapped="OnClicked" />
-
-    </ContentView.GestureRecognizers>
+    
     
 </ContentView>
 

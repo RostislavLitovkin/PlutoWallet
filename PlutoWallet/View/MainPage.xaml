@@ -33,6 +33,8 @@
 
                 <dappconnectionview:DAppConnectionView />
 
+                <balance:UsdBalanceView />
+
                 <addressview:AddressView
                     Title="Public key"
                     Address="{Binding PublicKey}"/>

@@ -21,6 +21,7 @@ public partial class MiniDualSwitch : ContentView
 
     void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        Console.WriteLine("Changing switch state");
         if (selected == 2)
         {
             selected = 1;
