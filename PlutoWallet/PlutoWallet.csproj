@@ -89,7 +89,6 @@
 	  <None Remove="ZXing.Net.Maui" />
 	  <None Remove="Components\ScannerView\" /> 
 	  <None Remove="Components\ConnectionRequestView\" />
-	  <None Remove="Components\StakingDashboard\" />
 	  <None Remove="ZXing.Net.Maui.Controls" />
 	  <None Remove="Components\UniversalScannerView\" />
 	  <None Remove="Components\MessagePopup\" />
@@ -104,6 +103,10 @@
 	  <None Remove="Resources\Fonts\Exodar-Outline.ttf" />
 	  <None Remove="Components\DAppConnectionView\" />
 	  <None Remove="Substrate.NET.API" />
+	  <None Remove="Components\Staking\" />
+	  <None Remove="Components\Switch\" />
+	  <None Remove="Components\WebView\" />
+	  <None Remove="Components\Extrinsic\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -147,9 +150,6 @@
 	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Components\StakingDashboard\StakingDashboardView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="View\SettingsPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
@@ -179,6 +179,30 @@
 	  <MauiXaml Update="Components\DAppConnectionView\DAppConnectionView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\EzStakingEntryView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\StakingDashboardView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\EzStakingOverviewView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\StakingRegistrationRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Switch\DualSwitch.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Switch\MiniDualSwitch.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\WebView\AdvancedWebView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\ExtrinsicStatusView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />
@@ -191,7 +215,6 @@
 	  <Folder Include="Components\TransferView\" />
 	  <Folder Include="Components\ScannerView\" />
 	  <Folder Include="Components\ConnectionRequestView\" />
-	  <Folder Include="Components\StakingDashboard\" />
 	  <Folder Include="Components\UniversalScannerView\" />
 	  <Folder Include="Components\MessagePopup\" />
 	  <Folder Include="Components\TransactionRequest\" />
@@ -202,6 +225,10 @@
 	  <Folder Include="Resources\Splash\" />
 	  <Folder Include="Resources\AppIcon\" />
 	  <Folder Include="Components\DAppConnectionView\" />
+	  <Folder Include="Components\Staking\" />
+	  <Folder Include="Components\Switch\" />
+	  <Folder Include="Components\WebView\" />
+	  <Folder Include="Components\Extrinsic\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

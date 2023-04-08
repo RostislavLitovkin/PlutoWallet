@@ -5,12 +5,14 @@
              xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView"
              xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView"
              xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
-             xmlns:stakingdashboard="clr-namespace:PlutoWallet.Components.StakingDashboard"
              xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView"
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
-             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView" xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView" xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
+             xmlns:balanceview="clr-namespace:PlutoWallet.Components.BalanceView"
+             xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
+             xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
+             xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
              BackgroundColor="Black">
@@ -40,7 +42,7 @@
 
                 <balanceview:BalanceView />
 
-                <stakingdashboard:StakingDashboardView />
+                <staking:StakingDashboardView />
 
                <calamar:CalamarView Address="{Binding PublicKey}"/>
 
@@ -85,8 +87,11 @@
         <universalscannerview:UniversalScannerView
             x:Name="universalScannerView"
              IsVisible="false" Opacity="0" />
+
         
         <transactionrequest:TransactionRequestView />
+
+        <staking:StakingRegistrationRequestView />
         
         <messagepopup:MessagePopupView />
 

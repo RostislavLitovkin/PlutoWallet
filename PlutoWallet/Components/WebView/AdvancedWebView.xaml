@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.WebView.AdvancedWebView"
+             x:Name="view">
+    <WebView HeightRequest="600" WidthRequest="{Binding Source={x:Reference view}, Path=Width}"
+             x:Name="webView"/>
+</ContentView>
+

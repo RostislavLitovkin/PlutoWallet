@@ -9,7 +9,7 @@ namespace PlutoWallet.Components.TransferView
 		private string address;
 
 		[ObservableProperty]
-		private int amount;
+		private string amount;
 
         [ObservableProperty]
         private string fee;
@@ -37,7 +37,7 @@ namespace PlutoWallet.Components.TransferView
         public void SetToDefault()
         {
 			Address = "";
-			Amount = 0;
+			Amount = "";
 			IsVisible = false;
             Fee = "Fee: loading";
         }

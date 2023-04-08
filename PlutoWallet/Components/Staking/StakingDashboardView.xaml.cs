@@ -1,4 +1,4 @@
-﻿namespace PlutoWallet.Components.StakingDashboard;
+﻿namespace PlutoWallet.Components.Staking;
 
 public partial class StakingDashboardView : ContentView
 {

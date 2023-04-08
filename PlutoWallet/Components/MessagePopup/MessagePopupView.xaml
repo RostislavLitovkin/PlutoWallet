@@ -4,6 +4,7 @@
              x:Class="PlutoWallet.Components.MessagePopup.MessagePopupView"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
+             Padding="20"
              BackgroundColor="#66000000"
              IsVisible="{Binding IsVisible}">
 
@@ -14,7 +15,9 @@
            VerticalOptions="Center">
         <AbsoluteLayout>
 
-            <VerticalStackLayout>
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                                 AbsoluteLayout.LayoutFlags="WidthProportional"
+                                 Spacing="10">
                  <Label
                     FontAttributes="Bold"
                     Text="{Binding Title}"
@@ -24,7 +27,7 @@
                 <Label
                     x:Name="text"
                     Text="{Binding Text}"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="CenterAndExpand" />
 
                 <Button Text="Back"
                         Clicked="OnBackClicked" />

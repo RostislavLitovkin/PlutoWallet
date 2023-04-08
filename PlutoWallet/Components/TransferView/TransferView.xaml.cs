@@ -11,18 +11,6 @@ public partial class TransferView : ContentView
 
         BindingContext = DependencyService.Get<TransferViewModel>();
 
-        var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-        //CounterLabel.Text = $"width: {mainDisplayInfo.Width} height :{mainDisplayInfo.Height} density:{mainDisplayInfo.Density}";
-
-        verticalStackLayout.MaximumWidthRequest = mainDisplayInfo.Width / mainDisplayInfo.Density - 20;
-        SizeChanged += OnDisplaySizeChanged;
-    }
-
-    private void OnDisplaySizeChanged(object sender, EventArgs args)
-    {
-        var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-        verticalStackLayout.MaximumWidthRequest = mainDisplayInfo.Width / mainDisplayInfo.Density - 20;
-
     }
 
     async void SignAndTransferClicked(System.Object sender, System.EventArgs e)
@@ -30,11 +18,26 @@ public partial class TransferView : ContentView
         // Send the actual transaction
 
         var viewModel = DependencyService.Get<TransferViewModel>();
+        double tempAmount;
+        int amount;
+        if (double.TryParse(viewModel.Amount, out tempAmount))
+        {
+            // Double to int conversion
+            // Complete later
+            amount = (int)tempAmount;
+        }
+        else
+        {
+            errorLabel.Text = "Invalid amount value";
+            return;
+        }
+
+        errorLabel.Text = "";
 
         try
         {
 
-            await TransferModel.BalancesTransferAsync(viewModel.Address, viewModel.Amount);
+            await TransferModel.BalancesTransferAsync(viewModel.Address, amount);
 
             // Hide this layout
 

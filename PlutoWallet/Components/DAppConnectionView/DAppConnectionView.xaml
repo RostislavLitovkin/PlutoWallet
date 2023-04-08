@@ -6,8 +6,7 @@
     <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            CornerRadius="20" HeightRequest="70"
-           Padding="0
-           ">
+           Padding="0">
         <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
             <Image AbsoluteLayout.LayoutBounds="10, 10, 50, 50"
                    Source="{Binding Icon}"/>

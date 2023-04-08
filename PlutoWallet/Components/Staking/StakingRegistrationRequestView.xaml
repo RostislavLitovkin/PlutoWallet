@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlutoWallet.Components.TransferView.TransferView"
+             x:Class="PlutoWallet.Components.Staking.StakingRegistrationRequestView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
@@ -21,47 +21,49 @@
 
                 <Label
                     FontAttributes="Bold"
-                    Text="Transfer"
+                    Text="Staking registration"
                     HeightRequest="30"
                     HorizontalOptions="Center"
                     Margin="20, 0, 20, 0" />
 
-                <AbsoluteLayout x:Name="qrLayout">
+                <Label
+                    Text="Name: GLG Stakers"
+                    HorizontalOptions="StartAndExpand" />
 
-                </AbsoluteLayout>
+                <Label
+                    Text="Pool id: #1001"
+                    HorizontalOptions="StartAndExpand" />
 
-                <AbsoluteLayout>
-                    <Entry Placeholder="ss58 address" Text="{Binding Address}"
-                           AbsoluteLayout.LayoutBounds="0, 0, 1, 30"
-                           AbsoluteLayout.LayoutFlags="WidthProportional"
-                           Margin="0, 0, 50, 0"/>
+                <Label
+                    Text="Members: 1076"
+                    HorizontalOptions="StartAndExpand"/>
 
-                    <!--QR code button-->
-                    <Image WidthRequest="30" HeightRequest="30" Margin="10, 0, 10, 0"
-                           AbsoluteLayout.LayoutBounds="1, 0, 30, 30"
-                           AbsoluteLayout.LayoutFlags="XProportional">
-                        <Image.Source>
-                            <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                                            Glyph="&#xf029;"
-                                             FontFamily="FontAwesome"
-                                             Size="30"/>
-                        </Image.Source>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnShowQRClicked" />
+                <Label
+                    Text="Points: 164,241,927,877,494"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Bonded: 1982.08 DOT"
+                    HorizontalOptions="StartAndExpand" />
 
-                        </Image.GestureRecognizers>
-                    </Image>
-                </AbsoluteLayout>
+                <Label
+                    Text="Last recorded reward counter: 712,52 DOT"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Last recorded total payouts: 100,00 DOT"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Total rewards claimed: 848,17 DOT"
+                    HorizontalOptions="StartAndExpand" />
 
-                <Entry Placeholder="Amount" Text="{Binding Amount}"
-                       Keyboard="Numeric"/>
-
-                <Label Text="{Binding Fee}" TextColor="Orange" />
+                <Label Text="Fee: 0.0001 DOT" TextColor="Orange" />
 
                 <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
-                <Button Text="Sign and transfer"
-                        Clicked="SignAndTransferClicked"/>
+                <Button Text="Sing and submit"
+                        Clicked="OnSubmitClicked" />
+
+                <Button Text="Reject" BackgroundColor="DarkRed"
+                        Clicked="OnRejectClicked" />
 
             </VerticalStackLayout>
 
@@ -78,6 +80,5 @@
         </AbsoluteLayout>
         
     </Frame>
-    
 </ContentView>
 

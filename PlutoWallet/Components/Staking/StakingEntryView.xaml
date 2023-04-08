@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:switch="clr-namespace:PlutoWallet.Components.Switch" xmlns:webview="clr-namespace:PlutoWallet.Components.WebView"
+             x:Class="PlutoWallet.Components.Staking.StakingEntryView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             HeightRequest="95">
+    <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+        <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
+            <Label 
+                Text="Staking"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                HeightRequest="25"
+                VerticalTextAlignment="Center"/>
+            
+            <AbsoluteLayout HorizontalOptions="CenterAndExpand" HeightRequest="60"
+                            x:Name="easyStaking">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional"
+                                     Spacing="0">
+                    <Label 
+                        Text="GLG stakers"
+                        FontAttributes="Bold"
+                        FontSize="24"/>
+                    <Label 
+                        Text="Commission: 10%" TextColor="#888" />
+                </VerticalStackLayout>
+            
+                <Button AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Text="Stake"
+                        Clicked="OnStakeClicked"/>
+            </AbsoluteLayout>
+            <webview:AdvancedWebView HeightRequest="600"
+                                     Address="https://staking.polkadot.network/#/overview"
+                                     x:Name="proStaking"
+                                     IsVisible="False" />
+       </VerticalStackLayout>
+
+       <switch:MiniDualSwitch FirstOption="Easy" SecondOption="Pro"
+                               AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Margin="0, 5, 25, 0"
+                               x:Name="easyProSwitch"/>
+
+       <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
+               AbsoluteLayout.LayoutBounds="1, 0, 20, 20"
+               AbsoluteLayout.LayoutFlags="XProportional"
+               Margin="0, 5, 0, 0"/>
+
+        <AbsoluteLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnInfoClicked" />
+
+        </AbsoluteLayout.GestureRecognizers>
+    </AbsoluteLayout>
+</ContentView>
+
