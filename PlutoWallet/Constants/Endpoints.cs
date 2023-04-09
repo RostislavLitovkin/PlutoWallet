@@ -18,11 +18,29 @@ namespace PlutoWallet.Constants
 			{
 				Name = "Polkadot",
 				URL = "wss://polkadot.api.onfinality.io/public-ws",
+				Icon = "polkadot.png",
+				CalamarChainName = "polkadot",
             },
 			new Endpoint
 			{
 				Name = "Kusama",
-				URL = "wss://kusama-rpc.polkadot.io"
+				URL = "wss://kusama-rpc.polkadot.io",
+                Icon = "kusama.png",
+                CalamarChainName = "kusama",
+            },
+			new Endpoint
+			{
+				Name = "Moonbeam",
+				URL = "wss://wss.api.moonbeam.network",
+                Icon = "moonbeam.png",
+                CalamarChainName = "moonbeam",
+            },
+			new Endpoint
+			{
+				Name = "Astar",
+				URL = "wss://rpc.astar.network",
+                Icon = "astar.png",
+                CalamarChainName = "astar",
             },
 			new Endpoint
 			{
@@ -66,6 +84,8 @@ namespace PlutoWallet.Constants
 	{
         public string Name { get; set; }
         public string URL { get; set; }
+		public string Icon { get; set; }
+		public string CalamarChainName { get; set; }
     }
 }
 

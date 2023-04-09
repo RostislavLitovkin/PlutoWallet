@@ -16,12 +16,13 @@
                                    HeightRequest="30"
                                     WidthRequest="{Binding Source={x:Reference frame}, Path=Width}"
                                    >
-
+                <Image Source="polkadot.png"
+                       HeightRequest="20" WidthRequest="20" Margin="0, 0, 10, 0" />
                 <Label 
                     Text="Balance "
                     VerticalOptions="Center" 
                     HorizontalOptions="Start"
-                    MinimumWidthRequest="100"/>
+                    MinimumWidthRequest="70"/>
                <Label
                     Text="{Binding Balance}"
                     VerticalOptions="Center" 

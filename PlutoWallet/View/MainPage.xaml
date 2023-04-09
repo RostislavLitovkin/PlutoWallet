@@ -29,7 +29,7 @@
                 Spacing="15"
                 Padding="30,0">
 
-                <networkselect:NetworkSelectView />
+                <networkselect:MultiNetworkSelectView />
 
                 <dappconnectionview:DAppConnectionView />
 

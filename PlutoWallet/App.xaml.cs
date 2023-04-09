@@ -20,8 +20,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-        DependencyService.Register<NetworkSelectViewModel>();
-
         DependencyService.Register<CustomCallsViewModel>();
 
         DependencyService.Register<MainViewModel>();
@@ -46,6 +44,8 @@ public partial class App : Application
 
         DependencyService.Register<StakingRegistrationRequestViewModel>();
 
+        DependencyService.Register<MultiNetworkSelectViewModel>();
+        
         if (Preferences.ContainsKey("privateKey"))
         {
             MainPage = new NavigationPage(new MainTabbedPage());
