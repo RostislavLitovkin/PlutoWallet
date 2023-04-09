@@ -36,7 +36,7 @@ public partial class MultiNetworkSelectView : ContentView
 
     void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-		if (((NetworkBubbleView)sender).ShowName)
+		if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName)
 		{
 			// Later switch to other networks
 		}
@@ -47,7 +47,7 @@ public partial class MultiNetworkSelectView : ContentView
                 bubble.ShowName = false;
             }
 
-            ((NetworkBubbleView)sender).ShowName = true;
+            ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName = true;
         }
     }
 

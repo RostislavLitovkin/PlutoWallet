@@ -1,4 +1,6 @@
-﻿namespace PlutoWallet.Components.NetworkSelect;
+﻿using Microsoft.Maui.Controls;
+
+namespace PlutoWallet.Components.NetworkSelect;
 
 public partial class NetworkBubbleView : ContentView
 {
@@ -46,5 +48,21 @@ public partial class NetworkBubbleView : ContentView
     {
         get => (bool)GetValue(ShowNameProperty);
         set => SetValue(ShowNameProperty, value);
+    }
+
+
+
+    public event EventHandler<TappedEventArgs> Tapped
+    {
+        add
+        {
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += value;
+            horizontalStackLayout.GestureRecognizers.Add(tapGestureRecognizer);
+        }
+        remove
+        {
+            throw new NotImplementedException();
+        }
     }
 }

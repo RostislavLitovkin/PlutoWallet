@@ -10,7 +10,8 @@
                BackgroundColor="#88888888"
                BorderColor="#88888888">
             <HorizontalStackLayout Spacing="2">
-                <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True">
+                <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
+                                                 Tapped="OnNetworkClicked">
                     <networkselect:NetworkBubbleView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnNetworkClicked" />
 
@@ -18,7 +19,7 @@
 
                 </networkselect:NetworkBubbleView>
 
-                <networkselect:NetworkBubbleView x:Name="bubble2" IsVisible="false">
+                <networkselect:NetworkBubbleView x:Name="bubble2" IsVisible="false" Tapped="OnNetworkClicked">
                     <networkselect:NetworkBubbleView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnNetworkClicked" />
 
@@ -26,7 +27,7 @@
 
                 </networkselect:NetworkBubbleView>
 
-                <networkselect:NetworkBubbleView x:Name="bubble3" IsVisible="false">
+                <networkselect:NetworkBubbleView x:Name="bubble3" IsVisible="false" Tapped="OnNetworkClicked">
                     <networkselect:NetworkBubbleView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnNetworkClicked" />
 
@@ -34,7 +35,7 @@
 
                 </networkselect:NetworkBubbleView>
 
-                <networkselect:NetworkBubbleView x:Name="bubble4" IsVisible="false">
+                <networkselect:NetworkBubbleView x:Name="bubble4" IsVisible="false" Tapped="OnNetworkClicked">
                     <networkselect:NetworkBubbleView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnNetworkClicked" />
 

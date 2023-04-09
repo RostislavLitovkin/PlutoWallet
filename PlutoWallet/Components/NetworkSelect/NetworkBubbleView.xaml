@@ -9,7 +9,8 @@
             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
             BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
             >
-        <HorizontalStackLayout>
+        <HorizontalStackLayout x:Name="horizontalStackLayout">
+            
             <Image x:Name="iconImage"
                     HeightRequest="30"
                     WidthRequest="30" />
