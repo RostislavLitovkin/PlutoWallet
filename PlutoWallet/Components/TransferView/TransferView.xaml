@@ -32,20 +32,17 @@
 
                 <AbsoluteLayout>
                     <Entry Placeholder="ss58 address" Text="{Binding Address}"
-                           AbsoluteLayout.LayoutBounds="0, 0, 1, 30"
+                           AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
                            AbsoluteLayout.LayoutFlags="WidthProportional"
-                           Margin="0, 0, 50, 0"/>
+                           Margin="0, 0, 40, 0"/>
 
                     <!--QR code button-->
-                    <Image WidthRequest="30" HeightRequest="30" Margin="10, 0, 10, 0"
-                           AbsoluteLayout.LayoutBounds="1, 0, 30, 30"
-                           AbsoluteLayout.LayoutFlags="XProportional">
-                        <Image.Source>
-                            <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                                            Glyph="&#xf029;"
-                                             FontFamily="FontAwesome"
-                                             Size="30"/>
-                        </Image.Source>
+                    <Image
+                        AbsoluteLayout.LayoutBounds="1, 0, 30, 30"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
+                        >
+            
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnShowQRClicked" />
 
