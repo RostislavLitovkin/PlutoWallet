@@ -3,14 +3,27 @@ namespace PlutoWallet.Constants
 {
 	public class Endpoints
 	{
-		public static string RococoFrequency => "wss://rpc.rococo.frequency.xyz";
+        public static int[] DefaultNetworks => new int[4] { 0, 2, 3, -1 };
 
-		/*public static Dictionary<string, string> GetAllEndpoints => new Dictionary<string, string>()
+		public static List<int[]> NetworkOptions
 		{
-			{ "polkadot", "wss://rpc.polkadot.io" },
-			{ "rococoFrequency", "wss://rpc.rococo.frequency.xyz" }
+			get
+			{
+				List<int[]> options = new List<int[]>();
 
-		};*/
+				options.Add(DefaultNetworks);
+                options.Add(new int[4] { 0, 6, -1, -1 });
+                options.Add(new int[4] { 0, 1, -1, -1 });
+
+
+				for (int i = 0; i < GetAllEndpoints.Count; i++)
+				{
+                    options.Add(new int[4] { i, -1, -1, -1 });
+                }
+
+                return options;
+			}
+		} 
 
         public static List<Endpoint> GetAllEndpoints => new List<Endpoint>()
         {
@@ -45,38 +58,43 @@ namespace PlutoWallet.Constants
 			new Endpoint
 			{
 				Name = "Westend Polkadot",
-				URL = "wss://westend-rpc.polkadot.io"
+				URL = "wss://westend-rpc.polkadot.io",
+                Icon = "westend.png",
             },
             new Endpoint
             {
                 Name = "Rococo Polkadot",
-                URL = "wss://rococo-rpc.polkadot.io"
+                URL = "wss://rococo-rpc.polkadot.io",
+                Icon = "rococo.png",
+                CalamarChainName = "rococo",
             },
             new Endpoint
 			{
 				Name = "Unique",
-				URL = "wss://eu-ws-quartz.unique.network"
+				URL = "wss://eu-ws-quartz.unique.network",
+                Icon = "unique.png",
+                CalamarChainName = "unique",
             },
 			new Endpoint
 			{
 				Name = "Opal",
 				URL = "wss://eu-ws-opal.unique.network",
-			},
-			new Endpoint
-			{
-                Name = "Rococo Frequency",
-                URL = "wss://rpc.rococo.frequency.xyz",
+                Icon = "opal.png",
+                CalamarChainName = "opal",
             },
 			new Endpoint
 			{
 				Name = "Acala",
 				URL = "wss://acala-rpc-1.aca-api.network",
+                Icon = "acala.png",
+                CalamarChainName = "acala",
             },
 			new Endpoint
 			{
 				Name = "(Local) ws://127.0.0.1:9944",
-                URL = "ws://127.0.0.1:9944"
-			}
+                URL = "ws://127.0.0.1:9944",
+                Icon = "substrate.png",
+            }
         };
     }
 

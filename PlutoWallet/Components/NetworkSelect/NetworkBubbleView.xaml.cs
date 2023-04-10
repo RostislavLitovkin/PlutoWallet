@@ -18,6 +18,17 @@ public partial class NetworkBubbleView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
             control.iconImage.Source = (string)newValue;
+            if ((string)newValue == "kusama.png")
+            {
+                control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, "kusamawhite.png", "kusama.png");
+            }
+            else if ((string)newValue == "menuwhite.png")
+            {
+                control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, "menuwhite.png", "menublack.png");
+                control.iconImage.WidthRequest = 24;
+                control.iconImage.HeightRequest = 24;
+                control.iconImage.Margin = 3;
+            }
         });
 
     public static readonly BindableProperty ShowNameProperty = BindableProperty.Create(

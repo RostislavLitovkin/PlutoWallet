@@ -8,12 +8,16 @@
             Padding="5"
             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
             BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-            >
-        <HorizontalStackLayout x:Name="horizontalStackLayout">
+            x:Name="frame">
+        <HorizontalStackLayout x:Name="horizontalStackLayout"
+                               MinimumHeightRequest="30"
+                               MinimumWidthRequest="30">
             
             <Image x:Name="iconImage"
                     HeightRequest="30"
-                    WidthRequest="30" />
+                    WidthRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
             <Label x:Name="nameLabel" IsVisible="false"
                     VerticalTextAlignment="Center"
                     Margin="10, 0, 10, 0"

@@ -29,7 +29,8 @@
                 Spacing="15"
                 Padding="30,0">
 
-                <networkselect:MultiNetworkSelectView />
+                <BoxView Opacity="0"
+                         HeightRequest="50" />
 
                 <dappconnectionview:DAppConnectionView />
 
@@ -63,6 +64,8 @@
                 <AbsoluteLayout HeightRequest="200" WidthRequest="1000"/>
             </VerticalStackLayout>
         </ScrollView>
+
+        <networkselect:MultiNetworkSelectView />
 
        <!--QR code button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"

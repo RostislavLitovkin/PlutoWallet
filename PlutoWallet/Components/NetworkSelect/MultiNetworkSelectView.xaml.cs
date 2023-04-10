@@ -21,7 +21,7 @@ public partial class MultiNetworkSelectView : ContentView
 
     public void SetupDefault()
     {
-        int[] defaultNetworks = new int[4] { 0, 2, 3, -1 };
+        var defaultNetworks = Endpoints.DefaultNetworks;
 
         for (int i = 0; i < bubbles.Length; i++)
         {
@@ -31,7 +31,17 @@ public partial class MultiNetworkSelectView : ContentView
                 bubbles[i].Icon = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Icon;
                 bubbles[i].IsVisible = true;
             }
+            else
+            {
+                bubbles[i].IsVisible = false;
+            }
         }
+
+        foreach (NetworkBubbleView bubble in bubbles)
+        {
+            bubble.ShowName = false;
+        }
+        bubble1.ShowName = true;
     }
 
     void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
@@ -51,4 +61,11 @@ public partial class MultiNetworkSelectView : ContentView
         }
     }
 
+    void OnOtherNetworksClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        ((AbsoluteLayout)this.Parent).Children.Add(new MultiNetworkSelectOptionsView
+        {
+            MultiSelect = this,
+        });
+    }
 }

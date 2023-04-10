@@ -26,8 +26,16 @@ namespace PlutoWallet.Components.Balance
             }
             catch (Exception ex)
             {
-                // this probably means that nothing is saved for that account
-                Balance = "0";
+                try
+                {
+                    var client = Model.AjunaClientModel.Client;
+                    // this probably means that nothing is saved for that account
+                    Balance = "0";
+                }
+                catch
+                {
+                    Balance = "Failed"; ;
+                }
             }
         }
     }
