@@ -36,8 +36,6 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private ArgEntryType arg3;
 
-
-
         [ObservableProperty]
         private Endpoint selectedEndpoint;
 

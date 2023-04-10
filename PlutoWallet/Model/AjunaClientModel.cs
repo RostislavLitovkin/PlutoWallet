@@ -1,6 +1,7 @@
 ﻿using System;
 using Plutonication;
 using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
@@ -12,17 +13,20 @@ namespace PlutoWallet.Model
 
         public AjunaClientModel()
 		{
-            Client = new AjunaClientExt(
-                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-            Task connectTask = ConnectAsync();
+            
         }
 
-        public static async Task ChangeChainAsync()
+        /**
+         * A Method that assures that when a chain is changed, all views associated also update.
+         * 
+         * This method is called in MultiNetworkSelectView.xaml.cs (even during the initialization),
+         * so you do not have to worry about not having a chain set up.
+         */
+        public static async Task ChangeChainAsync(int endpointIndex)
         {
+            Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndex];
             Client = new AjunaClientExt(
-                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
+                    new Uri(endpoint.URL),
                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             await ConnectAsync();

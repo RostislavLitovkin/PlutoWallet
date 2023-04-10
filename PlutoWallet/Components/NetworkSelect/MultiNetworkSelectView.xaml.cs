@@ -29,6 +29,7 @@ public partial class MultiNetworkSelectView : ContentView
             {
                 bubbles[i].Name = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Name;
                 bubbles[i].Icon = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Icon;
+                bubbles[i].EndpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
                 bubbles[i].IsVisible = true;
             }
             else
@@ -42,13 +43,16 @@ public partial class MultiNetworkSelectView : ContentView
             bubble.ShowName = false;
         }
         bubble1.ShowName = true;
+
+        // Update other views
+        Task changeChain = Model.AjunaClientModel.ChangeChainAsync(Preferences.Get("SelectedNetworks0", defaultNetworks[0]));
     }
 
     void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
 		if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName)
 		{
-			// Later switch to other networks
+			// Probably do nothing
 		}
 		else
 		{
@@ -57,7 +61,11 @@ public partial class MultiNetworkSelectView : ContentView
                 bubble.ShowName = false;
             }
 
-            ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName = true;
+            var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
+            senderBubble.ShowName = true;
+
+            // Update other views
+            Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointIndex);
         }
     }
 
@@ -68,4 +76,6 @@ public partial class MultiNetworkSelectView : ContentView
             MultiSelect = this,
         });
     }
+
+
 }

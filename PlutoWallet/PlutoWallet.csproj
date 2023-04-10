@@ -241,9 +241,6 @@
 	  <MauiXaml Update="View\MainTabbedPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Components\NetworkSelect\NetworkSelectView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Components\AddressView\AddressView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

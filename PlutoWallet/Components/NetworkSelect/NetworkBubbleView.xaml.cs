@@ -1,4 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Components.NetworkSelect;
 
@@ -61,7 +62,7 @@ public partial class NetworkBubbleView : ContentView
         set => SetValue(ShowNameProperty, value);
     }
 
-
+    public int EndpointIndex { get; set; }
 
     public event EventHandler<TappedEventArgs> Tapped
     {
