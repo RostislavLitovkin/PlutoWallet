@@ -44,6 +44,8 @@
                     Title="Substrate key"
                     Address="{Binding SubstrateKey}"/>
 
+                <addressview:ChainAddressView />
+
                 <balance:BalanceView />
 
                 <extrinsic:ExtrinsicStatusView

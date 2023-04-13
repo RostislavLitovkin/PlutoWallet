@@ -13,6 +13,7 @@ public partial class MainTabbedPage : TabbedPage
 	{
         NavigationPage.SetHasNavigationBar(this, false);
         Shell.SetNavBarIsVisible(this, false);
+
         InitializeComponent();
 
 	}

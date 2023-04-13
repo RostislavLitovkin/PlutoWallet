@@ -33,6 +33,9 @@ namespace PlutoWallet.Constants
 				URL = "wss://polkadot.api.onfinality.io/public-ws",
 				Icon = "polkadot.png",
 				CalamarChainName = "polkadot",
+				Unit = "Dot",
+				Decimals = 10,
+				SS58Prefix = 0,
             },
 			new Endpoint
 			{
@@ -40,6 +43,9 @@ namespace PlutoWallet.Constants
 				URL = "wss://kusama-rpc.polkadot.io",
                 Icon = "kusama.png",
                 CalamarChainName = "kusama",
+                Unit = "KSM",
+                Decimals = 12,
+                SS58Prefix = 2,
             },
 			new Endpoint
 			{
@@ -47,6 +53,9 @@ namespace PlutoWallet.Constants
 				URL = "wss://wss.api.moonbeam.network",
                 Icon = "moonbeam.png",
                 CalamarChainName = "moonbeam",
+                Unit = "GLMR",
+                Decimals = 18,
+                SS58Prefix = 1284,
             },
 			new Endpoint
 			{
@@ -54,12 +63,18 @@ namespace PlutoWallet.Constants
 				URL = "wss://rpc.astar.network",
                 Icon = "astar.png",
                 CalamarChainName = "astar",
+                Unit = "ASTR",
+                Decimals = 18,
+                SS58Prefix = 5,
             },
 			new Endpoint
 			{
 				Name = "Westend Polkadot",
 				URL = "wss://westend-rpc.polkadot.io",
                 Icon = "westend.png",
+                Unit = "WND",
+                Decimals = 12,
+                SS58Prefix = 42,
             },
             new Endpoint
             {
@@ -67,6 +82,9 @@ namespace PlutoWallet.Constants
                 URL = "wss://rococo-rpc.polkadot.io",
                 Icon = "rococo.png",
                 CalamarChainName = "rococo",
+                Unit = "ROC",
+                Decimals = 12,
+                SS58Prefix = 42,
             },
             new Endpoint
 			{
@@ -74,6 +92,9 @@ namespace PlutoWallet.Constants
 				URL = "wss://eu-ws-quartz.unique.network",
                 Icon = "unique.png",
                 CalamarChainName = "unique",
+                Unit = "UNQ",
+                Decimals = 18,
+                SS58Prefix = 7391,
             },
 			new Endpoint
 			{
@@ -81,6 +102,9 @@ namespace PlutoWallet.Constants
 				URL = "wss://eu-ws-opal.unique.network",
                 Icon = "opal.png",
                 CalamarChainName = "opal",
+                Unit = "OPL",
+                Decimals = 18,
+                SS58Prefix = 42,
             },
 			new Endpoint
 			{
@@ -88,12 +112,18 @@ namespace PlutoWallet.Constants
 				URL = "wss://acala-rpc-1.aca-api.network",
                 Icon = "acala.png",
                 CalamarChainName = "acala",
+                Unit = "ACA",
+                Decimals = 12,
+                SS58Prefix = 10,
             },
 			new Endpoint
 			{
 				Name = "(Local) ws://127.0.0.1:9944",
                 URL = "ws://127.0.0.1:9944",
                 Icon = "substrate.png",
+                Unit = "",
+				Decimals = 0,
+				SS58Prefix = 42,
             }
         };
     }
@@ -104,6 +134,9 @@ namespace PlutoWallet.Constants
         public string URL { get; set; }
 		public string Icon { get; set; }
 		public string CalamarChainName { get; set; }
+		public string Unit { get; set; }
+		public int Decimals { get; set; }
+		public short SS58Prefix { get; set; }
     }
 }
 

@@ -39,6 +39,12 @@ namespace PlutoWallet.Model
             
         }
 
+        public static byte[] GetPublicKeyBytes()
+        {
+            //return Preferences.Get("publicKey", "Error - no pubKey");
+            return Utils.GetPublicKeyFrom(GetAccount().Value);
+        }
+
         public static Account GetAccount()
         {
             var miniSecret = new MiniSecret(Utils.HexToByteArray(Preferences.Get("privateKey", "")), ExpandMode.Ed25519);

@@ -29,19 +29,5 @@ namespace PlutoWallet.ViewModel
         public string PublicKey => KeysModel.GetPublicKey();
 
         public string SubstrateKey => KeysModel.GetSubstrateKey();
-
-        [ObservableProperty]
-        private bool loading;
-
-        [ObservableProperty]
-        private string metadataLabel;
-
-        [ObservableProperty]
-        private string dAppName;
-
-        // constructor
-        public MainViewModel()
-        {
-        }
     }
 }

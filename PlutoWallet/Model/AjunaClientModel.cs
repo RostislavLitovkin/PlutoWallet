@@ -2,12 +2,15 @@
 using Plutonication;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Constants;
+using PlutoWallet.Components.AddressView;
 
 namespace PlutoWallet.Model
 {
 	public class AjunaClientModel
 	{
         public static AjunaClientExt Client;
+
+        public static Endpoint SelectedEndpoint;
 
         public static bool Connected = false;
 
@@ -24,9 +27,10 @@ namespace PlutoWallet.Model
          */
         public static async Task ChangeChainAsync(int endpointIndex)
         {
-            Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndex];
+            SelectedEndpoint = Endpoints.GetAllEndpoints[endpointIndex];
+             
             Client = new AjunaClientExt(
-                    new Uri(endpoint.URL),
+                    new Uri(SelectedEndpoint.URL),
                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             await ConnectAsync();
@@ -49,7 +53,9 @@ namespace PlutoWallet.Model
                 var mainViewModel = DependencyService.Get<ViewModel.MainViewModel>();
                 var balanceViewModel = DependencyService.Get<Components.Balance.BalanceViewModel>();
                 var transferViewModel = DependencyService.Get<Components.TransferView.TransferViewModel>();
+                var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
 
+                chainAddressViewModel.SetChainAddress();
                 customCallsViewModel.GetMetadata();
                 Task getBalance = balanceViewModel.GetBalanceAsync();
                 Task getTransfer = transferViewModel.GetFeeAsync();

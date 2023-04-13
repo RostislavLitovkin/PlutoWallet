@@ -1,4 +1,5 @@
-﻿using PlutoWallet.Constants;
+﻿using Microsoft.Maui.Controls;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Components.NetworkSelect;
 
@@ -6,6 +7,7 @@ public partial class MultiNetworkSelectOptionView : ContentView
 {
     private NetworkBubbleView[] bubbles;
 
+    private int[] networks;
     public MultiNetworkSelectOptionView()
     {
         InitializeComponent();
@@ -19,9 +21,10 @@ public partial class MultiNetworkSelectOptionView : ContentView
 
     public int[] Networks
     {
+        get => networks;
         set
         {
-            int[] networks = value;
+            networks = value;
             for (int i = 0; i < bubbles.Length; i++)
             {
                 if (networks[i] != -1)
@@ -33,4 +36,6 @@ public partial class MultiNetworkSelectOptionView : ContentView
             }
         }
     }
+
+    public HorizontalStackLayout LayoutUsedForTapGesture => horizontalStackLayout;
 }

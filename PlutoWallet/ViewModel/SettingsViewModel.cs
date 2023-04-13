@@ -16,7 +16,7 @@ namespace PlutoWallet.ViewModel
         [RelayCommand]
         private void SaveEndpoint()
         { 
-            // Later
+
         }
 
         public void ClearEndpoints()

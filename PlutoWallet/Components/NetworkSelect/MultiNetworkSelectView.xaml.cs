@@ -6,6 +6,8 @@ public partial class MultiNetworkSelectView : ContentView
 {
     private NetworkBubbleView[] bubbles;
 
+    
+
 	public MultiNetworkSelectView()
 	{
 		InitializeComponent();
@@ -18,6 +20,8 @@ public partial class MultiNetworkSelectView : ContentView
 
         SetupDefault();
     }
+
+    public bool Clicked { get; set; } = false;
 
     public void SetupDefault()
     {
@@ -71,6 +75,12 @@ public partial class MultiNetworkSelectView : ContentView
 
     void OnOtherNetworksClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        if (Clicked)
+        {
+            return;
+        }
+
+        Clicked = true;
         ((AbsoluteLayout)this.Parent).Children.Add(new MultiNetworkSelectOptionsView
         {
             MultiSelect = this,

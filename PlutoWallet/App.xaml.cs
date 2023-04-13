@@ -8,6 +8,7 @@ using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
+using PlutoWallet.Components.AddressView;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Staking;
@@ -45,10 +46,12 @@ public partial class App : Application
         DependencyService.Register<StakingRegistrationRequestViewModel>();
 
         DependencyService.Register<MultiNetworkSelectViewModel>();
-        
+
+        DependencyService.Register<ChainAddressViewModel>();
+
         if (Preferences.ContainsKey("privateKey"))
         {
-            MainPage = new NavigationPage(new MainTabbedPage());
+            MainPage = new NavigationPage(new MainPage());
         }
         else
         {

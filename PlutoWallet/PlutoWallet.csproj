@@ -321,6 +321,9 @@
 	  <MauiXaml Update="Components\NetworkSelect\MultiNetworkSelectOptionView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\AddressView\ChainAddressView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Constants\" />

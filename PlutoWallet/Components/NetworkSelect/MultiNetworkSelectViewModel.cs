@@ -15,6 +15,9 @@ namespace PlutoWallet.Components.NetworkSelect
         [ObservableProperty]
         private ObservableCollection<NetworkSelectEndpoint> networks = new ObservableCollection<NetworkSelectEndpoint>();
 
+        [ObservableProperty]
+        private bool clicked;
+
         public MultiNetworkSelectViewModel()
         {
             SetupDefault();
@@ -22,6 +25,8 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void SetupDefault()
         {
+            Clicked = false;
+
             // Later: Get real endpoint
             var defaultEndpoints = Endpoints.GetAllEndpoints;
 

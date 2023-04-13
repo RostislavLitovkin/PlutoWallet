@@ -13,7 +13,15 @@ public partial class AddressView : ContentView
 			control.addressLabel.Text = ((string)newValue).Substring(0, 12) + "..";
         });
 
-	public AddressView()
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+        nameof(Title), typeof(string), typeof(AddressView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (AddressView)bindable;
+            control.titleLabel.Text = (string)newValue;
+        });
+
+    public AddressView()
 	{
 		InitializeComponent();
 	}
@@ -25,13 +33,12 @@ public partial class AddressView : ContentView
 		set => SetValue(AddressProperty, value);
 	}
 
-	public string Title
-	{
-		set
-		{
-			titleLabel.Text = value;
-		}
-	}
+    public string Title
+    {
+        get => (string)GetValue(TitleProperty);
+
+        set => SetValue(TitleProperty, value);
+    }
 
     private async void OnTapped(System.Object sender, System.EventArgs e)
     {
@@ -44,7 +51,7 @@ public partial class AddressView : ContentView
     {
 		var qrViewModel = DependencyService.Get<PublicKeyQRCodeViewModel>();
 
-		qrViewModel.PublicKey = Address;
+		qrViewModel.PublicKey = (string)GetValue(AddressProperty);
         qrViewModel.IsVisible = true;
     }
 }

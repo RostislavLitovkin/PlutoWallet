@@ -9,7 +9,7 @@
                Padding="3"
                BackgroundColor="#88888888"
                BorderColor="#88888888">
-            <HorizontalStackLayout Spacing="2">
+            <HorizontalStackLayout Spacing="2" x:Name="horizontalStackLayout">
                 <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
                                                  HorizontalOptions="Start"/>
 

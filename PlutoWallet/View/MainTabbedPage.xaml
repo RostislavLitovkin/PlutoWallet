@@ -12,5 +12,4 @@
     </Shell.BackButtonBehavior>
 
     <local:MainPage />
-    <local:CustomCallPage />
 </TabbedPage>

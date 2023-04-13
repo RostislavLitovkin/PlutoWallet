@@ -46,8 +46,7 @@
                 </networkselect:NetworkBubbleView>
 
                  <networkselect:NetworkBubbleView Tapped="OnOtherNetworksClicked"
-                                                  Icon="menuwhite.png"
-                                                  >
+                                                  Icon="menuwhite.png">
                     <networkselect:NetworkBubbleView.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnOtherNetworksClicked" />
 
