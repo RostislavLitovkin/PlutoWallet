@@ -89,7 +89,7 @@ namespace PlutoWallet.Constants
             new Endpoint
 			{
 				Name = "Unique",
-				URL = "wss://eu-ws-quartz.unique.network",
+				URL = "wss://ws.unique.network",
                 Icon = "unique.png",
                 CalamarChainName = "unique",
                 Unit = "UNQ",
