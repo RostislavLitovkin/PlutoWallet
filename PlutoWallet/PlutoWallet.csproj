@@ -161,6 +161,35 @@
 	  <None Remove="Resources\Images\NetworkIcons\kusamawhite.png" />
 	  <None Remove="Resources\Images\NetworkIcons\substrate.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\westend.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\acala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\amplitude.png" />
+	  <None Remove="Resources\Images\NetworkIcons\bifrost.png" />
+	  <None Remove="Resources\Images\NetworkIcons\crust.png" />
+	  <None Remove="Resources\Images\NetworkIcons\efinity.png" />
+	  <None Remove="Resources\Images\NetworkIcons\gemini2atestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\hydradx.png" />
+	  <None Remove="Resources\Images\NetworkIcons\interlay.png" />
+	  <None Remove="Resources\Images\NetworkIcons\invarchtinkernet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\joystream.png" />
+	  <None Remove="Resources\Images\NetworkIcons\karura.png" />
+	  <None Remove="Resources\Images\NetworkIcons\khala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\kintsugi.png" />
+	  <None Remove="Resources\Images\NetworkIcons\litentry.png" />
+	  <None Remove="Resources\Images\NetworkIcons\litmus.webp" />
+	  <None Remove="Resources\Images\NetworkIcons\peaq.png" />
+	  <None Remove="Resources\Images\NetworkIcons\pendulum.png" />
+	  <None Remove="Resources\Images\NetworkIcons\phala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\polkadot.png" />
+	  <None Remove="Resources\Images\NetworkIcons\reef.png" />
+	  <None Remove="Resources\Images\NetworkIcons\reeftestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\robonomics.png" />
+	  <None Remove="Resources\Images\NetworkIcons\rococo.png" />
+	  <None Remove="Resources\Images\NetworkIcons\shibuya.webp" />
+	  <None Remove="Resources\Images\NetworkIcons\shiden.webp" />
+	  <None Remove="Resources\Images\NetworkIcons\snow.png" />
+	  <None Remove="Resources\Images\NetworkIcons\vara.png" />
+	  <None Remove="Resources\Images\NetworkIcons\xxnetwork.png" />
+	  <None Remove="Components\NavigationBar\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -224,6 +253,36 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusamawhite.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\substrate.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\westend.svg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\amplitude.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\bifrost.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\crust.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\efinity.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\gemini2atestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\hydradx.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\interlay.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\invarchtinkernet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\joystream.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\karura.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\khala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\kintsugi.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\litentry.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\litmus.webp" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\peaq.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\pendulum.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\phala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\polkadot.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\reef.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\reeftestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\robonomics.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\rococo.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\shibuya.webp" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\shiden.webp" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\snow.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\vara.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\xxnetwork.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -350,6 +409,7 @@
 	  <Folder Include="Components\WebView\" />
 	  <Folder Include="Components\Extrinsic\" />
 	  <Folder Include="Resources\Images\NetworkIcons\" />
+	  <Folder Include="Components\NavigationBar\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

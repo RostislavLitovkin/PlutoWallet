@@ -51,7 +51,7 @@ public partial class MultiNetworkSelectOptionsView : ContentView
 					Networks = option,
 				};
 
-				optionView.LayoutUsedForTapGesture.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(() => {
+				optionView.ViewUsedForTapGesture.GestureRecognizers.Add(new TapGestureRecognizer { Command = new Command(() => {
 					Preferences.Set("SelectedNetworks0", option[0]);
 					Preferences.Set("SelectedNetworks1", option[1]);
 					Preferences.Set("SelectedNetworks2", option[2]);

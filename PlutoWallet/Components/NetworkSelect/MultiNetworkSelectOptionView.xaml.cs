@@ -37,5 +37,5 @@ public partial class MultiNetworkSelectOptionView : ContentView
         }
     }
 
-    public HorizontalStackLayout LayoutUsedForTapGesture => horizontalStackLayout;
+    public BoxView ViewUsedForTapGesture => tapGestureView;
 }

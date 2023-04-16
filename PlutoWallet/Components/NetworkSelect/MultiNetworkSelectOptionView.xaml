@@ -9,23 +9,31 @@
                Padding="3"
                BackgroundColor="#88888888"
                BorderColor="#88888888">
-            <HorizontalStackLayout Spacing="2" x:Name="horizontalStackLayout">
-                <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
-                                                 HorizontalOptions="Start"/>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
 
-                <networkselect:NetworkBubbleView x:Name="bubble2" IsVisible="false"
-                                                 HorizontalOptions="End"/>
+                <HorizontalStackLayout Spacing="2" x:Name="horizontalStackLayout">
+                    <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
+                                                     HorizontalOptions="Start"/>
 
-                <networkselect:NetworkBubbleView x:Name="bubble3" IsVisible="false"
-                                                 HorizontalOptions="End"/>
+                    <networkselect:NetworkBubbleView x:Name="bubble2" IsVisible="false"
+                                                     HorizontalOptions="End"/>
 
-                <networkselect:NetworkBubbleView x:Name="bubble4" IsVisible="false"
-                                                 HorizontalOptions="End"/>
-            </HorizontalStackLayout>
+                    <networkselect:NetworkBubbleView x:Name="bubble3" IsVisible="false"
+                                                     HorizontalOptions="End"/>
+
+                    <networkselect:NetworkBubbleView x:Name="bubble4" IsVisible="false"
+                                                     HorizontalOptions="End"/>
+                </HorizontalStackLayout>
+                <BoxView Opacity="0"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="SizeProportional"
+                    x:Name="tapGestureView" />
+
+            </AbsoluteLayout>
+            
             
         </Frame>
-        
-
     </AbsoluteLayout>
 </ContentView>
 

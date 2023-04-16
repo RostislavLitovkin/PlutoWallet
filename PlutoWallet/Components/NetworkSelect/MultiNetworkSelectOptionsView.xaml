@@ -23,7 +23,7 @@
                 </VerticalStackLayout>
 
             </ScrollView>
-            
+
         </AbsoluteLayout>
     </Frame>
     <ContentView.GestureRecognizers>

@@ -13,7 +13,7 @@
              xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
-             xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
+             xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic" xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              x:Class="PlutoWallet.View.MainPage"
              Title="Main page"
              BackgroundColor="Black">
@@ -112,6 +112,8 @@
         <staking:StakingRegistrationRequestView />
         
         <messagepopup:MessagePopupView />
+
+        <navigationbar:NavigationBarView />
 
     </AbsoluteLayout>
     
