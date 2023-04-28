@@ -291,9 +291,6 @@
 	  <MauiXaml Update="View\EnterMnemonics.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Condition=" '$(EnableDefaultXamlItems)' == 'true' " Update="View\AppShell.xaml">
-	    <SubType>Designer</SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="View\CustomCallPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

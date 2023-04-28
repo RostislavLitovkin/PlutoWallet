@@ -7,29 +7,6 @@ public partial class StakingEntryView : ContentView
 	public StakingEntryView()
 	{
 		InitializeComponent();
-
-        easyProSwitch.FirstMethod = ShowEasyStaking;
-        easyProSwitch.SecondMethod = ShowProStaking;
-    }
-
-    public bool ShowEasyStaking()
-    {
-        easyStaking.IsVisible = true;
-        proStaking.IsVisible = false;
-
-        this.HeightRequest = 95;
-
-        return true;
-    }
-
-    public bool ShowProStaking()
-    {
-        easyStaking.IsVisible = false;
-        proStaking.IsVisible = true;
-
-        this.HeightRequest = 635;
-
-        return true;
     }
 
     void OnInfoClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

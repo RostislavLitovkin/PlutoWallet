@@ -18,22 +18,37 @@
 
             <Label Grid.Column="0"
                    TextColor="White"
-                   FontAttributes="Bold"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center">
                 <Label.FormattedText>
                   <FormattedString>
-                     <Span Text="Home" FontAttributes="Bold"/>
+                     <Span Text="Home" FontAttributes="Bold" x:Name="homeSpan"/>
                   </FormattedString>
                </Label.FormattedText>
 
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeClicked" />
+
+                </Label.GestureRecognizers>
             </Label>
 
             <Label Grid.Column="2"
-                   Text="NFTs"
                    TextColor="White"
                    HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"/>
+                   VerticalTextAlignment="Center">
+
+                <Label.FormattedText>
+                  <FormattedString>
+                     <Span Text="NFTs" x:Name="nftsSpan"/>
+                  </FormattedString>
+               </Label.FormattedText>
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNFTsClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
         </Grid>
 
         <Frame CornerRadius="30"
@@ -45,6 +60,10 @@
             x:Name="frame">
             <Image Source="signwhite.png" />
 
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTransferClicked" />
+
+            </Frame.GestureRecognizers>
 
         </Frame>
 

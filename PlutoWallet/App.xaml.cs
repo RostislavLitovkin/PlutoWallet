@@ -49,9 +49,13 @@ public partial class App : Application
 
         DependencyService.Register<ChainAddressViewModel>();
 
+        DependencyService.Register<BasePageViewModel>();
+
+        DependencyService.Register<StakingDashboardViewModel>();
+
         if (Preferences.ContainsKey("privateKey"))
         {
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new BasePage());
         }
         else
         {
