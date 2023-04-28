@@ -37,9 +37,6 @@ namespace PlutoWallet.ViewModel
         public bool IsStrongPassword => true;//!(Password == null || Password == "");
 
         [ObservableProperty]
-        private string debugText;
-
-        [ObservableProperty]
         private string[] orderedMnemonicsArray;
 
         public void Continue()
@@ -53,10 +50,6 @@ namespace PlutoWallet.ViewModel
             var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, ExpandMode.Ed25519);
             var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English);
 
-            DebugText = Utils.Bytes2HexString(keyPair.Secret.key.GetBytes()).Substring(0, 8) +
-                "\n" + Utils.Bytes2HexString(secret).Substring(0, 8) +
-                "\n" + Utils.Bytes2HexString(new MiniSecret(secret, ExpandMode.Ed25519).GetPair().Secret.key.GetBytes()).Substring(0, 8);
-            
             Console.WriteLine("I am here");
 
             Preferences.Set(
@@ -74,19 +67,12 @@ namespace PlutoWallet.ViewModel
             mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
             orderedMnemonicsArray = new string[mnemonicsArray.Count()];
 
-            debugText = "Hello";
-
             int i = 0;
             foreach (string mnemonic in mnemonicsArray)
             {
                 orderedMnemonicsArray[i] = ++i + ". " + mnemonic;
             }
         }
-
-        /*private void RaisePropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }*/
     }
 }
 

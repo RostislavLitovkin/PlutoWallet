@@ -9,7 +9,7 @@ public partial class CalamarView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (CalamarView)bindable;
-            control.calamarWebView.Source = "https://f4c3cf83.calamar.pages.dev/polkadot/account/" + (string)newValue;
+            control.calamarWebView.Address = "https://f4c3cf83.calamar.pages.dev/polkadot/account/" + (string)newValue;
             control.CalamarWebAddress = "https://f4c3cf83.calamar.pages.dev/polkadot/account/" + (string)newValue;
         });
 
@@ -37,7 +37,7 @@ public partial class CalamarView : ContentView
 
     void OnReloadClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        calamarWebView.Source = calamarWebAddress;
+        calamarWebView.Address = calamarWebAddress;
         //calamarWebView.Reload();
     }
 

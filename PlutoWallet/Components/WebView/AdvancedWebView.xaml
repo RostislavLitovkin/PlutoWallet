@@ -4,8 +4,27 @@
              x:Class="PlutoWallet.Components.WebView.AdvancedWebView"
              x:Name="view"
              HeightRequest="600"
-             BackgroundColor="#444444">
-    <WebView HeightRequest="600" WidthRequest="{Binding Source={x:Reference view}, Path=Width}"
-             x:Name="webView"/>
+             MaximumHeightRequest="600" BackgroundColor="Red"
+             >
+    <Frame HeightRequest="600"
+           MaximumHeightRequest="600"
+           CornerRadius="0"
+           Padding="0"
+           BackgroundColor="White"
+           BorderColor="White">
+        <ScrollView HeightRequest="600"
+                MaximumHeightRequest="600" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <WebView WidthRequest="{Binding Source={x:Reference view}, Path=Width}"
+                         BackgroundColor="White"
+                         x:Name="webView"
+                     />
+            </Grid>
+
+        </ScrollView>
+    </Frame>
 </ContentView>
 

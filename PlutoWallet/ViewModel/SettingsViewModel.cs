@@ -25,10 +25,11 @@ namespace PlutoWallet.ViewModel
         }
 
         [ObservableProperty]
-        private string privateKey = "eck";
+        private string privateKey;
+
         public void ShowPrivateKey()
         {
-            privateKey = Preferences.Get("privateKey", "ikjnhdgkfjdng");
+            this.PrivateKey = Preferences.Get("privateKey", "No private key");
         }
     }
 }
