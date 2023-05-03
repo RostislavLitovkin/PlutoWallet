@@ -9,6 +9,6 @@ public partial class EnterMnemonicsPage : ContentPage
     private async void ContinueToMainPageClicked(System.Object sender, System.EventArgs e)
     {
         viewModel.CreateKeys();
-        await Navigation.PushAsync(new MainTabbedPage());
+        await Navigation.PushAsync(new BasePage());
     }
 }

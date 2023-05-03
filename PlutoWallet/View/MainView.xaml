@@ -2,14 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView"
-             xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView"
-             xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
-             xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView"
-             xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
-             xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
              xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
-             xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
              xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
@@ -26,7 +20,7 @@
 
                 <dappconnectionview:DAppConnectionView />
 
-                <balance:UsdBalanceView />
+                <balance:BalanceDashboardView />
 
                 <addressview:AddressView
                     Title="Public key"

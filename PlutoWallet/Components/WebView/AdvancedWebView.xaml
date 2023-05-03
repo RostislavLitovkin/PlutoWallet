@@ -4,7 +4,7 @@
              x:Class="PlutoWallet.Components.WebView.AdvancedWebView"
              x:Name="view"
              HeightRequest="600"
-             MaximumHeightRequest="600" BackgroundColor="Red"
+             MaximumHeightRequest="600"
              >
     <Frame HeightRequest="600"
            MaximumHeightRequest="600"

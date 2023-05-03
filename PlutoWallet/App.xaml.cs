@@ -53,6 +53,8 @@ public partial class App : Application
 
         DependencyService.Register<StakingDashboardViewModel>();
 
+        DependencyService.Register<BalanceDashboardViewModel>();
+
         if (Preferences.ContainsKey("privateKey"))
         {
             MainPage = new NavigationPage(new BasePage());

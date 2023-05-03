@@ -15,7 +15,7 @@ public partial class NavigationBarView : ContentView
     {
         var viewModel = DependencyService.Get<BasePageViewModel>();
 
-        viewModel.Content = new MainView();
+        viewModel.SetMainView();
 
         nftsSpan.FontAttributes = FontAttributes.None;
         homeSpan.FontAttributes = FontAttributes.Bold;
@@ -25,7 +25,7 @@ public partial class NavigationBarView : ContentView
     {
         var viewModel = DependencyService.Get<BasePageViewModel>();
 
-        viewModel.Content = new NftView();
+        viewModel.SetNftView();
 
         nftsSpan.FontAttributes = FontAttributes.Bold;
         homeSpan.FontAttributes = FontAttributes.None;

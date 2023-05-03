@@ -294,9 +294,6 @@
 	  <MauiXaml Update="View\CustomCallPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="View\MainTabbedPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Components\AddressView\AddressView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

@@ -1,21 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Balance.BalanceDashboardView"
              xmlns:switch="clr-namespace:PlutoWallet.Components.Switch"
-             x:Class="PlutoWallet.Components.Staking.StakingDashboardView"
-             HeightRequest="{Binding HeightRequest}"
-             >
+             xmlns:webview="clr-namespace:PlutoWallet.Components.WebView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             HeightRequest="{Binding HeightRequest}">
     <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
            BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20"
-           Margin="0"
+           CornerRadius="20" x:Name="frame"
            Padding="10, 0, 10, 0"
-           >
-        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+           Margin="0">
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand">
             <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                    AbsoluteLayout.LayoutFlags="All">
+                        AbsoluteLayout.LayoutFlags="All">
                 <Label 
-                    Text="Staking"
+                    Text="Total balance"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     HeightRequest="25"
@@ -24,11 +25,12 @@
                 <ContentView Content="{Binding Content}" />
            </VerticalStackLayout>
 
-           <switch:MiniDualSwitch FirstOption="Easy" SecondOption="Pro"
+           <switch:MiniDualSwitch FirstOption="Value" SecondOption="Graph"
                                    AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
                                    AbsoluteLayout.LayoutFlags="PositionProportional"
                                    Margin="0, 5, 0, 0"
-                                   x:Name="easyProSwitch"/>
+                                   x:Name="valueGraphSwitch"/>
         </AbsoluteLayout>
     </Frame>
 </ContentView>
+
