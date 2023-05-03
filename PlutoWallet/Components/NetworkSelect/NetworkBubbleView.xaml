@@ -2,13 +2,16 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.NetworkSelect.NetworkBubbleView">
-    <Frame CornerRadius="20"
+    <Border
             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 40"
             AbsoluteLayout.LayoutFlags="PositionProportional"
             Padding="5"
             BackgroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-            BorderColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-            x:Name="frame">
+            StrokeThickness="0">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
         <HorizontalStackLayout x:Name="horizontalStackLayout"
                                MinimumHeightRequest="30"
                                MinimumWidthRequest="30">
@@ -24,6 +27,6 @@
                     TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
 
         </HorizontalStackLayout>
-    </Frame>
+    </Border>
 </ContentView>
 
