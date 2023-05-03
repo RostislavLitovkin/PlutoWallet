@@ -2,14 +2,18 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.Card.Card">
-    <AbsoluteLayout
+    <Border
             HorizontalOptions="Center"
             VerticalOptions="Center"
             BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-            
+            StrokeThickness="0"
             Padding="10, 0, 10, 0"
             x:Name="border"
             >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
             <!--BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"-->
         <ContentView x:Name="contentView"
                      HorizontalOptions="Center"
@@ -18,6 +22,6 @@
 
             
         </ContentView>
-    </AbsoluteLayout>
+    </Border>
 </ContentView>
 
