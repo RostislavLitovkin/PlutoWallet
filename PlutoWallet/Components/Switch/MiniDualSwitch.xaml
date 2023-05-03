@@ -3,11 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.Switch.MiniDualSwitch"
              HeightRequest="20">
-    <Frame BackgroundColor="#88888888"
-           BorderColor="#88888888"
-           CornerRadius="10"
+    <Border BackgroundColor="#88888888"
            Padding="0"
+           StrokeThickness="0"
            >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+
+        </Border.StrokeShape>
         <AbsoluteLayout>
             <Label x:Name="firstOption"
                    AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
@@ -24,28 +27,30 @@
                    VerticalTextAlignment="Center">
 
             </Label>
-            <Frame BackgroundColor="{StaticResource Primary}"
-                   BorderColor="{StaticResource Primary}"
+            <Border BackgroundColor="{StaticResource Primary}"
                    AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
                    AbsoluteLayout.LayoutFlags="All"
-                   CornerRadius="10"
+                   StrokeThickness="0"
                    x:Name="selectedOptionFrame"
                    Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
 
+                </Border.StrokeShape>
                 <Label x:Name="selectedOptionLabel"
                         AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                        AbsoluteLayout.LayoutFlags="All"
                       TextColor="White"
                       HorizontalTextAlignment="Center"
                       VerticalTextAlignment="Center"/>
-            </Frame>
+            </Border>
             <AbsoluteLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnClicked" />
 
             </AbsoluteLayout.GestureRecognizers>
         </AbsoluteLayout>
 
-    </Frame>
+    </Border>
 
     
     

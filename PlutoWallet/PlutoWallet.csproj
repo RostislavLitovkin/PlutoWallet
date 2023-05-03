@@ -190,6 +190,7 @@
 	  <None Remove="Resources\Images\NetworkIcons\vara.png" />
 	  <None Remove="Resources\Images\NetworkIcons\xxnetwork.png" />
 	  <None Remove="Components\NavigationBar\" />
+	  <None Remove="Components\Card\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -404,6 +405,7 @@
 	  <Folder Include="Components\Extrinsic\" />
 	  <Folder Include="Resources\Images\NetworkIcons\" />
 	  <Folder Include="Components\NavigationBar\" />
+	  <Folder Include="Components\Card\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

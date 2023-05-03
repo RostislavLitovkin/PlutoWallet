@@ -2,33 +2,31 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:switch="clr-namespace:PlutoWallet.Components.Switch"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.Staking.StakingDashboardView"
-             HeightRequest="{Binding HeightRequest}"
-             >
-    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20"
-           Margin="0"
-           Padding="10, 0, 10, 0"
-           >
-        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                    AbsoluteLayout.LayoutFlags="All">
-                <Label 
-                    Text="Staking"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    HeightRequest="25"
-                    VerticalTextAlignment="Center"/>
+             HeightRequest="{Binding HeightRequest}">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                            >
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All">
+                    <Label 
+                        Text="Staking"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HeightRequest="25"
+                        VerticalTextAlignment="Center"/>
             
-                <ContentView Content="{Binding Content}" />
-           </VerticalStackLayout>
+                    <ContentView Content="{Binding Content}" />
+               </VerticalStackLayout>
 
-           <switch:MiniDualSwitch FirstOption="Easy" SecondOption="Pro"
-                                   AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
-                                   AbsoluteLayout.LayoutFlags="PositionProportional"
-                                   Margin="0, 5, 0, 0"
-                                   x:Name="easyProSwitch"/>
-        </AbsoluteLayout>
-    </Frame>
+               <switch:MiniDualSwitch FirstOption="Easy" SecondOption="Pro"
+                                       AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
+                                       AbsoluteLayout.LayoutFlags="PositionProportional"
+                                       Margin="0, 5, 0, 0"
+                                       x:Name="easyProSwitch"/>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
 </ContentView>

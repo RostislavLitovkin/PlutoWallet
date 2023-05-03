@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.MessagePopup.MessagePopupView"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
@@ -8,43 +8,41 @@
              BackgroundColor="#66000000"
              IsVisible="{Binding IsVisible}">
 
-    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20"
-            HorizontalOptions="Center"
-           VerticalOptions="Center">
-        <AbsoluteLayout>
+    <card:Card IsPopup="True">
+        <card:Card.View>
+            <AbsoluteLayout>
 
-            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
-                                 AbsoluteLayout.LayoutFlags="WidthProportional"
-                                 Spacing="10">
-                 <Label
-                    FontAttributes="Bold"
-                    Text="{Binding Title}"
-                    x:Name="title"
-                    HorizontalOptions="Center" />
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                                     AbsoluteLayout.LayoutFlags="WidthProportional"
+                                     Spacing="10">
+                     <Label
+                        FontAttributes="Bold"
+                        Text="{Binding Title}"
+                        x:Name="title"
+                        HorizontalOptions="Center" />
 
-                <Label
-                    x:Name="text"
-                    Text="{Binding Text}"
-                    HorizontalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="text"
+                        Text="{Binding Text}"
+                        HorizontalOptions="CenterAndExpand" />
 
-                <Button Text="Back"
-                        Clicked="OnBackClicked" />
-            </VerticalStackLayout>
+                    <Button Text="Back"
+                            Clicked="OnBackClicked" />
+                </VerticalStackLayout>
 
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
-                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
-                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                    <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                       Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
 
-                <AbsoluteLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackClicked" />
 
-                </AbsoluteLayout.GestureRecognizers>
+                    </AbsoluteLayout.GestureRecognizers>
 
+                </AbsoluteLayout>
             </AbsoluteLayout>
-        </AbsoluteLayout>
-    </Frame>
+        </card:Card.View>
+    </card:Card>
 
 </ContentView>
 
