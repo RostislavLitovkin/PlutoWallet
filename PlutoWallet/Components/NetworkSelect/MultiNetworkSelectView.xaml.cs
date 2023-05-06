@@ -25,7 +25,9 @@ public partial class MultiNetworkSelectView : ContentView
 
     public void SetupDefault()
     {
-        var defaultNetworks = Endpoints.DefaultNetworks;
+        int[] defaultNetworks = Endpoints.DefaultNetworks;
+
+        List<int> selectedNetworkGroup = new List<int>(4);
 
         for (int i = 0; i < bubbles.Length; i++)
         {
@@ -35,6 +37,8 @@ public partial class MultiNetworkSelectView : ContentView
                 bubbles[i].Icon = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Icon;
                 bubbles[i].EndpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
                 bubbles[i].IsVisible = true;
+
+                selectedNetworkGroup.Add(Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]));
             }
             else
             {
@@ -49,7 +53,7 @@ public partial class MultiNetworkSelectView : ContentView
         bubble1.ShowName = true;
 
         // Update other views
-        Task changeChain = Model.AjunaClientModel.ChangeChainAsync(Preferences.Get("SelectedNetworks0", defaultNetworks[0]));
+        Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(selectedNetworkGroup.ToArray());
     }
 
     void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

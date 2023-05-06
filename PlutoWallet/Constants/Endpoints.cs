@@ -69,7 +69,7 @@ namespace PlutoWallet.Constants
             },
 			new Endpoint
 			{
-				Name = "Westend Polkadot",
+				Name = "Westend",
 				URL = "wss://westend-rpc.polkadot.io",
                 Icon = "westend.png",
                 Unit = "WND",
@@ -78,7 +78,7 @@ namespace PlutoWallet.Constants
             },
             new Endpoint
             {
-                Name = "Rococo Polkadot",
+                Name = "Rococo",
                 URL = "wss://rococo-rpc.polkadot.io",
                 Icon = "rococo.png",
                 CalamarChainName = "rococo",
@@ -134,6 +134,8 @@ namespace PlutoWallet.Constants
         public string URL { get; set; }
 		public string Icon { get; set; }
 		public string CalamarChainName { get; set; }
+
+        // Symbol and Unit are interchangeable names.
 		public string Unit { get; set; }
 		public int Decimals { get; set; }
 		public short SS58Prefix { get; set; }

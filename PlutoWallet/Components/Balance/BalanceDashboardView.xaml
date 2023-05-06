@@ -12,7 +12,8 @@
             <AbsoluteLayout HorizontalOptions="CenterAndExpand"
                             >
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                            AbsoluteLayout.LayoutFlags="All">
+                            AbsoluteLayout.LayoutFlags="All"
+                            x:Name="stackLayout">
                     <Label 
                         Text="Total balance"
                         FontAttributes="Bold"
@@ -20,7 +21,8 @@
                         HeightRequest="25"
                         VerticalTextAlignment="Center"/>
             
-                    <ContentView Content="{Binding Content}" />
+                    <ContentView Content="{Binding Content}" HorizontalOptions="CenterAndExpand"
+                                 WidthRequest="{Binding Source={x:Reference stackLayout}, Path=Width}"/>
                </VerticalStackLayout>
 
                <switch:MiniDualSwitch FirstOption="Value" SecondOption="Graph"

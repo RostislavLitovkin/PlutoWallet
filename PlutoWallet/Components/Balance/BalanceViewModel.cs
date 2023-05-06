@@ -10,7 +10,7 @@ namespace PlutoWallet.Components.Balance
 
 		public BalanceViewModel()
 		{
-			balance = "Loading";
+			balance = "Connecting";
 		}
 
         public async Task GetBalanceAsync()
@@ -18,11 +18,18 @@ namespace PlutoWallet.Components.Balance
             Balance = "Loading";
             try
             {
+                
                 var client = Model.AjunaClientModel.Client;
 
-                var accountInfo = await client.SystemStorage.Account(Model.KeysModel.GetSubstrateKey());
+                if (client.IsConnected)
+                {
+                    var accountInfo = await client.SystemStorage.Account(Model.KeysModel.GetSubstrateKey());
 
-                Balance = accountInfo.Data.Free.Value.ToString();
+                    Balance = accountInfo.Data.Free.Value.ToString();
+                }
+                else {
+                    Balance = "Not connected";
+                }
             }
             catch (Exception ex)
             {
@@ -30,7 +37,7 @@ namespace PlutoWallet.Components.Balance
                 {
                     var client = Model.AjunaClientModel.Client;
                     // this probably means that nothing is saved for that account
-                    Balance = "0";
+                    Balance = "Failed";
                 }
                 catch
                 {

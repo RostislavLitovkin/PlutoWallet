@@ -19,7 +19,7 @@ public partial class MultiNetworkSelectOptionsView : ContentView
 	{
         var defaultNetworks = Endpoints.DefaultNetworks;
 
-        var selectedOption = new int[4] {
+        var selectedOptions = new int[4] {
             Preferences.Get("SelectedNetworks0", defaultNetworks[0]),
             Preferences.Get("SelectedNetworks1", defaultNetworks[1]),
             Preferences.Get("SelectedNetworks2", defaultNetworks[2]),
@@ -28,7 +28,7 @@ public partial class MultiNetworkSelectOptionsView : ContentView
 
         MultiNetworkSelectOptionView selectedOptionView = new MultiNetworkSelectOptionView
         {
-            Networks = selectedOption,
+            Networks = selectedOptions,
         };
 
         verticalStackLayout.Children.Add(selectedOptionView);
@@ -39,7 +39,7 @@ public partial class MultiNetworkSelectOptionsView : ContentView
 			bool selected = true;
 			for(int i = 0; i < option.Length; i++)
 			{
-				if (selectedOption[i] != option[i])
+				if (selectedOptions[i] != option[i])
 				{
 					selected = false;
 				}

@@ -55,6 +55,8 @@ public partial class App : Application
 
         DependencyService.Register<BalanceDashboardViewModel>();
 
+        DependencyService.Register<UsdBalanceViewModel>();
+
         if (Preferences.ContainsKey("privateKey"))
         {
             MainPage = new NavigationPage(new BasePage());

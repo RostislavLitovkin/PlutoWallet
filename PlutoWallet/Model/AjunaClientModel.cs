@@ -1,70 +1,159 @@
 ﻿using System;
 using Plutonication;
 using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.ViewModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Components.AddressView;
+using PlutoWallet.Components.Balance;
+using PlutoWallet.Components.TransferView;
+using PlutoWallet.Components.MessagePopup;
 
 namespace PlutoWallet.Model
 {
-	public class AjunaClientModel
-	{
+    public class AjunaClientModel
+    {
         public static AjunaClientExt Client;
+
+        public static AjunaClientExt[] GroupClients;
+
+        public static Endpoint[] GroupEndpoints;
+
+        private static int[] groupEndpointIndexes;
 
         public static Endpoint SelectedEndpoint;
 
         public static bool Connected = false;
 
         public AjunaClientModel()
-		{
-            
+        {
+
         }
 
         /**
-         * A Method that assures that when a chain is changed, all views associated also update.
+         * A Method that assures that when a chain group is changed, all views associated also update.
          * 
          * This method is called in MultiNetworkSelectView.xaml.cs (even during the initialization),
          * so you do not have to worry about not having a chain set up.
          */
-        public static async Task ChangeChainAsync(int endpointIndex)
+        public static async Task ChangeChainGroupAsync(int[] endpointIndexes)
         {
-            SelectedEndpoint = Endpoints.GetAllEndpoints[endpointIndex];
-             
-            Client = new AjunaClientExt(
-                    new Uri(SelectedEndpoint.URL),
-                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+            groupEndpointIndexes = endpointIndexes;
 
-            await ConnectAsync();
+            List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
+
+            List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
+
+            for (int i = 0; i < endpointIndexes.Length; i++)
+            {
+                Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndexes[i]];
+
+                groupEndpointsList.Add(endpoint);
+
+                var client = new AjunaClientExt(
+                        new Uri(endpoint.URL),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+                client.ConnectAsync();
+
+                groupClientList.Add(client);
+            }
+
+            GroupClients = groupClientList.ToArray();
+            GroupEndpoints = groupEndpointsList.ToArray();
+
+            // Set the first endpoint of the group to be the "main" client
+            Client = GroupClients[0];
+            SelectedEndpoint = GroupEndpoints[0];
+
+            await ConnectClientAsync();
+            await ConnectGroupAsync();
         }
 
-        private static async Task ConnectAsync()
+        /**
+         * A Method that assures that when a chain is changed, all views associated also update.
+         */
+        public static async Task ChangeChainAsync(int endpointIndex)
+        {
+            int index = Array.IndexOf(groupEndpointIndexes, endpointIndex);
+            SelectedEndpoint = GroupEndpoints[index];
+
+            // Set the selected endpoint of the group to be the "main" client
+            Client = GroupClients[index];
+
+            await ConnectClientAsync();
+        }
+    
+
+        private static async Task ConnectGroupAsync()
+        {
+            // Wait up to 10 seconds for all clients to connect. 
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(500);
+
+                bool allConnected = true;
+
+                foreach (var client in GroupClients)
+                {
+                    if (!client.IsConnected)
+                    {
+                        allConnected = false;
+                        break;
+                    }
+                }
+
+                if (allConnected) break;
+            }
+
+            // Setup things, like balances..
+            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+
+            Task getBalance = usdBalanceViewModel.GetBalancesAsync();
+
+        }
+
+        private static async Task ConnectClientAsync()
         {
             Connected = false;
 
-            Task connectAsync = Client.ConnectAsync();
-
-            int timeout = 10000;
-            if (await Task.WhenAny(connectAsync, Task.Delay(timeout)) == connectAsync)
+            // Wait up to 10 seconds for the Client to connect. 
+            for (int i = 0; i < 20; i++)
             {
-                // task completed within timeout
-                Connected = true;
+                await Task.Delay(500);
 
-                // Setup things, like balances..
-                var customCallsViewModel = DependencyService.Get<ViewModel.CustomCallsViewModel>();
-                var mainViewModel = DependencyService.Get<ViewModel.MainViewModel>();
-                var balanceViewModel = DependencyService.Get<Components.Balance.BalanceViewModel>();
-                var transferViewModel = DependencyService.Get<Components.TransferView.TransferViewModel>();
-                var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
-
-                chainAddressViewModel.SetChainAddress();
-                customCallsViewModel.GetMetadata();
-                Task getBalance = balanceViewModel.GetBalanceAsync();
-                Task getTransfer = transferViewModel.GetFeeAsync();
+                if (Client.IsConnected) break;
             }
-            else
+
+            if (!Client.IsConnected)
             {
-                // timeout logic
+                // show unable to connect error message
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "Failed to connect";
+                messagePopup.Text = "Failed to establish connection to the selected endpoint. " +
+                    "Check your internet connection or try a different endpoint.";
+
+                messagePopup.IsVisible = true;
+
+                return;
             }
+
+            // task completed within timeout
+            Connected = true;
+
+            // Setup things, like balances..
+            //var customCallsViewModel = DependencyService.Get<CustomCallsViewModel>();
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+            var balanceViewModel = DependencyService.Get<BalanceViewModel>();
+            var transferViewModel = DependencyService.Get<TransferViewModel>();
+            var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
+
+            chainAddressViewModel.SetChainAddress();
+            //customCallsViewModel.GetMetadata();
+            Task getBalance = balanceViewModel.GetBalanceAsync();
+            Task getTransfer = transferViewModel.GetFeeAsync();
+
         }
-	}
+    }
 }
 

@@ -1,17 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
              x:Class="PlutoWallet.Components.Balance.UsdBalanceView"
-             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-             AbsoluteLayout.LayoutFlags="All"
-             HeightRequest="60">
-    <AbsoluteLayout HorizontalOptions="CenterAndExpand" HeightRequest="60"
-                    x:Name="valueLayout">
+             
+             HeightRequest="300">
+    <StackLayout x:Name="stackLayout" MinimumHeightRequest="60"
+                 Spacing="10">
         <Label Text="187.76 USD"
                 FontAttributes="Bold"
                 FontSize="24"
-                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                HeightRequest="60"
                 HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
-    </AbsoluteLayout>
+
+        <CollectionView HeightRequest="300"
+                        ItemsSource="{Binding Assets}"
+                        >
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <balance:AssetAmountView Amount="{Binding Amount}"
+                                             Symbol="{Binding Symbol}"
+                                             ChainIcon="{Binding ChainIcon}"
+                                             UsdValue="{Binding UsdValue}"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
 </ContentView>
 
