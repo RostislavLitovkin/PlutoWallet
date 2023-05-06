@@ -6,14 +6,11 @@
              AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, 46"
              AbsoluteLayout.LayoutFlags="PositionProportional">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, AutoSize, 46" >
-        <Border StrokeThickness="0"
+        <Frame CornerRadius="23"
                AbsoluteLayout.LayoutBounds="0, 0, AutoSize, 46"
                Padding="3"
-               BackgroundColor="#88888888">
-            <Border.StrokeShape>
-                <RoundRectangle CornerRadius="23" />
-
-            </Border.StrokeShape>
+               BackgroundColor="#88888888"
+               BorderColor="#88888888">
             <HorizontalStackLayout Spacing="2">
                 <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
                                                  Tapped="OnNetworkClicked">
@@ -58,7 +55,7 @@
                 </networkselect:NetworkBubbleView>
             </HorizontalStackLayout>
             
-        </Border>
+        </Frame>
         
 
     </AbsoluteLayout>

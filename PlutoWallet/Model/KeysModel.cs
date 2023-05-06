@@ -3,6 +3,7 @@ using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
 using Schnorrkel.Keys;
 using static Substrate.NetApi.Mnemonic;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 
 namespace PlutoWallet.Model
 {
@@ -57,6 +58,14 @@ namespace PlutoWallet.Model
             return Account.Build(KeyType.Sr25519,
                 miniSecret.ExpandToSecret().ToBytes(),
                 miniSecret.GetPair().Public.Key);
+        }
+
+        public static AccountId32 GetAccountId32()
+        {
+            var accountId = new AccountId32();
+            accountId.Create(GetPublicKeyBytes());
+
+            return accountId;
         }
     }
 }

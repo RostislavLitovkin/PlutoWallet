@@ -11,6 +11,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public SystemStorage SystemStorage;
 
+        public AssetsStorage AssetsStorage;
+
 
         public AjunaClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
                 base(uri, chargeType)
@@ -19,6 +21,7 @@ namespace PlutoWallet.Model.AjunaExt
 
             this.SystemStorage = new SystemStorage(this);
             this.BalancesStorage = new BalancesStorage(this);
+            this.AssetsStorage = new AssetsStorage(this);
         }
 	}
 }

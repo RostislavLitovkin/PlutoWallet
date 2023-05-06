@@ -17,8 +17,13 @@ namespace PlutoWallet.Components.Balance
             set
             {
                 SetProperty(ref content, value);
-                HeightRequest = value.HeightRequest + EXTRA_HEIGHT;
+                RecalculateHeightRequest();
             }
+        }
+
+        public void RecalculateHeightRequest()
+        {
+            HeightRequest = Content.HeightRequest + EXTRA_HEIGHT;
         }
 
         public BalanceDashboardViewModel()

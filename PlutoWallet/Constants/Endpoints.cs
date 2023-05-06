@@ -36,6 +36,7 @@ namespace PlutoWallet.Constants
 				Unit = "Dot",
 				Decimals = 10,
 				SS58Prefix = 0,
+                ChainType = "Substrate",
             },
 			new Endpoint
 			{
@@ -46,6 +47,7 @@ namespace PlutoWallet.Constants
                 Unit = "KSM",
                 Decimals = 12,
                 SS58Prefix = 2,
+                ChainType = "Substrate",
             },
 			new Endpoint
 			{
@@ -56,6 +58,7 @@ namespace PlutoWallet.Constants
                 Unit = "GLMR",
                 Decimals = 18,
                 SS58Prefix = 1284,
+                ChainType = "Ethereum",
             },
 			new Endpoint
 			{
@@ -66,6 +69,7 @@ namespace PlutoWallet.Constants
                 Unit = "ASTR",
                 Decimals = 18,
                 SS58Prefix = 5,
+                ChainType = "Substrate",
             },
 			new Endpoint
 			{
@@ -75,6 +79,7 @@ namespace PlutoWallet.Constants
                 Unit = "WND",
                 Decimals = 12,
                 SS58Prefix = 42,
+                ChainType = "Substrate",
             },
             new Endpoint
             {
@@ -85,6 +90,7 @@ namespace PlutoWallet.Constants
                 Unit = "ROC",
                 Decimals = 12,
                 SS58Prefix = 42,
+                ChainType = "Substrate",
             },
             new Endpoint
 			{
@@ -95,6 +101,7 @@ namespace PlutoWallet.Constants
                 Unit = "UNQ",
                 Decimals = 18,
                 SS58Prefix = 7391,
+                ChainType = "Substrate",
             },
 			new Endpoint
 			{
@@ -105,6 +112,18 @@ namespace PlutoWallet.Constants
                 Unit = "OPL",
                 Decimals = 18,
                 SS58Prefix = 42,
+                ChainType = "Substrate",
+            },
+            new Endpoint
+            {
+                Name = "Moonbase Alpha",
+                URL = "wss://wss.api.moonbase.moonbeam.network",
+                Icon = "moonbase.png",
+                CalamarChainName = "moonbase",
+                Unit = "DEV",
+                Decimals = 18,
+                SS58Prefix = 1287,
+                ChainType = "Ethereum",
             },
 			new Endpoint
 			{
@@ -115,6 +134,7 @@ namespace PlutoWallet.Constants
                 Unit = "ACA",
                 Decimals = 12,
                 SS58Prefix = 10,
+                ChainType = "Substrate",
             },
 			new Endpoint
 			{
@@ -124,6 +144,7 @@ namespace PlutoWallet.Constants
                 Unit = "",
 				Decimals = 0,
 				SS58Prefix = 42,
+                ChainType = "Substrate",
             }
         };
     }
@@ -139,6 +160,7 @@ namespace PlutoWallet.Constants
 		public string Unit { get; set; }
 		public int Decimals { get; set; }
 		public short SS58Prefix { get; set; }
+        public string ChainType { get; set; }
     }
 }
 

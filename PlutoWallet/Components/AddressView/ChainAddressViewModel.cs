@@ -35,7 +35,14 @@ namespace PlutoWallet.Components.AddressView
                 return;
             }
 
-            ChainAddressName = endpoint.Name + " key";
+            if (endpoint.Name.Length <= 10)
+            {
+                ChainAddressName = endpoint.Name + " key";
+            }
+            else
+            {
+                ChainAddressName = endpoint.Name.Split(" ")[0] + " key";
+            }
             
             Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
             IsVisible = true;

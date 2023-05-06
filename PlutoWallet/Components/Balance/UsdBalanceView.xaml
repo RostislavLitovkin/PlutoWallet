@@ -3,17 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
              x:Class="PlutoWallet.Components.Balance.UsdBalanceView"
-             
-             HeightRequest="300">
+             HeightRequest="{Binding HeightRequest}">
     <StackLayout x:Name="stackLayout" MinimumHeightRequest="60"
                  Spacing="10">
-        <Label Text="187.76 USD"
+        <Label Text="{Binding UsdSum}"
                 FontAttributes="Bold"
                 FontSize="24"
                 HeightRequest="60"
                 HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
 
-        <CollectionView HeightRequest="300"
+        <CollectionView 
                         ItemsSource="{Binding Assets}"
                         >
             <CollectionView.ItemsLayout>
