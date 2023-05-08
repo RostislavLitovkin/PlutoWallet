@@ -32,8 +32,6 @@
 
                 <addressview:ChainAddressView />
 
-                <balance:BalanceView />
-
                 <extrinsic:ExtrinsicStatusView
                     ExtrinsicId="0015001148-000001-0e737"
                     Status="Pending" />

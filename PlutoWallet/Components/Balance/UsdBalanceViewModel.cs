@@ -8,6 +8,7 @@ using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Newtonsoft.Json.Linq;
 
 namespace PlutoWallet.Components.Balance
 {
@@ -24,14 +25,22 @@ namespace PlutoWallet.Components.Balance
         [ObservableProperty]
         private string usdSum;
 
+        [ObservableProperty]
+        private bool reloadIsVisible;
+
         public UsdBalanceViewModel()
 		{
             heightRequest = EXTRA_HEIGHT;
             usdSum = "Loading";
-		}
+            reloadIsVisible = false;
+        }
 
-		public async Task GetBalancesAsync()
-		{
+        public async Task GetBalancesAsync()
+        {
+            ReloadIsVisible = false;
+
+            UsdSum = "Loading";
+
             double usdSumValue = 0;
             var assetsCollection = new ObservableCollection<Asset>();
 
@@ -40,7 +49,7 @@ namespace PlutoWallet.Components.Balance
                 var client = Model.AjunaClientModel.GroupClients[i];
                 var endpoint = Model.AjunaClientModel.GroupEndpoints[i];
 
-                if (endpoint.ChainType != "Substrate")
+                if (endpoint.ChainType != Constants.ChainType.Substrate)
                 {
                     assetsCollection.Add(new Asset
                     {
@@ -64,7 +73,7 @@ namespace PlutoWallet.Components.Balance
                 catch
                 {
                     // this usually means that nothing is saved for this account
-                    
+
                 }
 
                 // Calculate a real USD value
@@ -80,57 +89,21 @@ namespace PlutoWallet.Components.Balance
                     UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
                 });
 
-                /*
                 try
                 {
-                    if (i == 2)
+                    var assets = await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(Model.KeysModel.GetSubstrateKey(), 1000, CancellationToken.None);
+
+                    foreach ((string, AssetDetails, AssetMetadata, AssetAccount) asset in assets)
                     {
-                        var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-                        //var index = BigInteger.Parse("340282366920938463463374607431768211455");
 
-                        var u = new U128();
-                        u.Create("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
-
-                        BaseTuple<U128, AccountId32> tuple = new BaseTuple<U128, AccountId32>();
-
-
-                        System.Collections.Generic.List<byte> byteArray = new List<byte>();
-                        byteArray.AddRange(u.Encode());
-                        byteArray.AddRange(Model.KeysModel.GetAccountId32().Encode());
-
-                        tuple.Create(byteArray.ToArray());
-
-                        var assets = await client.AssetsStorage.Asset(u, CancellationToken.None);
-                        //var assetMetadata = await client.AssetsStorage.Metadata(u, CancellationToken.None);
-                        var values = await client.AssetsStorage.Account(tuple, CancellationToken.None);
-
-
-                        string key = "0x682a59d51ab9e48a8c8cc418ff9708d2b5f3822e35ca2f31ce3526eab1363fd2e7dafeb873ce4834a974435da87d9cc834050000000000000000000000000000";
-
-                        string result = await client.InvokeAsync<string>(
-                            "state_getStorage",
-                            new object[] { key, null },
-                            CancellationToken.None
-                        );
-
-                        AssetMetadata t = new AssetMetadata();
-                        t.Create(result);
-                        // This is false
-                        //messagePopup.Text = values.Balance;
-
-
-                        //Console.WriteLine(values == null);
-
-
-
-                        messagePopup.Title = "Result:";
-
-                        messagePopup.Text = result + "";
-
-                        messagePopup.IsVisible = true;
-
-                        Console.WriteLine("assets:");
-                        Console.WriteLine(result);
+                        double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value : 0;
+                        assetsCollection.Add(new Asset
+                        {
+                            Amount = String.Format("{0:0.00}", assetBalance),
+                            Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
+                            ChainIcon = endpoint.Icon,
+                            UsdValue = String.Format("{0:0.00}", assetBalance) + " USD",
+                        });
                     }
                 }
                 catch (Exception ex)
@@ -143,18 +116,21 @@ namespace PlutoWallet.Components.Balance
                     messagePopup.IsVisible = true;
 
                 }
-                */
             }
 
             Assets = assetsCollection;
 
-            HeightRequest = (35 * assetsCollection.Count()) + EXTRA_HEIGHT;
+            int count = assetsCollection.Count() < 10 ? assetsCollection.Count() : 10;
+
+            HeightRequest = (35 * count) + EXTRA_HEIGHT;
 
             var balanceDashboardViewModel = DependencyService.Get<BalanceDashboardViewModel>();
 
             balanceDashboardViewModel.RecalculateHeightRequest();
 
             UsdSum = String.Format("{0:0.00}", usdSumValue) + " USD";
+
+            ReloadIsVisible = true;
         }
 	}
 }

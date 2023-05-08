@@ -14,9 +14,10 @@ namespace PlutoWallet.Constants
 				options.Add(DefaultNetworks);
                 options.Add(new int[4] { 0, 6, -1, -1 });
                 options.Add(new int[4] { 0, 1, -1, -1 });
+                options.Add(new int[4] { 4, 5, -1, -1 });
 
 
-				for (int i = 0; i < GetAllEndpoints.Count; i++)
+                for (int i = 0; i < GetAllEndpoints.Count; i++)
 				{
                     options.Add(new int[4] { i, -1, -1, -1 });
                 }
@@ -36,7 +37,7 @@ namespace PlutoWallet.Constants
 				Unit = "Dot",
 				Decimals = 10,
 				SS58Prefix = 0,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
 			new Endpoint
 			{
@@ -47,7 +48,7 @@ namespace PlutoWallet.Constants
                 Unit = "KSM",
                 Decimals = 12,
                 SS58Prefix = 2,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
 			new Endpoint
 			{
@@ -58,7 +59,7 @@ namespace PlutoWallet.Constants
                 Unit = "GLMR",
                 Decimals = 18,
                 SS58Prefix = 1284,
-                ChainType = "Ethereum",
+                ChainType = ChainType.Ethereum,
             },
 			new Endpoint
 			{
@@ -69,9 +70,39 @@ namespace PlutoWallet.Constants
                 Unit = "ASTR",
                 Decimals = 18,
                 SS58Prefix = 5,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
-			new Endpoint
+            new Endpoint
+            {
+                Name = "Ajuna",
+                URL = "wss://rpc-parachain.ajuna.network",
+                Icon = "ajuna.png",
+                Unit = "AJUN",
+                Decimals = 12,
+                SS58Prefix = 1328,
+                ChainType = ChainType.Substrate,
+            },
+            new Endpoint
+            {
+                Name = "Bajun",
+                URL = "wss://rpc-parachain.bajun.network",
+                Icon = "bajun.png",
+                Unit = "BAJU",
+                Decimals = 12,
+                SS58Prefix = 1337,
+                ChainType = ChainType.Substrate,
+            },
+            new Endpoint
+            {
+                Name = "Manta",
+                URL = "wss://ws.manta.systems",
+                Icon = "manta.png",
+                Unit = "MANTA",
+                Decimals = 18,
+                SS58Prefix = 77,
+                ChainType = ChainType.Substrate,
+            },
+            new Endpoint
 			{
 				Name = "Westend",
 				URL = "wss://westend-rpc.polkadot.io",
@@ -79,7 +110,7 @@ namespace PlutoWallet.Constants
                 Unit = "WND",
                 Decimals = 12,
                 SS58Prefix = 42,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
             new Endpoint
             {
@@ -90,7 +121,7 @@ namespace PlutoWallet.Constants
                 Unit = "ROC",
                 Decimals = 12,
                 SS58Prefix = 42,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
             new Endpoint
 			{
@@ -101,7 +132,7 @@ namespace PlutoWallet.Constants
                 Unit = "UNQ",
                 Decimals = 18,
                 SS58Prefix = 7391,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
 			new Endpoint
 			{
@@ -112,7 +143,18 @@ namespace PlutoWallet.Constants
                 Unit = "OPL",
                 Decimals = 18,
                 SS58Prefix = 42,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
+            },
+            new Endpoint
+            {
+                Name = "Shibuya",
+                URL = "wss://shibuya-rpc.dwellir.com",
+                Icon = "shibuya.png",
+                CalamarChainName = "shibuya",
+                Unit = "SBY",
+                Decimals = 18,
+                SS58Prefix = 5,
+                ChainType = ChainType.Substrate,
             },
             new Endpoint
             {
@@ -123,7 +165,7 @@ namespace PlutoWallet.Constants
                 Unit = "DEV",
                 Decimals = 18,
                 SS58Prefix = 1287,
-                ChainType = "Ethereum",
+                ChainType = ChainType.Ethereum,
             },
 			new Endpoint
 			{
@@ -134,7 +176,7 @@ namespace PlutoWallet.Constants
                 Unit = "ACA",
                 Decimals = 12,
                 SS58Prefix = 10,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             },
 			new Endpoint
 			{
@@ -144,9 +186,16 @@ namespace PlutoWallet.Constants
                 Unit = "",
 				Decimals = 0,
 				SS58Prefix = 42,
-                ChainType = "Substrate",
+                ChainType = ChainType.Substrate,
             }
         };
+    }
+
+    public enum ChainType
+    {
+        Substrate,
+        Ethereum,
+        Other,
     }
 
 	public class Endpoint
@@ -160,7 +209,7 @@ namespace PlutoWallet.Constants
 		public string Unit { get; set; }
 		public int Decimals { get; set; }
 		public short SS58Prefix { get; set; }
-        public string ChainType { get; set; }
+        public ChainType ChainType { get; set; }
     }
 }
 

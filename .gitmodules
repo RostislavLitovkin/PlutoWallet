@@ -3,4 +3,4 @@
 	url = https://github.com/cisar2218/Plutonication
 [submodule "Substrate.NET.API"]
 	path = Substrate.NET.API
-	url = https://github.com/SubstrateGaming/Substrate.NET.API
+	url = https://github.com/RostislavLitovkin/Substrate.NET.API

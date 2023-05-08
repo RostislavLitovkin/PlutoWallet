@@ -2,8 +2,6 @@
 
 public partial class AdvancedWebView : ContentView
 {
-    private string AddressVal;
-
     public static readonly BindableProperty AddressProperty = BindableProperty.Create(
         nameof(Address), typeof(string), typeof(AdvancedWebView),
         defaultBindingMode: BindingMode.TwoWay,

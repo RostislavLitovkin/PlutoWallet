@@ -15,7 +15,11 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Newtonsoft.Json.Linq;
+using Substrate.NetApi.Model.Rpc;
+using Ajuna.NetApi.Model.Rpc;
+using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -80,6 +84,127 @@ namespace PlutoWallet.Model.AjunaExt
             var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails>(parameters, token);
             return result;
         }
+
+        public async Task<List<(string, AssetDetails)>> GetAssetsNextAsync(string startStorageKey, uint page, CancellationToken token)
+        {
+            if (page < 2 || page > 1000)
+            {
+                throw new NotSupportedException("Page size must be in the range of 2 - 1000");
+            }
+
+            var startKeyBytes = new byte[] { };
+            if (startStorageKey != null)
+            {
+                startKeyBytes = Utils.HexToByteArray(startStorageKey);
+            }
+
+            var resultList = new List<(string, AssetDetails)>();
+            var keyBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Asset");
+
+            var storageKeys = await _client.State.GetKeysPagedAtAsync(keyBytes, page, null, string.Empty, token);
+
+            if (storageKeys == null || !storageKeys.Any())
+            {
+                return resultList;
+            }
+
+            var storageChangeSets = await _client.State.GetQueryStorageAtAsync(storageKeys.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
+
+            if (storageChangeSets != null)
+            {
+                foreach (var storageChangeSet in storageChangeSets.ElementAt(0).Changes)
+                {
+                    string storageKeyString = storageChangeSet[0];
+
+                    var assetDetails = new AssetDetails();
+                    assetDetails.Create(storageChangeSet[1]);
+
+                    resultList.Add((storageKeyString, assetDetails));
+                }
+            }
+
+            return resultList;
+        }
+
+        /**
+         * This method is used to query all the data associated with the assets
+         */
+        public async Task<List<(string, AssetDetails, AssetMetadata, AssetAccount)>> GetAssetsMetadataAndAcountNextAsync(string substrateAddress, uint page, CancellationToken token)
+        {
+            if (page < 2 || page > 1000)
+            {
+                throw new NotSupportedException("Page size must be in the range of 2 - 1000");
+            }
+            var account32 = new AccountId32();
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
+
+            var resultList = new List<(string, AssetDetails, AssetMetadata, AssetAccount)>();
+
+            var detailsKeyPrefixBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Asset");
+
+            string detailsKeyPrefixBytesString = Utils.Bytes2HexString(detailsKeyPrefixBytes);
+            string metadataKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Metadata"));
+            string accountKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Account"));
+
+            var storageKeys = (await _client.State.GetKeysPagedAtAsync(detailsKeyPrefixBytes, page, null, string.Empty, token))
+                .Select(p => p.ToString().Replace(detailsKeyPrefixBytesString, ""));
+
+            var assetDetailKeys = storageKeys.Select(p => Utils.HexToByteArray(detailsKeyPrefixBytesString + p.ToString())).ToList();
+            var assetMetadataKeys = storageKeys.Select(p => Utils.HexToByteArray(metadataKeyPrefixBytesString + p.ToString())).ToList();
+            var assetAccountKeys = storageKeys.Select(p => Utils.HexToByteArray(
+                accountKeyPrefixBytesString +
+                p.ToString() +
+                Utils.Bytes2HexString(HashExtension.Hash(Storage.Hasher.BlakeTwo128Concat, account32.Bytes), Utils.HexStringFormat.Pure)
+            )).ToList();
+
+            if (storageKeys == null || !storageKeys.Any())
+            {
+                return resultList;
+            }
+
+            var assetDetailStorageChangeSets = await _client.State.GetQueryStorageAtAsync(assetDetailKeys, string.Empty, token);
+            var assetMetadataStorageChangeSets = await _client.State.GetQueryStorageAtAsync(assetMetadataKeys, string.Empty, token);
+            var assetAccountStorageChangeSets = await _client.State.GetQueryStorageAtAsync(assetAccountKeys, string.Empty, token);
+
+
+            if (assetDetailStorageChangeSets != null)
+            {
+                for (int i = 0; i < assetDetailStorageChangeSets.ElementAt(0).Changes.Count(); i++)
+                {
+                    var assetDetailData = assetDetailStorageChangeSets.ElementAt(0).Changes[i];
+                    var assetMetadataData = assetMetadataStorageChangeSets.ElementAt(0).Changes[i];
+                    var assetAccountData = assetAccountStorageChangeSets.ElementAt(0).Changes[i];
+
+                    // If it is null, then I do not care about it.
+                    if (assetDetailData[1] == null) continue;
+                    if (assetMetadataData[1] == null) continue;
+
+                    string storageKeyString = storageKeys.ElementAt<string>(i);
+
+                    var assetDetails = new AssetDetails();
+                    assetDetails.Create(assetDetailData[1]);
+
+                    var assetMetadata = new AssetMetadata();
+                    assetMetadata.Create(assetMetadataData[1]);
+
+                    
+                    if (assetAccountData[1] != null)
+                    {
+                        var assetAccount = new AssetAccount();
+                        assetAccount.Create(assetAccountData[1]);
+
+                        resultList.Add((storageKeyString, assetDetails, assetMetadata, assetAccount));
+                    }
+                    else
+                    {
+                        resultList.Add((storageKeyString, assetDetails, assetMetadata, null));
+                    }
+                }
+            }
+
+            return resultList;
+        }
+
 
         /// <summary>
         /// >> AccountParams
@@ -177,6 +302,47 @@ namespace PlutoWallet.Model.AjunaExt
             string parameters = AssetsStorage.MetadataParams(key);
             var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetMetadata>(parameters, token);
             return result;
+        }
+
+        public async Task<List<(string, AssetMetadata)>> GetMetadataNextAsync(string startStorageKey, uint page, CancellationToken token)
+        {
+            if (page < 2 || page > 1000)
+            {
+                throw new NotSupportedException("Page size must be in the range of 2 - 1000");
+            }
+
+            var startKeyBytes = new byte[] { };
+            if (startStorageKey != null)
+            {
+                startKeyBytes = Utils.HexToByteArray(startStorageKey);
+            }
+
+            var resultList = new List<(string, AssetMetadata)>();
+            var keyBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Metadata");
+
+            var storageKeys = await _client.State.GetKeysPagedAtAsync(keyBytes, page, null, string.Empty, token);
+
+            if (storageKeys == null || !storageKeys.Any())
+            {
+                return resultList;
+            }
+
+            var storageChangeSets = await _client.State.GetQueryStorageAtAsync(storageKeys.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
+
+            if (storageChangeSets != null)
+            {
+                foreach (var storageChangeSet in storageChangeSets.ElementAt(0).Changes)
+                {
+                    string storageKeyString = storageChangeSet[0];
+
+                    var assetDetails = new AssetMetadata();
+                    assetDetails.Create(storageChangeSet[1]);
+
+                    resultList.Add((storageKeyString, assetDetails));
+                }
+            }
+
+            return resultList;
         }
     }
     

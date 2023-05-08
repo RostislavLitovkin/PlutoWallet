@@ -15,21 +15,19 @@ using System.Collections.Generic;
 
 namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
 {
-    
-    
     /// <summary>
-    /// >> 485 - Composite[sp_core.bounded.bounded_vec.BoundedVecT8]
+    /// >> 346 - Composite[sp_core.bounded.bounded_vec.BoundedVecT8]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT8 : BaseType
     {
-        
+
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.UnlockChunk> _value;
-        
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.UnlockChunk> Value
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> _value;
+
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> Value
         {
             get
             {
@@ -40,25 +38,28 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
                 this._value = value;
             }
         }
-        
+
         public override string TypeName()
         {
             return "BoundedVecT8";
         }
-        
+
         public override byte[] Encode()
         {
             var result = new List<byte>();
             result.AddRange(Value.Encode());
             return result.ToArray();
         }
-        
+
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.UnlockChunk>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>();
             Value.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

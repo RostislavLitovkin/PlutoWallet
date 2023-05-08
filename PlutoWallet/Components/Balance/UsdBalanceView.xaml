@@ -6,11 +6,40 @@
              HeightRequest="{Binding HeightRequest}">
     <StackLayout x:Name="stackLayout" MinimumHeightRequest="60"
                  Spacing="10">
-        <Label Text="{Binding UsdSum}"
-                FontAttributes="Bold"
-                FontSize="24"
-                HeightRequest="60"
-                HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+        <AbsoluteLayout HeightRequest="60">
+            <Label 
+                HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding UsdSum}"
+                                FontAttributes="Bold"
+                                FontSize="24" />
+
+                    </FormattedString>
+
+                </Label.FormattedText>
+
+            </Label>
+
+            <Image Margin="10, 0, 10, 0"
+                   AbsoluteLayout.LayoutBounds="1, 1, AutoSize, 30"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   IsVisible="{Binding ReloadIsVisible}"
+                >
+                <Image.Source>
+                    <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                    Glyph="&#xf021;"
+                                    FontFamily="FontAwesome"
+                                    Size="20" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnReloadClicked" />
+
+                </Image.GestureRecognizers>
+            </Image>
+
+        </AbsoluteLayout>
 
         <CollectionView 
                         ItemsSource="{Binding Assets}"
