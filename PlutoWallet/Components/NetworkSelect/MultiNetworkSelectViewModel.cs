@@ -12,8 +12,13 @@ namespace PlutoWallet.Components.NetworkSelect
 {
 	public partial class MultiNetworkSelectViewModel : ObservableObject
 	{
+        private const int MAX_BUBBLE_COUNT = 4;
+
         [ObservableProperty]
-        private ObservableCollection<NetworkSelectEndpoint> networks = new ObservableCollection<NetworkSelectEndpoint>();
+        private ObservableCollection<int> endpointIndexes = new ObservableCollection<int>();
+
+        [ObservableProperty]
+        private ObservableCollection<bool> showNames = new ObservableCollection<bool>();
 
         [ObservableProperty]
         private bool clicked;
@@ -25,23 +30,21 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void SetupDefault()
         {
-            Clicked = false;
+            int[] defaultNetworks = Endpoints.DefaultNetworks;
 
-            // Later: Get real endpoint
-            var defaultEndpoints = Endpoints.GetAllEndpoints;
+            EndpointIndexes = new ObservableCollection<int>();
+            ShowNames = new ObservableCollection<bool>();
 
-
-            Networks = new ObservableCollection<NetworkSelectEndpoint>();
-
-            foreach (int i in new int[3]{ 0, 2, 3 } ) {
-                Networks.Add(new NetworkSelectEndpoint
-                {
-                    Name = defaultEndpoints[i].Name,
-                    Icon = defaultEndpoints[i].Icon,
-                });
+            for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
+            {
+                EndpointIndexes[i] = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
+                ShowNames[i] = false;
             }
 
-            Networks[0].ShowName = true;
+            ShowNames[1] = true;
+
+            // Update other views
+            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(EndpointIndexes.ToArray());
         }
     }
 }
