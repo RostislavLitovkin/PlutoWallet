@@ -47,8 +47,6 @@ public partial class UniversalScannerView : ContentView
             return;
         }
 
-        var viewModel = DependencyService.Get<ViewModel.MainViewModel>();
-
         try
         {
             var scannedValue = e.Results[0].Value;

@@ -3,6 +3,7 @@ using Substrate.NetApi.Model.Extrinsics;
 using Plutonication;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.DAppConnectionView;
+using PlutoWallet.Components.MessagePopup;
 
 namespace PlutoWallet.Components.ConnectionRequestView;
 
@@ -17,66 +18,78 @@ public partial class ConnectionRequestView : ContentView
 
     private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
-        var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
-
-        var addressPort = viewModel.Url.Split(":");
-
-        DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
-        dAppViewModel.Icon = viewModel.Icon;
-        dAppViewModel.Name = viewModel.Name;
-        dAppViewModel.IsVisible = true;
-
-        Model.PlutonicationModel.EventManager = new PlutoEventManager();
-
-        Model.PlutonicationModel.EventManager.ConnectionEstablished += () =>
+        try
         {
-            Console.WriteLine("Connectin Established! :D");
-        };
-        Model.PlutonicationModel.EventManager.ConnectionRefused += () =>
-        {
-            Console.WriteLine("Connectin Refused! :(");
-        };
+            var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
 
-        AccessCredentials accessCredentials = new AccessCredentials(IPAddress.Parse(addressPort[0]), Int32.Parse(addressPort[1]));
-        accessCredentials.Key = viewModel.Key;
-        await Model.PlutonicationModel.EventManager.ConnectSafeAsync(accessCredentials);
+            var addressPort = viewModel.Url.Split(":");
 
-        await Task.Delay(1000);
-        
-        PlutoMessage msg = new PlutoMessage(MessageCode.PublicKey, Model.KeysModel.GetSubstrateKey());
+            DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+            dAppViewModel.Icon = viewModel.Icon;
+            dAppViewModel.Name = viewModel.Name;
+            dAppViewModel.IsVisible = true;
 
-        await Model.PlutonicationModel.EventManager.SendMessageAsync(msg);
+            Model.PlutonicationModel.EventManager = new PlutoEventManager();
 
-        Model.PlutonicationModel.EventManager.MessageReceived += () =>
-        {
-            PlutoMessage msg = Model.PlutonicationModel.EventManager.IncomingMessages.Dequeue();
-
-            switch(msg.Identifier)
+            Model.PlutonicationModel.EventManager.ConnectionEstablished += () =>
             {
-                case MessageCode.Method:
+                Console.WriteLine("Connectin Established! :D");
+            };
+            Model.PlutonicationModel.EventManager.ConnectionRefused += () =>
+            {
+                Console.WriteLine("Connectin Refused! :(");
+            };
 
-                    // This is temporary
-                    Ajuna.NetApi.Model.Extrinsics.Method tempMethod = msg.GetMethod();
+            AccessCredentials accessCredentials = new AccessCredentials(IPAddress.Parse(addressPort[0]), Int32.Parse(addressPort[1]));
+            accessCredentials.Key = viewModel.Key;
+            await Model.PlutonicationModel.EventManager.ConnectSafeAsync(accessCredentials);
 
-                    Method method = new Method(tempMethod.ModuleIndex, tempMethod.CallIndex, tempMethod.Parameters);
+            await Task.Delay(1000);
 
-                    var transactionRequestViewModel = DependencyService.Get<Components.TransactionRequest.TransactionRequestViewModel>();
-                    transactionRequestViewModel.AjunaMethod = method;
-                    transactionRequestViewModel.IsVisible = true;
+            PlutoMessage msg = new PlutoMessage(MessageCode.PublicKey, Model.KeysModel.GetSubstrateKey());
 
-                    break;
+            await Model.PlutonicationModel.EventManager.SendMessageAsync(msg);
 
-                default:
+            Model.PlutonicationModel.EventManager.MessageReceived += () =>
+            {
+                PlutoMessage msg = Model.PlutonicationModel.EventManager.IncomingMessages.Dequeue();
 
-                    break;
-            }
-            Console.WriteLine("Code: " + msg.Identifier);
-            Console.WriteLine("Data: " + msg.CustomDataToString());
-        };
+                switch (msg.Identifier)
+                {
+                    case MessageCode.Method:
 
-        Task setup = Model.PlutonicationModel.EventManager.SetupReceiveLoopAsync();
+                        // This is temporary
+                        Ajuna.NetApi.Model.Extrinsics.Method tempMethod = msg.GetMethod();
 
-        this.IsVisible = false;
+                        Method method = new Method(tempMethod.ModuleIndex, tempMethod.CallIndex, tempMethod.Parameters);
+
+                        var transactionRequestViewModel = DependencyService.Get<Components.TransactionRequest.TransactionRequestViewModel>();
+                        transactionRequestViewModel.AjunaMethod = method;
+                        transactionRequestViewModel.IsVisible = true;
+
+                        break;
+
+                    default:
+
+                        break;
+                }
+                Console.WriteLine("Code: " + msg.Identifier);
+                Console.WriteLine("Data: " + msg.CustomDataToString());
+            };
+
+            Task setup = Model.PlutonicationModel.EventManager.SetupReceiveLoopAsync();
+
+            this.IsVisible = false;
+        }
+        catch (Exception ex)
+        {
+            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+            messagePopup.Title = "Error";
+            messagePopup.Text = ex.Message;
+
+            messagePopup.IsVisible = true;
+        }
     }
 
     private async void RejectClicked(System.Object sender, System.EventArgs e)
