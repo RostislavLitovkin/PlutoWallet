@@ -1,83 +1,73 @@
-﻿using PlutoWallet.Constants;
+﻿using System.Collections.ObjectModel;
+using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Constants;
+using PlutoWallet.View;
 
 namespace PlutoWallet.Components.NetworkSelect;
 
 public partial class MultiNetworkSelectView : ContentView
 {
-    private NetworkBubbleView[] bubbles;
-
-    
-
 	public MultiNetworkSelectView()
 	{
-		InitializeComponent();
+        InitializeComponent();
 
-        bubbles = new NetworkBubbleView[4];
-        bubbles[0] = bubble1;
-        bubbles[1] = bubble2;
-        bubbles[2] = bubble3;
-        bubbles[3] = bubble4;
-
-        SetupDefault();
+        BindingContext = DependencyService.Get<MultiNetworkSelectViewModel>();
     }
 
     public bool Clicked { get; set; } = false;
 
-    public void SetupDefault()
+    void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        int[] defaultNetworks = Endpoints.DefaultNetworks;
-
-        List<int> selectedNetworkGroup = new List<int>(4);
-
-        for (int i = 0; i < bubbles.Length; i++)
+        try
         {
-            if (Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]) != -1)
-            {
-                bubbles[i].Name = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Name;
-                bubbles[i].Icon = Endpoints.GetAllEndpoints[Preferences.Get("SelectedNetworks" + i, defaultNetworks[i])].Icon;
-                bubbles[i].EndpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
-                bubbles[i].IsVisible = true;
+            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
-                selectedNetworkGroup.Add(Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]));
+            if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName)
+            {
+                // Probably do nothing
             }
             else
             {
-                bubbles[i].IsVisible = false;
+                var tempOldValues = viewModel.NetworkInfos;
+                var networkInfos = new ObservableCollection<NetworkSelectInfo>();
+                var endpointIndexes = new List<int>();
+                for (int i = 0; i < tempOldValues.Count; i++)
+                {
+                    networkInfos.Add(new NetworkSelectInfo {
+                        ShowName = false,
+                        Name = tempOldValues[i].Name,
+                        Icon = tempOldValues[i].Icon,
+                        EndpointIndex = tempOldValues[i].EndpointIndex,
+                    });
+                    endpointIndexes.Add(networkInfos[i].EndpointIndex);
+
+                }
+
+                var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
+
+
+
+                int thisBubbleIndex = Array.IndexOf(endpointIndexes.ToArray(), senderBubble.EndpointIndex);
+                networkInfos[thisBubbleIndex].ShowName = true;
+
+                viewModel.NetworkInfos = networkInfos;
+
+                // Update other views
+                Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointIndex);
             }
         }
-
-        foreach (NetworkBubbleView bubble in bubbles)
+        catch (Exception ex)
         {
-            bubble.ShowName = false;
-        }
-        bubble1.ShowName = true;
+            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-        // Update other views
-        Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(selectedNetworkGroup.ToArray());
-    }
+            messagePopup.Title = "Error";
+            messagePopup.Text = ex.Message;
 
-    void OnNetworkClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
-    {
-		if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName)
-		{
-			// Probably do nothing
-		}
-		else
-		{
-            foreach (NetworkBubbleView bubble in bubbles)
-            {
-                bubble.ShowName = false;
-            }
-
-            var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
-            senderBubble.ShowName = true;
-
-            // Update other views
-            Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointIndex);
+            messagePopup.IsVisible = true;
         }
     }
 
-    void OnOtherNetworksClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnOtherNetworksClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         if (Clicked)
         {
@@ -85,10 +75,8 @@ public partial class MultiNetworkSelectView : ContentView
         }
 
         Clicked = true;
-        ((AbsoluteLayout)this.Parent).Children.Add(new MultiNetworkSelectOptionsView
-        {
-            MultiSelect = this,
-        });
+        await Navigation.PushAsync(new NetworkSelectionPage());
+        Clicked = false;
     }
 
 

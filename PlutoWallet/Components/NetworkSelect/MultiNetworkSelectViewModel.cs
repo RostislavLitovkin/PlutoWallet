@@ -10,10 +10,12 @@ using System.Collections.ObjectModel;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
-	public partial class MultiNetworkSelectViewModel : ObservableObject
+    public partial class MultiNetworkSelectViewModel : ObservableObject
 	{
+        private const int MAX_BUBBLE_COUNT = 4;
+
         [ObservableProperty]
-        private ObservableCollection<NetworkSelectEndpoint> networks = new ObservableCollection<NetworkSelectEndpoint>();
+        private ObservableCollection<NetworkSelectInfo> networkInfos = new ObservableCollection<NetworkSelectInfo>();
 
         [ObservableProperty]
         private bool clicked;
@@ -25,24 +27,32 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void SetupDefault()
         {
-            Clicked = false;
+            int[] defaultNetworks = Endpoints.DefaultNetworks;
 
-            // Later: Get real endpoint
-            var defaultEndpoints = Endpoints.GetAllEndpoints;
+            NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
+            int[] tempEndpointIndexes = new int[4];
 
-
-            Networks = new ObservableCollection<NetworkSelectEndpoint>();
-
-            foreach (int i in new int[3]{ 0, 2, 3 } ) {
-                Networks.Add(new NetworkSelectEndpoint
+            for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
+            {
+                int endpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
+                if (endpointIndex != -1)
                 {
-                    Name = defaultEndpoints[i].Name,
-                    Icon = defaultEndpoints[i].Icon,
-                });
+                    NetworkInfos.Add(new NetworkSelectInfo
+                    {
+                        EndpointIndex = endpointIndex,
+                        ShowName = i == 0, // true for index 0, otherwise false
+                        Name = Endpoints.GetAllEndpoints[endpointIndex].Name,
+                        Icon = Endpoints.GetAllEndpoints[endpointIndex].Icon,
+                    });
+                }
+                tempEndpointIndexes[i] = endpointIndex;
             }
 
-            Networks[0].ShowName = true;
+            // Update other views
+            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(tempEndpointIndexes);
         }
     }
+
+    
 }
 
