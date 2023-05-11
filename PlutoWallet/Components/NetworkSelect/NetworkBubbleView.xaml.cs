@@ -44,20 +44,21 @@ public partial class NetworkBubbleView : ContentView
         nameof(EndpointIndex), typeof(int), typeof(NetworkBubbleView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
-            var control = (NetworkBubbleView)bindable;
+            /*var control = (NetworkBubbleView)bindable;
 
             if ((int)newValue == -1)
             {
                 control.IsVisible = false;
-                return;
             }
+            else
+            {
+                Endpoint endpoint = Endpoints.GetAllEndpoints[(int)newValue];
 
-            Endpoint endpoint = Endpoints.GetAllEndpoints[(int)newValue];
+                control.Name = endpoint.Name;
+                control.Icon = endpoint.Icon;
 
-            control.Name = endpoint.Name;
-            control.Icon = endpoint.Icon;
-
-            control.IsVisible = true;
+                control.IsVisible = true;
+            }*/
         });
 
     public NetworkBubbleView()

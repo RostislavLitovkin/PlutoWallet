@@ -37,36 +37,52 @@ namespace PlutoWallet.Model
          */
         public static async Task ChangeChainGroupAsync(int[] endpointIndexes)
         {
-            groupEndpointIndexes = endpointIndexes;
-
-            List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
-
-            List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
-
-            for (int i = 0; i < endpointIndexes.Length; i++)
+            try
             {
-                Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndexes[i]];
+                groupEndpointIndexes = endpointIndexes;
 
-                groupEndpointsList.Add(endpoint);
+                List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
 
-                var client = new AjunaClientExt(
-                        new Uri(endpoint.URL),
-                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+                List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
 
-                client.ConnectAsync();
+                for (int i = 0; i < endpointIndexes.Length; i++)
+                {
+                    // check that the index exists
+                    if (endpointIndexes[i] != -1)
+                    {
+                        Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndexes[i]];
 
-                groupClientList.Add(client);
+                        groupEndpointsList.Add(endpoint);
+
+                        var client = new AjunaClientExt(
+                                new Uri(endpoint.URL),
+                                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+                        client.ConnectAsync();
+
+                        groupClientList.Add(client);
+                    }
+                }
+
+                GroupClients = groupClientList.ToArray();
+                GroupEndpoints = groupEndpointsList.ToArray();
+
+                // Set the first endpoint of the group to be the "main" client
+                Client = GroupClients[0];
+                SelectedEndpoint = GroupEndpoints[0];
+
+                await ConnectClientAsync();
+                await ConnectGroupAsync();
             }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-            GroupClients = groupClientList.ToArray();
-            GroupEndpoints = groupEndpointsList.ToArray();
+                messagePopup.Title = "Error";
+                messagePopup.Text = ex.Message;
 
-            // Set the first endpoint of the group to be the "main" client
-            Client = GroupClients[0];
-            SelectedEndpoint = GroupEndpoints[0];
-
-            await ConnectClientAsync();
-            await ConnectGroupAsync();
+                messagePopup.IsVisible = true;
+            }
         }
 
         /**

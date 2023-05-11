@@ -33,7 +33,10 @@
 
             </AbsoluteLayout>
             
-            
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClicked" />
+
+            </Frame.GestureRecognizers>
         </Frame>
     </AbsoluteLayout>
 </ContentView>

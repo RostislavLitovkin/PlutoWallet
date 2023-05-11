@@ -12,38 +12,23 @@
                BackgroundColor="#88888888"
                BorderColor="#88888888">
             <HorizontalStackLayout Spacing="2">
-                <networkselect:NetworkBubbleView x:Name="bubble1" IsVisible="false" ShowName="True"
-                                                 Tapped="OnNetworkClicked">
-                    <networkselect:NetworkBubbleView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNetworkClicked" />
+                <HorizontalStackLayout Spacing="2"
+                                       BindableLayout.ItemsSource="{Binding NetworkInfos}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <networkselect:NetworkBubbleView Tapped="OnNetworkClicked"
+                                                 EndpointIndex="{Binding EndpointIndex}"
+                                                 ShowName="{Binding ShowName}"
+                                                 Name="{Binding Name}"
+                                                 Icon="{Binding Icon}">
 
-                    </networkselect:NetworkBubbleView.GestureRecognizers>
+                            </networkselect:NetworkBubbleView>
 
-                </networkselect:NetworkBubbleView>
+                        </DataTemplate>
 
-                <networkselect:NetworkBubbleView x:Name="bubble2" IsVisible="false" Tapped="OnNetworkClicked">
-                    <networkselect:NetworkBubbleView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNetworkClicked" />
+                    </BindableLayout.ItemTemplate>
 
-                    </networkselect:NetworkBubbleView.GestureRecognizers>
-
-                </networkselect:NetworkBubbleView>
-
-                <networkselect:NetworkBubbleView x:Name="bubble3" IsVisible="false" Tapped="OnNetworkClicked">
-                    <networkselect:NetworkBubbleView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNetworkClicked" />
-
-                    </networkselect:NetworkBubbleView.GestureRecognizers>
-
-                </networkselect:NetworkBubbleView>
-
-                <networkselect:NetworkBubbleView x:Name="bubble4" IsVisible="false" Tapped="OnNetworkClicked">
-                    <networkselect:NetworkBubbleView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnNetworkClicked" />
-
-                    </networkselect:NetworkBubbleView.GestureRecognizers>
-
-                </networkselect:NetworkBubbleView>
+                </HorizontalStackLayout>
 
                  <networkselect:NetworkBubbleView Tapped="OnOtherNetworksClicked"
                                                   Icon="menuwhite.png">

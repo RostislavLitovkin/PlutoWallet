@@ -10,15 +10,12 @@ using System.Collections.ObjectModel;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
-	public partial class MultiNetworkSelectViewModel : ObservableObject
+    public partial class MultiNetworkSelectViewModel : ObservableObject
 	{
         private const int MAX_BUBBLE_COUNT = 4;
 
         [ObservableProperty]
-        private ObservableCollection<int> endpointIndexes = new ObservableCollection<int>();
-
-        [ObservableProperty]
-        private ObservableCollection<bool> showNames = new ObservableCollection<bool>();
+        private ObservableCollection<NetworkSelectInfo> networkInfos = new ObservableCollection<NetworkSelectInfo>();
 
         [ObservableProperty]
         private bool clicked;
@@ -32,20 +29,30 @@ namespace PlutoWallet.Components.NetworkSelect
         {
             int[] defaultNetworks = Endpoints.DefaultNetworks;
 
-            EndpointIndexes = new ObservableCollection<int>();
-            ShowNames = new ObservableCollection<bool>();
+            NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
+            int[] tempEndpointIndexes = new int[4];
 
             for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
             {
-                EndpointIndexes[i] = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
-                ShowNames[i] = false;
+                int endpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
+                if (endpointIndex != -1)
+                {
+                    NetworkInfos.Add(new NetworkSelectInfo
+                    {
+                        EndpointIndex = endpointIndex,
+                        ShowName = i == 0, // true for index 0, otherwise false
+                        Name = Endpoints.GetAllEndpoints[endpointIndex].Name,
+                        Icon = Endpoints.GetAllEndpoints[endpointIndex].Icon,
+                    });
+                }
+                tempEndpointIndexes[i] = endpointIndex;
             }
 
-            ShowNames[1] = true;
-
             // Update other views
-            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(EndpointIndexes.ToArray());
+            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(tempEndpointIndexes);
         }
     }
+
+    
 }
 
