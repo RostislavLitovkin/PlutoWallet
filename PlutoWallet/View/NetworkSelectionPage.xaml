@@ -9,22 +9,28 @@
         <viewmodel:NetworkSelectionPageViewModel />
 
     </ContentPage.BindingContext>
-    <ScrollView Orientation="Vertical">
-        <VerticalStackLayout x:Name="verticalStackLayout"
-                             HorizontalOptions="CenterAndExpand"
-                             Margin="20, 0, 0, 100"
-                             Spacing="5"
-                             BindableLayout.ItemsSource="{Binding Options}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <network:MultiNetworkSelectOptionView Networks="{Binding Groups}" />
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <ScrollView Orientation="Vertical"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout x:Name="verticalStackLayout"
+                                 HorizontalOptions="Center"
+                                 MinimumWidthRequest="300"
+                                 Margin="20, 0, 0, 100"
+                                 Spacing="5"
+                                 BindableLayout.ItemsSource="{Binding Options}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <network:MultiNetworkSelectOptionView Networks="{Binding Groups}" />
 
-                </DataTemplate>
+                    </DataTemplate>
 
-            </BindableLayout.ItemTemplate>
+                </BindableLayout.ItemTemplate>
 
             
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </AbsoluteLayout>
+    
     
 </ContentPage>
