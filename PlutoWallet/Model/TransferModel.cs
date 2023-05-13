@@ -34,49 +34,12 @@ namespace PlutoWallet.Model
 
             var client = Model.AjunaClientModel.Client;
 
-            var customMetadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
-
-            var pallets = client.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
-
-            int palletIndex = -1;
-
-            for(int i = 0; i < pallets.Count; i++)
-            {
-                if (pallets[i].Name == "Balances")
-                {
-                    palletIndex = i;
-                    break;
-                }
-            }
-
-            if (palletIndex == -1)
-            {
-                throw new Exception("There is no Balances pallet.");
-            }
-
-            int callIndex = -1;
-
-            for (int i = 0; i < customMetadata.NodeMetadata.Types[pallets[palletIndex].Calls.TypeId.ToString()].Variants.Count(); i++)
-            {
-                if (customMetadata.NodeMetadata.Types[pallets[palletIndex].Calls.TypeId.ToString()].Variants[i].Name == "transfer")
-                {
-                    callIndex = i;
-                    break;
-                }
-            }
-
-            if (palletIndex == -1)
-            {
-                throw new Exception("There is no transfer call.");
-            }
-
-            Console.WriteLine(palletIndex);
-            Console.WriteLine(callIndex);
+            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Balances", "transfer");
 
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(multiAddress.Encode());
             byteArray.AddRange(baseComAmount.Encode());
-            Method transfer = new Method((byte)palletIndex, "Balances", (byte)callIndex, "transfer", byteArray.ToArray());
+            Method transfer = new Method(palletIndex, "Balances", callIndex, "transfer", byteArray.ToArray());
 
             var charge = ChargeTransactionPayment.Default();
 

@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:argumentsview="clr-namespace:PlutoWallet.Components.ArgumentsView"
-             x:Class="PlutoWallet.View.CustomCallPage"
-             Title="Custom Call">
+             x:Class="PlutoWallet.View.CustomCallPage">
     <AbsoluteLayout x:Name="absoluteLayout"
                     AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         <ScrollView
@@ -47,4 +46,4 @@
 
         <transactionrequest:TransactionRequestView />
     </AbsoluteLayout>
-</ContentPage>
+</ContentView>

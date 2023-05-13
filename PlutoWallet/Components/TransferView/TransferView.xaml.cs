@@ -7,10 +7,13 @@ public partial class TransferView : ContentView
 {
 	public TransferView()
 	{
-		InitializeComponent();
+        var viewModel = DependencyService.Get<TransferViewModel>();
 
-        BindingContext = DependencyService.Get<TransferViewModel>();
+        BindingContext = viewModel;
 
+        InitializeComponent();
+
+        //viewModel.GetFeeAsync();
     }
 
     async void SignAndTransferClicked(System.Object sender, System.EventArgs e)

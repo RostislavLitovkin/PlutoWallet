@@ -166,8 +166,32 @@ namespace PlutoWallet.Model
 
             chainAddressViewModel.SetChainAddress();
             //customCallsViewModel.GetMetadata();
-            Task getBalance = balanceViewModel.GetBalanceAsync();
-            Task getTransfer = transferViewModel.GetFeeAsync();
+
+
+            // Wait up to 10 seconds for the Client to fetch metadata 
+            for (int i = 0; i < 20; i++)
+            {
+                await Task.Delay(500);
+
+                if (Client.MetaData != null) break;
+            }
+
+            if (Client.MetaData == null)
+            {
+                // show unable to connect error message
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "Failed to connect";
+                messagePopup.Text = "Failed to fetch metadata";
+
+                messagePopup.IsVisible = true;
+
+                return;
+            }
+
+            await transferViewModel.GetFeeAsync();
+
+            Console.WriteLine("All done");
 
         }
     }

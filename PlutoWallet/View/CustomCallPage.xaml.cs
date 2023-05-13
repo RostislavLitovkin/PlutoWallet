@@ -1,6 +1,6 @@
 ﻿namespace PlutoWallet.View;
 
-public partial class CustomCallPage : ContentPage
+public partial class CustomCallPage : ContentView
 {
     //private ViewModel.CustomCallsViewModel bind;
     public CustomCallPage()
@@ -12,11 +12,6 @@ public partial class CustomCallPage : ContentPage
 
         InitializeComponent();
  
-    }
-    protected override async void OnAppearing()
-    {
-        base.OnAppearing();
-        //await viewModel.GetMetadataAsync();
     }
 
     private async void SubmitClicked(System.Object sender, System.EventArgs e)

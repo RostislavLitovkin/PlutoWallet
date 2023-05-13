@@ -24,9 +24,10 @@ namespace PlutoWallet.Components.TransferView
 
 		public async Task GetFeeAsync()
 		{
-			try
+            Fee = "Fee: loading";
+            try
 			{
-				Fee = await Model.FeeModel.GetTransferFeeAsync();
+				Fee = "Fee: " + await Model.FeeModel.GetTransferFeeStringAsync();
 			}
 			catch (Exception ex)
 			{
