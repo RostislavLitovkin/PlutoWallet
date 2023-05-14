@@ -10,6 +10,8 @@ using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
 using PlutoWallet.Types;
+using Substrate.NetApi.Model.Rpc;
+using PlutoWallet.Components.Extrinsic;
 
 namespace PlutoWallet.Model
 {
@@ -51,7 +53,46 @@ namespace PlutoWallet.Model
                 signed: true,
                 CancellationToken.None);
 
-            await client.Author.SubmitExtrinsicAsync(Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
+            var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+            string extrinsicId = await client.Author.SubmitAndWatchExtrinsicAsync(
+                (string id, ExtrinsicStatus status) => {
+                    if (status.ExtrinsicState == ExtrinsicState.Ready)
+                        Console.WriteLine("Ready");
+                    else if (status.ExtrinsicState == ExtrinsicState.Dropped)
+                    {
+                        extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
+                        extrinsicStackViewModel.Update();
+                    }
+
+                    else if (status.InBlock != null)
+                    {
+                        Console.WriteLine("In block");
+                        extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
+                        extrinsicStackViewModel.Update();
+                    }
+
+                    else if (status.Finalized != null)
+                    {
+                        Console.WriteLine("Finalized");
+                        extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
+                        extrinsicStackViewModel.Update();
+                    }
+
+                    else
+                        Console.WriteLine(status.ExtrinsicState);
+                },
+                Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
+
+            extrinsicStackViewModel.Extrinsics.Add(
+                extrinsicId,
+                new ExtrinsicInfo
+                {
+                    ExtrinsicId = extrinsicId,
+                    Status = ExtrinsicStatusEnum.Pending,
+                });
+
+            extrinsicStackViewModel.Update();
         } 
 	}
 }

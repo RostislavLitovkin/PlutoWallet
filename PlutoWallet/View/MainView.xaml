@@ -32,15 +32,7 @@
 
                 <addressview:ChainAddressView />
 
-                <extrinsic:ExtrinsicStatusView
-                    ExtrinsicId="0015001148-000001-0e737"
-                    Status="Pending" />
-                <extrinsic:ExtrinsicStatusView
-                    ExtrinsicId="0015001148-000001-0e736"
-                    Status="Success" />
-                <extrinsic:ExtrinsicStatusView
-                    ExtrinsicId="0015001148-000001-0e735"
-                    Status="Failed" />
+                <extrinsic:ExtrinsicStatusStackLayout />
 
                 <staking:StakingDashboardView />
 
