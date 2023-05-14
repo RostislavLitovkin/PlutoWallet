@@ -28,15 +28,16 @@
                 <BoxView BackgroundColor="#00000000"
                         AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                          AbsoluteLayout.LayoutFlags="All"
-                        x:Name="tapGestureView"
-                        Opacity="{OnPlatform Android=0, Default=1}"/>
+                        Opacity="{OnPlatform Android=0, Default=1}">
+                    <BoxView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClicked" />
+
+                    </BoxView.GestureRecognizers>
+
+                </BoxView>
 
             </AbsoluteLayout>
-            
-            <Frame.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnClicked" />
-
-            </Frame.GestureRecognizers>
+         
         </Frame>
     </AbsoluteLayout>
 </ContentView>

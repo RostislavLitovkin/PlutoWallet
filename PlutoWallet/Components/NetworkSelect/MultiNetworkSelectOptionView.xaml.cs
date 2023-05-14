@@ -43,8 +43,6 @@ public partial class MultiNetworkSelectOptionView : ContentView
         set => SetValue(NetworksProperty, value);
     }
 
-    public BoxView ViewUsedForTapGesture => tapGestureView;
-
     private async void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Preferences.Set("SelectedNetworks0", networks[0]);

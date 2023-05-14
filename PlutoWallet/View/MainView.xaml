@@ -44,7 +44,7 @@
 
                 <staking:StakingDashboardView />
 
-               <calamar:CalamarView Address="{Binding PublicKey}"/>
+               <calamar:CalamarView />
 
                 <!-- Just a clear space (needs to be here) -->
                 <AbsoluteLayout HeightRequest="200" WidthRequest="1000"/>

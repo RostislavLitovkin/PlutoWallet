@@ -7,6 +7,7 @@ using PlutoWallet.Components.AddressView;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Components.CalamarView;
 
 namespace PlutoWallet.Model
 {
@@ -163,8 +164,11 @@ namespace PlutoWallet.Model
             var balanceViewModel = DependencyService.Get<BalanceViewModel>();
             var transferViewModel = DependencyService.Get<TransferViewModel>();
             var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
+            var calamarViewModel = DependencyService.Get<CalamarViewModel>();
+            
 
             chainAddressViewModel.SetChainAddress();
+            calamarViewModel.Reload();
             //customCallsViewModel.GetMetadata();
 
 

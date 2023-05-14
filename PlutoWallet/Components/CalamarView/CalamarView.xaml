@@ -16,7 +16,7 @@
                         Text="Calamar explorer"
                         FontAttributes="Bold"
                         HorizontalOptions="Center" />
-                    <webview:AdvancedWebView x:Name="calamarWebView"/>
+                    <webview:AdvancedWebView Address="{Binding WebAddress}"/>
                 </VerticalStackLayout>
                 <Label Text="Open"
                         AbsoluteLayout.LayoutBounds="0, 0, AutoSize, 30"

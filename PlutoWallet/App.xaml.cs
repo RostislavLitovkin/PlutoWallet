@@ -9,6 +9,7 @@ using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.AddressView;
+using PlutoWallet.Components.CalamarView;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Staking;
@@ -56,6 +57,8 @@ public partial class App : Application
         DependencyService.Register<BalanceDashboardViewModel>();
 
         DependencyService.Register<UsdBalanceViewModel>();
+
+        DependencyService.Register<CalamarViewModel>();
 
         if (Preferences.ContainsKey("privateKey"))
         {
