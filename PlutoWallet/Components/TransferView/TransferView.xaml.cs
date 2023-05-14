@@ -1,5 +1,6 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.ScannerView;
+using System.Numerics;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -21,13 +22,14 @@ public partial class TransferView : ContentView
         // Send the actual transaction
 
         var viewModel = DependencyService.Get<TransferViewModel>();
-        double tempAmount;
-        int amount;
-        if (double.TryParse(viewModel.Amount, out tempAmount))
+        decimal tempAmount;
+        BigInteger amount;
+        if (decimal.TryParse(viewModel.Amount, out tempAmount))
         {
             // Double to int conversion
             // Complete later
-            amount = (int)tempAmount;
+
+            amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, Model.AjunaClientModel.SelectedEndpoint.Decimals));
         }
         else
         {
