@@ -19,8 +19,8 @@
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationDisplayVersion>1.2</ApplicationDisplayVersion>
+		<ApplicationVersion>3</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -43,7 +43,7 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
@@ -117,7 +117,6 @@
 	  <None Remove="Resources\Images\NetworkIcons\quartz.png" />
 	  <None Remove="Resources\Images\NetworkIcons\opal.png" />
 	  <None Remove="Resources\Images\NetworkIcons\moonriver.png" />
-	  <None Remove="Resources\Images\NetworkIcons\kusama.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\moonbase.png" />
 	  <None Remove="Resources\Images\NetworkIcons\moonbeam.png" />
 	  <None Remove="Resources\Images\NetworkIcons\gmordie.png" />
@@ -134,7 +133,6 @@
 	  <None Remove="Resources\Images\menuwhite.svg" />
 	  <None Remove="Resources\Images\menublack.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamawhite.png" />
-	  <None Remove="Resources\Images\NetworkIcons\westend.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\acala.png" />
 	  <None Remove="Resources\Images\NetworkIcons\amplitude.png" />
 	  <None Remove="Resources\Images\NetworkIcons\bifrost.png" />
@@ -157,15 +155,16 @@
 	  <None Remove="Resources\Images\NetworkIcons\reeftestnet.png" />
 	  <None Remove="Resources\Images\NetworkIcons\robonomics.png" />
 	  <None Remove="Resources\Images\NetworkIcons\rococo.png" />
-	  <None Remove="Resources\Images\NetworkIcons\shiden.webp" />
 	  <None Remove="Resources\Images\NetworkIcons\snow.png" />
 	  <None Remove="Resources\Images\NetworkIcons\vara.png" />
 	  <None Remove="Resources\Images\NetworkIcons\xxnetwork.png" />
 	  <None Remove="Components\NavigationBar\" />
 	  <None Remove="Components\Card\" />
 	  <None Remove="Resources\Images\NetworkIcons\manta.png" />
-	  <None Remove="Resources\Images\NetworkIcons\ajuna.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\substrate.png" />
+	  <None Remove="Resources\Images\NetworkIcons\westend.png" />
+	  <None Remove="Resources\Images\NetworkIcons\ajuna.png" />
+	  <None Remove="Resources\Images\NetworkIcons\kusama.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -185,7 +184,6 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\quartz.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\opal.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\moonriver.png" />
-	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\moonbase.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\moonbeam.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\gmordie.png" />
@@ -202,7 +200,6 @@
 	  <BundleResource Include="Resources\Images\menuwhite.svg" />
 	  <BundleResource Include="Resources\Images\menublack.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusamawhite.png" />
-	  <BundleResource Include="Resources\Images\NetworkIcons\westend.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
@@ -227,13 +224,14 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\reeftestnet.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\robonomics.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\rococo.png" />
-	  <BundleResource Include="Resources\Images\NetworkIcons\shiden.webp" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\snow.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\vara.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\xxnetwork.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\manta.png" />
-	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\substrate.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\westend.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
