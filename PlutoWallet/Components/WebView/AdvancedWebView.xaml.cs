@@ -13,11 +13,27 @@ public partial class AdvancedWebView : ContentView
     public AdvancedWebView()
 	{
 		InitializeComponent();
+
+        
 	}
+
+    private async Task InjectionAsync()
+    {
+        string injectionCode = """
+            
+            """;
+
+        await webView.EvaluateJavaScriptAsync(injectionCode);
+    }
 
     public string Address
     {
         get => (string)GetValue(AddressProperty);
         set => SetValue(AddressProperty, value);
+    }
+
+    async void webView_Loaded(System.Object sender, System.EventArgs e)
+    {
+        await InjectionAsync();
     }
 }

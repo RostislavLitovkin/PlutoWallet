@@ -21,6 +21,7 @@
                 <WebView WidthRequest="{Binding Source={x:Reference view}, Path=Width}"
                          BackgroundColor="White"
                          x:Name="webView"
+                         Loaded="webView_Loaded"
                      />
             </Grid>
 
