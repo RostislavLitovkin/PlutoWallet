@@ -75,7 +75,9 @@ public partial class MultiNetworkSelectView : ContentView
         }
 
         Clicked = true;
-        await Navigation.PushAsync(new NetworkSelectionPage());
+        //await Navigation.PushAsync(new NetworkSelectionPage());
+        await Navigation.PushAsync(new NetworkPage());
+
         Clicked = false;
     }
 

@@ -6,7 +6,7 @@ namespace PlutoWallet.Components.NetworkSelect;
 public partial class NetworkBubbleView : ContentView
 {
     public static readonly BindableProperty NameProperty = BindableProperty.Create(
-        nameof(Name), typeof(string), typeof(NetworkBubbleView),
+        nameof(NetworkName), typeof(string), typeof(NetworkBubbleView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
@@ -61,12 +61,20 @@ public partial class NetworkBubbleView : ContentView
             }*/
         });
 
+    public static readonly BindableProperty NameWidthProperty = BindableProperty.Create(
+        nameof(NameWidth), typeof(int), typeof(NetworkBubbleView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (NetworkBubbleView)bindable;
+            control.nameLabel.WidthRequest = (int)newValue;
+        });
+
     public NetworkBubbleView()
 	{
 		InitializeComponent();
 	}
 
-    public string Name
+    public string NetworkName
     {
         get => (string)GetValue(NameProperty);
         set => SetValue(NameProperty, value);
@@ -87,6 +95,12 @@ public partial class NetworkBubbleView : ContentView
     {
         get => (int)GetValue(EndpointIndexProperty);
         set => SetValue(EndpointIndexProperty, value);
+    }
+
+    public int NameWidth
+    {
+        get => (int)GetValue(NameWidthProperty);
+        set => SetValue(NameWidthProperty, value);
     }
 
     public event EventHandler<TappedEventArgs> Tapped

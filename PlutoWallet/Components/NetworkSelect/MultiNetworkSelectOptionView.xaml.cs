@@ -16,7 +16,7 @@ public partial class MultiNetworkSelectOptionView : ContentView
             {
                 if (control.networks[i] != -1)
                 {
-                    control.bubbles[i].Name = Endpoints.GetAllEndpoints[control.networks[i]].Name;
+                    control.bubbles[i].NetworkName = Endpoints.GetAllEndpoints[control.networks[i]].Name;
                     control.bubbles[i].Icon = Endpoints.GetAllEndpoints[control.networks[i]].Icon;
                     control.bubbles[i].IsVisible = true;
                 }

@@ -21,6 +21,7 @@
                     VerticalOptions="Center"/>
             <Label x:Name="nameLabel" IsVisible="false"
                     VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
                     Margin="10, 0, 10, 0"
                     TextColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"/>
 
