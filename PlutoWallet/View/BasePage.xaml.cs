@@ -21,6 +21,7 @@ public partial class BasePage : ContentPage
 
     async void OnSettingsClicked(System.Object sender, System.EventArgs e)
     {
-        await Navigation.PushAsync(new SettingsPage());
+        //await Navigation.PushAsync(new SettingsPage());
+        await Navigation.PushAsync(new CustomLayoutsPage());
     }
 }

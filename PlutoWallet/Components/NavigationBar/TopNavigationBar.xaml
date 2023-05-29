@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.NavigationBar.TopNavigationBar"
+             AbsoluteLayout.LayoutBounds="0.5, 0, 1, 45"
+             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+             >
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="#88888888">
+
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 45, 45"
+                        >
+            <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 25, 25"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Source="backwhite.png" />
+
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBackClicked" />
+
+            </AbsoluteLayout.GestureRecognizers>
+
+        </AbsoluteLayout>
+
+        <Label TextColor="White"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold" x:Name="titleText"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+        </Label>
+
+        <Label AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, 1"
+                AbsoluteLayout.LayoutFlags="PositionProportional, HeightProportional"
+                TextColor="White"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Padding="0, 0, 10, 0">
+
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span x:Name="extraLabel"/>
+                </FormattedString>
+            </Label.FormattedText>
+
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnExtraClicked" />
+
+            </Label.GestureRecognizers>
+
+        </Label>
+    </AbsoluteLayout>
+</ContentView>
+

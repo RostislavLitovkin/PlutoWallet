@@ -1,46 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView"
-             xmlns:calamar="clr-namespace:PlutoWallet.Components.CalamarView"
-             xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
-             xmlns:dappconnectionview="clr-namespace:PlutoWallet.Components.DAppConnectionView"
-             xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
-             xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
              x:Class="PlutoWallet.View.MainView">
     <ScrollView
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-            <VerticalStackLayout
-                Spacing="15"
-                Padding="30,0">
+        <VerticalStackLayout
+            x:Name="stackLayout"
+            Spacing="15"
+            Padding="20, 65, 20, 200">
 
-                <BoxView Opacity="0"
-                         HeightRequest="50" />
-
-                <dappconnectionview:DAppConnectionView />
-
-                <balance:BalanceDashboardView />
-
-                <addressview:AddressView
-                    Title="Public key"
-                    Address="{Binding PublicKey}"/>
-
-                <addressview:AddressView
-                    Title="Substrate key"
-                    Address="{Binding SubstrateKey}"/>
-
-                <addressview:ChainAddressView />
-
-                <extrinsic:ExtrinsicStatusStackLayout />
-
-                <staking:StakingDashboardView />
-
-               <calamar:CalamarView />
-
-                <!-- Just a clear space (needs to be here) -->
-                <AbsoluteLayout HeightRequest="200" WidthRequest="1000"/>
-            </VerticalStackLayout>
-        </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>
 

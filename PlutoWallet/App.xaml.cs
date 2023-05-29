@@ -14,6 +14,7 @@ using PlutoWallet.Components.Extrinsic;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Staking;
+using PlutoWallet.Components.CustomLayouts;
 
 namespace PlutoWallet;
 
@@ -23,45 +24,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-        DependencyService.Register<CustomCallsViewModel>();
-
-        DependencyService.Register<MainViewModel>();
-
-        DependencyService.Register<TransferViewModel>();
-
-        DependencyService.Register<ConnectionRequestViewModel>();
-
-        DependencyService.Register<ScannerViewModel>();
-
-        DependencyService.Register<MessagePopupViewModel>();
-
-        DependencyService.Register<TransactionRequestViewModel>();
-
-        DependencyService.Register<BalanceViewModel>();
-
-        DependencyService.Register<ArgumentsViewModel>();
-
-        DependencyService.Register<PublicKeyQRCodeViewModel>();
-
-        DependencyService.Register<DAppConnectionViewModel>();
-
-        DependencyService.Register<StakingRegistrationRequestViewModel>();
-
-        DependencyService.Register<MultiNetworkSelectViewModel>();
-
-        DependencyService.Register<ChainAddressViewModel>();
-
-        DependencyService.Register<BasePageViewModel>();
-
-        DependencyService.Register<StakingDashboardViewModel>();
-
-        DependencyService.Register<BalanceDashboardViewModel>();
-
-        DependencyService.Register<UsdBalanceViewModel>();
-
-        DependencyService.Register<CalamarViewModel>();
-
-        DependencyService.Register<ExtrinsicStatusStackViewModel>();
+        RegisterDependencies();
 
         if (Preferences.ContainsKey("privateKey"))
         {
