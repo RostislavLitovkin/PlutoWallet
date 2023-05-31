@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel" xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts" xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              x:Class="PlutoWallet.View.CustomLayoutsPage"
              Title="CustomLayoutsPage"
              >
@@ -10,7 +12,10 @@
 
     </ContentPage.BindingContext>
 
-    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Gray">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
 
         <ScrollView Orientation="Vertical"
                     x:Name="scrollView"
@@ -25,7 +30,8 @@
                                  BindableLayout.ItemsSource="{Binding LayoutItemInfos}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <customlayouts:CustomLayoutItemDragger ItemName="{Binding Name}" />
+                        <customlayouts:CustomLayoutItemDragger ItemName="{Binding Name}"
+                                                               PlutoLayoutId="{Binding PlutoLayoutId}"/>
 
                     </DataTemplate>
 
@@ -66,7 +72,9 @@
 
         </AbsoluteLayout>
 
-        <customlayouts:ExportPlutoLayoutQRView />
+        <customlayouts:CustomItemView Padding="10, 65, 10, 20" />
+
+        <customlayouts:ExportPlutoLayoutQRView Padding="20, 65, 20, 20" />
 
         <navigationbar:TopNavigationBar Title="Custom layout"
                                         ExtraTitle="Export"

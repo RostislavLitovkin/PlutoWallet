@@ -131,6 +131,61 @@ namespace PlutoWallet.Model
             throw new Exception("Could not parse the PlutoLayout");
         }
 
+        public static IView GetItemPreview(string plutoLayoutId)
+        {
+            switch (plutoLayoutId)
+            {
+                case "dApp":
+                    var dAppConnectionViewModel = new DAppConnectionViewModel();
+                    dAppConnectionViewModel.Name = "Galaxy Logic Game";
+                    dAppConnectionViewModel.Icon = "https://rostislavlitovkin.pythonanywhere.com/logo";
+                    dAppConnectionViewModel.IsVisible = true;
+
+                    return new DAppConnectionView(dAppConnectionViewModel);
+                case "ExSL":
+                    ExtrinsicStatusStackViewModel extrinsicStatusViewModel = new ExtrinsicStatusStackViewModel();
+                    var tempExtrinsics = new Dictionary<string, ExtrinsicInfo>();
+                    tempExtrinsics.Add("18736389", new ExtrinsicInfo
+                    {
+                        ExtrinsicId = "18736389",
+                        Status = ExtrinsicStatusEnum.InBlock,
+                    });
+
+                    tempExtrinsics.Add("18737890", new ExtrinsicInfo
+                    {
+                        ExtrinsicId = "18737890",
+                        Status = ExtrinsicStatusEnum.Success,
+                    });
+
+                    extrinsicStatusViewModel.Extrinsics = tempExtrinsics;
+                    extrinsicStatusViewModel.Update();
+
+                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel, 135);
+                case "UsdB":
+                    return new BalanceDashboardView();
+                case "PubK":
+                    return new AddressView
+                    {
+                        Title = "Public key",
+                        Address = KeysModel.GetPublicKey(),
+                    };
+                case "SubK":
+                    return new AddressView
+                    {
+                        Title = "Substrate key",
+                        Address = KeysModel.GetPublicKey(),
+                    };
+                case "ChaK":
+                    return new ChainAddressView();
+                case "StDash":
+                    return new StakingDashboardView();
+                case "CalEx":
+                    return new CalamarView();
+            }
+
+            throw new Exception("Could not parse the PlutoLayout");
+        }
+
         public static LayoutItemInfo GetItemInfo(string plutoLayoutId)
         {
             switch (plutoLayoutId)

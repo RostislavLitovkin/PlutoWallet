@@ -16,6 +16,9 @@ namespace PlutoWallet.Components.Extrinsic
         [ObservableProperty]
         private bool isVisible;
 
+        [ObservableProperty]
+        private int heightRequest;
+
         public ExtrinsicStatusStackViewModel()
 		{
             /*
@@ -57,6 +60,8 @@ namespace PlutoWallet.Components.Extrinsic
         {
             ExtrinsicInfos = new ObservableCollection<ExtrinsicInfo>(Extrinsics.Values);
             IsVisible = ExtrinsicInfos.Any();
+
+            HeightRequest = 75 * ExtrinsicInfos.Count() - 15;
         }
 
 		public void Remove(string id)

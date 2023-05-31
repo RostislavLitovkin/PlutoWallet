@@ -6,8 +6,9 @@ public partial class StakingDashboardView : ContentView
 {
 	public StakingDashboardView()
 	{
-        BindingContext = DependencyService.Get<StakingDashboardViewModel>();
         InitializeComponent();
+
+        BindingContext = DependencyService.Get<StakingDashboardViewModel>();
 
         easyProSwitch.FirstMethod = ShowEasyStaking;
         easyProSwitch.SecondMethod = ShowProStaking;

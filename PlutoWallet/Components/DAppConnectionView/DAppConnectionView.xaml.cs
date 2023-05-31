@@ -11,6 +11,13 @@ public partial class DAppConnectionView : ContentView
         BindingContext = DependencyService.Get<DAppConnectionViewModel>();
     }
 
+    public DAppConnectionView(DAppConnectionViewModel viewModel)
+    {
+        InitializeComponent();
+
+        BindingContext = viewModel;
+    }
+
     void OnDisconnectClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         try

@@ -24,7 +24,49 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-        RegisterDependencies();
+        DependencyService.Register<CustomCallsViewModel>();
+
+        DependencyService.Register<MainViewModel>();
+
+        DependencyService.Register<TransferViewModel>();
+
+        DependencyService.Register<ConnectionRequestViewModel>();
+
+        DependencyService.Register<ScannerViewModel>();
+
+        DependencyService.Register<MessagePopupViewModel>();
+
+        DependencyService.Register<TransactionRequestViewModel>();
+
+        DependencyService.Register<BalanceViewModel>();
+
+        DependencyService.Register<ArgumentsViewModel>();
+
+        DependencyService.Register<PublicKeyQRCodeViewModel>();
+
+        DependencyService.Register<DAppConnectionViewModel>();
+
+        DependencyService.Register<StakingRegistrationRequestViewModel>();
+
+        DependencyService.Register<MultiNetworkSelectViewModel>();
+
+        DependencyService.Register<ChainAddressViewModel>();
+
+        DependencyService.Register<BasePageViewModel>();
+
+        DependencyService.Register<StakingDashboardViewModel>();
+
+        DependencyService.Register<BalanceDashboardViewModel>();
+
+        DependencyService.Register<UsdBalanceViewModel>();
+
+        DependencyService.Register<CalamarViewModel>();
+
+        DependencyService.Register<ExtrinsicStatusStackViewModel>();
+
+        DependencyService.Register<ExportPlutoLayoutQRViewModel>();
+
+        DependencyService.Register<CustomItemViewModel>();
 
         if (Preferences.ContainsKey("privateKey"))
         {
