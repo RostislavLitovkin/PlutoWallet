@@ -2,10 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicStatusView"
-             IsVisible="{Binding IsVisible}"
+             x:Class="PlutoWallet.Components.CustomLayouts.CustomLayoutItemDragger"
              HeightRequest="60">
-   <card:Card>
+    <card:Card>
         <card:Card.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All"
@@ -14,10 +13,18 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional">
                     <HorizontalStackLayout>
                         <Label 
-                            x:Name="nameLabel"
                             FontAttributes="Bold"
-                            HorizontalOptions="Start"
-                            VerticalTextAlignment="End"/>
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameLabelText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
                         <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
                                    VerticalOptions="Center"
                                    Margin="5, 0, 0, 0"
@@ -29,15 +36,19 @@
                         HorizontalOptions="Start" />
                 </VerticalStackLayout>
 
-                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
+                <Image Source="{AppThemeBinding Light=menublack.png, Dark=menuwhite.png}"
                        Aspect="AspectFit"
-                       AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRemoveClicked" />
+                       AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                 AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClicked" />
 
-                    </Image.GestureRecognizers>
+                    </AbsoluteLayout.GestureRecognizers>
 
-                </Image>
+                </AbsoluteLayout>
+
+                
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

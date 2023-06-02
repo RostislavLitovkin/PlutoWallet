@@ -4,6 +4,7 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.ScannerView;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
+using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.Components.UniversalScannerView;
 
@@ -63,8 +64,6 @@ public partial class UniversalScannerView : ContentView
 
                 var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
 
-
-
                 connectionRequest.IsVisible = true;
                 connectionRequest.Icon = icon;
                 connectionRequest.Name = name;
@@ -73,12 +72,20 @@ public partial class UniversalScannerView : ContentView
                 connectionRequest.Key = key;
 
             }
+            else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
+            {
+                // LATER: check validity
+
+                Model.CustomLayoutModel.SaveLayout(scannedValue);
+
+                return;
+            }
             else
             {
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
                 messagePopup.Title = "Unable to read QR code";
-                messagePopup.Text = "Thq QR code was in incorrect format.";
+                messagePopup.Text = "The QR code was in incorrect format.";
 
                 messagePopup.IsVisible = true;
             }

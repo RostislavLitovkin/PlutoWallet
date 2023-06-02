@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
-             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.PublicKeyQRCodeView.PublicKeyQRCodeView"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:card="clr-namespace:PlutoWallet.Components.Card" xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="PlutoWallet.Components.CustomLayouts.ExportPlutoLayoutQRView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
@@ -15,15 +13,16 @@
 
                     <Label
                         FontAttributes="Bold"
-                        Text="Public key"
+                        Text="Pluto layout export"
                         HeightRequest="30"
                         HorizontalOptions="Center" />
 
                     <zxing:BarcodeGeneratorView Format="QrCode"
                                                 ForegroundColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                                                 WidthRequest="200"
-                     HeightRequest="200" BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-                     Value="{Binding PublicKey}"/>
+                                                 HeightRequest="200"
+                                                 BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                                                 Value="{Binding PlutoLayoutValue}"/>
                 </VerticalStackLayout>
 
                 <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">

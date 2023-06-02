@@ -2,10 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicStatusView"
-             IsVisible="{Binding IsVisible}"
+             x:Class="PlutoWallet.Components.CustomLayouts.CustomLayoutItemAddView"
              HeightRequest="60">
-   <card:Card>
+    <card:Card>
         <card:Card.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All"
@@ -14,30 +13,34 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional">
                     <HorizontalStackLayout>
                         <Label 
-                            x:Name="nameLabel"
                             FontAttributes="Bold"
-                            HorizontalOptions="Start"
-                            VerticalTextAlignment="End"/>
-                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
-                                   VerticalOptions="Center"
-                                   Margin="5, 0, 0, 0"
-                                   HeightRequest="15" WidthRequest="15"/>
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameLabelText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
                     </HorizontalStackLayout>
-                
-                    <Label
-                        x:Name="statusLabel"
-                        HorizontalOptions="Start" />
                 </VerticalStackLayout>
 
-                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
+                <Image 
                        Aspect="AspectFit"
                        AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRemoveClicked" />
-
-                    </Image.GestureRecognizers>
+                    <Image.Source>
+                        <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                         Glyph="&#xf067;"
+                                         FontFamily="FontAwesome"
+                                         Size="30" />
+                    </Image.Source>
 
                 </Image>
+
+                
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

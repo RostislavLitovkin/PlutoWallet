@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
              x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicStatusStackLayout"
-             IsVisible="{Binding IsVisible}">
+             IsVisible="{Binding IsVisible}"
+             HeightRequest="{Binding HeightRequest}" >
     <VerticalStackLayout BindableLayout.ItemsSource="{Binding ExtrinsicInfos}"
                          Spacing="15">
         <BindableLayout.ItemTemplate>

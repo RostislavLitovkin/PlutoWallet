@@ -14,6 +14,7 @@ using PlutoWallet.Components.Extrinsic;
 using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Staking;
+using PlutoWallet.Components.CustomLayouts;
 
 namespace PlutoWallet;
 
@@ -62,6 +63,10 @@ public partial class App : Application
         DependencyService.Register<CalamarViewModel>();
 
         DependencyService.Register<ExtrinsicStatusStackViewModel>();
+
+        DependencyService.Register<ExportPlutoLayoutQRViewModel>();
+
+        DependencyService.Register<CustomItemViewModel>();
 
         if (Preferences.ContainsKey("privateKey"))
         {

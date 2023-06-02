@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             x:Class="PlutoWallet.View.CustomLayoutsPage"
+             Title="CustomLayoutsPage"
+             >
+    <ContentPage.BindingContext>
+        <viewmodel:CustomLayoutsViewModel />
+
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
+
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Scrolled="OnScrolled"
+                    Padding="0, 55, 0, 0">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Padding="20, 10, 20, 100"
+                                 Spacing="5">
+
+                <VerticalStackLayout x:Name="verticalStackLayout"
+                                 HorizontalOptions="Center"
+                                 Spacing="5"
+                                 ZIndex="10"
+                                 BindableLayout.ItemsSource="{Binding LayoutItemInfos}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <customlayouts:CustomLayoutItemDragger ItemName="{Binding Name}"
+                                                                   PlutoLayoutId="{Binding PlutoLayoutId}"/>
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <customlayouts:PlusItemView x:Name="plusView">
+                    <customlayouts:PlusItemView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPlusClicked" />
+
+                    </customlayouts:PlusItemView.GestureRecognizers>
+
+                </customlayouts:PlusItemView>
+
+            </VerticalStackLayout>
+            
+        </ScrollView>
+
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="1, 0, 80, 1"
+                        AbsoluteLayout.LayoutFlags="XProportional, HeightProportional"
+                        Margin="0, 0, 30, 0"
+                        Padding="0, 55, 0, 0"
+                        >
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Margin="0, 10, 0, 100"
+                                 Spacing="5"
+                                 BindableLayout.ItemsSource="{Binding LayoutItemInfos}"
+                                 x:Name="draggerStackLayout">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <AbsoluteLayout HeightRequest="60" WidthRequest="50">
+                            <AbsoluteLayout.GestureRecognizers>
+                                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+
+                            </AbsoluteLayout.GestureRecognizers>
+
+                        </AbsoluteLayout>
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+
+            
+            </VerticalStackLayout>
+
+            
+
+        </AbsoluteLayout>
+
+        <customlayouts:CustomItemView Padding="10, 65, 10, 20" />
+
+        <customlayouts:ExportPlutoLayoutQRView Padding="20, 65, 20, 20" />
+
+        <navigationbar:TopNavigationBar Title="Custom layout"
+                                        ExtraTitle="Export"
+                                        x:Name="topNavigationBar" />
+
+        <customlayouts:DeleteItemView AbsoluteLayout.LayoutBounds="0.5, 1, 1, 100"
+                                      AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                                      Margin="20"
+                                      x:Name="deleteView"
+                                      IsVisible="False" Opacity="0" />
+
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                        x:Name="protectiveLayout" IsVisible="False"/>
+    </AbsoluteLayout>
+</ContentPage>

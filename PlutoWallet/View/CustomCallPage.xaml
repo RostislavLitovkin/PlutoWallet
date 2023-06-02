@@ -6,6 +6,7 @@
              x:Class="PlutoWallet.View.CustomCallPage">
     <AbsoluteLayout x:Name="absoluteLayout"
                     AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
         <ScrollView
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
             WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
