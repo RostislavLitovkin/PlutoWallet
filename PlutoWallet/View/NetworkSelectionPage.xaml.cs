@@ -8,6 +8,9 @@ public partial class NetworkSelectionPage : ContentPage
 {
 	public NetworkSelectionPage()
 	{
-		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
+
+        InitializeComponent();
     }
 }
