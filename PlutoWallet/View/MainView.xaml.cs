@@ -18,10 +18,17 @@ public partial class MainView : ContentView
             stackLayout.Children.Clear();
         }
 
-		
-        List<IView> views = Model.CustomLayoutModel.ParsePlutoLayout(Preferences.Get(
-			"PlutoLayout",
-			Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT));
+		List<IView> views;
+        try
+		{
+			views = Model.CustomLayoutModel.ParsePlutoLayout(Preferences.Get(
+				"PlutoLayout",
+				Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT));
+		}
+		catch
+		{
+            views = Model.CustomLayoutModel.ParsePlutoLayout(Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT);
+        }
 
 		foreach (IView view in views)
 		{

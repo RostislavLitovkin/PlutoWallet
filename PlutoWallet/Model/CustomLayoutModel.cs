@@ -20,16 +20,26 @@ namespace PlutoWallet.Model
 	{
         public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx]";
 
-		public static List<IView> ParsePlutoLayout(string plutoLayoutString)
+        // This constant is used to fetch all items
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx]";
+
+        public static List<IView> ParsePlutoLayout(string plutoLayoutString)
 		{
             if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
             {
-                new Exception("Could not parse the PlutoLayout");
+                throw new Exception("Could not parse the PlutoLayout");
             }
+
+            Console.WriteLine(plutoLayoutString);
 
             plutoLayoutString = plutoLayoutString.Substring(13);
 
             List<IView> result = new List<IView>();
+
+            if (plutoLayoutString.Length == 2)
+            {
+                return result;
+            }
 
             string[] layoutItemStrings = plutoLayoutString.Trim(new char[] { '[', ']' }).Split(',');
 
@@ -45,12 +55,17 @@ namespace PlutoWallet.Model
         {
             if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
             {
-                new Exception("Could not parse the PlutoLayout");
+                throw new Exception("Could not parse the PlutoLayout");
             }
 
             plutoLayoutString = plutoLayoutString.Substring(13);
 
             ObservableCollection<LayoutItemInfo> result = new ObservableCollection<LayoutItemInfo>();
+
+            if (plutoLayoutString.Length == 2)
+            {
+                return result;
+            }
 
             string[] layoutItemStrings = plutoLayoutString.Trim(new char[] { '[', ']' }).Split(',');
 
@@ -71,7 +86,10 @@ namespace PlutoWallet.Model
                 result += info.PlutoLayoutId + ", ";
             }
 
-            result = result.Substring(0, result.Length - 2); // Remove last ", " (comma + space)
+            if (layoutItemInfos.Count() > 0)
+            {
+                result = result.Substring(0, result.Length - 2); // Remove last ", " (comma + space)
+            }
 
             result += "]";
 
@@ -85,6 +103,19 @@ namespace PlutoWallet.Model
             Preferences.Set("PlutoLayout", layoutItemInfos);
 
             ShowRestartNeededMessage();
+        }
+
+        public static void AddItemToSavedLayout(string itemId)
+        {
+            string savedLayout = Preferences.Get("PlutoLayout", DEFAULT_PLUTO_LAYOUT);
+
+
+
+            string newLayout = savedLayout.Length != 15 ?
+                savedLayout.Substring(0, savedLayout.Length - 1) + ", " + itemId + "]" :
+                "plutolayout: [" + itemId + "]";
+
+            SaveLayout(newLayout);
         }
 
         private static void ShowRestartNeededMessage()

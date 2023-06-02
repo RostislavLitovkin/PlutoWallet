@@ -12,10 +12,17 @@ namespace PlutoWallet.ViewModel
 
         public CustomLayoutsViewModel()
 		{
-            layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
-                Preferences.Get("PlutoLayout",
-                Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT)
-            );
+            try
+            {
+                layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
+                    Preferences.Get("PlutoLayout",
+                    Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT)
+                );
+            }
+            catch
+            {
+                layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT);
+            }
         }
 
         public void SwapItems(int originalIndex, int newIndex)
@@ -52,12 +59,26 @@ namespace PlutoWallet.ViewModel
             LayoutItemInfos = infos;
 
             Model.CustomLayoutModel.SaveLayout(infos);
-
-            // reload the main view
-            var basePageViewModel = DependencyService.Get<BasePageViewModel>();
-            // This is broken unfortunately :(
-            //basePageViewModel.ReloadMainView();
         }
-	}
+
+        public void DeleteItem(int originalIndex)
+        {
+            var infos = new ObservableCollection<LayoutItemInfo>();
+
+            for (int i = 0; i < LayoutItemInfos.Count(); i++)
+            {
+                if (i == originalIndex)
+                {
+                    continue;
+                }
+
+                infos.Add(LayoutItemInfos[i]);
+            }
+
+            LayoutItemInfos = infos;
+
+            Model.CustomLayoutModel.SaveLayout(infos);
+        }
+    }
 }
 

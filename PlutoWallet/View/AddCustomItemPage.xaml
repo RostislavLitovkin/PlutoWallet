@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel" xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts" xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             x:Class="PlutoWallet.View.AddCustomItemPage"
+             
+             Title="AddCustomItemPage">
+    <ContentPage.BindingContext>
+        <viewmodel:AddCustomItemViewModel />
+
+    </ContentPage.BindingContext>
+
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
+
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="0, 55, 0, 0">
+            <VerticalStackLayout x:Name="verticalStackLayout"
+                                HorizontalOptions="Center"
+                                Padding="20, 10, 20, 100"
+                                Spacing="5"
+                                ZIndex="10"
+                                BindableLayout.ItemsSource="{Binding LayoutItemInfos}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <customlayouts:CustomLayoutItemAddView ItemName="{Binding Name}"
+                                                                PlutoLayoutId="{Binding PlutoLayoutId}">
+
+                            <customlayouts:CustomLayoutItemAddView.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnClicked" />
+
+                            </customlayouts:CustomLayoutItemAddView.GestureRecognizers>
+
+                        </customlayouts:CustomLayoutItemAddView>
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            
+        </ScrollView>
+
+        
+
+        <navigationbar:TopNavigationBar Title="Add item" />
+
+    </AbsoluteLayout>
+</ContentPage>
