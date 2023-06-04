@@ -149,7 +149,7 @@ namespace PlutoWallet.Model
                     return new AddressView
                     {
                         Title = "Substrate key",
-                        Address = KeysModel.GetPublicKey(),
+                        Address = KeysModel.GetSubstrateKey(),
                     };
                 case "ChaK":
                     return new ChainAddressView();
