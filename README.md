@@ -48,6 +48,10 @@ This can be especially handy for dApp projects:
 Plutonication allows users to connect PlutoWallet to other dApps seamlessly (on any platforms).
 DApp just generates a QR code and once it is scanned in the wallet, they will pair and the wallet will be able to receive transaction requests from the dApp. To learn more, visit https://github.com/cisar2218/Plutonication.
 
+### 4) Multiplatform development
+This project is developed using .net MAUI framework, which allows simple development of native mobile apps on many different platforms from a single codebase.
+This is crucial for quick (and easier) development while preserving the quality.
+
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 
