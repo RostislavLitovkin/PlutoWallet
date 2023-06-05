@@ -64,6 +64,9 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 - Extrinsic = A transaction (more info: https://wiki.polkadot.network/docs/learn-extrinsics)
 - PlutoLayout = a simple way to save and export custom layouts.
 
+development terminology:
+- Entry page - the first screen that the users see (now the Mnemonics page)
+
 # Work / milestones
 
 ### part 1 - Plutonication (Pluto connector)
