@@ -1,6 +1,12 @@
 Everything in this master branch was coded until the 17.2.2023 (Polkadot Global Series deadline date).
 
-To see the recent changes, go to the [devel branch](https://github.com/RostislavLitovkin/PlutoWallet/tree/devel).
+To see the most recent working version, go to the [devel branch](https://github.com/RostislavLitovkin/PlutoWallet/tree/devel).
+
+# Download
+
+Android apk: https://rostislavlitovkin.pythonanywhere.com/downloadplutowallet
+
+Other platforms will be available for download probably in August.
 
 # PlutoWallet
 A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
@@ -16,17 +22,19 @@ The wallet supports these functionalities:
 - showing and sharing your public key and ss58 key
 - connecting to any substrate based blockchain/parachain
 - getting your actual balance
-- simple transfer
+- transfer of native assets
 
 3rd party integrations:
 - [Calamar explorer](https://github.com/topmonks/calamar)
+- [Coingecko](https://www.coingecko.com/)
+- [Staking dashboard] (https://staking.polkadot.network/)
 
+# [Plutonication](https://github.com/cisar2218/Plutonication)
+Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 
-# [PlutoConnector](https://github.com/cisar2218/Plutonication)
-Allows any dApp to communicate with supported wallets without compromising private keys. It was designed for a specific purpose, but can also be used for general solutions that need to achieve a level of abstraction with TCP communication.
 
 # Terminology
-- dApp = any application that wants to use the crypto functionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your private key (very insecure).
+- dApp = any application that uses crypto functionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your private key (very insecure).
 
 # Work / milestones
 
