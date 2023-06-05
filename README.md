@@ -64,7 +64,6 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 - Extrinsic = A transaction (more info: https://wiki.polkadot.network/docs/learn-extrinsics)
 - PlutoLayout = a simple way to save and export custom layouts.
 
-
 # Work / milestones
 
 ### part 1 - Plutonication (Pluto connector)
@@ -141,15 +140,14 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 9) [ ] add the ability to sign any transaction (Can be done through plutonication)
 10) [x] QR scanner
 11) [x] improve UI
-12) [ ] further improve UI
+12) [x] further improve UI
 13) [x] add multiple chain support
 14) [x] (extra) the ability to add other unknown chains manually
 15) [ ] (extra) NFT implementation
-16) [ ] show other funganble tokens
+16) [x] show other funganble tokens
 17) [ ] plutonication deep link
 18) [ ] add loading animations
 19) [x] icon and splash screen
-20) [ ] implement nicks pallet
 21) [x] show basic error messages
 22) [ ] show more error messages
 23) [ ] XCM
