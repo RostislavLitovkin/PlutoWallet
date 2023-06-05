@@ -27,7 +27,7 @@ The wallet supports these functionalities:
 3rd party integrations:
 - [Calamar explorer](https://github.com/topmonks/calamar)
 - [Coingecko](https://www.coingecko.com/)
-- [Staking dashboard] (https://staking.polkadot.network/)
+- [Staking dashboard](https://staking.polkadot.network/)
 
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
@@ -35,6 +35,7 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 
 # Terminology
 - dApp = any application that uses crypto functionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your private key (very insecure).
+- PlutoLayout = a simple way to save and export custom layouts
 
 # Work / milestones
 
