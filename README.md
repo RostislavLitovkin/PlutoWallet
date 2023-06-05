@@ -60,7 +60,10 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 - dApp = any application that uses crypto functionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your private key (very insecure).
 - Substrate key = ss58 encoded key with "42" prefix.
 - Chain-specific key = ss58 encoded key with a custom prefix.
+- Chain = either standalone blockchain, relay chain, or parachain. (and/or combination of them)
+- Extrinsic = A transaction (more info: https://wiki.polkadot.network/docs/learn-extrinsics)
 - PlutoLayout = a simple way to save and export custom layouts.
+
 
 # Work / milestones
 
