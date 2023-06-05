@@ -41,7 +41,12 @@ Extremely important tool for onboarding new users.
 Not only can you optimise UI layouts to your needs, you can also export them to other users.
 This can be especially handy for dApp projects:
 - In a typical use-case, dApp developers would have to teach new users how to use their wallets. It is usually a big hassle, the user has to find the chain they are looking for and they would still see many confusing crypto functionalities that they would not care about.
-- With PlutoLayouts, dApp developers can export the ideal layout and share them to the new users so that they have got the ideal UX out of the box.
+- With PlutoLayouts, dApp developers can export the ideal layout (UX optimised for their specific app) and share them to the new users so that they have got the ideal UX out of the box. They will see only features they would actually care about.
+- It is highly customisable. When the users decide they want to do more in the ecosystem, they can easily add more functionalities to the wallet. They can learn to use Polkadot on their own pace.
+
+### 3) Plutonication ability
+Plutonication allows users to connect PlutoWallet to other dApps seamlessly (on any platforms).
+DApp just generates a QR code and once it is scanned in the wallet, they will pair and the wallet will be able to receive transaction requests from the dApp. To learn more, visit https://github.com/cisar2218/Plutonication.
 
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
