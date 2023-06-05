@@ -29,6 +29,20 @@ The wallet supports these functionalities:
 - [Coingecko](https://www.coingecko.com/)
 - [Staking dashboard](https://staking.polkadot.network/)
 
+# Differentiating factors
+
+### 1) Multinetwork optimisation
+The UI/UX is optimised to support multichain out of the box.
+Instead of having one chain selected at a time, you can have chain groups.
+This makes the UX more approachable and UI simpler.
+
+### 2) Custom layouts (PlutoLayouts)
+Extremely important tool for onboarding new users.
+Not only can you optimise UI layouts to your needs, you can also export them to other users.
+This can be especially handy for dApp projects:
+- In a typical use-case, dApp developers would have to teach new users how to use their wallets. It is usually a big hassle, the user has to find the chain they are looking for and they would still see many confusing crypto functionalities that they would not care about.
+- With PlutoLayouts, dApp developers can export the ideal layout and share them to the new users so that they have got the ideal UX out of the box.
+
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 
