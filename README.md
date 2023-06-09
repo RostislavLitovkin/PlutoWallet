@@ -67,6 +67,31 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 development terminology:
 - Entry page - the first screen that the users see (now the Mnemonics page)
 
+# Project folder structure
+
+- `/platforms` platform spacific codes, mainly code that ensures the boot on multiple platforms
+
+
+- `/Resources` all resources, including icons, images, fonts, splashscreen...
+
+
+- `/Components` organised by subfolders of different components. `/<subfolder-name>` contains 1 or more Views (Always a ContentView) and ViewModels. It's respective Model (if existant) lives in `/Model`
+
+
+- `/Types` stores custom types. Mainly Ajuna generated ones.
+
+
+- `/Constants`
+
+
+- `/View` stores pages and views shown on pages
+
+
+- `/ViewModel` view's respective ViewModel
+
+
+- `/Properties` nothing important
+
 # Work / milestones
 
 ### part 1 - Plutonication (Pluto connector)
