@@ -23,6 +23,8 @@ The wallet supports these functionalities:
 - connecting to any substrate based blockchain/parachain
 - getting your actual balance
 - transfer of native assets
+- fee calculation
+- shows transaction status
 
 3rd party integrations:
 - [Calamar explorer](https://github.com/topmonks/calamar)
