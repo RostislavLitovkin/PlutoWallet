@@ -15,6 +15,7 @@ namespace PlutoWallet.Constants
                 options.Add(new int[4] { 0, 6, -1, -1 });
                 options.Add(new int[4] { 0, 1, -1, -1 });
                 options.Add(new int[4] { 4, 5, -1, -1 });
+                options.Add(new int[4] { 8, 10, 9, -1 });
 
 
                 for (int i = 0; i < GetAllEndpoints.Count; i++)
@@ -88,6 +89,7 @@ namespace PlutoWallet.Constants
                 URL = "wss://rpc-parachain.bajun.network",
                 Icon = "bajun.png",
                 Unit = "BAJU",
+                CalamarChainName = "bajun",
                 Decimals = 12,
                 SS58Prefix = 1337,
                 ChainType = ChainType.Substrate,
@@ -123,6 +125,28 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
             },
+            new Endpoint
+            {
+                Name = "Rockmine",
+                URL = "wss://rococo-rockmine-rpc.polkadot.io",
+                Icon = "statemint.png",
+                Unit = "ROC",
+                Decimals = 12,
+                SS58Prefix = 2,
+                ChainType = ChainType.Substrate,
+            },
+
+            new Endpoint
+            {
+                Name = "Bajun rococo",
+                URL = "wss://rpc-rococo.bajun.network",
+                Icon = "bajun.png",
+                Unit = "BAJU",
+                Decimals = 12,
+                SS58Prefix = 1337,
+                ChainType = ChainType.Substrate,
+            },
+            
             new Endpoint
 			{
 				Name = "Unique",

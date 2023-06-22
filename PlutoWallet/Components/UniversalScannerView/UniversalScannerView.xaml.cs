@@ -78,7 +78,7 @@ public partial class UniversalScannerView : ContentView
 
                 Model.CustomLayoutModel.SaveLayout(scannedValue);
 
-                return;
+                Model.CustomLayoutModel.ShowImportSuccessfulRestartNeededMessage();
             }
             else
             {

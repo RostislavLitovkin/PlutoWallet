@@ -59,6 +59,8 @@
 		<MauiImage Include="Resources\Images\*jpg" />
 		<MauiImage Include="Resources\Images\NetworkIcons\*svg" />
 		<MauiImage Include="Resources\Images\NetworkIcons\*png" />
+		<MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
+		<MauiImage Include="Resources\Images\PredefinedLayouts\*png" />
 
 		<!-- fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -166,6 +168,10 @@
 	  <None Remove="Resources\Images\NetworkIcons\ajuna.png" />
 	  <None Remove="Resources\Images\NetworkIcons\kusama.png" />
 	  <None Remove="Components\CustomLayouts\" />
+	  <None Remove="Components\PredefinedLayouts\" />
+	  <None Remove="Resources\Images\PredefinedLayouts\" />
+	  <None Remove="Resources\Images\PredefinedLayouts\aaabackground.png" />
+	  <None Remove="Components\AwesomeAjunaAvatars\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -233,6 +239,7 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\westend.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.png" />
+	  <BundleResource Include="Resources\Images\PredefinedLayouts\aaabackground.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -353,6 +360,9 @@
 	  <Folder Include="Components\NavigationBar\" />
 	  <Folder Include="Components\Card\" />
 	  <Folder Include="Components\CustomLayouts\" />
+	  <Folder Include="Components\PredefinedLayouts\" />
+	  <Folder Include="Resources\Images\PredefinedLayouts\" />
+	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
