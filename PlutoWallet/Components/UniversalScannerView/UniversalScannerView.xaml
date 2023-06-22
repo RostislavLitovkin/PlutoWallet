@@ -16,7 +16,7 @@
             <VerticalStackLayout>
 
                 <Label 
-                    Text="Plutonication"
+                    Text="Universal scan"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     HeightRequest="30"

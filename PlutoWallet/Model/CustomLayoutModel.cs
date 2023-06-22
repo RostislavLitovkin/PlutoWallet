@@ -237,6 +237,24 @@ namespace PlutoWallet.Model
             messagePopup.IsVisible = true;
         }
 
+        /**
+         * This is used to say nicely that the PlutoLayout has been imported
+         * 
+         * usually overrides the ShowRestartNeededMessage() method
+         */
+        public static void ShowImportSuccessfulRestartNeededMessage()
+        {
+            // Tell the user that they need to restart the app.
+            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+            messagePopup.Title = "Pluto layout imported!";
+            messagePopup.Text = "Please, restart PlutoWallet app to apply changes to the layout.";
+
+            messagePopup.IsVisible = true;
+        }
+
+
+
         public static IView GetItem(string plutoLayoutId)
         {
             switch (plutoLayoutId)
