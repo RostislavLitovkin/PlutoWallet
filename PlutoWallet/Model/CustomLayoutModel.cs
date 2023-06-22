@@ -7,6 +7,9 @@ using PlutoWallet.Components.CalamarView;
 using PlutoWallet.Components.Staking;
 using System.Collections.ObjectModel;
 using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Constants;
+using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.AwesomeAjunaAvatars;
 
 namespace PlutoWallet.Model
 {
@@ -17,11 +20,33 @@ namespace PlutoWallet.Model
     }
 
     public class CustomLayoutModel
-	{
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx]";
+    {
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx];[0, 2, 3]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx]";
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx, " +
+            "AAASeasonCountdown, AAALeaderboard];[";
+
+        public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
+        {
+            if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
+            {
+                throw new Exception("Could not parse the PlutoLayout");
+            }
+
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
+
+            List<Endpoint> result = new List<Endpoint>();
+
+            foreach (string item in layoutEndpointStrings)
+            {
+                result.Add(Endpoints.GetAllEndpoints[int.Parse(item.Trim())]);
+            }
+
+            return result;
+        }
 
         public static List<IView> ParsePlutoLayout(string plutoLayoutString)
 		{
@@ -41,7 +66,9 @@ namespace PlutoWallet.Model
                 return result;
             }
 
-            string[] layoutItemStrings = plutoLayoutString.Trim(new char[] { '[', ']' }).Split(',');
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            string[] layoutItemStrings = itemsAndNetworksStrings[0].Trim(new char[] { '[', ']' }).Split(',');
 
             foreach (string item in layoutItemStrings)
             {
@@ -67,7 +94,9 @@ namespace PlutoWallet.Model
                 return result;
             }
 
-            string[] layoutItemStrings = plutoLayoutString.Trim(new char[] { '[', ']' }).Split(',');
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            string[] layoutItemStrings = itemsAndNetworksStrings[0].Trim(new char[] { '[', ']' }).Split(',');
 
             foreach (string item in layoutItemStrings)
             {
@@ -81,6 +110,7 @@ namespace PlutoWallet.Model
         {
             string result = "plutolayout: [";
 
+            // Pluto items
             foreach (LayoutItemInfo info in layoutItemInfos)
             {
                 result += info.PlutoLayoutId + ", ";
@@ -91,8 +121,21 @@ namespace PlutoWallet.Model
                 result = result.Substring(0, result.Length - 2); // Remove last ", " (comma + space)
             }
 
-            result += "]";
+            result += "];[";
 
+            // Endpoint indexes
+            for (int i = 0; i < 4; i++)
+            {
+                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
+                if (endpointIndex != -1)
+                {
+                    result += endpointIndex + ", ";
+                }
+            }
+
+            result = result.Substring(0, result.Length - 2) + "]";
+
+            // Save
             Preferences.Set("PlutoLayout", result);
 
             ShowRestartNeededMessage();
@@ -102,20 +145,85 @@ namespace PlutoWallet.Model
         {
             Preferences.Set("PlutoLayout", layoutItemInfos);
 
+            SaveEndpoints(layoutItemInfos);
+
             ShowRestartNeededMessage();
+        }
+
+        /**
+         * This method is useful for saving a change of endpoints
+         */
+        public static void SaveLayout()
+        {
+            string plutoLayout = Preferences.Get("PlutoLayout", DEFAULT_PLUTO_LAYOUT);
+
+            string[] plutoLayoutStrings = plutoLayout.Split(";");
+
+            string result = plutoLayoutStrings[0] + ";[";
+
+            // Endpoint indexes
+            for (int i = 0; i < 4; i++)
+            {
+                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
+                if (endpointIndex != -1)
+                {
+                    result += endpointIndex + ", ";
+                }
+            }
+
+            result = result.Substring(0, result.Length - 2) + "]";
+
+            Preferences.Set("PlutoLayout", result);
         }
 
         public static void AddItemToSavedLayout(string itemId)
         {
             string savedLayout = Preferences.Get("PlutoLayout", DEFAULT_PLUTO_LAYOUT);
 
+            string[] itemsAndNetworksStrings = savedLayout.Split(";");
 
-
-            string newLayout = savedLayout.Length != 15 ?
-                savedLayout.Substring(0, savedLayout.Length - 1) + ", " + itemId + "]" :
+            string newLayout = itemsAndNetworksStrings[0].Length != 15 ?
+                itemsAndNetworksStrings[0].Substring(0, itemsAndNetworksStrings[0].Length - 1) + ", " + itemId + "]" :
                 "plutolayout: [" + itemId + "]";
 
-            SaveLayout(newLayout);
+            SaveLayout(newLayout + ";" + itemsAndNetworksStrings[1]);
+        }
+
+        private static void SaveEndpoints(string plutoLayoutString)
+        {
+            if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
+            {
+                throw new Exception("Could not parse the PlutoLayout");
+            }
+
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            if (itemsAndNetworksStrings[1].Length < 2)
+            {
+                // The endpoint is not saved in the layout
+
+                Console.WriteLine("Endpoint is not saved in the PlutoLayout:");
+                Console.WriteLine(plutoLayoutString);
+
+                return;
+            }
+
+            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
+
+            int[] networks = new int[4]{-1, -1, -1, -1};
+
+            for (int i = 0; i < layoutEndpointStrings.Length; i++)
+            {
+                networks[i] = int.Parse(layoutEndpointStrings[i].Trim());
+            }
+
+            Preferences.Set("SelectedNetworks0", networks[0]);
+            Preferences.Set("SelectedNetworks1", networks[1]);
+            Preferences.Set("SelectedNetworks2", networks[2]);
+            Preferences.Set("SelectedNetworks3", networks[3]);
+
+            var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+            multiNetworkSelectViewModel.SetupDefault();
         }
 
         private static void ShowRestartNeededMessage()
@@ -157,6 +265,10 @@ namespace PlutoWallet.Model
                     return new StakingDashboardView();
                 case "CalEx":
                     return new CalamarView();
+                case "AAASeasonCountdown":
+                    return new SeasonCountdownView();
+                case "AAALeaderboard":
+                    return new AAALeaderboard();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -212,6 +324,10 @@ namespace PlutoWallet.Model
                     return new StakingDashboardView();
                 case "CalEx":
                     return new CalamarView();
+                case "AAASeasonCountdown":
+                    return new SeasonCountdownView();
+                case "AAALeaderboard":
+                    return new AAALeaderboard();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -268,6 +384,18 @@ namespace PlutoWallet.Model
                     {
                         Name = "Calamar",
                         PlutoLayoutId = "CalEx",
+                    };
+                case "AAASeasonCountdown":
+                    return new LayoutItemInfo
+                    {
+                        Name = "AAA Season countdown",
+                        PlutoLayoutId = "AAASeasonCountdown",
+                    };
+                case "AAALeaderboard":
+                    return new LayoutItemInfo
+                    {
+                        Name = "AAA Leaderboard",
+                        PlutoLayoutId = "AAALeaderboard",
                     };
             }
 

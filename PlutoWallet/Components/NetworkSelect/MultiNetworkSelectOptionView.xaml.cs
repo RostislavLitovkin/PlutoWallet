@@ -50,6 +50,8 @@ public partial class MultiNetworkSelectOptionView : ContentView
         Preferences.Set("SelectedNetworks2", networks[2]);
         Preferences.Set("SelectedNetworks3", networks[3]);
 
+        Model.CustomLayoutModel.SaveLayout();
+
         var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
         multiNetworkSelectViewModel.SetupDefault();
 

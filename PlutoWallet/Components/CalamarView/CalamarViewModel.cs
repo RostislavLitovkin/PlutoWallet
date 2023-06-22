@@ -25,7 +25,7 @@ namespace PlutoWallet.Components.CalamarView
                 // Not supported
             }
 
-            WebAddress = "https://f4c3cf83.calamar.pages.dev/" + endpoint.CalamarChainName + "/account/" + address;
+            WebAddress = "https://calamar.app/" + endpoint.CalamarChainName + "/account/" + address;
         }
 	}
 }

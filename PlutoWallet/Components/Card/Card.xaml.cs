@@ -19,4 +19,6 @@ public partial class Card : ContentView
 		} }
 
 	public Thickness CardPadding { set { border.Padding = value; } }
+
+	public Color Color { set { border.BackgroundColor = value; } }
 }
