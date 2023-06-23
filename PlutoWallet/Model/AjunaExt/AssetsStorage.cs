@@ -18,7 +18,6 @@ using System.Threading.Tasks;
 using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
 using Newtonsoft.Json.Linq;
 using Substrate.NetApi.Model.Rpc;
-using Ajuna.NetApi.Model.Rpc;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 
 namespace PlutoWallet.Model.AjunaExt
@@ -154,7 +153,7 @@ namespace PlutoWallet.Model.AjunaExt
             var assetAccountKeys = storageKeys.Select(p => Utils.HexToByteArray(
                 accountKeyPrefixBytesString +
                 p.ToString() +
-                Utils.Bytes2HexString(HashExtension.Hash(Storage.Hasher.BlakeTwo128Concat, account32.Bytes), Utils.HexStringFormat.Pure)
+                Utils.Bytes2HexString(HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, account32.Bytes), Utils.HexStringFormat.Pure)
             )).ToList();
 
             if (storageKeys == null || !storageKeys.Any())
