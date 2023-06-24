@@ -75,6 +75,7 @@
 	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
+	  <PackageReference Include="Markdig" Version="0.31.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -172,6 +173,7 @@
 	  <None Remove="Resources\Images\PredefinedLayouts\" />
 	  <None Remove="Resources\Images\PredefinedLayouts\aaabackground.png" />
 	  <None Remove="Components\AwesomeAjunaAvatars\" />
+	  <None Remove="Components\Nft\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -363,6 +365,7 @@
 	  <Folder Include="Components\PredefinedLayouts\" />
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
+	  <Folder Include="Components\Nft\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

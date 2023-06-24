@@ -146,7 +146,16 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 1337,
                 ChainType = ChainType.Substrate,
             },
-            
+            new Endpoint
+            {
+                Name = "Statemine",
+                URL = "wss://kusama-asset-hub-rpc.polkadot.io",
+                Icon = "statemint.png",
+                Unit = "KSM",
+                Decimals = 12,
+                SS58Prefix = 2,
+                ChainType = ChainType.Substrate,
+            },
             new Endpoint
 			{
 				Name = "Unique",
