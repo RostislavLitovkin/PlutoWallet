@@ -18,7 +18,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.double_encoded
     
     
     /// <summary>
-    /// >> 440 - Composite[xcm.double_encoded.DoubleEncodedT2]
+    /// >> 260 - Composite[xcm.double_encoded.DoubleEncodedT2]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DoubleEncodedT2 : BaseType

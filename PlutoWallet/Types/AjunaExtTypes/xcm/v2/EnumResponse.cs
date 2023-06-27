@@ -28,9 +28,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 140 - Variant[xcm.v2.Response]
+    /// >> 230 - Variant[xcm.v2.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }

@@ -18,15 +18,15 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm
     public enum VersionedMultiAssets
     {
         
-        V0 = 0,
+        V2 = 1,
         
-        V1 = 1,
+        V3 = 3,
     }
     
     /// <summary>
-    /// >> 150 - Variant[xcm.VersionedMultiAssets]
+    /// >> 84 - Variant[xcm.VersionedMultiAssets]
     /// </summary>
-    public sealed class EnumVersionedMultiAssets : BaseEnumExt<VersionedMultiAssets, Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_asset.EnumMultiAsset>, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.MultiAssets>
+    public sealed class EnumVersionedMultiAssets : BaseEnumExt<VersionedMultiAssets, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.MultiAssets>
     {
     }
 }

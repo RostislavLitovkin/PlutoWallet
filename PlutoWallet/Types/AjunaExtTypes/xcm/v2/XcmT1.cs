@@ -18,7 +18,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2
     
     
     /// <summary>
-    /// >> 130 - Composite[xcm.v2.XcmT1]
+    /// >> 249 - Composite[xcm.v2.XcmT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class XcmT1 : BaseType

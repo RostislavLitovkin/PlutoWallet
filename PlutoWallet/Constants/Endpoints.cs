@@ -146,7 +146,16 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 1337,
                 ChainType = ChainType.Substrate,
             },
-            
+            new Endpoint
+            {
+                Name = "Statemine",
+                URL = "wss://kusama-asset-hub-rpc.polkadot.io",
+                Icon = "statemint.png",
+                Unit = "KSM",
+                Decimals = 12,
+                SS58Prefix = 2,
+                ChainType = ChainType.Substrate,
+            },
             new Endpoint
 			{
 				Name = "Unique",
@@ -190,6 +199,16 @@ namespace PlutoWallet.Constants
                 Decimals = 18,
                 SS58Prefix = 1287,
                 ChainType = ChainType.Ethereum,
+            },
+            new Endpoint
+            {
+                Name = "Aleph Zero Testnet",
+                URL = "wss://ws.test.azero.dev",
+                Icon = "alephzerotestnet.png",
+                Unit = "TZERO",
+                Decimals = 12,
+                SS58Prefix = 42,
+                ChainType = ChainType.Substrate,
             },
 			new Endpoint
 			{
