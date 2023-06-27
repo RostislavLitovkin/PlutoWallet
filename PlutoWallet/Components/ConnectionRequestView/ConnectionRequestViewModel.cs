@@ -1,5 +1,6 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Plutonication;
 
 namespace PlutoWallet.Components.ConnectionRequestView
 {
@@ -19,6 +20,9 @@ namespace PlutoWallet.Components.ConnectionRequestView
 
         [ObservableProperty]
         private string key;
+
+		[ObservableProperty]
+		private AccessCredentials accessCredentials;
 
         public ConnectionRequestViewModel()
 		{

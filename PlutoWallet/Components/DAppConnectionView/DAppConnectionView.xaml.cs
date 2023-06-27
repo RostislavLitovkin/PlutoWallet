@@ -1,4 +1,5 @@
-﻿using PlutoWallet.Components.MessagePopup;
+﻿using Plutonication;
+using PlutoWallet.Components.MessagePopup;
 
 namespace PlutoWallet.Components.DAppConnectionView;
 
@@ -18,15 +19,12 @@ public partial class DAppConnectionView : ContentView
         BindingContext = viewModel;
     }
 
-    void OnDisconnectClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnDisconnectClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         try
         {
-            var manager = Model.PlutonicationModel.EventManager;
-            manager.StopReceiveLoop();
-            manager.CloseConnection();
-
-            Model.PlutonicationModel.EventManager = null;
+            // Disconnect from the dApp
+            await PlutonicationWalletClient.DisconnectAsync();
 
             var viewModel = DependencyService.Get<DAppConnectionViewModel>();
             viewModel.IsVisible = false;
