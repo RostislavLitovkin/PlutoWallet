@@ -5,6 +5,7 @@ using PlutoWallet.Components.ScannerView;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
 using PlutoWallet.ViewModel;
+using Plutonication;
 
 namespace PlutoWallet.Components.UniversalScannerView;
 
@@ -55,21 +56,17 @@ public partial class UniversalScannerView : ContentView
             // trying to connect to a dApp
             if (scannedValue.Length > 14 && scannedValue.Substring(0, 14) == "plutonication:")
             {
-                Uri myUri = new Uri(scannedValue);
-
-                string url = HttpUtility.ParseQueryString(myUri.Query).Get("url");
-                string icon = HttpUtility.ParseQueryString(myUri.Query).Get("icon");
-                string name = HttpUtility.ParseQueryString(myUri.Query).Get("name");
-                string key = HttpUtility.ParseQueryString(myUri.Query).Get("key");
+                AccessCredentials ac = new AccessCredentials(new Uri(scannedValue));
 
                 var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
 
                 connectionRequest.IsVisible = true;
-                connectionRequest.Icon = icon;
-                connectionRequest.Name = name;
+                connectionRequest.Icon = ac.Icon;
+                connectionRequest.Name = ac.Name;
 
-                connectionRequest.Url = url;
-                connectionRequest.Key = key;
+                connectionRequest.Url = ac.Url;
+                connectionRequest.Key = ac.Key;
+                connectionRequest.AccessCredentials = ac;
 
             }
             else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
