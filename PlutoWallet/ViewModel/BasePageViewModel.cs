@@ -1,6 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.View;
 
 namespace PlutoWallet.ViewModel
@@ -27,11 +28,16 @@ namespace PlutoWallet.ViewModel
         public void SetMainView()
 		{
 			Content = mainView;
-		}
+            var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+            networkViewModel.SetupDefault();
+        }
 
         public void SetNftView()
         {
             Content = nftView;
+            NftViewModel nftViewModel = (NftViewModel)nftView.BindingContext;
+
+            nftViewModel.GetNFTsAsync();
         }
     }
 }
