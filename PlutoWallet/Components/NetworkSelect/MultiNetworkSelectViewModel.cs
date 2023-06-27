@@ -25,6 +25,9 @@ namespace PlutoWallet.Components.NetworkSelect
             SetupDefault();
         }
 
+        /**
+         * Also called in the BasePageViewModel
+         */
         public void SetupDefault()
         {
             int[] defaultNetworks = Endpoints.DefaultNetworks;

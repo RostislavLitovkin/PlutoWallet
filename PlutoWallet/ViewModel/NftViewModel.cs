@@ -13,10 +13,12 @@ namespace PlutoWallet.ViewModel
 
         public NftViewModel()
 		{
-			GetNFTsAsync();
 
         }
 
+		/**
+		 * Called in the BasePageViewModel
+		 */
 		public async Task GetNFTsAsync()
 		{
 			List<NFT> nfts = new List<NFT>();
