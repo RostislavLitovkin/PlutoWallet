@@ -200,6 +200,16 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 1287,
                 ChainType = ChainType.Ethereum,
             },
+            new Endpoint
+            {
+                Name = "Aleph Zero Testnet",
+                URL = "wss://ws.test.azero.dev",
+                Icon = "alephzerotestnet.png",
+                Unit = "TZERO",
+                Decimals = 12,
+                SS58Prefix = 42,
+                ChainType = ChainType.Substrate,
+            },
 			new Endpoint
 			{
 				Name = "Acala",
