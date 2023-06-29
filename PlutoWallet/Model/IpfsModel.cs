@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+
 namespace PlutoWallet.Model
 {
 	public class IpfsModel
@@ -9,13 +11,27 @@ namespace PlutoWallet.Model
             {
                 return "https://ipfs.io/ipfs/" + ipfsLink.Remove(0, "ipfs://ipfs/".Length + ipfsLink.IndexOf("ipfs://ipfs/"));
             }
-            return "https://ipfs.io/ipfs/" + ipfsLink;
+            
+            return "https://ipfs.io/ipfs/" + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
 		public static async Task<string> FetchIpfsAsync(string ipfsLink)
 		{
             HttpClient httpClient = new HttpClient();
 			return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink));
+        }
+
+        public static string RemoveNonHexadecimalCharacters(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+                return input;
+
+            string pattern = "[^0-9a-zA-Z]";
+            string replacement = "";
+
+            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+
+            return regex.Replace(input, replacement);
         }
     }
 }
