@@ -51,15 +51,6 @@ namespace PlutoWallet.Model
                 nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
             }
 
-
-            try
-            {
-                nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
             return nfts;
         }
 

@@ -21,11 +21,23 @@ namespace PlutoWallet.ViewModel
 		 */
 		public async Task GetNFTsAsync()
 		{
+
 			List<NFT> nfts = new List<NFT>();
 			//nfts = (List<NFT>)nfts.Concat<NFT>();
 
-			NftMetadata = new ObservableCollection<NFT>(await Model.NFTsModel.GetNFTsAsync(Endpoints.GetAllEndpoints[11]));
-        }
+			foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
+			{
+				if (endpoint.SupportsNfts)
+				{
+					nfts.AddRange(await NFTsModel.GetNFTsAsync(endpoint));
+				}
+			}
+
+			nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
+
+			NftMetadata = new ObservableCollection<NFT>(nfts);
+
+		}
 	}
 }
 

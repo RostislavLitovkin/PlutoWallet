@@ -1,49 +1,51 @@
 ﻿using System;
 namespace PlutoWallet.Constants
 {
-	public class Endpoints
-	{
+    public class Endpoints
+    {
         public static int[] DefaultNetworks => new int[4] { 0, 2, 3, -1 };
 
-		public static List<int[]> NetworkOptions
-		{
-			get
-			{
-				List<int[]> options = new List<int[]>();
+        public static List<int[]> NetworkOptions
+        {
+            get
+            {
+                List<int[]> options = new List<int[]>();
 
-				options.Add(DefaultNetworks);
+                options.Add(DefaultNetworks);
                 options.Add(new int[4] { 0, 6, -1, -1 });
                 options.Add(new int[4] { 0, 1, -1, -1 });
                 options.Add(new int[4] { 4, 5, -1, -1 });
                 options.Add(new int[4] { 8, 10, 9, -1 });
 
 
-                for (int i = 0; i < GetAllEndpoints.Count; i++)
-				{
+                for (int i = 0; i < GetAllEndpoints.Count; i++)
+                {
                     options.Add(new int[4] { i, -1, -1, -1 });
                 }
 
                 return options;
-			}
-		} 
+            }
+        }
+
+
 
         public static List<Endpoint> GetAllEndpoints => new List<Endpoint>()
         {
             new Endpoint
-			{
-				Name = "Polkadot",
-				URL = "wss://polkadot.api.onfinality.io/public-ws",
-				Icon = "polkadot.png",
-				CalamarChainName = "polkadot",
-				Unit = "Dot",
-				Decimals = 10,
-				SS58Prefix = 0,
+            {
+                Name = "Polkadot",
+                URL = "wss://polkadot.api.onfinality.io/public-ws",
+                Icon = "polkadot.png",
+                CalamarChainName = "polkadot",
+                Unit = "Dot",
+                Decimals = 10,
+                SS58Prefix = 0,
                 ChainType = ChainType.Substrate,
             },
-			new Endpoint
-			{
-				Name = "Kusama",
-				URL = "wss://kusama-rpc.polkadot.io",
+            new Endpoint
+            {
+                Name = "Kusama",
+                URL = "wss://kusama-rpc.polkadot.io",
                 Icon = "kusama.png",
                 CalamarChainName = "kusama",
                 Unit = "KSM",
@@ -51,10 +53,10 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
             },
-			new Endpoint
-			{
-				Name = "Moonbeam",
-				URL = "wss://wss.api.moonbeam.network",
+            new Endpoint
+            {
+                Name = "Moonbeam",
+                URL = "wss://wss.api.moonbeam.network",
                 Icon = "moonbeam.png",
                 CalamarChainName = "moonbeam",
                 Unit = "GLMR",
@@ -62,10 +64,10 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 1284,
                 ChainType = ChainType.Ethereum,
             },
-			new Endpoint
-			{
-				Name = "Astar",
-				URL = "wss://rpc.astar.network",
+            new Endpoint
+            {
+                Name = "Astar",
+                URL = "wss://rpc.astar.network",
                 Icon = "astar.png",
                 CalamarChainName = "astar",
                 Unit = "ASTR",
@@ -105,9 +107,9 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
             },
             new Endpoint
-			{
-				Name = "Westend",
-				URL = "wss://westend-rpc.polkadot.io",
+            {
+                Name = "Westend",
+                URL = "wss://westend-rpc.polkadot.io",
                 Icon = "westend.png",
                 Unit = "WND",
                 Decimals = 12,
@@ -155,28 +157,31 @@ namespace PlutoWallet.Constants
                 Decimals = 12,
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
+                SupportsNfts = true,
             },
             new Endpoint
-			{
-				Name = "Unique",
-				URL = "wss://ws.unique.network",
+            {
+                Name = "Unique",
+                URL = "wss://ws.unique.network",
                 Icon = "unique.png",
                 CalamarChainName = "unique",
                 Unit = "UNQ",
                 Decimals = 18,
                 SS58Prefix = 7391,
                 ChainType = ChainType.Substrate,
+                SupportsNfts = true,
             },
-			new Endpoint
-			{
-				Name = "Opal",
-				URL = "wss://eu-ws-opal.unique.network",
+            new Endpoint
+            {
+                Name = "Opal",
+                URL = "wss://eu-ws-opal.unique.network",
                 Icon = "opal.png",
                 CalamarChainName = "opal",
                 Unit = "OPL",
                 Decimals = 18,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
+                SupportsNfts = true,
             },
             new Endpoint
             {
@@ -210,10 +215,10 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
             },
-			new Endpoint
-			{
-				Name = "Acala",
-				URL = "wss://acala-rpc-1.aca-api.network",
+            new Endpoint
+            {
+                Name = "Acala",
+                URL = "wss://acala-rpc-1.aca-api.network",
                 Icon = "acala.png",
                 CalamarChainName = "acala",
                 Unit = "ACA",
@@ -221,17 +226,35 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 10,
                 ChainType = ChainType.Substrate,
             },
-			new Endpoint
-			{
-				Name = "(Local) ws://127.0.0.1:9944",
+            new Endpoint
+            {
+                Name = "(Local) ws://127.0.0.1:9944",
                 URL = "ws://127.0.0.1:9944",
                 Icon = "substrate.png",
                 Unit = "",
-				Decimals = 0,
-				SS58Prefix = 42,
+                Decimals = 0,
+                SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
             }
         };
+
+
+        public static List<Endpoint> GetNftEndpoints {
+            get
+            {
+                List<Endpoint> endpoints = GetAllEndpoints;
+
+                foreach (Endpoint endpoint in endpoints)
+                {
+                    if (!endpoint.SupportsNfts)
+                    {
+                        endpoints.Remove(endpoint);
+                    }
+                }
+
+                return endpoints;
+            }
+        }
     }
 
     public enum ChainType
@@ -253,6 +276,7 @@ namespace PlutoWallet.Constants
 		public int Decimals { get; set; }
 		public short SS58Prefix { get; set; }
         public ChainType ChainType { get; set; }
+        public bool SupportsNfts { get; set; } = false;
     }
 }
 
