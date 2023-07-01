@@ -49,6 +49,15 @@ namespace PlutoWallet.Model
                 nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
             }
 
+
+            try
+            {
+                nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             return nfts;
         }
 
@@ -122,8 +131,6 @@ namespace PlutoWallet.Model
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
                 Console.WriteLine("ipfsLink: " + ipfsLink);
                 string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
-
-                Console.WriteLine("Uniques: " + metadataJson);
             
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
