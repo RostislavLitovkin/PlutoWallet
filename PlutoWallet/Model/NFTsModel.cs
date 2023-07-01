@@ -23,6 +23,8 @@ namespace PlutoWallet.Model
         [JsonProperty("external_url")]
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
+        public int CollectionId { get; set; }
+
     }
 
 	public class NFTsModel
