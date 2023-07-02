@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Substrate.NetApi;
 using Uniquery.Types;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
@@ -66,7 +67,7 @@ namespace PlutoWallet.Model
                     Attributes = new string[1] { metadata.Attributes[0].Value },
                     ExternalUrl = metadata.ExternalUrl,
                     Type = metadata.Type,
-
+                    Endpoint = Endpoints.GetAllEndpoints[1],
                 };
                 
 

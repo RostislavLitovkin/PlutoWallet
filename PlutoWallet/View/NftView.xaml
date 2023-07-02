@@ -20,7 +20,8 @@
                 <DataTemplate>
                     <nft:NftThumbnailView Image="{Binding Image}"
                                           Name="{Binding Name}"
-                                          Description="{Binding Description}" />
+                                          Description="{Binding Description}"
+                                          Endpoint="{Binding Endpoint}"/>
 
                 </DataTemplate>
 

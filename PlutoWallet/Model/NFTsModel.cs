@@ -24,7 +24,7 @@ namespace PlutoWallet.Model
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
         public int CollectionId { get; set; }
-
+        public Endpoint Endpoint { get; set; }
     }
 
 	public class NFTsModel
@@ -42,6 +42,7 @@ namespace PlutoWallet.Model
             foreach (string collectionItemId in collectionItemIds)
             {
                 nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
+                nfts.Last().Endpoint = endpoint;
             }
 
             List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
@@ -49,6 +50,7 @@ namespace PlutoWallet.Model
             foreach (string collectionItemId in uniquesCollectionItemIds)
             {
                 nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
+                nfts.Last().Endpoint = endpoint;
             }
 
             return nfts;
