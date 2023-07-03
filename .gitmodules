@@ -6,4 +6,4 @@
 	url = https://github.com/RostislavLitovkin/Substrate.NET.API
 [submodule "Uniquery.Net"]
 	path = Uniquery.Net
-	url = https://github.com/RostislavLitovkin/Uniquery.Net.git
+	url = https://github.com/RostislavLitovkin/Uniquery.Net-OLD.git
