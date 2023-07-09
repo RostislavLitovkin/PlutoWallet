@@ -1,6 +1,8 @@
 ﻿using Markdig;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using PlutoWallet.ViewModel;
+using PlutoWallet.View;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -85,5 +87,18 @@ public partial class NftThumbnailView : ContentView
 
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+    }
+
+    async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        var viewModel = new NftDetailViewModel();
+
+        viewModel.Name = this.Name;
+        viewModel.Description = this.Description;
+        viewModel.Image = this.Image;
+        viewModel.Endpoint = this.Endpoint;
+
+
+        await Navigation.PushAsync(new NftDetailPage(viewModel));
     }
 }

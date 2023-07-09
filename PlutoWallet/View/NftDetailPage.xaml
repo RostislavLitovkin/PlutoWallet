@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             x:Class="PlutoWallet.View.NftDetailPage"
+             Title="NftDetailPage">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                
+            <VerticalStackLayout>
+                <Image Source="{Binding Image}" Aspect="AspectFill"
+                           HeightRequest="{Binding Source={x:Reference image}, Path=Width}"
+                           x:Name="image" Margin="0, 45, 0, 0"/>
+
+                <VerticalStackLayout
+                                        Spacing="15"
+                                        Padding="20, 15, 20, 200">
+                    <nft:NftTitleView Name="{Binding Name}"
+                                      Endpoint="{Binding Endpoint}" />
+
+                    <nft:NftDescriptionView Description="{Binding Description}" />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+                    
+
+        </ScrollView>
+        
+        <navigationbar:TopNavigationBar Title="{Binding Name}" />
+    </AbsoluteLayout>
+</ContentPage>

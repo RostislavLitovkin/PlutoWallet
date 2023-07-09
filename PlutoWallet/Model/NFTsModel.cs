@@ -31,27 +31,59 @@ namespace PlutoWallet.Model
 	{
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
-            var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
-
-            await client.ConnectAsync();
-
-            List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
-
-            List<NFT> nfts = new List<NFT>();
-
-            foreach (string collectionItemId in collectionItemIds)
+            try
             {
-                nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
-                nfts.Last().Endpoint = endpoint;
+                var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
+
+                await client.ConnectAsync();
+
+                List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
+
+                List<NFT> nfts = new List<NFT>();
+
+                foreach (string collectionItemId in collectionItemIds)
+                {
+                    nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
+                    nfts.Last().Endpoint = endpoint;
+                }
+
+                List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
+
+                foreach (string collectionItemId in uniquesCollectionItemIds)
+                {
+                    nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
+                    nfts.Last().Endpoint = endpoint;
+                }
+
+                return nfts;
             }
-
-            List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
-
-            foreach (string collectionItemId in uniquesCollectionItemIds)
+            catch (Exception ex)
             {
-                nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
-                nfts.Last().Endpoint = endpoint;
+                Console.WriteLine(ex.Message);
+
+                // Later do something about this
+
+                return new List<NFT>();
             }
+        }
+
+        public static List<NFT> GetMockNFTs()
+        {
+            var nfts = new List<NFT>()
+            {
+                new NFT
+                {
+                    Name = "Mock nft - version ALPHA",
+                    Description = @"This is a totally mock NFT that does nothing.
+Hopefully it will fulfill the test functionalities correctly.",
+                    Endpoint = new Endpoint
+                    {
+                        Name = "Mock network",
+                        Icon = "plutowalleticon.png",
+                    },
+                    Image = "dusan.jpg"
+                }
+            };
 
             return nfts;
         }

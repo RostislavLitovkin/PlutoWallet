@@ -33,7 +33,16 @@ namespace PlutoWallet.ViewModel
 				}
 			}
 
-			nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
+			try
+			{
+				nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
+			}
+			catch
+			{
+
+			}
+
+			nfts.AddRange(Model.NFTsModel.GetMockNFTs());
 
 			NftMetadata = new ObservableCollection<NFT>(nfts);
 
