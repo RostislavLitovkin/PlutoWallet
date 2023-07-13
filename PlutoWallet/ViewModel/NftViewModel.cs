@@ -16,37 +16,7 @@ namespace PlutoWallet.ViewModel
 
         }
 
-		/**
-		 * Called in the BasePageViewModel
-		 */
-		public async Task GetNFTsAsync()
-		{
-
-			List<NFT> nfts = new List<NFT>();
-			//nfts = (List<NFT>)nfts.Concat<NFT>();
-
-			foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
-			{
-				if (endpoint.SupportsNfts)
-				{
-					nfts.AddRange(await NFTsModel.GetNFTsAsync(endpoint));
-				}
-			}
-
-			try
-			{
-				nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
-			}
-			catch
-			{
-
-			}
-
-			nfts.AddRange(Model.NFTsModel.GetMockNFTs());
-
-			NftMetadata = new ObservableCollection<NFT>(nfts);
-
-		}
-	}
+		
+    }
 }
 

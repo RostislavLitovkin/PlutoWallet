@@ -377,6 +377,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
-	  <ProjectReference Include="..\Uniquery.Net\Uniquery.csproj" />
 	</ItemGroup>
 </Project>

@@ -25,10 +25,29 @@ namespace PlutoWallet.Model
         public string Type { get; set; }
         public int CollectionId { get; set; }
         public Endpoint Endpoint { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (!obj.GetType().Equals(typeof(NFT)))
+            {
+                return false;
+            }
+
+            var objNft = (NFT)obj;
+            return (objNft.Name == this.Name &&
+                objNft.Description == this.Description &&
+                objNft.Image == this.Image &&
+                objNft.Endpoint == this.Endpoint);
+        }
     }
 
 	public class NFTsModel
 	{
+        public static async Task AddNFTsAsync(Endpoint endpoint, Action<List<NFT>> updateNfts)
+        {
+            updateNfts(await GetNFTsAsync(endpoint));
+        }
+
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
             try

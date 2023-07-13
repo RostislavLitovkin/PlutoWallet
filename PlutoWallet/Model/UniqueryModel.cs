@@ -2,7 +2,6 @@
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Substrate.NetApi;
-using Uniquery.Types;
 using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
@@ -45,34 +44,16 @@ namespace PlutoWallet.Model
 
     public class UniqueryModel
 	{
-		public static async Task<List<NFT>> GetAccountRmrk()
+        public static async Task AddRmrkNfts(Action<List<NFT>> updateNfts)
+        {
+            updateNfts(await GetAccountRmrk());
+        }
+
+        public static async Task<List<NFT>> GetAccountRmrk()
 		{
 			string address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), 2);
 
-			List<NftEntity> entities = await Uniquery.Uniquery.GetAccountRmrk(address);
 			List<NFT> rmrks = new List<NFT>();
-
-			foreach (NftEntity entity in entities)
-			{
-                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(entity.Metadata);
-
-                RmrkMetadata metadata = JsonConvert.DeserializeObject<RmrkMetadata>(metadataJson);
-
-                NFT nft = new NFT
-                {
-                    Name = metadata.Name,
-                    Description = metadata.Description,
-                    Image = Model.IpfsModel.ToIpfsLink(metadata.Image),
-                    AnimationUrl = metadata.AnimationUrl,
-                    Attributes = new string[1] { metadata.Attributes[0].Value },
-                    ExternalUrl = metadata.ExternalUrl,
-                    Type = metadata.Type,
-                    Endpoint = Endpoints.GetAllEndpoints[1],
-                };
-                
-
-				rmrks.Add(nft);
-			}
 
 			return rmrks;
         }

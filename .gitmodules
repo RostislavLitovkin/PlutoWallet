@@ -4,6 +4,3 @@
 [submodule "Substrate.NET.API"]
 	path = Substrate.NET.API
 	url = https://github.com/RostislavLitovkin/Substrate.NET.API
-[submodule "Uniquery.Net"]
-	path = Uniquery.Net
-	url = https://github.com/RostislavLitovkin/Uniquery.Net-OLD.git
