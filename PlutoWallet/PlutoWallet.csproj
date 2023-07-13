@@ -76,6 +76,7 @@
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
 	  <PackageReference Include="Markdig" Version="0.31.0" />
+	  <PackageReference Include="Uniquery" Version="0.1.3" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -176,6 +177,7 @@
 	  <None Remove="Components\Nft\" />
 	  <None Remove="Resources\Images\plutowalleticon.svg" />
 	  <None Remove="Resources\Images\dusan.jpg" />
+	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -246,6 +248,7 @@
 	  <BundleResource Include="Resources\Images\PredefinedLayouts\aaabackground.png" />
 	  <BundleResource Include="Resources\Images\plutowalleticon.svg" />
 	  <BundleResource Include="Resources\Images\dusan.jpg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\basilisk.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

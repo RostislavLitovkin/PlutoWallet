@@ -44,6 +44,31 @@ namespace PlutoWallet.Model
 
     public class UniqueryModel
 	{
+        private static Endpoint GetEndpointFromFormat(string nftFormat)
+        {
+            switch (nftFormat)
+            {
+                case "rmrk":
+                    return Endpoints.GetEndpointDictionary["kusama"];
+                case "rmrk2":
+                    return Endpoints.GetEndpointDictionary["kusama"];
+                case "basilisk":
+                    return Endpoints.GetEndpointDictionary["basilisk"];
+                case "glmr":
+                    return Endpoints.GetEndpointDictionary["moonbeam"];
+                case "movr":
+                    return Endpoints.GetEndpointDictionary["moonriver"];
+                case "unique":
+                    return Endpoints.GetEndpointDictionary["unique"];
+                case "quartz":
+                    return Endpoints.GetEndpointDictionary["quartz"];
+                case "opal":
+                    return Endpoints.GetEndpointDictionary["opal"];
+                default:
+                    return null;
+            }
+        }
+
         public static async Task AddRmrkNfts(Action<List<NFT>> updateNfts)
         {
             updateNfts(await GetAccountRmrk());
@@ -54,6 +79,19 @@ namespace PlutoWallet.Model
 			string address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), 2);
 
 			List<NFT> rmrks = new List<NFT>();
+
+            var nfts = await Uniquery.Universal.NftListByOwner(KeysModel.GetSubstrateKey(), 100, eventsLimit: 0);
+
+            foreach (var nft in nfts)
+            {
+                rmrks.Add(new NFT
+                {
+                    Name = nft.Name,
+                    Description = nft.Meta.Description,
+                    Image = IpfsModel.ToIpfsLink(nft.Meta.Image),
+                    Endpoint = GetEndpointFromFormat(nft.NetworkFormat),
+                });
+            }
 
 			return rmrks;
         }
