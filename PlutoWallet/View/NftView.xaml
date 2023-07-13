@@ -14,17 +14,7 @@
         <VerticalStackLayout
             x:Name="stackLayout"
             Spacing="15"
-            Padding="20, 65, 20, 200"
-            BindableLayout.ItemsSource="{Binding NftMetadata}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <nft:NftThumbnailView Image="{Binding Image}"
-                                          Name="{Binding Name}"
-                                          Description="{Binding Description}" />
-
-                </DataTemplate>
-
-            </BindableLayout.ItemTemplate>
+            Padding="20, 65, 20, 200">
 
         </VerticalStackLayout>
     </ScrollView>

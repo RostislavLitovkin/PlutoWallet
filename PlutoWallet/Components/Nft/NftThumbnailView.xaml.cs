@@ -1,4 +1,8 @@
 ﻿using Markdig;
+using PlutoWallet.Constants;
+using PlutoWallet.Model;
+using PlutoWallet.ViewModel;
+using PlutoWallet.View;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -10,8 +14,6 @@ public partial class NftThumbnailView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NftThumbnailView)bindable;
 
-            Console.WriteLine("Received: " + (string)newValue);
-
             control.nameLabelText.Text = (string)newValue;
         });
 
@@ -21,7 +23,6 @@ public partial class NftThumbnailView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NftThumbnailView)bindable;
 
-            Console.WriteLine(Markdown.ToHtml((string)newValue));
             control.descriptionLabel.Text = Markdown.ToHtml((string)newValue);
         });
 
@@ -32,6 +33,16 @@ public partial class NftThumbnailView : ContentView
             var control = (NftThumbnailView)bindable;
 
             control.image.Source = (string)newValue;
+        });
+
+    public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
+        nameof(Endpoint), typeof(Endpoint), typeof(NftThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (NftThumbnailView)bindable;
+
+            control.networkBubble.Name = ((Endpoint)newValue).Name;
+            control.networkBubble.Icon = ((Endpoint)newValue).Icon;
         });
 
 
@@ -59,5 +70,35 @@ public partial class NftThumbnailView : ContentView
         get => (string)GetValue(ImageProperty);
 
         set => SetValue(ImageProperty, value);
+    }
+
+    public Endpoint Endpoint
+    {
+        get => (Endpoint)GetValue(EndpointProperty);
+
+        set => SetValue(EndpointProperty, value);
+    }
+
+    public NFT Nft
+    {
+        get;
+        set;
+    }
+
+    void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+    }
+
+    async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        var viewModel = new NftDetailViewModel();
+
+        viewModel.Name = this.Name;
+        viewModel.Description = this.Description;
+        viewModel.Image = this.Image;
+        viewModel.Endpoint = this.Endpoint;
+
+
+        await Navigation.PushAsync(new NftDetailPage(viewModel));
     }
 }

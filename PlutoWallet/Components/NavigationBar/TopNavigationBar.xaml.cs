@@ -2,12 +2,26 @@
 
 public partial class TopNavigationBar : ContentView
 {
-	public TopNavigationBar()
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(
+        nameof(Title), typeof(string), typeof(TopNavigationBar),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (TopNavigationBar)bindable;
+
+            control.titleText.Text = (string)newValue;
+        });
+
+    public TopNavigationBar()
 	{
 		InitializeComponent();
 	}
 
-    public string Title { set { titleText.Text = value; } }
+    public string Title
+    {
+        get => (string)GetValue(TitleProperty);
+
+        set => SetValue(TitleProperty, value);
+    }
 
     public string ExtraTitle { set { extraLabel.Text = value; } }
 

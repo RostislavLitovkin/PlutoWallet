@@ -24,42 +24,86 @@ namespace PlutoWallet.Model
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
         public int CollectionId { get; set; }
+        public Endpoint Endpoint { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            if (!obj.GetType().Equals(typeof(NFT)))
+            {
+                return false;
+            }
+
+            var objNft = (NFT)obj;
+            return (objNft.Name == this.Name &&
+                objNft.Description == this.Description &&
+                objNft.Image == this.Image &&
+                objNft.Endpoint == this.Endpoint);
+        }
     }
 
 	public class NFTsModel
 	{
+        public static async Task AddNFTsAsync(Endpoint endpoint, Action<List<NFT>> updateNfts)
+        {
+            updateNfts(await GetNFTsAsync(endpoint));
+        }
+
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
-            var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
-
-            await client.ConnectAsync();
-
-            List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
-
-            List<NFT> nfts = new List<NFT>();
-
-            foreach (string collectionItemId in collectionItemIds)
-            {
-                nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
-            }
-
-            List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
-
-            foreach (string collectionItemId in uniquesCollectionItemIds)
-            {
-                nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
-            }
-
-
             try
             {
-                nfts.AddRange(await Model.UniqueryModel.GetAccountRmrk());
+                var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
+
+                await client.ConnectAsync();
+
+                List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
+
+                List<NFT> nfts = new List<NFT>();
+
+                foreach (string collectionItemId in collectionItemIds)
+                {
+                    nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
+                    nfts.Last().Endpoint = endpoint;
+                }
+
+                List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
+
+                foreach (string collectionItemId in uniquesCollectionItemIds)
+                {
+                    nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
+                    nfts.Last().Endpoint = endpoint;
+                }
+
+                return nfts;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+
+                // Later do something about this
+
+                return new List<NFT>();
             }
+        }
+
+        public static List<NFT> GetMockNFTs()
+        {
+            var nfts = new List<NFT>()
+            {
+                new NFT
+                {
+                    Name = "Mock nft - version ALPHA",
+                    Description = @"This is a totally mock NFT that does nothing.
+Hopefully it will fulfill the test functionalities correctly.",
+                    Endpoint = new Endpoint
+                    {
+                        Name = "Mock network",
+                        Icon = "plutowalleticon.png",
+                    },
+                    Image = "dusan.jpg"
+                }
+            };
+
             return nfts;
         }
 

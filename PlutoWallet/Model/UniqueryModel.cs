@@ -2,7 +2,7 @@
 using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Substrate.NetApi;
-using Uniquery.Types;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
@@ -44,34 +44,54 @@ namespace PlutoWallet.Model
 
     public class UniqueryModel
 	{
-		public static async Task<List<NFT>> GetAccountRmrk()
+        private static Endpoint GetEndpointFromFormat(string nftFormat)
+        {
+            switch (nftFormat)
+            {
+                case "rmrk":
+                    return Endpoints.GetEndpointDictionary["kusama"];
+                case "rmrk2":
+                    return Endpoints.GetEndpointDictionary["kusama"];
+                case "basilisk":
+                    return Endpoints.GetEndpointDictionary["basilisk"];
+                case "glmr":
+                    return Endpoints.GetEndpointDictionary["moonbeam"];
+                case "movr":
+                    return Endpoints.GetEndpointDictionary["moonriver"];
+                case "unique":
+                    return Endpoints.GetEndpointDictionary["unique"];
+                case "quartz":
+                    return Endpoints.GetEndpointDictionary["quartz"];
+                case "opal":
+                    return Endpoints.GetEndpointDictionary["opal"];
+                default:
+                    return null;
+            }
+        }
+
+        public static async Task AddRmrkNfts(Action<List<NFT>> updateNfts)
+        {
+            updateNfts(await GetAccountRmrk());
+        }
+
+        public static async Task<List<NFT>> GetAccountRmrk()
 		{
 			string address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), 2);
 
-			List<NftEntity> entities = await Uniquery.Uniquery.GetAccountRmrk(address);
 			List<NFT> rmrks = new List<NFT>();
 
-			foreach (NftEntity entity in entities)
-			{
-                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(entity.Metadata);
+            var nfts = await Uniquery.Universal.NftListByOwner(KeysModel.GetSubstrateKey(), 100, eventsLimit: 0);
 
-                RmrkMetadata metadata = JsonConvert.DeserializeObject<RmrkMetadata>(metadataJson);
-
-                NFT nft = new NFT
+            foreach (var nft in nfts)
+            {
+                rmrks.Add(new NFT
                 {
-                    Name = metadata.Name,
-                    Description = metadata.Description,
-                    Image = Model.IpfsModel.ToIpfsLink(metadata.Image),
-                    AnimationUrl = metadata.AnimationUrl,
-                    Attributes = new string[1] { metadata.Attributes[0].Value },
-                    ExternalUrl = metadata.ExternalUrl,
-                    Type = metadata.Type,
-
-                };
-                
-
-				rmrks.Add(nft);
-			}
+                    Name = nft.Name,
+                    Description = nft.Meta.Description,
+                    Image = IpfsModel.ToIpfsLink(nft.Meta.Image),
+                    Endpoint = GetEndpointFromFormat(nft.NetworkFormat),
+                });
+            }
 
 			return rmrks;
         }

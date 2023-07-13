@@ -16,16 +16,7 @@ namespace PlutoWallet.ViewModel
 
         }
 
-		/**
-		 * Called in the BasePageViewModel
-		 */
-		public async Task GetNFTsAsync()
-		{
-			List<NFT> nfts = new List<NFT>();
-			//nfts = (List<NFT>)nfts.Concat<NFT>();
-
-			NftMetadata = new ObservableCollection<NFT>(await Model.NFTsModel.GetNFTsAsync(Endpoints.GetAllEndpoints[11]));
-        }
-	}
+		
+    }
 }
 

@@ -43,8 +43,8 @@ public partial class ConnectionRequestView : ContentView
 
                         var signerResult = new SignerResult
                         {
-                            Id = 0,
-                            Signature = Utils.Bytes2HexString(signature),
+                            id = 0,
+                            signature = Utils.Bytes2HexString(signature),
                         };
 
                         Console.WriteLine("PAYLOAD sent ");

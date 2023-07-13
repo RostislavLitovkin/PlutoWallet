@@ -28,10 +28,10 @@
 
         <!--QR code button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
-                    AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    Source="qrcodewhite.png"
-                    >
+                AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Source="qrcodewhite.png"
+                >
             
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnQRClicked" />
