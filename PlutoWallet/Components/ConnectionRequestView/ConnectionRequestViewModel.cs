@@ -27,7 +27,7 @@ namespace PlutoWallet.Components.ConnectionRequestView
         public ConnectionRequestViewModel()
 		{
 			isVisible = false;
-		}
-	}
+        }
+    }
 }
 

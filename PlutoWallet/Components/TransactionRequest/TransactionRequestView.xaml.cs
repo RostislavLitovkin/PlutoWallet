@@ -44,6 +44,7 @@ public partial class TransactionRequestView : ContentView
         catch (Exception ex)
         {
             errorLabel.Text = ex.Message;
+            errorLabel.IsVisible = true;
         }
 
     }

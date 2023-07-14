@@ -11,7 +11,7 @@
         <card:Card.View>
         <AbsoluteLayout>
 
-            <VerticalStackLayout>
+            <VerticalStackLayout Spacing="10">
                 <Label
                     FontAttributes="Bold"
                     Text="Transaction request"
@@ -19,18 +19,45 @@
                     Margin="20, 0, 20, 0"/>
 
                 <Label
-                    Text="{Binding PalletIndex}"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Pallet: " />
+                            <Span FontAttributes="Bold" Text="{Binding PalletIndex}"/>
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
 
                 <Label
-                    Text="{Binding CallIndex}"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Call: " />
+                            <Span FontAttributes="Bold" Text="{Binding CallIndex}"/>
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
 
                 <Label
-                    Text="{Binding Parameters}"
-                    HorizontalOptions="Center" />
+                    HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Parameters: " />
+                            <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
 
-                <Label Text="" x:Name="errorLabel" TextColor="Red" />
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
+
+                <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 
                 <Button Text="Sing and submit"
                         Clicked="OnSubmitClicked" />
