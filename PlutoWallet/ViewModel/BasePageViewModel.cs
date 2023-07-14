@@ -1,6 +1,7 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.View;
 
@@ -27,7 +28,11 @@ namespace PlutoWallet.ViewModel
 
         public void SetMainView()
 		{
-			Content = mainView;
+            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+            usdBalanceViewModel.DoNotReload = true;
+
+            Content = mainView;
+
             var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             networkViewModel.SetupDefault();
         }
