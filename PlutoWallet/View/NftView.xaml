@@ -8,15 +8,17 @@
         <viewmodel:NftViewModel />
 
     </ContentView.BindingContext>
-    <ScrollView
-            AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+    <RefreshView x:Name="refreshView"> 
+        <ScrollView
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-        <VerticalStackLayout
-            x:Name="stackLayout"
-            Spacing="15"
-            Padding="20, 65, 20, 200">
+            <VerticalStackLayout
+                x:Name="stackLayout"
+                Spacing="15"
+                Padding="20, 65, 20, 200">
 
-        </VerticalStackLayout>
-    </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
 </ContentView>
 
