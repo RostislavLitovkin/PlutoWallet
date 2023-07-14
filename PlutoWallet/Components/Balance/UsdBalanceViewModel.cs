@@ -131,7 +131,6 @@ namespace PlutoWallet.Components.Balance
 
             ReloadBalanceViewStackLayout(assets);
 
-
             HeightRequest = (35 * count) + UsdBalanceViewModel.EXTRA_HEIGHT;
 
             var balanceDashboardViewModel = DependencyService.Get<BalanceDashboardViewModel>();

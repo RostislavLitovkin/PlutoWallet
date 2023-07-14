@@ -6,6 +6,8 @@ using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
 using Schnorrkel;
 using Substrate.NetApi;
+using Newtonsoft.Json;
+using PlutoWallet.Components.TransactionRequest;
 
 namespace PlutoWallet.Components.ConnectionRequestView;
 
@@ -32,25 +34,39 @@ public partial class ConnectionRequestView : ContentView
             await PlutonicationWalletClient.InitializeAsync(
                 ac: viewModel.AccessCredentials,
                 pubkey: Model.KeysModel.GetSubstrateKey(),
-                signPayload: payload =>
+                signPayload: payloadJson =>
                 {
                     try
                     {
-                        Console.WriteLine("PAYLOAD: ");
-                        Console.WriteLine(payload);
+                        Plutonication.Payload payload = JsonConvert.DeserializeObject<Plutonication.Payload[]>(payloadJson.ToString())[0];
 
-                        byte[] signature = Sr25519v091.SignSimple(Model.KeysModel.GetAccount().Bytes, Model.KeysModel.GetAccount().PrivateKey, payload.InComingBytes[0]);
+                        byte[] methodBytes = Utils.HexToByteArray(payload.method);
 
+                        List<byte> methodParameters = new List<byte>();
+
+                        for (int i = 2; i < methodBytes.Length; i++)
+                        {
+                            methodParameters.Add(methodBytes[i]);
+                        }
+
+                        Method method = new Method(methodBytes[0], methodBytes[1], methodParameters.ToArray());
+
+                        var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
+
+                        transactionRequest.AjunaMethod = method;
+                        transactionRequest.IsVisible = true;
+
+                        //byte[] signature = Sr25519v091.SignSimple(Model.KeysModel.GetAccount().Bytes, Model.KeysModel.GetAccount().PrivateKey, payload.InComingBytes[0]);
+
+                        /*
                         var signerResult = new SignerResult
                         {
                             id = 0,
                             signature = Utils.Bytes2HexString(signature),
                         };
 
-                        Console.WriteLine("PAYLOAD sent ");
-
                         PlutonicationWalletClient.SendSignedPayloadAsync(signerResult);
-                        Console.WriteLine("PAYLOAD sent 2");
+                        */
                     }
                     catch (Exception ex)
                     {
@@ -67,7 +83,7 @@ public partial class ConnectionRequestView : ContentView
             // setup message receive
             //..
 
-            this.IsVisible = false;
+            viewModel.IsVisible = false;
         }
         catch (Exception ex)
         {
