@@ -35,11 +35,17 @@ namespace PlutoWallet.Components.TransactionRequest
                     PalletIndex = pallet.Name;
                     CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[value.CallIndex].Name;
+
+
+
+                    CalculateFeeAsync(value);
                 }
                 catch
                 {
                     PalletIndex = "(" + value.ModuleIndex.ToString() + " index)"; 
                     CallIndex = "(" + value.CallIndex.ToString() + "index)";
+
+                    Fee = "Fee: unknown";
                 }
 
                 if (value.Parameters.Length > 5)
@@ -54,11 +60,21 @@ namespace PlutoWallet.Components.TransactionRequest
         }
 
         [ObservableProperty]
+        private string fee;
+
+        [ObservableProperty]
         private bool isVisible;
+
+     
 
         public TransactionRequestViewModel()
         {
             isVisible = false;
+        }
+
+        private async Task CalculateFeeAsync(Method method)
+        {
+            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(method);
         }
     }
 }

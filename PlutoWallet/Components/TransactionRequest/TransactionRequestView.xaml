@@ -59,6 +59,9 @@
 
                 <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 
+                <Label TextColor="Orange"
+                       Text="{Binding Fee}" />
+
                 <Button Text="Sing and submit"
                         Clicked="OnSubmitClicked" />
 
