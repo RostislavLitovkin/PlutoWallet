@@ -16,6 +16,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public NftsStorage NftsStorage;
 
+        public ContractsStorage ContractsStorage;
+
 
         public AjunaClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
                 base(uri, chargeType)
@@ -26,6 +28,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.BalancesStorage = new BalancesStorage(this);
             this.AssetsStorage = new AssetsStorage(this);
             this.NftsStorage = new NftsStorage(this);
+            this.ContractsStorage = new ContractsStorage(this);
         }
 	}
 }
