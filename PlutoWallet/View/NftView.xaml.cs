@@ -30,7 +30,7 @@ public partial class NftView : ContentView
             return;
         }
 
-        UpdateNfts(Model.NFTsModel.GetMockNFTs());
+        //UpdateNfts(Model.NFTsModel.GetMockNFTs());
 
         ((NftViewModel)this.BindingContext).IsLoading = true;
 
