@@ -11,6 +11,9 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private ObservableCollection<NFT> nftMetadata = new ObservableCollection<NFT>();
 
+        [ObservableProperty]
+        private bool isLoading = false;
+
         public NftViewModel()
 		{
 

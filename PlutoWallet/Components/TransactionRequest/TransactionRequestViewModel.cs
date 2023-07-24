@@ -32,33 +32,49 @@ namespace PlutoWallet.Components.TransactionRequest
                     var pallet = client.MetaData.NodeMetadata.Modules[value.ModuleIndex];
                     Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
 
-                    PalletIndex = "Pallet: " + pallet.Name;
-                    CallIndex = "Call: " + metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
+                    PalletIndex = pallet.Name;
+                    CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[value.CallIndex].Name;
+
+
+
+                    CalculateFeeAsync(value);
                 }
                 catch
                 {
-                    PalletIndex = "Pallet index: " + value.ModuleIndex;
-                    CallIndex = "Call index: " + value.CallIndex;
+                    PalletIndex = "(" + value.ModuleIndex.ToString() + " index)"; 
+                    CallIndex = "(" + value.CallIndex.ToString() + "index)";
+
+                    Fee = "Fee: unknown";
                 }
 
                 if (value.Parameters.Length > 5)
                 {
-                    Parameters = "Parameters: 0x" + Convert.ToHexString(value.Parameters).Substring(0, 10) + "..";
+                    Parameters = "0x" + Convert.ToHexString(value.Parameters).Substring(0, 10) + "..";
                 }
                 else
                 {
-                    Parameters = "Parameters: 0x" + Convert.ToHexString(value.Parameters);
+                    Parameters = "0x" + Convert.ToHexString(value.Parameters);
                 }
             }
         }
 
         [ObservableProperty]
+        private string fee;
+
+        [ObservableProperty]
         private bool isVisible;
+
+     
 
         public TransactionRequestViewModel()
         {
             isVisible = false;
+        }
+
+        private async Task CalculateFeeAsync(Method method)
+        {
+            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(method);
         }
     }
 }

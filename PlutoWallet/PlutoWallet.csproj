@@ -178,6 +178,7 @@
 	  <None Remove="Resources\Images\plutowalleticon.svg" />
 	  <None Remove="Resources\Images\dusan.jpg" />
 	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
+	  <None Remove="Resources\Images\NetworkIcons\pba.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -249,6 +250,7 @@
 	  <BundleResource Include="Resources\Images\plutowalleticon.svg" />
 	  <BundleResource Include="Resources\Images\dusan.jpg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\basilisk.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
