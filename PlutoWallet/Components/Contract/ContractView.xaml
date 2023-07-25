@@ -12,41 +12,51 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional">
                     <HorizontalStackLayout>
                         <Label 
-                            x:Name="nameLabel"
-                            FontAttributes="Bold"
                             HorizontalOptions="Start"
-                            VerticalTextAlignment="End"/>
-                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
-                                   VerticalOptions="Center"
-                                   Margin="5, 0, 0, 0"
-                                   HeightRequest="15" WidthRequest="15"/>
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" Text="Counter contract" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
                     </HorizontalStackLayout>
-                
-                    <Label
-                        x:Name="statusLabel"
-                        HorizontalOptions="Start" />
+                    <HorizontalStackLayout>
+                        <Label
+                            HorizontalOptions="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Value: " />
+                                    <Span x:Name="valueText" Text="_unknown_" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+                        </Label>
+                        <Image WidthRequest="20" Margin="20, 0, 20, 0"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Start">
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                                Glyph="&#xf021;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="20" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnReloadClicked" />
+
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
 
-                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
-                       Aspect="AspectFit"
-                       Margin="0, 0, 60, 0"
-                       AbsoluteLayout.LayoutBounds="1, 0.5, 110, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
-
-                    </Image.GestureRecognizers>
-
-                </Image>
-
-                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
-                       Aspect="AspectFit"
-                       AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-
-                    </Image.GestureRecognizers>
-
-                </Image>
+                <Button AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Text="Increment"
+                    Clicked="OnIncrementClicked"/>
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

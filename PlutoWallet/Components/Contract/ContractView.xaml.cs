@@ -40,6 +40,13 @@ public partial class ContractView : ContentView
             Console.WriteLine("Done");
             Console.WriteLine(result);
 
+            var number = new U64();
+            number.Create(Utils.HexToByteArray(result));
+
+            Console.WriteLine(number.Value);
+
+            valueText.Text = number.Value.ToString();
+
         }
         catch (Exception ex)
         {
@@ -47,7 +54,7 @@ public partial class ContractView : ContentView
         }
     }
 
-    async void TapGestureRecognizer_Tapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnIncrementClicked(System.Object sender, System.EventArgs e)
     {
         try
         {
@@ -157,12 +164,9 @@ public partial class ContractView : ContentView
         }
     }
 
-    async void TapGestureRecognizer_Tapped_1(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnReloadClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        Console.WriteLine("Start fetch");
         await Setup();
-        Console.WriteLine("Fetch ended");
-
     }
 }
 
