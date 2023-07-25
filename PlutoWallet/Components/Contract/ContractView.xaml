@@ -29,6 +29,17 @@
 
                 <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
                        Aspect="AspectFit"
+                       Margin="0, 0, 60, 0"
+                       AbsoluteLayout.LayoutBounds="1, 0.5, 110, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1" />
+
+                    </Image.GestureRecognizers>
+
+                </Image>
+
+                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
+                       Aspect="AspectFit"
                        AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
