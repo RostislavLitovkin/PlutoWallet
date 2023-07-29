@@ -179,6 +179,7 @@
 	  <None Remove="Resources\Images\dusan.jpg" />
 	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
 	  <None Remove="Resources\Images\NetworkIcons\pba.png" />
+	  <None Remove="Components\Contract\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -375,6 +376,7 @@
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	  <Folder Include="Components\Nft\" />
+	  <Folder Include="Components\Contract\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

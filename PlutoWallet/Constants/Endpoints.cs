@@ -266,19 +266,7 @@ namespace PlutoWallet.Constants
                 Decimals = 0,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
-            } },
-            {
-                "PBA", new Endpoint
-                {
-                    Name = "Academy bootnodes",
-                    URL = "wss://academy.bootnodes.net/websocket",
-                    Icon = "pba.png",
-                    Unit = "PBA",
-                    Decimals = 12,
-                    SS58Prefix = 42,
-                    ChainType = ChainType.Substrate
-                }
-            }
+            } }
         };
 
 
