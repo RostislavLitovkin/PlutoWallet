@@ -68,7 +68,7 @@ public partial class App : Application
 
         DependencyService.Register<CustomItemViewModel>();
 
-        if (Preferences.ContainsKey("privateKey"))
+        if (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", ""))
         {
             MainPage = new NavigationPage(new BasePage());
         }

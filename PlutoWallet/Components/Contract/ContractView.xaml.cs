@@ -42,7 +42,7 @@ public partial class ContractView : ContentView
 
             var number = new U64();
             number.Create(Utils.HexToByteArray(result));
-
+             
             Console.WriteLine(number.Value);
 
             valueText.Text = number.Value.ToString();

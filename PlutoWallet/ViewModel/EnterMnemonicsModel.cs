@@ -36,9 +36,15 @@ namespace PlutoWallet.ViewModel
                 "privateKey",
                 Utils.Bytes2HexString(keyPair.Secret.key.GetBytes())
             );
+
             Preferences.Set(
                 "publicKey",
                  Utils.Bytes2HexString(keyPair.Public.Key)
+            );
+
+            Preferences.Set(
+                "mnemonics",
+                 mnemonicsString.Trim()
             );
         }
 

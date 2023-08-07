@@ -50,8 +50,6 @@ namespace PlutoWallet.ViewModel
             var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, ExpandMode.Ed25519);
             var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English);
 
-            Console.WriteLine("I am here");
-
             Preferences.Set(
                 "privateKey",
                 Utils.Bytes2HexString(keyPair.Secret.key.GetBytes())
@@ -59,6 +57,11 @@ namespace PlutoWallet.ViewModel
             Preferences.Set(
                 "publicKey",
                  Utils.Bytes2HexString(keyPair.Public.Key)
+            );
+
+            Preferences.Set(
+                "mnemonics",
+                 mnemonicsString.Trim()
             );
         }
 

@@ -5,30 +5,23 @@ public partial class SettingsPage : ContentPage
 {
 	public SettingsPage()
 	{
-		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
+
+        InitializeComponent();
 	}
 
-    //private void SaveEndpoint(System.Object sender, System.EventArgs e)
-    //{
-    //    viewModel.SaveEndpoint();
-    //}
-
-    private void ClearEndpoints(System.Object sender, System.EventArgs e)
+    async void OnPredefinedLayoutsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        viewModel.ClearEndpoints();
+        await Navigation.PushAsync(new PredefinedLayoutsPage());
     }
 
-    private void ShowPrivateKey(System.Object sender, System.EventArgs e)
+    void OnLogOutClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        viewModel.ShowPrivateKey();
-        showKey.Text = Preferences.Get("privateKey", "");
-        copyKey.IsVisible = true;
-    }
+        Preferences.Set("privateKey", "");
+        Preferences.Clear("privateKey");
 
-    private async void CopyText(System.Object sender, System.EventArgs e)
-    {
-        await Clipboard.Default.SetTextAsync(Preferences.Get("privateKey", ""));
-        var toast = Toast.Make("Copied to clipboard");
-        await toast.Show();
+
+        Console.WriteLine("Private key deleted");
     }
 }
