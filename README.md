@@ -6,10 +6,12 @@ To see the most recent working version, go to the [devel branch](https://github.
 
 Android apk: https://rostislavlitovkin.pythonanywhere.com/downloadplutowallet
 
-Other platforms will be available for download probably in August.
+Other platforms will be available for download probably in November.
 
 # PlutoWallet
-A sample wallet that implements [Plutonication](https://github.com/cisar2218/Plutonication).
+Multi-platform mobile wallet for substrate-based chains.
+Focuses on the best UX.
+First C# mobile wallet in Polkadot ecosystem.
 
 Supported platforms:
 - Android & WearOS
