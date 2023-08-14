@@ -6,6 +6,9 @@ using static Substrate.NetApi.Mnemonic;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.Input;
 using Schnorrkel.Keys;
+using Plugin.Fingerprint.Abstractions;
+using Plugin.Fingerprint;
+using Substrate.NetApi.Model.Types;
 
 namespace PlutoWallet.ViewModel
 {
@@ -39,30 +42,57 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string[] orderedMnemonicsArray;
 
-        public void Continue()
+        public async Task<bool> Continue()
         {
+            var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
+
+            var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+
+            if (result.Authenticated)
+            {
+                // Fingerprint set, perhaps do with it something in the future
+
+                Preferences.Set(
+                    "password",
+                     Password
+                );
+            }
+            else
+            {
+                return false;
+            }
+
+
             var mnemonicsString = string.Empty;
             foreach (var item in MnemonicsArray)
             {
                 mnemonicsString += item + " ";
             }
 
-            var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, ExpandMode.Ed25519);
-            var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English);
+            // This is default, could be changed in the future or with a setting
+            ExpandMode expandMode = ExpandMode.Uniform;
+
+            var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, expandMode);
+
+            var miniSecret = new MiniSecret(keyPair.Secret.key.GetBytes(), expandMode);
+
+            Account account = Account.Build(KeyType.Sr25519,
+                miniSecret.ExpandToSecret().ToBytes(),
+                miniSecret.GetPair().Public.Key);
 
             Preferences.Set(
-                "privateKey",
-                Utils.Bytes2HexString(keyPair.Secret.key.GetBytes())
-            );
-            Preferences.Set(
                 "publicKey",
-                 Utils.Bytes2HexString(keyPair.Public.Key)
+                 account.Value
             );
 
             Preferences.Set(
                 "mnemonics",
                  mnemonicsString.Trim()
             );
+
+            Preferences.Set("privateKeyExpandMode", 0);
+
+            return true;
         }
 
         public MnemonicsViewModel()

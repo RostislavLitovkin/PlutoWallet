@@ -4,6 +4,9 @@ using Substrate.NetApi.Model.Types;
 using Schnorrkel.Keys;
 using static Substrate.NetApi.Mnemonic;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Plugin.Fingerprint;
+using Plugin.Fingerprint.Abstractions;
+using PlutoWallet.Components.ConfirmTransaction;
 
 namespace PlutoWallet.Model
 {
@@ -18,7 +21,7 @@ namespace PlutoWallet.Model
         {
             var random = new Random();
 
-            var entropyBytes = new byte[24];
+            var entropyBytes = new byte[16];
             random.NextBytes(entropyBytes);
 
             var mnemonic = Mnemonic.MnemonicFromEntropy(entropyBytes, BIP39Wordlist.English);
@@ -28,36 +31,88 @@ namespace PlutoWallet.Model
 
         public static string GetSubstrateKey()
         {
-            return GetAccount().Value; // Utils.GetAddressFrom(Utils.HexToByteArray(GetPublicKey()), 42);
+            return Preferences.Get("publicKey", "Error - no pubKey");
         }
 
         public static string GetPublicKey()
         {
-            //return Preferences.Get("publicKey", "Error - no pubKey");
-            var array = Utils.GetPublicKeyFrom(GetAccount().Value);
-            return "0x" + BitConverter.ToString(array).Replace("-", string.Empty).ToLower(); //str;
-            //return Utils.GetAddressFrom(Utils.HexToByteArray(Preferences.Get("publicKey", "Error - no pubKey")), 42);
-            
+            // publicKey should be always saved
+            var array = GetPublicKeyBytes();
+            return Utils.Bytes2HexString(array);
         }
 
         public static byte[] GetPublicKeyBytes()
         {
-            //return Preferences.Get("publicKey", "Error - no pubKey");
-            return Utils.GetPublicKeyFrom(GetAccount().Value);
+            // publicKey should be always saved
+            return Utils.GetPublicKeyFrom(Preferences.Get("publicKey", "Error - no pubKey"));
         }
 
-        public static Account GetAccount()
+        /// <summary>
+        /// Call this method when you want to sign a message or transaction.
+        ///
+        /// To use correctly, use this line:
+        ///
+        /// if ((await KeysModel.GetAccount()).IsSome(out var account))
+        /// </summary>
+        public static async Task<Option<Account>> GetAccount()
         {
-            var miniSecret = new MiniSecret(Utils.HexToByteArray(Preferences.Get("privateKey", "")), ExpandMode.Ed25519);
+            var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
+            var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+            if (result.Authenticated)
+            {
+                // Fingerprint set, perhaps do with it something in the future
+            }
+            else
+            {
+                // Request password instead..
+                Console.WriteLine("Authentication failed");
 
-            /*return Account.Build(
-                KeyType.Ed25519,
-                Utils.HexToByteArray(Preferences.Get("privateKey", ""), true),
-                Utils.HexToByteArray(GetPublicKey(), true));*/
+                var viewModel = DependencyService.Get<ConfirmTransactionViewModel>();
 
-            return Account.Build(KeyType.Sr25519,
+                viewModel.Status = ConfirmTransactionStatus.Waiting;
+                viewModel.Password = "";
+                viewModel.ErrorIsVisible = false;
+                viewModel.IsVisible = true;
+
+
+                while (viewModel.Status == ConfirmTransactionStatus.Waiting)
+                {
+                    await Task.Delay(500);
+                }
+
+                if (viewModel.Status == ConfirmTransactionStatus.Verified)
+                {
+                    // Do verified animation
+
+                }
+                else if (viewModel.Status == ConfirmTransactionStatus.Denied)
+                {
+                    return Option<Account>.None;
+                }
+            }
+
+            ExpandMode expandMode;
+
+            switch (Preferences.Get("privateKeyExpandMode", 1))
+            {
+                case 0:
+                    expandMode = ExpandMode.Uniform;
+                    break;
+                case 1:
+                    expandMode = ExpandMode.Ed25519;
+                    break;
+                default:
+                    expandMode = ExpandMode.Uniform;
+                    break;
+            }
+
+            var keyPair = Mnemonic.GetKeyPairFromMnemonic(Preferences.Get("mnemonics", ""), Preferences.Get("password", ""), BIP39Wordlist.English, expandMode);
+
+            var miniSecret = new MiniSecret(keyPair.Secret.key.GetBytes(), expandMode);
+
+            return Option<Account>.Some(Account.Build(KeyType.Sr25519,
                 miniSecret.ExpandToSecret().ToBytes(),
-                miniSecret.GetPair().Public.Key);
+                miniSecret.GetPair().Public.Key));
         }
 
         public static AccountId32 GetAccountId32()

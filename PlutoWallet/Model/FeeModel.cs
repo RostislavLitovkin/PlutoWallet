@@ -57,7 +57,7 @@ namespace PlutoWallet.Model
 
             UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 transfer,
-                KeysModel.GetAccount(),
+                MockModel.GetMockAccount(),
                 charge,
                 lifeTime: 64,
                 signed: true,
@@ -82,7 +82,7 @@ namespace PlutoWallet.Model
 
             UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 method,
-                KeysModel.GetAccount(),
+                MockModel.GetMockAccount(),
                 charge,
                 lifeTime: 64,
                 signed: true,

@@ -11,7 +11,7 @@
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
-             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar" xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
              BackgroundColor="Black">
 
     <AbsoluteLayout
@@ -67,6 +67,8 @@
         <transactionrequest:TransactionRequestView />
 
         <staking:StakingRegistrationRequestView />
+
+        <confirmtransaction:ConfirmTransactionView />
         
         <messagepopup:MessagePopupView />
 

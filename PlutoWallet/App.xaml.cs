@@ -15,6 +15,7 @@ using PlutoWallet.View;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Staking;
 using PlutoWallet.Components.CustomLayouts;
+using PlutoWallet.Components.ConfirmTransaction;
 
 namespace PlutoWallet;
 
@@ -68,7 +69,10 @@ public partial class App : Application
 
         DependencyService.Register<CustomItemViewModel>();
 
-        if (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", ""))
+        DependencyService.Register<ConfirmTransactionViewModel>();
+
+
+        if (Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", ""))
         {
             MainPage = new NavigationPage(new BasePage());
         }

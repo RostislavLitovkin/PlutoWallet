@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.ConfirmTransaction.ConfirmTransactionView"
+             IsVisible="{Binding IsVisible}"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             Padding="20"
+             BackgroundColor="#66000000">
+    
+    <card:Card IsPopup="True">
+        <card:Card.View>
+        <AbsoluteLayout>
+
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                                 AbsoluteLayout.LayoutFlags="WidthProportional"
+                                 Spacing="10">
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="Verification"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Margin="20, 0, 20, 0" />
+
+                <Image HeightRequest="50" WidthRequest="50"
+                       Source="{AppThemeBinding Light=fingerprintblack.png, Dark=fingerprintwhite.png}"/>
+
+                <Entry Placeholder="Password" Text="{Binding Password}"
+                       Keyboard="Plain" IsPassword="True" TextChanged="OnPasswordChanged" />
+
+                <Label Text="Password does not match" x:Name="errorLabel" TextColor="Red"
+                       IsVisible="{Binding ErrorIsVisible}"/>
+
+                <Button Text="Verify"
+                        Clicked="OnVerifyClicked"/>
+
+            </VerticalStackLayout>
+
+           <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                </AbsoluteLayout.GestureRecognizers>
+
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+        
+    </card:Card.View>
+        </card:Card>
+</ContentView>
+

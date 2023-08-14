@@ -14,7 +14,11 @@ public partial class MnemonicsPage : ContentPage
 
     private async void ContinueToMainPageClicked(System.Object sender, System.EventArgs e)
 	{
-        viewModel.Continue();
-		await Navigation.PushAsync(new BasePage());
+		var result = await viewModel.Continue();
+
+        if (result)
+		{
+			await Navigation.PushAsync(new BasePage());
+		}
     }
 }

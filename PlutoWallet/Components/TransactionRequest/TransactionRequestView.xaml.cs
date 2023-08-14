@@ -29,12 +29,15 @@ public partial class TransactionRequestView : ContentView
 
             var client = Model.AjunaClientModel.Client;
 
-            await client.Author.SubmitExtrinsicAsync(
-                viewModel.AjunaMethod,
-                Model.KeysModel.GetAccount(),
-                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
-                64
-             );
+            if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
+            {
+                await client.Author.SubmitExtrinsicAsync(
+                    viewModel.AjunaMethod,
+                    account,
+                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
+                    64
+                );
+            }
 
             // Tell the dApp that the transaction was successfull
 
