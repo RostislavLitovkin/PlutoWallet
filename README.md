@@ -1,5 +1,3 @@
-Everything in this master branch was coded until the 17.2.2023 (Polkadot Global Series deadline date).
-
 To see the most recent working version, go to the [devel branch](https://github.com/RostislavLitovkin/PlutoWallet/tree/devel).
 
 # Download
@@ -77,7 +75,7 @@ development terminology:
 
 # Project folder structure
 
-- `/platforms` platform spacific codes, mainly code that ensures the boot on multiple platforms
+- `/Platforms` platform spacific codes, mainly code that ensures the boot on multiple platforms
 
 
 - `/Resources` all resources, including icons, images, fonts, splashscreen...
