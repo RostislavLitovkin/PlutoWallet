@@ -6,6 +6,21 @@ Android apk: https://rostislavlitovkin.pythonanywhere.com/downloadplutowallet
 
 Other platforms will be available for download probably in November.
 
+# Build and Debug locally
+
+```
+git clone https://github.com/RostislavLitovkin/PlutoWallet
+
+git checkout devel
+
+git submodule init
+git submodule update
+```
+
+I recommend using Visual Studio 2022: https://visualstudio.microsoft.com/vs/community/
+
+Detailed description on how to run the code: https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?tabs=vswin&pivots=devices-android
+
 # PlutoWallet
 Multi-platform mobile wallet for substrate-based chains.
 Focuses on the best UX.
