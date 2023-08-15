@@ -10,12 +10,12 @@ using PlutoWallet.Components.ConfirmTransaction;
 
 namespace PlutoWallet.Model
 {
-	public class KeysModel
-	{
-		public KeysModel()
-		{
+    public class KeysModel
+    {
+        public KeysModel()
+        {
 
-		}
+        }
 
         public static string[] GenerateMnemonicsArray()
         {
@@ -56,8 +56,24 @@ namespace PlutoWallet.Model
         /// </summary>
         public static async Task<Option<Account>> GetAccount()
         {
+            var biometricsEnabled = Preferences.Get("biometricsEnabled", false);
+
             var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
-            var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+            FingerprintAuthenticationResult result;
+
+            if (biometricsEnabled)
+            {
+                result = await CrossFingerprint.Current.AuthenticateAsync(request);
+            }
+            else
+            {
+                result = new FingerprintAuthenticationResult
+                {
+                    Status = FingerprintAuthenticationResultStatus.Denied,
+                };
+            }
+
+
             if (result.Authenticated)
             {
                 // Fingerprint set, perhaps do with it something in the future
@@ -106,9 +122,18 @@ namespace PlutoWallet.Model
                     break;
             }
 
-            var keyPair = Mnemonic.GetKeyPairFromMnemonic(Preferences.Get("mnemonics", ""), Preferences.Get("password", ""), BIP39Wordlist.English, expandMode);
+            if (Preferences.Get("usePrivateKey", false))
+            {
+                var miniSecret2 = new MiniSecret(Utils.HexToByteArray(Preferences.Get("privateKey", "")), expandMode);
 
-            var miniSecret = new MiniSecret(keyPair.Secret.key.GetBytes(), expandMode);
+                return Option<Account>.Some(Account.Build(KeyType.Sr25519,
+                    miniSecret2.ExpandToSecret().ToBytes(),
+                    miniSecret2.GetPair().Public.Key));
+            }
+
+            var secret = Mnemonic.GetSecretKeyFromMnemonic(Preferences.Get("mnemonics", ""), Preferences.Get("password", ""), BIP39Wordlist.English);
+
+            var miniSecret = new MiniSecret(secret, expandMode);
 
             return Option<Account>.Some(Account.Build(KeyType.Sr25519,
                 miniSecret.ExpandToSecret().ToBytes(),

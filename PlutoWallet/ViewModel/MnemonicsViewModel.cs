@@ -14,10 +14,9 @@ namespace PlutoWallet.ViewModel
 {
     public partial class MnemonicsViewModel : ObservableObject //, INotifyPropertyChanged
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
+       
         [ObservableProperty]
-        private string[] mnemonicsArray;
+        private string mnemonics;
 
         private string password;
         public string Password
@@ -44,39 +43,45 @@ namespace PlutoWallet.ViewModel
 
         public async Task<bool> Continue()
         {
-            var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
+            Preferences.Set("biometricsEnabled", false);
 
-            var result = await CrossFingerprint.Current.AuthenticateAsync(request);
-
-            if (result.Authenticated)
+            try
             {
-                // Fingerprint set, perhaps do with it something in the future
+                // Set biometrics
+                for (int i = 0; i < 5; i++)
+                {
+                    var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
 
-                Preferences.Set(
-                    "password",
-                     Password
-                );
+                    var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+
+                    if (result.Authenticated)
+                    {
+                        // Fingerprint set, perhaps do with it something in the future
+
+                        Preferences.Set("biometricsEnabled", true);
+
+                        break;
+                    }
+                    else
+                    {
+
+                    }
+                }
             }
-            else
+            catch
             {
-                return false;
-            }
 
-
-            var mnemonicsString = string.Empty;
-            foreach (var item in MnemonicsArray)
-            {
-                mnemonicsString += item + " ";
             }
 
             // This is default, could be changed in the future or with a setting
-            ExpandMode expandMode = ExpandMode.Uniform;
+            ExpandMode expandMode = ExpandMode.Ed25519;
 
-            var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, expandMode);
+            var secret = Mnemonic.GetSecretKeyFromMnemonic(Mnemonics, Password, BIP39Wordlist.English);
 
-            var miniSecret = new MiniSecret(keyPair.Secret.key.GetBytes(), expandMode);
+            var miniSecret = new MiniSecret(secret, expandMode);
 
-            Account account = Account.Build(KeyType.Sr25519,
+            Account account = Account.Build(
+                KeyType.Sr25519,
                 miniSecret.ExpandToSecret().ToBytes(),
                 miniSecret.GetPair().Public.Key);
 
@@ -87,24 +92,27 @@ namespace PlutoWallet.ViewModel
 
             Preferences.Set(
                 "mnemonics",
-                 mnemonicsString.Trim()
+                 Mnemonics
             );
 
-            Preferences.Set("privateKeyExpandMode", 0);
+            Preferences.Set("privateKeyExpandMode", 1);
+
+            Preferences.Set("usePrivateKey", false);
 
             return true;
         }
 
         public MnemonicsViewModel()
         {
-            mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
-            orderedMnemonicsArray = new string[mnemonicsArray.Count()];
+            var mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
+            string temp = string.Empty;
 
-            int i = 0;
             foreach (string mnemonic in mnemonicsArray)
             {
-                orderedMnemonicsArray[i] = ++i + ". " + mnemonic;
+                temp += " " + mnemonic;
             }
+
+            Mnemonics = temp.Trim();
         }
     }
 }

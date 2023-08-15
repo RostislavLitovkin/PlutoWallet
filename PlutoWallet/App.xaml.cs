@@ -71,14 +71,13 @@ public partial class App : Application
 
         DependencyService.Register<ConfirmTransactionViewModel>();
 
-
-        if (Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", ""))
+        if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {
             MainPage = new NavigationPage(new BasePage());
         }
         else
         {
-            MainPage = new NavigationPage(new MnemonicsPage());
+            MainPage = new NavigationPage(new BeginPage());
         }
 	}
 }
