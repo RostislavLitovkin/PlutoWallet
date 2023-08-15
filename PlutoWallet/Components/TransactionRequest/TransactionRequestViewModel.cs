@@ -43,7 +43,7 @@ namespace PlutoWallet.Components.TransactionRequest
                 catch
                 {
                     PalletIndex = "(" + value.ModuleIndex.ToString() + " index)"; 
-                    CallIndex = "(" + value.CallIndex.ToString() + "index)";
+                    CallIndex = "(" + value.CallIndex.ToString() + " index)";
 
                     Fee = "Fee: unknown";
                 }
