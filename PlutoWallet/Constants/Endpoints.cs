@@ -245,6 +245,18 @@ namespace PlutoWallet.Constants
                 Decimals = 12,
                 ChainType = ChainType.Substrate,
             } },
+            { "hydradx", new Endpoint
+            {
+                Name = "HydraDX",
+                URL = "wss://hydradx-rpc.dwellir.com",
+                Icon = "hydradx.png",
+                Unit = "HDX",
+                SS58Prefix = 63,
+                Decimals = 12,
+                ChainType = ChainType.Substrate,
+                CalamarChainName = "hydradx",
+                SupportsNfts = true
+            } },
             {
                 "moonriver", new Endpoint
                 {
