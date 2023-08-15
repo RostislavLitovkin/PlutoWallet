@@ -143,3 +143,4 @@ A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name
 - [Plugin.Fingerprint](https://www.nuget.org/packages/Plugin.Fingerprint/)
 - [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
 - [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/dotnet)
+- [MarkDig](https://github.com/xoofx/markdig)
