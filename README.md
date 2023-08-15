@@ -70,9 +70,11 @@ This can be especially handy for dApp projects:
 - With PlutoLayouts, dApp developers can export the ideal layout (UX optimised for their specific app) and share them to the new users so that they have got the ideal UX out of the box. They will see only features they would actually care about.
 - It is highly customisable. When the users decide they want to do more in the ecosystem, they can easily add more functionalities to the wallet. They can learn to use Polkadot on their own pace.
 
-### 3) Plutonication ability
-Plutonication allows users to connect PlutoWallet to other dApps seamlessly (on any platforms).
+### 3) Plutonication
+Plutonication allows users to connect PlutoWallet to other dApps seamlessly on any platforms, accross multiple codebases.
 DApp just generates a QR code and once it is scanned in the wallet, they will pair and the wallet will be able to receive transaction requests from the dApp. To learn more, visit https://github.com/cisar2218/Plutonication.
+
+- It works the same way as WalletConnect protocol.
 
 ### 4) Multiplatform development
 This project is developed using .net MAUI framework, which allows simple development of native mobile apps on many different platforms from a single codebase.
