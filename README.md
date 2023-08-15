@@ -19,6 +19,8 @@ git submodule update
 
 I recommend using Visual Studio 2022: https://visualstudio.microsoft.com/vs/community/
 
+Install **.net MAUI**: https://learn.microsoft.com/en-us/dotnet/maui/get-started/installation?tabs=vswin
+
 Detailed description on how to run the code: https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?tabs=vswin&pivots=devices-android
 
 # PlutoWallet
