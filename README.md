@@ -129,5 +129,12 @@ development terminology:
 
 A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
 
-### Inspiration:
-- https://walletconnect.com/
+# Tech Stack
+- C# programming language
+- [.net MAUI](https://dotnet.microsoft.com/en-us/apps/maui)
+- [Substrate.NetApi](https://github.com/SubstrateGaming/Substrate.NET.API)
+- [Uniquery.net](https://github.com/RostislavLitovkin/Uniquery.Net)
+- [Plutonication](https://github.com/cisar2218/plutonication)
+- [Plugin.Fingerprint](https://www.nuget.org/packages/Plugin.Fingerprint/)
+- [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
+- [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/dotnet)
