@@ -19,6 +19,8 @@ public partial class MiniDualSwitch : ContentView
 
     public Func<bool> SecondMethod { set { secondMethod = value; } }
 
+    public int Selected => selected;
+
     void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Console.WriteLine("Changing switch state");

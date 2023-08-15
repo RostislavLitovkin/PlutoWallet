@@ -4,7 +4,11 @@ public partial class MnemonicsPage : ContentPage
 {
 	public MnemonicsPage()
 	{
-		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
+
+
+        InitializeComponent();
 	}
 
 	private async void GoToEnterMnemonics(System.Object sender, System.EventArgs e)
@@ -14,7 +18,11 @@ public partial class MnemonicsPage : ContentPage
 
     private async void ContinueToMainPageClicked(System.Object sender, System.EventArgs e)
 	{
-        viewModel.Continue();
-		await Navigation.PushAsync(new BasePage());
+		var result = await viewModel.Continue();
+
+        if (result)
+		{
+			await Navigation.PushAsync(new BasePage());
+		}
     }
 }

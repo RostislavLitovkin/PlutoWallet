@@ -17,7 +17,8 @@
                         Padding="0"
                         HeightRequest="{Binding Source={x:Reference border}, Path=Width}"
                         x:Name="border"
-                        Grid.Column="0">
+                        Grid.Column="0"
+                        StrokeThickness="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
 
