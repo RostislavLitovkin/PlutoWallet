@@ -80,6 +80,25 @@ DApp just generates a QR code and once it is scanned in the wallet, they will pa
 This project is developed using .net MAUI framework, which allows simple development of native mobile apps on many different platforms from a single codebase.
 This is crucial for quick (and easier) development while preserving the quality.
 
+### 5) Market leading NFT support
+The largest NFT support in the whole Polkadot ecosystem, thanks to [Uniquery.Net](https://github.com/RostislavLitovkin/Uniquery.Net).
+
+Supported Networks/NftStandards:
+- [x] Rmrk
+- [x] RmrkV2
+- [x] Basilisk
+- [x] Glmr
+- [x] Movr
+- [x] Unique
+- [x] Quartz
+- [x] Opal
+- [x] Acala (OnFinality BETA)
+- [x] Astar (OnFinality BETA)
+- [x] Shiden (OnFinality BETA)
+- [x] Statemine Nfts pallet
+- [x] Statemine Uniques pallet
+more to come.
+
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 
