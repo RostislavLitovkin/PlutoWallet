@@ -57,9 +57,12 @@ The wallet supports these functionalities:
 ### 1) Multinetwork optimisation
 The UI/UX is optimised to support multichain out of the box.
 Instead of having one chain selected at a time, you can have chain groups.
-This makes the UX more approachable and UI simpler.
+This makes the UI more approachable and simple.
 
 ### 2) Custom layouts (PlutoLayouts)
+
+- Well prepared video presentation: https://youtu.be/ojU8-w6u5Oo
+
 Extremely important tool for onboarding new users.
 Not only can you optimise UI layouts to your needs, you can also export them to other users.
 This can be especially handy for dApp projects:
