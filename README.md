@@ -97,7 +97,7 @@ Supported Networks/NftStandards:
 - [x] Shiden (OnFinality BETA)
 - [x] Statemine Nfts pallet
 - [x] Statemine Uniques pallet
-more to come.
+- [ ] more to come...
 
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
