@@ -66,6 +66,8 @@
         
         <transactionrequest:TransactionRequestView />
 
+        <transactionrequest:MessageSignRequestView />
+
         <staking:StakingRegistrationRequestView />
 
         <confirmtransaction:ConfirmTransactionView />

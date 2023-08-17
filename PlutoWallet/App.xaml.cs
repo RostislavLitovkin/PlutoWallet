@@ -71,6 +71,8 @@ public partial class App : Application
 
         DependencyService.Register<ConfirmTransactionViewModel>();
 
+        DependencyService.Register<MessageSignRequestViewModel>();
+
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {
             MainPage = new NavigationPage(new BasePage());

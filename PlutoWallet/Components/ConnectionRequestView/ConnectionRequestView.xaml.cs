@@ -79,7 +79,35 @@ public partial class ConnectionRequestView : ContentView
                         messagePopup.IsVisible = true;
                     }
 
-                });
+                },
+                signRaw: raw =>
+                {
+                    try
+                    {
+                        Plutonication.Message message = JsonConvert.DeserializeObject<Plutonication.Message[]>(raw.ToString())[0];
+
+                        if (message.type != "bytes")
+                        {
+                            throw new Exception("Message is not in bytes format");
+                        }
+
+                        var messageSignRequest = DependencyService.Get<MessageSignRequestViewModel>();
+
+                        messageSignRequest.Message = message;
+                        messageSignRequest.MessageString = message.data;
+                        messageSignRequest.IsVisible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                        messagePopup.Title = "Error";
+                        messagePopup.Text = ex.Message;
+
+                        messagePopup.IsVisible = true;
+                    }
+                }
+                );
 
             // setup message receive
             //..

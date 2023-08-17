@@ -16,6 +16,7 @@ public partial class TransactionRequestView : ContentView
 
         BindingContext = DependencyService.Get<TransactionRequestViewModel>();
     }
+
     async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         // Maybe send a refuse message 
@@ -41,7 +42,6 @@ public partial class TransactionRequestView : ContentView
 
     async void OnSubmitClicked(System.Object sender, System.EventArgs e)
     {
-
         try
         {
             var viewModel = DependencyService.Get<TransactionRequestViewModel>();
