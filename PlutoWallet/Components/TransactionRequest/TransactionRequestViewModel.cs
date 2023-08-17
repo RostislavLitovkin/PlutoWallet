@@ -65,7 +65,8 @@ namespace PlutoWallet.Components.TransactionRequest
         [ObservableProperty]
         private bool isVisible;
 
-     
+        [ObservableProperty]
+        private Plutonication.Payload payload;
 
         public TransactionRequestViewModel()
         {

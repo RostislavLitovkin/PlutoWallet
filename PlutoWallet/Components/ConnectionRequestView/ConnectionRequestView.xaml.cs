@@ -54,6 +54,7 @@ public partial class ConnectionRequestView : ContentView
                         var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
                         transactionRequest.AjunaMethod = method;
+                        transactionRequest.Payload = payload;
                         transactionRequest.IsVisible = true;
 
                         //byte[] signature = Sr25519v091.SignSimple(Model.KeysModel.GetAccount().Bytes, Model.KeysModel.GetAccount().PrivateKey, payload.InComingBytes[0]);
