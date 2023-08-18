@@ -50,15 +50,17 @@ namespace PlutoWallet.Model
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
+            var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
+
+            await client.ConnectAsync();
+
+            List<NFT> nfts = new List<NFT>();
+
             try
             {
-                var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
-
-                await client.ConnectAsync();
-
                 List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
 
-                List<NFT> nfts = new List<NFT>();
+                
 
                 foreach (string collectionItemId in collectionItemIds)
                 {
@@ -66,6 +68,19 @@ namespace PlutoWallet.Model
                     nfts.Last().Endpoint = endpoint;
                 }
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+                // Later do something about this
+
+                //return new List<NFT>();
+            }
+
+
+            try
+            {
                 List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
 
                 foreach (string collectionItemId in uniquesCollectionItemIds)
@@ -74,7 +89,8 @@ namespace PlutoWallet.Model
                     nfts.Last().Endpoint = endpoint;
                 }
 
-                return nfts;
+                
+
             }
             catch (Exception ex)
             {
@@ -82,8 +98,10 @@ namespace PlutoWallet.Model
 
                 // Later do something about this
 
-                return new List<NFT>();
+                //return new List<NFT>();
             }
+
+            return nfts;
         }
 
         public static List<NFT> GetMockNFTs()

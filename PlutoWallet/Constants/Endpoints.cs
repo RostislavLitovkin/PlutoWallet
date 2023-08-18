@@ -157,6 +157,18 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
                 SupportsNfts = true,
+                CalamarChainName = "statemine"
+            } },
+            { "statemint", new Endpoint {
+                Name = "Statemint",
+                URL = "wss://polkadot-asset-hub-rpc.polkadot.io",
+                Icon = "statemint.png",
+                Unit = "DOT",
+                Decimals = 10,
+                SS58Prefix = 0,
+                ChainType = ChainType.Substrate,
+                SupportsNfts = true,
+                CalamarChainName = "statemint"
             } },
             { "unique", new Endpoint
             {
