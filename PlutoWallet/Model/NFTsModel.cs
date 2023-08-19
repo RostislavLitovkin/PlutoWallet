@@ -45,7 +45,7 @@ namespace PlutoWallet.Model
 	{
         public static async Task AddNFTsAsync(Endpoint endpoint, Action<List<NFT>> updateNfts)
         {
-            updateNfts(await GetNFTsAsync(endpoint));
+            updateNfts.Invoke(await GetNFTsAsync(endpoint));
         }
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
@@ -74,8 +74,6 @@ namespace PlutoWallet.Model
                 Console.WriteLine(ex.Message);
 
                 // Later do something about this
-
-                //return new List<NFT>();
             }
 
 
@@ -97,8 +95,6 @@ namespace PlutoWallet.Model
                 Console.WriteLine(ex.Message);
 
                 // Later do something about this
-
-                //return new List<NFT>();
             }
 
             return nfts;
@@ -131,8 +127,12 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, CancellationToken.None);
 
+            Console.WriteLine("Result: ");
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
+            Console.WriteLine(ipfsLink);
+
             string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
+
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 

@@ -14,7 +14,7 @@ namespace PlutoWallet.Model
 
             if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://")) {
 
-                return ipfsLink;
+                return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
 
             return "https://ipfs.io/ipfs/" + RemoveNonHexadecimalCharacters(ipfsLink);

@@ -136,6 +136,7 @@ namespace PlutoWallet.Constants
                 Decimals = 12,
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
+                SupportsNfts = true,
             } },
             { "bajunrococo", new Endpoint
             {

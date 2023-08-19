@@ -57,17 +57,6 @@ public partial class ConnectionRequestView : ContentView
                         transactionRequest.Payload = payload;
                         transactionRequest.IsVisible = true;
 
-                        //byte[] signature = Sr25519v091.SignSimple(Model.KeysModel.GetAccount().Bytes, Model.KeysModel.GetAccount().PrivateKey, payload.InComingBytes[0]);
-
-                        /*
-                        var signerResult = new SignerResult
-                        {
-                            id = 0,
-                            signature = Utils.Bytes2HexString(signature),
-                        };
-
-                        PlutonicationWalletClient.SendSignedPayloadAsync(signerResult);
-                        */
                     }
                     catch (Exception ex)
                     {
@@ -107,10 +96,7 @@ public partial class ConnectionRequestView : ContentView
                         messagePopup.IsVisible = true;
                     }
                 }
-                );
-
-            // setup message receive
-            //..
+            );
 
             viewModel.IsVisible = false;
         }

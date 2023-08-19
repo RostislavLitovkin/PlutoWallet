@@ -75,7 +75,7 @@ namespace PlutoWallet.Model
 
         public static async Task AddRmrkNfts(Action<List<NFT>> updateNfts)
         {
-            updateNfts(await GetAccountRmrk());
+            updateNfts.Invoke(await GetAccountRmrk());
         }
 
         public static async Task<List<NFT>> GetAccountRmrk()

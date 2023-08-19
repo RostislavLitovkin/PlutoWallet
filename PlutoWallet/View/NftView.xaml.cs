@@ -40,13 +40,11 @@ public partial class NftView : ContentView
         {
             if (endpoint.SupportsNfts)
             {
-                addNftsTaskList.Add(Model.NFTsModel.AddNFTsAsync(endpoint, UpdateNfts));
+                await Model.NFTsModel.AddNFTsAsync(endpoint, UpdateNfts);
             }
         }
 
-        addNftsTaskList.Add(Model.UniqueryModel.AddRmrkNfts(UpdateNfts));
-
-        await Task.WhenAll(addNftsTaskList);
+        await Model.UniqueryModel.AddRmrkNfts(UpdateNfts);
 
         ((NftViewModel)this.BindingContext).IsLoading = false;
     }
