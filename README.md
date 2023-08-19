@@ -101,7 +101,18 @@ Supported Networks/NftStandards:
 
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
+<img width="1512" alt="Screenshot 2023-08-19 at 22 50 21" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/6c10fbe1-ad31-4aa3-8e3f-dcfbfeaf4aaf">
 
+# Tech Stack
+- C# programming language
+- [.net MAUI](https://dotnet.microsoft.com/en-us/apps/maui)
+- [Substrate.NetApi](https://github.com/SubstrateGaming/Substrate.NET.API)
+- [Uniquery.net](https://github.com/RostislavLitovkin/Uniquery.Net)
+- [Plutonication](https://github.com/cisar2218/plutonication)
+- [Plugin.Fingerprint](https://www.nuget.org/packages/Plugin.Fingerprint/)
+- [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
+- [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/dotnet)
+- [MarkDig](https://github.com/xoofx/markdig)
 
 # Terminology
 - dApp = any application that uses crypto functionalities. In order to use dApps, it needs to communicate with the crypto wallet somehow, or it needs to know your private key (very insecure).
@@ -138,28 +149,3 @@ development terminology:
 
 
 - `/Properties` nothing important
-
-##### QR code docs (format):
-1) Starts with ``` plutonication: ```
-2) Query parameters:
-  - url = dApp url to connect to (with port),
-    example: ``` url=192.168.0.1:1234 ```
-   - key  = password key to connect,
-    example: ``` key=password123 ```
-  - name (optional) = dApp name,
-    example: ``` name=Galaxy logic game ```
-  - icon (optional) = dApp icon url
-    example: ``` icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
-
-A complete example: ``` plutonication:?url=192.168.0.1:8000&key=password123&name=Galaxy logic game&icon=http://rostislavlitovkin.pythonanywhere.com/logo ```
-
-# Tech Stack
-- C# programming language
-- [.net MAUI](https://dotnet.microsoft.com/en-us/apps/maui)
-- [Substrate.NetApi](https://github.com/SubstrateGaming/Substrate.NET.API)
-- [Uniquery.net](https://github.com/RostislavLitovkin/Uniquery.Net)
-- [Plutonication](https://github.com/cisar2218/plutonication)
-- [Plugin.Fingerprint](https://www.nuget.org/packages/Plugin.Fingerprint/)
-- [CommunityToolkit.Maui](https://github.com/CommunityToolkit/Maui)
-- [CommunityToolkit.Mvvm](https://github.com/CommunityToolkit/dotnet)
-- [MarkDig](https://github.com/xoofx/markdig)
