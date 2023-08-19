@@ -24,6 +24,8 @@ Install **.net MAUI**: https://learn.microsoft.com/en-us/dotnet/maui/get-started
 Detailed description on how to run the code: https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?tabs=vswin&pivots=devices-android
 
 # PlutoWallet
+<img width="1512" alt="Screenshot 2023-08-19 at 23 28 08" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/d09f81ff-a85d-44ed-a4be-075861de4caf">
+
 Multi-platform mobile wallet for substrate-based chains.
 Focuses on the best UX.
 First C# mobile wallet in Polkadot ecosystem.
@@ -102,6 +104,27 @@ Supported Networks/NftStandards:
 # [Plutonication](https://github.com/cisar2218/Plutonication)
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 <img width="1512" alt="Screenshot 2023-08-19 at 22 50 21" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/6c10fbe1-ad31-4aa3-8e3f-dcfbfeaf4aaf">
+
+# Achievements
+- 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category
+
+# Current team
+
+#### [Rostislav Litovkin](http://rostislavlitovkin.pythonanywhere.com/aboutme)
+- Alumnus at Polkadot Blockchain Academy 2023 in Berkeley
+- Experienced .net MAUI developer, e.g.:
+   - [Galaxy Logic Game](https://github.com/RostislavLitovkin/galaxylogicgamemaui) (successful game for watches and mobiles, 50k+ downloads)
+- Frontend developer at [Calamar explorer](https://calamar.app/)
+- Successful student at Polkadot DevCamp #2
+- Successful student at [Solana Summer School](https://ackeeblockchain.com/school-of-solana)
+- Polkadot Global Series 2023 (Europe) - second place
+- Audience choice prize at EthPrague 2023
+
+#### Dušan Jánsky
+- Alumnus at Polkadot Blockchain Academy 2023 in Berkeley
+- Student at Faculty of Electrical Engineering Czech Technical University in Prague - Opens Informatics (specialization in computer games and computer graphics)
+- Fullstack developer at [Universal Scientific Technologies](https://www.ust.cz/)
+- Polkadot Global Series 2023 (Europe) - second place
 
 # Tech Stack
 - C# programming language
