@@ -188,6 +188,7 @@
 	  <None Remove="Resources\Images\fingerprintblack.svg" />
 	  <None Remove="Resources\Images\fingerprintwhite.svg" />
 	  <None Remove="Components\ConfirmTransaction\" />
+	  <None Remove="Resources\Images\space.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -198,7 +199,6 @@
 	  <BundleResource Include="Resources\Fonts\Exodar-Outline.ttf" />
 	  <BundleResource Include="Resources\Splash\splash.svg" />
 	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
-	  <BundleResource Include="Resources\Images\space.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\unique.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\t0rn.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\subsocial.png" />
@@ -262,6 +262,7 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
 	  <BundleResource Include="Resources\Images\fingerprintblack.svg" />
 	  <BundleResource Include="Resources\Images\fingerprintwhite.svg" />
+	  <BundleResource Include="Resources\Images\space.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
