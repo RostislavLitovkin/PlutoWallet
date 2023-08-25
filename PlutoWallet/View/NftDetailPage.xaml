@@ -25,6 +25,7 @@
 
                     <nft:NftDescriptionView Description="{Binding Description}" />
 
+                    <nft:NftAttributesView Attributes="{Binding Attributes}" />
                 </VerticalStackLayout>
 
             </VerticalStackLayout>

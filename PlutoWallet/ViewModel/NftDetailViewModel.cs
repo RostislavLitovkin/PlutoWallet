@@ -13,6 +13,7 @@ namespace PlutoWallet.ViewModel
                 Description = value.Description;
                 Image = value.Image;
                 Endpoint = value.Endpoint;
+                //Attributes = value.Attributes;
             }
         }
 
@@ -27,6 +28,10 @@ namespace PlutoWallet.ViewModel
 
         [ObservableProperty]
         private Endpoint endpoint;
+
+        [ObservableProperty]
+        private string[] attributes;
+
 
         public NftDetailViewModel()
 		{

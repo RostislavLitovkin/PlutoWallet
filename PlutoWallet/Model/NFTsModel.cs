@@ -60,14 +60,11 @@ namespace PlutoWallet.Model
             {
                 List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
 
-                
-
                 foreach (string collectionItemId in collectionItemIds)
                 {
                     nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
                     nfts.Last().Endpoint = endpoint;
                 }
-
             }
             catch (Exception ex)
             {
@@ -75,7 +72,6 @@ namespace PlutoWallet.Model
 
                 // Later do something about this
             }
-
 
             try
             {
@@ -96,6 +92,8 @@ namespace PlutoWallet.Model
 
                 // Later do something about this
             }
+
+            client.Dispose();
 
             return nfts;
         }
@@ -127,12 +125,9 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, CancellationToken.None);
 
-            Console.WriteLine("Result: ");
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
-            Console.WriteLine(ipfsLink);
 
             string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
-
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
@@ -189,11 +184,10 @@ Hopefully it will fulfill the test functionalities correctly.",
             {
                 var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Uniques", "InstanceMetadataOf")) + collectionItemId;
 
-                Console.WriteLine("Fetching metadata: " + parameters);
                 var result = await client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types.ItemMetadata>(parameters, CancellationToken.None);
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
-                Console.WriteLine("ipfsLink: " + ipfsLink);
+
                 string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
             
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
