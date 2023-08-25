@@ -187,6 +187,9 @@
 	  <None Remove="Components\Settings\" />
 	  <None Remove="Resources\Images\fingerprintblack.svg" />
 	  <None Remove="Resources\Images\fingerprintwhite.svg" />
+	  <None Remove="Resources\Images\transferblack.svg" />
+	  <None Remove="Resources\Images\transferwhite.svg" />
+
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
 	</ItemGroup>
@@ -262,6 +265,9 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
 	  <BundleResource Include="Resources\Images\fingerprintblack.svg" />
 	  <BundleResource Include="Resources\Images\fingerprintwhite.svg" />
+	  <BundleResource Include="Resources\Images\transferblack.svg" />
+	  <BundleResource Include="Resources\Images\transferwhite.svg" />
+
 	  <BundleResource Include="Resources\Images\space.png" />
 	</ItemGroup>
 	<ItemGroup>
