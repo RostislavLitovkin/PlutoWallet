@@ -21,11 +21,7 @@ public partial class ShowMnemonic : ContentView
 			return;
 		}
 
-		var mnemonics = Preferences.Get("mnemonics", "No private key saved");
+		var mnemonics = Preferences.Get("usePrivateKey", false) ? Preferences.Get("privateKey", "No private key saved") : Preferences.Get("mnemonics", "No mnemonics saved");
 		mnemonicLabel.Text = mnemonics;
-		
-        await Clipboard.Default.SetTextAsync(mnemonics);
-        var toast = Toast.Make("Copied to clipboard");
-        await toast.Show();
     }
 }
