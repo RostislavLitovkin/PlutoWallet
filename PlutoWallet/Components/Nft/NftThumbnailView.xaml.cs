@@ -45,6 +45,12 @@ public partial class NftThumbnailView : ContentView
             control.networkBubble.Icon = ((Endpoint)newValue).Icon;
         });
 
+    public static readonly BindableProperty AttributesProperty = BindableProperty.Create(
+        nameof(Attributes), typeof(string[]), typeof(NftThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            // ..
+        });
 
     public NftThumbnailView()
 	{
@@ -79,6 +85,13 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(EndpointProperty, value);
     }
 
+    public string[] Attributes
+    {
+        get => (string[])GetValue(AttributesProperty);
+
+        set => SetValue(AttributesProperty, value);
+    }
+
     public NFT Nft
     {
         get;
@@ -97,6 +110,7 @@ public partial class NftThumbnailView : ContentView
         viewModel.Description = this.Description;
         viewModel.Image = this.Image;
         viewModel.Endpoint = this.Endpoint;
+        viewModel.Attributes = this.Attributes;
 
 
         await Navigation.PushAsync(new NftDetailPage(viewModel));

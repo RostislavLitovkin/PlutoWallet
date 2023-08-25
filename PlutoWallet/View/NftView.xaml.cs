@@ -53,6 +53,14 @@ public partial class NftView : ContentView
     {
         foreach (NFT newNft in newNfts)
         {
+            ((NftViewModel)this.BindingContext).Nfts.Add(newNft);
+        }
+
+
+        // this may be useful for later optimizations
+        /*
+        foreach (NFT newNft in newNfts)
+        {
             bool isContained = false;
             foreach (NFT savedNft in savedNfts)
             {
@@ -76,5 +84,6 @@ public partial class NftView : ContentView
                 });
             }
         }
+        */
     }
 }

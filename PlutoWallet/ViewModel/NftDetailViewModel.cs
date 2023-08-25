@@ -13,7 +13,7 @@ namespace PlutoWallet.ViewModel
                 Description = value.Description;
                 Image = value.Image;
                 Endpoint = value.Endpoint;
-                //Attributes = value.Attributes;
+                Attributes = value.Attributes;
             }
         }
 

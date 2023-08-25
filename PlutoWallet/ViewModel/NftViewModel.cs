@@ -9,7 +9,7 @@ namespace PlutoWallet.ViewModel
 	public partial class NftViewModel : ObservableObject
 	{
         [ObservableProperty]
-        private ObservableCollection<NFT> nftMetadata = new ObservableCollection<NFT>();
+        private ObservableCollection<NFT> nfts = new ObservableCollection<NFT>() { };
 
         [ObservableProperty]
         private bool isLoading = false;
