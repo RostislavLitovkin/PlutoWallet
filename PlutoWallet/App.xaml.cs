@@ -73,6 +73,8 @@ public partial class App : Application
 
         DependencyService.Register<MessageSignRequestViewModel>();
 
+        DependencyService.Register<NftViewModel>();
+
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {
             MainPage = new NavigationPage(new BasePage());

@@ -115,4 +115,9 @@ public partial class NftThumbnailView : ContentView
 
         await Navigation.PushAsync(new NftDetailPage(viewModel));
     }
+
+    void TapGestureRecognizer_Tapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        Console.WriteLine("BAF");
+    }
 }

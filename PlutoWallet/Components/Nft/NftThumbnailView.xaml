@@ -130,5 +130,9 @@
         </card:Card.View>
 
     </card:Card>
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+
+    </ContentView.GestureRecognizers>
 </ContentView>
 

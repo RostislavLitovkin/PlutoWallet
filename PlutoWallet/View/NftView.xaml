@@ -4,16 +4,11 @@
              xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              x:Class="PlutoWallet.View.NftView">
-    <ContentView.BindingContext>
-        <viewmodel:NftViewModel />
-
-    </ContentView.BindingContext>
     <ScrollView
             Orientation="Vertical"
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
         <VerticalStackLayout
-            x:Name="stackLayout"
             HorizontalOptions="Center"
             Spacing="15"
             Padding="20, 65, 20, 200"
