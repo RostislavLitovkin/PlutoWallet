@@ -39,7 +39,7 @@
             
         </ScrollView>
 
-        <navigationbar:TopNavigationBar Title="Predefined layouts"
+        <navigationbar:TopNavigationBar Title="Settings"
                                         x:Name="topNavigationBar" />
 
     </AbsoluteLayout>

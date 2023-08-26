@@ -9,6 +9,7 @@ using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json;
 using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
+using Substrate.NetApi.Model.Types.Primitive;
 
 namespace PlutoWallet.Model
 {
@@ -23,7 +24,8 @@ namespace PlutoWallet.Model
         [JsonProperty("external_url")]
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
-        public int CollectionId { get; set; }
+        public uint CollectionId { get; set; }
+        public uint ItemId { get; set; }
         public Endpoint Endpoint { get; set; }
 
         public override bool Equals(object obj)
@@ -43,9 +45,9 @@ namespace PlutoWallet.Model
 
 	public class NFTsModel
 	{
-        public static async Task AddNFTsAsync(Endpoint endpoint, Action<List<NFT>> updateNfts)
+        public static async Task<List<NFT>> AddNFTsAsync(Endpoint endpoint)
         {
-            updateNfts.Invoke(await GetNFTsAsync(endpoint));
+            return await GetNFTsAsync(endpoint);
         }
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
@@ -60,14 +62,22 @@ namespace PlutoWallet.Model
             {
                 List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
 
-                
-
                 foreach (string collectionItemId in collectionItemIds)
                 {
                     nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
                     nfts.Last().Endpoint = endpoint;
-                }
 
+
+                    U32 collectionId = new U32();
+                    collectionId.Create(Utils.HexToByteArray(collectionItemId.Substring(32, 8)));
+                    nfts.Last().CollectionId = collectionId.Value;
+
+                    U32 itemId = new U32();
+                    itemId.Create(Utils.HexToByteArray(collectionItemId.Substring(72, 8)));
+
+                    nfts.Last().ItemId = itemId.Value;
+
+                }
             }
             catch (Exception ex)
             {
@@ -75,7 +85,6 @@ namespace PlutoWallet.Model
 
                 // Later do something about this
             }
-
 
             try
             {
@@ -86,9 +95,6 @@ namespace PlutoWallet.Model
                     nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
                     nfts.Last().Endpoint = endpoint;
                 }
-
-                
-
             }
             catch (Exception ex)
             {
@@ -96,6 +102,8 @@ namespace PlutoWallet.Model
 
                 // Later do something about this
             }
+
+            client.Dispose();
 
             return nfts;
         }
@@ -127,12 +135,9 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, CancellationToken.None);
 
-            Console.WriteLine("Result: ");
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
-            Console.WriteLine(ipfsLink);
 
             string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
-
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
@@ -189,11 +194,10 @@ Hopefully it will fulfill the test functionalities correctly.",
             {
                 var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Uniques", "InstanceMetadataOf")) + collectionItemId;
 
-                Console.WriteLine("Fetching metadata: " + parameters);
                 var result = await client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types.ItemMetadata>(parameters, CancellationToken.None);
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
-                Console.WriteLine("ipfsLink: " + ipfsLink);
+
                 string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
             
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);

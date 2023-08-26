@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             x:Class="PlutoWallet.Components.Kodadot.KodadotUnlockablePage"
+             x:Name="page"
+             Title="KodadotUnlockablePage">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
+
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="0, 45, 0, 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <WebView WidthRequest="{Binding Source={x:Reference page}, Path=Width}"
+                         BackgroundColor="White"
+                         x:Name="webView"
+                     />
+            </Grid>
+        </ScrollView>
+
+        <navigationbar:TopNavigationBar Title=""
+                                        x:Name="topNavigationBar" />
+
+    </AbsoluteLayout>
+</ContentPage>
