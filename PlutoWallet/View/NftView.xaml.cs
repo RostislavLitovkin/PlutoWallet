@@ -14,10 +14,7 @@ public partial class NftView : ContentView
 	{
 		InitializeComponent();
 
-        refreshView.Command = new Command(() =>
-        {
-            GetNFTsAsync();
-        });
+        GetNFTsAsync();
     }
 
     /**
@@ -34,31 +31,21 @@ public partial class NftView : ContentView
 
         ((NftViewModel)this.BindingContext).IsLoading = true;
 
-        List<Task> addNftsTaskList = new List<Task>();
-
         foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
         {
             if (endpoint.SupportsNfts)
             {
-                await Model.NFTsModel.AddNFTsAsync(endpoint, UpdateNfts);
+                UpdateNfts(await Model.NFTsModel.GetNFTsAsync(endpoint));
             }
         }
 
-        await Model.UniqueryModel.AddRmrkNfts(UpdateNfts);
+        UpdateNfts(await Model.UniqueryModel.GetAccountRmrk());
 
         ((NftViewModel)this.BindingContext).IsLoading = false;
     }
 
     public void UpdateNfts(List<NFT> newNfts)
     {
-        foreach (NFT newNft in newNfts)
-        {
-            ((NftViewModel)this.BindingContext).Nfts.Add(newNft);
-        }
-
-
-        // this may be useful for later optimizations
-        /*
         foreach (NFT newNft in newNfts)
         {
             bool isContained = false;
@@ -82,8 +69,8 @@ public partial class NftView : ContentView
                     Image = newNft.Image,
                     Endpoint = newNft.Endpoint
                 });
+                //((NftViewModel)this.BindingContext).Nfts.Add(newNft);
             }
         }
-        */
     }
 }

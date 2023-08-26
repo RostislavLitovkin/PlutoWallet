@@ -1,35 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel" xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
-             x:Class="PlutoWallet.View.NftView"
-             AbsoluteLayout.LayoutBounds="0.5, .5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             x:Class="PlutoWallet.View.NftView">
     <ContentView.BindingContext>
         <viewmodel:NftViewModel />
 
     </ContentView.BindingContext>
-    <RefreshView x:Name="refreshView"> 
-        <ScrollView
-                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+    <ScrollView
+            Orientation="Vertical"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-            <VerticalStackLayout
-                x:Name="stackLayout"
-                Spacing="15"
-                Padding="20, 65, 20, 200"
-                BindableLayout.ItemsSource="{Binding Nfts}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <nft:NftThumbnailView Name="{Binding Name}"
-                                              Description="{Binding Description}"
-                                              Image="{Binding Image}"
-                                              Endpoint="{Binding Endpoint}"
-                                              />
+        <VerticalStackLayout
+            x:Name="stackLayout"
+            HorizontalOptions="Center"
+            Spacing="15"
+            Padding="20, 65, 20, 200"
+            BindableLayout.ItemsSource="{Binding Nfts}">
+            <BindableLayout.ItemTemplate>
+                <DataTemplate>
+                    <nft:NftThumbnailView Name="{Binding Name}"
+                                            Description="{Binding Description}"
+                                            Image="{Binding Image}"
+                                            Endpoint="{Binding Endpoint}"
+                                            />
 
-                    </DataTemplate>
+                </DataTemplate>
 
-                </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
-        </ScrollView>
-    </RefreshView>
+            </BindableLayout.ItemTemplate>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>
 

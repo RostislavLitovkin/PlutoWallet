@@ -41,7 +41,9 @@ namespace PlutoWallet.ViewModel
         {
             Content = nftView;
 
-            nftView.GetNFTsAsync();
+            //var nftsViewModel = DependencyService.Get<NftViewModel>();
+
+            //nftsViewModel.GetNFTsAsync();
         }
     }
 }

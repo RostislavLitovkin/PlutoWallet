@@ -43,9 +43,9 @@ namespace PlutoWallet.Model
 
 	public class NFTsModel
 	{
-        public static async Task AddNFTsAsync(Endpoint endpoint, Action<List<NFT>> updateNfts)
+        public static async Task<List<NFT>> AddNFTsAsync(Endpoint endpoint)
         {
-            updateNfts.Invoke(await GetNFTsAsync(endpoint));
+            return await GetNFTsAsync(endpoint);
         }
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
