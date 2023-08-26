@@ -1,8 +1,4 @@
-﻿using PlutoWallet.Model;
-using PlutoWallet.Constants;
-using PlutoWallet.Components.Nft;
-using PlutoWallet.ViewModel;
-using System.Windows.Input;
+﻿using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.View;
 

@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.Nft.NftDescriptionView"
-             >
-   <card:Card>
+             HorizontalOptions="CenterAndExpand">
+   <card:Card x:Name="card">
         <card:Card.View>
-            
-            <Grid>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All">
+            <Grid WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
+                  Padding="10, 0, 10, 0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="*" />
@@ -30,11 +32,12 @@
                 </Label>
 
                 <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                       Grid.Row="1"/>
+                       Grid.Row="1"
+                       />
                 
 
             </Grid>
-                    
+             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>
 </ContentView>

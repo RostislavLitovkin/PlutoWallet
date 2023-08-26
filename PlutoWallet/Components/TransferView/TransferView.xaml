@@ -10,7 +10,7 @@
     
     <card:Card IsPopup="True">
         <card:Card.View>
-        <AbsoluteLayout>
+            <AbsoluteLayout>
 
             <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
                                  AbsoluteLayout.LayoutFlags="WidthProportional"
