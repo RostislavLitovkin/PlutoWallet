@@ -13,25 +13,63 @@
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                                      AbsoluteLayout.LayoutFlags="SizeProportional"
                                      Spacing="10">
-                    <Label HorizontalOptions="Start"
-                            VerticalTextAlignment="End"
-                            HorizontalTextAlignment="Center"
-                            FontSize="20"
-                            MaximumHeightRequest="20">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span FontAttributes="Bold" x:Name="nameText" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Label HorizontalOptions="Start"
+                                VerticalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
+                                FontSize="20"
+                                MaximumHeightRequest="20"
+                                Margin="10, 0, 0, 0"
+                                >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameText" />
 
-                            </FormattedString>
+                                </FormattedString>
 
-                        </Label.FormattedText>
+                            </Label.FormattedText>
 
-                    </Label>
+                        </Label>
+                        <Label HorizontalOptions="Start"
+                                VerticalTextAlignment="End"
+                                HorizontalTextAlignment="Start"
+                                FontSize="10"
+                                TextColor="#888888"
+                                MaximumHeightRequest="20"
+                                Margin="0, 0, 20, 0">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding CollectionId}" />
+                                    <Span Text=" - " />
+                                    <Span Text="{Binding ItemId}" />
+                                </FormattedString>
 
-                    <networkselect:NetworkBubbleView
+                            </Label.FormattedText>
+
+                        </Label>
+                    </HorizontalStackLayout>
+
+                    
+
+                    <HorizontalStackLayout Spacing="10">
+                        <networkselect:NetworkBubbleView
                                                     x:Name="networkBubble"
                                                     ShowName="True"
                                                     HorizontalOptions="Start"/>
+
+                        <Label Text="Claim Physical Drop"
+                               x:Name="kodadotUnlockableButton"
+                               IsVisible="false"
+                               TextColor="{x:StaticResource Primary}"
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClaimPhysicalDropClicked" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                    </HorizontalStackLayout>
                 </VerticalStackLayout>
             </AbsoluteLayout>
         </card:Card.View>

@@ -52,6 +52,20 @@ public partial class NftThumbnailView : ContentView
             // ..
         });
 
+    public static readonly BindableProperty CollectionIdProperty = BindableProperty.Create(
+        nameof(CollectionId), typeof(uint), typeof(NftThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            // ..
+        });
+
+    public static readonly BindableProperty ItemIdProperty = BindableProperty.Create(
+        nameof(ItemId), typeof(uint), typeof(NftThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            // ..
+        });
+
     public NftThumbnailView()
 	{
 		InitializeComponent();
@@ -92,12 +106,26 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(AttributesProperty, value);
     }
 
+    public uint CollectionId
+    {
+        get => (uint)GetValue(CollectionIdProperty);
+
+        set => SetValue(CollectionIdProperty, value);
+    }
+
+    public uint ItemId
+    {
+        get => (uint)GetValue(ItemIdProperty);
+
+        set => SetValue(ItemIdProperty, value);
+    }
+
     public NFT Nft
     {
         get;
         set;
     }
-
+    
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
     }
@@ -111,9 +139,13 @@ public partial class NftThumbnailView : ContentView
         viewModel.Image = this.Image;
         viewModel.Endpoint = this.Endpoint;
         viewModel.Attributes = this.Attributes;
-
+        viewModel.CollectionId = this.CollectionId;
+        viewModel.ItemId = this.ItemId;
 
         await Navigation.PushAsync(new NftDetailPage(viewModel));
+
+        // load these details after
+        viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.CollectionId);
     }
 
     void TapGestureRecognizer_Tapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

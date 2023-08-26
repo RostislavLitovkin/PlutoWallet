@@ -18,6 +18,8 @@
                                             Description="{Binding Description}"
                                             Image="{Binding Image}"
                                             Endpoint="{Binding Endpoint}"
+                                            CollectionId="{Binding CollectionId}"
+                                            ItemId="{Binding ItemId}"
                                             />
 
                 </DataTemplate>

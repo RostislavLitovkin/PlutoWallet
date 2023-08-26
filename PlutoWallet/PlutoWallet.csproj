@@ -192,6 +192,8 @@
 
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
+	  <None Remove="Model\Kodadot\" />
+	  <None Remove="Components\Kodadot\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -396,6 +398,8 @@
 	  <Folder Include="Components\Contract\" />
 	  <Folder Include="Components\Settings\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
+	  <Folder Include="Model\Kodadot\" />
+	  <Folder Include="Components\Kodadot\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

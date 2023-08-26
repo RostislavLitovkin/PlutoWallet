@@ -32,6 +32,14 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string[] attributes;
 
+        [ObservableProperty]
+        private uint collectionId;
+
+        [ObservableProperty]
+        private uint itemId;
+
+        [ObservableProperty]
+        private Option<string> kodadotUnlockableUrl;
 
         public NftDetailViewModel()
 		{

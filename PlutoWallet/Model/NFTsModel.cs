@@ -9,6 +9,7 @@ using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json;
 using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
+using Substrate.NetApi.Model.Types.Primitive;
 
 namespace PlutoWallet.Model
 {
@@ -23,7 +24,8 @@ namespace PlutoWallet.Model
         [JsonProperty("external_url")]
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
-        public int CollectionId { get; set; }
+        public uint CollectionId { get; set; }
+        public uint ItemId { get; set; }
         public Endpoint Endpoint { get; set; }
 
         public override bool Equals(object obj)
@@ -64,6 +66,17 @@ namespace PlutoWallet.Model
                 {
                     nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
                     nfts.Last().Endpoint = endpoint;
+
+
+                    U32 collectionId = new U32();
+                    collectionId.Create(Utils.HexToByteArray(collectionItemId.Substring(32, 8)));
+                    nfts.Last().CollectionId = collectionId.Value;
+
+                    U32 itemId = new U32();
+                    itemId.Create(Utils.HexToByteArray(collectionItemId.Substring(72, 8)));
+
+                    nfts.Last().ItemId = itemId.Value;
+
                 }
             }
             catch (Exception ex)
@@ -82,9 +95,6 @@ namespace PlutoWallet.Model
                     nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
                     nfts.Last().Endpoint = endpoint;
                 }
-
-                
-
             }
             catch (Exception ex)
             {
