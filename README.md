@@ -50,6 +50,7 @@ The wallet supports these functionalities:
 
 3rd party integrations:
 - [Calamar explorer](https://github.com/topmonks/calamar)
+- [Kodadot unlockables](https://hello.kodadot.xyz/fandom-toolbox/audience-growth/drop-page)
 - [Coingecko](https://www.coingecko.com/)
 - [Staking dashboard](https://staking.polkadot.network/)
 - [Awesome Ajuna Avatars](https://aaa.ajuna.io/)
