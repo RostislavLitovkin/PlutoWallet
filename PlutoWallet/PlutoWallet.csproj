@@ -194,6 +194,9 @@
 	  <None Remove="Resources\Images\space.png" />
 	  <None Remove="Model\Kodadot\" />
 	  <None Remove="Components\Kodadot\" />
+	  <None Remove="Components\AzeroId\" />
+	  <None Remove="Model\AzeroId\" />
+	  <None Remove="Resources\Images\azeroid.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -271,6 +274,7 @@
 	  <BundleResource Include="Resources\Images\transferwhite.svg" />
 
 	  <BundleResource Include="Resources\Images\space.png" />
+	  <BundleResource Include="Resources\Images\azeroid.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -400,6 +404,8 @@
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Model\Kodadot\" />
 	  <Folder Include="Components\Kodadot\" />
+	  <Folder Include="Components\AzeroId\" />
+	  <Folder Include="Model\AzeroId\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

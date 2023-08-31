@@ -11,6 +11,7 @@ using PlutoWallet.Constants;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.AwesomeAjunaAvatars;
 using PlutoWallet.Components.Contract;
+using PlutoWallet.Components.AzeroId;
 
 namespace PlutoWallet.Model
 {
@@ -26,7 +27,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx, " +
-            "AAASeasonCountdown, AAALeaderboard, contract];[";
+            "AAASeasonCountdown, AAALeaderboard, contract, AZEROPrimaryName];[";
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -290,6 +291,8 @@ namespace PlutoWallet.Model
                     return new AAALeaderboard();
                 case "contract":
                     return new ContractView();
+                case "AZEROPrimaryName":
+                    return new AzeroPrimaryNameView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -351,6 +354,8 @@ namespace PlutoWallet.Model
                     return new AAALeaderboard();
                 case "contract":
                     return new ContractView();
+                case "AZEROPrimaryName":
+                    return new AzeroPrimaryNameView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -426,6 +431,12 @@ namespace PlutoWallet.Model
                         Name = "Contract",
                         PlutoLayoutId = "contract",
                     };
+                case "AZEROPrimaryName":
+                    return new LayoutItemInfo
+                    {
+                        Name = "AZERO.ID Primary Name",
+                        PlutoLayoutId = "AZEROPrimaryName",
+                    }; ;
             }
 
             throw new Exception("Could not parse the PlutoLayout");

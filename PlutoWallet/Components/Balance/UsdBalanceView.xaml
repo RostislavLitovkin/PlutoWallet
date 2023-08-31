@@ -18,7 +18,7 @@
                     <FormattedString>
                         <Span Text="{Binding UsdSum}"
                                 FontAttributes="Bold"
-                                FontSize="24" />
+                                FontSize="25" />
 
                     </FormattedString>
 
