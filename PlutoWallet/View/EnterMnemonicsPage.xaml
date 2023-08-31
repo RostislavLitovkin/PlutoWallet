@@ -1,104 +1,176 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
-             x:Class="PlutoWallet.View.EnterMnemonicsPage"
-             Title="Enter mnemonics">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.View.EnterMnemonicsPage">
     <ContentPage.BindingContext>
         <viewmodel:EnterMnemonicsViewModel x:Name="viewModel" />
+
     </ContentPage.BindingContext>
-    <VerticalStackLayout>
-        <Grid Margin="20,35,20,20" ColumnSpacing="20" RowSpacing="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="0"
-                Placeholder="Enter your first word here" Text="{Binding MnemonicsArray[0]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="0"
-                Placeholder="Enter your second word here" Text="{Binding MnemonicsArray[1]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="1"
-                Placeholder="Enter your third word here" Text="{Binding MnemonicsArray[2]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="1"
-                Placeholder="Enter your fourth word here" Text="{Binding MnemonicsArray[3]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="2"
-                Placeholder="Enter your fifth word here" Text="{Binding MnemonicsArray[4]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="2"
-                Placeholder="Enter your sixth word here" Text="{Binding MnemonicsArray[5]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="3"
-                Placeholder="Enter your seventh word here" Text="{Binding MnemonicsArray[6]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="3"
-                Placeholder="Enter your eighth word here" Text="{Binding MnemonicsArray[7]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="4"
-                Placeholder="Enter your ninth word here" Text="{Binding MnemonicsArray[8]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="4"
-                Placeholder="Enter your tenth word here" Text="{Binding MnemonicsArray[9]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="5"
-                Placeholder="Enter your eleventh word here" Text="{Binding MnemonicsArray[10]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="5"
-                Placeholder="Enter your twelfth word here" Text="{Binding MnemonicsArray[11]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="6"
-                Placeholder="Enter your thirteenth word here" Text="{Binding MnemonicsArray[12]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="6"
-                Placeholder="Enter your fourtheenth word here" Text="{Binding MnemonicsArray[13]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="7"
-                Placeholder="Enter your fifteenth word here" Text="{Binding MnemonicsArray[14]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="7"
-                Placeholder="Enter your sixteenth word here" Text="{Binding MnemonicsArray[15]}" />
-            <Entry
-                Grid.Column="0"
-                   Grid.Row="8"
-                Placeholder="Enter your seventeenth word here" Text="{Binding MnemonicsArray[16]}" />
-            <Entry
-                Grid.Column="1"
-                   Grid.Row="8"
-                Placeholder="Enter your eighteenth word here" Text="{Binding MnemonicsArray[17]}" />
-        </Grid>
 
-        <Entry Placeholder="Enter your password here" Text="{Binding Password}" Margin="20" />
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
 
-        <Button Text="create" Margin="20, 10, 20, 0" Clicked="ContinueToMainPageClicked" />
-    </VerticalStackLayout>
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="0, 55, 0, 0">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Padding="20, 10, 20, 100"
+                                 Spacing="15">
+                <ContentView HeightRequest="160">
+                    <card:Card>
+                        <card:Card.View>
+                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            Margin="0, 10, 0, 10">
+                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                                    <VerticalStackLayout>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontAttributes="Bold" Text="Your existing mnemonics: "/>
+
+                                                </FormattedString>
+
+                                            </Label.FormattedText>
+
+                                        </Label>
+                                        <Editor HeightRequest="120" x:Name="mnemonicsEntry"
+                                                Placeholder="Start entering here.."
+                                                Text="{Binding Mnemonics}">
+                              
+                                        </Editor>
+                                    </VerticalStackLayout>
+                
+                                </VerticalStackLayout>
+                            </AbsoluteLayout>
+                        </card:Card.View>
+                    </card:Card>
+                </ContentView>
+
+                 <ContentView HeightRequest="90">
+                    <card:Card>
+                        <card:Card.View>
+                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            Margin="0, 10, 0, 10">
+                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                                    <VerticalStackLayout>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontAttributes="Bold" Text="Password: "/>
+
+                                                </FormattedString>
+
+                                            </Label.FormattedText>
+
+                                        </Label>
+                                        <Entry HeightRequest="40" Placeholder="Password"
+                                               Text="{Binding Password}" Margin="0, 10, 0, 10"
+                                               Keyboard="Plain" IsPassword="True" />
+
+                                    </VerticalStackLayout>
+                
+                                </VerticalStackLayout>
+                            </AbsoluteLayout>
+                        </card:Card.View>
+                    </card:Card>
+                </ContentView>
+
+                <Button Text="Continue" Clicked="ContinueToMainPageClicked" />
+
+
+                <ContentView HeightRequest="120" Margin="0, 40, 0, 0">
+                    <card:Card>
+                        <card:Card.View>
+                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            Margin="0, 10, 0, 10">
+                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                                    <VerticalStackLayout>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontAttributes="Bold" Text="Your private key: "/>
+
+                                                </FormattedString>
+
+                                            </Label.FormattedText>
+
+                                        </Label>
+                                        <Editor HeightRequest="80" x:Name="privateKeyEntry"
+                                                Placeholder="Start entering here.."
+                                                Text="{Binding PrivateKey}">
+                              
+                                        </Editor>
+                                    </VerticalStackLayout>
+                
+                                </VerticalStackLayout>
+                            </AbsoluteLayout>
+                        </card:Card.View>
+                    </card:Card>
+                </ContentView>
+
+                <ContentView HeightRequest="90">
+                    <card:Card>
+                        <card:Card.View>
+                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                            AbsoluteLayout.LayoutFlags="All"
+                                            Margin="0, 10, 0, 10">
+                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                                    <VerticalStackLayout>
+                                        <Label 
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"
+                                            VerticalTextAlignment="End">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span FontAttributes="Bold" Text="Password: "/>
+
+                                                </FormattedString>
+
+                                            </Label.FormattedText>
+
+                                        </Label>
+                                        <Entry HeightRequest="40" Placeholder="Password"
+                                               Text="{Binding Password2}" Margin="0, 10, 0, 10"
+                                               Keyboard="Plain" IsPassword="True" />
+
+                                    </VerticalStackLayout>
+                
+                                </VerticalStackLayout>
+                            </AbsoluteLayout>
+                        </card:Card.View>
+                    </card:Card>
+                </ContentView>
+
+                <Button Text="Continue" Clicked="ContinueWithPrivateKeyClicked" />
+            </VerticalStackLayout>
+            
+        </ScrollView>
+
+        <navigationbar:TopNavigationBar Title="Enter mnemonics"
+                                        x:Name="topNavigationBar" />
+
+    </AbsoluteLayout>
 </ContentPage>

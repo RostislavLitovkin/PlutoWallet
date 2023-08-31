@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Contract.ContractView">
+     <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <HorizontalStackLayout>
+                        <Label 
+                            HorizontalOptions="Start"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" Text="Counter contract" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label
+                            HorizontalOptions="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Value: " />
+                                    <Span x:Name="valueText" Text="_unknown_" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+                        </Label>
+                        <Image WidthRequest="20" Margin="20, 0, 20, 0"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Start">
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                                Glyph="&#xf021;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="20" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnReloadClicked" />
+
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+                <Button AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Text="Increment"
+                    Clicked="OnIncrementClicked"/>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

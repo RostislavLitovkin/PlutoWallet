@@ -4,6 +4,10 @@ using Plutonication;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
+using Schnorrkel;
+using Substrate.NetApi;
+using Newtonsoft.Json;
+using PlutoWallet.Components.TransactionRequest;
 
 namespace PlutoWallet.Components.ConnectionRequestView;
 
@@ -22,64 +26,79 @@ public partial class ConnectionRequestView : ContentView
         {
             var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
 
-            var addressPort = viewModel.Url.Split(":");
-
             DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
             dAppViewModel.Icon = viewModel.Icon;
             dAppViewModel.Name = viewModel.Name;
             dAppViewModel.IsVisible = true;
 
-            Model.PlutonicationModel.EventManager = new PlutoEventManager();
-
-            Model.PlutonicationModel.EventManager.ConnectionEstablished += () =>
-            {
-                Console.WriteLine("Connectin Established! :D");
-            };
-            Model.PlutonicationModel.EventManager.ConnectionRefused += () =>
-            {
-                Console.WriteLine("Connectin Refused! :(");
-            };
-
-            AccessCredentials accessCredentials = new AccessCredentials(IPAddress.Parse(addressPort[0]), Int32.Parse(addressPort[1]));
-            accessCredentials.Key = viewModel.Key;
-            await Model.PlutonicationModel.EventManager.ConnectSafeAsync(accessCredentials);
-
-            await Task.Delay(1000);
-
-            PlutoMessage msg = new PlutoMessage(MessageCode.PublicKey, Model.KeysModel.GetSubstrateKey());
-
-            await Model.PlutonicationModel.EventManager.SendMessageAsync(msg);
-
-            Model.PlutonicationModel.EventManager.MessageReceived += () =>
-            {
-                PlutoMessage msg = Model.PlutonicationModel.EventManager.IncomingMessages.Dequeue();
-
-                switch (msg.Identifier)
+            await PlutonicationWalletClient.InitializeAsync(
+                ac: viewModel.AccessCredentials,
+                pubkey: Model.KeysModel.GetSubstrateKey(),
+                signPayload: payloadJson =>
                 {
-                    case MessageCode.Method:
+                    try
+                    {
+                        Plutonication.Payload payload = JsonConvert.DeserializeObject<Plutonication.Payload[]>(payloadJson.ToString())[0];
 
-                        // This is temporary
-                        Ajuna.NetApi.Model.Extrinsics.Method tempMethod = msg.GetMethod();
+                        byte[] methodBytes = Utils.HexToByteArray(payload.method);
 
-                        Method method = new Method(tempMethod.ModuleIndex, tempMethod.CallIndex, tempMethod.Parameters);
+                        List<byte> methodParameters = new List<byte>();
 
-                        var transactionRequestViewModel = DependencyService.Get<Components.TransactionRequest.TransactionRequestViewModel>();
-                        transactionRequestViewModel.AjunaMethod = method;
-                        transactionRequestViewModel.IsVisible = true;
+                        for (int i = 2; i < methodBytes.Length; i++)
+                        {
+                            methodParameters.Add(methodBytes[i]);
+                        }
 
-                        break;
+                        Method method = new Method(methodBytes[0], methodBytes[1], methodParameters.ToArray());
 
-                    default:
+                        var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
-                        break;
+                        transactionRequest.AjunaMethod = method;
+                        transactionRequest.Payload = payload;
+                        transactionRequest.IsVisible = true;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                        messagePopup.Title = "Error";
+                        messagePopup.Text = ex.Message;
+
+                        messagePopup.IsVisible = true;
+                    }
+
+                },
+                signRaw: raw =>
+                {
+                    try
+                    {
+                        Plutonication.Message message = JsonConvert.DeserializeObject<Plutonication.Message[]>(raw.ToString())[0];
+
+                        if (message.type != "bytes")
+                        {
+                            throw new Exception("Message is not in bytes format");
+                        }
+
+                        var messageSignRequest = DependencyService.Get<MessageSignRequestViewModel>();
+
+                        messageSignRequest.Message = message;
+                        messageSignRequest.MessageString = message.data;
+                        messageSignRequest.IsVisible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                        messagePopup.Title = "Error";
+                        messagePopup.Text = ex.Message;
+
+                        messagePopup.IsVisible = true;
+                    }
                 }
-                Console.WriteLine("Code: " + msg.Identifier);
-                Console.WriteLine("Data: " + msg.CustomDataToString());
-            };
+            );
 
-            Task setup = Model.PlutonicationModel.EventManager.SetupReceiveLoopAsync();
-
-            this.IsVisible = false;
+            viewModel.IsVisible = false;
         }
         catch (Exception ex)
         {

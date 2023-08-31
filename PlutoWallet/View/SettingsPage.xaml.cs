@@ -5,30 +5,39 @@ public partial class SettingsPage : ContentPage
 {
 	public SettingsPage()
 	{
-		InitializeComponent();
+        NavigationPage.SetHasNavigationBar(this, false);
+        Shell.SetNavBarIsVisible(this, false);
+
+        InitializeComponent();
 	}
 
-    //private void SaveEndpoint(System.Object sender, System.EventArgs e)
-    //{
-    //    viewModel.SaveEndpoint();
-    //}
-
-    private void ClearEndpoints(System.Object sender, System.EventArgs e)
+    async void OnPredefinedLayoutsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        viewModel.ClearEndpoints();
+        await Navigation.PushAsync(new PredefinedLayoutsPage());
     }
 
-    private void ShowPrivateKey(System.Object sender, System.EventArgs e)
+    async void OnLogOutClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        viewModel.ShowPrivateKey();
-        showKey.Text = Preferences.Get("privateKey", "");
-        copyKey.IsVisible = true;
-    }
+        Preferences.Set("privateKey", "");
+        Preferences.Set("publicKey", "");
+        Preferences.Set("mnemonics", "");
+        Preferences.Set("password", "");
+        Preferences.Set("biometricsEnabled", false);
 
-    private async void CopyText(System.Object sender, System.EventArgs e)
-    {
-        await Clipboard.Default.SetTextAsync(Preferences.Get("privateKey", ""));
-        var toast = Toast.Make("Copied to clipboard");
-        await toast.Show();
+
+        Preferences.Clear("privateKey");
+        Preferences.Clear("publicKey");
+        Preferences.Clear("mnemonics");
+        Preferences.Clear("password");
+        Preferences.Clear("biometricsEnabled");
+
+        Console.WriteLine("Private key deleted");
+
+        await Navigation.PushAsync(new BeginPage());
+
+        for (int i = 0; i < Navigation.NavigationStack.Count() - 1; i++)
+        {
+            Navigation.RemovePage(Navigation.NavigationStack[i]);
+        }
     }
 }

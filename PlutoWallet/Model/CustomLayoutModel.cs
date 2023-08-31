@@ -10,6 +10,7 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Constants;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.AwesomeAjunaAvatars;
+using PlutoWallet.Components.Contract;
 
 namespace PlutoWallet.Model
 {
@@ -25,7 +26,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx, " +
-            "AAASeasonCountdown, AAALeaderboard];[";
+            "AAASeasonCountdown, AAALeaderboard, contract];[";
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -287,6 +288,8 @@ namespace PlutoWallet.Model
                     return new SeasonCountdownView();
                 case "AAALeaderboard":
                     return new AAALeaderboard();
+                case "contract":
+                    return new ContractView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -346,6 +349,8 @@ namespace PlutoWallet.Model
                     return new SeasonCountdownView();
                 case "AAALeaderboard":
                     return new AAALeaderboard();
+                case "contract":
+                    return new ContractView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -414,6 +419,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "AAA Leaderboard",
                         PlutoLayoutId = "AAALeaderboard",
+                    };
+                case "contract":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Contract",
+                        PlutoLayoutId = "contract",
                     };
             }
 

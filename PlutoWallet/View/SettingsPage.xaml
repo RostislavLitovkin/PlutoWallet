@@ -1,23 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:settings="clr-namespace:PlutoWallet.Components.Settings"
              x:Class="PlutoWallet.View.SettingsPage"
              Title="Settings">
-    <ContentPage.BindingContext>
-        <viewmodel:SettingsViewModel x:Name="viewModel" />
-    </ContentPage.BindingContext>
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="space.png" Aspect="AspectFill"/>
 
-    <VerticalStackLayout>
-        <Entry
-                Margin="20, 10, 20, 0"
-                Placeholder="Enter endpoint name" Text="{Binding Name}" />
-        <Entry
-                Margin="20, 10, 20, 0"
-                Placeholder="Enter endpoint URL" Text="{Binding Url}" />
-        <Button Text="save endpoint" Margin="20, 10, 20, 0" Command="{Binding SaveEndpointCommand}" />
-        <Button Text="clear all custom endpoints" Margin="20, 10, 20, 0" Clicked="ClearEndpoints" />
-        <Button Text="show private key" Margin="20, 10, 20, 0" Clicked="ShowPrivateKey" />
-        <Button x:Name="copyKey" Text="copy private key" Margin="20, 10, 20, 0" Clicked="CopyText" />
-        <Label  x:Name="showKey" Margin="20, 10, 20, 0" Text=""/>
-    </VerticalStackLayout>
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="0, 55, 0, 0">
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Padding="20, 10, 20, 100"
+                                 Spacing="5">
+                <settings:GenericButton Title="Predefined layouts">
+                    <settings:GenericButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPredefinedLayoutsClicked" />
+
+                    </settings:GenericButton.GestureRecognizers>
+
+                </settings:GenericButton>
+
+                <settings:ShowMnemonic />
+
+                <settings:GenericButton Title="Log out (Delete private key)">
+                    <settings:GenericButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogOutClicked" />
+
+                    </settings:GenericButton.GestureRecognizers>
+
+                </settings:GenericButton>
+            </VerticalStackLayout>
+            
+        </ScrollView>
+
+        <navigationbar:TopNavigationBar Title="Settings"
+                                        x:Name="topNavigationBar" />
+
+    </AbsoluteLayout>
 </ContentPage>

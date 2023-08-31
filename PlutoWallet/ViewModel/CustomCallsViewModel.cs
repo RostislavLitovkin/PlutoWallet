@@ -209,7 +209,10 @@ namespace PlutoWallet.ViewModel
                 await client.ConnectAsync();
 
                 Console.WriteLine("Connected");
-                await client.Author.SubmitExtrinsicAsync(method, KeysModel.GetAccount(), ChargeTransactionPayment.Default(), 64);
+
+                if ((await KeysModel.GetAccount()).IsSome(out var account)) {
+                    await client.Author.SubmitExtrinsicAsync(method, account, ChargeTransactionPayment.Default(), 64);
+                }
 
                 Console.WriteLine("Success");
                 Args = "";

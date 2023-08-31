@@ -19,8 +19,8 @@
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.3</ApplicationDisplayVersion>
-		<ApplicationVersion>4</ApplicationVersion>
+		<ApplicationDisplayVersion>1.5</ApplicationDisplayVersion>
+		<ApplicationVersion>6</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -43,6 +43,9 @@
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
 	</PropertyGroup>
 	<ItemGroup>
@@ -76,6 +79,8 @@
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
 	  <PackageReference Include="Markdig" Version="0.31.0" />
+	  <PackageReference Include="Uniquery" Version="0.1.3" />
+	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -174,6 +179,21 @@
 	  <None Remove="Resources\Images\PredefinedLayouts\aaabackground.png" />
 	  <None Remove="Components\AwesomeAjunaAvatars\" />
 	  <None Remove="Components\Nft\" />
+	  <None Remove="Resources\Images\plutowalleticon.svg" />
+	  <None Remove="Resources\Images\dusan.jpg" />
+	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
+	  <None Remove="Resources\Images\NetworkIcons\pba.png" />
+	  <None Remove="Components\Contract\" />
+	  <None Remove="Components\Settings\" />
+	  <None Remove="Resources\Images\fingerprintblack.svg" />
+	  <None Remove="Resources\Images\fingerprintwhite.svg" />
+	  <None Remove="Resources\Images\transferblack.svg" />
+	  <None Remove="Resources\Images\transferwhite.svg" />
+
+	  <None Remove="Components\ConfirmTransaction\" />
+	  <None Remove="Resources\Images\space.png" />
+	  <None Remove="Model\Kodadot\" />
+	  <None Remove="Components\Kodadot\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -184,7 +204,6 @@
 	  <BundleResource Include="Resources\Fonts\Exodar-Outline.ttf" />
 	  <BundleResource Include="Resources\Splash\splash.svg" />
 	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
-	  <BundleResource Include="Resources\Images\space.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\unique.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\t0rn.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\subsocial.png" />
@@ -242,6 +261,16 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.png" />
 	  <BundleResource Include="Resources\Images\PredefinedLayouts\aaabackground.png" />
+	  <BundleResource Include="Resources\Images\plutowalleticon.svg" />
+	  <BundleResource Include="Resources\Images\dusan.jpg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\basilisk.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
+	  <BundleResource Include="Resources\Images\fingerprintblack.svg" />
+	  <BundleResource Include="Resources\Images\fingerprintwhite.svg" />
+	  <BundleResource Include="Resources\Images\transferblack.svg" />
+	  <BundleResource Include="Resources\Images\transferwhite.svg" />
+
+	  <BundleResource Include="Resources\Images\space.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -366,6 +395,11 @@
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	  <Folder Include="Components\Nft\" />
+	  <Folder Include="Components\Contract\" />
+	  <Folder Include="Components\Settings\" />
+	  <Folder Include="Components\ConfirmTransaction\" />
+	  <Folder Include="Model\Kodadot\" />
+	  <Folder Include="Components\Kodadot\" />
 	</ItemGroup>
 	<!--<PropertyGroup>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>

@@ -17,16 +17,17 @@ namespace PlutoWallet.Components.Balance
         private const int EXTRA_HEIGHT = 65;
 
         [ObservableProperty]
-        private ObservableCollection<Asset> assets = new ObservableCollection<Asset>();
-
-        [ObservableProperty]
         private double heightRequest;
+
+        public bool DoNotReload { get; set; } = false;
 
         [ObservableProperty]
         private string usdSum;
 
         [ObservableProperty]
         private bool reloadIsVisible;
+
+        public Action<List<AssetAmountView>> ReloadBalanceViewStackLayout { get; set; }
 
         public UsdBalanceViewModel()
 		{
@@ -37,12 +38,19 @@ namespace PlutoWallet.Components.Balance
 
         public async Task GetBalancesAsync()
         {
+            if (DoNotReload)
+            {
+                DoNotReload = false;
+                return;
+            }
+
             ReloadIsVisible = false;
 
             UsdSum = "Loading";
 
+            var assets = new List<AssetAmountView>();
+
             double usdSumValue = 0;
-            var assetsCollection = new ObservableCollection<Asset>();
 
             for (int i = 0; i < Model.AjunaClientModel.GroupClients.Length; i++)
             {
@@ -51,7 +59,7 @@ namespace PlutoWallet.Components.Balance
 
                 if (endpoint.ChainType != Constants.ChainType.Substrate)
                 {
-                    assetsCollection.Add(new Asset
+                    assets.Add(new AssetAmountView
                     {
                         Amount = "Unsupported",
                         //Symbol = endpoint.Unit, // I think it looks better without it
@@ -81,7 +89,7 @@ namespace PlutoWallet.Components.Balance
 
                 usdSumValue += usdValue;
 
-                assetsCollection.Add(new Asset
+                assets.Add(new AssetAmountView
                 {
                     Amount = String.Format("{0:0.00}", amount),
                     Symbol = endpoint.Unit,
@@ -91,13 +99,13 @@ namespace PlutoWallet.Components.Balance
 
                 try
                 {
-                    var assets = await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(Model.KeysModel.GetSubstrateKey(), 1000, CancellationToken.None);
+                    var tempAssets = await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(Model.KeysModel.GetSubstrateKey(), 1000, CancellationToken.None);
 
-                    foreach ((string, AssetDetails, AssetMetadata, AssetAccount) asset in assets)
+                    foreach ((string, AssetDetails, AssetMetadata, AssetAccount) asset in tempAssets)
                     {
 
                         double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value : 0;
-                        assetsCollection.Add(new Asset
+                        assets.Add(new AssetAmountView
                         {
                             Amount = String.Format("{0:0.00}", assetBalance),
                             Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
@@ -118,11 +126,12 @@ namespace PlutoWallet.Components.Balance
                 }
             }
 
-            Assets = assetsCollection;
 
-            int count = assetsCollection.Count() < 10 ? assetsCollection.Count() : 10;
+            int count = assets.Count() < 10 ? assets.Count() : 10;
 
-            HeightRequest = (35 * count) + EXTRA_HEIGHT;
+            ReloadBalanceViewStackLayout(assets);
+
+            HeightRequest = (35 * count) + UsdBalanceViewModel.EXTRA_HEIGHT;
 
             var balanceDashboardViewModel = DependencyService.Get<BalanceDashboardViewModel>();
 

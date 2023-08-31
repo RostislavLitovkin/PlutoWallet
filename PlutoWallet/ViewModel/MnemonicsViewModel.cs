@@ -6,15 +6,17 @@ using static Substrate.NetApi.Mnemonic;
 using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.Input;
 using Schnorrkel.Keys;
+using Plugin.Fingerprint.Abstractions;
+using Plugin.Fingerprint;
+using Substrate.NetApi.Model.Types;
 
 namespace PlutoWallet.ViewModel
 {
     public partial class MnemonicsViewModel : ObservableObject //, INotifyPropertyChanged
     {
-        //public event PropertyChangedEventHandler PropertyChanged;
-
+       
         [ObservableProperty]
-        private string[] mnemonicsArray;
+        private string mnemonics;
 
         private string password;
         public string Password
@@ -39,39 +41,78 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string[] orderedMnemonicsArray;
 
-        public void Continue()
+        public async Task<bool> Continue()
         {
-            var mnemonicsString = string.Empty;
-            foreach (var item in MnemonicsArray)
+            Preferences.Set("biometricsEnabled", false);
+
+            try
             {
-                mnemonicsString += item + " ";
+                // Set biometrics
+                for (int i = 0; i < 5; i++)
+                {
+                    var request = new AuthenticationRequestConfiguration("Biometric verification", "..");
+
+                    var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+
+                    if (result.Authenticated)
+                    {
+                        // Fingerprint set, perhaps do with it something in the future
+
+                        Preferences.Set("biometricsEnabled", true);
+
+                        break;
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            catch
+            {
+
             }
 
-            var keyPair = Mnemonic.GetKeyPairFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English, ExpandMode.Ed25519);
-            var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsString.Trim(), Password, BIP39Wordlist.English);
+            // This is default, could be changed in the future or with a setting
+            ExpandMode expandMode = ExpandMode.Ed25519;
 
-            Console.WriteLine("I am here");
+            var secret = Mnemonic.GetSecretKeyFromMnemonic(Mnemonics, Password, BIP39Wordlist.English);
 
-            Preferences.Set(
-                "privateKey",
-                Utils.Bytes2HexString(keyPair.Secret.key.GetBytes())
-            );
+            var miniSecret = new MiniSecret(secret, expandMode);
+
+            Account account = Account.Build(
+                KeyType.Sr25519,
+                miniSecret.ExpandToSecret().ToBytes(),
+                miniSecret.GetPair().Public.Key);
+
             Preferences.Set(
                 "publicKey",
-                 Utils.Bytes2HexString(keyPair.Public.Key)
+                 account.Value
             );
+
+            Preferences.Set(
+                "mnemonics",
+                 Mnemonics
+            );
+
+            Preferences.Set("privateKeyExpandMode", 1);
+
+            Preferences.Set("usePrivateKey", false);
+
+            return true;
         }
 
         public MnemonicsViewModel()
         {
-            mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
-            orderedMnemonicsArray = new string[mnemonicsArray.Count()];
+            var mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
+            string temp = string.Empty;
 
-            int i = 0;
             foreach (string mnemonic in mnemonicsArray)
             {
-                orderedMnemonicsArray[i] = ++i + ". " + mnemonic;
+                temp += " " + mnemonic;
             }
+
+            Mnemonics = temp.Trim();
         }
     }
 }

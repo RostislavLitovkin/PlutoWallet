@@ -10,16 +10,23 @@
     <card:Card IsPopup="True">
         <card:Card.View>
             <AbsoluteLayout>
-                <VerticalStackLayout>
+                <VerticalStackLayout Spacing="10">
                     <Image x:Name="icon"
                            Source="{Binding Icon}"
                            WidthRequest="100"
                            HeightRequest="100" />
                     <Label 
-                        x:Name="dAppNameLabel"
-                        Text="{Binding Name}"
                         VerticalOptions="Center"
-                        HorizontalOptions="Center" />
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" Text="{Binding Name}" />
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
                     <Label 
                         Text="Would you like to connect to this dApp?"
                         VerticalOptions="Center"

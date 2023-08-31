@@ -57,7 +57,32 @@ namespace PlutoWallet.Model
 
             UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 transfer,
-                KeysModel.GetAccount(),
+                MockModel.GetMockAccount(),
+                charge,
+                lifeTime: 64,
+                signed: true,
+                CancellationToken.None);
+
+            var feeDetail = await client.Payment.QueryFeeDetailAsync(
+                Utils.Bytes2HexString(extrinsic.Encode()),
+                null,
+                CancellationToken.None);
+
+            return feeDetail.InclusionFee.BaseFee.Value + feeDetail.InclusionFee.AdjustedWeightFee.Value + feeDetail.InclusionFee.LenFee.Value;
+        }
+
+        /**
+        * Gets a transfer fee for the currently selected chain
+        */
+        public static async Task<BigInteger> GetMethodFeeAsync(Method method)
+        {
+            var client = Model.AjunaClientModel.Client;
+
+            var charge = ChargeTransactionPayment.Default();
+
+            UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
+                method,
+                MockModel.GetMockAccount(),
                 charge,
                 lifeTime: 64,
                 signed: true,

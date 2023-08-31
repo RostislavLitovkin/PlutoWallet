@@ -58,7 +58,7 @@
             BackgroundColor="{StaticResource Primary}"
             BorderColor="{StaticResource Primary}"
             x:Name="frame">
-            <Image Source="signwhite.png" />
+            <Image Source="transferwhite.png" />
 
             <Frame.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnTransferClicked" />
