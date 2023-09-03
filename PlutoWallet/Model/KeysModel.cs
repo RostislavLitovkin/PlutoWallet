@@ -7,6 +7,7 @@ using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using PlutoWallet.Components.ConfirmTransaction;
+using System.Security.Cryptography;
 
 namespace PlutoWallet.Model
 {
@@ -19,10 +20,10 @@ namespace PlutoWallet.Model
 
         public static string[] GenerateMnemonicsArray()
         {
-            var random = new Random();
+            var random = RandomNumberGenerator.Create();
 
             var entropyBytes = new byte[16];
-            random.NextBytes(entropyBytes);
+            random.GetBytes(entropyBytes);
 
             var mnemonic = Mnemonic.MnemonicFromEntropy(entropyBytes, BIP39Wordlist.English);
 

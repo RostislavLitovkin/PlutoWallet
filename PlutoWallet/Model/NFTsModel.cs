@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
 using Substrate.NetApi.Model.Types.Primitive;
+using Uniquery;
+using System.Numerics;
 
 namespace PlutoWallet.Model
 {
@@ -24,8 +26,8 @@ namespace PlutoWallet.Model
         [JsonProperty("external_url")]
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
-        public uint CollectionId { get; set; }
-        public uint ItemId { get; set; }
+        public BigInteger CollectionId { get; set; }
+        public BigInteger ItemId { get; set; }
         public Endpoint Endpoint { get; set; }
 
         public override bool Equals(object obj)
@@ -36,10 +38,16 @@ namespace PlutoWallet.Model
             }
 
             var objNft = (NFT)obj;
+
             return (objNft.Name == this.Name &&
                 objNft.Description == this.Description &&
                 objNft.Image == this.Image &&
-                objNft.Endpoint == this.Endpoint);
+                objNft.Endpoint.Name == this.Endpoint.Name);
+        }
+
+        public override string ToString()
+        {
+            return Name + " - " + Image;
         }
     }
 
@@ -64,19 +72,15 @@ namespace PlutoWallet.Model
 
                 foreach (string collectionItemId in collectionItemIds)
                 {
-                    nfts.Add(await GetNftMetadataAsync(client, collectionItemId));
-                    nfts.Last().Endpoint = endpoint;
+                    NFT nft = await GetNftMetadataAsync(client, collectionItemId);
+                    if (nft != null)
+                    {
+                        SetNftIds(ref nft, collectionItemId);
 
+                        nft.Endpoint = endpoint;
 
-                    U32 collectionId = new U32();
-                    collectionId.Create(Utils.HexToByteArray(collectionItemId.Substring(32, 8)));
-                    nfts.Last().CollectionId = collectionId.Value;
-
-                    U32 itemId = new U32();
-                    itemId.Create(Utils.HexToByteArray(collectionItemId.Substring(72, 8)));
-
-                    nfts.Last().ItemId = itemId.Value;
-
+                        nfts.Add(nft);
+                    }
                 }
             }
             catch (Exception ex)
@@ -92,8 +96,16 @@ namespace PlutoWallet.Model
 
                 foreach (string collectionItemId in uniquesCollectionItemIds)
                 {
-                    nfts.Add(await GetUniquesMetadataAsync(client, collectionItemId));
-                    nfts.Last().Endpoint = endpoint;
+                    NFT nft = await GetUniquesMetadataAsync(client, collectionItemId);
+
+                    if (nft != null)
+                    {
+                        SetNftIds(ref nft, collectionItemId);
+
+                        nft.Endpoint = endpoint;
+
+                        nfts.Add(nft);
+                    }
                 }
             }
             catch (Exception ex)
@@ -255,6 +267,24 @@ Hopefully it will fulfill the test functionalities correctly.",
             return collectionItemIdsList;
         }
 
+        private static void SetNftIds (ref NFT nft, string keyHash)
+        {
+            if (keyHash.Length == 80)
+            {
+                nft.CollectionId = HashModel.GetU32FromBlake2_128Concat(keyHash.Substring(0, 40)).Value;
+                nft.ItemId = HashModel.GetU32FromBlake2_128Concat(keyHash.Substring(40, 40)).Value;
+            }
+            if (keyHash.Length == 96)
+            {
+                nft.CollectionId = HashModel.GetU64FromBlake2_128Concat(keyHash.Substring(0, 48)).Value;
+                nft.ItemId = HashModel.GetU64FromBlake2_128Concat(keyHash.Substring(48, 48)).Value;
+            }
+            if (keyHash.Length == 128)
+            {
+                nft.CollectionId = HashModel.GetU128FromBlake2_128Concat(keyHash.Substring(0, 64)).Value;
+                nft.ItemId = HashModel.GetU128FromBlake2_128Concat(keyHash.Substring(64, 64)).Value;
+            }
+        }
     }
 }
 

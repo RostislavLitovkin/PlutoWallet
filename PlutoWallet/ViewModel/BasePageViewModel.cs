@@ -40,6 +40,8 @@ namespace PlutoWallet.ViewModel
         public void SetNftView()
         {
             Content = nftView;
+
+            DependencyService.Get<NftViewModel>().GetNFTsAsync();
         }
     }
 }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Model;
 using PlutoWallet.Constants;
+using System.Numerics;
 
 namespace PlutoWallet.ViewModel
 {
@@ -33,10 +34,10 @@ namespace PlutoWallet.ViewModel
         private string[] attributes;
 
         [ObservableProperty]
-        private uint collectionId;
+        private BigInteger collectionId;
 
         [ObservableProperty]
-        private uint itemId;
+        private BigInteger itemId;
 
         [ObservableProperty]
         private Option<string> kodadotUnlockableUrl;
