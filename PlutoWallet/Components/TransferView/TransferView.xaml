@@ -46,9 +46,11 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </AbsoluteLayout>
-
-                <Entry Placeholder="Amount" Text="{Binding Amount}"
-                       Keyboard="Numeric"/>
+                <HorizontalStackLayout>
+                    <Entry Placeholder="Amount" Text="{Binding Amount}"
+                           Keyboard="Numeric"/>
+                    
+                </HorizontalStackLayout>
 
                 <Label Text="{Binding Fee}" TextColor="Orange" />
 
