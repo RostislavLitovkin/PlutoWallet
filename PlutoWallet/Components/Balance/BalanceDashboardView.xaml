@@ -25,11 +25,13 @@
                                  WidthRequest="{Binding Source={x:Reference stackLayout}, Path=Width}"/>
                </VerticalStackLayout>
 
-               <switch:MiniDualSwitch FirstOption="Value" SecondOption="Graph"
+               <!--
+                <switch:MiniDualSwitch FirstOption="Value" SecondOption="Graph"
                                        AbsoluteLayout.LayoutBounds="1, 0, 100, 20"
                                        AbsoluteLayout.LayoutFlags="PositionProportional"
                                        Margin="0, 5, 0, 0"
                                        x:Name="valueGraphSwitch"/>
+                -->
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

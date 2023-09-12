@@ -3,9 +3,86 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.View.BeginPage"
              Title="BeginPage"
-             BackgroundColor="Black">
+             BackgroundColor="White">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                     AbsoluteLayout.LayoutFlags="All">
+
+        <Border Margin="15"
+                AbsoluteLayout.LayoutBounds="0.5, 0, 1, 0.5"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="0"
+                Grid.Column="0"
+                StrokeThickness="0"
+                >
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                        Offset="0,2" 
+                        Radius="3"
+                        Opacity="0.1" />
+
+            </Border.Shadow>
+
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            BackgroundColor="White">
+                <Label AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Text="Skip mnemonics"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"
+                        />
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSkipClicked" />
+
+                </AbsoluteLayout.GestureRecognizers>
+            </AbsoluteLayout>
+                    
+
+        </Border>
+
+        <Border Margin="15"
+                AbsoluteLayout.LayoutBounds="0.5, 1, 1, 0.5"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="0"
+                Grid.Column="0"
+                StrokeThickness="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+
+                </Border.StrokeShape>
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="0,2" 
+                            Radius="3"
+                            Opacity="0.1" />
+
+                </Border.Shadow>
+
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="White">
+                    <Label AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Text="Save mnemonics now"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        TextColor="Black"/>
+
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSaveClicked" />
+
+                    </AbsoluteLayout.GestureRecognizers>
+                </AbsoluteLayout>
+                    
+
+            </Border>
+
+        <!--
         <VerticalStackLayout Spacing="15"
                              AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
                              AbsoluteLayout.LayoutFlags="PositionProportional">
@@ -40,6 +117,7 @@
                 HorizontalOptions="Center"
                 Clicked="BeginClicked"/>
         </VerticalStackLayout>
+        -->
 
     </AbsoluteLayout>
     

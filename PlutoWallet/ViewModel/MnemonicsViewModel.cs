@@ -95,6 +95,11 @@ namespace PlutoWallet.ViewModel
                  Mnemonics
             );
 
+            Preferences.Set(
+                "password",
+                Password
+            );
+
             Preferences.Set("privateKeyExpandMode", 1);
 
             Preferences.Set("usePrivateKey", false);
