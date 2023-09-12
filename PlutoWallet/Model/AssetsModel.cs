@@ -6,7 +6,6 @@ namespace PlutoWallet.Model
 		public AssetsModel()
 		{
 		}
-
 	}
 }
 

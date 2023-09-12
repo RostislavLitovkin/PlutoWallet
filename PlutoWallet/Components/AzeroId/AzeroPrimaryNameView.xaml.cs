@@ -7,6 +7,5 @@ public partial class AzeroPrimaryNameView : ContentView
 		InitializeComponent();
 
         BindingContext = DependencyService.Get<AzeroPrimaryNameViewModel>();
-
     }
 }

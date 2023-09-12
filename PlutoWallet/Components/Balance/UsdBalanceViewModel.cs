@@ -85,17 +85,21 @@ namespace PlutoWallet.Components.Balance
                 }
 
                 // Calculate a real USD value
-                double usdValue = amount;
-
-                usdSumValue += usdValue;
-
-                assets.Add(new AssetAmountView
                 {
-                    Amount = String.Format("{0:0.00}", amount),
-                    Symbol = endpoint.Unit,
-                    ChainIcon = endpoint.Icon,
-                    UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
-                });
+                    double usdPrice = 0; // fetch the actual value
+
+                    double usdValue = amount * usdPrice;
+
+                    usdSumValue += usdValue;
+
+                    assets.Add(new AssetAmountView
+                    {
+                        Amount = String.Format("{0:0.00}", amount),
+                        Symbol = endpoint.Unit,
+                        ChainIcon = endpoint.Icon,
+                        UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
+                    });
+                }
 
                 try
                 {
@@ -105,12 +109,20 @@ namespace PlutoWallet.Components.Balance
                     {
 
                         double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value : 0;
+
+                        // Calculate a real USD value
+                        double usdPrice = 0; // fetch the actual value
+
+                        double usdValue = amount * usdPrice;
+
+                        usdSumValue += usdValue;
+
                         assets.Add(new AssetAmountView
                         {
                             Amount = String.Format("{0:0.00}", assetBalance),
                             Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
                             ChainIcon = endpoint.Icon,
-                            UsdValue = String.Format("{0:0.00}", assetBalance) + " USD",
+                            UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
                         });
                     }
                 }

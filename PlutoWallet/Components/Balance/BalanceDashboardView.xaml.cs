@@ -9,8 +9,8 @@ public partial class BalanceDashboardView : ContentView
         BindingContext = DependencyService.Get<BalanceDashboardViewModel>();
         InitializeComponent();
 
-        valueGraphSwitch.FirstMethod = ShowValue;
-        valueGraphSwitch.SecondMethod = ShowGraph;
+        //valueGraphSwitch.FirstMethod = ShowValue;
+        //valueGraphSwitch.SecondMethod = ShowGraph;
     }
 
     public bool ShowValue()
