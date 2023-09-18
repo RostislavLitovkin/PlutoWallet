@@ -8,6 +8,13 @@
         <card:Card.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 20"
+                                     AbsoluteLayout.LayoutFlags="WidthProportional"
+                                     Spacing="10">
+                    <!-- This is empty, needed for android -->
+                </VerticalStackLayout>
+
+
             <Grid WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
                    >
                 <Grid.RowDefinitions>
@@ -33,9 +40,11 @@
                     </Label.FormattedText>
                 </Label>
 
-                <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                <Label TextType="Html" x:Name="descriptionLabel"
+                       WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
                        Grid.Row="1"
-                       Margin="10, 0, 20, 0"
+                       Padding="10, 0, 20, 0"
                        />
                 
 

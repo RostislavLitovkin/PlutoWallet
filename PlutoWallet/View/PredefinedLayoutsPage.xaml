@@ -22,9 +22,12 @@
                                                                PlutoLayout="plutolayout: [dApp, ExSL, UsdB, ChaK];[0, 1]"/>
 
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Default"
-                                                               PlutoLayout="plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx];[0, 2, 3]"/>
+                                                               PlutoLayout="plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx];[0, 2, 3]"/>
 
                 <predefinedlayouts:AwesomaAjunaAvatarsLayoutItem />
+
+                <predefinedlayouts:GenericPredefinedLayoutItem Title="Azero Testnet"
+                                                               PlutoLayout="plutolayout: [dApp, contract, ExSL, AZEROPrimaryName, UsdB, SubK, ChaK];[18]"/>
 
                 <customlayouts:PlusItemView>
                     <customlayouts:PlusItemView.GestureRecognizers>

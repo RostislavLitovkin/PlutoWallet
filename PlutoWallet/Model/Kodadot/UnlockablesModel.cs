@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 using Newtonsoft.Json;
 using PlutoWallet.Constants;
 
@@ -12,7 +13,7 @@ namespace PlutoWallet.Model.Kodadot
         /// <param name="endpoint"></param>
         /// <param name="collectionId"></param>
         /// <returns>URL for Kodadot Unlockable</returns>
-        public static async Task<Option<string>> FetchKeywiseAsync(Endpoint endpoint, uint collectionId)
+        public static async Task<Option<string>> FetchKeywiseAsync(Endpoint endpoint, BigInteger collectionId)
         {
             
             switch (endpoint.Name)
@@ -30,20 +31,24 @@ namespace PlutoWallet.Model.Kodadot
         /// <param name="prefix">Chain prefix, check: https://github.com/kodadot/nft-gallery/blob/main/services/keywise.ts</param>
         /// <param name="collectionId"></param>
         /// <returns>URL for Kodadot Unlockable</returns>
-        public static async Task<Option<string>> FetchKeywiseAsync(string prefix, uint collectionId)
+        public static async Task<Option<string>> FetchKeywiseAsync(string prefix, BigInteger collectionId)
         {
             HttpClient httpClient = new HttpClient();
-            string json = await httpClient.GetStringAsync("https://keywise.kodadot.workers.dev/resolve/" + prefix + "-" + collectionId);
+            try
+            {
+                string json = await httpClient.GetStringAsync("https://keywise.kodadot.workers.dev/resolve/" + prefix + "-" + collectionId);
 
-            var response = JsonConvert.DeserializeObject<UnlockablesResponse>(json);
-            if (response.Status != 200)
-            {
-                return Option<string>.None;
+                var response = JsonConvert.DeserializeObject<UnlockablesResponse>(json);
+                if (response.Status == 200)
+                {
+                    return Option<string>.Some(response.Url);
+                }
             }
-            else
-            {
-                return Option<string>.Some(response.Url);
+            catch {
+
             }
+
+            return Option<string>.None;
         }
     }
 

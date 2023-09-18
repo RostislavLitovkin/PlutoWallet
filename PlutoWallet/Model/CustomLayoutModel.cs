@@ -23,11 +23,13 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx];[0, 2, 3]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx];[0, 2, 3]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, StDash, CalEx, " +
-            "AAASeasonCountdown, AAALeaderboard, contract, AZEROPrimaryName];[";
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
+            " AAALeaderboard, AZEROPrimaryName];[";
+
+        // EXTRA: StDash, contract, AAASeasonCountdown,
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {

@@ -9,7 +9,5 @@ public partial class NftView : ContentView
 		InitializeComponent();
 
 		BindingContext = DependencyService.Get<NftViewModel>();
-
-        DependencyService.Get<NftViewModel>().GetNFTsAsync();
     }
 }

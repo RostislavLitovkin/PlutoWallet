@@ -3,6 +3,7 @@ using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.ViewModel;
 using PlutoWallet.View;
+using System.Numerics;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -53,14 +54,14 @@ public partial class NftThumbnailView : ContentView
         });
 
     public static readonly BindableProperty CollectionIdProperty = BindableProperty.Create(
-        nameof(CollectionId), typeof(uint), typeof(NftThumbnailView),
+        nameof(CollectionId), typeof(BigInteger), typeof(NftThumbnailView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             // ..
         });
 
     public static readonly BindableProperty ItemIdProperty = BindableProperty.Create(
-        nameof(ItemId), typeof(uint), typeof(NftThumbnailView),
+        nameof(ItemId), typeof(BigInteger), typeof(NftThumbnailView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             // ..
@@ -106,16 +107,16 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(AttributesProperty, value);
     }
 
-    public uint CollectionId
+    public BigInteger CollectionId
     {
-        get => (uint)GetValue(CollectionIdProperty);
+        get => (BigInteger)GetValue(CollectionIdProperty);
 
         set => SetValue(CollectionIdProperty, value);
     }
 
-    public uint ItemId
+    public BigInteger ItemId
     {
-        get => (uint)GetValue(ItemIdProperty);
+        get => (BigInteger)GetValue(ItemIdProperty);
 
         set => SetValue(ItemIdProperty, value);
     }

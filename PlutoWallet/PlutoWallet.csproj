@@ -41,6 +41,8 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
+	  <BuildIpa>true</BuildIpa>
+	  <IpaPackageName>plutowallet</IpaPackageName>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
@@ -407,9 +409,16 @@
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
 	</ItemGroup>
-	<!--<PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
-    </PropertyGroup>-->
+		<CodesignKey>Apple Distribution: Rostislav Litovkin (M38VV8KHX5)</CodesignKey>
+		<CodesignProvision>PlutoWalletDistribution</CodesignProvision>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<TcpPort>58181</TcpPort>
+	</PropertyGroup>
+
 	<ItemGroup>
 	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
