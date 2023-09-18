@@ -54,6 +54,7 @@ The wallet supports these functionalities:
 - [Coingecko](https://www.coingecko.com/)
 - [Staking dashboard](https://staking.polkadot.network/)
 - [Awesome Ajuna Avatars](https://aaa.ajuna.io/)
+- [Azero.id](https://azero.id/)
 
 # Differentiating factors
 
@@ -100,6 +101,8 @@ Supported Networks/NftStandards:
 - [x] Shiden (OnFinality BETA)
 - [x] Statemine/Statemint/Rockmine Nfts pallet
 - [x] Statemine/Statemint/Rockmine Uniques pallet
+- [x] tzero.id (currently just Aleph Zero Testnet)
+- [ ] azero.id (soon)
 - [ ] more to come...
 
 # [Plutonication](https://github.com/cisar2218/Plutonication)
