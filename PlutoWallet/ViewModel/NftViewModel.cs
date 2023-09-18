@@ -41,6 +41,8 @@ namespace PlutoWallet.ViewModel
 
             UpdateNfts(await Model.UniqueryModel.GetAccountRmrk());
 
+            UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey()));
+
             IsLoading = false;
         }
 
