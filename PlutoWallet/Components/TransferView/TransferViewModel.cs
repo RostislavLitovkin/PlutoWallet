@@ -20,6 +20,7 @@ namespace PlutoWallet.Components.TransferView
 		public TransferViewModel()
 		{
 			SetToDefault();
+			fee = "Fee: loading";
 		}
 
 		public async Task GetFeeAsync()
@@ -40,7 +41,6 @@ namespace PlutoWallet.Components.TransferView
 			Address = "";
 			Amount = "";
 			IsVisible = false;
-            Fee = "Fee: loading";
         }
     }
 }

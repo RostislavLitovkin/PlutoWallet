@@ -1,6 +1,7 @@
 ﻿using System;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
+using System.Numerics;
 
 namespace PlutoWallet.Model
 {
@@ -58,6 +59,29 @@ namespace PlutoWallet.Model
             num.Create(Utils.HexToByteArray(hash.Substring(32, 32)));
 
             return num;
+        }
+
+        public static BigInteger GetBigIntegerFromBlake2_128Concat(string hash)
+        {
+            if (hash.Substring(0, 2) == "0x")
+            {
+                hash = hash.Substring(2);
+            }
+
+            if (hash.Length == 40)
+            {
+                return GetU32FromBlake2_128Concat(hash).Value;
+            }
+            else if (hash.Length == 48)
+            {
+                return GetU64FromBlake2_128Concat(hash).Value;
+            }
+            else if (hash.Length == 64)
+            {
+                return GetU128FromBlake2_128Concat(hash).Value;
+            }
+
+            throw new Exception("Hash is in bad format");
         }
     }
 }

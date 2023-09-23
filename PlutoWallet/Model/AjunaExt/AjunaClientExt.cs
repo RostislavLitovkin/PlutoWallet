@@ -23,7 +23,6 @@ namespace PlutoWallet.Model.AjunaExt
 
         public SubscriptionManager SubscriptionManager { get; }
 
-
         public AjunaClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
                 base(uri, chargeType)
         {
@@ -39,8 +38,6 @@ namespace PlutoWallet.Model.AjunaExt
 
             SubscriptionManager = new SubscriptionManager();
         }
-
-
 	}
 }
 

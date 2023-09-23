@@ -1,6 +1,7 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.ScannerView;
 using System.Numerics;
+using PlutoWallet.Components.AssetSelect;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -91,5 +92,4 @@ public partial class TransferView : ContentView
 
         }
     }
-
 }

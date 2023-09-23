@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
              x:Class="PlutoWallet.Components.TransferView.TransferView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -29,15 +31,16 @@
 
                 <AbsoluteLayout>
                     <Entry Placeholder="ss58 address" Text="{Binding Address}"
-                           AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                           AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
                            AbsoluteLayout.LayoutFlags="WidthProportional"
-                           Margin="0, 0, 40, 0"/>
+                           Margin="0, 0, 45, 0"/>
 
                     <!--QR code button-->
                     <Image
-                        AbsoluteLayout.LayoutBounds="1, 0, 30, 30"
+                        AbsoluteLayout.LayoutBounds="1, 0, 40, 40"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
+                        Margin="5, 5, 5, 5"
                         >
             
                         <Image.GestureRecognizers>
@@ -46,11 +49,22 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </AbsoluteLayout>
-                <HorizontalStackLayout>
+                <Grid HeightRequest="40">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                   
                     <Entry Placeholder="Amount" Text="{Binding Amount}"
-                           Keyboard="Numeric"/>
-                    
-                </HorizontalStackLayout>
+                           Keyboard="Numeric"
+                           HeightRequest="40"
+                           Margin="0, 0, 10, 0"
+                           Grid.Column="0" />
+                    <assetselect:AssetSelectButtonView HeightRequest="40"
+                                                       Grid.Column="1" />
+                 </Grid>
 
                 <Label Text="{Binding Fee}" TextColor="Orange" />
 

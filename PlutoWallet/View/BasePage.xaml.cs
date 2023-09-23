@@ -16,11 +16,12 @@ public partial class BasePage : ContentPage
 
     async void OnQRClicked(System.Object sender, System.EventArgs e)
     {
-        await universalScannerView.Appear();
+       await universalScannerView.Appear();
     }
 
     async void OnSettingsClicked(System.Object sender, System.EventArgs e)
     {
         await Navigation.PushAsync(new SettingsPage());
     }
+
 }

@@ -198,6 +198,8 @@
 	  <None Remove="Model\AzeroId\" />
 	  <None Remove="Resources\Images\azeroid.svg" />
 	  <None Remove="Components\AssetSelect\" />
+	  <None Remove="Resources\Images\dropdownwhite.svg" />
+	  <None Remove="Resources\Images\dropdownblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -276,6 +278,8 @@
 
 	  <BundleResource Include="Resources\Images\space.png" />
 	  <BundleResource Include="Resources\Images\azeroid.svg" />
+	  <BundleResource Include="Resources\Images\dropdownwhite.svg" />
+	  <BundleResource Include="Resources\Images\dropdownblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
