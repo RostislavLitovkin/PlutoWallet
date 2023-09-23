@@ -15,7 +15,6 @@ public partial class BottomPopupCard : AbsoluteLayout
 
     private async void OnPanUpdated(System.Object sender, Microsoft.Maui.Controls.PanUpdatedEventArgs e)
     {
-        Console.WriteLine(e.TotalY);
         if (e.StatusType == GestureStatus.Started)
         {
             //protectiveLayout.IsVisible = true;
