@@ -21,6 +21,10 @@ namespace PlutoWallet.Model
                 return;
             }
 
+            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+
+            usdBalanceViewModel.UsdSum = "Loading";
+
             var tempAssets = new List<Asset>();
 
             double usdSumValue = 0;
@@ -99,15 +103,12 @@ namespace PlutoWallet.Model
                     messagePopup.Text = ex.Message;
 
                     messagePopup.IsVisible = true;
-
                 }
             }
 
             UsdSum = usdSumValue;
 
             Assets = tempAssets;
-
-            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
 
             usdBalanceViewModel.UpdateBalances();
         }
