@@ -222,10 +222,7 @@ namespace PlutoWallet.Model
                 return;
             }
 
-            await transferViewModel.GetFeeAsync();
-
             Console.WriteLine("All done");
-
         }
     }
 }

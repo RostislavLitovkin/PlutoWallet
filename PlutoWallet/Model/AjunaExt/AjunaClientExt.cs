@@ -1,11 +1,16 @@
 ﻿using System;
 using Substrate.NetApi;
 using PlutoWallet.Model.Storage;
+using Newtonsoft.Json;
+using PlutoWallet.Types;
+using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Model.AjunaExt
 {
 	public class AjunaClientExt : SubstrateClient
 	{
+        public ChargeType DefaultCharge;
+
         public System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>> StorageKeyDict;
 
         public BalancesStorage BalancesStorage;
@@ -38,6 +43,29 @@ namespace PlutoWallet.Model.AjunaExt
 
             SubscriptionManager = new SubscriptionManager();
         }
-	}
+
+
+        public async Task ConnectAsync()
+        {
+            await base.ConnectAsync();
+
+            Metadata customMetadata = JsonConvert.DeserializeObject<Metadata>(MetaData.Serialize());
+
+            foreach (SignedExtension signedExtension in customMetadata.NodeMetadata.Extrinsic.SignedExtensions)
+            {
+                if (signedExtension.SignedIdentifier == "ChargeTransactionPayment")
+                {
+                    DefaultCharge = ChargeTransactionPayment.Default();
+
+                }
+
+                if (signedExtension.SignedIdentifier == "ChargeAssetTxPayment")
+                {
+                    DefaultCharge = ChargeAssetTxPayment.Default();
+                }
+            }
+        }
+
+    }
 }
 

@@ -58,14 +58,6 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void Select(Endpoint endpoint)
         {
-            foreach (NetworkSelectInfo info in NetworkInfos)
-            {
-                if (info.Name == endpoint.Name && info.ShowName)
-                {
-                    return;
-                }
-            }
-
             int[] defaultNetworks = Endpoints.DefaultNetworks;
 
             NetworkInfos = new ObservableCollection<NetworkSelectInfo>();

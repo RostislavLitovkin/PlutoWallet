@@ -240,7 +240,7 @@ namespace PlutoWallet.Constants
             { "acala", new Endpoint
             {
                 Name = "Acala",
-                URL = "wss://acala-rpc-1.aca-api.network",
+                URL = "wss://acala-rpc-3.aca-api.network/ws",
                 Icon = "acala.png",
                 CalamarChainName = "acala",
                 Unit = "ACA",

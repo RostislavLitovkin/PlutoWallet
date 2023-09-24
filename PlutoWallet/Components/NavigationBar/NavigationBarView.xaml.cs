@@ -31,10 +31,12 @@ public partial class NavigationBarView : ContentView
         homeSpan.FontAttributes = FontAttributes.None;
     }
     
-    void OnTransferClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnTransferClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         viewModel.IsVisible = true;
+
+        viewModel.GetFeeAsync();
     }
 }

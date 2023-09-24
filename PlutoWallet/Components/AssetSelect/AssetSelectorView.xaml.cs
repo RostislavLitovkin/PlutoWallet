@@ -3,6 +3,7 @@ using System.Numerics;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NetworkSelect;
 using System.Net;
+using PlutoWallet.Components.TransferView;
 
 namespace PlutoWallet.Components.AssetSelect;
 
@@ -139,23 +140,36 @@ public partial class AssetSelectorView : ContentView
         set => SetValue(UsdValueProperty, value);
     }
 
-    void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         
         // Hide the AssetSelectView
         var assetSelectViewModel = DependencyService.Get<AssetSelectViewModel>();
 
         assetSelectViewModel.IsVisible = false;
-
-        // Change the network if not selected
-        var networkingViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
-        networkingViewModel.Select(Endpoint);
         
+        
+
+        var networkingViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+        foreach (NetworkSelectInfo info in networkingViewModel.NetworkInfos)
+        {
+            if (info.Name == Endpoint.Name && !info.ShowName)
+            {
+                // Change the network if not selected
+                // This line also updates the fee
+                networkingViewModel.Select(Endpoint);
+            }
+        }
+
         var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
         assetSelectButtonViewModel.ChainIcon = ChainIcon;
         assetSelectButtonViewModel.Symbol = Symbol;
         assetSelectButtonViewModel.AssetId = AssetId;
         assetSelectButtonViewModel.Pallet = Pallet;
         assetSelectButtonViewModel.Endpoint = Endpoint;
+
+        // Update the fee
+        var transferViewModel = DependencyService.Get<TransferViewModel>();
+        await transferViewModel.GetFeeAsync();
     }
 }
