@@ -21,6 +21,10 @@ namespace PlutoWallet.Model.AjunaExt
 
         public NftsStorage NftsStorage;
 
+        public AssetRegistryStorage AssetRegistryStorage;
+
+        public TokensStorage TokensStorage;
+
         public ContractsStorage ContractsStorage;
 
         // Logic for ink! contracts
@@ -37,13 +41,14 @@ namespace PlutoWallet.Model.AjunaExt
             this.BalancesStorage = new BalancesStorage(this);
             this.AssetsStorage = new AssetsStorage(this);
             this.NftsStorage = new NftsStorage(this);
+            this.AssetRegistryStorage = new AssetRegistryStorage(this);
+            this.TokensStorage = new TokensStorage(this);
             this.ContractsStorage = new ContractsStorage(this);
 
             ExtrinsicManger = new ExtrinsicManager();
 
             SubscriptionManager = new SubscriptionManager();
         }
-
 
         public async Task ConnectAsync()
         {

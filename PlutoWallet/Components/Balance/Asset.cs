@@ -19,6 +19,7 @@ namespace PlutoWallet.Components.Balance
     {
         Native,
         Assets,
+        Tokens,
     }
 }
 

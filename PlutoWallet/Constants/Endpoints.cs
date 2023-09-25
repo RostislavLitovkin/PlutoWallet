@@ -261,7 +261,7 @@ namespace PlutoWallet.Constants
             { "hydradx", new Endpoint
             {
                 Name = "HydraDX",
-                URL = "wss://hydradx-rpc.dwellir.com",
+                URL = "wss://hydradx.api.onfinality.io/public-ws",
                 Icon = "hydradx.png",
                 Unit = "HDX",
                 SS58Prefix = 63,
