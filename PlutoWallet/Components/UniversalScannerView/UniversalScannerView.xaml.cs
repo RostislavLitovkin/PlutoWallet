@@ -77,6 +77,11 @@ public partial class UniversalScannerView : ContentView
 
                 Model.CustomLayoutModel.ShowImportSuccessfulRestartNeededMessage();
             }
+            else if (scannedValue.Length > 3 && scannedValue.Substring(0, 3) == "wc:")
+            {
+                Console.WriteLine(scannedValue);
+                await Model.WalletConnectModel.Connect(scannedValue);
+            }
             else
             {
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();
