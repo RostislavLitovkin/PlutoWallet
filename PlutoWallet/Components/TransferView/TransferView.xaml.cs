@@ -1,5 +1,10 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.ScannerView;
+using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Components.Extrinsic;
+using Substrate.NetApi.Model.Rpc;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 
 namespace PlutoWallet.Components.TransferView;
@@ -39,10 +44,75 @@ public partial class TransferView : ContentView
 
         errorLabel.Text = "";
 
+        var client = Model.AjunaClientModel.Client;
+
         try
         {
+            
+            var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
-            await TransferModel.BalancesTransferAsync(viewModel.Address, amount);
+            Method transfer =
+                assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native ?
+                TransferModel.NativeTransfer(client, viewModel.Address, amount) :
+                TransferModel.AssetsTransfer(client, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
+
+            if ((await KeysModel.GetAccount()).IsSome(out var account))
+            {
+                UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
+                    transfer,
+                    account,
+                    client.DefaultCharge,
+                    lifeTime: 64,
+                    signed: true,
+                    CancellationToken.None);
+
+
+                var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+                string extrinsicId = await client.Author.SubmitAndWatchExtrinsicAsync(
+                    (string id, ExtrinsicStatus status) =>
+                    {
+                        if (status.ExtrinsicState == ExtrinsicState.Ready)
+                            Console.WriteLine("Ready");
+                        else if (status.ExtrinsicState == ExtrinsicState.Dropped)
+                        {
+                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
+                            extrinsicStackViewModel.Update();
+                        }
+
+                        else if (status.InBlock != null)
+                        {
+                            Console.WriteLine("In block");
+                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
+                            extrinsicStackViewModel.Update();
+                        }
+
+                        else if (status.Finalized != null)
+                        {
+                            Console.WriteLine("Finalized");
+                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
+                            extrinsicStackViewModel.Update();
+                        }
+
+                        else
+                            Console.WriteLine(status.ExtrinsicState);
+                    },
+                    Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
+
+                extrinsicStackViewModel.Extrinsics.Add(
+                    extrinsicId,
+                    new ExtrinsicInfo
+                    {
+                        ExtrinsicId = extrinsicId,
+                        Status = ExtrinsicStatusEnum.Pending,
+                    });
+
+                extrinsicStackViewModel.Update();
+            }
+            else
+            {
+                // Verification failed, do something about it
+            }
 
             // Hide this layout
 
@@ -91,5 +161,4 @@ public partial class TransferView : ContentView
 
         }
     }
-
 }

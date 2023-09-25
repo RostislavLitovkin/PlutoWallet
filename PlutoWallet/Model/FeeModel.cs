@@ -15,6 +15,8 @@ using Substrate.NetApi.Model.Types;
 using Chaos.NaCl;
 using Schnorrkel;
 using PlutoWallet.Constants;
+using PlutoWallet.Model;
+
 
 namespace PlutoWallet.Model
 {
@@ -23,52 +25,43 @@ namespace PlutoWallet.Model
         /**
          * Gets you a string version of transfer fee for the currently selected chain
          */
-        public static async Task<string> GetTransferFeeStringAsync()
+        public static async Task<string> GetNativeTransferFeeStringAsync()
         {
             Endpoint endpoint = Model.AjunaClientModel.SelectedEndpoint;
-            BigInteger fee = await GetTransferFeeAsync();
+            BigInteger fee = await GetNativeTransferFeeAsync();
             return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
         }
 
         /**
          * Gets a transfer fee for the currently selected chain
          */
-        public static async Task<BigInteger> GetTransferFeeAsync()
+        public static async Task<BigInteger> GetNativeTransferFeeAsync()
         {
-            var accountId = new AccountId32();
-            accountId.Create(Utils.GetPublicKeyFrom("5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ"));
-
-            var multiAddress = new EnumMultiAddress();
-            multiAddress.Create(MultiAddress.Address32, accountId);
-
-            var baseComAmount = new BaseCom<U128>();
-            baseComAmount.Create(100);
-
             var client = Model.AjunaClientModel.Client;
+            Method transfer = TransferModel.NativeTransfer(client, "5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ", 1000000000);
 
-            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Balances", "transfer");
+            return await GetMethodFeeAsync(transfer);
+        }
 
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(multiAddress.Encode());
-            byteArray.AddRange(baseComAmount.Encode());
-            Method transfer = new Method(palletIndex, "Balances", callIndex, "transfer", byteArray.ToArray());
+        /**
+         * Gets you a string version of transfer fee for the currently selected chain
+         */
+        public static async Task<string> GetAssetsTransferFeeStringAsync()
+        {
+            Endpoint endpoint = Model.AjunaClientModel.SelectedEndpoint;
+            BigInteger fee = await GetAssetsTransferFeeAsync();
+            return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
+        }
 
-            var charge = ChargeTransactionPayment.Default();
+        /**
+         * Gets a transfer fee for the currently selected chain
+         */
+        public static async Task<BigInteger> GetAssetsTransferFeeAsync()
+        {
+            var client = Model.AjunaClientModel.Client;
+            Method transfer = TransferModel.AssetsTransfer(client, "5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ", 1, 1000000000);
 
-            UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
-                transfer,
-                MockModel.GetMockAccount(),
-                charge,
-                lifeTime: 64,
-                signed: true,
-                CancellationToken.None);
-
-            var feeDetail = await client.Payment.QueryFeeDetailAsync(
-                Utils.Bytes2HexString(extrinsic.Encode()),
-                null,
-                CancellationToken.None);
-
-            return feeDetail.InclusionFee.BaseFee.Value + feeDetail.InclusionFee.AdjustedWeightFee.Value + feeDetail.InclusionFee.LenFee.Value;
+            return await GetMethodFeeAsync(transfer);
         }
 
         /**
@@ -78,16 +71,15 @@ namespace PlutoWallet.Model
         {
             var client = Model.AjunaClientModel.Client;
 
-            var charge = ChargeTransactionPayment.Default();
-
             UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 method,
                 MockModel.GetMockAccount(),
-                charge,
+                client.DefaultCharge,
                 lifeTime: 64,
                 signed: true,
                 CancellationToken.None);
 
+            Console.WriteLine("Here is the extrinsics bytes: " + Utils.Bytes2HexString(extrinsic.Encode()));
             var feeDetail = await client.Payment.QueryFeeDetailAsync(
                 Utils.Bytes2HexString(extrinsic.Encode()),
                 null,

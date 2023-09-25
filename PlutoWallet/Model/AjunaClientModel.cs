@@ -9,6 +9,7 @@ using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.CalamarView;
 using PlutoWallet.Components.AzeroId;
+using PlutoWallet.Components.AssetSelect;
 
 namespace PlutoWallet.Model
 {
@@ -100,7 +101,20 @@ namespace PlutoWallet.Model
 
             await ConnectClientAsync();
         }
-    
+
+        /**
+         * A Method that assures that when a chain is changed, all views associated also update.
+         */
+        public static async Task ChangeChainAsync(Endpoint endpoint)
+        {
+            int index = Array.IndexOf(GroupEndpoints, endpoint);
+            SelectedEndpoint = GroupEndpoints[index];
+
+            // Set the selected endpoint of the group to be the "main" client
+            Client = GroupClients[index];
+
+            await ConnectClientAsync();
+        }
 
         private static async Task ConnectGroupAsync()
         {
@@ -124,14 +138,21 @@ namespace PlutoWallet.Model
             }
 
             // Setup things, like balances..
-            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
 
-            Task getBalance = usdBalanceViewModel.GetBalancesAsync();
+            Task getBalance = Model.AssetsModel.GetBalance();
 
         }
 
         private static async Task ConnectClientAsync()
         {
+            // Setup the AssetSelectButton
+            var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+            assetSelectButtonViewModel.ChainIcon = SelectedEndpoint.Icon;
+            assetSelectButtonViewModel.Symbol = SelectedEndpoint.Unit;
+            assetSelectButtonViewModel.AssetId = 0;
+            assetSelectButtonViewModel.Pallet = AssetPallet.Native;
+            assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
+
             Connected = false;
 
             // Wait up to 10 seconds for the Client to connect. 
@@ -201,10 +222,7 @@ namespace PlutoWallet.Model
                 return;
             }
 
-            await transferViewModel.GetFeeAsync();
-
             Console.WriteLine("All done");
-
         }
     }
 }

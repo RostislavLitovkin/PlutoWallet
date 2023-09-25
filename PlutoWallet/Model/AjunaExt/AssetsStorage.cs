@@ -15,6 +15,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Numerics;
 using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
 using Newtonsoft.Json.Linq;
 using Substrate.NetApi.Model.Rpc;
@@ -128,7 +129,7 @@ namespace PlutoWallet.Model.AjunaExt
         /**
          * This method is used to query all the data associated with the assets
          */
-        public async Task<List<(string, AssetDetails, AssetMetadata, AssetAccount)>> GetAssetsMetadataAndAcountNextAsync(string substrateAddress, uint page, CancellationToken token)
+        public async Task<List<(BigInteger, AssetDetails, AssetMetadata, AssetAccount)>> GetAssetsMetadataAndAcountNextAsync(string substrateAddress, uint page, CancellationToken token)
         {
             if (page < 2 || page > 1000)
             {
@@ -137,7 +138,7 @@ namespace PlutoWallet.Model.AjunaExt
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
 
-            var resultList = new List<(string, AssetDetails, AssetMetadata, AssetAccount)>();
+            var resultList = new List<(BigInteger, AssetDetails, AssetMetadata, AssetAccount)>();
 
             var detailsKeyPrefixBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Asset");
 
@@ -180,6 +181,8 @@ namespace PlutoWallet.Model.AjunaExt
 
                     string storageKeyString = storageKeys.ElementAt<string>(i);
 
+                    BigInteger assetId = HashModel.GetBigIntegerFromBlake2_128Concat(storageKeyString);
+
                     var assetDetails = new AssetDetails();
                     assetDetails.Create(assetDetailData[1]);
 
@@ -192,11 +195,11 @@ namespace PlutoWallet.Model.AjunaExt
                         var assetAccount = new AssetAccount();
                         assetAccount.Create(assetAccountData[1]);
 
-                        resultList.Add((storageKeyString, assetDetails, assetMetadata, assetAccount));
+                        resultList.Add((assetId, assetDetails, assetMetadata, assetAccount));
                     }
                     else
                     {
-                        resultList.Add((storageKeyString, assetDetails, assetMetadata, null));
+                        resultList.Add((assetId, assetDetails, assetMetadata, null));
                     }
                 }
             }

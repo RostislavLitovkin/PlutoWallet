@@ -54,8 +54,33 @@ namespace PlutoWallet.Components.NetworkSelect
             // Update other views
             Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(tempEndpointIndexes);
         }
-    }
 
-    
+
+        public void Select(Endpoint endpoint)
+        {
+            int[] defaultNetworks = Endpoints.DefaultNetworks;
+
+            NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
+            int[] tempEndpointIndexes = new int[4];
+
+            for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
+            {
+                int endpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
+                if (endpointIndex != -1)
+                {
+                    NetworkInfos.Add(new NetworkSelectInfo
+                    {
+                        EndpointIndex = endpointIndex,
+                        ShowName = endpoint.Name == Endpoints.GetAllEndpoints[endpointIndex].Name,
+                        Name = Endpoints.GetAllEndpoints[endpointIndex].Name,
+                        Icon = Endpoints.GetAllEndpoints[endpointIndex].Icon,
+                    });
+                }
+                tempEndpointIndexes[i] = endpointIndex;
+            }
+
+            Task change = Model.AjunaClientModel.ChangeChainAsync(endpoint);
+        }
+    }
 }
 

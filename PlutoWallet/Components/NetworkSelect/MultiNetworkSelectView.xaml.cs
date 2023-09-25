@@ -45,8 +45,6 @@ public partial class MultiNetworkSelectView : ContentView
 
                 var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
 
-
-
                 int thisBubbleIndex = Array.IndexOf(endpointIndexes.ToArray(), senderBubble.EndpointIndex);
                 networkInfos[thisBubbleIndex].ShowName = true;
 

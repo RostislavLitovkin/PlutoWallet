@@ -1,5 +1,6 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Components.AssetSelect;
 
 namespace PlutoWallet.Components.TransferView
 {
@@ -20,6 +21,7 @@ namespace PlutoWallet.Components.TransferView
 		public TransferViewModel()
 		{
 			SetToDefault();
+			fee = "Fee: loading";
 		}
 
 		public async Task GetFeeAsync()
@@ -27,10 +29,26 @@ namespace PlutoWallet.Components.TransferView
             Fee = "Fee: loading";
             try
 			{
-				Fee = "Fee: " + await Model.FeeModel.GetTransferFeeStringAsync();
+                var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+
+				if (assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native)
+				{
+					Fee = "Fee: " + await Model.FeeModel.GetNativeTransferFeeStringAsync();
+				}
+				else if (assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Assets)
+				{
+					Fee = "Fee: " + await Model.FeeModel.GetAssetsTransferFeeStringAsync();
+                }
+                else
+				{
+					Fee = "Fee: Unsupported";
+				}
 			}
 			catch (Exception ex)
 			{
+                Console.WriteLine("Fee error: ");
+
+                Console.WriteLine(ex);
 				Fee = ex.Message;
 			}
         }
@@ -40,7 +58,6 @@ namespace PlutoWallet.Components.TransferView
 			Address = "";
 			Amount = "";
 			IsVisible = false;
-            Fee = "Fee: loading";
         }
     }
 }

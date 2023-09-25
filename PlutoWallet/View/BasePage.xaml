@@ -11,7 +11,9 @@
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
-             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar" xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
              BackgroundColor="Black">
 
     <AbsoluteLayout
@@ -19,7 +21,8 @@
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                Source="space.png" Aspect="AspectFill"/>
         <ContentView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                     Content="{Binding Content}">
+                     Content="{Binding Content}"
+                     >
             <!-- other pages here -->
 
         </ContentView>
@@ -75,6 +78,8 @@
         <messagepopup:MessagePopupView />
 
         <navigationbar:NavigationBarView />
+
+        <assetselect:AssetSelectView />
 
     </AbsoluteLayout>
 </ContentPage>
