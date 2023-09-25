@@ -40,12 +40,12 @@ The wallet supports these functionalities:
 - generating Mnemonics & creating a privateKey
 - showing and sharing your public key and ss58 key
 - connecting to any substrate based blockchain/parachain
-- getting your actual balance
-- transfer of native assets
+- fetching asset balance from **Balances**, **Assets** and **Tokens** pallet
+- transfer of assets from **Balances** and **Assets** pallet
 - fee calculation
 - shows transaction status
-- Nfts (powered by [Uniquery.Net](https://github.com/RostislavLitovkin/Uniquery.Net))
-- Contracts (Currently just Counter Sample)
+- NFTs (powered by [Uniquery.Net](https://github.com/RostislavLitovkin/Uniquery.Net))
+- contracts (Currently just Counter Sample)
 - connect to any dApp thanks to [Plutonication](https://github.com/cisar2218/Plutonication)
 
 3rd party integrations:
@@ -110,7 +110,9 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 <img width="1512" alt="Screenshot 2023-08-19 at 22 50 21" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/6c10fbe1-ad31-4aa3-8e3f-dcfbfeaf4aaf">
 
 # Achievements
-- 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category
+- 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category with PlutoWallet & Plutonication
+- 2nd place at Polkadot Global Series hackathon 2023, APEC edition in the Web3 & Tooling category with Uniquery.Net
+- Part of Polkadot Relayers Incubator 2023
 
 # Current team
 
