@@ -31,7 +31,7 @@ namespace PlutoWallet.ViewModel
         private Endpoint endpoint;
 
         [ObservableProperty]
-        private string[] attributes;
+        private object[] attributes;
 
         [ObservableProperty]
         private BigInteger collectionId;

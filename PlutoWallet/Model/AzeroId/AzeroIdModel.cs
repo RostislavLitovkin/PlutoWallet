@@ -29,7 +29,7 @@ namespace PlutoWallet.Model.AzeroId
 
             // query the result
             var temp = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
-                "0x3a6368696c645f73746f726167653a64656661756c743a03d1cf2e15016e7af14df2e656607906e10c891f703a866bb78f6acb8f48f3ff",
+                Constants.AzeroId.TZeroIdPrefixedStorageKey,
                 Utils.Bytes2HexString(finalHash)
             }, CancellationToken.None);
             if (temp == null) return null;
@@ -57,7 +57,7 @@ namespace PlutoWallet.Model.AzeroId
             byte[] finalHash = HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, rootKeyHex.ToArray());
 
             var keysPaged = await client.InvokeAsync<JArray>("childstate_getKeys", new object[2] {
-                "0x3a6368696c645f73746f726167653a64656661756c743a03d1cf2e15016e7af14df2e656607906e10c891f703a866bb78f6acb8f48f3ff",
+                Constants.AzeroId.TZeroIdPrefixedStorageKey,
                 "0x"
             }, CancellationToken.None);
 
@@ -74,7 +74,7 @@ namespace PlutoWallet.Model.AzeroId
                 {
                     // query the result
                     var temp = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
-                        "0x3a6368696c645f73746f726167653a64656661756c743a03d1cf2e15016e7af14df2e656607906e10c891f703a866bb78f6acb8f48f3ff",
+                        Constants.AzeroId.TZeroIdPrefixedStorageKey,
                         key
                     }, CancellationToken.None);
 
@@ -106,7 +106,7 @@ namespace PlutoWallet.Model.AzeroId
 
             // query the result
             var result = Utils.HexToByteArray(await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
-                "0x3a6368696c645f73746f726167653a64656661756c743a03d1cf2e15016e7af14df2e656607906e10c891f703a866bb78f6acb8f48f3ff",
+                Constants.AzeroId.TZeroIdPrefixedStorageKey,
                 Utils.Bytes2HexString(finalHash)
             }, CancellationToken.None));
 
