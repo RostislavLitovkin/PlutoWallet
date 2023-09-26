@@ -22,7 +22,7 @@ namespace PlutoWallet.Model
 		public string Image { get; set; }
         [JsonProperty("animation_url")]
         public string AnimationUrl { get; set; }
-        public string[] Attributes { get; set; }
+        public object[] Attributes { get; set; }
         [JsonProperty("external_url")]
         public string ExternalUrl { get; set; }
         public string Type { get; set; }
