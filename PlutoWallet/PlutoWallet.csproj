@@ -200,6 +200,9 @@
 	  <None Remove="Model\AzeroId\" />
 	  <None Remove="Resources\Images\azeroid.svg" />
 	  <None Remove="Resources\Images\azeroiddarkbg.png" />
+	  <None Remove="Components\AssetSelect\" />
+	  <None Remove="Resources\Images\dropdownwhite.svg" />
+	  <None Remove="Resources\Images\dropdownblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -279,6 +282,8 @@
 	  <BundleResource Include="Resources\Images\space.png" />
 	  <BundleResource Include="Resources\Images\azeroid.svg" />
 	  <BundleResource Include="Resources\Images\azeroiddarkbg.png" />
+	  <BundleResource Include="Resources\Images\dropdownwhite.svg" />
+	  <BundleResource Include="Resources\Images\dropdownblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -410,6 +415,7 @@
 	  <Folder Include="Components\Kodadot\" />
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
+	  <Folder Include="Components\AssetSelect\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

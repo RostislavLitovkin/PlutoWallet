@@ -2,19 +2,6 @@
 
 public partial class AssetAmountView : ContentView
 {
-    public static readonly BindableProperty AssetProperty = BindableProperty.Create(
-        nameof(Asset), typeof(Asset), typeof(AssetAmountView),
-        defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
-            var control = (AssetAmountView)bindable;
-            var asset = (Asset)newValue;
-
-            control.amountLabel.Text = String.Format("{0:0.00}", asset.Amount);
-            control.symbolLabel.Text = asset.Symbol;
-            control.chainIcon.Source = asset.ChainIcon;
-            control.usdLabel.Text = String.Format("{0:0.00}", asset.UsdValue) + " USD";
-        });
-
     public static readonly BindableProperty AmountProperty = BindableProperty.Create(
         nameof(Amount), typeof(string), typeof(AssetAmountView),
         defaultBindingMode: BindingMode.TwoWay,
@@ -55,13 +42,6 @@ public partial class AssetAmountView : ContentView
 	{
 		InitializeComponent();
 	}
-
-    public Asset Asset
-    {
-        get => (Asset)GetValue(AssetProperty);
-
-        set => SetValue(AssetProperty, value);
-    }
 
     public string Amount
     {

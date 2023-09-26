@@ -10,21 +10,16 @@ using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
 using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
 using PlutoWallet.Types;
-using Substrate.NetApi.Model.Rpc;
-using PlutoWallet.Components.Extrinsic;
+using System.Numerics;
 
 namespace PlutoWallet.Model
 {
 	public class TransferModel
 	{
 
-		public static async Task BalancesTransferAsync(string address, CompactInteger amount)
+		public static Method NativeTransfer(AjunaClientExt client, string address, CompactInteger amount)
 		{
-            // Recognize what type of the address it is and convert it into ss58 one
-
-
-
-            // transfer
+            // Later: Recognize what type of the address it is and convert it into ss58 one
             var accountId = new AccountId32();
             accountId.Create(Utils.GetPublicKeyFrom(address));
 
@@ -34,75 +29,41 @@ namespace PlutoWallet.Model
             var baseComAmount = new BaseCom<U128>();
             baseComAmount.Create(amount);
 
-            var client = Model.AjunaClientModel.Client;
-
-            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Balances", "transfer");
+            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Balances", "transfer_keep_alive");
 
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(multiAddress.Encode());
             byteArray.AddRange(baseComAmount.Encode());
-            Method transfer = new Method(palletIndex, "Balances", callIndex, "transfer", byteArray.ToArray());
+            return new Method(palletIndex, "Balances", callIndex, "transfer_keep_alive", byteArray.ToArray());
+        }
 
-            var charge = ChargeTransactionPayment.Default();
+        public static Method AssetsTransfer(AjunaClientExt client, string address, BigInteger assetId, CompactInteger amount)
+        {
+            // Even if the assetId is different type than U128,
+            // like for example U32, it will still result in the same bytes after the .Encode().
+            var baseComAssetId = new BaseCom<U128>();
+            baseComAssetId.Create(assetId);
 
-            if ((await KeysModel.GetAccount()).IsSome(out var account))
-            {
-                UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
-                    transfer,
-                    account,
-                    charge,
-                    lifeTime: 64,
-                    signed: true,
-                    CancellationToken.None);
+            // Later: Recognize what type of the address it is and convert it into ss58 one
+            var accountId = new AccountId32();
+            accountId.Create(Utils.GetPublicKeyFrom(address));
 
+            var multiAddress = new EnumMultiAddress();
+            multiAddress.Create(0, accountId);
 
-                var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+            var baseComAmount = new BaseCom<U128>();
+            baseComAmount.Create(amount);
 
-                string extrinsicId = await client.Author.SubmitAndWatchExtrinsicAsync(
-                    (string id, ExtrinsicStatus status) =>
-                    {
-                        if (status.ExtrinsicState == ExtrinsicState.Ready)
-                            Console.WriteLine("Ready");
-                        else if (status.ExtrinsicState == ExtrinsicState.Dropped)
-                        {
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
-                            extrinsicStackViewModel.Update();
-                        }
+            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Assets", "transfer_keep_alive");
 
-                        else if (status.InBlock != null)
-                        {
-                            Console.WriteLine("In block");
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
-                            extrinsicStackViewModel.Update();
-                        }
+            Console.WriteLine("Pallet index: " + palletIndex + "    Call index: " + callIndex);
 
-                        else if (status.Finalized != null)
-                        {
-                            Console.WriteLine("Finalized");
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
-                            extrinsicStackViewModel.Update();
-                        }
-
-                        else
-                            Console.WriteLine(status.ExtrinsicState);
-                    },
-                    Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
-
-                extrinsicStackViewModel.Extrinsics.Add(
-                    extrinsicId,
-                    new ExtrinsicInfo
-                    {
-                        ExtrinsicId = extrinsicId,
-                        Status = ExtrinsicStatusEnum.Pending,
-                    });
-
-                extrinsicStackViewModel.Update();
-            }
-            else
-            {
-                // Verification failed, do something about it
-            }
-        } 
-	}
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(baseComAssetId.Encode());
+            byteArray.AddRange(multiAddress.Encode());
+            byteArray.AddRange(baseComAmount.Encode());
+            return new Method(palletIndex, "Assets", callIndex, "transfer_keep_alive", byteArray.ToArray());
+        }
+    }
 }
 
