@@ -31,7 +31,7 @@ namespace PlutoWallet.Constants
 
         public static Dictionary<string, Endpoint> GetEndpointDictionary => new Dictionary<string, Endpoint>()
         {
-            {"polkadot", new Endpoint
+            { "polkadot", new Endpoint
             {
                 Name = "Polkadot",
                 URL = "wss://polkadot.api.onfinality.io/public-ws",
@@ -279,6 +279,18 @@ namespace PlutoWallet.Constants
                     Unit = "MOVR",
                     SS58Prefix = 1285,
                     Decimals = 18,
+                    ChainType = ChainType.Substrate,
+                }
+            },
+            {
+                "bifrost", new Endpoint
+                {
+                    Name = "Bifrost",
+                    URL = "wss://bifrost-polkadot.api.onfinality.io/public-ws",
+                    Icon = "bifrost.png",
+                    Unit = "BNC",
+                    SS58Prefix = 6,
+                    Decimals = 12,
                     ChainType = ChainType.Substrate,
                 }
             },
