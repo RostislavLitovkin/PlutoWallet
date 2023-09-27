@@ -66,6 +66,7 @@
 		<MauiImage Include="Resources\Images\NetworkIcons\*png" />
 		<MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
 		<MauiImage Include="Resources\Images\PredefinedLayouts\*png" />
+		<MauiImage Include="Resources\Images\FatCat\*png" />
 
 		<!-- fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
@@ -203,6 +204,13 @@
 	  <None Remove="Components\AssetSelect\" />
 	  <None Remove="Resources\Images\dropdownwhite.svg" />
 	  <None Remove="Resources\Images\dropdownblack.svg" />
+	  <None Remove="Resources\Images\FatCat\" />
+	  <None Remove="Resources\Images\FatCat\fatcat.png" />
+	  <None Remove="Resources\Images\FatCat\tail5.png" />
+	  <None Remove="Resources\Images\FatCat\tail4.png" />
+	  <None Remove="Resources\Images\FatCat\tail3.png" />
+	  <None Remove="Resources\Images\FatCat\tail2.png" />
+	  <None Remove="Resources\Images\FatCat\tail1.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -284,6 +292,12 @@
 	  <BundleResource Include="Resources\Images\azeroiddarkbg.png" />
 	  <BundleResource Include="Resources\Images\dropdownwhite.svg" />
 	  <BundleResource Include="Resources\Images\dropdownblack.svg" />
+	  <BundleResource Include="Resources\Images\FatCat\fatcat.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail5.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail4.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail3.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail2.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail1.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -416,6 +430,7 @@
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
+	  <Folder Include="Resources\Images\FatCat\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

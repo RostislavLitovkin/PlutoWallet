@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using PlutoWallet.Components.Nft;
 
 namespace PlutoWallet.ViewModel
 {
@@ -10,9 +11,6 @@ namespace PlutoWallet.ViewModel
 	{
         [ObservableProperty]
         private ObservableCollection<NFT> nfts = new ObservableCollection<NFT>() { };
-
-        [ObservableProperty]
-        private bool isLoading = false;
 
         public NftViewModel()
 		{
@@ -24,12 +22,13 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync()
         {
-            if (IsLoading)
+            var nftLoadingViewModel = DependencyService.Get<NftLoadingViewModel>();
+            if (nftLoadingViewModel.IsVisible)
             {
                 return;
             }
 
-            IsLoading = true;
+            nftLoadingViewModel.IsVisible = true;
 
             foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
             {
@@ -43,7 +42,7 @@ namespace PlutoWallet.ViewModel
 
             UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey()));
 
-            IsLoading = false;
+            nftLoadingViewModel.IsVisible = false;
         }
 
         public void UpdateNfts(List<NFT> newNfts)

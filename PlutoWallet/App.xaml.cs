@@ -18,6 +18,7 @@ using PlutoWallet.Components.CustomLayouts;
 using PlutoWallet.Components.ConfirmTransaction;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Components.Nft;
 
 namespace PlutoWallet;
 
@@ -82,6 +83,8 @@ public partial class App : Application
         DependencyService.Register<AssetSelectViewModel>();
 
         DependencyService.Register<AssetSelectButtonViewModel>();
+
+        DependencyService.Register<NftLoadingViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {
