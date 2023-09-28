@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Nft.NftLoadingView"
+             IsVisible="{Binding IsVisible}"
+             HeightRequest="80">
+    <card:Card IsTransparent="True">
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            HorizontalOptions="Center"
+                            Margin="10">
+                <Label AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                       AbsoluteLayout.LayoutFlags="All"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"
+                       
+                       TextColor="White"
+                       FontSize="25"
+                       >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Loading" FontAttributes="Bold" />
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
+                <Image
+                    Source="fatcat.png"
+                    SemanticProperties.Description="Cute cat"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    />
+                <Image
+                    Source="happy.png"
+                    SemanticProperties.Description="Cute cat"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    IsVisible="false"
+                />
+                <Image
+                    Source="tail1.png"
+                    IsVisible="{Binding Tail1IsVisible}"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                />
+                <Image
+                    Source="tail2.png"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    IsVisible="{Binding Tail2IsVisible}"
+                />
+                <Image
+                    Source="tail3.png"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    IsVisible="{Binding Tail3IsVisible}"
+                />
+                <Image
+                    Source="tail4.png"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    IsVisible="{Binding Tail4IsVisible}"
+                />
+                <Image
+                    Source="tail5.png"
+                    AbsoluteLayout.LayoutBounds="1,0,80,60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Aspect="AspectFit"
+                    IsVisible="{Binding Tail5IsVisible}"
+                />
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+
+</ContentView>
+

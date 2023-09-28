@@ -5,27 +5,35 @@
              x:Class="PlutoWallet.View.NftView">
     <ScrollView
             Orientation="Vertical"
+            x:Name="scroll"
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <VerticalStackLayout Padding="20, 65, 20, 200"
+                             Spacing="15">
+            <VerticalStackLayout
+                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
+                HorizontalOptions="Center"
+                Spacing="15"
+                
+                BindableLayout.ItemsSource="{Binding Nfts}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <nft:NftThumbnailView Name="{Binding Name}"
+                                                Description="{Binding Description}"
+                                                Image="{Binding Image}"
+                                                Endpoint="{Binding Endpoint}"
+                                                CollectionId="{Binding CollectionId}"
+                                                ItemId="{Binding ItemId}"
+                                                />
 
-        <VerticalStackLayout
-            HorizontalOptions="Center"
-            Spacing="15"
-            Padding="20, 65, 20, 200"
-            BindableLayout.ItemsSource="{Binding Nfts}">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <nft:NftThumbnailView Name="{Binding Name}"
-                                            Description="{Binding Description}"
-                                            Image="{Binding Image}"
-                                            Endpoint="{Binding Endpoint}"
-                                            CollectionId="{Binding CollectionId}"
-                                            ItemId="{Binding ItemId}"
-                                            />
+                    </DataTemplate>
 
-                </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
 
-            </BindableLayout.ItemTemplate>
+            <nft:NftLoadingView />
+
         </VerticalStackLayout>
+        
     </ScrollView>
 </ContentView>
 
