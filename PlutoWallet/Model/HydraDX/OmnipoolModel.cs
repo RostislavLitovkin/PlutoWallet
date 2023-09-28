@@ -12,7 +12,7 @@ namespace PlutoWallet.Model.HydraDX
 {
 	public class OmnipoolModel
 	{
-		public static async Task<OmnipoolLiquidityInfo> GetOmnipoolLiquidityAmount()
+		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount()
 		{
 			var client = Model.AjunaClientModel.Client;
 
@@ -45,40 +45,47 @@ namespace PlutoWallet.Model.HydraDX
                 positionIds = keysPaged.Select(p => HashModel.GetU128FromBlake2_128Concat(p.ToString().Substring(226))).ToList();
             }
 
-            Position position = await client.OmnipoolStorage.Positions(positionIds[0], CancellationToken.None);
+            List<OmnipoolLiquidityInfo> result = new List<OmnipoolLiquidityInfo>();
 
-            AssetMetadata assetMetadata = await client.AssetRegistryStorage.AssetMetadataMap(position.AssetId, CancellationToken.None);
-
-            var omnipoolAccount = new AccountId32();
-            omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OmnipoolAddress));
-
-            var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
-            omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);
-
-            AccountData omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, CancellationToken.None);
-
-            Console.WriteLine(omnipoolTokens.Free);
-
-            AssetState omnipoolAssetState = await client.OmnipoolStorage.Assets(position.AssetId, CancellationToken.None);
-
-            Console.WriteLine(omnipoolAssetState.Shares);
-
-            double liquidity = (double)CalculateRemoveLiquidityStateChanges(
-                    omnipoolAssetState,
-                    omnipoolTokens,
-                    position.Shares,
-                    position,
-                    omnipoolAssetState.Shares,
-                    0
-                ).Asset.DeltaReserve / Math.Pow(10, assetMetadata.Decimals.Value);
-            double initialLiquidity = (double)position.Amount.Value / Math.Pow(10, assetMetadata.Decimals.Value);
-
-            return new OmnipoolLiquidityInfo
+            foreach (U128 positionId in positionIds)
             {
-                Amount = liquidity,
-                Symbol = Model.ToStringModel.VecU8ToString(assetMetadata.Symbol.Value.Value),
-                InitialAmount = initialLiquidity,
-            };
+                Position position = await client.OmnipoolStorage.Positions(positionId, CancellationToken.None);
+
+                AssetMetadata assetMetadata = await client.AssetRegistryStorage.AssetMetadataMap(position.AssetId, CancellationToken.None);
+
+                var omnipoolAccount = new AccountId32();
+                omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OmnipoolAddress));
+
+                var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
+                omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);
+
+                AccountData omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, CancellationToken.None);
+
+                Console.WriteLine(omnipoolTokens.Free);
+
+                AssetState omnipoolAssetState = await client.OmnipoolStorage.Assets(position.AssetId, CancellationToken.None);
+
+                Console.WriteLine(omnipoolAssetState.Shares);
+
+                double liquidity = (double)CalculateRemoveLiquidityStateChanges(
+                        omnipoolAssetState,
+                        omnipoolTokens,
+                        position.Shares,
+                        position,
+                        omnipoolAssetState.Shares,
+                        0
+                    ).Asset.DeltaReserve / Math.Pow(10, assetMetadata.Decimals.Value);
+                double initialLiquidity = (double)position.Amount.Value / Math.Pow(10, assetMetadata.Decimals.Value);
+
+                result.Add(new OmnipoolLiquidityInfo
+                {
+                    Amount = liquidity,
+                    Symbol = Model.ToStringModel.VecU8ToString(assetMetadata.Symbol.Value.Value),
+                    InitialAmount = initialLiquidity,
+                });
+            }
+
+            return result;
 		}
 
         // Source: https://github.com/galacticcouncil/HydraDX-node/blob/a578bc00023a2b0acce4034602b5a5dfb38045d5/math/src/omnipool/math.rs#L397

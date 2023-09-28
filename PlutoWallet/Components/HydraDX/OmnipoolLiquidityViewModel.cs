@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace PlutoWallet.Components.HydraDX
@@ -6,30 +7,49 @@ namespace PlutoWallet.Components.HydraDX
 	public partial class OmnipoolLiquidityViewModel : ObservableObject
 	{
 		[ObservableProperty]
-		private string liquidityAmount;
+		private ObservableCollection<AssetLiquidityInfo> assets;
 
-        [ObservableProperty]
-        private string symbol;
-
-        [ObservableProperty]
-        private string usdValue;
+		[ObservableProperty]
+		private string usdSum;
 
         public OmnipoolLiquidityViewModel()
 		{
-			liquidityAmount = "Loading";
+			usdSum = "Loading";
 		}
 
 		public async Task GetLiquidityAmount()
 		{
-			var omnipoolLiquidity = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount();
-			LiquidityAmount = String.Format("{0:0.0000}", omnipoolLiquidity.Amount);
+            UsdSum = "Loading";
 
-			Symbol = omnipoolLiquidity.Symbol;
+            var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount();
 
-			double usdRatio = 0;
+            double tempUsdSum = 0;
 
-			UsdValue = "(" + String.Format("{0:0.00}", usdRatio * omnipoolLiquidity.Amount) + " USD)";
+			Assets = new ObservableCollection<AssetLiquidityInfo>();
+
+			foreach (var omnipoolLiquidity in omnipoolLiquidities) {
+				double usdRatio = 0;
+
+				double usdValue = usdRatio * omnipoolLiquidity.Amount;
+
+				tempUsdSum += usdValue;
+
+                Assets.Add(new AssetLiquidityInfo {
+					Amount = String.Format("{0:0.00}", omnipoolLiquidity.Amount),
+					Symbol = omnipoolLiquidity.Symbol,
+					UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
+				});
+			} 
+
+			UsdSum = String.Format("{0:0.00}", tempUsdSum) + " USD";
         }
     }
+
+	public class AssetLiquidityInfo
+	{
+		public string Amount { get; set; }
+		public string Symbol { get; set; }
+		public string UsdValue { get; set; }
+	}
 }
 
