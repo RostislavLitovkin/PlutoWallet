@@ -71,20 +71,24 @@ namespace PlutoWallet.Model
                 }
 
                 // Calculate a real USD value
-                double usdValue = amount;
-
-                usdSumValue += usdValue;
-
-                tempAssets.Add(new Asset
                 {
-                    Amount = amount,
-                    Symbol = endpoint.Unit,
-                    ChainIcon = endpoint.Icon,
-                    Endpoint = endpoint,
-                    Pallet = AssetPallet.Native,
-                    AssetId = 0,
-                    UsdValue = usdValue,
-                });
+                    double usdRatio = 0;
+
+                    double usdValue = amount * usdRatio;
+
+                    usdSumValue += usdValue;
+
+                    tempAssets.Add(new Asset
+                    {
+                        Amount = amount,
+                        Symbol = endpoint.Unit,
+                        ChainIcon = endpoint.Icon,
+                        Endpoint = endpoint,
+                        Pallet = AssetPallet.Native,
+                        AssetId = 0,
+                        UsdValue = usdValue,
+                    });
+                }
 
                 try
                 {

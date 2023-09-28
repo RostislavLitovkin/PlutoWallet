@@ -12,6 +12,7 @@ using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.AwesomeAjunaAvatars;
 using PlutoWallet.Components.Contract;
 using PlutoWallet.Components.AzeroId;
+using PlutoWallet.Components.HydraDX;
 
 namespace PlutoWallet.Model
 {
@@ -27,7 +28,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
-            " AAALeaderboard, AZEROPrimaryName];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity];[";
 
         // EXTRA: StDash, contract, AAASeasonCountdown,
 
@@ -295,6 +296,8 @@ namespace PlutoWallet.Model
                     return new ContractView();
                 case "AZEROPrimaryName":
                     return new AzeroPrimaryNameView();
+                case "HDXOmniLiquidity":
+                    return new OmnipoolLiquidityView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -358,6 +361,8 @@ namespace PlutoWallet.Model
                     return new ContractView();
                 case "AZEROPrimaryName":
                     return new AzeroPrimaryNameView();
+                case "HDXOmniLiquidity":
+                    return new OmnipoolLiquidityView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -438,7 +443,13 @@ namespace PlutoWallet.Model
                     {
                         Name = "AZERO.ID Primary Name",
                         PlutoLayoutId = "AZEROPrimaryName",
-                    }; ;
+                    };
+                case "HDXOmniLiquidity":
+                    return new LayoutItemInfo
+                    {
+                        Name = "HydraDX Omnipool Liquidity",
+                        PlutoLayoutId = "HDXOmniLiquidity",
+                    };
             }
 
             throw new Exception("Could not parse the PlutoLayout");

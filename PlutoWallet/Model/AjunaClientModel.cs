@@ -10,6 +10,7 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.CalamarView;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Components.HydraDX;
 
 namespace PlutoWallet.Model
 {
@@ -195,6 +196,12 @@ namespace PlutoWallet.Model
                 azeroPrimaryNameViewModel.GetPrimaryName();
             }
 
+            if(SelectedEndpoint.Name == "HydraDX")
+            {
+                var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
+
+                omnipoolLiquidityViewModel.GetLiquidityAmount();
+            }
 
             chainAddressViewModel.SetChainAddress();
             calamarViewModel.Reload();

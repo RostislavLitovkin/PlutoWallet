@@ -16,7 +16,7 @@ namespace PlutoWallet.Constants
                 options.Add(new int[4] { 0, 1, -1, -1 });
                 options.Add(new int[4] { 4, 5, -1, -1 });
                 options.Add(new int[4] { 8, 10, 9, -1 });
-
+                options.Add(new int[4] { 18, 21, -1, -1 });
 
                 for (int i = 0; i < GetAllEndpoints.Count; i++)
                 {
@@ -261,8 +261,8 @@ namespace PlutoWallet.Constants
             { "hydradx", new Endpoint
             {
                 Name = "HydraDX",
-                URL = "wss://hydradx.api.onfinality.io/public-ws",
-                Icon = "hydradx.png",
+                URL = "wss://rpc.hydradx.cloud",
+                Icon = "hydradxomnipool.png",
                 Unit = "HDX",
                 SS58Prefix = 63,
                 Decimals = 12,

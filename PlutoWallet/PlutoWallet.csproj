@@ -203,6 +203,9 @@
 	  <None Remove="Components\AssetSelect\" />
 	  <None Remove="Resources\Images\dropdownwhite.svg" />
 	  <None Remove="Resources\Images\dropdownblack.svg" />
+	  <None Remove="Components\HydraDX\" />
+	  <None Remove="Resources\Images\hydradxomnipool.png" />
+	  <None Remove="Model\HydraDX\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -284,6 +287,7 @@
 	  <BundleResource Include="Resources\Images\azeroiddarkbg.png" />
 	  <BundleResource Include="Resources\Images\dropdownwhite.svg" />
 	  <BundleResource Include="Resources\Images\dropdownblack.svg" />
+	  <BundleResource Include="Resources\Images\hydradxomnipool.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -416,6 +420,8 @@
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
+	  <Folder Include="Components\HydraDX\" />
+	  <Folder Include="Model\HydraDX\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
