@@ -47,14 +47,16 @@ The wallet supports these functionalities:
 - NFTs (powered by [Uniquery.Net](https://github.com/RostislavLitovkin/Uniquery.Net))
 - contracts (Currently just Counter Sample)
 - connect to any dApp thanks to [Plutonication](https://github.com/cisar2218/Plutonication)
+- See detail of your account on Calamar.app
+- See your Liquidity positions on HydraDX omnipool
+- Light and Dark mode
 
 3rd party integrations:
 - [Calamar explorer](https://github.com/topmonks/calamar)
 - [Kodadot unlockables](https://hello.kodadot.xyz/fandom-toolbox/audience-growth/drop-page)
-- [Coingecko](https://www.coingecko.com/)
-- [Staking dashboard](https://staking.polkadot.network/)
+- [HydraDX](https://hydradx.io/)
 - [Awesome Ajuna Avatars](https://aaa.ajuna.io/)
-- [Azero.id](https://azero.id/)
+- [AZERO.ID](https://azero.id/)
 
 # Differentiating factors
 
@@ -63,9 +65,10 @@ The UI/UX is optimised to support multichain out of the box.
 Instead of having one chain selected at a time, you can have chain groups.
 This makes the UI more approachable and simple.
 
-### 2) Custom layouts (PlutoLayouts)
+### 2) Adjustable layouts (PlutoLayouts)
 
 - Well prepared video presentation: https://youtu.be/ojU8-w6u5Oo
+- Subsquare discussion: https://polkadot.subsquare.io/posts/155 
 
 Extremely important tool for onboarding new users.
 Not only can you optimise UI layouts to your needs, you can also export them to other users.
@@ -75,10 +78,11 @@ This can be especially handy for dApp projects:
 - It is highly customisable. When the users decide they want to do more in the ecosystem, they can easily add more functionalities to the wallet. They can learn to use Polkadot on their own pace.
 
 ### 3) Plutonication
-Plutonication allows users to connect PlutoWallet to other dApps seamlessly on any platforms, accross multiple codebases.
+Plutonication allows users to connect PlutoWallet to other dApps seamlessly on any platforms, accross multiple codebases, while preserving security.
+
 DApp just generates a QR code and once it is scanned in the wallet, they will pair and the wallet will be able to receive transaction requests from the dApp. To learn more, visit https://github.com/cisar2218/Plutonication.
 
-- It works the same way as WalletConnect protocol.
+- It works the similarly to WalletConnect protocol.
 
 ### 4) Multiplatform development
 This project is developed using .net MAUI framework, which allows simple development of native mobile apps on many different platforms from a single codebase.
@@ -150,9 +154,6 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 - Chain = either standalone blockchain, relay chain, or parachain. (and/or combination of them)
 - Extrinsic = A transaction (more info: https://wiki.polkadot.network/docs/learn-extrinsics)
 - PlutoLayout = a simple way to save and export custom layouts.
-
-development terminology:
-- Entry page - the first screen that the users see (now the Mnemonics page)
 
 # Project folder structure
 
