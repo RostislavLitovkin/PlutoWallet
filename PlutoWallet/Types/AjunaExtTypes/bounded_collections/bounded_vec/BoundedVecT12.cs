@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec
+namespace Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> _value;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> _value;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> Value
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public>();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

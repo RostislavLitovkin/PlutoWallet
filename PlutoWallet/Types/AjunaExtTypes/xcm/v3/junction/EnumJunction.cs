@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction
+namespace Substrate.NetApi.Generated.Model.xcm.v3.junction
 {
     
     
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction
     /// <summary>
     /// >> 47 - Variant[xcm.v3.junction.Junction]
     /// </summary>
-    public sealed class EnumJunction : BaseEnumExt<Junction, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumNetworkId>, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumNetworkId>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumNetworkId>, PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>, BaseVoid, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumBodyId, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumBodyPart>, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.junction.EnumNetworkId>
+    public sealed class EnumJunction : BaseEnumExt<Junction, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumNetworkId>, Substrate.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumNetworkId>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumNetworkId>, Substrate.NetApi.Generated.Types.Base.Arr20U8>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Types.Base.Arr32U8>, BaseVoid, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumBodyId, Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumBodyPart>, Substrate.NetApi.Generated.Model.xcm.v3.junction.EnumNetworkId>
     {
     }
 }

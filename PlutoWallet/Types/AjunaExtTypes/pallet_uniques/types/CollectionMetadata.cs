@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types
+namespace Substrate.NetApi.Generated.Model.pallet_uniques.types
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types
         /// <summary>
         /// >> data
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 _data;
+        private Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 _data;
         
         /// <summary>
         /// >> is_frozen
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 Data
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4 Data
         {
             get
             {
@@ -94,7 +94,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_uniques.types
             var start = p;
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Data = new PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4();
+            Data = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4();
             Data.Decode(byteArray, ref p);
             IsFrozen = new Substrate.NetApi.Model.Types.Primitive.Bool();
             IsFrozen.Decode(byteArray, ref p);

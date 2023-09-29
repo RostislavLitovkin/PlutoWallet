@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
+namespace Substrate.NetApi.Generated.Model.polkadot_parachain.primitives
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
         /// <summary>
         /// >> sender
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id _sender;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id _sender;
         
         /// <summary>
         /// >> recipient
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id _recipient;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id _recipient;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id Sender
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id Sender
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id Recipient
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id Recipient
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Sender = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id();
+            Sender = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
             Sender.Decode(byteArray, ref p);
-            Recipient = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id();
+            Recipient = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
             Recipient.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -224,7 +224,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> initialize_pool
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method InitializePool(NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 stable_asset_price, NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 native_asset_price, NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill stable_weight_cap, NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill native_weight_cap)
+        public static Method InitializePool(Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 stable_asset_price, Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 native_asset_price, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill stable_weight_cap, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill native_weight_cap)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(stable_asset_price.Encode());
@@ -238,7 +238,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> add_token
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method AddToken(Substrate.NetApi.Model.Types.Primitive.U32 asset, NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 initial_price, NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill weight_cap, NetApiExt.Generated.Model.sp_core.crypto.AccountId32 position_owner)
+        public static Method AddToken(Substrate.NetApi.Model.Types.Primitive.U32 asset, Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 initial_price, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill weight_cap, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 position_owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset.Encode());
@@ -327,7 +327,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> refund_refused_asset
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method RefundRefusedAsset(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, Substrate.NetApi.Model.Types.Primitive.U128 amount, NetApiExt.Generated.Model.sp_core.crypto.AccountId32 recipient)
+        public static Method RefundRefusedAsset(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, Substrate.NetApi.Model.Types.Primitive.U128 amount, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 recipient)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset_id.Encode());
@@ -340,7 +340,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_asset_weight_cap
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetAssetWeightCap(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill cap)
+        public static Method SetAssetWeightCap(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill cap)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset_id.Encode());
@@ -400,9 +400,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> MinWithdrawalFee
         ///  Minimum withdrawal fee
         /// </summary>
-        public NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill MinWithdrawalFee()
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill MinWithdrawalFee()
         {
-            var result = new NetApiExt.Generated.Model.sp_arithmetic.per_things.Permill();
+            var result = new Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill();
             result.Create("0x64000000");
             return result;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> commission
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> _commission;
+        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> _commission;
         
         /// <summary>
         /// >> blocked
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.Bool _blocked;
         
-        public Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill> Commission
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> Commission
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Commission = new Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill>();
+            Commission = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>();
             Commission.Decode(byteArray, ref p);
             Blocked = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Blocked.Decode(byteArray, ref p);

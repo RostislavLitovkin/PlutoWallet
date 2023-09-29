@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
+namespace Substrate.NetApi.Generated.Model.polkadot_parachain.primitives
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _value;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _value;
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 Value
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            Value = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

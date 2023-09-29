@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.signed
+namespace Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.signed
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> who
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _who;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _who;
         
         /// <summary>
         /// >> deposit
@@ -37,14 +37,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> raw_solution
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.RawSolution _rawSolution;
+        private Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.RawSolution _rawSolution;
         
         /// <summary>
         /// >> call_fee
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _callFee;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Who
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Who
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.RawSolution RawSolution
+        public Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.RawSolution RawSolution
         {
             get
             {
@@ -110,11 +110,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Who = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Who = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Who.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            RawSolution = new PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.RawSolution();
+            RawSolution = new Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.RawSolution();
             RawSolution.Decode(byteArray, ref p);
             CallFee = new Substrate.NetApi.Model.Types.Primitive.U128();
             CallFee.Decode(byteArray, ref p);

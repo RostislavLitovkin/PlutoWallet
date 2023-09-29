@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         /// <summary>
         /// >> queue
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> _queue;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> _queue;
         
         /// <summary>
         /// >> next_core_offset
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _nextCoreOffset;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> Queue
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread> Queue
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Queue = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread>();
+            Queue = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.QueuedParathread>();
             Queue.Decode(byteArray, ref p);
             NextCoreOffset = new Substrate.NetApi.Model.Types.Primitive.U32();
             NextCoreOffset.Decode(byteArray, ref p);

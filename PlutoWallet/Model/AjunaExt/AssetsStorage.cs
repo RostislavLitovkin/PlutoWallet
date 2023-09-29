@@ -16,10 +16,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Numerics;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Substrate.NetApi.Generated.Model.pallet_assets.types;
 using Newtonsoft.Json.Linq;
 using Substrate.NetApi.Model.Rpc;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -35,16 +35,16 @@ namespace PlutoWallet.Model.AjunaExt
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Assets", "Asset"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U128), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U128), typeof(Substrate.NetApi.Generated.Model.pallet_assets.types.AssetDetails)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Assets", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetAccount)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(Substrate.NetApi.Generated.Model.pallet_assets.types.AssetAccount)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Assets", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.Approval)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(Substrate.NetApi.Generated.Model.pallet_assets.types.Approval)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Assets", "Metadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U128), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetMetadata)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U128), typeof(Substrate.NetApi.Generated.Model.pallet_assets.types.AssetMetadata)));
         }
         
         /// <summary>
@@ -71,17 +71,17 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Asset
         ///  Details of an asset.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails> Asset(Substrate.NetApi.Model.Types.Primitive.U128 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(Substrate.NetApi.Model.Types.Primitive.U128 key, CancellationToken token)
         {
             string parameters = AssetsStorage.AssetParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetDetails>(parameters, token);
             return result;
         }
 
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails> Asset(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(CancellationToken token)
         {
             var parameters = RequestGenerator.GetStorage("Assets", "Asset", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetDetails>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetDetails>(parameters, token);
             return result;
         }
 
@@ -212,7 +212,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> AccountParams
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("Assets", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -232,10 +232,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Account
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
         {
             string parameters = AssetsStorage.AccountParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetAccount>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetAccount>(parameters, token);
             return result;
         }
         
@@ -245,7 +245,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("Assets", "Approvals", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -268,10 +268,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
         {
             string parameters = AssetsStorage.ApprovalsParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.Approval>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_assets.types.Approval>(parameters, token);
             return result;
         }
         
@@ -299,10 +299,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Metadata
         ///  Metadata of an asset.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetMetadata> Metadata(Substrate.NetApi.Model.Types.Primitive.U128 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetMetadata> Metadata(Substrate.NetApi.Model.Types.Primitive.U128 key, CancellationToken token)
         {
             string parameters = AssetsStorage.MetadataParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.AssetMetadata>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_assets.types.AssetMetadata>(parameters, token);
             return result;
         }
 
@@ -355,7 +355,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> create
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Create(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
+        public static Method Create(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -368,7 +368,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_create
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceCreate(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
+        public static Method ForceCreate(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -426,7 +426,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> mint
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Mint(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Mint(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -439,7 +439,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> burn
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Burn(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Burn(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -452,7 +452,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Transfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Transfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -465,7 +465,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_keep_alive
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferKeepAlive(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferKeepAlive(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -478,7 +478,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceTransfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ForceTransfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -492,7 +492,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> freeze
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Freeze(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Freeze(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -504,7 +504,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> thaw
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Thaw(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Thaw(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -538,7 +538,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_ownership
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferOwnership(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
+        public static Method TransferOwnership(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -550,7 +550,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_team
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetTeam(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
+        public static Method SetTeam(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -615,7 +615,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_asset_status
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceAssetStatus(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
+        public static Method ForceAssetStatus(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -633,7 +633,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> approve_transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ApproveTransfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ApproveTransfer(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -646,7 +646,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> cancel_approval
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method CancelApproval(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method CancelApproval(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -658,7 +658,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_cancel_approval
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceCancelApproval(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method ForceCancelApproval(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -671,7 +671,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_approved
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferApproved(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferApproved(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> id, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());

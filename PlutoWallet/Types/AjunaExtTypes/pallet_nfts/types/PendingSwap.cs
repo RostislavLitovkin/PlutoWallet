@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> price
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PriceWithDirection> _price;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.PriceWithDirection> _price;
         
         /// <summary>
         /// >> deadline
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PriceWithDirection> Price
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.PriceWithDirection> Price
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             DesiredCollection.Decode(byteArray, ref p);
             DesiredItem = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             DesiredItem.Decode(byteArray, ref p);
-            Price = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PriceWithDirection>();
+            Price = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.PriceWithDirection>();
             Price.Decode(byteArray, ref p);
             Deadline = new Substrate.NetApi.Model.Types.Primitive.U32();
             Deadline.Decode(byteArray, ref p);

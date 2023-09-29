@@ -8,12 +8,12 @@ using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using Newtonsoft.Json;
 using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
-using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Rpc;
 using PlutoWallet.Components.Extrinsic;
-using PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2;
+using Substrate.NetApi.Generated.Model.sp_weights.weight_v2;
 using Newtonsoft.Json.Linq;
 
 namespace PlutoWallet.Components.Contract;

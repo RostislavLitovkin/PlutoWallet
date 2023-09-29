@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> direction
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumPriceDirection _direction;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumPriceDirection _direction;
         
         public Substrate.NetApi.Model.Types.Primitive.U128 Amount
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumPriceDirection Direction
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumPriceDirection Direction
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             var start = p;
             Amount = new Substrate.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);
-            Direction = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumPriceDirection();
+            Direction = new Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumPriceDirection();
             Direction.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

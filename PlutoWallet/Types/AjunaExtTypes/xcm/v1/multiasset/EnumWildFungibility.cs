@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset
+namespace Substrate.NetApi.Generated.Model.xcm.v1.multiasset
 {
     
     

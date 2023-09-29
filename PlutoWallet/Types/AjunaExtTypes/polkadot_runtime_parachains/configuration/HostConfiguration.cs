@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.configuration
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configuration
 {
     
     
@@ -82,7 +82,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
         /// <summary>
         /// >> ump_service_total_weight
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _umpServiceTotalWeight;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _umpServiceTotalWeight;
         
         /// <summary>
         /// >> hrmp_max_parachain_outbound_channels
@@ -222,7 +222,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
         /// <summary>
         /// >> ump_max_individual_weight
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _umpMaxIndividualWeight;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _umpMaxIndividualWeight;
         
         /// <summary>
         /// >> pvf_checking_enabled
@@ -371,7 +371,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight UmpServiceTotalWeight
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight UmpServiceTotalWeight
         {
             get
             {
@@ -707,7 +707,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight UmpMaxIndividualWeight
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight UmpMaxIndividualWeight
         {
             get
             {
@@ -834,7 +834,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
             MaxPovSize.Decode(byteArray, ref p);
             MaxDownwardMessageSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxDownwardMessageSize.Decode(byteArray, ref p);
-            UmpServiceTotalWeight = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            UmpServiceTotalWeight = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             UmpServiceTotalWeight.Decode(byteArray, ref p);
             HrmpMaxParachainOutboundChannels = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpMaxParachainOutboundChannels.Decode(byteArray, ref p);
@@ -890,7 +890,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.conf
             NeededApprovals.Decode(byteArray, ref p);
             RelayVrfModuloSamples = new Substrate.NetApi.Model.Types.Primitive.U32();
             RelayVrfModuloSamples.Decode(byteArray, ref p);
-            UmpMaxIndividualWeight = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            UmpMaxIndividualWeight = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             UmpMaxIndividualWeight.Decode(byteArray, ref p);
             PvfCheckingEnabled = new Substrate.NetApi.Model.Types.Primitive.Bool();
             PvfCheckingEnabled.Decode(byteArray, ref p);

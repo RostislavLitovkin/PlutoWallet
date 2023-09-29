@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
+namespace Substrate.NetApi.Generated.Model.pallet_bags_list.list
 {
     
     
@@ -27,17 +27,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
         /// <summary>
         /// >> id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _id;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _id;
         
         /// <summary>
         /// >> prev
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _prev;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _prev;
         
         /// <summary>
         /// >> next
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _next;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _next;
         
         /// <summary>
         /// >> bag_upper
@@ -49,7 +49,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U64 _score;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Id
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Id
         {
             get
             {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Prev
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Prev
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Next
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Next
         {
             get
             {
@@ -128,11 +128,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Id = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Id.Decode(byteArray, ref p);
-            Prev = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
+            Prev = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Prev.Decode(byteArray, ref p);
-            Next = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
+            Next = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Next.Decode(byteArray, ref p);
             BagUpper = new Substrate.NetApi.Model.Types.Primitive.U64();
             BagUpper.Decode(byteArray, ref p);

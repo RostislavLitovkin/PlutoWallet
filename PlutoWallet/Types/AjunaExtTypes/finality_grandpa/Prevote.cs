@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
+namespace Substrate.NetApi.Generated.Model.finality_grandpa
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
         /// <summary>
         /// >> target_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _targetHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _targetHash;
         
         /// <summary>
         /// >> target_number
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _targetNumber;
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 TargetHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 TargetHash
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            TargetHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            TargetHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             TargetHash.Decode(byteArray, ref p);
             TargetNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             TargetNumber.Decode(byteArray, ref p);

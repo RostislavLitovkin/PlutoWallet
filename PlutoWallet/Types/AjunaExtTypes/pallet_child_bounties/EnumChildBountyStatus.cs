@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
+namespace Substrate.NetApi.Generated.Model.pallet_child_bounties
 {
     
     
@@ -30,7 +30,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
     /// <summary>
     /// >> 596 - Variant[pallet_child_bounties.ChildBountyStatus]
     /// </summary>
-    public sealed class EnumChildBountyStatus : BaseEnumExt<ChildBountyStatus, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumChildBountyStatus : BaseEnumExt<ChildBountyStatus, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

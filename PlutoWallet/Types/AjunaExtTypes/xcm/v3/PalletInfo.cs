@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
+namespace Substrate.NetApi.Generated.Model.xcm.v3
 {
     
     
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
         /// <summary>
         /// >> name
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 _name;
+        private Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 _name;
         
         /// <summary>
         /// >> module_name
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 _moduleName;
+        private Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 _moduleName;
         
         /// <summary>
         /// >> major
@@ -66,7 +66,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 Name
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 Name
         {
             get
             {
@@ -78,7 +78,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 ModuleName
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 ModuleName
         {
             get
             {
@@ -148,9 +148,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
             var start = p;
             Index = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Index.Decode(byteArray, ref p);
-            Name = new PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2();
+            Name = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2();
             Name.Decode(byteArray, ref p);
-            ModuleName = new PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2();
+            ModuleName = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2();
             ModuleName.Decode(byteArray, ref p);
             Major = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Major.Decode(byteArray, ref p);

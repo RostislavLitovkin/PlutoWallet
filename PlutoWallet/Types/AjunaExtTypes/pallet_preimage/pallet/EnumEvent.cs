@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_preimage.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_preimage.pallet
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_preimage.pallet
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>
+    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Generated.Model.primitive_types.H256>
     {
     }
 }

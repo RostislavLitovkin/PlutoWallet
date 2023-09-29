@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress
+namespace Substrate.NetApi.Generated.Model.sp_runtime.multiaddress
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress
     /// <summary>
     /// >> 197 - Variant[sp_runtime.multiaddress.MultiAddress]
     /// </summary>
-    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>
+    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Generated.Types.Base.Arr20U8>
     {
     }
 }

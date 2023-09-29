@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
+namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
     /// <summary>
     /// >> 257 - Variant[frame_support.dispatch.RawOrigin]
     /// </summary>
-    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
     {
     }
 }

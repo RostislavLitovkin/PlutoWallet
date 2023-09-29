@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
+namespace Substrate.NetApi.Generated.Model.pallet_contracts.wasm
 {
     
     
@@ -42,12 +42,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
         /// <summary>
         /// >> code
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2 _code;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2 _code;
         
         /// <summary>
         /// >> determinism
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.EnumDeterminism _determinism;
+        private Substrate.NetApi.Generated.Model.pallet_contracts.wasm.EnumDeterminism _determinism;
         
         public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> InstructionWeightsVersion
         {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2 Code
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2 Code
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.EnumDeterminism Determinism
+        public Substrate.NetApi.Generated.Model.pallet_contracts.wasm.EnumDeterminism Determinism
         {
             get
             {
@@ -134,9 +134,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
             Initial.Decode(byteArray, ref p);
             Maximum = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Maximum.Decode(byteArray, ref p);
-            Code = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2();
+            Code = new Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2();
             Code.Decode(byteArray, ref p);
-            Determinism = new PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.EnumDeterminism();
+            Determinism = new Substrate.NetApi.Generated.Model.pallet_contracts.wasm.EnumDeterminism();
             Determinism.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 using Substrate.NetApi;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json.Linq;
 using static Substrate.NetApi.Utils;
 using PlutoWallet.Model.AjunaExt;

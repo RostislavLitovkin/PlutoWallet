@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
+namespace Substrate.NetApi.Generated.Model.pallet_contracts.wasm
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
         /// <summary>
         /// >> owner
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _owner;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _owner;
         
         /// <summary>
         /// >> deposit
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
         /// </summary>
         private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64> _refcount;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Owner
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Owner
         {
             get
             {
@@ -92,7 +92,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Owner = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Owner = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Owner.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Deposit.Decode(byteArray, ref p);

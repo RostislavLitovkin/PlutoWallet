@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         /// <summary>
         /// >> upgrade_times
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> _upgradeTimes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> _upgradeTimes;
         
         /// <summary>
         /// >> last_pruned
         /// </summary>
         private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _lastPruned;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> UpgradeTimes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> UpgradeTimes
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            UpgradeTimes = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes>();
+            UpgradeTimes = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes>();
             UpgradeTimes.Decode(byteArray, ref p);
             LastPruned = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             LastPruned.Decode(byteArray, ref p);

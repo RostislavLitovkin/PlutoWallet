@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> claim
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadClaim _claim;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadClaim _claim;
         
         /// <summary>
         /// >> retries
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _retries;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadClaim Claim
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadClaim Claim
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Claim = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadClaim();
+            Claim = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadClaim();
             Claim.Decode(byteArray, ref p);
             Retries = new Substrate.NetApi.Model.Types.Primitive.U32();
             Retries.Decode(byteArray, ref p);

@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
+namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
     /// <summary>
     /// >> 417 - Variant[sp_runtime.MultiSigner]
     /// </summary>
-    public sealed class EnumMultiSigner : BaseEnumExt<MultiSigner, PlutoWallet.NetApiExt.Generated.Model.sp_core.ed25519.Public, PlutoWallet.NetApiExt.Generated.Model.sp_core.sr25519.Public, PlutoWallet.NetApiExt.Generated.Model.sp_core.ecdsa.Public>
+    public sealed class EnumMultiSigner : BaseEnumExt<MultiSigner, Substrate.NetApi.Generated.Model.sp_core.ed25519.Public, Substrate.NetApi.Generated.Model.sp_core.sr25519.Public, Substrate.NetApi.Generated.Model.sp_core.ecdsa.Public>
     {
     }
 }

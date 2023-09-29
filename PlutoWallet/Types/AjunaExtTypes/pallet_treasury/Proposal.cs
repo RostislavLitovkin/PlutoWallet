@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
+namespace Substrate.NetApi.Generated.Model.pallet_treasury
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
         /// <summary>
         /// >> proposer
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _proposer;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _proposer;
         
         /// <summary>
         /// >> value
@@ -37,14 +37,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
         /// <summary>
         /// >> beneficiary
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _beneficiary;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _beneficiary;
         
         /// <summary>
         /// >> bond
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _bond;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Proposer
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Proposer
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Beneficiary
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Beneficiary
         {
             get
             {
@@ -110,11 +110,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_treasury
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Proposer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Proposer = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Proposer.Decode(byteArray, ref p);
             Value = new Substrate.NetApi.Model.Types.Primitive.U128();
             Value.Decode(byteArray, ref p);
-            Beneficiary = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Beneficiary = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Beneficiary.Decode(byteArray, ref p);
             Bond = new Substrate.NetApi.Model.Types.Primitive.U128();
             Bond.Decode(byteArray, ref p);

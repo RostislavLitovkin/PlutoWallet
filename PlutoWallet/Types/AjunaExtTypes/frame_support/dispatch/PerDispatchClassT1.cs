@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
+namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> normal
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _normal;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _normal;
         
         /// <summary>
         /// >> operational
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _operational;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _operational;
         
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _mandatory;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _mandatory;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Normal
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Normal
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Operational
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Operational
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Mandatory
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Mandatory
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Normal = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Normal = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Normal.Decode(byteArray, ref p);
-            Operational = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Operational = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Operational.Decode(byteArray, ref p);
-            Mandatory = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Mandatory = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Mandatory.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

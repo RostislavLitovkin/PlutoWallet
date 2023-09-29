@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Types.Base
+namespace Substrate.NetApi.Generated.Types.Base
 {
     
     

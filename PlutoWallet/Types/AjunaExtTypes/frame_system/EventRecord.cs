@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
+namespace Substrate.NetApi.Generated.Model.frame_system
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
         /// <summary>
         /// >> phase
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase _phase;
+        private Substrate.NetApi.Generated.Model.frame_system.EnumPhase _phase;
         
         /// <summary>
         /// >> event
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumRuntimeEvent _event;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent _event;
         
         /// <summary>
         /// >> topics
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> _topics;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> _topics;
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase Phase
+        public Substrate.NetApi.Generated.Model.frame_system.EnumPhase Phase
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumRuntimeEvent Event
+        public Substrate.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent Event
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> Topics
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> Topics
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Phase = new PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase();
+            Phase = new Substrate.NetApi.Generated.Model.frame_system.EnumPhase();
             Phase.Decode(byteArray, ref p);
-            Event = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumRuntimeEvent();
+            Event = new Substrate.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent();
             Event.Decode(byteArray, ref p);
-            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>();
+            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256>();
             Topics.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

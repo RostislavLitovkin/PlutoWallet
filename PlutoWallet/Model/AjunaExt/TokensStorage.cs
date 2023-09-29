@@ -31,13 +31,13 @@ namespace PlutoWallet.Model.AjunaExt
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Tokens", "Locks"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Tokens", "Accounts"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.orml_tokens.AccountData)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.orml_tokens.AccountData)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Tokens", "Reserves"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27)));
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks of a token type under an account.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public static string LocksParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string LocksParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("Tokens", "Locks", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -97,10 +97,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks of a token type under an account.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26> Locks(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26> Locks(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = TokensStorage.LocksParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26>(parameters, token);
             return result;
         }
         
@@ -113,7 +113,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  NOTE: This is only used in the case that this module is used to store
         ///  balances.
         /// </summary>
-        public static string AccountsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string AccountsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("Tokens", "Accounts", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -139,10 +139,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  NOTE: This is only used in the case that this module is used to store
         ///  balances.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.orml_tokens.AccountData> Accounts(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.orml_tokens.AccountData> Accounts(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = TokensStorage.AccountsParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.orml_tokens.AccountData>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.orml_tokens.AccountData>(parameters, token);
             return result;
         }
         
@@ -150,7 +150,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ReservesParams
         ///  Named reserves on some account balances.
         /// </summary>
-        public static string ReservesParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string ReservesParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("Tokens", "Reserves", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -170,10 +170,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Reserves
         ///  Named reserves on some account balances.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27> Reserves(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27> Reserves(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = TokensStorage.ReservesParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT27>(parameters, token);
             return result;
         }
     }
@@ -185,7 +185,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Transfer(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Transfer(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -198,7 +198,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_all
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferAll(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
+        public static Method TransferAll(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -211,7 +211,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> transfer_keep_alive
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferKeepAlive(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferKeepAlive(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -224,7 +224,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> force_transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceTransfer(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 source, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ForceTransfer(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 source, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(source.Encode());
@@ -238,7 +238,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_balance
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetBalance(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 who, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_reserved)
+        public static Method SetBalance(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 who, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_reserved)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(who.Encode());

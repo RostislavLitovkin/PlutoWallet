@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe
+namespace Substrate.NetApi.Generated.Model.sp_consensus_babe
 {
     
     

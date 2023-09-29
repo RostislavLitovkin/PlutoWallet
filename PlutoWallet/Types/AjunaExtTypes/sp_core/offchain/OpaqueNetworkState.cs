@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
+namespace Substrate.NetApi.Generated.Model.sp_core.offchain
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
         /// <summary>
         /// >> peer_id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.OpaquePeerId _peerId;
+        private Substrate.NetApi.Generated.Model.sp_core.OpaquePeerId _peerId;
         
         /// <summary>
         /// >> external_addresses
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> _externalAddresses;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueMultiaddr> _externalAddresses;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.OpaquePeerId PeerId
+        public Substrate.NetApi.Generated.Model.sp_core.OpaquePeerId PeerId
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr> ExternalAddresses
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueMultiaddr> ExternalAddresses
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            PeerId = new PlutoWallet.NetApiExt.Generated.Model.sp_core.OpaquePeerId();
+            PeerId = new Substrate.NetApi.Generated.Model.sp_core.OpaquePeerId();
             PeerId.Decode(byteArray, ref p);
-            ExternalAddresses = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueMultiaddr>();
+            ExternalAddresses = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueMultiaddr>();
             ExternalAddresses.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp
 {
     
     
@@ -52,7 +52,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
         /// <summary>
         /// >> mqc_head
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> _mqcHead;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.primitive_types.H256> _mqcHead;
         
         /// <summary>
         /// >> sender_deposit
@@ -124,7 +124,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> MqcHead
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.primitive_types.H256> MqcHead
         {
             get
             {
@@ -192,7 +192,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.hrmp
             MsgCount.Decode(byteArray, ref p);
             TotalSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             TotalSize.Decode(byteArray, ref p);
-            MqcHead = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>();
+            MqcHead = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.primitive_types.H256>();
             MqcHead.Decode(byteArray, ref p);
             SenderDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             SenderDeposit.Decode(byteArray, ref p);

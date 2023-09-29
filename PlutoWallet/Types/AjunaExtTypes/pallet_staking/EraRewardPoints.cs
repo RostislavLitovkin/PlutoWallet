@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> individual
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT1 _individual;
+        private Substrate.NetApi.Generated.Types.Base.BTreeMapT1 _individual;
         
         public Substrate.NetApi.Model.Types.Primitive.U32 Total
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT1 Individual
+        public Substrate.NetApi.Generated.Types.Base.BTreeMapT1 Individual
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             var start = p;
             Total = new Substrate.NetApi.Model.Types.Primitive.U32();
             Total.Decode(byteArray, ref p);
-            Individual = new PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT1();
+            Individual = new Substrate.NetApi.Generated.Types.Base.BTreeMapT1();
             Individual.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

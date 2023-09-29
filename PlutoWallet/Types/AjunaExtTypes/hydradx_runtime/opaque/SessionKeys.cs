@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.opaque
+namespace Substrate.NetApi.Generated.Model.hydradx_runtime.opaque
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.opaque
         /// <summary>
         /// >> aura
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public _aura;
+        private Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public _aura;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public Aura
+        public Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public Aura
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.opaque
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Aura = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public();
+            Aura = new Substrate.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public();
             Aura.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

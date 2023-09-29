@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things
+namespace Substrate.NetApi.Generated.Model.sp_arithmetic.per_things
 {
     
     

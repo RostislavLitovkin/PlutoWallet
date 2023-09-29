@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase
+namespace Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> supports
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26 _supports;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26 _supports;
         
         /// <summary>
         /// >> score
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore _score;
+        private Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore _score;
         
         /// <summary>
         /// >> compute
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute _compute;
+        private Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute _compute;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26 Supports
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26 Supports
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore Score
+        public Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore Score
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute Compute
+        public Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute Compute
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Supports = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26();
+            Supports = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT26();
             Supports.Decode(byteArray, ref p);
-            Score = new PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore();
+            Score = new Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore();
             Score.Decode(byteArray, ref p);
-            Compute = new PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute();
+            Compute = new Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute();
             Compute.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

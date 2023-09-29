@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
+namespace Substrate.NetApi.Generated.Model.pallet_assets.types
 {
     
     
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
         /// <summary>
         /// >> reason
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumExistenceReason _reason;
+        private Substrate.NetApi.Generated.Model.pallet_assets.types.EnumExistenceReason _reason;
         
         /// <summary>
         /// >> extra
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumExistenceReason Reason
+        public Substrate.NetApi.Generated.Model.pallet_assets.types.EnumExistenceReason Reason
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             Balance.Decode(byteArray, ref p);
             IsFrozen = new Substrate.NetApi.Model.Types.Primitive.Bool();
             IsFrozen.Decode(byteArray, ref p);
-            Reason = new PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumExistenceReason();
+            Reason = new Substrate.NetApi.Generated.Model.pallet_assets.types.EnumExistenceReason();
             Reason.Decode(byteArray, ref p);
             Extra = new Substrate.NetApi.Model.Types.Base.BaseTuple();
             Extra.Decode(byteArray, ref p);

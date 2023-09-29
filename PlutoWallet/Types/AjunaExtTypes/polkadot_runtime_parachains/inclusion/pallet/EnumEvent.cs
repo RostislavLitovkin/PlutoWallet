@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.inclusion.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.pallet
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateReceipt, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateReceipt, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateReceipt, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex>>
     {
     }
 }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
+namespace Substrate.NetApi.Generated.Model.pallet_child_bounties
 {
     
     
@@ -47,7 +47,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
         /// <summary>
         /// >> status
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties.EnumChildBountyStatus _status;
+        private Substrate.NetApi.Generated.Model.pallet_child_bounties.EnumChildBountyStatus _status;
         
         public Substrate.NetApi.Model.Types.Primitive.U32 ParentBounty
         {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties.EnumChildBountyStatus Status
+        public Substrate.NetApi.Generated.Model.pallet_child_bounties.EnumChildBountyStatus Status
         {
             get
             {
@@ -136,7 +136,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties
             Fee.Decode(byteArray, ref p);
             CuratorDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             CuratorDeposit.Decode(byteArray, ref p);
-            Status = new PlutoWallet.NetApiExt.Generated.Model.pallet_child_bounties.EnumChildBountyStatus();
+            Status = new Substrate.NetApi.Generated.Model.pallet_child_bounties.EnumChildBountyStatus();
             Status.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

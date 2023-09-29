@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_fast_unstake.types
+namespace Substrate.NetApi.Generated.Model.pallet_fast_unstake.types
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_fast_unstake.types
         /// <summary>
         /// >> stashes
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29 _stashes;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29 _stashes;
         
         /// <summary>
         /// >> checked
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30 _checked;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30 _checked;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29 Stashes
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29 Stashes
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_fast_unstake.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30 Checked
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30 Checked
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_fast_unstake.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Stashes = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29();
+            Stashes = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT29();
             Stashes.Decode(byteArray, ref p);
-            Checked = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30();
+            Checked = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT30();
             Checked.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

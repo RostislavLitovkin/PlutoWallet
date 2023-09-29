@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
+namespace Substrate.NetApi.Generated.Model.pallet_contracts.schedule
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
         /// <summary>
         /// >> limits
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.Limits _limits;
+        private Substrate.NetApi.Generated.Model.pallet_contracts.schedule.Limits _limits;
         
         /// <summary>
         /// >> instruction_weights
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.InstructionWeights _instructionWeights;
+        private Substrate.NetApi.Generated.Model.pallet_contracts.schedule.InstructionWeights _instructionWeights;
         
         /// <summary>
         /// >> host_fn_weights
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.HostFnWeights _hostFnWeights;
+        private Substrate.NetApi.Generated.Model.pallet_contracts.schedule.HostFnWeights _hostFnWeights;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.Limits Limits
+        public Substrate.NetApi.Generated.Model.pallet_contracts.schedule.Limits Limits
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.InstructionWeights InstructionWeights
+        public Substrate.NetApi.Generated.Model.pallet_contracts.schedule.InstructionWeights InstructionWeights
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.HostFnWeights HostFnWeights
+        public Substrate.NetApi.Generated.Model.pallet_contracts.schedule.HostFnWeights HostFnWeights
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Limits = new PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.Limits();
+            Limits = new Substrate.NetApi.Generated.Model.pallet_contracts.schedule.Limits();
             Limits.Decode(byteArray, ref p);
-            InstructionWeights = new PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.InstructionWeights();
+            InstructionWeights = new Substrate.NetApi.Generated.Model.pallet_contracts.schedule.InstructionWeights();
             InstructionWeights.Decode(byteArray, ref p);
-            HostFnWeights = new PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.HostFnWeights();
+            HostFnWeights = new Substrate.NetApi.Generated.Model.pallet_contracts.schedule.HostFnWeights();
             HostFnWeights.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
+namespace Substrate.NetApi.Generated.Model.xcm.v3
 {
     
     
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
     /// <summary>
     /// >> 83 - Variant[xcm.v3.WeightLimit]
     /// </summary>
-    public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>
+    public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>
     {
     }
 }

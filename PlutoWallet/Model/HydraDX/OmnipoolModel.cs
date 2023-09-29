@@ -1,7 +1,7 @@
 ﻿using System;
-using PlutoWallet.NetApiExt.Generated.Model.orml_tokens;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.orml_tokens;
+using Substrate.NetApi.Generated.Model.pallet_asset_registry.types;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi;
 using Substrate.NetApi.Generated.Model.pallet_omnipool.types;
 using Substrate.NetApi.Model.Types.Primitive;
@@ -56,7 +56,7 @@ namespace PlutoWallet.Model.HydraDX
                 var omnipoolAccount = new AccountId32();
                 omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OmnipoolAddress));
 
-                var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
+                var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
                 omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);
 
                 AccountData omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, CancellationToken.None);

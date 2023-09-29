@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
+namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
@@ -48,7 +48,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
     /// <summary>
     /// >> 24 - Variant[sp_runtime.DispatchError]
     /// </summary>
-    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumTokenError, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumArithmeticError, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.EnumTokenError, Substrate.NetApi.Generated.Model.sp_runtime.EnumArithmeticError, Substrate.NetApi.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid>
     {
     }
 }

@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system
+namespace Substrate.NetApi.Generated.Model.frame_system
 {
     
     

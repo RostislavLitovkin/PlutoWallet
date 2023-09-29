@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloan
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
 {
     
     
@@ -27,12 +27,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         /// <summary>
         /// >> depositor
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _depositor;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _depositor;
         
         /// <summary>
         /// >> verifier
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> _verifier;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner> _verifier;
         
         /// <summary>
         /// >> deposit
@@ -57,7 +57,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         /// <summary>
         /// >> last_contribution
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution _lastContribution;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution _lastContribution;
         
         /// <summary>
         /// >> first_period
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _fundIndex;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Depositor
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor
         {
             get
             {
@@ -86,7 +86,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner> Verifier
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner> Verifier
         {
             get
             {
@@ -146,7 +146,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution LastContribution
+        public Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution LastContribution
         {
             get
             {
@@ -218,9 +218,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Depositor = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Depositor = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Verifier = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSigner>();
+            Verifier = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner>();
             Verifier.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
@@ -230,7 +230,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloa
             End.Decode(byteArray, ref p);
             Cap = new Substrate.NetApi.Model.Types.Primitive.U128();
             Cap.Decode(byteArray, ref p);
-            LastContribution = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution();
+            LastContribution = new Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution();
             LastContribution.Decode(byteArray, ref p);
             FirstPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             FirstPeriod.Decode(byteArray, ref p);

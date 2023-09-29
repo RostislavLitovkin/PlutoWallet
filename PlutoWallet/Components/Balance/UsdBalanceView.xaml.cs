@@ -1,5 +1,5 @@
 ﻿using PlutoWallet.Components.MessagePopup;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Substrate.NetApi.Generated.Model.pallet_assets.types;
 
 namespace PlutoWallet.Components.Balance;
 

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
+namespace Substrate.NetApi.Generated.Model.pallet_identity.types
 {
     
     

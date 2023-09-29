@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_registrar
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
         /// <summary>
         /// >> manager
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _manager;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _manager;
         
         /// <summary>
         /// >> deposit
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.Bool _locked;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Manager
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Manager
         {
             get
             {
@@ -92,7 +92,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Manager = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Manager = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Manager.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);

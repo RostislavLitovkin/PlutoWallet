@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
+namespace Substrate.NetApi.Generated.Model.xcm.v3
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
         /// <summary>
         /// >> destination
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation _destination;
+        private Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation _destination;
         
         /// <summary>
         /// >> query_id
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
         /// <summary>
         /// >> max_weight
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _maxWeight;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _maxWeight;
         
-        public PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation Destination
+        public Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation Destination
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxWeight
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight MaxWeight
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Destination = new PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation();
+            Destination = new Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation();
             Destination.Decode(byteArray, ref p);
             QueryId = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>();
             QueryId.Decode(byteArray, ref p);
-            MaxWeight = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            MaxWeight = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             MaxWeight.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

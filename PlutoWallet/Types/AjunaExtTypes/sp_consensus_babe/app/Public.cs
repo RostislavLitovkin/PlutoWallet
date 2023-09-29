@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app
+namespace Substrate.NetApi.Generated.Model.sp_consensus_babe.app
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.sr25519.Public _value;
+        private Substrate.NetApi.Generated.Model.sp_core.sr25519.Public _value;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.sr25519.Public Value
+        public Substrate.NetApi.Generated.Model.sp_core.sr25519.Public Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Model.sp_core.sr25519.Public();
+            Value = new Substrate.NetApi.Generated.Model.sp_core.sr25519.Public();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.primitive_types
+namespace Substrate.NetApi.Generated.Model.primitive_types
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.primitive_types
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8 _value;
+        private Substrate.NetApi.Generated.Types.Base.Arr32U8 _value;
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8 Value
+        public Substrate.NetApi.Generated.Types.Base.Arr32U8 Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.primitive_types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8();
+            Value = new Substrate.NetApi.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

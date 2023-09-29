@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2
+namespace Substrate.NetApi.Generated.Model.sp_weights.weight_v2
 {
     
     

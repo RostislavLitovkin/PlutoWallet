@@ -1,17 +1,17 @@
 ﻿using System;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.MessagePopup;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Substrate.NetApi.Generated.Model.pallet_assets.types;
 using System.Numerics;
 using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using PlutoWallet.Model.AjunaExt;
 using static Substrate.NetApi.Model.Meta.Storage;
-using PlutoWallet.NetApiExt.Generated.Model.orml_tokens;
+using Substrate.NetApi.Generated.Model.orml_tokens;
 
 namespace PlutoWallet.Model
 {
@@ -202,7 +202,7 @@ namespace PlutoWallet.Model
                     AccountData accountData = new AccountData();
                     accountData.Create(storageTokensChanges[i][1]);
 
-                    PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.AssetMetadata assetMetadata = new PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.AssetMetadata();
+                    Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata assetMetadata = new Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata();
                     assetMetadata.Create(storageAssetRegistryChanges[i][1]);
 
                     BigInteger assetId = Model.HashModel.GetBigIntegerFromTwox_64Concat(storageKeys[i]);
@@ -222,7 +222,7 @@ namespace PlutoWallet.Model
     public class TokenData {
         public BigInteger AssetId { get; set; }
         public AccountData AccountData { get; set; }
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.AssetMetadata AssetMetadata { get; set; }
+        public Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata AssetMetadata { get; set; }
     }
 }
 

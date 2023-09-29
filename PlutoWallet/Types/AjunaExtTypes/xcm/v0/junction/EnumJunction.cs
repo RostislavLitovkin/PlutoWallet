@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction
+namespace Substrate.NetApi.Generated.Model.xcm.v0.junction
 {
     
     
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction
     /// <summary>
     /// >> 154 - Variant[xcm.v0.junction.Junction]
     /// </summary>
-    public sealed class EnumJunction : BaseEnumExt<Junction, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction.EnumNetworkId, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction.EnumNetworkId, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction.EnumNetworkId, PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction.EnumBodyId, PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction.EnumBodyPart>>
+    public sealed class EnumJunction : BaseEnumExt<Junction, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.junction.EnumNetworkId, Substrate.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.junction.EnumNetworkId, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.junction.EnumNetworkId, Substrate.NetApi.Generated.Types.Base.Arr20U8>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.junction.EnumBodyId, Substrate.NetApi.Generated.Model.xcm.v0.junction.EnumBodyPart>>
     {
     }
 }

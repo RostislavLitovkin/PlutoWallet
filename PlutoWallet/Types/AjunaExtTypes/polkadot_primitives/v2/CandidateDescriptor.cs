@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -27,49 +27,49 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> para_id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id _paraId;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id _paraId;
         
         /// <summary>
         /// >> relay_parent
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _relayParent;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _relayParent;
         
         /// <summary>
         /// >> collator
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public _collator;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public _collator;
         
         /// <summary>
         /// >> persisted_validation_data_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _persistedValidationDataHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _persistedValidationDataHash;
         
         /// <summary>
         /// >> pov_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _povHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _povHash;
         
         /// <summary>
         /// >> erasure_root
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _erasureRoot;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _erasureRoot;
         
         /// <summary>
         /// >> signature
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Signature _signature;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Signature _signature;
         
         /// <summary>
         /// >> para_head
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _paraHead;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _paraHead;
         
         /// <summary>
         /// >> validation_code_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash _validationCodeHash;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash _validationCodeHash;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id ParaId
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id ParaId
         {
             get
             {
@@ -81,7 +81,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 RelayParent
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 RelayParent
         {
             get
             {
@@ -93,7 +93,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public Collator
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public Collator
         {
             get
             {
@@ -105,7 +105,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 PersistedValidationDataHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 PersistedValidationDataHash
         {
             get
             {
@@ -117,7 +117,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 PovHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 PovHash
         {
             get
             {
@@ -129,7 +129,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 ErasureRoot
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 ErasureRoot
         {
             get
             {
@@ -141,7 +141,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Signature Signature
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Signature Signature
         {
             get
             {
@@ -153,7 +153,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 ParaHead
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 ParaHead
         {
             get
             {
@@ -165,7 +165,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash ValidationCodeHash
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash ValidationCodeHash
         {
             get
             {
@@ -200,23 +200,23 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ParaId = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id();
+            ParaId = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
             ParaId.Decode(byteArray, ref p);
-            RelayParent = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            RelayParent = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             RelayParent.Decode(byteArray, ref p);
-            Collator = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public();
+            Collator = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public();
             Collator.Decode(byteArray, ref p);
-            PersistedValidationDataHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            PersistedValidationDataHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             PersistedValidationDataHash.Decode(byteArray, ref p);
-            PovHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            PovHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             PovHash.Decode(byteArray, ref p);
-            ErasureRoot = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            ErasureRoot = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             ErasureRoot.Decode(byteArray, ref p);
-            Signature = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Signature();
+            Signature = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Signature();
             Signature.Decode(byteArray, ref p);
-            ParaHead = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            ParaHead = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             ParaHead.Decode(byteArray, ref p);
-            ValidationCodeHash = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash();
+            ValidationCodeHash = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash();
             ValidationCodeHash.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

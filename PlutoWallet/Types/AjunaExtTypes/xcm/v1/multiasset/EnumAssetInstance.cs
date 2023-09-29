@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset
+namespace Substrate.NetApi.Generated.Model.xcm.v1.multiasset
 {
     
     
@@ -36,7 +36,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset
     /// <summary>
     /// >> 138 - Variant[xcm.v1.multiasset.AssetInstance]
     /// </summary>
-    public sealed class EnumAssetInstance : BaseEnumExt<AssetInstance, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr16U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>
+    public sealed class EnumAssetInstance : BaseEnumExt<AssetInstance, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Generated.Types.Base.Arr8U8, Substrate.NetApi.Generated.Types.Base.Arr16U8, Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>
     {
     }
 }

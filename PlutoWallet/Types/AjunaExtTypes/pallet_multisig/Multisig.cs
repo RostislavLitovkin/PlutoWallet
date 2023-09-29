@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
+namespace Substrate.NetApi.Generated.Model.pallet_multisig
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
         /// <summary>
         /// >> when
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_multisig.Timepoint _when;
+        private Substrate.NetApi.Generated.Model.pallet_multisig.Timepoint _when;
         
         /// <summary>
         /// >> deposit
@@ -37,14 +37,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
         /// <summary>
         /// >> depositor
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _depositor;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _depositor;
         
         /// <summary>
         /// >> approvals
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24 _approvals;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24 _approvals;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_multisig.Timepoint When
+        public Substrate.NetApi.Generated.Model.pallet_multisig.Timepoint When
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Depositor
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24 Approvals
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24 Approvals
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_multisig
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            When = new PlutoWallet.NetApiExt.Generated.Model.pallet_multisig.Timepoint();
+            When = new Substrate.NetApi.Generated.Model.pallet_multisig.Timepoint();
             When.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Depositor = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Depositor = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Approvals = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24();
+            Approvals = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT24();
             Approvals.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

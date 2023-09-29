@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_asset
+namespace Substrate.NetApi.Generated.Model.xcm.v0.multi_asset
 {
     
     
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_asset
     /// <summary>
     /// >> 152 - Variant[xcm.v0.multi_asset.MultiAsset]
     /// </summary>
-    public sealed class EnumMultiAsset : BaseEnumExt<MultiAsset, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.EnumAssetInstance>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multiasset.EnumAssetInstance>>
+    public sealed class EnumMultiAsset : BaseEnumExt<MultiAsset, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, Substrate.NetApi.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Generated.Model.xcm.v1.multiasset.EnumAssetInstance>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v0.multi_location.EnumMultiLocation, Substrate.NetApi.Generated.Model.xcm.v1.multiasset.EnumAssetInstance>>
     {
     }
 }

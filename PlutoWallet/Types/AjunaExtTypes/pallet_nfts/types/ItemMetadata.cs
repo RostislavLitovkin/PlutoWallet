@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> deposit
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadataDeposit _deposit;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadataDeposit _deposit;
         
         /// <summary>
         /// >> data
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 _data;
+        private Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 _data;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadataDeposit Deposit
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadataDeposit Deposit
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 Data
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 Data
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Deposit = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadataDeposit();
+            Deposit = new Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadataDeposit();
             Deposit.Decode(byteArray, ref p);
-            Data = new PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
+            Data = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
             Data.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

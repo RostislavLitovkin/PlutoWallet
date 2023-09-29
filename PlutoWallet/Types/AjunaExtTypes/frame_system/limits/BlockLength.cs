@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
+namespace Substrate.NetApi.Generated.Model.frame_system.limits
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> max
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 _max;
+        private Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT3 _max;
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3 Max
+        public Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT3 Max
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Max = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT3();
+            Max = new Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT3();
             Max.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

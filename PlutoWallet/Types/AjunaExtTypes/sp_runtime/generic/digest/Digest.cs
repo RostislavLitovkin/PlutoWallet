@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest
+namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.digest
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest
         /// <summary>
         /// >> logs
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> _logs;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> _logs;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Logs = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.EnumDigestItem>();
+            Logs = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem>();
             Logs.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

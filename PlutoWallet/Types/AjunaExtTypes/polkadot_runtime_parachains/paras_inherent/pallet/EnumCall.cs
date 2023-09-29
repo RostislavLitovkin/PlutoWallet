@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet
 {
     
     
@@ -25,7 +25,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
     /// >> 378 - Variant[polkadot_runtime_parachains.paras_inherent.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.InherentData>
+    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.InherentData>
     {
     }
 }

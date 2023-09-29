@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> targets
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10 _targets;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10 _targets;
         
         /// <summary>
         /// >> submitted_in
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.Bool _suppressed;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10 Targets
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10 Targets
         {
             get
             {
@@ -92,7 +92,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Targets = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10();
+            Targets = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT10();
             Targets.Decode(byteArray, ref p);
             SubmittedIn = new Substrate.NetApi.Model.Types.Primitive.U32();
             SubmittedIn.Decode(byteArray, ref p);

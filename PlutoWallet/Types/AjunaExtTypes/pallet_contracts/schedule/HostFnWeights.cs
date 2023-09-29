@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
+namespace Substrate.NetApi.Generated.Model.pallet_contracts.schedule
 {
     
     
@@ -27,294 +27,294 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
         /// <summary>
         /// >> caller
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _caller;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _caller;
         
         /// <summary>
         /// >> is_contract
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _isContract;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _isContract;
         
         /// <summary>
         /// >> code_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _codeHash;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _codeHash;
         
         /// <summary>
         /// >> own_code_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _ownCodeHash;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _ownCodeHash;
         
         /// <summary>
         /// >> caller_is_origin
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _callerIsOrigin;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _callerIsOrigin;
         
         /// <summary>
         /// >> address
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _address;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _address;
         
         /// <summary>
         /// >> gas_left
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _gasLeft;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _gasLeft;
         
         /// <summary>
         /// >> balance
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _balance;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _balance;
         
         /// <summary>
         /// >> value_transferred
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _valueTransferred;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _valueTransferred;
         
         /// <summary>
         /// >> minimum_balance
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _minimumBalance;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _minimumBalance;
         
         /// <summary>
         /// >> block_number
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _blockNumber;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _blockNumber;
         
         /// <summary>
         /// >> now
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _now;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _now;
         
         /// <summary>
         /// >> weight_to_fee
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _weightToFee;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _weightToFee;
         
         /// <summary>
         /// >> gas
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _gas;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _gas;
         
         /// <summary>
         /// >> input
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _input;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _input;
         
         /// <summary>
         /// >> input_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _inputPerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _inputPerByte;
         
         /// <summary>
         /// >> r#return
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _rHreturn;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _rHreturn;
         
         /// <summary>
         /// >> return_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _returnPerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _returnPerByte;
         
         /// <summary>
         /// >> terminate
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _terminate;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _terminate;
         
         /// <summary>
         /// >> random
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _random;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _random;
         
         /// <summary>
         /// >> deposit_event
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _depositEvent;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _depositEvent;
         
         /// <summary>
         /// >> deposit_event_per_topic
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _depositEventPerTopic;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _depositEventPerTopic;
         
         /// <summary>
         /// >> deposit_event_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _depositEventPerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _depositEventPerByte;
         
         /// <summary>
         /// >> debug_message
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _debugMessage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _debugMessage;
         
         /// <summary>
         /// >> set_storage
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _setStorage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _setStorage;
         
         /// <summary>
         /// >> set_storage_per_new_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _setStoragePerNewByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _setStoragePerNewByte;
         
         /// <summary>
         /// >> set_storage_per_old_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _setStoragePerOldByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _setStoragePerOldByte;
         
         /// <summary>
         /// >> set_code_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _setCodeHash;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _setCodeHash;
         
         /// <summary>
         /// >> clear_storage
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _clearStorage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _clearStorage;
         
         /// <summary>
         /// >> clear_storage_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _clearStoragePerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _clearStoragePerByte;
         
         /// <summary>
         /// >> contains_storage
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _containsStorage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _containsStorage;
         
         /// <summary>
         /// >> contains_storage_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _containsStoragePerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _containsStoragePerByte;
         
         /// <summary>
         /// >> get_storage
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _getStorage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _getStorage;
         
         /// <summary>
         /// >> get_storage_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _getStoragePerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _getStoragePerByte;
         
         /// <summary>
         /// >> take_storage
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _takeStorage;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _takeStorage;
         
         /// <summary>
         /// >> take_storage_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _takeStoragePerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _takeStoragePerByte;
         
         /// <summary>
         /// >> transfer
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _transfer;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _transfer;
         
         /// <summary>
         /// >> call
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _call;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _call;
         
         /// <summary>
         /// >> delegate_call
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _delegateCall;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _delegateCall;
         
         /// <summary>
         /// >> call_transfer_surcharge
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _callTransferSurcharge;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _callTransferSurcharge;
         
         /// <summary>
         /// >> call_per_cloned_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _callPerClonedByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _callPerClonedByte;
         
         /// <summary>
         /// >> instantiate
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _instantiate;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _instantiate;
         
         /// <summary>
         /// >> instantiate_transfer_surcharge
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _instantiateTransferSurcharge;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _instantiateTransferSurcharge;
         
         /// <summary>
         /// >> instantiate_per_input_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _instantiatePerInputByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _instantiatePerInputByte;
         
         /// <summary>
         /// >> instantiate_per_salt_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _instantiatePerSaltByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _instantiatePerSaltByte;
         
         /// <summary>
         /// >> hash_sha2_256
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashSha2256;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashSha2256;
         
         /// <summary>
         /// >> hash_sha2_256_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashSha2256PerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashSha2256PerByte;
         
         /// <summary>
         /// >> hash_keccak_256
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashKeccak256;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashKeccak256;
         
         /// <summary>
         /// >> hash_keccak_256_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashKeccak256PerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashKeccak256PerByte;
         
         /// <summary>
         /// >> hash_blake2_256
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2256;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2256;
         
         /// <summary>
         /// >> hash_blake2_256_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2256PerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2256PerByte;
         
         /// <summary>
         /// >> hash_blake2_128
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2128;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2128;
         
         /// <summary>
         /// >> hash_blake2_128_per_byte
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2128PerByte;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _hashBlake2128PerByte;
         
         /// <summary>
         /// >> ecdsa_recover
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _ecdsaRecover;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _ecdsaRecover;
         
         /// <summary>
         /// >> ecdsa_to_eth_address
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _ecdsaToEthAddress;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _ecdsaToEthAddress;
         
         /// <summary>
         /// >> reentrance_count
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _reentranceCount;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _reentranceCount;
         
         /// <summary>
         /// >> account_reentrance_count
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _accountReentranceCount;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _accountReentranceCount;
         
         /// <summary>
         /// >> instantiation_nonce
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _instantiationNonce;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _instantiationNonce;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Caller
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Caller
         {
             get
             {
@@ -326,7 +326,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight IsContract
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight IsContract
         {
             get
             {
@@ -338,7 +338,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight CodeHash
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight CodeHash
         {
             get
             {
@@ -350,7 +350,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight OwnCodeHash
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight OwnCodeHash
         {
             get
             {
@@ -362,7 +362,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight CallerIsOrigin
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight CallerIsOrigin
         {
             get
             {
@@ -374,7 +374,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Address
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Address
         {
             get
             {
@@ -386,7 +386,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight GasLeft
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight GasLeft
         {
             get
             {
@@ -398,7 +398,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Balance
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Balance
         {
             get
             {
@@ -410,7 +410,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ValueTransferred
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ValueTransferred
         {
             get
             {
@@ -422,7 +422,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MinimumBalance
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight MinimumBalance
         {
             get
             {
@@ -434,7 +434,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BlockNumber
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight BlockNumber
         {
             get
             {
@@ -446,7 +446,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Now
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Now
         {
             get
             {
@@ -458,7 +458,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight WeightToFee
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight WeightToFee
         {
             get
             {
@@ -470,7 +470,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Gas
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Gas
         {
             get
             {
@@ -482,7 +482,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Input
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Input
         {
             get
             {
@@ -494,7 +494,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight InputPerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight InputPerByte
         {
             get
             {
@@ -506,7 +506,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight RHreturn
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight RHreturn
         {
             get
             {
@@ -518,7 +518,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ReturnPerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ReturnPerByte
         {
             get
             {
@@ -530,7 +530,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Terminate
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Terminate
         {
             get
             {
@@ -542,7 +542,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Random
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Random
         {
             get
             {
@@ -554,7 +554,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DepositEvent
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DepositEvent
         {
             get
             {
@@ -566,7 +566,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DepositEventPerTopic
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DepositEventPerTopic
         {
             get
             {
@@ -578,7 +578,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DepositEventPerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DepositEventPerByte
         {
             get
             {
@@ -590,7 +590,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DebugMessage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DebugMessage
         {
             get
             {
@@ -602,7 +602,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight SetStorage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight SetStorage
         {
             get
             {
@@ -614,7 +614,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight SetStoragePerNewByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight SetStoragePerNewByte
         {
             get
             {
@@ -626,7 +626,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight SetStoragePerOldByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight SetStoragePerOldByte
         {
             get
             {
@@ -638,7 +638,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight SetCodeHash
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight SetCodeHash
         {
             get
             {
@@ -650,7 +650,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ClearStorage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ClearStorage
         {
             get
             {
@@ -662,7 +662,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ClearStoragePerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ClearStoragePerByte
         {
             get
             {
@@ -674,7 +674,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ContainsStorage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ContainsStorage
         {
             get
             {
@@ -686,7 +686,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ContainsStoragePerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ContainsStoragePerByte
         {
             get
             {
@@ -698,7 +698,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight GetStorage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight GetStorage
         {
             get
             {
@@ -710,7 +710,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight GetStoragePerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight GetStoragePerByte
         {
             get
             {
@@ -722,7 +722,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight TakeStorage
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight TakeStorage
         {
             get
             {
@@ -734,7 +734,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight TakeStoragePerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight TakeStoragePerByte
         {
             get
             {
@@ -746,7 +746,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Transfer
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Transfer
         {
             get
             {
@@ -758,7 +758,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Call
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Call
         {
             get
             {
@@ -770,7 +770,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DelegateCall
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DelegateCall
         {
             get
             {
@@ -782,7 +782,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight CallTransferSurcharge
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight CallTransferSurcharge
         {
             get
             {
@@ -794,7 +794,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight CallPerClonedByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight CallPerClonedByte
         {
             get
             {
@@ -806,7 +806,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight Instantiate
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Instantiate
         {
             get
             {
@@ -818,7 +818,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight InstantiateTransferSurcharge
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight InstantiateTransferSurcharge
         {
             get
             {
@@ -830,7 +830,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight InstantiatePerInputByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight InstantiatePerInputByte
         {
             get
             {
@@ -842,7 +842,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight InstantiatePerSaltByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight InstantiatePerSaltByte
         {
             get
             {
@@ -854,7 +854,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashSha2256
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashSha2256
         {
             get
             {
@@ -866,7 +866,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashSha2256PerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashSha2256PerByte
         {
             get
             {
@@ -878,7 +878,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashKeccak256
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashKeccak256
         {
             get
             {
@@ -890,7 +890,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashKeccak256PerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashKeccak256PerByte
         {
             get
             {
@@ -902,7 +902,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashBlake2256
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashBlake2256
         {
             get
             {
@@ -914,7 +914,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashBlake2256PerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashBlake2256PerByte
         {
             get
             {
@@ -926,7 +926,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashBlake2128
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashBlake2128
         {
             get
             {
@@ -938,7 +938,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight HashBlake2128PerByte
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight HashBlake2128PerByte
         {
             get
             {
@@ -950,7 +950,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight EcdsaRecover
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight EcdsaRecover
         {
             get
             {
@@ -962,7 +962,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight EcdsaToEthAddress
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight EcdsaToEthAddress
         {
             get
             {
@@ -974,7 +974,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight ReentranceCount
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight ReentranceCount
         {
             get
             {
@@ -986,7 +986,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight AccountReentranceCount
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight AccountReentranceCount
         {
             get
             {
@@ -998,7 +998,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight InstantiationNonce
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight InstantiationNonce
         {
             get
             {
@@ -1082,121 +1082,121 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Caller = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Caller = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Caller.Decode(byteArray, ref p);
-            IsContract = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            IsContract = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             IsContract.Decode(byteArray, ref p);
-            CodeHash = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            CodeHash = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             CodeHash.Decode(byteArray, ref p);
-            OwnCodeHash = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            OwnCodeHash = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             OwnCodeHash.Decode(byteArray, ref p);
-            CallerIsOrigin = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            CallerIsOrigin = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             CallerIsOrigin.Decode(byteArray, ref p);
-            Address = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Address = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Address.Decode(byteArray, ref p);
-            GasLeft = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            GasLeft = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             GasLeft.Decode(byteArray, ref p);
-            Balance = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Balance = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Balance.Decode(byteArray, ref p);
-            ValueTransferred = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ValueTransferred = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ValueTransferred.Decode(byteArray, ref p);
-            MinimumBalance = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            MinimumBalance = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             MinimumBalance.Decode(byteArray, ref p);
-            BlockNumber = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            BlockNumber = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             BlockNumber.Decode(byteArray, ref p);
-            Now = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Now = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Now.Decode(byteArray, ref p);
-            WeightToFee = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            WeightToFee = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             WeightToFee.Decode(byteArray, ref p);
-            Gas = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Gas = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Gas.Decode(byteArray, ref p);
-            Input = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Input = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Input.Decode(byteArray, ref p);
-            InputPerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            InputPerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             InputPerByte.Decode(byteArray, ref p);
-            RHreturn = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            RHreturn = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             RHreturn.Decode(byteArray, ref p);
-            ReturnPerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ReturnPerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ReturnPerByte.Decode(byteArray, ref p);
-            Terminate = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Terminate = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Terminate.Decode(byteArray, ref p);
-            Random = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Random = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Random.Decode(byteArray, ref p);
-            DepositEvent = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            DepositEvent = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             DepositEvent.Decode(byteArray, ref p);
-            DepositEventPerTopic = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            DepositEventPerTopic = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             DepositEventPerTopic.Decode(byteArray, ref p);
-            DepositEventPerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            DepositEventPerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             DepositEventPerByte.Decode(byteArray, ref p);
-            DebugMessage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            DebugMessage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             DebugMessage.Decode(byteArray, ref p);
-            SetStorage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            SetStorage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             SetStorage.Decode(byteArray, ref p);
-            SetStoragePerNewByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            SetStoragePerNewByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             SetStoragePerNewByte.Decode(byteArray, ref p);
-            SetStoragePerOldByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            SetStoragePerOldByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             SetStoragePerOldByte.Decode(byteArray, ref p);
-            SetCodeHash = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            SetCodeHash = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             SetCodeHash.Decode(byteArray, ref p);
-            ClearStorage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ClearStorage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ClearStorage.Decode(byteArray, ref p);
-            ClearStoragePerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ClearStoragePerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ClearStoragePerByte.Decode(byteArray, ref p);
-            ContainsStorage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ContainsStorage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ContainsStorage.Decode(byteArray, ref p);
-            ContainsStoragePerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ContainsStoragePerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ContainsStoragePerByte.Decode(byteArray, ref p);
-            GetStorage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            GetStorage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             GetStorage.Decode(byteArray, ref p);
-            GetStoragePerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            GetStoragePerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             GetStoragePerByte.Decode(byteArray, ref p);
-            TakeStorage = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            TakeStorage = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             TakeStorage.Decode(byteArray, ref p);
-            TakeStoragePerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            TakeStoragePerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             TakeStoragePerByte.Decode(byteArray, ref p);
-            Transfer = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Transfer = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Transfer.Decode(byteArray, ref p);
-            Call = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Call = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Call.Decode(byteArray, ref p);
-            DelegateCall = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            DelegateCall = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             DelegateCall.Decode(byteArray, ref p);
-            CallTransferSurcharge = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            CallTransferSurcharge = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             CallTransferSurcharge.Decode(byteArray, ref p);
-            CallPerClonedByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            CallPerClonedByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             CallPerClonedByte.Decode(byteArray, ref p);
-            Instantiate = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            Instantiate = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Instantiate.Decode(byteArray, ref p);
-            InstantiateTransferSurcharge = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            InstantiateTransferSurcharge = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             InstantiateTransferSurcharge.Decode(byteArray, ref p);
-            InstantiatePerInputByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            InstantiatePerInputByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             InstantiatePerInputByte.Decode(byteArray, ref p);
-            InstantiatePerSaltByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            InstantiatePerSaltByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             InstantiatePerSaltByte.Decode(byteArray, ref p);
-            HashSha2256 = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashSha2256 = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashSha2256.Decode(byteArray, ref p);
-            HashSha2256PerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashSha2256PerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashSha2256PerByte.Decode(byteArray, ref p);
-            HashKeccak256 = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashKeccak256 = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashKeccak256.Decode(byteArray, ref p);
-            HashKeccak256PerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashKeccak256PerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashKeccak256PerByte.Decode(byteArray, ref p);
-            HashBlake2256 = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashBlake2256 = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashBlake2256.Decode(byteArray, ref p);
-            HashBlake2256PerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashBlake2256PerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashBlake2256PerByte.Decode(byteArray, ref p);
-            HashBlake2128 = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashBlake2128 = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashBlake2128.Decode(byteArray, ref p);
-            HashBlake2128PerByte = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            HashBlake2128PerByte = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             HashBlake2128PerByte.Decode(byteArray, ref p);
-            EcdsaRecover = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            EcdsaRecover = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             EcdsaRecover.Decode(byteArray, ref p);
-            EcdsaToEthAddress = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            EcdsaToEthAddress = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             EcdsaToEthAddress.Decode(byteArray, ref p);
-            ReentranceCount = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            ReentranceCount = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             ReentranceCount.Decode(byteArray, ref p);
-            AccountReentranceCount = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            AccountReentranceCount = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             AccountReentranceCount.Decode(byteArray, ref p);
-            InstantiationNonce = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            InstantiationNonce = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             InstantiationNonce.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

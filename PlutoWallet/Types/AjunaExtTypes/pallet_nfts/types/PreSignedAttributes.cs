@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> namespace
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace _namespace;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace _namespace;
         
         /// <summary>
         /// >> deadline
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace Namespace
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace Namespace
         {
             get
             {
@@ -134,7 +134,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             Item.Decode(byteArray, ref p);
             Attributes = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>();
             Attributes.Decode(byteArray, ref p);
-            Namespace = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace();
+            Namespace = new Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace();
             Namespace.Decode(byteArray, ref p);
             Deadline = new Substrate.NetApi.Model.Types.Primitive.U32();
             Deadline.Decode(byteArray, ref p);

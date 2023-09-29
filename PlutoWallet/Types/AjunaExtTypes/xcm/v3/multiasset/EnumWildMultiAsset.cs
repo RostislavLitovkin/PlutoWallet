@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset
+namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
 {
     
     
@@ -30,7 +30,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset
     /// <summary>
     /// >> 80 - Variant[xcm.v3.multiasset.WildMultiAsset]
     /// </summary>
-    public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.EnumAssetId, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.EnumWildFungibility>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.EnumAssetId, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>
     {
     }
 }

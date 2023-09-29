@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
+namespace Substrate.NetApi.Generated.Model.pallet_bounties
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
         /// <summary>
         /// >> proposer
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _proposer;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _proposer;
         
         /// <summary>
         /// >> value
@@ -52,9 +52,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
         /// <summary>
         /// >> status
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_bounties.EnumBountyStatus _status;
+        private Substrate.NetApi.Generated.Model.pallet_bounties.EnumBountyStatus _status;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Proposer
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Proposer
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_bounties.EnumBountyStatus Status
+        public Substrate.NetApi.Generated.Model.pallet_bounties.EnumBountyStatus Status
         {
             get
             {
@@ -146,7 +146,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Proposer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Proposer = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Proposer.Decode(byteArray, ref p);
             Value = new Substrate.NetApi.Model.Types.Primitive.U128();
             Value.Decode(byteArray, ref p);
@@ -156,7 +156,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bounties
             CuratorDeposit.Decode(byteArray, ref p);
             Bond = new Substrate.NetApi.Model.Types.Primitive.U128();
             Bond.Decode(byteArray, ref p);
-            Status = new PlutoWallet.NetApiExt.Generated.Model.pallet_bounties.EnumBountyStatus();
+            Status = new Substrate.NetApi.Generated.Model.pallet_bounties.EnumBountyStatus();
             Status.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

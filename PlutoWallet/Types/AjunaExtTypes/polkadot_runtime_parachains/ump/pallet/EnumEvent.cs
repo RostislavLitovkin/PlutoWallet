@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.ump.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.ump.pallet
 {
     
     
@@ -40,7 +40,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.ump.
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.traits.EnumOutcome>, BaseTuple<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Primitive.U64, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>>
+    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Generated.Model.xcm.v2.traits.EnumOutcome>, BaseTuple<Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>
     {
     }
 }

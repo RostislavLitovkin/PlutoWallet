@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> subject
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash _subject;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash _subject;
         
         /// <summary>
         /// >> session_index
@@ -42,7 +42,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> validator_index
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex _validatorIndex;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex _validatorIndex;
         
         public Substrate.NetApi.Model.Types.Primitive.Bool Accept
         {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash Subject
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash Subject
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex ValidatorIndex
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex ValidatorIndex
         {
             get
             {
@@ -112,11 +112,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             var start = p;
             Accept = new Substrate.NetApi.Model.Types.Primitive.Bool();
             Accept.Decode(byteArray, ref p);
-            Subject = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash();
+            Subject = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash();
             Subject.Decode(byteArray, ref p);
             SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);
-            ValidatorIndex = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex();
+            ValidatorIndex = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex();
             ValidatorIndex.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

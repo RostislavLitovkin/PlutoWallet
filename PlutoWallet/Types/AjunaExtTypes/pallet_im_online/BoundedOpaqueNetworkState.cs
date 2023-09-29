@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
+namespace Substrate.NetApi.Generated.Model.pallet_im_online
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
         /// <summary>
         /// >> peer_id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6 _peerId;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6 _peerId;
         
         /// <summary>
         /// >> external_addresses
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7 _externalAddresses;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7 _externalAddresses;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6 PeerId
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6 PeerId
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7 ExternalAddresses
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7 ExternalAddresses
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            PeerId = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6();
+            PeerId = new Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT6();
             PeerId.Decode(byteArray, ref p);
-            ExternalAddresses = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7();
+            ExternalAddresses = new Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT7();
             ExternalAddresses.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

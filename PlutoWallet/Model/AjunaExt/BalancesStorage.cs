@@ -1,12 +1,12 @@
 ﻿using System;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_balances;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_staking;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
-using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
+using Substrate.NetApi.Generated.Model.pallet_balances;
+using Substrate.NetApi.Generated.Model.pallet_staking;
+using Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec;
+using Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -87,7 +87,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  `Balances` pallet, which uses a `StorageMap` to store balances data only.
         ///  NOTE: This is only used in the case that this pallet is used to store balances.
         /// </summary>
-        public static string AccountParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string AccountParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -131,7 +131,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  `Balances` pallet, which uses a `StorageMap` to store balances data only.
         ///  NOTE: This is only used in the case that this pallet is used to store balances.
         /// </summary>
-        public async Task<AccountData> Account(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<AccountData> Account(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.AccountParams(key);
             var result = await _client.GetStorageAsync<AccountData>(parameters, token);
@@ -143,7 +143,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public static string LocksParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string LocksParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Locks", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -164,10 +164,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2> Locks(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2> Locks(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.LocksParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT2>(parameters, token);
             return result;
         }
 
@@ -175,7 +175,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ReservesParams
         ///  Named reserves on some account balances.
         /// </summary>
-        public static string ReservesParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string ReservesParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Balances", "Reserves", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -195,10 +195,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Reserves
         ///  Named reserves on some account balances.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4> Reserves(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4> Reserves(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = BalancesStorage.ReservesParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4>(parameters, token);
             return result;
         }
 

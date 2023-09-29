@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
+namespace Substrate.NetApi.Generated.Model.pallet_scheduler
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         /// <summary>
         /// >> maybe_id
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> _maybeId;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr32U8> _maybeId;
         
         /// <summary>
         /// >> priority
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         /// <summary>
         /// >> call
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded _call;
+        private Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded _call;
         
         /// <summary>
         /// >> maybe_periodic
@@ -47,9 +47,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         /// <summary>
         /// >> origin
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumOriginCaller _origin;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller _origin;
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8> MaybeId
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr32U8> MaybeId
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded Call
+        public Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded Call
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumOriginCaller Origin
+        public Substrate.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller Origin
         {
             get
             {
@@ -128,15 +128,15 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_scheduler
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            MaybeId = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr32U8>();
+            MaybeId = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr32U8>();
             MaybeId.Decode(byteArray, ref p);
             Priority = new Substrate.NetApi.Model.Types.Primitive.U8();
             Priority.Decode(byteArray, ref p);
-            Call = new PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded();
+            Call = new Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded();
             Call.Decode(byteArray, ref p);
             MaybePeriodic = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>();
             MaybePeriodic.Decode(byteArray, ref p);
-            Origin = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumOriginCaller();
+            Origin = new Substrate.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller();
             Origin.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

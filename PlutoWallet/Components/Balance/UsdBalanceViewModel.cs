@@ -6,8 +6,8 @@ using PlutoWallet.Components.MessagePopup;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi.Model.Types.Base;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
-using PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.pallet_assets.types;
 using Newtonsoft.Json.Linq;
 
 namespace PlutoWallet.Components.Balance

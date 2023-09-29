@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
+namespace Substrate.NetApi.Generated.Model.pallet_proxy
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         /// <summary>
         /// >> real
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _real;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _real;
         
         /// <summary>
         /// >> call_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _callHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _callHash;
         
         /// <summary>
         /// >> height
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _height;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Real
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Real
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 CallHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 CallHash
         {
             get
             {
@@ -92,9 +92,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Real = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Real = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Real.Decode(byteArray, ref p);
-            CallHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            CallHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             CallHash.Decode(byteArray, ref p);
             Height = new Substrate.NetApi.Model.Types.Primitive.U32();
             Height.Decode(byteArray, ref p);

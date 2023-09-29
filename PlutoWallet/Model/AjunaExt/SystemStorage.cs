@@ -1,7 +1,7 @@
 ﻿using System;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -15,32 +15,32 @@ namespace PlutoWallet.Model.AjunaExt
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(PlutoWallet.NetApiExt.Generated.Model.frame_system.AccountInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Generated.Model.frame_system.AccountInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AllExtrinsicsLen"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.primitive_types.H256)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicData"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Number"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ParentHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Digest"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.Digest)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Events"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.frame_system.EventRecord>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ParentHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.primitive_types.H256)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Digest"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Events"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.frame_system.EventRecord>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "EventCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "EventTopics"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "LastRuntimeUpgrade"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.frame_system.LastRuntimeUpgradeInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "LastRuntimeUpgrade"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.frame_system.LastRuntimeUpgradeInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "UpgradedToU32RefCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "UpgradedToTripleRefCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExecutionPhase"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExecutionPhase"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.frame_system.EnumPhase)));
         }
 
         /// <summary>
         /// >> AccountParams
         ///  The full account information for a particular account ID.
         /// </summary>
-        public static string AccountParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string AccountParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("System", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -63,13 +63,13 @@ namespace PlutoWallet.Model.AjunaExt
         ///  The full account information for a particular account ID.
         /// - This method was modified to be more userfriendly
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.frame_system.AccountInfo> Account(string substrateAddress)
+        public async Task<Substrate.NetApi.Generated.Model.frame_system.AccountInfo> Account(string substrateAddress)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
         
             string parameters = SystemStorage.AccountParams(account32);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.frame_system.AccountInfo>(parameters, CancellationToken.None);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.frame_system.AccountInfo>(parameters, CancellationToken.None);
             return result;
         }
 
@@ -77,10 +77,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Account
         ///  The full account information for a particular account ID.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.frame_system.AccountInfo> Account(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.frame_system.AccountInfo> Account(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = SystemStorage.AccountParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.frame_system.AccountInfo>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.frame_system.AccountInfo>(parameters, token);
             return result;
         }
 
@@ -135,10 +135,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> BlockWeight
         ///  The current weight for the block.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT1> BlockWeight(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1> BlockWeight(CancellationToken token)
         {
             string parameters = SystemStorage.BlockWeightParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT1>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1>(parameters, token);
             return result;
         }
 
@@ -195,10 +195,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> BlockHash
         ///  Map of block numbers to block hashes.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> BlockHash(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.primitive_types.H256> BlockHash(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
         {
             string parameters = SystemStorage.BlockHashParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.primitive_types.H256>(parameters, token);
             return result;
         }
 
@@ -284,10 +284,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ParentHash
         ///  Hash of the previous block.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256> ParentHash(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.primitive_types.H256> ParentHash(CancellationToken token)
         {
             string parameters = SystemStorage.ParentHashParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.primitive_types.H256>(parameters, token);
             return result;
         }
 
@@ -313,10 +313,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Digest
         ///  Digest of the current block, also part of the block header.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.Digest> Digest(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest> Digest(CancellationToken token)
         {
             string parameters = SystemStorage.DigestParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.digest.Digest>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest>(parameters, token);
             return result;
         }
 
@@ -354,10 +354,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Events have a large in-memory size. Box the events to not go out-of-memory
         ///  just in case someone still reads them from within the runtime.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.frame_system.EventRecord>> Events(CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.frame_system.EventRecord>> Events(CancellationToken token)
         {
             string parameters = SystemStorage.EventsParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.frame_system.EventRecord>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.frame_system.EventRecord>>(parameters, token);
             return result;
         }
 
@@ -403,7 +403,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  the `EventIndex` then in case if the topic has the same contents on the next block
         ///  no notification will be triggered thus the event might be lost.
         /// </summary>
-        public static string EventTopicsParams(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key)
+        public static string EventTopicsParams(Substrate.NetApi.Generated.Model.primitive_types.H256 key)
         {
             return RequestGenerator.GetStorage("System", "EventTopics", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -432,7 +432,7 @@ namespace PlutoWallet.Model.AjunaExt
         ///  the `EventIndex` then in case if the topic has the same contents on the next block
         ///  no notification will be triggered thus the event might be lost.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>> EventTopics(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>> EventTopics(Substrate.NetApi.Generated.Model.primitive_types.H256 key, CancellationToken token)
         {
             string parameters = SystemStorage.EventTopicsParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>>(parameters, token);
@@ -461,10 +461,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> LastRuntimeUpgrade
         ///  Stores the `spec_version` and `spec_name` of when the last runtime upgrade happened.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.frame_system.LastRuntimeUpgradeInfo> LastRuntimeUpgrade(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.frame_system.LastRuntimeUpgradeInfo> LastRuntimeUpgrade(CancellationToken token)
         {
             string parameters = SystemStorage.LastRuntimeUpgradeParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.frame_system.LastRuntimeUpgradeInfo>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.frame_system.LastRuntimeUpgradeInfo>(parameters, token);
             return result;
         }
 
@@ -550,10 +550,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> ExecutionPhase
         ///  The execution phase of the block.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase> ExecutionPhase(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.frame_system.EnumPhase> ExecutionPhase(CancellationToken token)
         {
             string parameters = SystemStorage.ExecutionPhaseParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.frame_system.EnumPhase>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.frame_system.EnumPhase>(parameters, token);
             return result;
         }
     }
@@ -565,7 +565,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> fill_block
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method FillBlock(PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill ratio)
+        public static Method FillBlock(Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill ratio)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(ratio.Encode());
@@ -669,9 +669,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> BlockWeights
         ///  Block & extrinsics weights: base values and limits.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.BlockWeights BlockWeights()
+        public Substrate.NetApi.Generated.Model.frame_system.limits.BlockWeights BlockWeights()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.BlockWeights();
+            var result = new Substrate.NetApi.Generated.Model.frame_system.limits.BlockWeights();
             result.Create(@"0x07E0D1A93E01000B00204AA9D10113FFFFFFFFFFFFFFFF4236931400010B70FAE4A82E011366666666666666A6010B0098F73E5D0113FFFFFFFFFFFFFFBF0100004236931400010B70823713A3011366666666666666E6010B00204AA9D10113FFFFFFFFFFFFFFFF01070088526A741300000000000000404236931400000000");
             return result;
         }
@@ -680,9 +680,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> BlockLength
         ///  The maximum length of a block (in bytes).
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.BlockLength BlockLength()
+        public Substrate.NetApi.Generated.Model.frame_system.limits.BlockLength BlockLength()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.BlockLength();
+            var result = new Substrate.NetApi.Generated.Model.frame_system.limits.BlockLength();
             result.Create("0x00003C000000500000005000");
             return result;
         }
@@ -702,9 +702,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> DbWeight
         ///  The weight of runtime database operations the runtime can invoke.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.RuntimeDbWeight DbWeight()
+        public Substrate.NetApi.Generated.Model.sp_weights.RuntimeDbWeight DbWeight()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.RuntimeDbWeight();
+            var result = new Substrate.NetApi.Generated.Model.sp_weights.RuntimeDbWeight();
             result.Create("0x40787D010000000000E1F50500000000");
             return result;
         }
@@ -713,9 +713,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Version
         ///  Get the chain's current version.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.sp_version.RuntimeVersion Version()
+        public Substrate.NetApi.Generated.Model.sp_version.RuntimeVersion Version()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.sp_version.RuntimeVersion();
+            var result = new Substrate.NetApi.Generated.Model.sp_version.RuntimeVersion();
             result.Create(@"0x346E6F64652D74656D706C617465346E6F64652D74656D706C6174650100000064000000010000002CDF6ACB689907609B0400000037E397FC7C91F5E40100000040FE3AD401F8959A06000000D2BC9897EED08F1503000000F78B278BE53F454C02000000DD718D5CC53262D401000000AB3C0572291FEB8B01000000ED99C5ACB25EEDF503000000BC9D89904F5B923F0100000037C8BB1350A9A2A801000000F3FF14D5AB527059010000000100000001");
             return result;
         }

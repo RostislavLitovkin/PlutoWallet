@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.double_encoded
+namespace Substrate.NetApi.Generated.Model.xcm.double_encoded
 {
     
     

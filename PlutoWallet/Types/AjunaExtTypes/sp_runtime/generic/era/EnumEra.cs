@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Primitive;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era
+namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.era
 {
     
     

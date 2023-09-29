@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map
+namespace Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_ma
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT2 _value;
+        private Substrate.NetApi.Generated.Types.Base.BTreeMapT2 _value;
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT2 Value
+        public Substrate.NetApi.Generated.Types.Base.BTreeMapT2 Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_ma
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Types.Base.BTreeMapT2();
+            Value = new Substrate.NetApi.Generated.Types.Base.BTreeMapT2();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> stash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _stash;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _stash;
         
         /// <summary>
         /// >> total
@@ -42,14 +42,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> unlocking
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _unlocking;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _unlocking;
         
         /// <summary>
         /// >> claimed_rewards
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9 _claimedRewards;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9 _claimedRewards;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Stash
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Stash
         {
             get
             {
@@ -85,7 +85,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Unlocking
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Unlocking
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9 ClaimedRewards
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9 ClaimedRewards
         {
             get
             {
@@ -128,15 +128,15 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Stash = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Stash = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Stash.Decode(byteArray, ref p);
             Total = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Total.Decode(byteArray, ref p);
             Active = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Active.Decode(byteArray, ref p);
-            Unlocking = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
+            Unlocking = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
             Unlocking.Decode(byteArray, ref p);
-            ClaimedRewards = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9();
+            ClaimedRewards = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9();
             ClaimedRewards.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

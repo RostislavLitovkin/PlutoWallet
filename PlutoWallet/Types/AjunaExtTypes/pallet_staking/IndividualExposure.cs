@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> who
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _who;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _who;
         
         /// <summary>
         /// >> value
         /// </summary>
         private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> _value;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Who
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Who
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Who = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Who = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Who.Decode(byteArray, ref p);
             Value = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Value.Decode(byteArray, ref p);

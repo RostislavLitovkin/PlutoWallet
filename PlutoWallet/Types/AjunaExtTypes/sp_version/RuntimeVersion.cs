@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
+namespace Substrate.NetApi.Generated.Model.sp_version
 {
     
     
@@ -52,7 +52,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
         /// <summary>
         /// >> apis
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.Cow _apis;
+        private Substrate.NetApi.Generated.Types.Base.Cow _apis;
         
         /// <summary>
         /// >> transaction_version
@@ -124,7 +124,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.Cow Apis
+        public Substrate.NetApi.Generated.Types.Base.Cow Apis
         {
             get
             {
@@ -192,7 +192,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_version
             SpecVersion.Decode(byteArray, ref p);
             ImplVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             ImplVersion.Decode(byteArray, ref p);
-            Apis = new PlutoWallet.NetApiExt.Generated.Types.Base.Cow();
+            Apis = new Substrate.NetApi.Generated.Types.Base.Cow();
             Apis.Decode(byteArray, ref p);
             TransactionVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             TransactionVersion.Decode(byteArray, ref p);

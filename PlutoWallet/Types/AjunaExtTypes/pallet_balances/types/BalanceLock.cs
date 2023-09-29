@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types
+namespace Substrate.NetApi.Generated.Model.pallet_balances.types
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types
         /// <summary>
         /// >> id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 _id;
+        private Substrate.NetApi.Generated.Types.Base.Arr8U8 _id;
         
         /// <summary>
         /// >> amount
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types
         /// <summary>
         /// >> reasons
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types.EnumReasons _reasons;
+        private Substrate.NetApi.Generated.Model.pallet_balances.types.EnumReasons _reasons;
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 Id
+        public Substrate.NetApi.Generated.Types.Base.Arr8U8 Id
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types.EnumReasons Reasons
+        public Substrate.NetApi.Generated.Model.pallet_balances.types.EnumReasons Reasons
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8();
+            Id = new Substrate.NetApi.Generated.Types.Base.Arr8U8();
             Id.Decode(byteArray, ref p);
             Amount = new Substrate.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);
-            Reasons = new PlutoWallet.NetApiExt.Generated.Model.pallet_balances.types.EnumReasons();
+            Reasons = new Substrate.NetApi.Generated.Model.pallet_balances.types.EnumReasons();
             Reasons.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

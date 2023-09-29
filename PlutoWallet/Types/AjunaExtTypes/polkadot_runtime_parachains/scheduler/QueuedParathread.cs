@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         /// <summary>
         /// >> claim
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry _claim;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadEntry _claim;
         
         /// <summary>
         /// >> core_offset
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _coreOffset;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry Claim
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadEntry Claim
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Claim = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry();
+            Claim = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadEntry();
             Claim.Decode(byteArray, ref p);
             CoreOffset = new Substrate.NetApi.Model.Types.Primitive.U32();
             CoreOffset.Decode(byteArray, ref p);

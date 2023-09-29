@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.xcm
+namespace Substrate.NetApi.Generated.Model.hydradx_runtime.xcm
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.xcm
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation _value;
+        private Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation _value;
         
-        public PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation Value
+        public Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.xcm
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multilocation.MultiLocation();
+            Value = new Substrate.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

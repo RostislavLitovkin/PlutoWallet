@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
+namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> no_era
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.UnbondPool _noEra;
+        private Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool _noEra;
         
         /// <summary>
         /// >> with_era
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 _withEra;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 _withEra;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.UnbondPool NoEra
+        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool NoEra
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 WithEra
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 WithEra
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            NoEra = new PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools.UnbondPool();
+            NoEra = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool();
             NoEra.Decode(byteArray, ref p);
-            WithEra = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2();
+            WithEra = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2();
             WithEra.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

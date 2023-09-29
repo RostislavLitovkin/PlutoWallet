@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
+namespace Substrate.NetApi.Generated.Model.xcm.v3
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3
     /// <summary>
     /// >> 73 - Variant[xcm.v3.MaybeErrorCode]
     /// </summary>
-    public sealed class EnumMaybeErrorCode : BaseEnumExt<MaybeErrorCode, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>
+    public sealed class EnumMaybeErrorCode : BaseEnumExt<MaybeErrorCode, BaseVoid, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>
     {
     }
 }

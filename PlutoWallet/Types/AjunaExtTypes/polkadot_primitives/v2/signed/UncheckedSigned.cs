@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2.signed
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed
         /// <summary>
         /// >> payload
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield _payload;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield _payload;
         
         /// <summary>
         /// >> validator_index
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex _validatorIndex;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex _validatorIndex;
         
         /// <summary>
         /// >> signature
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature _signature;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature _signature;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield Payload
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield Payload
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex ValidatorIndex
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex ValidatorIndex
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature Signature
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature Signature
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.signed
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Payload = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield();
+            Payload = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield();
             Payload.Decode(byteArray, ref p);
-            ValidatorIndex = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex();
+            ValidatorIndex = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex();
             ValidatorIndex.Decode(byteArray, ref p);
-            Signature = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature();
+            Signature = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature();
             Signature.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

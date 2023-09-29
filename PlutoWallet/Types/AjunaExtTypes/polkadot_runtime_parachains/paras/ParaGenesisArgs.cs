@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.paras
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         /// <summary>
         /// >> genesis_head
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData _genesisHead;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData _genesisHead;
         
         /// <summary>
         /// >> validation_code
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode _validationCode;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode _validationCode;
         
         /// <summary>
         /// >> para_kind
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.Bool _paraKind;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData GenesisHead
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData GenesisHead
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode ValidationCode
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode ValidationCode
         {
             get
             {
@@ -92,9 +92,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.para
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            GenesisHead = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData();
+            GenesisHead = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData();
             GenesisHead.Decode(byteArray, ref p);
-            ValidationCode = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode();
+            ValidationCode = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode();
             ValidationCode.Decode(byteArray, ref p);
             ParaKind = new Substrate.NetApi.Model.Types.Primitive.Bool();
             ParaKind.Decode(byteArray, ref p);

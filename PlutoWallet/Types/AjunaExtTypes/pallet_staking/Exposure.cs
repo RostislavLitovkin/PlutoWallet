@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
+namespace Substrate.NetApi.Generated.Model.pallet_staking
 {
     
     
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
         /// <summary>
         /// >> others
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.IndividualExposure> _others;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.pallet_staking.IndividualExposure> _others;
         
         public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> Total
         {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.IndividualExposure> Others
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.pallet_staking.IndividualExposure> Others
         {
             get
             {
@@ -96,7 +96,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking
             Total.Decode(byteArray, ref p);
             Own = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Own.Decode(byteArray, ref p);
-            Others = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.pallet_staking.IndividualExposure>();
+            Others = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.pallet_staking.IndividualExposure>();
             Others.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

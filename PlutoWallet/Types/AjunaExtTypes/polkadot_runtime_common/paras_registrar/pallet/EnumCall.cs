@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_registrar.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar.pallet
 {
     
     
@@ -41,7 +41,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.paras_re
     /// >> 411 - Variant[polkadot_runtime_common.paras_registrar.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData>>
     {
     }
 }
