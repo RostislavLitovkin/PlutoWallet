@@ -153,6 +153,7 @@ namespace PlutoWallet.Model
             assetSelectButtonViewModel.AssetId = 0;
             assetSelectButtonViewModel.Pallet = AssetPallet.Native;
             assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
+            assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
 
             Connected = false;
 

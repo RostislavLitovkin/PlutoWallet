@@ -27,21 +27,7 @@ public partial class TransferView : ContentView
         // Send the actual transaction
 
         var viewModel = DependencyService.Get<TransferViewModel>();
-        decimal tempAmount;
-        BigInteger amount;
-        if (decimal.TryParse(viewModel.Amount, out tempAmount))
-        {
-            // Double to int conversion
-            // Complete later
-
-            amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, Model.AjunaClientModel.SelectedEndpoint.Decimals));
-        }
-        else
-        {
-            errorLabel.Text = "Invalid amount value";
-            return;
-        }
-
+        
         errorLabel.Text = "";
 
         var client = Model.AjunaClientModel.Client;
@@ -50,6 +36,23 @@ public partial class TransferView : ContentView
         {
             
             var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+
+            decimal tempAmount;
+            BigInteger amount;
+            if (decimal.TryParse(viewModel.Amount, out tempAmount))
+            {
+                // Double to int conversion
+                // Complete later
+
+                amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, assetSelectButtonViewModel.Decimals));
+
+                Console.WriteLine(assetSelectButtonViewModel.Decimals);
+            }
+            else
+            {
+                errorLabel.Text = "Invalid amount value";
+                return;
+            }
 
             Method transfer =
                 assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native ?

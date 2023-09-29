@@ -87,6 +87,7 @@ namespace PlutoWallet.Model
                         Pallet = AssetPallet.Native,
                         AssetId = 0,
                         UsdValue = usdValue,
+                        Decimals = endpoint.Decimals,
                     });
                 }
 
@@ -97,7 +98,7 @@ namespace PlutoWallet.Model
                     {
                         double usdRatio = 0;
 
-                        double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value : 0;
+                        double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
 
                         tempAssets.Add(new Asset
                         {
@@ -108,6 +109,7 @@ namespace PlutoWallet.Model
                             Pallet = AssetPallet.Assets,
                             AssetId = asset.Item1,
                             UsdValue = assetBalance * usdRatio,
+                            Decimals = asset.Item3.Decimals.Value,
                         });
                     }
                     
@@ -126,6 +128,7 @@ namespace PlutoWallet.Model
                             Pallet = AssetPallet.Tokens,
                             AssetId = tokenData.AssetId,
                             UsdValue = assetBalance * usdRatio,
+                            Decimals = tokenData.AssetMetadata.Decimals.Value,
                         });
                     }
                 }

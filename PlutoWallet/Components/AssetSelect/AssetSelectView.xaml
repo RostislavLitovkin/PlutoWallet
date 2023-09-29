@@ -29,7 +29,8 @@
                                                            IsSelected="{Binding IsSelected}"
                                                            Endpoint="{Binding Endpoint}"
                                                            Pallet="{Binding Pallet}"
-                                                           AssetId="{Binding AssetId}" />
+                                                           AssetId="{Binding AssetId}"
+                                                           Decimals="{Binding Decimals}" />
                         </DataTemplate>
 
                     </BindableLayout.ItemTemplate>

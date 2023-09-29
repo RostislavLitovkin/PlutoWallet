@@ -41,13 +41,16 @@ namespace PlutoWallet.Components.Balance
 
             foreach (Asset a in Model.AssetsModel.Assets)
             {
-                tempAssets.Add(new AssetInfo
+                if (a.Amount > 0 || a.Pallet == AssetPallet.Native)
                 {
-                    Amount = String.Format("{0:0.00}", a.Amount),
-                    Symbol = a.Symbol,
-                    UsdValue = String.Format("{0:0.00}", a.UsdValue) + " USD",
-                    ChainIcon = a.ChainIcon
-                });
+                    tempAssets.Add(new AssetInfo
+                    {
+                        Amount = String.Format("{0:0.00}", a.Amount),
+                        Symbol = a.Symbol,
+                        UsdValue = String.Format("{0:0.00}", a.UsdValue) + " USD",
+                        ChainIcon = a.ChainIcon
+                    });
+                }
             }
 
             Assets = new ObservableCollection<AssetInfo>(tempAssets);

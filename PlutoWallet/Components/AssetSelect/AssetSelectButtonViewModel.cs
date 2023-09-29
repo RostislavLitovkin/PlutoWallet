@@ -32,6 +32,8 @@ namespace PlutoWallet.Components.AssetSelect
 
 		public Endpoint Endpoint { get; set; }
 
+		public int Decimals { get; set; }
+
         public AssetSelectButtonViewModel()
 		{
 		}

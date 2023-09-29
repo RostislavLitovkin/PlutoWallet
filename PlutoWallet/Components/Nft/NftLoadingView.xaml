@@ -15,7 +15,6 @@
                        AbsoluteLayout.LayoutFlags="All"
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
-                       
                        FontSize="25"
                        >
                     <Label.FormattedText>
