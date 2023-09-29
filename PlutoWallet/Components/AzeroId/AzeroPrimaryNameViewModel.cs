@@ -28,8 +28,8 @@ namespace PlutoWallet.Components.AzeroId
 			}
 			else
 			{
-				PrimaryName = temp;
-				Tld = "." + await AzeroIdModel.GetTld();
+				PrimaryName = (temp).ToUpper();
+				Tld = ("." + await AzeroIdModel.GetTld()).ToUpper();
 			}
 		}
 	}

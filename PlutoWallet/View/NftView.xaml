@@ -13,7 +13,6 @@
                 WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
                 HorizontalOptions="Center"
                 Spacing="15"
-                
                 BindableLayout.ItemsSource="{Binding Nfts}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>

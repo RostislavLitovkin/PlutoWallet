@@ -215,6 +215,7 @@
 	  <None Remove="Resources\Images\FatCat\tail3.png" />
 	  <None Remove="Resources\Images\FatCat\tail2.png" />
 	  <None Remove="Resources\Images\FatCat\tail1.png" />
+	  <None Remove="Resources\Images\azeroidtext.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -304,6 +305,7 @@
 	  <BundleResource Include="Resources\Images\FatCat\tail3.png" />
 	  <BundleResource Include="Resources\Images\FatCat\tail2.png" />
 	  <BundleResource Include="Resources\Images\FatCat\tail1.png" />
+	  <BundleResource Include="Resources\Images\azeroidtext.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
