@@ -16,7 +16,6 @@
                        VerticalTextAlignment="Center"
                        HorizontalTextAlignment="Center"
                        
-                       TextColor="White"
                        FontSize="25"
                        >
                     <Label.FormattedText>

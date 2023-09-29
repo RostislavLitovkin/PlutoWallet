@@ -9,7 +9,10 @@ public partial class Card : ContentView
 
 	public Microsoft.Maui.Controls.View View { set { contentView.Content = value; } }
 
-	public bool IsPopup { set { border.Padding = new Thickness(15); } }
+	public bool IsPopup { set {
+			border.Padding = new Thickness(15);
+			border.SetAppThemeColor(Border.BackgroundColorProperty, Color.FromArgb("ffffff"), Color.FromArgb("0a0a0a"));
+		} }
 
     public bool IsTransparent { set {
 			if (value)

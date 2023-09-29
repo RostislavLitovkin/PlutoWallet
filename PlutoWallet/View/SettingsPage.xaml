@@ -4,11 +4,14 @@
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:settings="clr-namespace:PlutoWallet.Components.Settings"
              x:Class="PlutoWallet.View.SettingsPage"
-             Title="Settings">
+             Title="Settings"
+             BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-               Source="space.png" Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
 
         <ScrollView Orientation="Vertical"
                     x:Name="scrollView"
@@ -17,7 +20,7 @@
                     Padding="0, 55, 0, 0">
             <VerticalStackLayout HorizontalOptions="Center"
                                  Padding="20, 10, 20, 100"
-                                 Spacing="5">
+                                 Spacing="15">
                 <settings:GenericButton Title="Predefined layouts">
                     <settings:GenericButton.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnPredefinedLayoutsClicked" />

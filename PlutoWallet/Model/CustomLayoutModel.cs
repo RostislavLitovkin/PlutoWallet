@@ -13,6 +13,7 @@ using PlutoWallet.Components.AwesomeAjunaAvatars;
 using PlutoWallet.Components.Contract;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.HydraDX;
+using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.Model
 {
@@ -143,7 +144,10 @@ namespace PlutoWallet.Model
             // Save
             Preferences.Set("PlutoLayout", result);
 
-            ShowRestartNeededMessage();
+            var basePageViewModel = DependencyService.Get<BasePageViewModel>();
+            basePageViewModel.MainView.Setup();
+
+            //ShowRestartNeededMessage();
         }
 
         public static void SaveLayout(string layoutItemInfos)
@@ -152,7 +156,10 @@ namespace PlutoWallet.Model
 
             SaveEndpoints(layoutItemInfos);
 
-            ShowRestartNeededMessage();
+            var basePageViewModel = DependencyService.Get<BasePageViewModel>();
+            basePageViewModel.MainView.Setup();
+
+            //ShowRestartNeededMessage();
         }
 
         /**
@@ -269,7 +276,7 @@ namespace PlutoWallet.Model
                 case "ExSL":
                     return new ExtrinsicStatusStackLayout();
                 case "UsdB":
-                    return new BalanceDashboardView();
+                    return new UsdBalanceView();
                 case "PubK":
                     return new AddressView
                     {
@@ -334,7 +341,7 @@ namespace PlutoWallet.Model
 
                     return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel, 135);
                 case "UsdB":
-                    return new BalanceDashboardView();
+                    return new UsdBalanceView();
                 case "PubK":
                     return new AddressView
                     {
@@ -387,7 +394,7 @@ namespace PlutoWallet.Model
                 case "UsdB":
                     return new LayoutItemInfo
                     {
-                        Name = "Balance dashboard",
+                        Name = "Balance",
                         PlutoLayoutId = "UsdB",
                     };
                 case "PubK":

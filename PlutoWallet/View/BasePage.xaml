@@ -19,7 +19,7 @@
     <AbsoluteLayout
          AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-               Source="space.png" Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}" Opacity="{AppThemeBinding Light=0.96}" Aspect="AspectFill"/>
         <ContentView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                      Content="{Binding Content}"
                      >
@@ -33,7 +33,7 @@
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
                 AbsoluteLayout.LayoutBounds="1, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                Source="qrcodewhite.png"
+                Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
                 >
             
             <Image.GestureRecognizers>
@@ -46,7 +46,7 @@
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
                     AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                Source="settingswhite.png"
+                Source="{AppThemeBinding Light=settingsblack.png, Dark=settingswhite.png}"
                >
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnSettingsClicked" />

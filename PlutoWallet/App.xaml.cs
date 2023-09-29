@@ -43,8 +43,6 @@ public partial class App : Application
 
         DependencyService.Register<TransactionRequestViewModel>();
 
-        DependencyService.Register<BalanceViewModel>();
-
         DependencyService.Register<ArgumentsViewModel>();
 
         DependencyService.Register<PublicKeyQRCodeViewModel>();
@@ -60,8 +58,6 @@ public partial class App : Application
         DependencyService.Register<BasePageViewModel>();
 
         DependencyService.Register<StakingDashboardViewModel>();
-
-        DependencyService.Register<BalanceDashboardViewModel>();
 
         DependencyService.Register<UsdBalanceViewModel>();
 

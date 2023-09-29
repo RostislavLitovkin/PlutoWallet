@@ -159,11 +159,8 @@ public partial class CustomLayoutsPage : ContentPage
 
             deleteView.IsVisible = false;
 
-
-
             ((CustomLayoutsViewModel)this.BindingContext).SwapItems(selectedIndex, selectedIndex + (index - selectedIndex));
             
-
             protectiveLayout.IsVisible = false;
         }
     }

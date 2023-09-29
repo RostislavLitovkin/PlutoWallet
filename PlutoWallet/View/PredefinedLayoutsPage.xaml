@@ -3,12 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar" xmlns:predefinedlayouts="clr-namespace:PlutoWallet.Components.PredefinedLayouts" xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
              x:Class="PlutoWallet.View.PredefinedLayoutsPage"
-             Title="PredefinedLayoutsPage">
+             Title="PredefinedLayoutsPage"
+             BackgroundColor="Black">
 
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-               Source="space.png" Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
 
         <ScrollView Orientation="Vertical"
                     x:Name="scrollView"

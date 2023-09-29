@@ -14,12 +14,10 @@ namespace PlutoWallet.Components.Balance
 {
 	public partial class UsdBalanceViewModel : ObservableObject
 	{
-        private const int EXTRA_HEIGHT = 65;
+        public bool DoNotReload { get; set; } = false;
 
         [ObservableProperty]
-        private double heightRequest;
-
-        public bool DoNotReload { get; set; } = false;
+        private ObservableCollection<AssetInfo> assets;
 
         [ObservableProperty]
         private string usdSum;
@@ -27,11 +25,8 @@ namespace PlutoWallet.Components.Balance
         [ObservableProperty]
         private bool reloadIsVisible;
 
-        public Action<List<AssetAmountView>> ReloadBalanceViewStackLayout { get; set; }
-
         public UsdBalanceViewModel()
 		{
-            heightRequest = EXTRA_HEIGHT;
             usdSum = "Loading";
             reloadIsVisible = false;
         }
@@ -42,33 +37,33 @@ namespace PlutoWallet.Components.Balance
 
             UsdSum = "Loading";
 
-            var assets = new List<AssetAmountView>();
+            var tempAssets = new List<AssetInfo>();
 
-            foreach (Asset asset in Model.AssetsModel.Assets)
+            foreach (Asset a in Model.AssetsModel.Assets)
             {
-                assets.Add(new AssetAmountView
+                tempAssets.Add(new AssetInfo
                 {
-                    Amount = String.Format("{0:0.00}", asset.Amount),
-                    Symbol = asset.Symbol,
-                    ChainIcon = asset.ChainIcon,
-                    UsdValue = String.Format("{0:0.00}", asset.UsdValue) + " USD",
+                    Amount = String.Format("{0:0.00}", a.Amount),
+                    Symbol = a.Symbol,
+                    UsdValue = String.Format("{0:0.00}", a.UsdValue) + " USD",
+                    ChainIcon = a.ChainIcon
                 });
             }
 
-            int count = assets.Count() < 10 ? assets.Count() : 10;
-
-            ReloadBalanceViewStackLayout(assets);
-
-            HeightRequest = (35 * count) + UsdBalanceViewModel.EXTRA_HEIGHT;
-
-            var balanceDashboardViewModel = DependencyService.Get<BalanceDashboardViewModel>();
-
-            balanceDashboardViewModel.RecalculateHeightRequest();
+            Assets = new ObservableCollection<AssetInfo>(tempAssets);
 
             UsdSum = String.Format("{0:0.00}", Model.AssetsModel.UsdSum) + " USD";
 
             ReloadIsVisible = true;
         }
 	}
+
+    public class AssetInfo
+    {
+        public string Amount { get; set; }
+        public string Symbol { get; set; }
+        public string UsdValue { get; set; }
+        public string ChainIcon { get; set; }
+    }
 }
 
