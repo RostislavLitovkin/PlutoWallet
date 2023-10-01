@@ -83,6 +83,8 @@ public partial class App : Application
 
         DependencyService.Register<OmnipoolLiquidityViewModel>();
 
+        DependencyService.Register<DCAViewModel>();
+
         DependencyService.Register<NftLoadingViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))

@@ -219,6 +219,8 @@
 	  <None Remove="Resources\Images\whitebackground.png" />
 	  <None Remove="Resources\Images\darkbackground.png" />
 	  <None Remove="Resources\Images\darkbackground2.png" />
+	  <None Remove="Resources\Images\rightarrowblack.svg" />
+	  <None Remove="Resources\Images\rightarrowwhite.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -312,6 +314,8 @@
 	  <BundleResource Include="Resources\Images\whitebackground.png" />
 	  <BundleResource Include="Resources\Images\darkbackground.png" />
 	  <BundleResource Include="Resources\Images\darkbackground2.png" />
+	  <BundleResource Include="Resources\Images\rightarrowblack.svg" />
+	  <BundleResource Include="Resources\Images\rightarrowwhite.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

@@ -38,7 +38,7 @@ namespace PlutoWallet.Model.HydraDX
 
             if (keysPaged == null || !keysPaged.Any())
             {
-                return null;
+                return new List<OmnipoolLiquidityInfo>();
             }
             else
             {
