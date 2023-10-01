@@ -29,6 +29,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public OmnipoolStorage OmnipoolStorage;
 
+        public DCAStorage DCAStorage;
+
         // Logic for ink! contracts
         public ExtrinsicManager ExtrinsicManger { get; }
 
@@ -47,6 +49,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.TokensStorage = new TokensStorage(this);
             this.ContractsStorage = new ContractsStorage(this);
             this.OmnipoolStorage = new OmnipoolStorage(this);
+            this.DCAStorage = new DCAStorage(this);
 
             ExtrinsicManger = new ExtrinsicManager();
 
@@ -64,7 +67,6 @@ namespace PlutoWallet.Model.AjunaExt
                 if (signedExtension.SignedIdentifier == "ChargeTransactionPayment")
                 {
                     DefaultCharge = ChargeTransactionPayment.Default();
-
                 }
 
                 if (signedExtension.SignedIdentifier == "ChargeAssetTxPayment")

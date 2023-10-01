@@ -23,6 +23,12 @@ namespace PlutoWallet.Components.HydraDX
 
             var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount();
 
+			if (omnipoolLiquidities.Count() == 0)
+			{
+				UsdSum = "None";
+				return;
+			}
+
             double tempUsdSum = 0;
 
 			Assets = new ObservableCollection<AssetLiquidityInfo>();

@@ -193,14 +193,18 @@ namespace PlutoWallet.Model
             {
                 var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
 
-                azeroPrimaryNameViewModel.GetPrimaryName();
+                await azeroPrimaryNameViewModel.GetPrimaryName();
             }
 
             if(SelectedEndpoint.Name == "HydraDX")
             {
                 var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
 
-                omnipoolLiquidityViewModel.GetLiquidityAmount();
+                await omnipoolLiquidityViewModel.GetLiquidityAmount();
+
+                var dcaViewModel = DependencyService.Get<DCAViewModel>();
+
+                await dcaViewModel.GetDCAPosition();
             }
 
             chainAddressViewModel.SetChainAddress();

@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.HydraDX.DCAOrderView"
+             HeightRequest="30"
+             x:Name="view">
+    <Border StrokeThickness="0"
+            BackgroundColor="#041b47"
+            Padding="10, 0, 10, 0">
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="3"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="120"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="amountLabel"
+                   TextColor="#dddddd"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center" />
+            <Label x:Name="fromSymbolLabel"
+                   TextColor="#dddddd"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   Margin="5, 0, 0, 0"
+                   Grid.Column="1"/>
+            <Image Source="rightarrowwhite.png"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   HeightRequest="10"
+                   WidthRequest="10"
+                   Grid.Column="2" />
+
+            <Label x:Name="toSymbolLabel"
+                   TextColor="#dddddd"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   Margin="0, 0, 0, 0"
+                   Grid.Column="3"/>
+
+            <Label x:Name="timeLabel"
+                   TextColor="#dddddd"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center"
+                   Grid.Column="5"/>
+        </Grid>
+    </Border>
+</ContentView>
+

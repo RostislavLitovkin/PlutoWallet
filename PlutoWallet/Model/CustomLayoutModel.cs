@@ -29,7 +29,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA];[";
 
         // EXTRA: StDash, contract, AAASeasonCountdown,
 
@@ -305,6 +305,8 @@ namespace PlutoWallet.Model
                     return new AzeroPrimaryNameView();
                 case "HDXOmniLiquidity":
                     return new OmnipoolLiquidityView();
+                case "HDXDCA":
+                    return new DCAView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -370,6 +372,8 @@ namespace PlutoWallet.Model
                     return new AzeroPrimaryNameView();
                 case "HDXOmniLiquidity":
                     return new OmnipoolLiquidityView();
+                case "HDXDCA":
+                    return new DCAView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -456,6 +460,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "HydraDX Omnipool Liquidity",
                         PlutoLayoutId = "HDXOmniLiquidity",
+                    };
+                case "HDXDCA":
+                    return new LayoutItemInfo
+                    {
+                        Name = "HydraDX DCA Position",
+                        PlutoLayoutId = "HDXDCA",
                     };
             }
 
