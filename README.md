@@ -113,6 +113,12 @@ Supported Networks/NftStandards:
 Allows the wallet to communicate with any dApps and sign their respective transaction requests without the risk of compromising the private key.
 <img width="1512" alt="Screenshot 2023-08-19 at 22 50 21" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/6c10fbe1-ad31-4aa3-8e3f-dcfbfeaf4aaf">
 
+# Security
+
+### 1) Private key generation
+
+- Private key is generated with [RandomNumberGenerator](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-7.0) which creates cryptographically strong random values. This entropy is then passed to `Mnemonic.MnemonicFromEntropy(<entropyBytes>, BIP39Wordlist.English);` to generate the mnemonics.
+
 # Achievements
 - 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category with PlutoWallet & Plutonication
 - 2nd place at Polkadot Global Series hackathon 2023, APEC edition in the Web3 & Tooling category with Uniquery.Net
