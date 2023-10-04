@@ -221,6 +221,7 @@
 	  <None Remove="Resources\Images\darkbackground2.png" />
 	  <None Remove="Resources\Images\rightarrowblack.svg" />
 	  <None Remove="Resources\Images\rightarrowwhite.svg" />
+	  <None Remove="Components\Identity\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -451,6 +452,7 @@
 	  <Folder Include="Components\HydraDX\" />
 	  <Folder Include="Model\HydraDX\" />
 	  <Folder Include="Resources\Images\FatCat\" />
+	  <Folder Include="Components\Identity\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

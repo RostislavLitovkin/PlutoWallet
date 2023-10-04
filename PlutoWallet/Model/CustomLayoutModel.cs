@@ -14,6 +14,7 @@ using PlutoWallet.Components.Contract;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.ViewModel;
+using PlutoWallet.Components.Identity;
 
 namespace PlutoWallet.Model
 {
@@ -29,7 +30,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id];[";
 
         // EXTRA: StDash, contract, AAASeasonCountdown,
 
@@ -307,6 +308,8 @@ namespace PlutoWallet.Model
                     return new OmnipoolLiquidityView();
                 case "HDXDCA":
                     return new DCAView();
+                case "id":
+                    return new IdentityView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -374,6 +377,8 @@ namespace PlutoWallet.Model
                     return new OmnipoolLiquidityView();
                 case "HDXDCA":
                     return new DCAView();
+                case "id":
+                    return new IdentityView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -466,6 +471,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "HydraDX DCA Position",
                         PlutoLayoutId = "HDXDCA",
+                    };
+                case "id":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Identity",
+                        PlutoLayoutId = "id",
                     };
             }
 
