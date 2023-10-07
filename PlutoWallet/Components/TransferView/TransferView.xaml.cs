@@ -1,5 +1,4 @@
 ﻿using PlutoWallet.Model;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.Extrinsic;
 using Substrate.NetApi.Model.Rpc;
@@ -34,7 +33,6 @@ public partial class TransferView : ContentView
 
         try
         {
-            
             var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
             decimal tempAmount;
@@ -137,31 +135,5 @@ public partial class TransferView : ContentView
         viewModel.SetToDefault();
 
         qrLayout.Children.Clear();
-    }
-
-    void OnShowQRClicked(System.Object sender, System.EventArgs e)
-    {
-        var scanner = new ScannerView.ScannerView
-        {
-            OnScannedMethod = OnScanned
-        };
-
-        qrLayout.Children.Add(scanner);
-    }
-
-    async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
-        var viewModel = DependencyService.Get<TransferViewModel>();
-
-        try
-        {
-            viewModel.Address = e.Results[e.Results.Length - 1].Value;
-
-            qrLayout.Children.Clear();
-        }
-        catch (Exception ex)
-        {
-
-        }
     }
 }

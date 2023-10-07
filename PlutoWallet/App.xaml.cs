@@ -4,7 +4,6 @@ using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.PublicKeyQRCodeView;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
@@ -20,6 +19,7 @@ using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Nft;
+using PlutoWallet.Components.Identity;
 
 namespace PlutoWallet;
 
@@ -36,8 +36,6 @@ public partial class App : Application
         DependencyService.Register<TransferViewModel>();
 
         DependencyService.Register<ConnectionRequestViewModel>();
-
-        DependencyService.Register<ScannerViewModel>();
 
         DependencyService.Register<MessagePopupViewModel>();
 
@@ -86,6 +84,8 @@ public partial class App : Application
         DependencyService.Register<DCAViewModel>();
 
         DependencyService.Register<NftLoadingViewModel>();
+
+        DependencyService.Register<IdentityViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {

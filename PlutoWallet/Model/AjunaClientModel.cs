@@ -11,6 +11,8 @@ using PlutoWallet.Components.CalamarView;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.HydraDX;
+using PlutoWallet.Components.Identity;
+
 
 namespace PlutoWallet.Model
 {
@@ -189,7 +191,9 @@ namespace PlutoWallet.Model
             var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
             var calamarViewModel = DependencyService.Get<CalamarViewModel>();
 
-            if(SelectedEndpoint.Name == "Aleph Zero Testnet")
+            var identityViewModel = DependencyService.Get<IdentityViewModel>();
+
+            if (SelectedEndpoint.Name == "Aleph Zero Testnet")
             {
                 var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
 
@@ -209,6 +213,7 @@ namespace PlutoWallet.Model
 
             chainAddressViewModel.SetChainAddress();
             calamarViewModel.Reload();
+            await identityViewModel.GetIdentity();
             //customCallsViewModel.GetMetadata();
 
 
