@@ -19,25 +19,34 @@
                         />
                     
                 </VerticalStackLayout>
+                    
+                <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Image HeightRequest="20"
+                           WidthRequest="20"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding VerificationIcon}" />
+                    <Label 
+                           Margin="5, 0, 0, 0"
+                            HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding Name}" />
 
-                <Label AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                       AbsoluteLayout.LayoutFlags="All"
-                       Margin="0, 0, 0, 0"  
-                        HeightRequest="60"
-                        VerticalTextAlignment="Center"
-                        FontAttributes="Bold"
-                        HorizontalTextAlignment="Center"
-                        FontSize="25">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span FontAttributes="Bold"
-                                  Text="{Binding Name}" />
+                            </FormattedString>
 
-                        </FormattedString>
+                        </Label.FormattedText>
 
-                    </Label.FormattedText>
+                    </Label>
 
-                </Label>
+                </HorizontalStackLayout>
+                
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

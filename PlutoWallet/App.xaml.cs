@@ -4,7 +4,6 @@ using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.PublicKeyQRCodeView;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
@@ -37,8 +36,6 @@ public partial class App : Application
         DependencyService.Register<TransferViewModel>();
 
         DependencyService.Register<ConnectionRequestViewModel>();
-
-        DependencyService.Register<ScannerViewModel>();
 
         DependencyService.Register<MessagePopupViewModel>();
 

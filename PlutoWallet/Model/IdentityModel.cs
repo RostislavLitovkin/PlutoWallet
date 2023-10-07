@@ -10,26 +10,84 @@ namespace PlutoWallet.Model
 	{
 		public static async Task<OnChainIdentity> GetIdentityForAddress(string address)
 		{
-			var client = Model.AjunaClientModel.Client;
-
-            var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(address));
-
-            Registration registration = await client.IdentityStorage.IdentityOf(account32, CancellationToken.None);
-
-			return new OnChainIdentity
+			try
 			{
-				DisplayName = System.Text.Encoding.UTF8.GetString(registration.Info.Display.Value2.Encode())
-			};
+				var client = Model.AjunaClientModel.Client;
+
+				if (address == null)
+				{
+					return null;
+				}
+
+				var account32 = new AccountId32();
+				account32.Create(Utils.GetPublicKeyFrom(address));
+
+				Registration registration = await client.IdentityStorage.IdentityOf(account32, CancellationToken.None);
+
+				if (registration == null)
+				{
+					return null;
+				}
+
+				Judgement finalJudgement = Judgement.Unknown;
+
+				foreach (var thing in registration.Judgements.Value.Value)
+				{
+					switch (thing.Value[1].ToString())
+					{
+						case "0":
+							finalJudgement = Judgement.Unknown;
+							break;
+						case "1":
+							// fee paid
+							break;
+						case "2":
+							finalJudgement = Judgement.Reasonable;
+							break;
+						case "3":
+							finalJudgement = Judgement.KnownGood;
+							break;
+						case "4":
+							finalJudgement = Judgement.OutOfDate;
+							break;
+						case "5":
+							finalJudgement = Judgement.LowQuality;
+							break;
+						case "6":
+							finalJudgement = Judgement.Erroneous;
+							break;
+					}
+				}
+
+				return new OnChainIdentity
+				{
+					DisplayName = System.Text.Encoding.UTF8.GetString(registration.Info.Display.Value2.Encode()),
+					FinalJudgement = finalJudgement,
+				};
+			}
+			catch
+			{
+				return null;
+			}
 		}
 	}
 
 	public class OnChainIdentity
 	{
 		public string DisplayName { get; set; }
-		public string FinalJudgement { get; set; }
+		public Judgement FinalJudgement { get; set; }
 		public string LegalName { get; set; }
 		public Endpoint Endpoint { get; set; }
 	}
+
+	public enum Judgement
+	{
+		Unknown,
+		Reasonable,
+        KnownGood,
+        OutOfDate,
+        LowQuality,
+        Erroneous,
+    }
 }
 

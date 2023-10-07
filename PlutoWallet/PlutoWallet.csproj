@@ -100,7 +100,6 @@
 	  <None Remove="Types\AjunaExtTypes\" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
-	  <None Remove="Components\ScannerView\" /> 
 	  <None Remove="Components\ConnectionRequestView\" />
 	  <None Remove="ZXing.Net.Maui.Controls" />
 	  <None Remove="Components\UniversalScannerView\" />
@@ -222,6 +221,10 @@
 	  <None Remove="Resources\Images\rightarrowblack.svg" />
 	  <None Remove="Resources\Images\rightarrowwhite.svg" />
 	  <None Remove="Components\Identity\" />
+	  <None Remove="Resources\Images\unknownwhite.svg" />
+	  <None Remove="Resources\Images\unknownblack.svg" />
+	  <None Remove="Resources\Images\redallert.svg" />
+	  <None Remove="Resources\Images\greentick.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -317,6 +320,10 @@
 	  <BundleResource Include="Resources\Images\darkbackground2.png" />
 	  <BundleResource Include="Resources\Images\rightarrowblack.svg" />
 	  <BundleResource Include="Resources\Images\rightarrowwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownblack.svg" />
+	  <BundleResource Include="Resources\Images\redallert.svg" />
+	  <BundleResource Include="Resources\Images\greentick.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -334,16 +341,10 @@
 	  <MauiXaml Update="Components\TransferView\TransferView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Components\ScannerView\ScannerView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="View\SettingsPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Components\UniversalScannerView\UniversalScannerView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\MessagePopup\MessagePopupView.xaml">
@@ -418,7 +419,6 @@
 	  <Folder Include="Model\AjunaExt\" />
 	  <Folder Include="Types\AjunaExtTypes\" />
 	  <Folder Include="Components\TransferView\" />
-	  <Folder Include="Components\ScannerView\" />
 	  <Folder Include="Components\ConnectionRequestView\" />
 	  <Folder Include="Components\UniversalScannerView\" />
 	  <Folder Include="Components\MessagePopup\" />

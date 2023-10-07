@@ -6,7 +6,6 @@
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView"
              xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
-             xmlns:universalscannerview="clr-namespace:PlutoWallet.Components.UniversalScannerView"
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
              xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
@@ -61,10 +60,6 @@
 
         <connectionrequestview:ConnectionRequestView
                                    x:Name="connectionRequestView" />
-
-        <universalscannerview:UniversalScannerView
-            x:Name="universalScannerView"
-             IsVisible="false" Opacity="0" />
 
         
         <transactionrequest:TransactionRequestView />
