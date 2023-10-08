@@ -52,7 +52,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
+		<MauiIcon Include="Resources\AppIcon\plutowalleticonwhite.png" Color="#ffffff" BaseSize="1024, 1024" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" Resize="false" />
@@ -225,6 +225,8 @@
 	  <None Remove="Resources\Images\unknownblack.svg" />
 	  <None Remove="Resources\Images\redallert.svg" />
 	  <None Remove="Resources\Images\greentick.svg" />
+	  <None Remove="Resources\AppIcon\plutowalleticonwhite.png" />
+	  <None Remove="Resources\AppIcon\plutowalleticonblack.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -324,6 +326,8 @@
 	  <BundleResource Include="Resources\Images\unknownblack.svg" />
 	  <BundleResource Include="Resources\Images\redallert.svg" />
 	  <BundleResource Include="Resources\Images\greentick.svg" />
+	  <BundleResource Include="Resources\AppIcon\plutowalleticonwhite.png" />
+	  <BundleResource Include="Resources\AppIcon\plutowalleticonblack.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
