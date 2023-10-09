@@ -5,6 +5,7 @@
              x:Class="PlutoWallet.Components.AddressView.ChainAddressView"
              IsVisible="{Binding IsVisible}">
     <addressview:AddressView Address="{Binding Address}"
-                             Title="{Binding ChainAddressName}"/>
+                             Title="{Binding ChainAddressName}"
+                             QrAddress="{Binding QrAddress}" />
 </ContentView>
 

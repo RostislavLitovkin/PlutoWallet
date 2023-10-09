@@ -2,7 +2,8 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.TransactionRequest.TransactionRequestView"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="PlutoWallet.Components.Vault.VaultSignView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
@@ -63,10 +64,27 @@
                 <Label TextColor="Orange"
                        Text="{Binding Fee}" />
 
-                <Button Text="Sign and submit"
-                        Clicked="OnSubmitClicked" />
+                <Button Text="Sign"
+                        Clicked="OnSignClicked" IsVisible="{Binding SignButtonIsVisible}" />
+                <AbsoluteLayout WidthRequest="200"
+                                HeightRequest="200"
+                                HorizontalOptions="Center">
+                    <zxing:BarcodeGeneratorView Format="QrCode"
+                                                    ForegroundColor="Black"
+                                                    WidthRequest="200"
+                                                     HeightRequest="200"
+                                                     HorizontalOptions="Center"
+                                                     BackgroundColor="White"
+                                                     Value="{Binding Signature}"
+                                                     />
+                    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    BackgroundColor="White"
+                                    Opacity="0.8"
+                                    IsVisible="{Binding SignatureIsVisible}" />
+                </AbsoluteLayout>
 
-                <Button Text="Reject" BackgroundColor="DarkRed"
+                <Button Text="Close" BackgroundColor="DarkRed"
                         Clicked="OnRejectClicked" />
             </VerticalStackLayout>
 
@@ -83,6 +101,5 @@
         </AbsoluteLayout>
     </card:Card.View>
         </card:Card>
-
 </ContentView>
 

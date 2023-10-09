@@ -3,6 +3,8 @@ using PlutoWallet.Components.UniversalScannerView;
 using Plutonication;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.ConnectionRequestView;
+using PlutoWallet.Components.Vault;
+using Substrate.NetApi;
 
 namespace PlutoWallet.View;
 
@@ -65,6 +67,12 @@ public partial class BasePage : ContentPage
                     // LATER: check validity
 
                     Model.CustomLayoutModel.SaveLayout(scannedValue);
+                }
+                else if (Utils.Bytes2HexString(e.Results[0].Raw).IndexOf("530102") != -1)
+                {
+                    var vaultSign = DependencyService.Get<VaultSignViewModel>();
+
+                    vaultSign.SignExtrinsic("0x" + Utils.Bytes2HexString(e.Results[0].Raw).Substring(Utils.Bytes2HexString(e.Results[0].Raw).IndexOf("530102") + 6));
                 }
                 else
                 {
