@@ -29,7 +29,8 @@
 
                 </AbsoluteLayout>
 
-                <identity:IdentityAddressView />
+                <identity:IdentityAddressView Address="{Binding Address}" />
+
                 <Grid HeightRequest="40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

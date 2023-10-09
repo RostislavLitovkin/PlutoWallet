@@ -5,6 +5,7 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.Vault;
 using Substrate.NetApi;
+using PlutoWallet.Components.TransferView;
 
 namespace PlutoWallet.View;
 
@@ -67,6 +68,16 @@ public partial class BasePage : ContentPage
                     // LATER: check validity
 
                     Model.CustomLayoutModel.SaveLayout(scannedValue);
+                }
+                else if (scannedValue.Length > 10 && scannedValue.Substring(0, 10) == "substrate:")
+                {
+                    var viewModel = DependencyService.Get<TransferViewModel>();
+
+                    viewModel.IsVisible = true;
+
+                    viewModel.Address = scannedValue.Substring(10, scannedValue.Substring(10).IndexOf(":"));
+
+                    viewModel.GetFeeAsync();
                 }
                 else if (Utils.Bytes2HexString(e.Results[0].Raw).IndexOf("530102") != -1)
                 {
