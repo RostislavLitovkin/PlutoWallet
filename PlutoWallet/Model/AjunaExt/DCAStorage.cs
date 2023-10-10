@@ -25,9 +25,9 @@ namespace PlutoWallet.Model.AjunaExt
     {
         
         // Substrate client for the storage calls.
-        private AjunaClientExt _client;
+        private SubstrateClientExt _client;
         
-        public DCAStorage(AjunaClientExt client)
+        public DCAStorage(SubstrateClientExt client)
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("DCA", "ScheduleIdSequencer"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));

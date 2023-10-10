@@ -18,9 +18,9 @@ namespace PlutoWallet.Model
 {
     public class AjunaClientModel
     {
-        public static AjunaClientExt Client;
+        public static SubstrateClientExt Client;
 
-        public static AjunaClientExt[] GroupClients;
+        public static SubstrateClientExt[] GroupClients;
 
         public static Endpoint[] GroupEndpoints;
 
@@ -47,7 +47,7 @@ namespace PlutoWallet.Model
             {
                 groupEndpointIndexes = endpointIndexes;
 
-                List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
+                List<SubstrateClientExt> groupClientList = new List<SubstrateClientExt>(endpointIndexes.Length);
 
                 List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
 
@@ -60,7 +60,7 @@ namespace PlutoWallet.Model
 
                         groupEndpointsList.Add(endpoint);
 
-                        var client = new AjunaClientExt(
+                        var client = new SubstrateClientExt(
                                 new Uri(endpoint.URL),
                                 Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 

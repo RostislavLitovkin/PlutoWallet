@@ -7,7 +7,7 @@ using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Model.AjunaExt
 {
-	public class AjunaClientExt : SubstrateClient
+	public class SubstrateClientExt : SubstrateClient
 	{
         public ChargeType DefaultCharge;
 
@@ -38,7 +38,7 @@ namespace PlutoWallet.Model.AjunaExt
 
         public SubscriptionManager SubscriptionManager { get; }
 
-        public AjunaClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
+        public SubstrateClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
                 base(uri, chargeType)
         {
             StorageKeyDict = new System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>>();

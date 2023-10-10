@@ -60,7 +60,7 @@ namespace PlutoWallet.Model
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
-            var client = new AjunaClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
+            var client = new SubstrateClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
 
             await client.ConnectAsync();
 
@@ -141,7 +141,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nfts;
         }
 
-        private static async Task<NFT> GetNftMetadataAsync(AjunaClientExt client, string collectionItemId)
+        private static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
@@ -158,7 +158,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nft;
         }
 
-        private static async Task<List<string>> GetNftsAccountAsync(AjunaClientExt client, CancellationToken token)
+        private static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
@@ -200,7 +200,7 @@ Hopefully it will fulfill the test functionalities correctly.",
         }
         
 
-        private static async Task<NFT> GetUniquesMetadataAsync(AjunaClientExt client, string collectionItemId)
+        private static async Task<NFT> GetUniquesMetadataAsync(SubstrateClientExt client, string collectionItemId)
         {
             try
             {
@@ -225,7 +225,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             }
         }
 
-        private static async Task<List<string>> GetUniquesAccountAsync(AjunaClientExt client, CancellationToken token)
+        private static async Task<List<string>> GetUniquesAccountAsync(SubstrateClientExt client, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));

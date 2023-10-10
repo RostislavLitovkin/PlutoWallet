@@ -16,7 +16,7 @@ namespace PlutoWallet.Model.AzeroId
         {
             try
             {
-                AjunaClientExt client = new AjunaClientExt(new Uri("wss://ws.test.azero.dev"), ChargeAssetTxPayment.Default());
+                SubstrateClientExt client = new SubstrateClientExt(new Uri("wss://ws.test.azero.dev"), ChargeAssetTxPayment.Default());
 
                 await client.ConnectAsync();
 
