@@ -26,13 +26,13 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx];[0, 2, 3]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx];[0, 2, 3]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id];[";
 
-        // EXTRA: StDash, contract, AAASeasonCountdown,
+        // EXTRA: StDash, contract, AAASeasonCountdown, PubK
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -283,12 +283,14 @@ namespace PlutoWallet.Model
                     {
                         Title = "Public key",
                         Address = KeysModel.GetPublicKey(),
+                        QrAddress = KeysModel.GetPublicKey(),
                     };
                 case "SubK":
                     return new AddressView
                     {
                         Title = "Substrate key",
                         Address = KeysModel.GetSubstrateKey(),
+                        QrAddress = "substrate:" + KeysModel.GetSubstrateKey()
                     };
                 case "ChaK":
                     return new ChainAddressView();

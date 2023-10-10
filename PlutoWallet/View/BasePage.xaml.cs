@@ -75,7 +75,14 @@ public partial class BasePage : ContentPage
 
                     viewModel.IsVisible = true;
 
-                    viewModel.Address = scannedValue.Substring(10, scannedValue.Substring(10).IndexOf(":"));
+                    if (scannedValue.Substring(10).IndexOf(":") != -1)
+                    {
+                        viewModel.Address = scannedValue.Substring(10, scannedValue.Substring(10).IndexOf(":"));
+                    }
+                    else
+                    {
+                        viewModel.Address = scannedValue.Substring(10);
+                    }
 
                     viewModel.GetFeeAsync();
                 }

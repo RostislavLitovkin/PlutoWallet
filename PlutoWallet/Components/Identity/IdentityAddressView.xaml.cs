@@ -108,7 +108,23 @@ public partial class IdentityAddressView : ContentView
         {
             try
             {
-                this.Address = e.Results[e.Results.Length - 1].Value;
+                var scannedValue = e.Results[e.Results.Length - 1].Value;
+
+                if (scannedValue.Length > 10 && scannedValue.Substring(0, 10) == "substrate:")
+                {
+                    if (scannedValue.Substring(10).IndexOf(":") != -1)
+                    {
+                        this.Address = scannedValue.Substring(10, scannedValue.Substring(10).IndexOf(":"));
+                    }
+                    else
+                    {
+                        this.Address = scannedValue.Substring(10);
+                    }
+                }
+                else
+                {
+                    this.Address = scannedValue;
+                }
 
                 await Navigation.PopAsync();
             }
