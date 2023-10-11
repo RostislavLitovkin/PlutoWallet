@@ -226,6 +226,8 @@
 	  <None Remove="Resources\Images\redallert.svg" />
 	  <None Remove="Resources\Images\greentick.svg" />
 	  <None Remove="Components\Vault\" />
+	  <None Remove="Model\SubSquare\" />
+	  <None Remove="Components\Referenda\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -455,6 +457,8 @@
 	  <Folder Include="Resources\Images\FatCat\" />
 	  <Folder Include="Components\Identity\" />
 	  <Folder Include="Components\Vault\" />
+	  <Folder Include="Model\SubSquare\" />
+	  <Folder Include="Components\Referenda\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

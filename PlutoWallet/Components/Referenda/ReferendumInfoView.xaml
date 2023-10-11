@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:microcharts="clr-namespace:Microcharts;assembly=Microcharts"
+             x:Class="PlutoWallet.Components.Referenda.ReferendumInfoView">
+    <Border StrokeThickness="0"
+            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+            Padding="0, 0, 0, 0">
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="3"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
+
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                    AbsoluteLayout.LayoutFlags="SizeProportional">
+                <HorizontalStackLayout x:Name="horizontalStackLayout">
+                    <Label 
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        WidthRequest="{Binding Source={x:Reference horizontalStackLayout}, Path=Width}"
+                        Padding="10, 0, 50, 0"
+                        VerticalTextAlignment="End">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" x:Name="titleLabelText" />
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                </HorizontalStackLayout>
+
+                <microcharts:BarChart />
+                
+            </VerticalStackLayout>
+
+            <Image x:Name="backgroundImage"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 60"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+            <StackLayout AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, 1"
+                            AbsoluteLayout.LayoutFlags="PositionProportional, HeightProportional"
+                            x:Name="endpointIcons"
+                            Orientation="Horizontal"
+                            BindableLayout.ItemsSource="{Binding EndpointIcons}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Icon}"
+                                HeightRequest="50" WidthRequest="50"
+                                Margin="0, 0, 0, 0"
+                                Opacity="0.5" />
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+                   
+            </StackLayout>
+        </AbsoluteLayout>
+    </Border>
+</ContentView>
+

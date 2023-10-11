@@ -15,6 +15,8 @@ using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Referenda;
+
 
 namespace PlutoWallet.Model
 {
@@ -30,7 +32,7 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref];[";
 
         // EXTRA: StDash, contract, AAASeasonCountdown, PubK
 
@@ -312,6 +314,8 @@ namespace PlutoWallet.Model
                     return new DCAView();
                 case "id":
                     return new IdentityView();
+                case "Ref":
+                    return new ReferendaView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -381,6 +385,8 @@ namespace PlutoWallet.Model
                     return new DCAView();
                 case "id":
                     return new IdentityView();
+                case "Ref":
+                    return new ReferendaView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -479,6 +485,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Identity",
                         PlutoLayoutId = "id",
+                    };
+                case "Ref":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Referenda",
+                        PlutoLayoutId = "Ref",
                     };
             }
 
