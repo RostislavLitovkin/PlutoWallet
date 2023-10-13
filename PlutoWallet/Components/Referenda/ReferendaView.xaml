@@ -8,7 +8,7 @@
         <card:Card.View>
             <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                              x:Name="absoluteLayout"
-                             MinimumHeightRequest="80"
+                             MinimumHeightRequest="110"
                              >
 
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
@@ -20,14 +20,14 @@
                         FontAttributes="Bold"
                         HorizontalOptions="Center" />
 
-                    <Label HeightRequest="30"
+                    <Label HeightRequest="50"
                             VerticalTextAlignment="Center"
                             FontAttributes="Bold"
                             HorizontalTextAlignment="Center"
                             FontSize="25">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span FontAttributes="Bold" TextColor="White"
+                                <Span FontAttributes="Bold"
                                       Text="{Binding Loading}" />
                             </FormattedString>
 
@@ -42,7 +42,11 @@
                                      Spacing="5">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <referenda:ReferendumInfoView Title="{Binding Title}"/>
+                            <referenda:ReferendumInfoView Title="{Binding Title}"
+                                                          AyesPercentage="{Binding AyesPercentage}"
+                                                          NaysPercentage="{Binding NaysPercentage}"
+                                                          Vote="{Binding Vote}"
+                                                          ReferendumIndex="{Binding ReferendumIndex}" />
                         </DataTemplate>
 
                     </BindableLayout.ItemTemplate>

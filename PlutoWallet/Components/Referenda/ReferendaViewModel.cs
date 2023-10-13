@@ -8,20 +8,32 @@ namespace PlutoWallet.Components.Referenda
 	public partial class ReferendaViewModel : ObservableObject
 	{
 		[ObservableProperty]
-		private ObservableCollection<Root> referenda = new ObservableCollection<Root>();
+		private ObservableCollection<ReferendumInfo> referenda = new ObservableCollection<ReferendumInfo>();
+
+		[ObservableProperty]
+		private string loading;
 
 		public ReferendaViewModel()
 		{
-
+			loading = "Loading";
 		}
 
 		public async Task GetReferenda()
 		{
-			List<Root> tempReferenda = new List<Root>();
+			Loading = "Loading";
 
-			tempReferenda.Add(await Model.SubSquare.ReferendumModel.GetReferendumInfo(177));
+			var referenda = await Model.SubSquare.ReferendumModel.GetReferenda();
+			if (referenda.Count() == 0)
+			{
+				Loading = "None";
+				return;
+			}
 
-			Referenda = new ObservableCollection<Root>(tempReferenda);
+			Loading = "";
+
+            Referenda = new ObservableCollection<ReferendumInfo>(referenda);
+
+
 		}
 	}
 }

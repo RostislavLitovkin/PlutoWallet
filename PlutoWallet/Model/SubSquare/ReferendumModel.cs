@@ -1,34 +1,144 @@
 ﻿using System;
 using System.Numerics;
+using System.Buffers.Binary;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
+using static Substrate.NetApi.Model.Meta.Storage;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using System.Globalization;
+using Substrate.NetApi.Generated.Model.pallet_conviction_voting.vote;
+using Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWallet.Model.SubSquare
 {
 	public class ReferendumModel
 	{
-		public static async Task<ReferendumInfo> GetReferendumInfo(int id)
+        public static async Task<List<ReferendumInfo>> GetReferenda()
+        {
+            CancellationToken token = CancellationToken.None;
+
+            var client = Model.AjunaClientModel.Client;
+
+            var account32 = new AccountId32();
+            account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+
+            var keyBytes = RequestGenerator.GetStorageKeyBytesHash("ConvictionVoting", "VotingFor");
+
+            byte[] prefix = keyBytes.Concat(HashExtension.Hash(Hasher.Twox64Concat, account32.Encode())).ToArray();
+
+            string prefixString = Utils.Bytes2HexString(prefix);
+
+            byte[] startKey = null;
+
+            var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
+
+            List<BigInteger> referendumIds;
+
+            List<string[]> storageChanges = new List<string[]>();
+
+            if (keysPaged == null || !keysPaged.Any())
+            {
+                return new List<ReferendumInfo>();
+            }
+            else
+            {
+                var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
+                storageChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
+
+                referendumIds = keysPaged.Select(p => HashModel.GetBigIntegerFromTwox_64Concat(p.ToString().Substring(146))).ToList();
+            }
+
+            List<ReferendumInfo> results = new List<ReferendumInfo>();
+
+
+            if (storageChanges != null)
+            {
+                foreach (var storageChangeSet in storageChanges)
+                {
+                    EnumVoting voting = new EnumVoting();
+                    voting.Create(storageChangeSet[1]);
+
+                    if ((Voting)voting.Value != Voting.Casting)
+                    {
+                        Console.WriteLine(voting);
+                        continue;
+                    }
+
+                    BigInteger _category = HashModel.GetBigIntegerFromTwox_64Concat(storageChangeSet[0].Remove(0, Utils.Bytes2HexString(prefix).Length));
+
+                    foreach (var vote in ((Casting)voting.Value2).Votes.Value.Value)
+                    {
+                        
+
+                        EnumAccountVote accountVote = ((EnumAccountVote)vote.Value[1]);
+
+                        VoteDecision voteDecision = VoteDecision.Nay; // Default
+
+                        if (accountVote.Value == AccountVote.Standard)
+                        {
+                            BaseTuple<Vote, U128> voteDetail = (BaseTuple<Vote, U128>)accountVote.Value2;
+
+                            ushort voteValue = ((Vote)voteDetail.Value[0]).Value.Value;
+
+                            if (voteValue > 127)
+                            {
+                                voteDecision = VoteDecision.Aye;
+                            }
+
+                            Console.WriteLine(((U128)voteDetail.Value[1]).Value);
+                        }
+                        else if (accountVote.Value == AccountVote.Split)
+                        {
+                            voteDecision = VoteDecision.Split;
+                        }
+
+                        // Subsquare things
+                        uint referendumId = ((U32)vote.Value[0]).Value;
+
+                        Root root = await GetReferendumInfo(referendumId);
+
+                        Console.WriteLine(root.OnchainData.Tally.Ayes);
+                        
+                        U128 ayes = new U128();
+                        ayes.Create(Utils.HexToByteArray(root.OnchainData.Tally.Ayes).Reverse().ToArray());
+
+                        U128 nays = new U128();
+                        nays.Create(Utils.HexToByteArray(root.OnchainData.Tally.Nays).Reverse().ToArray());
+
+                        BigInteger total = ayes.Value + nays.Value;
+
+                        results.Add(new ReferendumInfo
+                        {
+                            Title = root.Title,
+                            Ayes = ayes.Value,
+                            Nays = nays.Value,
+                            AyesPercentage = (double)(ayes.Value) / (double)total,
+                            NaysPercentage = (double)(nays.Value) / (double)total,
+                            Vote = new ReferendumVote
+                            {
+                                Decision = voteDecision,
+                            },
+                            ReferendumIndex = root.ReferendumIndex,
+                            
+                        });
+                    }
+                }
+            }
+
+            return results;
+        }
+
+
+        public static async Task<Root> GetReferendumInfo(uint id)
 		{
             HttpClient client = new HttpClient();
 
             string data = await client.GetStringAsync("https://polkadot.subsquare.io/api/gov2/referendums/" + id);
 
-            Root root = JsonConvert.DeserializeObject<Root>(data);
-
-            U128 ayes = new U128();
-            ayes.Create(root.OnchainData.Tally.Ayes);
-
-            U128 nays = new U128();
-            nays.Create(root.OnchainData.Tally.Nays);
-
-            return new ReferendumInfo
-            {
-                Title = root.Title,
-                Ayes = ayes.Value,
-                Nays = nays.Value,
-                ReferendumIndex = root.ReferendumIndex,
-            };
+            return JsonConvert.DeserializeObject<Root>(data);
         }
     }
 
@@ -40,7 +150,32 @@ namespace PlutoWallet.Model.SubSquare
 
         public BigInteger Nays { get; set; }
 
+        public double AyesPercentage { get; set; }
+
+        public double NaysPercentage { get; set; }
+
+        public double VoteNay { get; set; }
+
+        public double VoteAye { get; set; }
+
+        public ReferendumVote Vote { get; set; }
+
         public int ReferendumIndex { get; set; }
+    }
+
+    public class ReferendumVote
+    {
+        public double Amount { get; set; }
+        public string Symbol { get; set; }
+        public VoteDecision Decision { get; set; }
+        // Conviction
+    }
+
+    public enum VoteDecision
+    {
+        Aye,
+        Nay,
+        Split,
     }
 
     public class Root

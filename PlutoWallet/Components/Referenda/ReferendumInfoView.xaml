@@ -27,7 +27,7 @@
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         WidthRequest="{Binding Source={x:Reference horizontalStackLayout}, Path=Width}"
-                        Padding="10, 0, 50, 0"
+                        Padding="10, 0, 60, 0"
                         VerticalTextAlignment="End">
                         <Label.FormattedText>
                             <FormattedString>
@@ -40,31 +40,73 @@
                     </Label>
                 </HorizontalStackLayout>
 
-                <microcharts:BarChart />
-                
+                <AbsoluteLayout HeightRequest="30"
+                                       Padding="0, 0, 70, 0"
+                                       WidthRequest="{Binding Source={x:Reference horizontalStackLayout}, Path=Width}"
+                                       >
+                    <Label x:Name="decisionLabel"
+                           AbsoluteLayout.LayoutBounds="0, 0, 50, 30"
+                           HeightRequest="30"
+                           Margin="10, 0, 0, 0"
+                           VerticalTextAlignment="Center"/>
+
+                    <AbsoluteLayout Margin="60, 10, 0, 10"
+                                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                    AbsoluteLayout.LayoutFlags="All"
+                                    >
+                    
+                        <Border AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="#88888888">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+
+                            </Border.StrokeShape>
+
+                        </Border>
+
+                        <Border AbsoluteLayout.LayoutBounds="0, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="#00AD00"
+                                x:Name="ayesBar"
+                                IsVisible="false">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+
+                            </Border.StrokeShape>
+
+                        </Border>
+
+                        <Border AbsoluteLayout.LayoutBounds="1, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                BackgroundColor="#AD0000"
+                                x:Name="naysBar"
+                                IsVisible="false">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+
+                            </Border.StrokeShape>
+
+                        </Border>
+
+                    </AbsoluteLayout>
+                    </AbsoluteLayout>
+
+
             </VerticalStackLayout>
 
-            <Image x:Name="backgroundImage"
-                    AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 60"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            <Image Source="subsquarelogo.png"
+                    AbsoluteLayout.LayoutBounds="1, 0.5, 40, 40"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Margin="10"
+                    >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSubsquareClicked" />
 
-            <StackLayout AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, 1"
-                            AbsoluteLayout.LayoutFlags="PositionProportional, HeightProportional"
-                            x:Name="endpointIcons"
-                            Orientation="Horizontal"
-                            BindableLayout.ItemsSource="{Binding EndpointIcons}">
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding Icon}"
-                                HeightRequest="50" WidthRequest="50"
-                                Margin="0, 0, 0, 0"
-                                Opacity="0.5" />
+                </Image.GestureRecognizers>
 
-                    </DataTemplate>
+            </Image>
 
-                </BindableLayout.ItemTemplate>
-                   
-            </StackLayout>
         </AbsoluteLayout>
     </Border>
 </ContentView>

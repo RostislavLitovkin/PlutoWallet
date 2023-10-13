@@ -195,7 +195,6 @@
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
 	  <None Remove="Model\Kodadot\" />
-	  <None Remove="Components\Kodadot\" />
 	  <None Remove="Components\AzeroId\" />
 	  <None Remove="Model\AzeroId\" />
 	  <None Remove="Resources\Images\azeroid.svg" />
@@ -228,6 +227,7 @@
 	  <None Remove="Components\Vault\" />
 	  <None Remove="Model\SubSquare\" />
 	  <None Remove="Components\Referenda\" />
+	  <None Remove="Resources\Images\subsquarelogo.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -327,6 +327,7 @@
 	  <BundleResource Include="Resources\Images\unknownblack.svg" />
 	  <BundleResource Include="Resources\Images\redallert.svg" />
 	  <BundleResource Include="Resources\Images\greentick.svg" />
+	  <BundleResource Include="Resources\Images\subsquarelogo.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -448,7 +449,6 @@
 	  <Folder Include="Components\Settings\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Model\Kodadot\" />
-	  <Folder Include="Components\Kodadot\" />
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
