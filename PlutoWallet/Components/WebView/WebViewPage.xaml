@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
-             x:Class="PlutoWallet.Components.Kodadot.KodadotUnlockablePage"
+             x:Class="PlutoWallet.Components.WebView.WebViewPage"
              x:Name="page"
-             Title="KodadotUnlockablePage">
+             Title="WebViewPage">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"

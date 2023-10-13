@@ -40,7 +40,7 @@ namespace PlutoWallet.Model.AzeroId
             return BytesToString(result);
         }
 
-        private static async Task<List<string>> GetNamesForAddress(AjunaClientExt client, string address)
+        private static async Task<List<string>> GetNamesForAddress(SubstrateClientExt client, string address)
         {
             string rootKey = "2d010000";
 
@@ -97,7 +97,7 @@ namespace PlutoWallet.Model.AzeroId
             return await GetTld(client);
         }
 
-        public static async Task<string> GetTld(AjunaClientExt client)
+        public static async Task<string> GetTld(SubstrateClientExt client)
         {
             string rootKey = "0x00000000";
 

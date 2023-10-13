@@ -12,15 +12,17 @@ using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Referenda;
+
 
 
 namespace PlutoWallet.Model
 {
     public class AjunaClientModel
     {
-        public static AjunaClientExt Client;
+        public static SubstrateClientExt Client;
 
-        public static AjunaClientExt[] GroupClients;
+        public static SubstrateClientExt[] GroupClients;
 
         public static Endpoint[] GroupEndpoints;
 
@@ -47,7 +49,7 @@ namespace PlutoWallet.Model
             {
                 groupEndpointIndexes = endpointIndexes;
 
-                List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
+                List<SubstrateClientExt> groupClientList = new List<SubstrateClientExt>(endpointIndexes.Length);
 
                 List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
 
@@ -60,7 +62,7 @@ namespace PlutoWallet.Model
 
                         groupEndpointsList.Add(endpoint);
 
-                        var client = new AjunaClientExt(
+                        var client = new SubstrateClientExt(
                                 new Uri(endpoint.URL),
                                 Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
@@ -192,6 +194,8 @@ namespace PlutoWallet.Model
             var calamarViewModel = DependencyService.Get<CalamarViewModel>();
 
             var identityViewModel = DependencyService.Get<IdentityViewModel>();
+            var referendaViewModel = DependencyService.Get<ReferendaViewModel>();
+
 
             if (SelectedEndpoint.Name == "Aleph Zero Testnet")
             {
@@ -210,10 +214,13 @@ namespace PlutoWallet.Model
 
                 await dcaViewModel.GetDCAPosition();
             }
+            
 
             chainAddressViewModel.SetChainAddress();
             calamarViewModel.Reload();
             await identityViewModel.GetIdentity();
+
+            await referendaViewModel.GetReferenda();
             //customCallsViewModel.GetMetadata();
 
 

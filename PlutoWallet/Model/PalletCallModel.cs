@@ -58,7 +58,7 @@ namespace PlutoWallet.Model
          * First value: pallet index
          * Second value: call index
          */
-		public static (byte, byte) GetPalletAndCallIndex(AjunaClientExt client, string palletName, string callName)
+		public static (byte, byte) GetPalletAndCallIndex(SubstrateClientExt client, string palletName, string callName)
 		{
             var customMetadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
 

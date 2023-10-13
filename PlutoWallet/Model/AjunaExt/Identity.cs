@@ -25,9 +25,9 @@ namespace PlutoWallet.Model.AjunaExt
     {
         
         // Substrate client for the storage calls.
-        private AjunaClientExt _client;
+        private SubstrateClientExt _client;
         
-        public IdentityStorage(AjunaClientExt client)
+        public IdentityStorage(SubstrateClientExt client)
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "IdentityOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {

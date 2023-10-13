@@ -40,7 +40,7 @@ namespace PlutoWallet.Model
 
             for (int i = 0; i < Model.AjunaClientModel.GroupClients.Length; i++)
             {
-                AjunaClientExt client = Model.AjunaClientModel.GroupClients[i];
+                SubstrateClientExt client = Model.AjunaClientModel.GroupClients[i];
                 var endpoint = Model.AjunaClientModel.GroupEndpoints[i];
 
                 if (endpoint.ChainType != Constants.ChainType.Substrate)
@@ -154,7 +154,7 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<TokenData>> GetTokensBalance(AjunaClientExt client)
+        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));

@@ -21,6 +21,7 @@ using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Nft;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Vault;
+using PlutoWallet.Components.Referenda;
 
 namespace PlutoWallet;
 
@@ -89,6 +90,8 @@ public partial class App : Application
         DependencyService.Register<IdentityViewModel>();
 
         DependencyService.Register<VaultSignViewModel>();
+
+        DependencyService.Register<ReferendaViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {
