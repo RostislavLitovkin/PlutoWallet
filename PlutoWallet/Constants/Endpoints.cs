@@ -271,6 +271,18 @@ namespace PlutoWallet.Constants
                 SupportsNfts = true
             } },
             {
+                "xcavate", new Endpoint
+                {
+                    Name = "XCavate",
+                    URL = "wss://fraa-dancebox-3031-rpc.a.dancebox.tanssi.network",
+                    Icon = "xcavate.png",
+                    Unit = "XCAV",
+                    SS58Prefix = 42,
+                    Decimals = 12,
+                    ChainType = ChainType.Substrate,
+                }
+            },
+            {
                 "moonriver", new Endpoint
                 {
                     Name = "Moonriver",

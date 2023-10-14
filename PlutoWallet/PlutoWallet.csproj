@@ -228,6 +228,7 @@
 	  <None Remove="Model\SubSquare\" />
 	  <None Remove="Components\Referenda\" />
 	  <None Remove="Resources\Images\subsquarelogo.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -328,6 +329,7 @@
 	  <BundleResource Include="Resources\Images\redallert.svg" />
 	  <BundleResource Include="Resources\Images\greentick.svg" />
 	  <BundleResource Include="Resources\Images\subsquarelogo.svg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\xcavate.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
