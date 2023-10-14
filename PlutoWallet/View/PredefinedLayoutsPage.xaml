@@ -29,6 +29,8 @@
 
                 <predefinedlayouts:AwesomaAjunaAvatarsLayoutItem />
 
+                <predefinedlayouts:HydraDXOmnipoolLayoutItem />
+
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Azero Testnet"
                                                                PlutoLayout="plutolayout: [dApp, contract, ExSL, AZEROPrimaryName, UsdB, SubK, ChaK];[18]"/>
 
