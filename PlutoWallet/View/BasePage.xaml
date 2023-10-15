@@ -12,7 +12,9 @@
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
-             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect" xmlns:vault="clr-namespace:PlutoWallet.Components.Vault"
+             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
+             xmlns:vault="clr-namespace:PlutoWallet.Components.Vault"
+             xmlns:changelayoutrequest="clr-namespace:PlutoWallet.Components.ChangeLayoutRequest"
              BackgroundColor="Black">
 
     <AbsoluteLayout
@@ -76,6 +78,10 @@
         <navigationbar:NavigationBarView />
 
         <assetselect:AssetSelectView />
+
+        <networkselect:NetworkSelectPopup />
+
+        <changelayoutrequest:ChangeLayoutRequestView />
 
     </AbsoluteLayout>
 </ContentPage>

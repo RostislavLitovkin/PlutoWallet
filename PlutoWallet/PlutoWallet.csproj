@@ -230,6 +230,7 @@
 	  <None Remove="Resources\Images\subsquarelogo.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
 	  <None Remove="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <None Remove="Components\ChangeLayoutRequest\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -463,6 +464,7 @@
 	  <Folder Include="Components\Vault\" />
 	  <Folder Include="Model\SubSquare\" />
 	  <Folder Include="Components\Referenda\" />
+	  <Folder Include="Components\ChangeLayoutRequest\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

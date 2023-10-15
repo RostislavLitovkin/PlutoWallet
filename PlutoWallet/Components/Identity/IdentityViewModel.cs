@@ -12,14 +12,19 @@ namespace PlutoWallet.Components.Identity
         [ObservableProperty]
         private string verificationIcon;
 
+        [ObservableProperty]
+        private bool verificationIconIsVisible;
 
         public IdentityViewModel()
 		{
+            verificationIconIsVisible = false;
 		}
 
         public async Task GetIdentity()
         {
             Name = "Loading";
+            VerificationIconIsVisible = false;
+
             var identity = await Model.IdentityModel.GetIdentityForAddress(Model.KeysModel.GetSubstrateKey());
 
             if (identity == null)
@@ -29,6 +34,7 @@ namespace PlutoWallet.Components.Identity
             }
 
             Name = identity.DisplayName;
+            VerificationIconIsVisible = true;
 
             switch (identity.FinalJudgement)
             {

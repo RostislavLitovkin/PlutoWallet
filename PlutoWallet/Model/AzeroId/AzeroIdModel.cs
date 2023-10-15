@@ -1,5 +1,4 @@
-﻿using System;
-using Substrate.NetApi;
+﻿using Substrate.NetApi;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json.Linq;
 using static Substrate.NetApi.Utils;
@@ -9,10 +8,8 @@ namespace PlutoWallet.Model.AzeroId
 {
 	public class AzeroIdModel
 	{
-        public static async Task<string> GetPrimaryNameForAddress(string address)
+        public static async Task<string> GetPrimaryNameForAddress(SubstrateClientExt client, string address)
         {
-            var client = Model.AjunaClientModel.Client;
-
             string rootKey = "0x8f010000";
 
             /// Actual code logic down here

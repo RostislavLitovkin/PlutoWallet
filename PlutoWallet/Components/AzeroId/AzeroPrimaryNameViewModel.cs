@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Model.AzeroId;
 using PlutoWallet.Model;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.AzeroId
 {
@@ -18,9 +19,9 @@ namespace PlutoWallet.Components.AzeroId
 			primaryName = "Loading";
 		}
 
-		public async Task GetPrimaryName()
+		public async Task GetPrimaryName(SubstrateClientExt client)
 		{
-			var temp = await AzeroIdModel.GetPrimaryNameForAddress(KeysModel.GetSubstrateKey());
+			var temp = await AzeroIdModel.GetPrimaryNameForAddress(client, KeysModel.GetSubstrateKey());
 
 			if (temp == null) {
 
@@ -28,8 +29,8 @@ namespace PlutoWallet.Components.AzeroId
 			}
 			else
 			{
-				PrimaryName = (temp).ToUpper();
-				Tld = ("." + await AzeroIdModel.GetTld()).ToUpper();
+				PrimaryName = temp.ToUpper();
+				Tld = ("." + await AzeroIdModel.GetTld(client)).ToUpper();
 			}
 		}
 	}

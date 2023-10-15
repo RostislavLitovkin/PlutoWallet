@@ -40,8 +40,8 @@ public partial class NetworkBubbleView : ContentView
             control.nameLabel.IsVisible = (bool)newValue;
         });
 
-    public static readonly BindableProperty EndpointIndexProperty = BindableProperty.Create(
-        nameof(EndpointIndex), typeof(int), typeof(NetworkBubbleView),
+    public static readonly BindableProperty EndpointKeyProperty = BindableProperty.Create(
+        nameof(EndpointKey), typeof(string), typeof(NetworkBubbleView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             /*var control = (NetworkBubbleView)bindable;
@@ -83,10 +83,10 @@ public partial class NetworkBubbleView : ContentView
         set => SetValue(ShowNameProperty, value);
     }
 
-    public int EndpointIndex
+    public string EndpointKey
     {
-        get => (int)GetValue(EndpointIndexProperty);
-        set => SetValue(EndpointIndexProperty, value);
+        get => (string)GetValue(EndpointKeyProperty);
+        set => SetValue(EndpointKeyProperty, value);
     }
 
     public event EventHandler<TappedEventArgs> Tapped

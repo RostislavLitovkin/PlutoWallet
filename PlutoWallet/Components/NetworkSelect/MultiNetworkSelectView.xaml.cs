@@ -30,28 +30,28 @@ public partial class MultiNetworkSelectView : ContentView
             {
                 var tempOldValues = viewModel.NetworkInfos;
                 var networkInfos = new ObservableCollection<NetworkSelectInfo>();
-                var endpointIndexes = new List<int>();
+                var endpointKeys = new List<string>();
                 for (int i = 0; i < tempOldValues.Count; i++)
                 {
                     networkInfos.Add(new NetworkSelectInfo {
                         ShowName = false,
                         Name = tempOldValues[i].Name,
                         Icon = tempOldValues[i].Icon,
-                        EndpointIndex = tempOldValues[i].EndpointIndex,
+                        EndpointKey = tempOldValues[i].EndpointKey,
                     });
-                    endpointIndexes.Add(networkInfos[i].EndpointIndex);
+                    endpointKeys.Add(networkInfos[i].EndpointKey);
 
                 }
 
                 var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
 
-                int thisBubbleIndex = Array.IndexOf(endpointIndexes.ToArray(), senderBubble.EndpointIndex);
+                int thisBubbleIndex = Array.IndexOf(endpointKeys.ToArray(), senderBubble.EndpointKey);
                 networkInfos[thisBubbleIndex].ShowName = true;
 
                 viewModel.NetworkInfos = networkInfos;
 
                 // Update other views
-                Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointIndex);
+                Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointKey);
             }
         }
         catch (Exception ex)
@@ -73,9 +73,10 @@ public partial class MultiNetworkSelectView : ContentView
         }
 
         Clicked = true;
-        await Navigation.PushAsync(new NetworkSelectionPage());
+        var popupViewModel = DependencyService.Get<NetworkSelectPopupViewModel>();
+
+        popupViewModel.SetNetworks();
+
         Clicked = false;
     }
-
-
 }

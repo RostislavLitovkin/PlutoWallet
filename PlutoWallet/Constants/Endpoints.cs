@@ -1,30 +1,60 @@
 ﻿using System;
+using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Model;
 namespace PlutoWallet.Constants
 {
     public class Endpoints
     {
-        public static int[] DefaultNetworks => new int[4] { 0, 2, 3, -1 };
+        public static string DefaultEndpoints = "[polkadot, kusama]";
 
-        public static List<int[]> NetworkOptions
+        public static string[] GetSelectedEndpointKeys()
         {
-            get
+            string[] endpointKeys = Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints).Trim(new char[] { '[', ']' }).Split(',');
+
+            for(int i = 0; i < endpointKeys.Length; i++)
             {
-                List<int[]> options = new List<int[]>();
+                endpointKeys[i] = endpointKeys[i].Trim();
+            }
 
-                options.Add(DefaultNetworks);
-                options.Add(new int[4] { 0, 6, -1, -1 });
-                options.Add(new int[4] { 0, 1, -1, -1 });
-                options.Add(new int[4] { 4, 5, -1, -1 });
-                options.Add(new int[4] { 8, 10, 9, -1 });
-                options.Add(new int[4] { 18, 21, -1, -1 });
+            return endpointKeys;
+        }
 
-                for (int i = 0; i < GetAllEndpoints.Count; i++)
+        public static void SaveEndpoints(List<string> keys)
+        {
+            string result = "[";
+            if (keys.Count() == 0)
+            {
+                result = "[polkadot]";
+            }
+            else
+            {
+                foreach (string key in keys)
                 {
-                    options.Add(new int[4] { i, -1, -1, -1 });
+                    result += key + ", ";
                 }
 
-                return options;
+                result = result.Substring(0, result.Length - 2) + "]";
             }
+
+            Preferences.Set("SelectedNetworks", result);
+
+            // Save it in the plutolayout:
+            string plutoLayoutString = Preferences.Get("PlutoLayout", CustomLayoutModel.DEFAULT_PLUTO_LAYOUT);
+
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            string plutoLayoutResult = itemsAndNetworksStrings[0] + ";" + result;
+
+            for(int i = 2; i < itemsAndNetworksStrings.Length; i++)
+            {
+                plutoLayoutResult += ";" + itemsAndNetworksStrings[i];
+            }
+
+            Preferences.Set("PlutoLayout", plutoLayoutResult);
+
+            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
+            viewModel.SetupDefault();
         }
 
         public static List<Endpoint> GetAllEndpoints => GetEndpointDictionary.Values.ToList();

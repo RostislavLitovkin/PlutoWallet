@@ -22,6 +22,7 @@ using PlutoWallet.Components.Nft;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Vault;
 using PlutoWallet.Components.Referenda;
+using PlutoWallet.Components.ChangeLayoutRequest;
 
 namespace PlutoWallet;
 
@@ -92,6 +93,10 @@ public partial class App : Application
         DependencyService.Register<VaultSignViewModel>();
 
         DependencyService.Register<ReferendaViewModel>();
+
+        DependencyService.Register<ChangeLayoutRequestViewModel>();
+
+        DependencyService.Register<NetworkSelectPopupViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {

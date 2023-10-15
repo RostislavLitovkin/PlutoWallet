@@ -1,5 +1,4 @@
-﻿using System;
-using Substrate.NetApi.Generated.Model.orml_tokens;
+﻿using Substrate.NetApi.Generated.Model.orml_tokens;
 using Substrate.NetApi.Generated.Model.pallet_asset_registry.types;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi;
@@ -7,15 +6,14 @@ using Substrate.NetApi.Generated.Model.pallet_omnipool.types;
 using Substrate.NetApi.Model.Types.Primitive;
 using static Substrate.NetApi.Model.Meta.Storage;
 using System.Numerics;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Model.HydraDX
 {
 	public class OmnipoolModel
 	{
-		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount()
+		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client)
 		{
-			var client = Model.AjunaClientModel.Client;
-
             // Get all position keys
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));

@@ -45,13 +45,13 @@ namespace PlutoWallet.Model
 
             string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
 
-            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
+            string[] layoutEndpointKeys = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
 
             List<Endpoint> result = new List<Endpoint>();
 
-            foreach (string item in layoutEndpointStrings)
+            foreach (string key in layoutEndpointKeys)
             {
-                result.Add(Endpoints.GetAllEndpoints[int.Parse(item.Trim())]);
+                result.Add(Endpoints.GetEndpointDictionary[key.Trim()]);
             }
 
             return result;
@@ -130,19 +130,11 @@ namespace PlutoWallet.Model
                 result = result.Substring(0, result.Length - 2); // Remove last ", " (comma + space)
             }
 
-            result += "];[";
+            result += "];";
 
-            // Endpoint indexes
-            for (int i = 0; i < 4; i++)
-            {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
-                if (endpointIndex != -1)
-                {
-                    result += endpointIndex + ", ";
-                }
-            }
-
-            result = result.Substring(0, result.Length - 2) + "]";
+            // save Endpoints
+            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
+                
 
             // Save
             Preferences.Set("PlutoLayout", result);
@@ -174,17 +166,10 @@ namespace PlutoWallet.Model
 
             string[] plutoLayoutStrings = plutoLayout.Split(";");
 
-            string result = plutoLayoutStrings[0] + ";[";
+            string result = plutoLayoutStrings[0] + ";";
 
-            // Endpoint indexes
-            for (int i = 0; i < 4; i++)
-            {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
-                if (endpointIndex != -1)
-                {
-                    result += endpointIndex + ", ";
-                }
-            }
+            // save Endpoints
+            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
 
             result = result.Substring(0, result.Length - 2) + "]";
 
@@ -223,19 +208,8 @@ namespace PlutoWallet.Model
                 return;
             }
 
-            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
-
-            int[] networks = new int[4]{-1, -1, -1, -1};
-
-            for (int i = 0; i < layoutEndpointStrings.Length; i++)
-            {
-                networks[i] = int.Parse(layoutEndpointStrings[i].Trim());
-            }
-
-            Preferences.Set("SelectedNetworks0", networks[0]);
-            Preferences.Set("SelectedNetworks1", networks[1]);
-            Preferences.Set("SelectedNetworks2", networks[2]);
-            Preferences.Set("SelectedNetworks3", networks[3]);
+            // Save Selected Networks
+            Preferences.Set("SelectedNetworks", itemsAndNetworksStrings[1]);
 
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             multiNetworkSelectViewModel.SetupDefault();

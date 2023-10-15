@@ -26,7 +26,8 @@
                            WidthRequest="20"
                            HorizontalOptions="Center"
                            VerticalOptions="Center"
-                           Source="{Binding VerificationIcon}" />
+                           Source="{Binding VerificationIcon}"
+                           IsVisible="{Binding VerificationIconIsVisible}"/>
                     <Label 
                            Margin="5, 0, 0, 0"
                             HorizontalOptions="Center"
