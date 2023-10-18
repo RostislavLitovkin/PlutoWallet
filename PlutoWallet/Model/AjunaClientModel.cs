@@ -60,7 +60,7 @@ namespace PlutoWallet.Model
                     groupEndpointsList.Add(endpoint);
 
                     var client = new SubstrateClientExt(
-                            new Uri(endpoint.URL),
+                            endpoint,
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
                     client.ConnectAsync();

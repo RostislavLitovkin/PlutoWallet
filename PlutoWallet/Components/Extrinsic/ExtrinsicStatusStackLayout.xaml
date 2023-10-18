@@ -10,7 +10,9 @@
         <BindableLayout.ItemTemplate>
             <DataTemplate>
                 <extrinsic:ExtrinsicStatusView ExtrinsicId="{Binding ExtrinsicId}"
-                                               Status="{Binding Status}"/>
+                                               Status="{Binding Status}"
+                                               Hash="{Binding Hash}"
+                                               Endpoint="{Binding Endpoint}" />
 
             </DataTemplate>
 

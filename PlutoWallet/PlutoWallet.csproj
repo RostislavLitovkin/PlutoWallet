@@ -231,6 +231,7 @@
 	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
 	  <None Remove="Resources\Images\PredefinedLayouts\hydradxgods.png" />
 	  <None Remove="Components\ChangeLayoutRequest\" />
+	  <None Remove="Resources\Images\calamar.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -333,6 +334,7 @@
 	  <BundleResource Include="Resources\Images\subsquarelogo.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\xcavate.png" />
 	  <BundleResource Include="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <BundleResource Include="Resources\Images\calamar.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

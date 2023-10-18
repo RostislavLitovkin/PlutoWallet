@@ -211,7 +211,7 @@ namespace PlutoWallet.ViewModel
                 Console.WriteLine("Connected");
 
                 if ((await KeysModel.GetAccount()).IsSome(out var account)) {
-                    await client.Author.SubmitExtrinsicAsync(method, account, ChargeTransactionPayment.Default(), 64);
+                    //await client.Author.SubmitExtrinsicAsync(method, account, ChargeTransactionPayment.Default(), 64);
                 }
 
                 Console.WriteLine("Success");

@@ -4,6 +4,10 @@ using PlutoWallet.Model.Storage;
 using Newtonsoft.Json;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Extrinsics;
+using Substrate.NetApi.Model.Rpc;
+using PlutoWallet.Components.Extrinsic;
+using PlutoWallet.Constants;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -35,15 +39,19 @@ namespace PlutoWallet.Model.AjunaExt
 
         public ConvictionVotingStorage ConvictionVotingStorage;
 
+        public Endpoint Endpoint { get; set; }
+
         // Logic for ink! contracts
         public ExtrinsicManager ExtrinsicManger { get; }
 
         public SubscriptionManager SubscriptionManager { get; }
 
-        public SubstrateClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
-                base(uri, chargeType)
+        public SubstrateClientExt(Endpoint endpoint, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
+                base(new Uri(endpoint.URL), chargeType)
         {
             StorageKeyDict = new System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>>();
+
+            Endpoint = endpoint;
 
             this.SystemStorage = new SystemStorage(this);
             this.BalancesStorage = new BalancesStorage(this);
@@ -80,6 +88,64 @@ namespace PlutoWallet.Model.AjunaExt
                     DefaultCharge = ChargeAssetTxPayment.Default();
                 }
             }
+        }
+
+        /// <summary>
+        /// A custom method for submitting extrinsics.
+        /// Please prefer using this one.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="token"></param>
+        /// <returns>subscription ID</returns>
+        public async Task<string> SubmitExtrinsicAsync(UnCheckedExtrinsic extrinsic, CancellationToken token)
+        {
+            var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+            extrinsicStackViewModel.Update();
+
+            Action<string, ExtrinsicStatus> callback = (string id, ExtrinsicStatus status) =>
+            {
+                if (status.ExtrinsicState == ExtrinsicState.Ready)
+                    Console.WriteLine("Ready");
+                else if (status.ExtrinsicState == ExtrinsicState.Dropped)
+                {
+                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
+                    extrinsicStackViewModel.Update();
+                }
+
+                else if (status.InBlock != null)
+                {
+                    Console.WriteLine("In block");
+                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
+                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.InBlock;
+                    extrinsicStackViewModel.Update();
+                }
+
+                else if (status.Finalized != null)
+                {
+                    Console.WriteLine("Finalized");
+                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
+                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.Finalized;
+                    extrinsicStackViewModel.Update();
+                }
+
+                else
+                    Console.WriteLine(status.ExtrinsicState);
+            };
+
+            string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()), token);
+
+            extrinsicStackViewModel.Extrinsics.Add(
+                    extrinsicId,
+                    new ExtrinsicInfo
+                    {
+                        ExtrinsicId = extrinsicId,
+                        Status = ExtrinsicStatusEnum.Pending,
+                        Endpoint = this.Endpoint,
+                        Hash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256)),
+                    });
+
+            return extrinsicId;
         }
     }
 }

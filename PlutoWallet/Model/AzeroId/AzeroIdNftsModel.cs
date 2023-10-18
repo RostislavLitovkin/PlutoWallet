@@ -16,7 +16,9 @@ namespace PlutoWallet.Model.AzeroId
         {
             try
             {
-                SubstrateClientExt client = new SubstrateClientExt(new Uri("wss://ws.test.azero.dev"), ChargeAssetTxPayment.Default());
+                var endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+
+                SubstrateClientExt client = new SubstrateClientExt(endpoint, ChargeAssetTxPayment.Default());
 
                 await client.ConnectAsync();
 
@@ -63,7 +65,7 @@ namespace PlutoWallet.Model.AzeroId
                         NFT nft = await GetNFTMetadata(AzeroIdModel.BytesToString(result));
 
                         Console.WriteLine("NAME: " + nft.Name);
-                        nft.Endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+                        nft.Endpoint = endpoint;
 
                         nfts.Add(nft);
                     }

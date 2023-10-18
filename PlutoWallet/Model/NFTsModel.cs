@@ -60,7 +60,7 @@ namespace PlutoWallet.Model
 
         public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
         {
-            var client = new SubstrateClientExt(new Uri(endpoint.URL), ChargeTransactionPayment.Default());
+            var client = new SubstrateClientExt(endpoint, ChargeTransactionPayment.Default());
 
             await client.ConnectAsync();
 

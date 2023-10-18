@@ -32,9 +32,9 @@ namespace PlutoWallet.Model
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract];[";
 
-        // EXTRA: StDash, contract, AAASeasonCountdown, PubK
+        // EXTRA: StDash, AAASeasonCountdown, PubK
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
