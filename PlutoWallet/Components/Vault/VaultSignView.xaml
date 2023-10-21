@@ -11,9 +11,9 @@
 
     <card:Card IsPopup="True">
         <card:Card.View>
-        <AbsoluteLayout>
+        <AbsoluteLayout x:Name="layout">
 
-            <VerticalStackLayout Spacing="10" x:Name="verticalStackLayout">
+            <VerticalStackLayout Spacing="10">
                 <Label
                     FontAttributes="Bold"
                     Text="Transaction request"
@@ -48,10 +48,8 @@
 
                 <Label
                     HorizontalOptions="Center"
-                    WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}"
-                    Margin="10, 0, 10, 0"
-                    TextColor="White"
-                    BackgroundColor="#333333">
+                    WidthRequest="{Binding Source={x:Reference layout}, Path=Width}"
+                    Margin="10, 0, 10, 0">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
