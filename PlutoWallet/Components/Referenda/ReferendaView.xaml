@@ -46,7 +46,9 @@
                                                           AyesPercentage="{Binding AyesPercentage}"
                                                           NaysPercentage="{Binding NaysPercentage}"
                                                           Vote="{Binding Vote}"
-                                                          ReferendumIndex="{Binding ReferendumIndex}" />
+                                                          ReferendumIndex="{Binding ReferendumIndex}"
+                                                          Endpoint="{Binding Endpoint}"
+                                                          SubSquareLink="{Binding SubSquareLink}" />
                         </DataTemplate>
 
                     </BindableLayout.ItemTemplate>

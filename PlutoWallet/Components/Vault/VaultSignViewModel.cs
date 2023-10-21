@@ -32,15 +32,16 @@ namespace PlutoWallet.Components.Vault
             set
             {
                 ajunaMethod = value;
+                var client = Model.AjunaClientModel.Client;
+
                 try
                 {
-                    var client = Model.AjunaClientModel.Client;
+                    
 
                     var pallet = client.MetaData.NodeMetadata.Modules[value.ModuleIndex];
-                    Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
 
                     PalletIndex = pallet.Name;
-                    CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
+                    CallIndex = client.CustomMetadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[value.CallIndex].Name;
                 }
                 catch
@@ -51,11 +52,11 @@ namespace PlutoWallet.Components.Vault
 
                 if (value.Parameters.Length > 5)
                 {
-                    Parameters = "0x" + Convert.ToHexString(value.Parameters).Substring(0, 10) + "..";
+                    Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
                 }
                 else
                 {
-                    Parameters = "0x" + Convert.ToHexString(value.Parameters);
+                    Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
                 }
             }
         }

@@ -324,7 +324,7 @@ namespace PlutoWallet.Model
                     extrinsicStatusViewModel.Extrinsics = tempExtrinsics;
                     extrinsicStatusViewModel.Update();
 
-                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel, 135);
+                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel);
                 case "UsdB":
                     return new UsdBalanceView();
                 case "PubK":

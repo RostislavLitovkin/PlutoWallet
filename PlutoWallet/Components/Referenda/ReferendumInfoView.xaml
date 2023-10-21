@@ -19,8 +19,8 @@
         </Border.StrokeShape>
 
         <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                            AbsoluteLayout.LayoutFlags="All"
-                            Margin="0, 5, 0, 5">
+                        AbsoluteLayout.LayoutFlags="All"
+                        Margin="0, 5, 0, 5">
             <Label LineBreakMode="NoWrap"
                  AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"

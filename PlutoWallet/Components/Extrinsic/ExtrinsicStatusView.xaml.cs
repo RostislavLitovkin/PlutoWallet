@@ -63,6 +63,8 @@ public partial class ExtrinsicStatusView : ContentView
             var control = (ExtrinsicStatusView)bindable;
 
             control.calamarButton.IsVisible = ((Endpoint)newValue).CalamarChainName != null;
+
+            control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
 
     public ExtrinsicStatusView()

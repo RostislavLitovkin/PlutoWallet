@@ -13,7 +13,7 @@
         <card:Card.View>
         <AbsoluteLayout>
 
-            <VerticalStackLayout Spacing="10">
+            <VerticalStackLayout Spacing="10" x:Name="verticalStackLayout">
                 <Label
                     FontAttributes="Bold"
                     Text="Transaction request"
@@ -47,10 +47,13 @@
                 </Label>
 
                 <Label
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center"
+                    WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}"
+                    Margin="10, 0, 10, 0"
+                    TextColor="White"
+                    BackgroundColor="#333333">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span Text="Parameters: " />
                             <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
 
                         </FormattedString>
