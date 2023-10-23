@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls" xmlns:hwv="clr-namespace:HybridWebView;assembly=HybridWebView"
              x:Class="PlutoWallet.Components.Vault.VaultSignView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -59,6 +59,15 @@
                     </Label.FormattedText>
 
                 </Label>
+
+                <hwv:HybridWebView
+                        WidthRequest="200"
+                        HeightRequest="100"
+                        HybridAssetRoot="PolkadotJSApi"
+                        MainFile="index.html"
+                        x:Name="hybridWebView"/>
+
+                <Button Clicked="Button_Clicked" Text="Plus One in C#" />
 
                 <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 

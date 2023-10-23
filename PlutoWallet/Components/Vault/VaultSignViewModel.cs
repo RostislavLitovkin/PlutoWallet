@@ -75,6 +75,7 @@ namespace PlutoWallet.Components.Vault
         public VaultSignViewModel()
 		{
             signature = "Loading";
+            isVisible = true;
 		}
 
 		public void SignExtrinsic(string encodedBytes)

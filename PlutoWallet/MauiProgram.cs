@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using Microsoft.Extensions.DependencyInjection;
 using PlutoWallet.Components.NetworkSelect;
 using ZXing.Net.Maui.Controls;
 
@@ -21,6 +22,8 @@ public static class MauiProgram
                 fonts.AddFont("Exodar-Outline.ttf", "Exodar");
                 fonts.AddFont("FontOver.ttf", "FontOver");
             });
+
+        builder.Services.AddHybridWebView();
 
         //builder.Services.AddSingleton<Model.PlutonicationModel>();
 

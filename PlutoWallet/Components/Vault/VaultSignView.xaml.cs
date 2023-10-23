@@ -58,4 +58,9 @@ public partial class VaultSignView : ContentView
         var viewModel = DependencyService.Get<VaultSignViewModel>();
         viewModel.IsVisible = false;
     }
+
+    async void Button_Clicked(System.Object sender, System.EventArgs e)
+    {
+        ((Button)sender).Text = "This is a JS number: " + await hybridWebView.InvokeJsMethodAsync<double>("GetJSNumber");
+    }
 }
