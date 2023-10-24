@@ -72,7 +72,7 @@ public partial class ExtrinsicStatusView : ContentView
        propertyChanging: (bindable, oldValue, newValue) => {
            var control = (ExtrinsicStatusView)bindable;
 
-           control.nameLabel.Text = (string)newValue;
+           control.nameLabelText.Text = (string)newValue;
 
        });
 

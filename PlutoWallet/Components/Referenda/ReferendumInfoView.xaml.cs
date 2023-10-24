@@ -73,6 +73,7 @@ public partial class ReferendumInfoView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ReferendumInfoView)bindable;
 
+            control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
 
     public static readonly BindableProperty VoteProperty = BindableProperty.Create(

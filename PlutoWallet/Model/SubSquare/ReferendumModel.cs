@@ -103,7 +103,7 @@ namespace PlutoWallet.Model.SubSquare
                             // Subsquare things
                             uint referendumId = ((U32)vote.Value[0]).Value;
 
-                            Root root = await GetReferendumInfo(referendumId);
+                            Root root = await GetReferendumInfo(client.Endpoint, referendumId);
 
                             Console.WriteLine(root.OnchainData.Tally.Ayes);
 
@@ -139,11 +139,11 @@ namespace PlutoWallet.Model.SubSquare
         }
 
 
-        public static async Task<Root> GetReferendumInfo(uint id)
+        public static async Task<Root> GetReferendumInfo(Endpoint endpoint, uint id)
 		{
             HttpClient client = new HttpClient();
 
-            string data = await client.GetStringAsync("https://polkadot.subsquare.io/api/gov2/referendums/" + id);
+            string data = await client.GetStringAsync("https://" + endpoint.SubSquareChainName + ".subsquare.io/api/gov2/referendums/" + id);
 
             return JsonConvert.DeserializeObject<Root>(data);
         }
