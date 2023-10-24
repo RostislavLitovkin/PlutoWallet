@@ -113,6 +113,23 @@ namespace PlutoWallet.Model
             return ((byte)palletIndex, (byte)callIndex);
         }
 
+        public static (string, string) GetPalletAndCallName(SubstrateClientExt client, byte palletIndex, byte callIndex)
+        {
+            string palletName = client.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Name;
+
+            string callName = "";
+
+            foreach (var variant in client.CustomMetadata.NodeMetadata.Types[client.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Calls.TypeId.ToString()].Variants)
+            {
+                if (variant.Index == callIndex)
+                {
+                    callName = variant.Name;
+                    break;
+                }
+            }
+
+            return (palletName, callName);
+        }
 
         /// <summary>
         /// Finds and formats a Method in a JSON format according to the Metadata found in the supplied SubstrateClient
@@ -188,7 +205,6 @@ namespace PlutoWallet.Model
                             Console.WriteLine("Orig id: " + typeField.TypeId);
 
                             Console.WriteLine("It has got typeDef: " + t.TypeDef);
-
 
                             switch (t.TypeDef)
                             {

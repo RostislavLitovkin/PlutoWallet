@@ -15,7 +15,6 @@ public partial class ExtrinsicStatusView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ExtrinsicStatusView)bindable;
-            control.nameLabel.Text = (string)newValue;
         });
 
     public static readonly BindableProperty StatusProperty = BindableProperty.Create(
@@ -67,6 +66,16 @@ public partial class ExtrinsicStatusView : ContentView
             control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
 
+    public static readonly BindableProperty CallNameProperty = BindableProperty.Create(
+       nameof(CallName), typeof(string), typeof(ExtrinsicStatusView),
+       defaultBindingMode: BindingMode.TwoWay,
+       propertyChanging: (bindable, oldValue, newValue) => {
+           var control = (ExtrinsicStatusView)bindable;
+
+           control.nameLabel.Text = (string)newValue;
+
+       });
+
     public ExtrinsicStatusView()
 	{
 		InitializeComponent();
@@ -98,6 +107,13 @@ public partial class ExtrinsicStatusView : ContentView
         get => (Endpoint)GetValue(EndpointProperty);
 
         set => SetValue(EndpointProperty, value);
+    }
+
+    public string CallName
+    {
+        get => (string)GetValue(CallNameProperty);
+
+        set => SetValue(CallNameProperty, value);
     }
 
     void OnRemoveClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

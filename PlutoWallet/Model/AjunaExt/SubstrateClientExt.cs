@@ -137,6 +137,8 @@ namespace PlutoWallet.Model.AjunaExt
 
             string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()), token);
 
+            var (palletName, callName) = Model.PalletCallModel.GetPalletAndCallName(this, extrinsic.Method.ModuleIndex, extrinsic.Method.CallIndex);
+
             extrinsicStackViewModel.Extrinsics.Add(
                 extrinsicId,
                 new ExtrinsicInfo
@@ -145,6 +147,7 @@ namespace PlutoWallet.Model.AjunaExt
                     Status = ExtrinsicStatusEnum.Pending,
                     Endpoint = this.Endpoint,
                     Hash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256)),
+                    CallName = palletName + "." + callName,
                 });
 
             return extrinsicId;
