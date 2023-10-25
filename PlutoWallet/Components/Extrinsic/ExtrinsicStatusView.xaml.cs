@@ -2,6 +2,7 @@
 using PlutoWallet.Components.WebView;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.Components.Extrinsic;
 
@@ -137,7 +138,9 @@ public partial class ExtrinsicStatusView : ContentView
     {
         if (e.StatusType == GestureStatus.Started)
         {
-            //protectiveLayout.IsVisible = true;
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = false;
 
             _positions = new Queue<(float, float)>();
         }
@@ -181,7 +184,9 @@ public partial class ExtrinsicStatusView : ContentView
 
             extrinsicStackViewModel.Update();
 
-            //protectiveLayout.IsVisible = false;
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = true;
         }
     }
 }
