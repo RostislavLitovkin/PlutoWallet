@@ -19,12 +19,13 @@
         </Border.StrokeShape>
 
         <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                            AbsoluteLayout.LayoutFlags="All"
-                            Margin="0, 5, 0, 5">
+                        AbsoluteLayout.LayoutFlags="All"
+                        Margin="0, 5, 0, 5">
+
             <Label LineBreakMode="NoWrap"
                  AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                Padding="10, 0, 60, 0"
+                Padding="30, 0, 60, 0"
                 VerticalTextAlignment="Center">
                 <Label.FormattedText>
                     <FormattedString>
@@ -35,6 +36,12 @@
                 </Label.FormattedText>
 
             </Label>
+            <Image VerticalOptions="Center"
+                   AbsoluteLayout.LayoutBounds="0, 0, 30, 30"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                    x:Name="chainIcon"
+                    Margin="7.5, 7.5, 7.5, 7.5"
+                    HeightRequest="15" WidthRequest="15"/>
 
                 <AbsoluteLayout HeightRequest="30"
                                 Padding="0, 0, 70, 0"

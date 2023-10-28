@@ -46,6 +46,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public SubscriptionManager SubscriptionManager { get; }
 
+        public Metadata CustomMetadata { get; set; }
+
         public SubstrateClientExt(Endpoint endpoint, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
                 base(new Uri(endpoint.URL), chargeType)
         {
@@ -74,9 +76,9 @@ namespace PlutoWallet.Model.AjunaExt
         {
             await base.ConnectAsync();
 
-            Metadata customMetadata = JsonConvert.DeserializeObject<Metadata>(MetaData.Serialize());
+            CustomMetadata = JsonConvert.DeserializeObject<Metadata>(MetaData.Serialize());
 
-            foreach (SignedExtension signedExtension in customMetadata.NodeMetadata.Extrinsic.SignedExtensions)
+            foreach (SignedExtension signedExtension in CustomMetadata.NodeMetadata.Extrinsic.SignedExtensions)
             {
                 if (signedExtension.SignedIdentifier == "ChargeTransactionPayment")
                 {
@@ -135,15 +137,18 @@ namespace PlutoWallet.Model.AjunaExt
 
             string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()), token);
 
+            var (palletName, callName) = Model.PalletCallModel.GetPalletAndCallName(this, extrinsic.Method.ModuleIndex, extrinsic.Method.CallIndex);
+
             extrinsicStackViewModel.Extrinsics.Add(
-                    extrinsicId,
-                    new ExtrinsicInfo
-                    {
-                        ExtrinsicId = extrinsicId,
-                        Status = ExtrinsicStatusEnum.Pending,
-                        Endpoint = this.Endpoint,
-                        Hash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256)),
-                    });
+                extrinsicId,
+                new ExtrinsicInfo
+                {
+                    ExtrinsicId = extrinsicId,
+                    Status = ExtrinsicStatusEnum.Pending,
+                    Endpoint = this.Endpoint,
+                    Hash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256)),
+                    CallName = palletName + "." + callName,
+                });
 
             return extrinsicId;
         }

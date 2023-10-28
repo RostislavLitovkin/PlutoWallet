@@ -8,7 +8,9 @@ public partial class MainView : ContentView
 	{
 		InitializeComponent();
 
-		Setup();
+        BindingContext = DependencyService.Get<MainViewModel>();
+
+        Setup();
     }
 
 	public void Setup()

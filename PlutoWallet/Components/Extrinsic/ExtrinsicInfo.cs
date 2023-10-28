@@ -10,6 +10,7 @@ namespace PlutoWallet.Components.Extrinsic
 		public ExtrinsicStatusEnum Status { get; set; }
         public Endpoint Endpoint { get; set; }
 		public Hash Hash { get; set; }
+		public string CallName { get; set; }
     }
 }
 

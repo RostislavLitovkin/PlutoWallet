@@ -14,14 +14,23 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional">
                     <HorizontalStackLayout>
                         <Label 
-                            x:Name="nameLabel"
-                            FontAttributes="Bold"
+                            
+                            
                             HorizontalOptions="Start"
-                            VerticalTextAlignment="End"/>
-                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
-                                   VerticalOptions="Center"
-                                   Margin="5, 0, 0, 0"
-                                   HeightRequest="15" WidthRequest="15"/>
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="nameLabelText" FontAttributes="Bold" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Image VerticalOptions="Center"
+                               x:Name="chainIcon"
+                                Margin="5, 0, 0, 0"
+                                HeightRequest="15" WidthRequest="15"/>
                     </HorizontalStackLayout>
                 
                     <Label

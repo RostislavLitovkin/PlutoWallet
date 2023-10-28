@@ -8,4 +8,11 @@ public partial class ReferendaView : ContentView
 
         BindingContext = DependencyService.Get<ReferendaViewModel>();
     }
+
+    public ReferendaView(ReferendaViewModel viewModel)
+    {
+        InitializeComponent();
+
+        BindingContext = viewModel;
+    }
 }

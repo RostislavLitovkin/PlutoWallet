@@ -18,12 +18,8 @@ public partial class NetworkBubbleView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
-            control.iconImage.Source = (string)newValue;
-            if ((string)newValue == "kusama.png")
-            {
-                control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, "kusamawhite.png", "kusama.png");
-            }
-            else if ((string)newValue == "menuwhite.png")
+
+            if ((string)newValue == "menuwhite.png")
             {
                 control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, "menuwhite.png", "menublack.png");
                 control.iconImage.WidthRequest = 24;
@@ -44,21 +40,11 @@ public partial class NetworkBubbleView : ContentView
         nameof(EndpointKey), typeof(string), typeof(NetworkBubbleView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
-            /*var control = (NetworkBubbleView)bindable;
+            var control = (NetworkBubbleView)bindable;
 
-            if ((int)newValue == -1)
-            {
-                control.IsVisible = false;
-            }
-            else
-            {
-                Endpoint endpoint = Endpoints.GetAllEndpoints[(int)newValue];
+            Endpoint endpoint = Endpoints.GetEndpointDictionary[(string)newValue];
 
-                control.Name = endpoint.Name;
-                control.Icon = endpoint.Icon;
-
-                control.IsVisible = true;
-            }*/
+            control.iconImage.Source = endpoint.DarkIcon != null ? endpoint.DarkIcon : endpoint.Icon;
         });
 
     public NetworkBubbleView()

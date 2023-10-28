@@ -16,7 +16,7 @@ using PlutoWallet.Components.HydraDX;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
-
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWallet.Model
 {
@@ -311,12 +311,18 @@ namespace PlutoWallet.Model
                     var tempExtrinsics = new Dictionary<string, ExtrinsicInfo>();
                     tempExtrinsics.Add("18736389", new ExtrinsicInfo
                     {
+                        CallName = "EVM.eth_call_v2",
+                        Hash = new Hash("0x97ad595390e73c9421b21d130291bdcbc24267d3ccb58dd27e71177d15e68991"),
+                        Endpoint = Endpoints.GetEndpointDictionary["acala"],
                         ExtrinsicId = "18736389",
                         Status = ExtrinsicStatusEnum.InBlock,
                     });
 
                     tempExtrinsics.Add("18737890", new ExtrinsicInfo
                     {
+                        CallName = "XcmPallet.limited_reserve_transfer_assets",
+                        Endpoint = Endpoints.GetEndpointDictionary["polkadot"],
+                        Hash = new Hash("0x89bca86385b938c90e230a9837bce7e09991dde37f44b98b347c1d8ae2813654"),
                         ExtrinsicId = "18737890",
                         Status = ExtrinsicStatusEnum.Success,
                     });
@@ -324,7 +330,7 @@ namespace PlutoWallet.Model
                     extrinsicStatusViewModel.Extrinsics = tempExtrinsics;
                     extrinsicStatusViewModel.Update();
 
-                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel, 135);
+                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel);
                 case "UsdB":
                     return new UsdBalanceView();
                 case "PubK":

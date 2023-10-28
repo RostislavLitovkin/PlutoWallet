@@ -2,6 +2,7 @@
 using PlutoWallet.Components.WebView;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.Components.Extrinsic;
 
@@ -15,7 +16,6 @@ public partial class ExtrinsicStatusView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ExtrinsicStatusView)bindable;
-            control.nameLabel.Text = (string)newValue;
         });
 
     public static readonly BindableProperty StatusProperty = BindableProperty.Create(
@@ -63,7 +63,19 @@ public partial class ExtrinsicStatusView : ContentView
             var control = (ExtrinsicStatusView)bindable;
 
             control.calamarButton.IsVisible = ((Endpoint)newValue).CalamarChainName != null;
+
+            control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
+
+    public static readonly BindableProperty CallNameProperty = BindableProperty.Create(
+       nameof(CallName), typeof(string), typeof(ExtrinsicStatusView),
+       defaultBindingMode: BindingMode.TwoWay,
+       propertyChanging: (bindable, oldValue, newValue) => {
+           var control = (ExtrinsicStatusView)bindable;
+
+           control.nameLabelText.Text = (string)newValue;
+
+       });
 
     public ExtrinsicStatusView()
 	{
@@ -98,6 +110,13 @@ public partial class ExtrinsicStatusView : ContentView
         set => SetValue(EndpointProperty, value);
     }
 
+    public string CallName
+    {
+        get => (string)GetValue(CallNameProperty);
+
+        set => SetValue(CallNameProperty, value);
+    }
+
     void OnRemoveClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
@@ -119,7 +138,9 @@ public partial class ExtrinsicStatusView : ContentView
     {
         if (e.StatusType == GestureStatus.Started)
         {
-            //protectiveLayout.IsVisible = true;
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = false;
 
             _positions = new Queue<(float, float)>();
         }
@@ -163,7 +184,9 @@ public partial class ExtrinsicStatusView : ContentView
 
             extrinsicStackViewModel.Update();
 
-            //protectiveLayout.IsVisible = false;
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = true;
         }
     }
 }

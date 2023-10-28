@@ -12,7 +12,8 @@
                 <extrinsic:ExtrinsicStatusView ExtrinsicId="{Binding ExtrinsicId}"
                                                Status="{Binding Status}"
                                                Hash="{Binding Hash}"
-                                               Endpoint="{Binding Endpoint}" />
+                                               Endpoint="{Binding Endpoint}"
+                                               CallName="{Binding CallName}" />
 
             </DataTemplate>
 

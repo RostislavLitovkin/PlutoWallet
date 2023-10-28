@@ -64,9 +64,10 @@ namespace PlutoWallet.Constants
             { "polkadot", new Endpoint
             {
                 Name = "Polkadot",
-                URL = "wss://polkadot.api.onfinality.io/public-ws",
+                URL = "wss://rpc.polkadot.io",
                 Icon = "polkadot.png",
                 CalamarChainName = "polkadot",
+                SubSquareChainName = "polkadot",
                 Unit = "Dot",
                 Decimals = 10,
                 SS58Prefix = 0,
@@ -76,8 +77,10 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama",
                 URL = "wss://kusama-rpc.polkadot.io",
-                Icon = "kusama.png",
+                Icon = Application.Current.RequestedTheme == AppTheme.Light ? "kusama.png" : "kusamawhite.png",
+                DarkIcon = Application.Current.RequestedTheme == AppTheme.Dark ? "kusama.png" : "kusamawhite.png",
                 CalamarChainName = "kusama",
+                SubSquareChainName = "kusama",
                 Unit = "KSM",
                 Decimals = 12,
                 SS58Prefix = 2,
@@ -310,6 +313,7 @@ namespace PlutoWallet.Constants
                     SS58Prefix = 42,
                     Decimals = 12,
                     ChainType = ChainType.Substrate,
+                    SupportsNfts = true,
                 }
             },
             {
@@ -379,7 +383,9 @@ namespace PlutoWallet.Constants
         public string Name { get; set; }
         public string URL { get; set; }
 		public string Icon { get; set; }
+        public string DarkIcon { get; set; }
 		public string CalamarChainName { get; set; }
+        public string SubSquareChainName { get; set; }
 
         // Symbol and Unit are interchangeable names.
 		public string Unit { get; set; }

@@ -11,6 +11,7 @@ using System.Globalization;
 using Substrate.NetApi.Generated.Model.pallet_conviction_voting.vote;
 using Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model.SubSquare
 {
@@ -20,110 +21,116 @@ namespace PlutoWallet.Model.SubSquare
         {
             CancellationToken token = CancellationToken.None;
 
-            var client = Model.AjunaClientModel.Client;
-
-            var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
-
-            var keyBytes = RequestGenerator.GetStorageKeyBytesHash("ConvictionVoting", "VotingFor");
-
-            byte[] prefix = keyBytes.Concat(HashExtension.Hash(Hasher.Twox64Concat, account32.Encode())).ToArray();
-
-            string prefixString = Utils.Bytes2HexString(prefix);
-
-            byte[] startKey = null;
-
-            var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
-
-            List<BigInteger> referendumIds;
-
-            List<string[]> storageChanges = new List<string[]>();
-
-            if (keysPaged == null || !keysPaged.Any())
-            {
-                return new List<ReferendumInfo>();
-            }
-            else
-            {
-                var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
-                storageChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
-
-                referendumIds = keysPaged.Select(p => HashModel.GetBigIntegerFromTwox_64Concat(p.ToString().Substring(146))).ToList();
-            }
-
             List<ReferendumInfo> results = new List<ReferendumInfo>();
 
-
-            if (storageChanges != null)
+            foreach (var client in Model.AjunaClientModel.GroupClients)
             {
-                foreach (var storageChangeSet in storageChanges)
+                if (client.Endpoint.SubSquareChainName == null)
                 {
-                    EnumVoting voting = new EnumVoting();
-                    voting.Create(storageChangeSet[1]);
+                    continue;
+                }
 
-                    if ((Voting)voting.Value != Voting.Casting)
+                var account32 = new AccountId32();
+                account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+
+                var keyBytes = RequestGenerator.GetStorageKeyBytesHash("ConvictionVoting", "VotingFor");
+
+                byte[] prefix = keyBytes.Concat(HashExtension.Hash(Hasher.Twox64Concat, account32.Encode())).ToArray();
+
+                string prefixString = Utils.Bytes2HexString(prefix);
+
+                byte[] startKey = null;
+
+                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
+
+                List<BigInteger> referendumIds;
+
+                List<string[]> storageChanges = new List<string[]>();
+
+                if (keysPaged == null || !keysPaged.Any())
+                {
+                    return new List<ReferendumInfo>();
+                }
+                else
+                {
+                    var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
+                    storageChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
+
+                    referendumIds = keysPaged.Select(p => HashModel.GetBigIntegerFromTwox_64Concat(p.ToString().Substring(146))).ToList();
+                }
+
+                if (storageChanges != null)
+                {
+                    foreach (var storageChangeSet in storageChanges)
                     {
-                        Console.WriteLine(voting);
-                        continue;
-                    }
+                        EnumVoting voting = new EnumVoting();
+                        voting.Create(storageChangeSet[1]);
 
-                    BigInteger _category = HashModel.GetBigIntegerFromTwox_64Concat(storageChangeSet[0].Remove(0, Utils.Bytes2HexString(prefix).Length));
-
-                    foreach (var vote in ((Casting)voting.Value2).Votes.Value.Value)
-                    {
-                        
-
-                        EnumAccountVote accountVote = ((EnumAccountVote)vote.Value[1]);
-
-                        VoteDecision voteDecision = VoteDecision.Nay; // Default
-
-                        if (accountVote.Value == AccountVote.Standard)
+                        if ((Voting)voting.Value != Voting.Casting)
                         {
-                            BaseTuple<Vote, U128> voteDetail = (BaseTuple<Vote, U128>)accountVote.Value2;
+                            Console.WriteLine(voting);
+                            continue;
+                        }
 
-                            ushort voteValue = ((Vote)voteDetail.Value[0]).Value.Value;
+                        BigInteger _category = HashModel.GetBigIntegerFromTwox_64Concat(storageChangeSet[0].Remove(0, Utils.Bytes2HexString(prefix).Length));
 
-                            if (voteValue > 127)
+                        foreach (var vote in ((Casting)voting.Value2).Votes.Value.Value)
+                        {
+
+
+                            EnumAccountVote accountVote = ((EnumAccountVote)vote.Value[1]);
+
+                            VoteDecision voteDecision = VoteDecision.Nay; // Default
+
+                            if (accountVote.Value == AccountVote.Standard)
                             {
-                                voteDecision = VoteDecision.Aye;
+                                BaseTuple<Vote, U128> voteDetail = (BaseTuple<Vote, U128>)accountVote.Value2;
+
+                                ushort voteValue = ((Vote)voteDetail.Value[0]).Value.Value;
+
+                                if (voteValue > 127)
+                                {
+                                    voteDecision = VoteDecision.Aye;
+                                }
+
+                                Console.WriteLine(((U128)voteDetail.Value[1]).Value);
+                            }
+                            else if (accountVote.Value == AccountVote.Split)
+                            {
+                                voteDecision = VoteDecision.Split;
                             }
 
-                            Console.WriteLine(((U128)voteDetail.Value[1]).Value);
-                        }
-                        else if (accountVote.Value == AccountVote.Split)
-                        {
-                            voteDecision = VoteDecision.Split;
-                        }
+                            // Subsquare things
+                            uint referendumId = ((U32)vote.Value[0]).Value;
 
-                        // Subsquare things
-                        uint referendumId = ((U32)vote.Value[0]).Value;
+                            Root root = await GetReferendumInfo(client.Endpoint, referendumId);
 
-                        Root root = await GetReferendumInfo(referendumId);
+                            Console.WriteLine(root.OnchainData.Tally.Ayes);
 
-                        Console.WriteLine(root.OnchainData.Tally.Ayes);
-                        
-                        U128 ayes = new U128();
-                        ayes.Create(Utils.HexToByteArray(root.OnchainData.Tally.Ayes).Reverse().ToArray());
+                            U128 ayes = new U128();
+                            ayes.Create(Utils.HexToByteArray(root.OnchainData.Tally.Ayes).Reverse().ToArray());
 
-                        U128 nays = new U128();
-                        nays.Create(Utils.HexToByteArray(root.OnchainData.Tally.Nays).Reverse().ToArray());
+                            U128 nays = new U128();
+                            nays.Create(Utils.HexToByteArray(root.OnchainData.Tally.Nays).Reverse().ToArray());
 
-                        BigInteger total = ayes.Value + nays.Value;
+                            BigInteger total = ayes.Value + nays.Value;
 
-                        results.Add(new ReferendumInfo
-                        {
-                            Title = root.Title,
-                            Ayes = ayes.Value,
-                            Nays = nays.Value,
-                            AyesPercentage = (double)(ayes.Value) / (double)total,
-                            NaysPercentage = (double)(nays.Value) / (double)total,
-                            Vote = new ReferendumVote
+                            results.Add(new ReferendumInfo
                             {
-                                Decision = voteDecision,
-                            },
-                            ReferendumIndex = root.ReferendumIndex,
-                            
-                        });
+                                Title = root.Title,
+                                Ayes = ayes.Value,
+                                Nays = nays.Value,
+                                AyesPercentage = (double)(ayes.Value) / (double)total,
+                                NaysPercentage = (double)(nays.Value) / (double)total,
+                                Vote = new ReferendumVote
+                                {
+                                    Decision = voteDecision,
+                                },
+                                ReferendumIndex = root.ReferendumIndex,
+                                SubSquareLink = "https://" + client.Endpoint.SubSquareChainName + ".subsquare.io/referenda/" + root.ReferendumIndex,
+                                Endpoint = client.Endpoint,
+                            });
+                        }
                     }
                 }
             }
@@ -132,16 +139,17 @@ namespace PlutoWallet.Model.SubSquare
         }
 
 
-        public static async Task<Root> GetReferendumInfo(uint id)
+        public static async Task<Root> GetReferendumInfo(Endpoint endpoint, uint id)
 		{
             HttpClient client = new HttpClient();
 
-            string data = await client.GetStringAsync("https://polkadot.subsquare.io/api/gov2/referendums/" + id);
+            string data = await client.GetStringAsync("https://" + endpoint.SubSquareChainName + ".subsquare.io/api/gov2/referendums/" + id);
 
             return JsonConvert.DeserializeObject<Root>(data);
         }
     }
 
+    
     public class ReferendumInfo
     {
         public string Title { get; set; }
@@ -161,6 +169,10 @@ namespace PlutoWallet.Model.SubSquare
         public ReferendumVote Vote { get; set; }
 
         public int ReferendumIndex { get; set; }
+
+        public string SubSquareLink { get; set; }
+
+        public Endpoint Endpoint { get; set; }
     }
 
     public class ReferendumVote

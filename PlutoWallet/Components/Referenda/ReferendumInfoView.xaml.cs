@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using PlutoWallet.Model.SubSquare;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Components.Referenda;
 
@@ -56,6 +57,23 @@ public partial class ReferendumInfoView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ReferendumInfoView)bindable;
 
+        });
+
+    public static readonly BindableProperty SubSquareLinkProperty = BindableProperty.Create(
+        nameof(SubSquareLink), typeof(string), typeof(ReferendumInfoView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (ReferendumInfoView)bindable;
+
+        });
+
+    public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
+        nameof(Endpoint), typeof(Endpoint), typeof(ReferendumInfoView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (ReferendumInfoView)bindable;
+
+            control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
 
     public static readonly BindableProperty VoteProperty = BindableProperty.Create(
@@ -143,8 +161,22 @@ public partial class ReferendumInfoView : ContentView
         set => SetValue(ReferendumIndexProperty, value);
     }
 
+    public string SubSquareLink
+    {
+        get => (string)GetValue(SubSquareLinkProperty);
+
+        set => SetValue(SubSquareLinkProperty, value);
+    }
+
+    public Endpoint Endpoint
+    {
+        get => (Endpoint)GetValue(EndpointProperty);
+
+        set => SetValue(EndpointProperty, value);
+    }
+
     async void OnSubsquareClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        await Navigation.PushAsync(new WebView.WebViewPage("https://polkadot.subsquare.io/referenda/" + ReferendumIndex));
+        await Navigation.PushAsync(new WebView.WebViewPage(SubSquareLink));
     }
 }
