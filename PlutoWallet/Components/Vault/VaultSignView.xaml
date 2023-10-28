@@ -7,58 +7,45 @@
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
-             BackgroundColor="#66000000">
+             BackgroundColor="#66000000"
+             Padding="20"
+             >
 
     <card:Card IsPopup="True">
         <card:Card.View>
-        <AbsoluteLayout x:Name="layout">
+        <AbsoluteLayout x:Name="layout"
+                        >
 
-            <VerticalStackLayout Spacing="10">
+            <VerticalStackLayout Spacing="10"
+                                 AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                                 AbsoluteLayout.LayoutFlags="WidthProportional">
                 <Label
                     FontAttributes="Bold"
                     Text="Transaction request"
                     HorizontalOptions="Center"
                     Margin="20, 0, 20, 0"/>
 
-                <Label
-                    HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Pallet: " />
-                            <Span FontAttributes="Bold" Text="{Binding PalletIndex}"/>
+                <ScrollView Orientation="Both"
+                            BackgroundColor="#444444"
+                            HeightRequest="100"
+                            >
 
-                        </FormattedString>
+                    <Label
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="10"
+                        TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
 
-                    </Label.FormattedText>
+                            </FormattedString>
 
-                </Label>
+                        </Label.FormattedText>
 
-                <Label
-                    HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Call: " />
-                            <Span FontAttributes="Bold" Text="{Binding CallIndex}"/>
-
-                        </FormattedString>
-
-                    </Label.FormattedText>
-
-                </Label>
-
-                <Label
-                    HorizontalOptions="Center"
-                    WidthRequest="{Binding Source={x:Reference layout}, Path=Width}"
-                    Margin="10, 0, 10, 0">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
-
-                        </FormattedString>
-
-                    </Label.FormattedText>
-
-                </Label>
+                    </Label>
+                </ScrollView>
+                
 
                 <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 
