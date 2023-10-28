@@ -98,9 +98,8 @@ namespace PlutoWallet.Model
 
                     break;
                 default:
-                    
-                    result = "Unable to show";
-                    break;
+
+                    return null;
             }
 
             return result;

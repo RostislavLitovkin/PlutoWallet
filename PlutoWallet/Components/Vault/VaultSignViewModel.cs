@@ -50,14 +50,7 @@ namespace PlutoWallet.Components.Vault
                     CallIndex = "(" + value.CallIndex.ToString() + " index)";
                 }
 
-                if (value.Parameters.Length > 5)
-                {
-                    Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
-                }
-                else
-                {
-                    Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
-                }
+                Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
             }
         }
 

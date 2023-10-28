@@ -145,131 +145,143 @@ namespace PlutoWallet.Model
 
             string parameters = "";
 
+            TypeField[] typeFields = new TypeField[0];
+
             foreach (var variant in client.CustomMetadata.NodeMetadata.Types[client.CustomMetadata.NodeMetadata.Modules[method.ModuleIndex.ToString()].Calls.TypeId.ToString()].Variants)
             {
                 if (variant.Index == method.CallIndex)
                 {
                     callName = variant.Name;
 
-                    // Add parameters if there are any
-                    if (variant.TypeFields.Length != 0) {
-
-                        // byte[] position
-                        int p = 0;
-
-                        foreach (var typeField in variant.TypeFields)
-                        {
-                            string typeId = typeField.TypeId.ToString();
-
-                            string data = "";
-
-                            TypeValue t = client.CustomMetadata.NodeMetadata.Types[typeId];
-
-                            Console.WriteLine("This info is for " + typeField.TypeName + ": ");
-
-                            if (t.TypeFields != null)
-                            {
-                                Console.WriteLine("It has got typefields: " + t.TypeFields.Length);
-                            }
-
-                            if (t.Path != null)
-                            {
-                                Console.WriteLine("It has got path: " + t.Path);
-                            }
-
-                            if (t.Variants != null)
-                            {
-                                Console.WriteLine("It has got variants: " + t.Variants.Length);
-                            }
-
-                            if (t.Primitive != null)
-                            {
-                                Console.WriteLine("It has got primitives: " + t.Primitive);
-                            }
-
-                            if (t.TypeParams != null)
-                            {
-                                Console.WriteLine("It has got params: " + t.TypeParams);
-                            }
-
-                            if (t.TypeId != null)
-                            {
-                                Console.WriteLine("It has got typeId: " + t.TypeId);
-                            }
-
-                            if (t.Length != null)
-                            {
-                                Console.WriteLine("It has got a length: " + t.Length);
-                            }
-
-                            Console.WriteLine("Orig id: " + typeField.TypeId);
-
-                            Console.WriteLine("It has got typeDef: " + t.TypeDef);
-
-                            switch (t.TypeDef)
-                            {
-                                case TypeDef.Sequence:
-                                    TypeValue subType = client.CustomMetadata.NodeMetadata.Types[t.TypeId.ToString()];
-
-                                    if (subType.Primitive != null)
-                                    {
-                                        data = Model.ToStringModel.SequenceValueToString(subType, method.Parameters, ref p);
-                                    }
-                                    else
-                                    {
-                                        data = "Unable to show";
-                                    }
-
-                                    goto EndOfWhile;
-
-                                case TypeDef.Compact:
-                                    BaseCom<U128> com = new BaseCom<U128>();
-                                    com.Decode(method.Parameters, ref p);
-
-                                    data = com.Value.ToString();
-                                    goto EndOfWhile;
-
-                                case TypeDef.Primitive:
-                                    data = Model.ToStringModel.PrimitiveValueToString(t, method.Parameters, ref p);
-                                    goto EndOfWhile;
-
-                                case TypeDef.Variant:
-                                    switch(typeField.TypeName)
-                                    {
-                                        case "AccountIdLookupOf<T>":
-                                            var multiAddress = new EnumMultiAddress();
-                                            multiAddress.Decode(method.Parameters, ref p);
-                                            if (multiAddress.Value != MultiAddress.Index)
-                                            {
-                                                data = Utils.GetAddressFrom(multiAddress.Value2.Encode());
-                                            }
-                                            else
-                                            {
-                                                data = "Unable to show";
-                                            }
-                                            break;
-                                        default:
-                                            data = "Unable to show";
-                                            break;
-                                    }
-                                    break;
-
-                                default:
-                                    data = "Unable to show";
-                                    goto EndOfWhile;
-                            }
-
-                            EndOfWhile:
-
-                            parameters += "\n\t" + typeField.Name + ": " + data + ",";
-                        }
-
-                        parameters = parameters.Substring(0, parameters.Length - 1);
-                    }
-
+                    typeFields = variant.TypeFields;
                     break;
                 }
             }
+
+
+            // Add parameters if there are any
+            if (typeFields.Length != 0)
+            {
+
+                // byte[] position
+                int p = 0;
+
+                foreach (var typeField in typeFields)
+                {
+                    string typeId = typeField.TypeId.ToString();
+
+                    string data = "";
+
+                    TypeValue t = client.CustomMetadata.NodeMetadata.Types[typeId];
+
+                    Console.WriteLine("This info is for " + typeField.TypeName + ": ");
+
+                    if (t.TypeFields != null)
+                    {
+                        Console.WriteLine("It has got typefields: " + t.TypeFields.Length);
+                    }
+
+                    if (t.Path != null)
+                    {
+                        Console.WriteLine("It has got path: " + t.Path);
+                    }
+
+                    if (t.Variants != null)
+                    {
+                        Console.WriteLine("It has got variants: " + t.Variants.Length);
+                    }
+
+                    if (t.Primitive != null)
+                    {
+                        Console.WriteLine("It has got primitives: " + t.Primitive);
+                    }
+
+                    if (t.TypeParams != null)
+                    {
+                        Console.WriteLine("It has got params: " + t.TypeParams);
+                    }
+
+                    if (t.TypeId != null)
+                    {
+                        Console.WriteLine("It has got typeId: " + t.TypeId);
+                    }
+
+                    if (t.Length != null)
+                    {
+                        Console.WriteLine("It has got a length: " + t.Length);
+                    }
+
+                    Console.WriteLine("Orig id: " + typeField.TypeId);
+
+                    Console.WriteLine("It has got typeDef: " + t.TypeDef);
+
+                    switch (t.TypeDef)
+                    {
+                        case TypeDef.Sequence:
+                            TypeValue subType = client.CustomMetadata.NodeMetadata.Types[t.TypeId.ToString()];
+
+                            if (subType.Primitive != null)
+                            {
+                                var temp = Model.ToStringModel.SequenceValueToString(subType, method.Parameters, ref p);
+                                if (temp == null)
+                                {
+                                    parameters = "Unable to show";
+                                    goto Unsupported;
+                                }
+                                data = temp;
+                                break;
+                            }
+                            else
+                            {
+                                parameters = "Unable to show";
+                                goto Unsupported;
+                            }
+
+                        case TypeDef.Compact:
+                            BaseCom<U128> com = new BaseCom<U128>();
+                            com.Decode(method.Parameters, ref p);
+
+                            data = com.Value.ToString();
+                            break;
+
+                        case TypeDef.Primitive:
+                            data = Model.ToStringModel.PrimitiveValueToString(t, method.Parameters, ref p);
+                            break;
+
+                        case TypeDef.Variant:
+                            switch (typeField.TypeName)
+                            {
+                                case "AccountIdLookupOf<T>":
+                                    var multiAddress = new EnumMultiAddress();
+                                    multiAddress.Decode(method.Parameters, ref p);
+
+                                    if (multiAddress.Value != MultiAddress.Index)
+                                    {
+                                        data = Utils.GetAddressFrom(multiAddress.Value2.Encode());
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        parameters = "Unable to show";
+                                        goto Unsupported;
+                                    }
+                                default:
+                                    parameters = "Unable to show";
+                                    goto Unsupported;
+                            }
+                            break;
+
+                        default:
+                            parameters = "Unable to show";
+                            goto Unsupported;
+                    }
+
+                    parameters += "\n\t" + typeField.Name + ": " + data + ",";
+                }
+                parameters = parameters.Substring(0, parameters.Length - 1);
+            }
+            
+        Unsupported:
 
             // Construct the final JSON
             string resultJson = palletName + "." + callName + "(" + parameters + ")";
