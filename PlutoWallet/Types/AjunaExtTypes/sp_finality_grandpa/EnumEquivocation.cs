@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
+namespace Substrate.NetApi.Generated.Model.sp_finality_grandpa
 {
     
     
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
     /// <summary>
     /// >> 218 - Variant[sp_finality_grandpa.Equivocation]
     /// </summary>
-    public sealed class EnumEquivocation : BaseEnumExt<Equivocation, PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.EquivocationT1, PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.EquivocationT2>
+    public sealed class EnumEquivocation : BaseEnumExt<Equivocation, Substrate.NetApi.Generated.Model.finality_grandpa.EquivocationT1, Substrate.NetApi.Generated.Model.finality_grandpa.EquivocationT2>
     {
     }
 }

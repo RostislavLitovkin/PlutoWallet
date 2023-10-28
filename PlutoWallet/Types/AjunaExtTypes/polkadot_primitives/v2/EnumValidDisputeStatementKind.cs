@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -30,7 +30,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 402 - Variant[polkadot_primitives.v2.ValidDisputeStatementKind]
     /// </summary>
-    public sealed class EnumValidDisputeStatementKind : BaseEnumExt<ValidDisputeStatementKind, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256, BaseVoid>
+    public sealed class EnumValidDisputeStatementKind : BaseEnumExt<ValidDisputeStatementKind, BaseVoid, Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Generated.Model.primitive_types.H256, BaseVoid>
     {
     }
 }

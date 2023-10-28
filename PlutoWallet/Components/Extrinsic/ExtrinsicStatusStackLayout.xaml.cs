@@ -15,13 +15,4 @@ public partial class ExtrinsicStatusStackLayout : ContentView
 
         BindingContext = viewModel;
     }
-
-    public ExtrinsicStatusStackLayout(ExtrinsicStatusStackViewModel viewModel, int heightRequest)
-    {
-        InitializeComponent();
-
-        BindingContext = viewModel;
-
-        this.HeightRequest = heightRequest;
-    }
 }

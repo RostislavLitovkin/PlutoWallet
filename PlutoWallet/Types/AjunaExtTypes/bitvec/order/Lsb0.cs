@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.bitvec.order
+namespace Substrate.NetApi.Generated.Model.bitvec.order
 {
     
     

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
+namespace Substrate.NetApi.Generated.Model.pallet_assets.types
 {
     
     
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
         /// <summary>
         /// >> name
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _name;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _name;
         
         /// <summary>
         /// >> symbol
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _symbol;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 _symbol;
         
         /// <summary>
         /// >> decimals
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Name
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Name
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Symbol
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8 Symbol
         {
             get
             {
@@ -130,9 +130,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             var start = p;
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Name = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
+            Name = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
             Name.Decode(byteArray, ref p);
-            Symbol = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
+            Symbol = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT8();
             Symbol.Decode(byteArray, ref p);
             Decimals = new Substrate.NetApi.Model.Types.Primitive.U8();
             Decimals.Decode(byteArray, ref p);

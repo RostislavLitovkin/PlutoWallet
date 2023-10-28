@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:hydradx="clr-namespace:PlutoWallet.Components.HydraDX"
+             x:Class="PlutoWallet.Components.HydraDX.OmnipoolLiquidityView">
+     <card:Card Color="#031538">
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout"
+                             >
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Omnipool Liquidity"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="#f653a2"
+                        FontFamily="FontOver" />
+                    <Label HeightRequest="50"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" TextColor="White"
+                                      Text="{Binding UsdSum}" />
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="0, 100, 0, 10"
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Assets}"
+                                     Spacing="5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <hydradx:AssetLiquidityView Amount="{Binding Amount}"
+                                                        Symbol="{Binding Symbol}"
+                                                        UsdValue="{Binding UsdValue}"
+                                                        />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+
+                </VerticalStackLayout>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage
+namespace Substrate.NetApi.Generated.Model.pallet_contracts.storage
 {
     
     
@@ -27,12 +27,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage
         /// <summary>
         /// >> trie_id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5 _trieId;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5 _trieId;
         
         /// <summary>
         /// >> code_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _codeHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _codeHash;
         
         /// <summary>
         /// >> storage_bytes
@@ -59,7 +59,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _storageBaseDeposit;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5 TrieId
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5 TrieId
         {
             get
             {
@@ -71,7 +71,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 CodeHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 CodeHash
         {
             get
             {
@@ -164,9 +164,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            TrieId = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5();
+            TrieId = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT5();
             TrieId.Decode(byteArray, ref p);
-            CodeHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            CodeHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             CodeHash.Decode(byteArray, ref p);
             StorageBytes = new Substrate.NetApi.Model.Types.Primitive.U32();
             StorageBytes.Decode(byteArray, ref p);

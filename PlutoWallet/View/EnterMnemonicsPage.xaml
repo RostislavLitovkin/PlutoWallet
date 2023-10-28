@@ -4,7 +4,8 @@
              xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.View.EnterMnemonicsPage">
+             x:Class="PlutoWallet.View.EnterMnemonicsPage"
+             BackgroundColor="Black">
     <ContentPage.BindingContext>
         <viewmodel:EnterMnemonicsViewModel x:Name="viewModel" />
 
@@ -13,7 +14,9 @@
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-               Source="space.png" Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
 
         <ScrollView Orientation="Vertical"
                     x:Name="scrollView"

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
+namespace Substrate.NetApi.Generated.Model.sp_finality_grandpa
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
         /// <summary>
         /// >> equivocation
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation _equivocation;
+        private Substrate.NetApi.Generated.Model.sp_finality_grandpa.EnumEquivocation _equivocation;
         
         public Substrate.NetApi.Model.Types.Primitive.U64 SetId
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation Equivocation
+        public Substrate.NetApi.Generated.Model.sp_finality_grandpa.EnumEquivocation Equivocation
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa
             var start = p;
             SetId = new Substrate.NetApi.Model.Types.Primitive.U64();
             SetId.Decode(byteArray, ref p);
-            Equivocation = new PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.EnumEquivocation();
+            Equivocation = new Substrate.NetApi.Generated.Model.sp_finality_grandpa.EnumEquivocation();
             Equivocation.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

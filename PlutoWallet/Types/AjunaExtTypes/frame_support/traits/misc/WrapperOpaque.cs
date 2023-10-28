@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.misc
+namespace Substrate.NetApi.Generated.Model.frame_support.traits.misc
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.misc
         /// <summary>
         /// >> T
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState _t;
+        private Substrate.NetApi.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState _t;
         
         public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> Value0
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.misc
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState T
+        public Substrate.NetApi.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState T
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.misc
             var start = p;
             Value0 = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Value0.Decode(byteArray, ref p);
-            T = new PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState();
+            T = new Substrate.NetApi.Generated.Model.pallet_im_online.BoundedOpaqueNetworkState();
             T.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec
+namespace Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec
 {
     /// <summary>
     /// >> 346 - Composite[sp_core.bounded.bounded_vec.BoundedVecT8]

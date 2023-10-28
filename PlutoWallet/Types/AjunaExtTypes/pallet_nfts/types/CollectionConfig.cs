@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> settings
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT1 _settings;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT1 _settings;
         
         /// <summary>
         /// >> max_supply
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> mint_settings
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.MintSettings _mintSettings;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.MintSettings _mintSettings;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT1 Settings
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT1 Settings
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.MintSettings MintSettings
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.MintSettings MintSettings
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Settings = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT1();
+            Settings = new Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT1();
             Settings.Decode(byteArray, ref p);
             MaxSupply = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             MaxSupply.Decode(byteArray, ref p);
-            MintSettings = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.MintSettings();
+            MintSettings = new Substrate.NetApi.Generated.Model.pallet_nfts.types.MintSettings();
             MintSettings.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

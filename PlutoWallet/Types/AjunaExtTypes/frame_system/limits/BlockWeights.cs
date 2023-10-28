@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
+namespace Substrate.NetApi.Generated.Model.frame_system.limits
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> base_block
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _baseBlock;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _baseBlock;
         
         /// <summary>
         /// >> max_block
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _maxBlock;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _maxBlock;
         
         /// <summary>
         /// >> per_class
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 _perClass;
+        private Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT2 _perClass;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseBlock
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight BaseBlock
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight MaxBlock
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight MaxBlock
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass
+        public Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT2 PerClass
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            BaseBlock = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            BaseBlock = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             BaseBlock.Decode(byteArray, ref p);
-            MaxBlock = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            MaxBlock = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             MaxBlock.Decode(byteArray, ref p);
-            PerClass = new PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
+            PerClass = new Substrate.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT2();
             PerClass.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

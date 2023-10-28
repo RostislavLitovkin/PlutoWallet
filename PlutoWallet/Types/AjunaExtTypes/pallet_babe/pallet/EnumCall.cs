@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_babe.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_babe.pallet
 {
     
     
@@ -29,7 +29,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_babe.pallet
     /// >> 185 - Variant[pallet_babe.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.EquivocationProof, PlutoWallet.NetApiExt.Generated.Model.sp_session.MembershipProof>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.EquivocationProof, PlutoWallet.NetApiExt.Generated.Model.sp_session.MembershipProof>, PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests.EnumNextConfigDescriptor>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Substrate.NetApi.Generated.Model.sp_session.MembershipProof>, BaseTuple<Substrate.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Substrate.NetApi.Generated.Model.sp_session.MembershipProof>, Substrate.NetApi.Generated.Model.sp_consensus_babe.digests.EnumNextConfigDescriptor>
     {
     }
 }

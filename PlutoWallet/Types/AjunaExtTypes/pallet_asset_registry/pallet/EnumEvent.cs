@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_asset_registry.pallet
 {
     
     
@@ -34,7 +34,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.pallet
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.EnumAssetType>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, Substrate.NetApi.Model.Types.Primitive.U8>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.hydradx_runtime.xcm.AssetLocation>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4, Substrate.NetApi.Model.Types.Primitive.U8>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation>>
     {
     }
 }

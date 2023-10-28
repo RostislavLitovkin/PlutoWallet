@@ -2,7 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
+             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect" xmlns:identity="clr-namespace:PlutoWallet.Components.Identity"
              x:Class="PlutoWallet.Components.TransferView.TransferView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -29,26 +29,8 @@
 
                 </AbsoluteLayout>
 
-                <AbsoluteLayout>
-                    <Entry Placeholder="ss58 address" Text="{Binding Address}"
-                           AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
-                           AbsoluteLayout.LayoutFlags="WidthProportional"
-                           Margin="0, 0, 45, 0"/>
+                <identity:IdentityAddressView Address="{Binding Address}" />
 
-                    <!--QR code button-->
-                    <Image
-                        AbsoluteLayout.LayoutBounds="1, 0, 40, 40"
-                        AbsoluteLayout.LayoutFlags="PositionProportional"
-                        Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
-                        Margin="5, 5, 5, 5"
-                        >
-            
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnShowQRClicked" />
-
-                        </Image.GestureRecognizers>
-                    </Image>
-                </AbsoluteLayout>
                 <Grid HeightRequest="40">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />

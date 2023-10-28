@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.inclusion
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
         /// <summary>
         /// >> bitfield
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield _bitfield;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield _bitfield;
         
         /// <summary>
         /// >> submitted_at
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _submittedAt;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield Bitfield
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield Bitfield
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.incl
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Bitfield = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield();
+            Bitfield = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.AvailabilityBitfield();
             Bitfield.Decode(byteArray, ref p);
             SubmittedAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             SubmittedAt.Decode(byteArray, ref p);

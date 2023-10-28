@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
+namespace Substrate.NetApi.Generated.Model.pallet_democracy.types
 {
     
     
@@ -32,12 +32,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
         /// <summary>
         /// >> proposal
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded _proposal;
+        private Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded _proposal;
         
         /// <summary>
         /// >> threshold
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold _threshold;
+        private Substrate.NetApi.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold _threshold;
         
         /// <summary>
         /// >> delay
@@ -47,7 +47,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
         /// <summary>
         /// >> tally
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types.Tally _tally;
+        private Substrate.NetApi.Generated.Model.pallet_democracy.types.Tally _tally;
         
         public Substrate.NetApi.Model.Types.Primitive.U32 End
         {
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded Proposal
+        public Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded Proposal
         {
             get
             {
@@ -73,7 +73,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold Threshold
+        public Substrate.NetApi.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold Threshold
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types.Tally Tally
+        public Substrate.NetApi.Generated.Model.pallet_democracy.types.Tally Tally
         {
             get
             {
@@ -130,13 +130,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types
             var start = p;
             End = new Substrate.NetApi.Model.Types.Primitive.U32();
             End.Decode(byteArray, ref p);
-            Proposal = new PlutoWallet.NetApiExt.Generated.Model.frame_support.traits.preimages.EnumBounded();
+            Proposal = new Substrate.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded();
             Proposal.Decode(byteArray, ref p);
-            Threshold = new PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold();
+            Threshold = new Substrate.NetApi.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold();
             Threshold.Decode(byteArray, ref p);
             Delay = new Substrate.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);
-            Tally = new PlutoWallet.NetApiExt.Generated.Model.pallet_democracy.types.Tally();
+            Tally = new Substrate.NetApi.Generated.Model.pallet_democracy.types.Tally();
             Tally.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -4,7 +4,6 @@ using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.PublicKeyQRCodeView;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
@@ -18,6 +17,12 @@ using PlutoWallet.Components.CustomLayouts;
 using PlutoWallet.Components.ConfirmTransaction;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Components.HydraDX;
+using PlutoWallet.Components.Nft;
+using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Vault;
+using PlutoWallet.Components.Referenda;
+using PlutoWallet.Components.ChangeLayoutRequest;
 
 namespace PlutoWallet;
 
@@ -35,13 +40,9 @@ public partial class App : Application
 
         DependencyService.Register<ConnectionRequestViewModel>();
 
-        DependencyService.Register<ScannerViewModel>();
-
         DependencyService.Register<MessagePopupViewModel>();
 
         DependencyService.Register<TransactionRequestViewModel>();
-
-        DependencyService.Register<BalanceViewModel>();
 
         DependencyService.Register<ArgumentsViewModel>();
 
@@ -58,8 +59,6 @@ public partial class App : Application
         DependencyService.Register<BasePageViewModel>();
 
         DependencyService.Register<StakingDashboardViewModel>();
-
-        DependencyService.Register<BalanceDashboardViewModel>();
 
         DependencyService.Register<UsdBalanceViewModel>();
 
@@ -82,6 +81,22 @@ public partial class App : Application
         DependencyService.Register<AssetSelectViewModel>();
 
         DependencyService.Register<AssetSelectButtonViewModel>();
+
+        DependencyService.Register<OmnipoolLiquidityViewModel>();
+
+        DependencyService.Register<DCAViewModel>();
+
+        DependencyService.Register<NftLoadingViewModel>();
+
+        DependencyService.Register<IdentityViewModel>();
+
+        DependencyService.Register<VaultSignViewModel>();
+
+        DependencyService.Register<ReferendaViewModel>();
+
+        DependencyService.Register<ChangeLayoutRequestViewModel>();
+
+        DependencyService.Register<NetworkSelectPopupViewModel>();
 
         if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
         {

@@ -63,7 +63,6 @@ public partial class BottomPopupCard : AbsoluteLayout
                     // Most of the times, you will use this inside of a ContentView that has got a IPopup BindingContext.
                     // If not, then nothing will happen
                     ((IPopup)((ContentView)this.Parent).BindingContext).IsVisible = false;
-
                 }
                 catch
                 {

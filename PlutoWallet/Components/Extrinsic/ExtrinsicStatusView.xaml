@@ -5,7 +5,7 @@
              x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicStatusView"
              IsVisible="{Binding IsVisible}"
              HeightRequest="60">
-   <card:Card>
+   <card:Card x:Name="card">
         <card:Card.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All"
@@ -14,14 +14,23 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional">
                     <HorizontalStackLayout>
                         <Label 
-                            x:Name="nameLabel"
-                            FontAttributes="Bold"
+                            
+                            
                             HorizontalOptions="Start"
-                            VerticalTextAlignment="End"/>
-                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
-                                   VerticalOptions="Center"
-                                   Margin="5, 0, 0, 0"
-                                   HeightRequest="15" WidthRequest="15"/>
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span x:Name="nameLabelText" FontAttributes="Bold" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Image VerticalOptions="Center"
+                               x:Name="chainIcon"
+                                Margin="5, 0, 0, 0"
+                                HeightRequest="15" WidthRequest="15"/>
                     </HorizontalStackLayout>
                 
                     <Label
@@ -29,11 +38,15 @@
                         HorizontalOptions="Start" />
                 </VerticalStackLayout>
 
-                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
+                <Image Source="calamar.png"
+                       x:Name="calamarButton"
+                       IsVisible="false"
                        Aspect="AspectFit"
-                       AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional">
+                       AbsoluteLayout.LayoutBounds="1, 0.5, 50, 50"
+                       Margin="10"
+                       AbsoluteLayout.LayoutFlags="PositionProportional">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRemoveClicked" />
+                        <TapGestureRecognizer Tapped="OnCalamarClicked" />
 
                     </Image.GestureRecognizers>
 
@@ -41,5 +54,10 @@
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>
+
+    <ContentView.GestureRecognizers>
+        <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+
+    </ContentView.GestureRecognizers>
 </ContentView>
 

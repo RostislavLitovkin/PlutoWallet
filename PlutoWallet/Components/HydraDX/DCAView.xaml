@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:hydradx="clr-namespace:PlutoWallet.Components.HydraDX"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.HydraDX.DCAView">
+    <card:Card Color="#031538">
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout"
+                             MinimumHeightRequest="80"
+                             >
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="DCA positions"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="#f653a2"
+                        FontFamily="FontOver" />
+
+                    <Label HeightRequest="30"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" TextColor="White"
+                                      Text="{Binding Loading}" />
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="0, 40, 0, 10"
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Orders}"
+                                     Spacing="5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <hydradx:DCAOrderView Amount="{Binding Amount}"
+                                                    FromSymbol="{Binding FromSymbol}"
+                                                    ToSymbol="{Binding ToSymbol}"
+                                                    Time="{Binding Time}"
+                                                         />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+
+                </VerticalStackLayout>
+
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

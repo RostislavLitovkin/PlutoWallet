@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
+namespace Substrate.NetApi.Generated.Model.sp_consensus_slots
 {
     
     
@@ -27,24 +27,24 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
         /// <summary>
         /// >> offender
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public _offender;
+        private Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public _offender;
         
         /// <summary>
         /// >> slot
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot _slot;
+        private Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot _slot;
         
         /// <summary>
         /// >> first_header
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header _firstHeader;
+        private Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header _firstHeader;
         
         /// <summary>
         /// >> second_header
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header _secondHeader;
+        private Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header _secondHeader;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public Offender
+        public Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public Offender
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot Slot
+        public Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot Slot
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header FirstHeader
+        public Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header FirstHeader
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header SecondHeader
+        public Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header SecondHeader
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Offender = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public();
+            Offender = new Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public();
             Offender.Decode(byteArray, ref p);
-            Slot = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot();
+            Slot = new Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot();
             Slot.Decode(byteArray, ref p);
-            FirstHeader = new PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header();
+            FirstHeader = new Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header();
             FirstHeader.Decode(byteArray, ref p);
-            SecondHeader = new PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.header.Header();
+            SecondHeader = new Substrate.NetApi.Generated.Model.sp_runtime.generic.header.Header();
             SecondHeader.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

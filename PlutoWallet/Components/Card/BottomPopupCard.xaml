@@ -11,7 +11,7 @@
                 AbsoluteLayout.LayoutFlags="All">
             <Border AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
                     AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark=#0a0a0a}"
                     StrokeThickness="0"
                     Padding="0, 0, 0, 0"
                     x:Name="border"

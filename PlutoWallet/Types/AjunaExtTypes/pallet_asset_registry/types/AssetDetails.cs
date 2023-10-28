@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
+namespace Substrate.NetApi.Generated.Model.pallet_asset_registry.types
 {
     
     
@@ -27,12 +27,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
         /// <summary>
         /// >> name
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 _name;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 _name;
         
         /// <summary>
         /// >> asset_type
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.EnumAssetType _assetType;
+        private Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType _assetType;
         
         /// <summary>
         /// >> existential_deposit
@@ -44,7 +44,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
         /// </summary>
         private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> _xcmRateLimit;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 Name
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 Name
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.EnumAssetType AssetType
+        public Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType AssetType
         {
             get
             {
@@ -110,9 +110,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Name = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4();
+            Name = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4();
             Name.Decode(byteArray, ref p);
-            AssetType = new PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types.EnumAssetType();
+            AssetType = new Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType();
             AssetType.Decode(byteArray, ref p);
             ExistentialDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             ExistentialDeposit.Decode(byteArray, ref p);

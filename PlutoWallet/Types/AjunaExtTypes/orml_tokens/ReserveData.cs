@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.orml_tokens
+namespace Substrate.NetApi.Generated.Model.orml_tokens
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.orml_tokens
         /// <summary>
         /// >> id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 _id;
+        private Substrate.NetApi.Generated.Types.Base.Arr8U8 _id;
         
         /// <summary>
         /// >> amount
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _amount;
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8 Id
+        public Substrate.NetApi.Generated.Types.Base.Arr8U8 Id
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.orml_tokens
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr8U8();
+            Id = new Substrate.NetApi.Generated.Types.Base.Arr8U8();
             Id.Decode(byteArray, ref p);
             Amount = new Substrate.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);

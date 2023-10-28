@@ -1,6 +1,6 @@
 ﻿using System;
 using Substrate.NetApi;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json.Linq;
 using static Substrate.NetApi.Utils;
 using PlutoWallet.Model.AjunaExt;
@@ -16,7 +16,9 @@ namespace PlutoWallet.Model.AzeroId
         {
             try
             {
-                AjunaClientExt client = new AjunaClientExt(new Uri("wss://ws.test.azero.dev"), ChargeAssetTxPayment.Default());
+                var endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+
+                SubstrateClientExt client = new SubstrateClientExt(endpoint, ChargeAssetTxPayment.Default());
 
                 await client.ConnectAsync();
 
@@ -63,7 +65,7 @@ namespace PlutoWallet.Model.AzeroId
                         NFT nft = await GetNFTMetadata(AzeroIdModel.BytesToString(result));
 
                         Console.WriteLine("NAME: " + nft.Name);
-                        nft.Endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+                        nft.Endpoint = endpoint;
 
                         nfts.Add(nft);
                     }

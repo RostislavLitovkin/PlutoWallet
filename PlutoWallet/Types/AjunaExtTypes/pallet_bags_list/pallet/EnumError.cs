@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_bags_list.pallet
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.pallet
     ///			of this pallet.
     ///			
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, PlutoWallet.NetApiExt.Generated.Model.pallet_bags_list.list.EnumListError>
+    public sealed class EnumError : BaseEnumExt<Error, Substrate.NetApi.Generated.Model.pallet_bags_list.list.EnumListError>
     {
     }
 }

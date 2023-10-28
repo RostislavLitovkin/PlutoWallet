@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> mint_type
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumMintType _mintType;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumMintType _mintType;
         
         /// <summary>
         /// >> price
@@ -47,9 +47,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> default_item_settings
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2 _defaultItemSettings;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2 _defaultItemSettings;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumMintType MintType
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumMintType MintType
         {
             get
             {
@@ -97,7 +97,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2 DefaultItemSettings
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2 DefaultItemSettings
         {
             get
             {
@@ -128,7 +128,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            MintType = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumMintType();
+            MintType = new Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumMintType();
             MintType.Decode(byteArray, ref p);
             Price = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>();
             Price.Decode(byteArray, ref p);
@@ -136,7 +136,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             StartBlock.Decode(byteArray, ref p);
             EndBlock = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             EndBlock.Decode(byteArray, ref p);
-            DefaultItemSettings = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2();
+            DefaultItemSettings = new Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2();
             DefaultItemSettings.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

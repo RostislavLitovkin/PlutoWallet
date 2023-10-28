@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_im_online.pallet
 {
     
     
@@ -25,7 +25,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.pallet
     /// >> 227 - Variant[pallet_im_online.pallet.Call]
     /// Contains one variant per dispatchable that can be called by an extrinsic.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.Heartbeat, PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.sr25519.app_sr25519.Signature>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.pallet_im_online.Heartbeat, Substrate.NetApi.Generated.Model.pallet_im_online.sr25519.app_sr25519.Signature>>
     {
     }
 }

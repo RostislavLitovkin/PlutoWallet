@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
+namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
@@ -37,12 +37,12 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> last_recorded_reward_counter
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 _lastRecordedRewardCounter;
+        private Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 _lastRecordedRewardCounter;
         
         /// <summary>
         /// >> unbonding_eras
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1 _unbondingEras;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1 _unbondingEras;
         
         public Substrate.NetApi.Model.Types.Primitive.U32 PoolId
         {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1 UnbondingEras
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1 UnbondingEras
         {
             get
             {
@@ -114,9 +114,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
             PoolId.Decode(byteArray, ref p);
             Points = new Substrate.NetApi.Model.Types.Primitive.U128();
             Points.Decode(byteArray, ref p);
-            LastRecordedRewardCounter = new PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
+            LastRecordedRewardCounter = new Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
             LastRecordedRewardCounter.Decode(byteArray, ref p);
-            UnbondingEras = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1();
+            UnbondingEras = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT1();
             UnbondingEras.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

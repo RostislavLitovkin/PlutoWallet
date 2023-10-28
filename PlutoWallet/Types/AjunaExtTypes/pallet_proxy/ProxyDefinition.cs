@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
+namespace Substrate.NetApi.Generated.Model.pallet_proxy
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         /// <summary>
         /// >> delegate
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _delegate;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _delegate;
         
         /// <summary>
         /// >> proxy_type
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumProxyType _proxyType;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime.EnumProxyType _proxyType;
         
         /// <summary>
         /// >> delay
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _delay;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Delegate
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Delegate
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumProxyType ProxyType
+        public Substrate.NetApi.Generated.Model.polkadot_runtime.EnumProxyType ProxyType
         {
             get
             {
@@ -92,9 +92,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_proxy
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Delegate = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Delegate = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Delegate.Decode(byteArray, ref p);
-            ProxyType = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.EnumProxyType();
+            ProxyType = new Substrate.NetApi.Generated.Model.polkadot_runtime.EnumProxyType();
             ProxyType.Decode(byteArray, ref p);
             Delay = new Substrate.NetApi.Model.Types.Primitive.U32();
             Delay.Decode(byteArray, ref p);

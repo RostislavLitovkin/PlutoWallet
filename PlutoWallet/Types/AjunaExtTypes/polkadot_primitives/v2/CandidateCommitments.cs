@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -32,17 +32,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> horizontal_messages
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> _horizontalMessages;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> _horizontalMessages;
         
         /// <summary>
         /// >> new_validation_code
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> _newValidationCode;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode> _newValidationCode;
         
         /// <summary>
         /// >> head_data
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData _headData;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData _headData;
         
         /// <summary>
         /// >> processed_downward_messages
@@ -66,7 +66,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> HorizontalMessages
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage> HorizontalMessages
         {
             get
             {
@@ -78,7 +78,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode> NewValidationCode
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode> NewValidationCode
         {
             get
             {
@@ -90,7 +90,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData HeadData
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData HeadData
         {
             get
             {
@@ -148,11 +148,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             var start = p;
             UpwardMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>();
             UpwardMessages.Decode(byteArray, ref p);
-            HorizontalMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage>();
+            HorizontalMessages = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage>();
             HorizontalMessages.Decode(byteArray, ref p);
-            NewValidationCode = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.ValidationCode>();
+            NewValidationCode = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode>();
             NewValidationCode.Decode(byteArray, ref p);
-            HeadData = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.HeadData();
+            HeadData = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData();
             HeadData.Decode(byteArray, ref p);
             ProcessedDownwardMessages = new Substrate.NetApi.Model.Types.Primitive.U32();
             ProcessedDownwardMessages.Decode(byteArray, ref p);

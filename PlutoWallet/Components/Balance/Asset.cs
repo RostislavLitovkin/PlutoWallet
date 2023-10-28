@@ -13,6 +13,7 @@ namespace PlutoWallet.Components.Balance
         public double UsdValue { get; set; }
         public AssetPallet Pallet { get; set; }
         public BigInteger AssetId { get; set; }
+        public int Decimals { get; set; }
     }
 
     public enum AssetPallet

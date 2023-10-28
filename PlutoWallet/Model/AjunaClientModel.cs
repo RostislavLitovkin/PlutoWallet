@@ -10,18 +10,23 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.CalamarView;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Components.HydraDX;
+using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Referenda;
+
+
 
 namespace PlutoWallet.Model
 {
     public class AjunaClientModel
     {
-        public static AjunaClientExt Client;
+        public static SubstrateClientExt Client;
 
-        public static AjunaClientExt[] GroupClients;
+        public static SubstrateClientExt[] GroupClients;
 
         public static Endpoint[] GroupEndpoints;
 
-        private static int[] groupEndpointIndexes;
+        private static string[] groupEndpointKeys;
 
         public static Endpoint SelectedEndpoint;
 
@@ -38,33 +43,29 @@ namespace PlutoWallet.Model
          * This method is called in MultiNetworkSelectView.xaml.cs (even during the initialization),
          * so you do not have to worry about not having a chain set up.
          */
-        public static async Task ChangeChainGroupAsync(int[] endpointIndexes)
+        public static async Task ChangeChainGroupAsync(string[] endpointKeys)
         {
             try
             {
-                groupEndpointIndexes = endpointIndexes;
+                groupEndpointKeys = endpointKeys;
 
-                List<AjunaClientExt> groupClientList = new List<AjunaClientExt>(endpointIndexes.Length);
+                List<SubstrateClientExt> groupClientList = new List<SubstrateClientExt>(endpointKeys.Length);
 
-                List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointIndexes.Length);
+                List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointKeys.Length);
 
-                for (int i = 0; i < endpointIndexes.Length; i++)
+                for (int i = 0; i < endpointKeys.Length; i++)
                 {
-                    // check that the index exists
-                    if (endpointIndexes[i] != -1)
-                    {
-                        Endpoint endpoint = Endpoints.GetAllEndpoints[endpointIndexes[i]];
+                    Endpoint endpoint = Endpoints.GetEndpointDictionary[endpointKeys[i]];
 
-                        groupEndpointsList.Add(endpoint);
+                    groupEndpointsList.Add(endpoint);
 
-                        var client = new AjunaClientExt(
-                                new Uri(endpoint.URL),
-                                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+                    var client = new SubstrateClientExt(
+                            endpoint,
+                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                        client.ConnectAsync();
+                    client.ConnectAsync();
 
-                        groupClientList.Add(client);
-                    }
+                    groupClientList.Add(client);
                 }
 
                 GroupClients = groupClientList.ToArray();
@@ -91,9 +92,9 @@ namespace PlutoWallet.Model
         /**
          * A Method that assures that when a chain is changed, all views associated also update.
          */
-        public static async Task ChangeChainAsync(int endpointIndex)
+        public static async Task ChangeChainAsync(string endpointKey)
         {
-            int index = Array.IndexOf(groupEndpointIndexes, endpointIndex);
+            int index = Array.IndexOf(groupEndpointKeys, endpointKey);
             SelectedEndpoint = GroupEndpoints[index];
 
             // Set the selected endpoint of the group to be the "main" client
@@ -141,6 +142,26 @@ namespace PlutoWallet.Model
 
             Task getBalance = Model.AssetsModel.GetBalance();
 
+            for (int i = 0; i < GroupEndpoints.Length; i++)
+            {
+                if (GroupEndpoints[i].Name == "Aleph Zero Testnet")
+                {
+                    var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
+
+                    await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
+                }
+
+                if (GroupEndpoints[i].Name == "HydraDX")
+                {
+                    var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
+
+                    await omnipoolLiquidityViewModel.GetLiquidityAmount(GroupClients[i]);
+
+                    var dcaViewModel = DependencyService.Get<DCAViewModel>();
+
+                    await dcaViewModel.GetDCAPosition(GroupClients[i]);
+                }
+            }
         }
 
         private static async Task ConnectClientAsync()
@@ -152,6 +173,7 @@ namespace PlutoWallet.Model
             assetSelectButtonViewModel.AssetId = 0;
             assetSelectButtonViewModel.Pallet = AssetPallet.Native;
             assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
+            assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
 
             Connected = false;
 
@@ -183,21 +205,18 @@ namespace PlutoWallet.Model
             // Setup things, like balances..
             //var customCallsViewModel = DependencyService.Get<CustomCallsViewModel>();
             var mainViewModel = DependencyService.Get<MainViewModel>();
-            var balanceViewModel = DependencyService.Get<BalanceViewModel>();
             var transferViewModel = DependencyService.Get<TransferViewModel>();
             var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
             var calamarViewModel = DependencyService.Get<CalamarViewModel>();
 
-            if(SelectedEndpoint.Name == "Aleph Zero Testnet")
-            {
-                var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
-
-                azeroPrimaryNameViewModel.GetPrimaryName();
-            }
-
+            var identityViewModel = DependencyService.Get<IdentityViewModel>();
+            var referendaViewModel = DependencyService.Get<ReferendaViewModel>();
 
             chainAddressViewModel.SetChainAddress();
             calamarViewModel.Reload();
+            await identityViewModel.GetIdentity();
+
+            await referendaViewModel.GetReferenda();
             //customCallsViewModel.GetMetadata();
 
 

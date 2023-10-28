@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
+namespace Substrate.NetApi.Generated.Model.pallet_im_online
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
         /// <summary>
         /// >> network_state
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueNetworkState _networkState;
+        private Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueNetworkState _networkState;
         
         /// <summary>
         /// >> session_index
@@ -61,7 +61,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueNetworkState NetworkState
+        public Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueNetworkState NetworkState
         {
             get
             {
@@ -130,7 +130,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_im_online
             var start = p;
             BlockNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             BlockNumber.Decode(byteArray, ref p);
-            NetworkState = new PlutoWallet.NetApiExt.Generated.Model.sp_core.offchain.OpaqueNetworkState();
+            NetworkState = new Substrate.NetApi.Generated.Model.sp_core.offchain.OpaqueNetworkState();
             NetworkState.Decode(byteArray, ref p);
             SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);

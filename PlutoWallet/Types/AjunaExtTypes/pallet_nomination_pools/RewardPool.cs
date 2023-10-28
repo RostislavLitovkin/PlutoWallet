@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
+namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> last_recorded_reward_counter
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 _lastRecordedRewardCounter;
+        private Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 _lastRecordedRewardCounter;
         
         /// <summary>
         /// >> last_recorded_total_payouts
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _totalRewardsClaimed;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
         {
             get
             {
@@ -92,7 +92,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            LastRecordedRewardCounter = new PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
+            LastRecordedRewardCounter = new Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128();
             LastRecordedRewardCounter.Decode(byteArray, ref p);
             LastRecordedTotalPayouts = new Substrate.NetApi.Model.Types.Primitive.U128();
             LastRecordedTotalPayouts.Decode(byteArray, ref p);

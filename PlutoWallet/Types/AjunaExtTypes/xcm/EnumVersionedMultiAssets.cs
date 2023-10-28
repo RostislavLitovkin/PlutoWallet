@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm
+namespace Substrate.NetApi.Generated.Model.xcm
 {
     
     
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm
     /// <summary>
     /// >> 84 - Variant[xcm.VersionedMultiAssets]
     /// </summary>
-    public sealed class EnumVersionedMultiAssets : BaseEnumExt<VersionedMultiAssets, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.multiasset.MultiAssets>
+    public sealed class EnumVersionedMultiAssets : BaseEnumExt<VersionedMultiAssets, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>
     {
     }
 }

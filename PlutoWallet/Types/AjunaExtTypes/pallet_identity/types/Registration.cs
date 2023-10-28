@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
+namespace Substrate.NetApi.Generated.Model.pallet_identity.types
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> judgements
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19 _judgements;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19 _judgements;
         
         /// <summary>
         /// >> deposit
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> info
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.IdentityInfo _info;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.IdentityInfo _info;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19 Judgements
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19 Judgements
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.IdentityInfo Info
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.IdentityInfo Info
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Judgements = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19();
+            Judgements = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT19();
             Judgements.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Info = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.IdentityInfo();
+            Info = new Substrate.NetApi.Generated.Model.pallet_identity.types.IdentityInfo();
             Info.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

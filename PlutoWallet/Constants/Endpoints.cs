@@ -1,42 +1,73 @@
 ﻿using System;
+using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Model;
 namespace PlutoWallet.Constants
 {
     public class Endpoints
     {
-        public static int[] DefaultNetworks => new int[4] { 0, 2, 3, -1 };
+        public static string DefaultEndpoints = "[polkadot, kusama]";
 
-        public static List<int[]> NetworkOptions
+        public static string[] GetSelectedEndpointKeys()
         {
-            get
+            string[] endpointKeys = Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints).Trim(new char[] { '[', ']' }).Split(',');
+
+            for(int i = 0; i < endpointKeys.Length; i++)
             {
-                List<int[]> options = new List<int[]>();
+                endpointKeys[i] = endpointKeys[i].Trim();
+            }
 
-                options.Add(DefaultNetworks);
-                options.Add(new int[4] { 0, 6, -1, -1 });
-                options.Add(new int[4] { 0, 1, -1, -1 });
-                options.Add(new int[4] { 4, 5, -1, -1 });
-                options.Add(new int[4] { 8, 10, 9, -1 });
+            return endpointKeys;
+        }
 
-
-                for (int i = 0; i < GetAllEndpoints.Count; i++)
+        public static void SaveEndpoints(List<string> keys)
+        {
+            string result = "[";
+            if (keys.Count() == 0)
+            {
+                result = "[polkadot]";
+            }
+            else
+            {
+                foreach (string key in keys)
                 {
-                    options.Add(new int[4] { i, -1, -1, -1 });
+                    result += key + ", ";
                 }
 
-                return options;
+                result = result.Substring(0, result.Length - 2) + "]";
             }
+
+            Preferences.Set("SelectedNetworks", result);
+
+            // Save it in the plutolayout:
+            string plutoLayoutString = Preferences.Get("PlutoLayout", CustomLayoutModel.DEFAULT_PLUTO_LAYOUT);
+
+            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
+
+            string plutoLayoutResult = itemsAndNetworksStrings[0] + ";" + result;
+
+            for(int i = 2; i < itemsAndNetworksStrings.Length; i++)
+            {
+                plutoLayoutResult += ";" + itemsAndNetworksStrings[i];
+            }
+
+            Preferences.Set("PlutoLayout", plutoLayoutResult);
+
+            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
+            viewModel.SetupDefault();
         }
 
         public static List<Endpoint> GetAllEndpoints => GetEndpointDictionary.Values.ToList();
 
         public static Dictionary<string, Endpoint> GetEndpointDictionary => new Dictionary<string, Endpoint>()
         {
-            {"polkadot", new Endpoint
+            { "polkadot", new Endpoint
             {
                 Name = "Polkadot",
-                URL = "wss://polkadot.api.onfinality.io/public-ws",
+                URL = "wss://rpc.polkadot.io",
                 Icon = "polkadot.png",
                 CalamarChainName = "polkadot",
+                SubSquareChainName = "polkadot",
                 Unit = "Dot",
                 Decimals = 10,
                 SS58Prefix = 0,
@@ -46,8 +77,10 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama",
                 URL = "wss://kusama-rpc.polkadot.io",
-                Icon = "kusama.png",
+                Icon = Application.Current.RequestedTheme == AppTheme.Light ? "kusama.png" : "kusamawhite.png",
+                DarkIcon = Application.Current.RequestedTheme == AppTheme.Dark ? "kusama.png" : "kusamawhite.png",
                 CalamarChainName = "kusama",
+                SubSquareChainName = "kusama",
                 Unit = "KSM",
                 Decimals = 12,
                 SS58Prefix = 2,
@@ -261,8 +294,8 @@ namespace PlutoWallet.Constants
             { "hydradx", new Endpoint
             {
                 Name = "HydraDX",
-                URL = "wss://hydradx.api.onfinality.io/public-ws",
-                Icon = "hydradx.png",
+                URL = "wss://rpc.hydradx.cloud",
+                Icon = "hydradxomnipool.png",
                 Unit = "HDX",
                 SS58Prefix = 63,
                 Decimals = 12,
@@ -270,6 +303,19 @@ namespace PlutoWallet.Constants
                 CalamarChainName = "hydradx",
                 SupportsNfts = true
             } },
+            {
+                "xcavate", new Endpoint
+                {
+                    Name = "XCavate",
+                    URL = "wss://fraa-dancebox-3031-rpc.a.dancebox.tanssi.network",
+                    Icon = "xcavate.png",
+                    Unit = "XCAV",
+                    SS58Prefix = 42,
+                    Decimals = 12,
+                    ChainType = ChainType.Substrate,
+                    SupportsNfts = true,
+                }
+            },
             {
                 "moonriver", new Endpoint
                 {
@@ -279,6 +325,18 @@ namespace PlutoWallet.Constants
                     Unit = "MOVR",
                     SS58Prefix = 1285,
                     Decimals = 18,
+                    ChainType = ChainType.Substrate,
+                }
+            },
+            {
+                "bifrost", new Endpoint
+                {
+                    Name = "Bifrost",
+                    URL = "wss://bifrost-polkadot.api.onfinality.io/public-ws",
+                    Icon = "bifrost.png",
+                    Unit = "BNC",
+                    SS58Prefix = 6,
+                    Decimals = 12,
                     ChainType = ChainType.Substrate,
                 }
             },
@@ -325,7 +383,9 @@ namespace PlutoWallet.Constants
         public string Name { get; set; }
         public string URL { get; set; }
 		public string Icon { get; set; }
+        public string DarkIcon { get; set; }
 		public string CalamarChainName { get; set; }
+        public string SubSquareChainName { get; set; }
 
         // Symbol and Unit are interchangeable names.
 		public string Unit { get; set; }

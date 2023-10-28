@@ -7,8 +7,8 @@ using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using Newtonsoft.Json;
 using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
-using PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
 using PlutoWallet.Types;
 using System.Numerics;
 
@@ -17,7 +17,7 @@ namespace PlutoWallet.Model
 	public class TransferModel
 	{
 
-		public static Method NativeTransfer(AjunaClientExt client, string address, CompactInteger amount)
+		public static Method NativeTransfer(SubstrateClientExt client, string address, CompactInteger amount)
 		{
             // Later: Recognize what type of the address it is and convert it into ss58 one
             var accountId = new AccountId32();
@@ -37,7 +37,7 @@ namespace PlutoWallet.Model
             return new Method(palletIndex, "Balances", callIndex, "transfer_keep_alive", byteArray.ToArray());
         }
 
-        public static Method AssetsTransfer(AjunaClientExt client, string address, BigInteger assetId, CompactInteger amount)
+        public static Method AssetsTransfer(SubstrateClientExt client, string address, BigInteger assetId, CompactInteger amount)
         {
             // Even if the assetId is different type than U128,
             // like for example U32, it will still result in the same bytes after the .Encode().

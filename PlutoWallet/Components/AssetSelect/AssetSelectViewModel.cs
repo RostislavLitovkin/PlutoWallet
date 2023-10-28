@@ -38,8 +38,9 @@ namespace PlutoWallet.Components.AssetSelect
 					assetSelectButtonViewModel.AssetId == a.AssetId &&
 					assetSelectButtonViewModel.ChainIcon == a.ChainIcon &&
 					assetSelectButtonViewModel.Pallet == a.Pallet &&
-					assetSelectButtonViewModel.Symbol == a.Symbol
-				);
+					assetSelectButtonViewModel.Symbol == a.Symbol &&
+                    assetSelectButtonViewModel.Decimals == a.Decimals
+                );
 
                 tempAssets.Add(new AssetSelect
 				{
@@ -51,6 +52,7 @@ namespace PlutoWallet.Components.AssetSelect
 					Endpoint = a.Endpoint,
 					Symbol = a.Symbol,
 					IsSelected = isSelected,
+					Decimals = a.Decimals,
                 });
 			}
 

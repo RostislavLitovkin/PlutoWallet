@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
+namespace Substrate.NetApi.Generated.Model.pallet_identity.types
 {
     
     
@@ -27,49 +27,49 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> additional
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2 _additional;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2 _additional;
         
         /// <summary>
         /// >> display
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _display;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _display;
         
         /// <summary>
         /// >> legal
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _legal;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _legal;
         
         /// <summary>
         /// >> web
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _web;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _web;
         
         /// <summary>
         /// >> riot
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _riot;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _riot;
         
         /// <summary>
         /// >> email
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _email;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _email;
         
         /// <summary>
         /// >> pgp_fingerprint
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> _pgpFingerprint;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr20U8> _pgpFingerprint;
         
         /// <summary>
         /// >> image
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _image;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _image;
         
         /// <summary>
         /// >> twitter
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData _twitter;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData _twitter;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2 Additional
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2 Additional
         {
             get
             {
@@ -81,7 +81,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Display
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Display
         {
             get
             {
@@ -93,7 +93,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Legal
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Legal
         {
             get
             {
@@ -105,7 +105,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Web
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Web
         {
             get
             {
@@ -117,7 +117,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Riot
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Riot
         {
             get
             {
@@ -129,7 +129,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Email
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Email
         {
             get
             {
@@ -141,7 +141,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8> PgpFingerprint
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr20U8> PgpFingerprint
         {
             get
             {
@@ -153,7 +153,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Image
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Image
         {
             get
             {
@@ -165,7 +165,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData Twitter
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData Twitter
         {
             get
             {
@@ -200,23 +200,23 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Additional = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2();
+            Additional = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT2();
             Additional.Decode(byteArray, ref p);
-            Display = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Display = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Display.Decode(byteArray, ref p);
-            Legal = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Legal = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Legal.Decode(byteArray, ref p);
-            Web = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Web = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Web.Decode(byteArray, ref p);
-            Riot = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Riot = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Riot.Decode(byteArray, ref p);
-            Email = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Email = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Email.Decode(byteArray, ref p);
-            PgpFingerprint = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Types.Base.Arr20U8>();
+            PgpFingerprint = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Types.Base.Arr20U8>();
             PgpFingerprint.Decode(byteArray, ref p);
-            Image = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Image = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Image.Decode(byteArray, ref p);
-            Twitter = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.EnumData();
+            Twitter = new Substrate.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Twitter.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

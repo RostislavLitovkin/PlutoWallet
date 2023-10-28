@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> candidate_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash _candidateHash;
+        private Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash _candidateHash;
         
         /// <summary>
         /// >> session
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> statements
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature>> _statements;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature>> _statements;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash CandidateHash
+        public Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash CandidateHash
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature>> Statements
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature>> Statements
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            CandidateHash = new PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash();
+            CandidateHash = new Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash();
             CandidateHash.Decode(byteArray, ref p);
             Session = new Substrate.NetApi.Model.Types.Primitive.U32();
             Session.Decode(byteArray, ref p);
-            Statements = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ValidatorIndex, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Signature>>();
+            Statements = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.EnumDisputeStatement, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ValidatorIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature>>();
             Statements.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

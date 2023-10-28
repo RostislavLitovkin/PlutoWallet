@@ -79,6 +79,24 @@ namespace PlutoWallet.Model
             return num;
         }
 
+        public static U16 GetU16FromTwox_64Concat(string hash)
+        {
+            if (hash.Substring(0, 2) == "0x")
+            {
+                hash = hash.Substring(2);
+            }
+
+            if (hash.Length != 20)
+            {
+                throw new Exception("bad hash input");
+            }
+
+            U16 num = new U16();
+            num.Create(Utils.HexToByteArray(hash.Substring(16, 4)));
+
+            return num;
+        }
+
         public static BigInteger GetBigIntegerFromBlake2_128Concat(string hash)
         {
             if (hash.Substring(0, 2) == "0x")
@@ -112,6 +130,11 @@ namespace PlutoWallet.Model
             if (hash.Length == 24)
             {
                 return GetU32FromTwox_64Concat(hash).Value;
+            }
+
+            if (hash.Length == 20)
+            {
+                return GetU16FromTwox_64Concat(hash).Value;
             }
 
             throw new Exception("Hash is in bad format");

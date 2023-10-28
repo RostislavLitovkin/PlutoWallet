@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.origin.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.origin.pallet
 {
     
     
@@ -24,7 +24,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.orig
     /// <summary>
     /// >> 260 - Variant[polkadot_runtime_parachains.origin.pallet.Origin]
     /// </summary>
-    public sealed class EnumOrigin : BaseEnumExt<Origin, PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id>
+    public sealed class EnumOrigin : BaseEnumExt<Origin, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>
     {
     }
 }

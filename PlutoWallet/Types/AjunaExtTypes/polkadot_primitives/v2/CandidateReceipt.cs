@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> descriptor
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateDescriptor _descriptor;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor _descriptor;
         
         /// <summary>
         /// >> commitments_hash
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _commitmentsHash;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _commitmentsHash;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateDescriptor Descriptor
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor Descriptor
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 CommitmentsHash
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 CommitmentsHash
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Descriptor = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CandidateDescriptor();
+            Descriptor = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor();
             Descriptor.Decode(byteArray, ref p);
-            CommitmentsHash = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            CommitmentsHash = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             CommitmentsHash.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

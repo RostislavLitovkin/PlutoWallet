@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_elections_phragmen
+namespace Substrate.NetApi.Generated.Model.pallet_elections_phragmen
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_elections_phragmen
         /// <summary>
         /// >> votes
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> _votes;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _votes;
         
         /// <summary>
         /// >> stake
@@ -39,7 +39,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_elections_phragmen
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> Votes
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Votes
         {
             get
             {
@@ -92,7 +92,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_elections_phragmen
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Votes = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>();
+            Votes = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Votes.Decode(byteArray, ref p);
             Stake = new Substrate.NetApi.Model.Types.Primitive.U128();
             Stake.Decode(byteArray, ref p);

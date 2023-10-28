@@ -65,7 +65,7 @@ public partial class NftTitleView : ContentView
     {
         if (KodadotUnlockableUrl.IsSome(out var url))
         {
-            await Navigation.PushAsync(new Kodadot.KodadotUnlockablePage(url));
+            await Navigation.PushAsync(new WebView.WebViewPage(url));
         }
     }
 }

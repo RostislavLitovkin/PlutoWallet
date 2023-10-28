@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset
+namespace Substrate.NetApi.Generated.Model.xcm.v2.multiasset
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset
         /// <summary>
         /// >> id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumAssetId _id;
+        private Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId _id;
         
         /// <summary>
         /// >> fun
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumFungibility _fun;
+        private Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumFungibility _fun;
         
-        public PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumAssetId Id
+        public Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId Id
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumFungibility Fun
+        public Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumFungibility Fun
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumAssetId();
+            Id = new Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId();
             Id.Decode(byteArray, ref p);
-            Fun = new PlutoWallet.NetApiExt.Generated.Model.xcm.v2.multiasset.EnumFungibility();
+            Fun = new Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumFungibility();
             Fun.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

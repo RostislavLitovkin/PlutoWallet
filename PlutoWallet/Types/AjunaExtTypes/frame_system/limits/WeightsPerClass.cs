@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
+namespace Substrate.NetApi.Generated.Model.frame_system.limits
 {
     
     
@@ -27,24 +27,24 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         /// <summary>
         /// >> base_extrinsic
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight _baseExtrinsic;
+        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _baseExtrinsic;
         
         /// <summary>
         /// >> max_extrinsic
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> _maxExtrinsic;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> _maxExtrinsic;
         
         /// <summary>
         /// >> max_total
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> _maxTotal;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> _maxTotal;
         
         /// <summary>
         /// >> reserved
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> _reserved;
+        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> _reserved;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight BaseExtrinsic
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight BaseExtrinsic
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> MaxExtrinsic
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> MaxExtrinsic
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> MaxTotal
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> MaxTotal
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight> Reserved
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> Reserved
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.limits
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            BaseExtrinsic = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            BaseExtrinsic = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             BaseExtrinsic.Decode(byteArray, ref p);
-            MaxExtrinsic = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>();
+            MaxExtrinsic = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>();
             MaxExtrinsic.Decode(byteArray, ref p);
-            MaxTotal = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>();
+            MaxTotal = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>();
             MaxTotal.Decode(byteArray, ref p);
-            Reserved = new Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight>();
+            Reserved = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>();
             Reserved.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

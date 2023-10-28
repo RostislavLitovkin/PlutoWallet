@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.pallet.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_staking.pallet.pallet
 {
     
     

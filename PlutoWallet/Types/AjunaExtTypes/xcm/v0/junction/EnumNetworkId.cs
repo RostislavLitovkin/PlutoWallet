@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction
+namespace Substrate.NetApi.Generated.Model.xcm.v0.junction
 {
     
     
@@ -30,7 +30,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v0.junction
     /// <summary>
     /// >> 126 - Variant[xcm.v0.junction.NetworkId]
     /// </summary>
-    public sealed class EnumNetworkId : BaseEnumExt<NetworkId, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseVoid>
+    public sealed class EnumNetworkId : BaseEnumExt<NetworkId, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.bounded.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseVoid>
     {
     }
 }

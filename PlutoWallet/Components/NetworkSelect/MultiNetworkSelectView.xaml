@@ -17,7 +17,7 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <networkselect:NetworkBubbleView Tapped="OnNetworkClicked"
-                                                 EndpointIndex="{Binding EndpointIndex}"
+                                                 EndpointKey="{Binding EndpointKey}"
                                                  ShowName="{Binding ShowName}"
                                                  Name="{Binding Name}"
                                                  Icon="{Binding Icon}">

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -37,7 +37,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> receiver
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _receiver;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _receiver;
         
         /// <summary>
         /// >> amount
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Receiver
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Receiver
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             Collection.Decode(byteArray, ref p);
             Item = new Substrate.NetApi.Model.Types.Primitive.U32();
             Item.Decode(byteArray, ref p);
-            Receiver = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Receiver = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Receiver.Decode(byteArray, ref p);
             Amount = new Substrate.NetApi.Model.Types.Primitive.U128();
             Amount.Decode(byteArray, ref p);

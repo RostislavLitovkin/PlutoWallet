@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
+namespace Substrate.NetApi.Generated.Model.pallet_assets.types
 {
     
     
@@ -27,22 +27,22 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
         /// <summary>
         /// >> owner
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _owner;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _owner;
         
         /// <summary>
         /// >> issuer
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _issuer;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _issuer;
         
         /// <summary>
         /// >> admin
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _admin;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _admin;
         
         /// <summary>
         /// >> freezer
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _freezer;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _freezer;
         
         /// <summary>
         /// >> supply
@@ -82,9 +82,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
         /// <summary>
         /// >> status
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumAssetStatus _status;
+        private Substrate.NetApi.Generated.Model.pallet_assets.types.EnumAssetStatus _status;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Owner
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Owner
         {
             get
             {
@@ -96,7 +96,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Issuer
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Issuer
         {
             get
             {
@@ -108,7 +108,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Admin
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Admin
         {
             get
             {
@@ -120,7 +120,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Freezer
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Freezer
         {
             get
             {
@@ -216,7 +216,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumAssetStatus Status
+        public Substrate.NetApi.Generated.Model.pallet_assets.types.EnumAssetStatus Status
         {
             get
             {
@@ -254,13 +254,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Owner = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Owner = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Owner.Decode(byteArray, ref p);
-            Issuer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Issuer = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Issuer.Decode(byteArray, ref p);
-            Admin = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Admin = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Admin.Decode(byteArray, ref p);
-            Freezer = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Freezer = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Freezer.Decode(byteArray, ref p);
             Supply = new Substrate.NetApi.Model.Types.Primitive.U128();
             Supply.Decode(byteArray, ref p);
@@ -276,7 +276,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types
             Sufficients.Decode(byteArray, ref p);
             Approvals = new Substrate.NetApi.Model.Types.Primitive.U32();
             Approvals.Decode(byteArray, ref p);
-            Status = new PlutoWallet.NetApiExt.Generated.Model.pallet_assets.types.EnumAssetStatus();
+            Status = new Substrate.NetApi.Generated.Model.pallet_assets.types.EnumAssetStatus();
             Status.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

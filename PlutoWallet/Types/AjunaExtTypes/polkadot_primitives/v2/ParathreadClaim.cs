@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         /// <summary>
         /// >> Id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id _id;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id _id;
         
         /// <summary>
         /// >> CollatorId
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public _collatorId;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public _collatorId;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id Id
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id Id
         {
             get
             {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public CollatorId
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public CollatorId
         {
             get
             {
@@ -74,9 +74,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Id = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id();
+            Id = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
             Id.Decode(byteArray, ref p);
-            CollatorId = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.collator_app.Public();
+            CollatorId = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.collator_app.Public();
             CollatorId.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

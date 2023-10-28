@@ -79,6 +79,12 @@ public partial class AssetSelectorView : ContentView
        propertyChanging: (bindable, oldValue, newValue) => {
        });
 
+    public static readonly BindableProperty DecimalsProperty = BindableProperty.Create(
+       nameof(Decimals), typeof(int), typeof(AssetSelectorView),
+       defaultBindingMode: BindingMode.TwoWay,
+       propertyChanging: (bindable, oldValue, newValue) => {
+       });
+
     public AssetSelectorView()
 	{
 		InitializeComponent();
@@ -140,6 +146,13 @@ public partial class AssetSelectorView : ContentView
         set => SetValue(UsdValueProperty, value);
     }
 
+    public int Decimals
+    {
+        get => (int)GetValue(DecimalsProperty);
+
+        set => SetValue(DecimalsProperty, value);
+    }
+
     async void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         
@@ -148,8 +161,6 @@ public partial class AssetSelectorView : ContentView
 
         assetSelectViewModel.IsVisible = false;
         
-        
-
         var networkingViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
         foreach (NetworkSelectInfo info in networkingViewModel.NetworkInfos)
         {
@@ -167,6 +178,7 @@ public partial class AssetSelectorView : ContentView
         assetSelectButtonViewModel.AssetId = AssetId;
         assetSelectButtonViewModel.Pallet = Pallet;
         assetSelectButtonViewModel.Endpoint = Endpoint;
+        assetSelectButtonViewModel.Decimals = Decimals;
 
         // Update the fee
         var transferViewModel = DependencyService.Get<TransferViewModel>();

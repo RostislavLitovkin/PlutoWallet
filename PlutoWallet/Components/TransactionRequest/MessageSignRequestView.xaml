@@ -34,7 +34,7 @@
 
                 <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 
-                <Button Text="Sing and submit"
+                <Button Text="Sign and submit"
                         Clicked="OnSubmitClicked" />
 
                 <Button Text="Reject" BackgroundColor="DarkRed"

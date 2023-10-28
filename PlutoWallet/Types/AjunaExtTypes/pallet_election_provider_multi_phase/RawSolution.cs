@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_phase
+namespace Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         /// <summary>
         /// >> solution
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.NposCompactSolution16 _solution;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime.NposCompactSolution16 _solution;
         
         /// <summary>
         /// >> score
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore _score;
+        private Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore _score;
         
         /// <summary>
         /// >> round
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _round;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.NposCompactSolution16 Solution
+        public Substrate.NetApi.Generated.Model.polkadot_runtime.NposCompactSolution16 Solution
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore Score
+        public Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore Score
         {
             get
             {
@@ -92,9 +92,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_election_provider_multi_p
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Solution = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime.NposCompactSolution16();
+            Solution = new Substrate.NetApi.Generated.Model.polkadot_runtime.NposCompactSolution16();
             Solution.Decode(byteArray, ref p);
-            Score = new PlutoWallet.NetApiExt.Generated.Model.sp_npos_elections.ElectionScore();
+            Score = new Substrate.NetApi.Generated.Model.sp_npos_elections.ElectionScore();
             Score.Decode(byteArray, ref p);
             Round = new Substrate.NetApi.Model.Types.Primitive.U32();
             Round.Decode(byteArray, ref p);

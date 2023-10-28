@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.traits
+namespace Substrate.NetApi.Generated.Model.xcm.v3.traits
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v3.traits
     /// <summary>
     /// >> 44 - Variant[xcm.v3.traits.Outcome]
     /// </summary>
-    public sealed class EnumOutcome : BaseEnumExt<Outcome, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.traits.EnumError>, PlutoWallet.NetApiExt.Generated.Model.xcm.v3.traits.EnumError>
+    public sealed class EnumOutcome : BaseEnumExt<Outcome, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseTuple<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Generated.Model.xcm.v3.traits.EnumError>, Substrate.NetApi.Generated.Model.xcm.v3.traits.EnumError>
     {
     }
 }

@@ -26,53 +26,53 @@ namespace PlutoWallet.Model.Storage
     {
         
         // Substrate client for the storage calls.
-        private AjunaClientExt _client;
+        private SubstrateClientExt _client;
         
-        public NftsStorage(AjunaClientExt client)
+        public NftsStorage(SubstrateClientExt client)
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "Collection"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionDetails)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionDetails)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "OwnershipAcceptance"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "CollectionAccount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "CollectionRoleOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT3)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT3)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "Item"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDetails)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDetails)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "CollectionMetadataOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionMetadata)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "ItemMetadataOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadata)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadata)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "Attribute"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.AttributeDeposit>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Substrate.NetApi.Generated.Model.pallet_nfts.types.AttributeDeposit>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "ItemPriceOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "ItemAttributesApprovalsOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "NextCollectionId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "PendingSwapOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PendingSwap)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.PendingSwap)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "CollectionConfigOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Nfts", "ItemConfigOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemConfig)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemConfig)));
         }
         
         /// <summary>
@@ -99,10 +99,10 @@ namespace PlutoWallet.Model.Storage
         /// >> Collection
         ///  Details of a collection.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionDetails> Collection(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionDetails> Collection(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
         {
             string parameters = NftsStorage.CollectionParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionDetails>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionDetails>(parameters, token);
             return result;
         }
         
@@ -110,7 +110,7 @@ namespace PlutoWallet.Model.Storage
         /// >> OwnershipAcceptanceParams
         ///  The collection, if any, of which an account is willing to take ownership.
         /// </summary>
-        public static string OwnershipAcceptanceParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string OwnershipAcceptanceParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Nfts", "OwnershipAcceptance", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -130,7 +130,7 @@ namespace PlutoWallet.Model.Storage
         /// >> OwnershipAcceptance
         ///  The collection, if any, of which an account is willing to take ownership.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> OwnershipAcceptance(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> OwnershipAcceptance(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = NftsStorage.OwnershipAcceptanceParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, token);
@@ -142,7 +142,7 @@ namespace PlutoWallet.Model.Storage
         ///  The items held by any given account; set out this way so that items owned by a single
         ///  account can be enumerated.
         /// </summary>
-        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("Nfts", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -164,7 +164,7 @@ namespace PlutoWallet.Model.Storage
         ///  The items held by any given account; set out this way so that items owned by a single
         ///  account can be enumerated.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.AccountParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, token);
@@ -176,7 +176,7 @@ namespace PlutoWallet.Model.Storage
         ///  The collections owned by any given account; set out this way so that collections owned by
         ///  a single account can be enumerated.
         /// </summary>
-        public static string CollectionAccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string CollectionAccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("Nfts", "CollectionAccount", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -197,7 +197,7 @@ namespace PlutoWallet.Model.Storage
         ///  The collections owned by any given account; set out this way so that collections owned by
         ///  a single account can be enumerated.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> CollectionAccount(Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> CollectionAccount(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.CollectionAccountParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, token);
@@ -209,7 +209,7 @@ namespace PlutoWallet.Model.Storage
         ///  The items in existence and their ownership details.
         ///  Stores collection roles as per account.
         /// </summary>
-        public static string CollectionRoleOfParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string CollectionRoleOfParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("Nfts", "CollectionRoleOf", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -230,10 +230,10 @@ namespace PlutoWallet.Model.Storage
         ///  The items in existence and their ownership details.
         ///  Stores collection roles as per account.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT3> CollectionRoleOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT3> CollectionRoleOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, CancellationToken token)
         {
             string parameters = NftsStorage.CollectionRoleOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT3>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT3>(parameters, token);
             return result;
         }
         
@@ -261,10 +261,10 @@ namespace PlutoWallet.Model.Storage
         /// >> Item
         ///  The items in existence and their ownership details.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDetails> Item(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDetails> Item(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.ItemParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDetails>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDetails>(parameters, token);
             return result;
         }
         
@@ -292,10 +292,10 @@ namespace PlutoWallet.Model.Storage
         /// >> CollectionMetadataOf
         ///  Metadata of a collection.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionMetadata> CollectionMetadataOf(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata> CollectionMetadataOf(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
         {
             string parameters = NftsStorage.CollectionMetadataOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionMetadata>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata>(parameters, token);
             return result;
         }
         
@@ -323,10 +323,10 @@ namespace PlutoWallet.Model.Storage
         /// >> ItemMetadataOf
         ///  Metadata of an item.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadata> ItemMetadataOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadata> ItemMetadataOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.ItemMetadataOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemMetadata>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemMetadata>(parameters, token);
             return result;
         }
         
@@ -334,7 +334,7 @@ namespace PlutoWallet.Model.Storage
         /// >> AttributeParams
         ///  Attributes of a collection.
         /// </summary>
-        public static string AttributeParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6> key)
+        public static string AttributeParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6> key)
         {
             return RequestGenerator.GetStorage("Nfts", "Attribute", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -356,10 +356,10 @@ namespace PlutoWallet.Model.Storage
         /// >> Attribute
         ///  Attributes of a collection.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.AttributeDeposit>> Attribute(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Substrate.NetApi.Generated.Model.pallet_nfts.types.AttributeDeposit>> Attribute(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6> key, CancellationToken token)
         {
             string parameters = NftsStorage.AttributeParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.AttributeDeposit>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Substrate.NetApi.Generated.Model.pallet_nfts.types.AttributeDeposit>>(parameters, token);
             return result;
         }
         
@@ -387,10 +387,10 @@ namespace PlutoWallet.Model.Storage
         /// >> ItemPriceOf
         ///  A price of an item.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>>> ItemPriceOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>>> ItemPriceOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.ItemPriceOfParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>>>(parameters, token);
             return result;
         }
         
@@ -418,10 +418,10 @@ namespace PlutoWallet.Model.Storage
         /// >> ItemAttributesApprovalsOf
         ///  Item attribute approvals.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet> ItemAttributesApprovalsOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet> ItemAttributesApprovalsOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.ItemAttributesApprovalsOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_set.BoundedBTreeSet>(parameters, token);
             return result;
         }
         
@@ -480,10 +480,10 @@ namespace PlutoWallet.Model.Storage
         /// >> PendingSwapOf
         ///  Handles all the pending swaps.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PendingSwap> PendingSwapOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.PendingSwap> PendingSwapOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.PendingSwapOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PendingSwap>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.PendingSwap>(parameters, token);
             return result;
         }
         
@@ -511,10 +511,10 @@ namespace PlutoWallet.Model.Storage
         /// >> CollectionConfigOf
         ///  Config of a collection.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig> CollectionConfigOf(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig> CollectionConfigOf(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
         {
             string parameters = NftsStorage.CollectionConfigOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig>(parameters, token);
             return result;
         }
         
@@ -542,10 +542,10 @@ namespace PlutoWallet.Model.Storage
         /// >> ItemConfigOf
         ///  Config of an item.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemConfig> ItemConfigOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemConfig> ItemConfigOf(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = NftsStorage.ItemConfigOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemConfig>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemConfig>(parameters, token);
             return result;
         }
     }
@@ -557,7 +557,7 @@ namespace PlutoWallet.Model.Storage
         /// >> create
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Create(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig config)
+        public static Method Create(Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig config)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(admin.Encode());
@@ -569,7 +569,7 @@ namespace PlutoWallet.Model.Storage
         /// >> force_create
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceCreate(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig config)
+        public static Method ForceCreate(Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig config)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(owner.Encode());
@@ -581,7 +581,7 @@ namespace PlutoWallet.Model.Storage
         /// >> destroy
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Destroy(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.DestroyWitness witness)
+        public static Method Destroy(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.pallet_nfts.types.DestroyWitness witness)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -593,7 +593,7 @@ namespace PlutoWallet.Model.Storage
         /// >> mint
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Mint(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress mint_to, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.MintWitness> witness_data)
+        public static Method Mint(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress mint_to, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.MintWitness> witness_data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -607,7 +607,7 @@ namespace PlutoWallet.Model.Storage
         /// >> force_mint
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceMint(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress mint_to, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemConfig item_config)
+        public static Method ForceMint(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress mint_to, Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemConfig item_config)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -633,7 +633,7 @@ namespace PlutoWallet.Model.Storage
         /// >> transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Transfer(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest)
+        public static Method Transfer(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -682,7 +682,7 @@ namespace PlutoWallet.Model.Storage
         /// >> lock_collection
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method LockCollection(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT1 lock_settings)
+        public static Method LockCollection(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT1 lock_settings)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -694,7 +694,7 @@ namespace PlutoWallet.Model.Storage
         /// >> transfer_ownership
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method TransferOwnership(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
+        public static Method TransferOwnership(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -706,7 +706,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_team
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetTeam(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> issuer, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> admin, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> freezer)
+        public static Method SetTeam(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> issuer, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> admin, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> freezer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -720,7 +720,7 @@ namespace PlutoWallet.Model.Storage
         /// >> force_collection_owner
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceCollectionOwner(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
+        public static Method ForceCollectionOwner(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -732,7 +732,7 @@ namespace PlutoWallet.Model.Storage
         /// >> force_collection_config
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceCollectionConfig(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CollectionConfig config)
+        public static Method ForceCollectionConfig(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.pallet_nfts.types.CollectionConfig config)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -744,7 +744,7 @@ namespace PlutoWallet.Model.Storage
         /// >> approve_transfer
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ApproveTransfer(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_deadline)
+        public static Method ApproveTransfer(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_deadline)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -758,7 +758,7 @@ namespace PlutoWallet.Model.Storage
         /// >> cancel_approval
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method CancelApproval(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method CancelApproval(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -797,7 +797,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_attribute
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetAttribute(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 value)
+        public static Method SetAttribute(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -812,7 +812,7 @@ namespace PlutoWallet.Model.Storage
         /// >> force_set_attribute
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ForceSetAttribute(Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32> set_as, Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 value)
+        public static Method ForceSetAttribute(Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> set_as, Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(set_as.Encode());
@@ -828,7 +828,7 @@ namespace PlutoWallet.Model.Storage
         /// >> clear_attribute
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ClearAttribute(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key)
+        public static Method ClearAttribute(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_item, Substrate.NetApi.Generated.Model.pallet_nfts.types.EnumAttributeNamespace @namespace, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -842,7 +842,7 @@ namespace PlutoWallet.Model.Storage
         /// >> approve_item_attributes
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ApproveItemAttributes(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method ApproveItemAttributes(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -855,7 +855,7 @@ namespace PlutoWallet.Model.Storage
         /// >> cancel_item_attributes_approval
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method CancelItemAttributesApproval(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.CancelAttributesApprovalWitness witness)
+        public static Method CancelItemAttributesApproval(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Generated.Model.pallet_nfts.types.CancelAttributesApprovalWitness witness)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -869,7 +869,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_metadata
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetMetadata(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 data)
+        public static Method SetMetadata(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -894,7 +894,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_collection_metadata
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetCollectionMetadata(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 data)
+        public static Method SetCollectionMetadata(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -940,7 +940,7 @@ namespace PlutoWallet.Model.Storage
         /// >> update_mint_settings
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method UpdateMintSettings(Substrate.NetApi.Model.Types.Primitive.U32 collection, PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.MintSettings mint_settings)
+        public static Method UpdateMintSettings(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Generated.Model.pallet_nfts.types.MintSettings mint_settings)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -952,7 +952,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_price
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetPrice(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> price, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> whitelisted_buyer)
+        public static Method SetPrice(Substrate.NetApi.Model.Types.Primitive.U32 collection, Substrate.NetApi.Model.Types.Primitive.U32 item, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> price, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress> whitelisted_buyer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(collection.Encode());
@@ -979,7 +979,7 @@ namespace PlutoWallet.Model.Storage
         /// >> pay_tips
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method PayTips(PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15 tips)
+        public static Method PayTips(Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15 tips)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(tips.Encode());
@@ -990,7 +990,7 @@ namespace PlutoWallet.Model.Storage
         /// >> create_swap
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method CreateSwap(Substrate.NetApi.Model.Types.Primitive.U32 offered_collection, Substrate.NetApi.Model.Types.Primitive.U32 offered_item, Substrate.NetApi.Model.Types.Primitive.U32 desired_collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_desired_item, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PriceWithDirection> maybe_price, Substrate.NetApi.Model.Types.Primitive.U32 duration)
+        public static Method CreateSwap(Substrate.NetApi.Model.Types.Primitive.U32 offered_collection, Substrate.NetApi.Model.Types.Primitive.U32 offered_item, Substrate.NetApi.Model.Types.Primitive.U32 desired_collection, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_desired_item, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.PriceWithDirection> maybe_price, Substrate.NetApi.Model.Types.Primitive.U32 duration)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(offered_collection.Encode());
@@ -1018,7 +1018,7 @@ namespace PlutoWallet.Model.Storage
         /// >> claim_swap
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method ClaimSwap(Substrate.NetApi.Model.Types.Primitive.U32 send_collection, Substrate.NetApi.Model.Types.Primitive.U32 send_item, Substrate.NetApi.Model.Types.Primitive.U32 receive_collection, Substrate.NetApi.Model.Types.Primitive.U32 receive_item, Substrate.NetApi.Model.Types.Base.BaseOpt<PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PriceWithDirection> witness_price)
+        public static Method ClaimSwap(Substrate.NetApi.Model.Types.Primitive.U32 send_collection, Substrate.NetApi.Model.Types.Primitive.U32 send_item, Substrate.NetApi.Model.Types.Primitive.U32 receive_collection, Substrate.NetApi.Model.Types.Primitive.U32 receive_item, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_nfts.types.PriceWithDirection> witness_price)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(send_collection.Encode());
@@ -1033,7 +1033,7 @@ namespace PlutoWallet.Model.Storage
         /// >> mint_pre_signed
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method MintPreSigned(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PreSignedMint mint_data, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSignature signature, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 signer)
+        public static Method MintPreSigned(Substrate.NetApi.Generated.Model.pallet_nfts.types.PreSignedMint mint_data, Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature signature, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 signer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(mint_data.Encode());
@@ -1046,7 +1046,7 @@ namespace PlutoWallet.Model.Storage
         /// >> set_attributes_pre_signed
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetAttributesPreSigned(PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.PreSignedAttributes data, PlutoWallet.NetApiExt.Generated.Model.sp_runtime.EnumMultiSignature signature, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 signer)
+        public static Method SetAttributesPreSigned(Substrate.NetApi.Generated.Model.pallet_nfts.types.PreSignedAttributes data, Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature signature, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 signer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(data.Encode());
@@ -1207,9 +1207,9 @@ namespace PlutoWallet.Model.Storage
         /// >> Features
         ///  Disables some of pallet's features.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT4 Features()
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT4 Features()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT4();
+            var result = new Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT4();
             result.Create("0x0000000000000000");
             return result;
         }

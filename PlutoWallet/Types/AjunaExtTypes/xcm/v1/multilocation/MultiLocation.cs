@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
+namespace Substrate.NetApi.Generated.Model.xcm.v1.multilocation
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
         /// <summary>
         /// >> interior
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation.EnumJunctions _interior;
+        private Substrate.NetApi.Generated.Model.xcm.v1.multilocation.EnumJunctions _interior;
         
         public Substrate.NetApi.Model.Types.Primitive.U8 Parents
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation.EnumJunctions Interior
+        public Substrate.NetApi.Generated.Model.xcm.v1.multilocation.EnumJunctions Interior
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation
             var start = p;
             Parents = new Substrate.NetApi.Model.Types.Primitive.U8();
             Parents.Decode(byteArray, ref p);
-            Interior = new PlutoWallet.NetApiExt.Generated.Model.xcm.v1.multilocation.EnumJunctions();
+            Interior = new Substrate.NetApi.Generated.Model.xcm.v1.multilocation.EnumJunctions();
             Interior.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

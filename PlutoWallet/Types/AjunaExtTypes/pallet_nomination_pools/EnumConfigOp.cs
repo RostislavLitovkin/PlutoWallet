@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
+namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 373 - Variant[pallet_nomination_pools.ConfigOp]
     /// </summary>
-    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
     {
     }
 }

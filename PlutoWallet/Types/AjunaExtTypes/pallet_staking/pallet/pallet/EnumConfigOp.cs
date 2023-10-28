@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.pallet.pallet
+namespace Substrate.NetApi.Generated.Model.pallet_staking.pallet.pallet
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_staking.pallet.pallet
     /// <summary>
     /// >> 210 - Variant[pallet_staking.pallet.pallet.ConfigOp]
     /// </summary>
-    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_arithmetic.per_things.Perbill, BaseVoid>
+    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, BaseVoid>
     {
     }
 }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
+namespace Substrate.NetApi.Generated.Model.sp_consensus_babe.digests
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
         /// <summary>
         /// >> slot
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot _slot;
+        private Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot _slot;
         
         public Substrate.NetApi.Model.Types.Primitive.U32 AuthorityIndex
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot Slot
+        public Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot Slot
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
             var start = p;
             AuthorityIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             AuthorityIndex.Decode(byteArray, ref p);
-            Slot = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_slots.Slot();
+            Slot = new Substrate.NetApi.Generated.Model.sp_consensus_slots.Slot();
             Slot.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

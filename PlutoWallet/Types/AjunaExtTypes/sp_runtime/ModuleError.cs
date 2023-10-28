@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
+namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
@@ -32,7 +32,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
         /// <summary>
         /// >> error
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8 _error;
+        private Substrate.NetApi.Generated.Types.Base.Arr4U8 _error;
         
         public Substrate.NetApi.Model.Types.Primitive.U8 Index
         {
@@ -46,7 +46,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8 Error
+        public Substrate.NetApi.Generated.Types.Base.Arr4U8 Error
         {
             get
             {
@@ -76,7 +76,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_runtime
             var start = p;
             Index = new Substrate.NetApi.Model.Types.Primitive.U8();
             Index.Decode(byteArray, ref p);
-            Error = new PlutoWallet.NetApiExt.Generated.Types.Base.Arr4U8();
+            Error = new Substrate.NetApi.Generated.Types.Base.Arr4U8();
             Error.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

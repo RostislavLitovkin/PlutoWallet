@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.disputes.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.pallet
 {
     
     
@@ -34,7 +34,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.disp
     ///			by this pallet.
     ///			
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>, BaseTuple<PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash, PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>, PlutoWallet.NetApiExt.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>, Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
+namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> normal
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _normal;
+        private Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass _normal;
         
         /// <summary>
         /// >> operational
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _operational;
+        private Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass _operational;
         
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass _mandatory;
+        private Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass _mandatory;
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Normal
+        public Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass Normal
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Operational
+        public Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass Operational
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass Mandatory
+        public Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass Mandatory
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_support.dispatch
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Normal = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Normal = new Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass();
             Normal.Decode(byteArray, ref p);
-            Operational = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Operational = new Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass();
             Operational.Decode(byteArray, ref p);
-            Mandatory = new PlutoWallet.NetApiExt.Generated.Model.frame_system.limits.WeightsPerClass();
+            Mandatory = new Substrate.NetApi.Generated.Model.frame_system.limits.WeightsPerClass();
             Mandatory.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

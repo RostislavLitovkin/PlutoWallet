@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> settings
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2 _settings;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2 _settings;
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2 Settings
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2 Settings
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Settings = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.BitFlagsT2();
+            Settings = new Substrate.NetApi.Generated.Model.pallet_nfts.types.BitFlagsT2();
             Settings.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

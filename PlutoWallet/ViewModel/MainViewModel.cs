@@ -6,8 +6,12 @@ namespace PlutoWallet.ViewModel
 {
     internal partial class MainViewModel : ObservableObject
     {
-        public string PublicKey => KeysModel.GetPublicKey();
+        [ObservableProperty]
+        private bool scrollIsEnabled;
 
-        public string SubstrateKey => KeysModel.GetSubstrateKey();
+        public MainViewModel()
+        {
+            scrollIsEnabled = true;
+        }
     }
 }

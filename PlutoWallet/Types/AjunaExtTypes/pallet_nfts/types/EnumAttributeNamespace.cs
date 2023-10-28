@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -30,7 +30,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
     /// <summary>
     /// >> 118 - Variant[pallet_nfts.types.AttributeNamespace]
     /// </summary>
-    public sealed class EnumAttributeNamespace : BaseEnumExt<AttributeNamespace, BaseVoid, BaseVoid, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumAttributeNamespace : BaseEnumExt<AttributeNamespace, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>
     {
     }
 }

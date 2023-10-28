@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
+namespace Substrate.NetApi.Generated.Model.finality_grandpa
 {
     
     
@@ -32,17 +32,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
         /// <summary>
         /// >> identity
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public _identity;
+        private Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public _identity;
         
         /// <summary>
         /// >> first
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature> _first;
+        private Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature> _first;
         
         /// <summary>
         /// >> second
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature> _second;
+        private Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature> _second;
         
         public Substrate.NetApi.Model.Types.Primitive.U64 RoundNumber
         {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public Identity
+        public Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public Identity
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature> First
+        public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature> First
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature> Second
+        public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature> Second
         {
             get
             {
@@ -112,11 +112,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.finality_grandpa
             var start = p;
             RoundNumber = new Substrate.NetApi.Model.Types.Primitive.U64();
             RoundNumber.Decode(byteArray, ref p);
-            Identity = new PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public();
+            Identity = new Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public();
             Identity.Decode(byteArray, ref p);
-            First = new Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature>();
+            First = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature>();
             First.Decode(byteArray, ref p);
-            Second = new Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.finality_grandpa.Precommit, PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Signature>();
+            Second = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.finality_grandpa.Precommit, Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Signature>();
             Second.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

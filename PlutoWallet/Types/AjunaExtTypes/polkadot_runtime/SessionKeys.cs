@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime
 {
     
     
@@ -27,34 +27,34 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
         /// <summary>
         /// >> grandpa
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public _grandpa;
+        private Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public _grandpa;
         
         /// <summary>
         /// >> babe
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public _babe;
+        private Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public _babe;
         
         /// <summary>
         /// >> im_online
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public _imOnline;
+        private Substrate.NetApi.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public _imOnline;
         
         /// <summary>
         /// >> para_validator
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public _paraValidator;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public _paraValidator;
         
         /// <summary>
         /// >> para_assignment
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public _paraAssignment;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.assignment_app.Public _paraAssignment;
         
         /// <summary>
         /// >> authority_discovery
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public _authorityDiscovery;
+        private Substrate.NetApi.Generated.Model.sp_authority_discovery.app.Public _authorityDiscovery;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public Grandpa
+        public Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public Grandpa
         {
             get
             {
@@ -66,7 +66,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public Babe
+        public Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public Babe
         {
             get
             {
@@ -78,7 +78,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public ImOnline
+        public Substrate.NetApi.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public ImOnline
         {
             get
             {
@@ -90,7 +90,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public ParaValidator
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public ParaValidator
         {
             get
             {
@@ -102,7 +102,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public ParaAssignment
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.assignment_app.Public ParaAssignment
         {
             get
             {
@@ -114,7 +114,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public AuthorityDiscovery
+        public Substrate.NetApi.Generated.Model.sp_authority_discovery.app.Public AuthorityDiscovery
         {
             get
             {
@@ -146,17 +146,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Grandpa = new PlutoWallet.NetApiExt.Generated.Model.sp_finality_grandpa.app.Public();
+            Grandpa = new Substrate.NetApi.Generated.Model.sp_finality_grandpa.app.Public();
             Grandpa.Decode(byteArray, ref p);
-            Babe = new PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.app.Public();
+            Babe = new Substrate.NetApi.Generated.Model.sp_consensus_babe.app.Public();
             Babe.Decode(byteArray, ref p);
-            ImOnline = new PlutoWallet.NetApiExt.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public();
+            ImOnline = new Substrate.NetApi.Generated.Model.pallet_im_online.sr25519.app_sr25519.Public();
             ImOnline.Decode(byteArray, ref p);
-            ParaValidator = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public();
+            ParaValidator = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public();
             ParaValidator.Decode(byteArray, ref p);
-            ParaAssignment = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.assignment_app.Public();
+            ParaAssignment = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.assignment_app.Public();
             ParaAssignment.Decode(byteArray, ref p);
-            AuthorityDiscovery = new PlutoWallet.NetApiExt.Generated.Model.sp_authority_discovery.app.Public();
+            AuthorityDiscovery = new Substrate.NetApi.Generated.Model.sp_authority_discovery.app.Public();
             AuthorityDiscovery.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
+namespace Substrate.NetApi.Generated.Model.pallet_asset_registry.types
 {
     
     
@@ -27,14 +27,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
         /// <summary>
         /// >> symbol
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 _symbol;
+        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 _symbol;
         
         /// <summary>
         /// >> decimals
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U8 _decimals;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 Symbol
+        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4 Symbol
         {
             get
             {
@@ -74,7 +74,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_asset_registry.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Symbol = new PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4();
+            Symbol = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4();
             Symbol.Decode(byteArray, ref p);
             Decimals = new Substrate.NetApi.Model.Types.Primitive.U8();
             Decimals.Decode(byteArray, ref p);

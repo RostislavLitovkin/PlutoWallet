@@ -1,5 +1,4 @@
 ﻿using PlutoWallet.Model;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.Extrinsic;
 using Substrate.NetApi.Model.Rpc;
@@ -27,29 +26,31 @@ public partial class TransferView : ContentView
         // Send the actual transaction
 
         var viewModel = DependencyService.Get<TransferViewModel>();
-        decimal tempAmount;
-        BigInteger amount;
-        if (decimal.TryParse(viewModel.Amount, out tempAmount))
-        {
-            // Double to int conversion
-            // Complete later
-
-            amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, Model.AjunaClientModel.SelectedEndpoint.Decimals));
-        }
-        else
-        {
-            errorLabel.Text = "Invalid amount value";
-            return;
-        }
-
+        
         errorLabel.Text = "";
 
         var client = Model.AjunaClientModel.Client;
 
         try
         {
-            
             var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+
+            decimal tempAmount;
+            BigInteger amount;
+            if (decimal.TryParse(viewModel.Amount, out tempAmount))
+            {
+                // Double to int conversion
+                // Complete later
+
+                amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, assetSelectButtonViewModel.Decimals));
+
+                Console.WriteLine(assetSelectButtonViewModel.Decimals);
+            }
+            else
+            {
+                errorLabel.Text = "Invalid amount value";
+                return;
+            }
 
             Method transfer =
                 assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native ?
@@ -66,48 +67,7 @@ public partial class TransferView : ContentView
                     signed: true,
                     CancellationToken.None);
 
-
-                var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
-
-                string extrinsicId = await client.Author.SubmitAndWatchExtrinsicAsync(
-                    (string id, ExtrinsicStatus status) =>
-                    {
-                        if (status.ExtrinsicState == ExtrinsicState.Ready)
-                            Console.WriteLine("Ready");
-                        else if (status.ExtrinsicState == ExtrinsicState.Dropped)
-                        {
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
-                            extrinsicStackViewModel.Update();
-                        }
-
-                        else if (status.InBlock != null)
-                        {
-                            Console.WriteLine("In block");
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
-                            extrinsicStackViewModel.Update();
-                        }
-
-                        else if (status.Finalized != null)
-                        {
-                            Console.WriteLine("Finalized");
-                            extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
-                            extrinsicStackViewModel.Update();
-                        }
-
-                        else
-                            Console.WriteLine(status.ExtrinsicState);
-                    },
-                    Utils.Bytes2HexString(extrinsic.Encode()), CancellationToken.None);
-
-                extrinsicStackViewModel.Extrinsics.Add(
-                    extrinsicId,
-                    new ExtrinsicInfo
-                    {
-                        ExtrinsicId = extrinsicId,
-                        Status = ExtrinsicStatusEnum.Pending,
-                    });
-
-                extrinsicStackViewModel.Update();
+                string extrinsicId = await client.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
             }
             else
             {
@@ -134,31 +94,5 @@ public partial class TransferView : ContentView
         viewModel.SetToDefault();
 
         qrLayout.Children.Clear();
-    }
-
-    void OnShowQRClicked(System.Object sender, System.EventArgs e)
-    {
-        var scanner = new ScannerView.ScannerView
-        {
-            OnScannedMethod = OnScanned
-        };
-
-        qrLayout.Children.Add(scanner);
-    }
-
-    async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
-        var viewModel = DependencyService.Get<TransferViewModel>();
-
-        try
-        {
-            viewModel.Address = e.Results[e.Results.Length - 1].Value;
-
-            qrLayout.Children.Clear();
-        }
-        catch (Exception ex)
-        {
-
-        }
     }
 }

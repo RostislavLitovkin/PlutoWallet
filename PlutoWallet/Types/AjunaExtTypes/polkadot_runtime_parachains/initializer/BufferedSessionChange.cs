@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.initializer
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializer
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
         /// <summary>
         /// >> validators
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _validators;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> _validators;
         
         /// <summary>
         /// >> queued
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> _queued;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> _queued;
         
         /// <summary>
         /// >> session_index
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.U32 _sessionIndex;
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Validators
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> Validators
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public> Queued
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> Queued
         {
             get
             {
@@ -92,9 +92,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.init
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
             Validators.Decode(byteArray, ref p);
-            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
             Queued.Decode(byteArray, ref p);
             SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);

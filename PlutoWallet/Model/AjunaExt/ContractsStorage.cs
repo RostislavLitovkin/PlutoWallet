@@ -24,28 +24,28 @@ namespace PlutoWallet.Model.AjunaExt
     {
         
         // Substrate client for the storage calls.
-        private AjunaClientExt _client;
+        private SubstrateClientExt _client;
         
-        public ContractsStorage(AjunaClientExt client)
+        public ContractsStorage(SubstrateClientExt client)
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "PristineCode"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256), typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "CodeStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.PrefabWasmModule)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Generated.Model.pallet_contracts.wasm.PrefabWasmModule)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "OwnerInfoOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.OwnerInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Generated.Model.pallet_contracts.wasm.OwnerInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "Nonce"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U64)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "ContractInfoOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32), typeof(PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage.ContractInfo)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "DeletionQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Generated.Model.pallet_contracts.storage.ContractInfo)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Contracts", "DeletionQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15)));
         }
         
         /// <summary>
         /// >> PristineCodeParams
         ///  A mapping from an original code hash to the original code, untouched by instrumentation.
         /// </summary>
-        public static string PristineCodeParams(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key)
+        public static string PristineCodeParams(Substrate.NetApi.Generated.Model.primitive_types.H256 key)
         {
             return RequestGenerator.GetStorage("Contracts", "PristineCode", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, new Substrate.NetApi.Model.Types.IType[] {
@@ -65,10 +65,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> PristineCode
         ///  A mapping from an original code hash to the original code, untouched by instrumentation.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14> PristineCode(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14> PristineCode(Substrate.NetApi.Generated.Model.primitive_types.H256 key, CancellationToken token)
         {
             string parameters = ContractsStorage.PristineCodeParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT14>(parameters, token);
             return result;
         }
         
@@ -76,7 +76,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> CodeStorageParams
         ///  A mapping between an original code hash and instrumented wasm code, ready for execution.
         /// </summary>
-        public static string CodeStorageParams(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key)
+        public static string CodeStorageParams(Substrate.NetApi.Generated.Model.primitive_types.H256 key)
         {
             return RequestGenerator.GetStorage("Contracts", "CodeStorage", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, new Substrate.NetApi.Model.Types.IType[] {
@@ -96,10 +96,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> CodeStorage
         ///  A mapping between an original code hash and instrumented wasm code, ready for execution.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.PrefabWasmModule> CodeStorage(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_contracts.wasm.PrefabWasmModule> CodeStorage(Substrate.NetApi.Generated.Model.primitive_types.H256 key, CancellationToken token)
         {
             string parameters = ContractsStorage.CodeStorageParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.PrefabWasmModule>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_contracts.wasm.PrefabWasmModule>(parameters, token);
             return result;
         }
         
@@ -107,7 +107,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> OwnerInfoOfParams
         ///  A mapping between an original code hash and its owner information.
         /// </summary>
-        public static string OwnerInfoOfParams(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key)
+        public static string OwnerInfoOfParams(Substrate.NetApi.Generated.Model.primitive_types.H256 key)
         {
             return RequestGenerator.GetStorage("Contracts", "OwnerInfoOf", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, new Substrate.NetApi.Model.Types.IType[] {
@@ -127,10 +127,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> OwnerInfoOf
         ///  A mapping between an original code hash and its owner information.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.OwnerInfo> OwnerInfoOf(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_contracts.wasm.OwnerInfo> OwnerInfoOf(Substrate.NetApi.Generated.Model.primitive_types.H256 key, CancellationToken token)
         {
             string parameters = ContractsStorage.OwnerInfoOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.OwnerInfo>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_contracts.wasm.OwnerInfo>(parameters, token);
             return result;
         }
         
@@ -211,7 +211,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// 
         ///  TWOX-NOTE: SAFE since `AccountId` is a secure hash.
         /// </summary>
-        public static string ContractInfoOfParams(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key)
+        public static string ContractInfoOfParams(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
             return RequestGenerator.GetStorage("Contracts", "ContractInfoOf", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -233,10 +233,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// 
         ///  TWOX-NOTE: SAFE since `AccountId` is a secure hash.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage.ContractInfo> ContractInfoOf(PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.pallet_contracts.storage.ContractInfo> ContractInfoOf(Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, CancellationToken token)
         {
             string parameters = ContractsStorage.ContractInfoOfParams(key);
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.storage.ContractInfo>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_contracts.storage.ContractInfo>(parameters, token);
             return result;
         }
         
@@ -268,10 +268,10 @@ namespace PlutoWallet.Model.AjunaExt
         ///  Child trie deletion is a heavy operation depending on the amount of storage items
         ///  stored in said trie. Therefore this operation is performed lazily in `on_initialize`.
         /// </summary>
-        public async Task<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15> DeletionQueue(CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15> DeletionQueue(CancellationToken token)
         {
             string parameters = ContractsStorage.DeletionQueueParams();
-            var result = await _client.GetStorageAsync<PlutoWallet.NetApiExt.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT15>(parameters, token);
             return result;
         }
     }
@@ -283,7 +283,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> call_old_weight
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method CallOldWeight(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data)
+        public static Method CallOldWeight(Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -298,7 +298,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> instantiate_with_code_old_weight
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method InstantiateWithCodeOldWeight(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
+        public static Method InstantiateWithCodeOldWeight(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(value.Encode());
@@ -314,7 +314,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> instantiate_old_weight
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method InstantiateOldWeight(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<PlutoWallet.NetApiExt.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 code_hash, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
+        public static Method InstantiateOldWeight(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.sp_weights.OldWeight> gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Generated.Model.primitive_types.H256 code_hash, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(value.Encode());
@@ -330,7 +330,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> upload_code
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method UploadCode(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.wasm.EnumDeterminism determinism)
+        public static Method UploadCode(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Generated.Model.pallet_contracts.wasm.EnumDeterminism determinism)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(code.Encode());
@@ -343,7 +343,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> remove_code
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method RemoveCode(PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 code_hash)
+        public static Method RemoveCode(Substrate.NetApi.Generated.Model.primitive_types.H256 code_hash)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(code_hash.Encode());
@@ -354,7 +354,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_code
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetCode(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 code_hash)
+        public static Method SetCode(Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Generated.Model.primitive_types.H256 code_hash)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -366,7 +366,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> call
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Call(PlutoWallet.NetApiExt.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data)
+        public static Method Call(Substrate.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -381,7 +381,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> instantiate_with_code
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method InstantiateWithCode(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
+        public static Method InstantiateWithCode(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(value.Encode());
@@ -397,7 +397,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> instantiate
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Instantiate(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 code_hash, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
+        public static Method Instantiate(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight gas_limit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>> storage_deposit_limit, Substrate.NetApi.Generated.Model.primitive_types.H256 code_hash, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> data, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> salt)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(value.Encode());
@@ -417,9 +417,9 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> Schedule
         ///  Cost schedule and limits.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.Schedule Schedule()
+        public Substrate.NetApi.Generated.Model.pallet_contracts.schedule.Schedule Schedule()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.pallet_contracts.schedule.Schedule();
+            var result = new Substrate.NetApi.Generated.Model.pallet_contracts.schedule.Schedule();
             result.Create(@"0x0400000000010000000400008000000010000000001000000001000020000000004000000400000000000000EC0700008D180000BE120000FC0A0000F21D00006F08000021090000FD1400002B000000C94800005D5A00000000000000000000A10B00001A0A000016070000A61A0000A81A000031140000753BAD00D7050000DC050000D4050000440600009A050000990500008B05000083060000860600007E060000B5060000B0060000B2060000AE060000B0060000BA060000B6060000CF050000B6050000B4050000A6200000FB1B0000C6200000781C0000D3050000C5050000CF050000610600004A06000056060000A90700005506000032DE0C0000761D8906002E95A906006EC90F0000E68A080000BAEC0C00006EB80C0000D2DE460000BAC20C0000FE990C000072690C00000E970C0000166B420000E60B06000062790B0000D10100CA4B6B0000D90200FE61B3BA007E0156000062B0B2000032C0521E00DD0C001E350A0000C222021F011049B70059B2048E929F41007E36FA1E0110DDB2049A8FDF060110652C04F274E8060110853D0416A7051F011029C4044E80FB2100AEC83F7C000AFC636100E237102200765F0700001646BFE500A96A001917002D1700FE72200000B53C0066FC2A0000B930008E4B190000F512001A8A190000ED1200FAD4C608004EFD2D02000E7B0800008A750D00007E17070000");
             return result;
         }
@@ -458,9 +458,9 @@ namespace PlutoWallet.Model.AjunaExt
         ///  weight that is left for transactions. See [`Self::DeletionQueueDepth`] for more
         ///  information about the deletion queue.
         /// </summary>
-        public PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight DeletionWeightLimit()
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight DeletionWeightLimit()
         {
-            var result = new PlutoWallet.NetApiExt.Generated.Model.sp_weights.weight_v2.Weight();
+            var result = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             result.Create("0x0700902F5009139999999999999919");
             return result;
         }

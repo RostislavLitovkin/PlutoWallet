@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
+namespace Substrate.NetApi.Generated.Model.sp_consensus_babe.digests
 {
     
     
@@ -28,7 +28,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests
     /// <summary>
     /// >> 462 - Variant[sp_consensus_babe.digests.PreDigest]
     /// </summary>
-    public sealed class EnumPreDigest : BaseEnumExt<PreDigest, BaseVoid, PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests.PrimaryPreDigest, PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests.SecondaryPlainPreDigest, PlutoWallet.NetApiExt.Generated.Model.sp_consensus_babe.digests.SecondaryVRFPreDigest>
+    public sealed class EnumPreDigest : BaseEnumExt<PreDigest, BaseVoid, Substrate.NetApi.Generated.Model.sp_consensus_babe.digests.PrimaryPreDigest, Substrate.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryPlainPreDigest, Substrate.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryVRFPreDigest>
     {
     }
 }

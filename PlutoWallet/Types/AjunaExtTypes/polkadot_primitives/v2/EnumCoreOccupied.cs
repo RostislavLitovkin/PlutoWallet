@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
+namespace Substrate.NetApi.Generated.Model.polkadot_primitives.v2
 {
     
     
@@ -26,7 +26,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2
     /// <summary>
     /// >> 661 - Variant[polkadot_primitives.v2.CoreOccupied]
     /// </summary>
-    public sealed class EnumCoreOccupied : BaseEnumExt<CoreOccupied, PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.ParathreadEntry, BaseVoid>
+    public sealed class EnumCoreOccupied : BaseEnumExt<CoreOccupied, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.ParathreadEntry, BaseVoid>
     {
     }
 }

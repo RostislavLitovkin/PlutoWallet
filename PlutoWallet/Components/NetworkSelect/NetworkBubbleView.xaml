@@ -19,7 +19,8 @@
                     WidthRequest="30"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"/>
-            <Label x:Name="nameLabel" IsVisible="false"
+            <Label x:Name="nameLabel"
+                   IsVisible="false"
                     VerticalTextAlignment="Center"
                     VerticalOptions="Center"
                     Margin="10, 0, 10, 0"

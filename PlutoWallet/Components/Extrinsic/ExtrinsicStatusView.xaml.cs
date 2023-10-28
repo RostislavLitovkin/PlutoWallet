@@ -1,13 +1,21 @@
-﻿namespace PlutoWallet.Components.Extrinsic;
+﻿using PlutoWallet.Constants;
+using PlutoWallet.Components.WebView;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.ViewModel;
+
+namespace PlutoWallet.Components.Extrinsic;
 
 public partial class ExtrinsicStatusView : ContentView
 {
+
+    private Queue<(float x, float y)> _positions = new Queue<(float, float)>();
+
     public static readonly BindableProperty ExtrinsicIdProperty = BindableProperty.Create(
         nameof(ExtrinsicId), typeof(string), typeof(ExtrinsicStatusView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ExtrinsicStatusView)bindable;
-            control.nameLabel.Text = (string)newValue;
         });
 
     public static readonly BindableProperty StatusProperty = BindableProperty.Create(
@@ -41,6 +49,34 @@ public partial class ExtrinsicStatusView : ContentView
             }
         });
 
+    public static readonly BindableProperty HashProperty = BindableProperty.Create(
+        nameof(Hash), typeof(Hash), typeof(ExtrinsicStatusView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (ExtrinsicStatusView)bindable;
+        });
+
+    public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
+        nameof(Endpoint), typeof(Endpoint), typeof(ExtrinsicStatusView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (ExtrinsicStatusView)bindable;
+
+            control.calamarButton.IsVisible = ((Endpoint)newValue).CalamarChainName != null;
+
+            control.chainIcon.Source = ((Endpoint)newValue).Icon;
+        });
+
+    public static readonly BindableProperty CallNameProperty = BindableProperty.Create(
+       nameof(CallName), typeof(string), typeof(ExtrinsicStatusView),
+       defaultBindingMode: BindingMode.TwoWay,
+       propertyChanging: (bindable, oldValue, newValue) => {
+           var control = (ExtrinsicStatusView)bindable;
+
+           control.nameLabelText.Text = (string)newValue;
+
+       });
+
     public ExtrinsicStatusView()
 	{
 		InitializeComponent();
@@ -60,6 +96,27 @@ public partial class ExtrinsicStatusView : ContentView
         set => SetValue(StatusProperty, value);
     }
 
+    public Hash Hash
+    {
+        get => (Hash)GetValue(HashProperty);
+
+        set => SetValue(HashProperty, value);
+    }
+
+    public Endpoint Endpoint
+    {
+        get => (Endpoint)GetValue(EndpointProperty);
+
+        set => SetValue(EndpointProperty, value);
+    }
+
+    public string CallName
+    {
+        get => (string)GetValue(CallNameProperty);
+
+        set => SetValue(CallNameProperty, value);
+    }
+
     void OnRemoveClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
@@ -67,5 +124,69 @@ public partial class ExtrinsicStatusView : ContentView
         extrinsicStackViewModel.Extrinsics.Remove(ExtrinsicId);
 
         extrinsicStackViewModel.Update();
+    }
+
+    async void OnCalamarClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        if(Endpoint.CalamarChainName != null)
+        {
+            await Navigation.PushAsync(new WebViewPage("https://calamar.app/" + Endpoint.CalamarChainName + "/search?query=" + Hash.Value));
+        }
+    }
+
+    async void OnPanUpdated(System.Object sender, Microsoft.Maui.Controls.PanUpdatedEventArgs e)
+    {
+        if (e.StatusType == GestureStatus.Started)
+        {
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = false;
+
+            _positions = new Queue<(float, float)>();
+        }
+
+        if (e.StatusType == GestureStatus.Running)
+        {
+            _positions.Enqueue(((float)(e.TotalX), (float)(e.TotalY)));
+            if (_positions.Count > 10)
+                _positions.Dequeue();
+
+            card.TranslationX = _positions.Average(item => item.x);
+        }
+
+        if (e.StatusType == GestureStatus.Completed)
+        {
+          
+            if (card.TranslationX < -50)
+            {
+                await Task.WhenAll(
+                    card.TranslateTo(card.Width * -1 - 30, 0, 500, Easing.CubicIn)
+                    //, this.ScaleYTo(0, 500)
+                    );
+            }
+            else if (card.TranslationX > 50)
+            {
+                await Task.WhenAll(
+                    card.TranslateTo(card.Width + 30, 0, 500, Easing.CubicIn)
+                    //, this.ScaleYTo(0, 500)
+                    );
+            }
+            else
+            {
+                await card.TranslateTo(0, 0, 500, Easing.CubicOut);
+
+                return;
+            }
+
+            var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+            extrinsicStackViewModel.Extrinsics.Remove(ExtrinsicId);
+
+            extrinsicStackViewModel.Update();
+
+            var mainViewModel = DependencyService.Get<MainViewModel>();
+
+            mainViewModel.ScrollIsEnabled = true;
+        }
     }
 }

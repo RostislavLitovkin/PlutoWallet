@@ -11,7 +11,7 @@ using Substrate.NetApi.Model.Types.Base;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_common.slots.pallet
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet
 {
     
     

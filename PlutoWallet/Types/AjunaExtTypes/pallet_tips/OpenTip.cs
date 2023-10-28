@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
+namespace Substrate.NetApi.Generated.Model.pallet_tips
 {
     
     
@@ -27,17 +27,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
         /// <summary>
         /// >> reason
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 _reason;
+        private Substrate.NetApi.Generated.Model.primitive_types.H256 _reason;
         
         /// <summary>
         /// >> who
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _who;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _who;
         
         /// <summary>
         /// >> finder
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _finder;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _finder;
         
         /// <summary>
         /// >> deposit
@@ -52,14 +52,14 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
         /// <summary>
         /// >> tips
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> _tips;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> _tips;
         
         /// <summary>
         /// >> finders_fee
         /// </summary>
         private Substrate.NetApi.Model.Types.Primitive.Bool _findersFee;
         
-        public PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256 Reason
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 Reason
         {
             get
             {
@@ -71,7 +71,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Who
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Who
         {
             get
             {
@@ -83,7 +83,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Finder
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Finder
         {
             get
             {
@@ -119,7 +119,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
             }
         }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> Tips
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>> Tips
         {
             get
             {
@@ -164,17 +164,17 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_tips
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Reason = new PlutoWallet.NetApiExt.Generated.Model.primitive_types.H256();
+            Reason = new Substrate.NetApi.Generated.Model.primitive_types.H256();
             Reason.Decode(byteArray, ref p);
-            Who = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Who = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Who.Decode(byteArray, ref p);
-            Finder = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Finder = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Finder.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
             Closes = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             Closes.Decode(byteArray, ref p);
-            Tips = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>();
+            Tips = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>();
             Tips.Decode(byteArray, ref p);
             FindersFee = new Substrate.NetApi.Model.Types.Primitive.Bool();
             FindersFee.Decode(byteArray, ref p);

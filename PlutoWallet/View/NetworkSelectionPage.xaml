@@ -2,9 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:network="clr-namespace:PlutoWallet.Components.NetworkSelect"
-             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel" xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              x:Class="PlutoWallet.View.NetworkSelectionPage"
-             Title="Network selection">
+             Title="Network selection"
+             BackgroundColor="Black">
     <ContentPage.BindingContext>
         <viewmodel:NetworkSelectionPageViewModel />
 
@@ -12,7 +14,9 @@
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-               Source="space.png" Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
 
         <ScrollView Orientation="Vertical"
                     AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">

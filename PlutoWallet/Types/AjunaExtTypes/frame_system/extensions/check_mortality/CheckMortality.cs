@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_mortality
+namespace Substrate.NetApi.Generated.Model.frame_system.extensions.check_mortality
 {
     
     
@@ -27,9 +27,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_mo
         /// <summary>
         /// >> value
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra _value;
+        private Substrate.NetApi.Generated.Model.sp_runtime.generic.era.EnumEra _value;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra Value
+        public Substrate.NetApi.Generated.Model.sp_runtime.generic.era.EnumEra Value
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.frame_system.extensions.check_mo
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PlutoWallet.NetApiExt.Generated.Model.sp_runtime.generic.era.EnumEra();
+            Value = new Substrate.NetApi.Generated.Model.sp_runtime.generic.era.EnumEra();
             Value.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

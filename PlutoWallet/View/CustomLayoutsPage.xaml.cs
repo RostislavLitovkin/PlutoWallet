@@ -1,7 +1,5 @@
-﻿using Microsoft.Maui.Controls;
-using PlutoWallet.Components.CustomLayouts;
+﻿using PlutoWallet.Components.CustomLayouts;
 using PlutoWallet.ViewModel;
-using PlutoWallet.View;
 
 namespace PlutoWallet.View;
 
@@ -10,9 +8,6 @@ public partial class CustomLayoutsPage : ContentPage
     private CustomLayoutItemDragger selectedDragger;
 
     private Queue<(float x, float y)> _positions = new Queue<(float, float)>();
-
-    private float x;
-    private float y;
 
     public CustomLayoutsPage()
 	{
@@ -159,11 +154,8 @@ public partial class CustomLayoutsPage : ContentPage
 
             deleteView.IsVisible = false;
 
-
-
             ((CustomLayoutsViewModel)this.BindingContext).SwapItems(selectedIndex, selectedIndex + (index - selectedIndex));
             
-
             protectiveLayout.IsVisible = false;
         }
     }

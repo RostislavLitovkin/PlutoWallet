@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
+namespace Substrate.NetApi.Generated.Model.pallet_identity.types
 {
     
     
@@ -27,7 +27,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> account
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _account;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _account;
         
         /// <summary>
         /// >> fee
@@ -37,9 +37,9 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> fields
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.BitFlags _fields;
+        private Substrate.NetApi.Generated.Model.pallet_identity.types.BitFlags _fields;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Account
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Account
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.BitFlags Fields
+        public Substrate.NetApi.Generated.Model.pallet_identity.types.BitFlags Fields
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Account = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Account = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Account.Decode(byteArray, ref p);
             Fee = new Substrate.NetApi.Model.Types.Primitive.U128();
             Fee.Decode(byteArray, ref p);
-            Fields = new PlutoWallet.NetApiExt.Generated.Model.pallet_identity.types.BitFlags();
+            Fields = new Substrate.NetApi.Generated.Model.pallet_identity.types.BitFlags();
             Fields.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

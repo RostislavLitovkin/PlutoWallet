@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
+namespace Substrate.NetApi.Generated.Model.pallet_nfts.types
 {
     
     
@@ -27,19 +27,19 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         /// <summary>
         /// >> owner
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 _owner;
+        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _owner;
         
         /// <summary>
         /// >> approvals
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap _approvals;
+        private Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap _approvals;
         
         /// <summary>
         /// >> deposit
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDeposit _deposit;
+        private Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDeposit _deposit;
         
-        public PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32 Owner
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Owner
         {
             get
             {
@@ -51,7 +51,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap Approvals
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap Approvals
         {
             get
             {
@@ -63,7 +63,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDeposit Deposit
+        public Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDeposit Deposit
         {
             get
             {
@@ -92,11 +92,11 @@ namespace PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Owner = new PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto.AccountId32();
+            Owner = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Owner.Decode(byteArray, ref p);
-            Approvals = new PlutoWallet.NetApiExt.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap();
+            Approvals = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMap();
             Approvals.Decode(byteArray, ref p);
-            Deposit = new PlutoWallet.NetApiExt.Generated.Model.pallet_nfts.types.ItemDeposit();
+            Deposit = new Substrate.NetApi.Generated.Model.pallet_nfts.types.ItemDeposit();
             Deposit.Decode(byteArray, ref p);
             TypeSize = p - start;
         }

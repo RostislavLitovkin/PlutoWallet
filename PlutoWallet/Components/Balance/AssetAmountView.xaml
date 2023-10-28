@@ -6,9 +6,9 @@
              HeightRequest="30"
              x:Name="view">
     <Border StrokeThickness="0"
-            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark={StaticResource Black}}"
+            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
             Padding="10, 0, 10, 0">
-        <Border.Shadow>
+        <Border.Shadow> 
             <Shadow Brush="Black"
                     Offset="0,2" 
                     Radius="3"

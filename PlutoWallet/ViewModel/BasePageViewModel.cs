@@ -10,7 +10,7 @@ namespace PlutoWallet.ViewModel
 	public partial class BasePageViewModel : ObservableObject
 	{
         private LoadingView loadingView = new LoadingView();
-        private MainView mainView = new MainView();
+        public MainView MainView = new MainView();
         private NftView nftView = new NftView();
 
         [ObservableProperty]
@@ -18,12 +18,12 @@ namespace PlutoWallet.ViewModel
 
 		public BasePageViewModel()
 		{
-			content = mainView;
+			content = MainView;
 		}
 
         public void ReloadMainView()
         {
-            mainView.Setup();
+            MainView.Setup();
         }
 
         public void SetMainView()
@@ -31,7 +31,7 @@ namespace PlutoWallet.ViewModel
             var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
             usdBalanceViewModel.DoNotReload = true;
 
-            Content = mainView;
+            Content = MainView;
 
             var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             networkViewModel.SetupDefault();

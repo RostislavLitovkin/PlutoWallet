@@ -1,6 +1,5 @@
-﻿using System;
-using Substrate.NetApi;
-using PlutoWallet.NetApiExt.Generated.Model.sp_core.crypto;
+﻿using Substrate.NetApi;
+using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json.Linq;
 using static Substrate.NetApi.Utils;
 using PlutoWallet.Model.AjunaExt;
@@ -9,10 +8,8 @@ namespace PlutoWallet.Model.AzeroId
 {
 	public class AzeroIdModel
 	{
-        public static async Task<string> GetPrimaryNameForAddress(string address)
+        public static async Task<string> GetPrimaryNameForAddress(SubstrateClientExt client, string address)
         {
-            var client = Model.AjunaClientModel.Client;
-
             string rootKey = "0x8f010000";
 
             /// Actual code logic down here
@@ -40,7 +37,7 @@ namespace PlutoWallet.Model.AzeroId
             return BytesToString(result);
         }
 
-        private static async Task<List<string>> GetNamesForAddress(AjunaClientExt client, string address)
+        private static async Task<List<string>> GetNamesForAddress(SubstrateClientExt client, string address)
         {
             string rootKey = "2d010000";
 
@@ -97,7 +94,7 @@ namespace PlutoWallet.Model.AzeroId
             return await GetTld(client);
         }
 
-        public static async Task<string> GetTld(AjunaClientExt client)
+        public static async Task<string> GetTld(SubstrateClientExt client)
         {
             string rootKey = "0x00000000";
 

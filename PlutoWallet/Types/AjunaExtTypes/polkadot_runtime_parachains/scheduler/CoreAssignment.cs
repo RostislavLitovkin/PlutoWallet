@@ -13,7 +13,7 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler
+namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler
 {
     
     
@@ -27,24 +27,24 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         /// <summary>
         /// >> core
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex _core;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex _core;
         
         /// <summary>
         /// >> para_id
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id _paraId;
+        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id _paraId;
         
         /// <summary>
         /// >> kind
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind _kind;
+        private Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind _kind;
         
         /// <summary>
         /// >> group_idx
         /// </summary>
-        private PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex _groupIdx;
+        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex _groupIdx;
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex Core
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex Core
         {
             get
             {
@@ -56,7 +56,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id ParaId
+        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id ParaId
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind Kind
+        public Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind Kind
         {
             get
             {
@@ -80,7 +80,7 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
             }
         }
         
-        public PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex GroupIdx
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex GroupIdx
         {
             get
             {
@@ -110,13 +110,13 @@ namespace PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.sche
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Core = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.CoreIndex();
+            Core = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex();
             Core.Decode(byteArray, ref p);
-            ParaId = new PlutoWallet.NetApiExt.Generated.Model.polkadot_parachain.primitives.Id();
+            ParaId = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
             ParaId.Decode(byteArray, ref p);
-            Kind = new PlutoWallet.NetApiExt.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind();
+            Kind = new Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.EnumAssignmentKind();
             Kind.Decode(byteArray, ref p);
-            GroupIdx = new PlutoWallet.NetApiExt.Generated.Model.polkadot_primitives.v2.GroupIndex();
+            GroupIdx = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex();
             GroupIdx.Decode(byteArray, ref p);
             TypeSize = p - start;
         }
