@@ -71,6 +71,14 @@
 
                         </Label>
 
+                        <Label x:Name="reservedUntilLabel"
+                               TextColor="#888888"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               IsVisible="false">
+
+                        </Label>
+
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
             </AbsoluteLayout>

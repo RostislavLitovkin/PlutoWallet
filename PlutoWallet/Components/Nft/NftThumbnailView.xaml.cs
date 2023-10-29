@@ -143,6 +143,11 @@ public partial class NftThumbnailView : ContentView
         viewModel.CollectionId = this.CollectionId;
         viewModel.ItemId = this.ItemId;
 
+        if (this.Endpoint.Name == "Aleph Zero Testnet")
+        {
+            viewModel.AzeroIdReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(this.Name);
+        }
+
         await Navigation.PushAsync(new NftDetailPage(viewModel));
 
         // load these details after

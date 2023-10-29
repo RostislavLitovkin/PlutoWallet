@@ -31,24 +31,22 @@ namespace PlutoWallet.Components.AzeroId
 		{
 			var temp = await TzeroId.GetPrimaryNameForAddress(client, KeysModel.GetSubstrateKey());
 
-			if (temp == null) {
+			if (temp == null)
+			{
 
 				PrimaryName = "None";
-                ReservedUntilIsVisible = false;
-            }
+				ReservedUntilIsVisible = false;
+			}
 			else
 			{
 				PrimaryName = temp.ToUpper();
 				Tld = ("." + await TzeroId.GetTld(client)).ToUpper();
 
-				var period = await TzeroId.GetRegistrationPeriodForName(temp);
+				ReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(temp);
 
-				if (period != null)
-				{
-                    ReservedUntil = period.Value.Item2.Day + "." + period.Value.Item2.Month + "." + period.Value.Item2.Year;
-					ReservedUntilIsVisible = true;
-                }
-            }
+				ReservedUntilIsVisible = true;
+
+			}
 		}
 	}
 }
