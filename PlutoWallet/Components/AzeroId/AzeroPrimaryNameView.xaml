@@ -38,6 +38,23 @@
                     </Label.FormattedText>
 
                 </Label>
+                <Label TextColor="#888888"
+                       AbsoluteLayout.LayoutBounds="0.5, 1, 1, AutoSize"
+                       AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="12"
+                       Margin="5"
+                       IsVisible="{Binding ReservedUntilIsVisible}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Reserved until " />
+                            <Span Text="{Binding ReservedUntil}" />
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

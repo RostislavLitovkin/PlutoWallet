@@ -15,9 +15,16 @@ namespace PlutoWallet.Components.AzeroId
 		[ObservableProperty]
 		private string tld;
 
+		[ObservableProperty]
+		private string reservedUntil;
+
+		[ObservableProperty]
+		private bool reservedUntilIsVisible;
+
 		public AzeroPrimaryNameViewModel()
 		{
 			primaryName = "Loading";
+			reservedUntilIsVisible = false;
 		}
 
 		public async Task GetPrimaryName(SubstrateClientExt client)
@@ -27,12 +34,21 @@ namespace PlutoWallet.Components.AzeroId
 			if (temp == null) {
 
 				PrimaryName = "None";
-			}
+                ReservedUntilIsVisible = false;
+            }
 			else
 			{
 				PrimaryName = temp.ToUpper();
 				Tld = ("." + await TzeroId.GetTld(client)).ToUpper();
-			}
+
+				var period = await TzeroId.GetRegistrationPeriodForName(temp);
+
+				if (period != null)
+				{
+                    ReservedUntil = period.Value.Item2.Day + "." + period.Value.Item2.Month + "." + period.Value.Item2.Year;
+					ReservedUntilIsVisible = true;
+                }
+            }
 		}
 	}
 }
