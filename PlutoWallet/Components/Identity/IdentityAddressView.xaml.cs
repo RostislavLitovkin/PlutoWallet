@@ -1,19 +1,76 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.UniversalScannerView;
+using AzeroIdResolver;
 
 namespace PlutoWallet.Components.Identity;
 
 public partial class IdentityAddressView : ContentView
 {
+    private bool isAzeroIdStyle = false;
+
+    public static readonly BindableProperty DestinationAddressProperty = BindableProperty.Create(
+        nameof(DestinationAddress), typeof(string), typeof(IdentityAddressView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
+
+        });
+
+    // This is also just an input address
     public static readonly BindableProperty AddressProperty = BindableProperty.Create(
         nameof(Address), typeof(string), typeof(IdentityAddressView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: async(bindable, oldValue, newValue) => {
+        propertyChanging: async(bindable, oldValue, newValue) =>
+        {
             var control = (IdentityAddressView)bindable;
 
             control.addressEntry.Text = (string)newValue;
 
             // I had to duplicate these lines because of a weird error on Android.
+            if (((string)newValue).Contains("."))
+            {
+                var newAddress = await TzeroId.GetAddressForName((string)newValue);
+
+                Console.WriteLine(newAddress);
+
+                if (newAddress != null)
+                {
+                    control.DestinationAddress = newAddress;
+
+                    if (!control.isAzeroIdStyle)
+                    {
+                        control.border.BackgroundColor = Color.FromArgb("222222");
+
+                        control.identityJundgementIcon.Source = "azeroid.png";
+
+                        control.identityLabel.Text = newAddress;
+
+                        control.identityLabel.TextColor = Color.FromArgb("FFFFFF");
+
+                        control.addressEntry.TextColor = Color.FromArgb("FFFFFF");
+
+                        control.qrcode.Source = "qrcodewhite.png";
+
+                        control.isAzeroIdStyle = true;
+                    }
+                    return;
+                }
+            }
+
+            if (control.isAzeroIdStyle)
+            {
+                control.border.SetAppThemeColor(Border.BackgroundColorProperty, Color.FromArgb("fdfdfd"), Color.FromArgb("0a0a0a"));
+
+                control.identityLabel.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
+
+                control.addressEntry.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
+
+                control.qrcode.SetAppTheme<FileImageSource>(Image.SourceProperty, "qrcodeblack.png", "qrcodewhite.png");
+
+                control.isAzeroIdStyle = false;
+            }
+
+            control.DestinationAddress = (string)newValue;
 
             var identity = await Model.IdentityModel.GetIdentityForAddress((string)newValue);
 
@@ -74,6 +131,7 @@ public partial class IdentityAddressView : ContentView
                 case Judgement.Erroneous:
                     control.identityJundgementIcon.Source = "redallert.png";
                     break;
+
             }
         });
 
@@ -82,6 +140,14 @@ public partial class IdentityAddressView : ContentView
 		InitializeComponent();
 	}
 
+    public string DestinationAddress
+    {
+        get => (string)GetValue(DestinationAddressProperty);
+
+        set => SetValue(DestinationAddressProperty, value);
+    }
+
+    // This is also just an input address
     public string Address
     {
         get => (string)GetValue(AddressProperty);

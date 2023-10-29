@@ -6,6 +6,7 @@
              x:Name="view">
     <Border StrokeThickness="0"
             BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+            x:Name="border"
             Padding="0, 0, 0, 0">
         <Border.Shadow> 
             <Shadow Brush="Black"
@@ -30,19 +31,22 @@
                     VerticalTextAlignment="Center"
                     Margin="25, 0, 0, 0"
                     x:Name="identityLabel"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     Text="Unknown" />
 
-            <Entry Placeholder="ss58 address"
+            <Entry Placeholder="Address / AZERO.ID"
                     AbsoluteLayout.LayoutBounds="0, 40, 1, 40"
                     AbsoluteLayout.LayoutFlags="WidthProportional"
                     Margin="0, 0, 45, 0"
                     x:Name="addressEntry"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     PropertyChanged="OnEntryPropertyChanged"/>
 
             <!--QR code button-->
             <Image
                 AbsoluteLayout.LayoutBounds="1, 40, 40, 40"
                 AbsoluteLayout.LayoutFlags="XProportional"
+                x:Name="qrcode"
                 Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
                 Margin="5, 5, 5, 5"
                 >
