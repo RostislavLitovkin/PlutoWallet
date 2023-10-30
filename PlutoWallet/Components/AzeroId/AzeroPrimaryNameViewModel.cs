@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Model.AzeroId;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
+using AzeroIdResolver;
 
 namespace PlutoWallet.Components.AzeroId
 {
@@ -14,23 +15,37 @@ namespace PlutoWallet.Components.AzeroId
 		[ObservableProperty]
 		private string tld;
 
+		[ObservableProperty]
+		private string reservedUntil;
+
+		[ObservableProperty]
+		private bool reservedUntilIsVisible;
+
 		public AzeroPrimaryNameViewModel()
 		{
 			primaryName = "Loading";
+			reservedUntilIsVisible = false;
 		}
 
 		public async Task GetPrimaryName(SubstrateClientExt client)
 		{
-			var temp = await AzeroIdModel.GetPrimaryNameForAddress(client, KeysModel.GetSubstrateKey());
+			var temp = await TzeroId.GetPrimaryNameForAddress(client, KeysModel.GetSubstrateKey());
 
-			if (temp == null) {
+			if (temp == null)
+			{
 
 				PrimaryName = "None";
+				ReservedUntilIsVisible = false;
 			}
 			else
 			{
 				PrimaryName = temp.ToUpper();
-				Tld = ("." + await AzeroIdModel.GetTld(client)).ToUpper();
+				Tld = ("." + await TzeroId.GetTld(client)).ToUpper();
+
+				ReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(temp);
+
+				ReservedUntilIsVisible = true;
+
 			}
 		}
 	}

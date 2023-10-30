@@ -25,7 +25,8 @@
                                         Padding="20, 15, 20, 200">
                     <nft:NftTitleView Name="{Binding Name}"
                                       Endpoint="{Binding Endpoint}"
-                                      KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"/>
+                                      KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
+                                      AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
                     <nft:NftDescriptionView Description="{Binding Description}" />
 

@@ -7,6 +7,7 @@ using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi.Model.Extrinsics;
 using PlutoWallet.Constants;
 using Newtonsoft.Json;
+using AzeroIdResolver;
 
 namespace PlutoWallet.Model.AzeroId
 {
@@ -22,14 +23,14 @@ namespace PlutoWallet.Model.AzeroId
 
                 await client.ConnectAsync();
 
-                string tld = await AzeroIdModel.GetTld(client);
+                string tld = await TzeroId.GetTld(client);
 
                 string rootKey = "2d010000";
 
                 /// Actual code logic down here
                 List<byte> rootKeyHex = new List<byte>(Utils.HexToByteArray(rootKey));
 
-                var accountId = new AccountId32();
+                var accountId = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
                 accountId.Create(Utils.GetPublicKeyFrom(address));
 
                 // concat the rootKey and accountId param
@@ -54,7 +55,7 @@ namespace PlutoWallet.Model.AzeroId
                     {
                         // query the result
                         var temp = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
-                        Constants.AzeroId.TZeroIdPrefixedStorageKey,
+                        AzeroIdResolver.Constants.TzeroPrefixedStorageKey,
                         key
                     }, CancellationToken.None);
 
@@ -62,9 +63,8 @@ namespace PlutoWallet.Model.AzeroId
 
                         var result = Utils.HexToByteArray(temp);
 
-                        NFT nft = await GetNFTMetadata(AzeroIdModel.BytesToString(result));
+                        NFT nft = await GetNFTMetadata(AzeroIdResolver.Helpers.BytesToString(result));
 
-                        Console.WriteLine("NAME: " + nft.Name);
                         nft.Endpoint = endpoint;
 
                         nfts.Add(nft);
@@ -75,7 +75,7 @@ namespace PlutoWallet.Model.AzeroId
             }
             catch(Exception ex)
             {
-                Console.WriteLine("AZERO ID ERROR: ");
+                Console.WriteLine("AZERO ID ERROR (in PlutoWallet model): ");
                 Console.WriteLine(ex.Message);
             }
             return null;
@@ -89,7 +89,6 @@ namespace PlutoWallet.Model.AzeroId
             Console.WriteLine(metadataJson);
             return JsonConvert.DeserializeObject<AzeroIdNFTWrapper>(metadataJson).Metadata;
         }
-
     }
 
     public class AzeroIdNFTWrapper

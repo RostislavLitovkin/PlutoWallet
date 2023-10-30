@@ -34,11 +34,11 @@ namespace PlutoWallet.ViewModel
             {
                 if (endpoint.SupportsNfts)
                 {
-                    UpdateNfts(await Model.NFTsModel.GetNFTsAsync(endpoint));
+                    //UpdateNfts(await Model.NFTsModel.GetNFTsAsync(endpoint));
                 }
             }
 
-            UpdateNfts(await Model.UniqueryModel.GetAccountRmrk());
+            //UpdateNfts(await Model.UniqueryModel.GetAccountRmrk());
 
             UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey()));
 

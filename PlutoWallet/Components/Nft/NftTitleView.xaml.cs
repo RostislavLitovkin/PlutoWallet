@@ -35,6 +35,17 @@ public partial class NftTitleView : ContentView
             }
         });
 
+    public static readonly BindableProperty AzeroIdReservedUntilProperty = BindableProperty.Create(
+        nameof(AzeroIdReservedUntil), typeof(string), typeof(NftTitleView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (NftTitleView)bindable;
+
+            control.reservedUntilLabel.IsVisible = true;
+
+            control.reservedUntilLabel.Text = (string)newValue;
+        });
+
     public NftTitleView()
 	{
 		InitializeComponent();
@@ -52,6 +63,13 @@ public partial class NftTitleView : ContentView
         get => (Option<string>)GetValue(KodadotUnlockableUrlProperty);
 
         set => SetValue(KodadotUnlockableUrlProperty, value);
+    }
+
+    public string AzeroIdReservedUntil
+    {
+        get => (string)GetValue(AzeroIdReservedUntilProperty);
+
+        set => SetValue(AzeroIdReservedUntilProperty, value);
     }
 
     public Endpoint Endpoint
