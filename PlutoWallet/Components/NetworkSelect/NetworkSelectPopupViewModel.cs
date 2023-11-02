@@ -18,18 +18,21 @@ namespace PlutoWallet.Components.NetworkSelect
 			{
 				SetProperty(ref isVisible, value);
 
-				// Save and change the endpoints
-				List<string> keys = new List<string>();
-
-				foreach(NetworkSelectInfo info in Networks)
+				if (!value)
 				{
-					if (info.IsSelected)
-					{
-						keys.Add(info.EndpointKey);
-					}
-				}
+					// Save and change the endpoints
+					List<string> keys = new List<string>();
 
-				Endpoints.SaveEndpoints(keys);
+					foreach (NetworkSelectInfo info in Networks)
+					{
+						if (info.IsSelected)
+						{
+							keys.Add(info.EndpointKey);
+						}
+					}
+
+					Endpoints.SaveEndpoints(keys);
+				}
 			}
 		}
 

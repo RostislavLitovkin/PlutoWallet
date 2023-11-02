@@ -99,8 +99,6 @@ public partial class NetworkSelectorView : ContentView
         // Hide the AssetSelectView
         var networkSelectPopupViewModel = DependencyService.Get<NetworkSelectPopupViewModel>();
 
-        Console.WriteLine("Selected:" + Key);
-
         networkSelectPopupViewModel.SelectEndpoint(Key);
     }
 }
