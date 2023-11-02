@@ -9,10 +9,10 @@ public partial class ConfirmTransactionView : ContentView
         BindingContext = DependencyService.Get<ConfirmTransactionViewModel>();
     }
 
-    void OnVerifyClicked(System.Object sender, System.EventArgs e)
+    async void OnVerifyClicked(System.Object sender, System.EventArgs e)
     {
         var viewModel = DependencyService.Get<ConfirmTransactionViewModel>();
-        if (viewModel.Password == Preferences.Get("password", ""))
+        if (viewModel.Password == await SecureStorage.Default.GetAsync("password"))
         {
             viewModel.Status = ConfirmTransactionStatus.Verified;
 

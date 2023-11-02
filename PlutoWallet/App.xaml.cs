@@ -98,13 +98,13 @@ public partial class App : Application
 
         DependencyService.Register<NetworkSelectPopupViewModel>();
 
-        if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
+        if (Preferences.ContainsKey("publicKey"))
         {
             MainPage = new NavigationPage(new BasePage());
         }
         else
         {
-            MainPage = new NavigationPage(new BeginPage());
+            MainPage = new NavigationPage(new SetupPasswordPage());
         }
 	}
 }

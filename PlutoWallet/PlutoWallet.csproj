@@ -38,6 +38,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
+	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
@@ -233,6 +234,9 @@
 	  <None Remove="Resources\Images\PredefinedLayouts\hydradxgods.png" />
 	  <None Remove="Components\ChangeLayoutRequest\" />
 	  <None Remove="Resources\Images\calamar.png" />
+	  <None Remove="Resources\Images\logotransparentwhite.svg" />
+	  <None Remove="Resources\Images\logotransparentblack.svg" />
+	  <None Remove="Components\Mnemonics\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -336,6 +340,8 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\xcavate.png" />
 	  <BundleResource Include="Resources\Images\PredefinedLayouts\hydradxgods.png" />
 	  <BundleResource Include="Resources\Images\calamar.png" />
+	  <BundleResource Include="Resources\Images\logotransparentwhite.svg" />
+	  <BundleResource Include="Resources\Images\logotransparentblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -468,6 +474,7 @@
 	  <Folder Include="Model\SubSquare\" />
 	  <Folder Include="Components\Referenda\" />
 	  <Folder Include="Components\ChangeLayoutRequest\" />
+	  <Folder Include="Components\Mnemonics\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -479,6 +486,11 @@
 		<TcpPort>58181</TcpPort>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+		
+		<CodesignProvision>PlutoWalletMacCatalystDevelopment</CodesignProvision>
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />

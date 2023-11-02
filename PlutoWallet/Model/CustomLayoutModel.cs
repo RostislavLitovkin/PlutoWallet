@@ -17,6 +17,7 @@ using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
 using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.Components.Mnemonics;
 
 namespace PlutoWallet.Model
 {
@@ -28,11 +29,12 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx];[0, 2, 3]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, BMnR, ExSL, UsdB, SubK, ChaK, CalEx];[polkadot, kusama]";
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract];[";
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
+            "BMnR];[";
 
         // EXTRA: StDash, AAASeasonCountdown, PubK
 
@@ -189,6 +191,28 @@ namespace PlutoWallet.Model
             SaveLayout(newLayout + ";" + itemsAndNetworksStrings[1]);
         }
 
+        public static void RemoveItemFromSavedLayout(string itemId)
+        {
+            var layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
+                    Preferences.Get("PlutoLayout",
+                    Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT)
+                );
+
+            var infos = new ObservableCollection<LayoutItemInfo>();
+
+            for (int i = 0; i < layoutItemInfos.Count(); i++)
+            {
+                if (itemId == layoutItemInfos[i].PlutoLayoutId)
+                {
+                    continue;
+                }
+
+                infos.Add(layoutItemInfos[i]);
+            }
+
+            Model.CustomLayoutModel.SaveLayout(infos);
+
+        }
         private static void SaveEndpoints(string plutoLayoutString)
         {
             if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
@@ -290,6 +314,8 @@ namespace PlutoWallet.Model
                     return new IdentityView();
                 case "Ref":
                     return new ReferendaView();
+                case "BMnR":
+                    return new BackupMnemonicsReminderView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -367,6 +393,8 @@ namespace PlutoWallet.Model
                     return new IdentityView();
                 case "Ref":
                     return new ReferendaView();
+                case "BMnR":
+                    return new BackupMnemonicsReminderView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -471,6 +499,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Referenda",
                         PlutoLayoutId = "Ref",
+                    };
+                case "BMnR":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Backup Mnemonics Reminder",
+                        PlutoLayoutId = "BMnR",
                     };
             }
 

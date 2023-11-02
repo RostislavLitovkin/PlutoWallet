@@ -10,15 +10,20 @@ public partial class EnterMnemonicsPage : ContentPage
         InitializeComponent();
 	}
 
-    private async void ContinueToMainPageClicked(System.Object sender, System.EventArgs e)
+    private async void ContinueWithMnemonicClicked(System.Object sender, System.EventArgs e)
     {
-        await viewModel.CreateKeys();
-        await Navigation.PushAsync(new BasePage());
+        await Model.KeysModel.GenerateNewAccountAsync(
+            viewModel.Mnemonics,
+            await SecureStorage.Default.GetAsync("password")
+        );
+
+        await Navigation.PopToRootAsync();
     }
 
     private async void ContinueWithPrivateKeyClicked(System.Object sender, System.EventArgs e)
     {
-        await viewModel.CreateKeysWithPrivateKey();
-        await Navigation.PushAsync(new BasePage());
+        await Model.KeysModel.GenerateNewAccountFromPrivateKeyAsync(viewModel.PrivateKey);
+
+        await Navigation.PopToRootAsync();
     }
 }
