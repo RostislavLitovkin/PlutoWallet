@@ -106,7 +106,7 @@ public partial class TransactionRequestView : ContentView
                     signature = Utils.Bytes2HexString(new byte[1] { 1 }.Concat(extrinsic.Signature).ToArray()).ToLower(),
                 };
 
-                await PlutonicationWalletClient.SendSignedPayloadAsync(signerResult);
+                await PlutonicationWalletClient.SendPayloadSignatureAsync(signerResult);
             }
 
             // Tell the dApp that the transaction was successfull
