@@ -20,10 +20,10 @@ namespace PlutoWallet.Model
             return "https://ipfs.io/ipfs/" + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
-		public static async Task<string> FetchIpfsAsync(string ipfsLink)
+		public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)
 		{
             HttpClient httpClient = new HttpClient();
-			return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink));
+			return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
         }
 
         public static string RemoveNonHexadecimalCharacters(string input)

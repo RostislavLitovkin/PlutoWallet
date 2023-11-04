@@ -3,15 +3,16 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.Nft;
 using PlutoWallet.View;
 
 namespace PlutoWallet.ViewModel
 {
 	public partial class BasePageViewModel : ObservableObject
 	{
-        private LoadingView loadingView = new LoadingView();
         public MainView MainView = new MainView();
-        private NftView nftView = new NftView();
+
+        private CancellationTokenSource nftsCancellationTokenSource;
 
         [ObservableProperty]
 		private ContentView content;
@@ -21,27 +22,49 @@ namespace PlutoWallet.ViewModel
 			content = MainView;
 		}
 
-        public void ReloadMainView()
-        {
-            MainView.Setup();
-        }
-
         public void SetMainView()
 		{
             var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
             usdBalanceViewModel.DoNotReload = true;
 
+            // Handle the NFT view
+            if (nftsCancellationTokenSource != null)
+            {
+                nftsCancellationTokenSource.Cancel(false);
+                DependencyService.Get<NftLoadingViewModel>().IsVisible = false;
+            }
+            
             Content = MainView;
 
             var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             networkViewModel.SetupDefault();
         }
 
-        public void SetNftView()
+        public async Task SetNftView()
         {
-            Content = nftView;
+            Content = new NftView();
 
-            DependencyService.Get<NftViewModel>().GetNFTsAsync();
+            if (nftsCancellationTokenSource != null)
+            {
+                nftsCancellationTokenSource.Dispose();
+                nftsCancellationTokenSource = null;
+            }
+
+            nftsCancellationTokenSource = new CancellationTokenSource();
+         
+            try
+            {
+                await DependencyService.Get<NftViewModel>().GetNFTsAsync(nftsCancellationTokenSource.Token);
+            }
+            catch (OperationCanceledException)
+            {
+
+            }
+            finally
+            {
+                nftsCancellationTokenSource.Dispose();
+                nftsCancellationTokenSource = null;
+            }
         }
     }
 }

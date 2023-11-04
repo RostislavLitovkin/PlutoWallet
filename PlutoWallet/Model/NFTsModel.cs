@@ -53,12 +53,7 @@ namespace PlutoWallet.Model
 
 	public class NFTsModel
 	{
-        public static async Task<List<NFT>> AddNFTsAsync(Endpoint endpoint)
-        {
-            return await GetNFTsAsync(endpoint);
-        }
-
-        public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint)
+        public static async Task<List<NFT>> GetNFTsAsync(Endpoint endpoint, CancellationToken token)
         {
             var client = new SubstrateClientExt(endpoint, ChargeTransactionPayment.Default());
 
@@ -68,11 +63,11 @@ namespace PlutoWallet.Model
 
             try
             {
-                List<string> collectionItemIds = await GetNftsAccountAsync(client, CancellationToken.None);
+                List<string> collectionItemIds = await GetNftsAccountAsync(client, token);
 
                 foreach (string collectionItemId in collectionItemIds)
                 {
-                    NFT nft = await GetNftMetadataAsync(client, collectionItemId);
+                    NFT nft = await GetNftMetadataAsync(client, collectionItemId, token);
                     if (nft != null)
                     {
                         SetNftIds(ref nft, collectionItemId);
@@ -92,11 +87,11 @@ namespace PlutoWallet.Model
 
             try
             {
-                List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, CancellationToken.None);
+                List<string> uniquesCollectionItemIds = await GetUniquesAccountAsync(client, token);
 
                 foreach (string collectionItemId in uniquesCollectionItemIds)
                 {
-                    NFT nft = await GetUniquesMetadataAsync(client, collectionItemId);
+                    NFT nft = await GetUniquesMetadataAsync(client, collectionItemId, token);
 
                     if (nft != null)
                     {
@@ -141,15 +136,15 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nfts;
         }
 
-        private static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId)
+        private static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
-            ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, CancellationToken.None);
+            ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, token);
 
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-            string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
+            string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
@@ -200,7 +195,7 @@ Hopefully it will fulfill the test functionalities correctly.",
         }
         
 
-        private static async Task<NFT> GetUniquesMetadataAsync(SubstrateClientExt client, string collectionItemId)
+        private static async Task<NFT> GetUniquesMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
         {
             try
             {
@@ -210,7 +205,7 @@ Hopefully it will fulfill the test functionalities correctly.",
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink);
+                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
             
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 

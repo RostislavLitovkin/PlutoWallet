@@ -13,7 +13,7 @@ namespace PlutoWallet.Model.AzeroId
 {
 	public class AzeroIdNftsModel
 	{
-        public static async Task<List<NFT>> GetNamesForAddress(string address)
+        public static async Task<List<NFT>> GetNamesForAddress(string address, CancellationToken token)
         {
             try
             {
@@ -21,9 +21,9 @@ namespace PlutoWallet.Model.AzeroId
 
                 SubstrateClientExt client = new SubstrateClientExt(endpoint, ChargeAssetTxPayment.Default());
 
-                await client.ConnectAsync();
+                await client.ConnectAsync(token);
 
-                string tld = await TzeroId.GetTld(client);
+                string tld = await TzeroId.GetTld(client, token);
 
                 string rootKey = "2d010000";
 
@@ -40,9 +40,9 @@ namespace PlutoWallet.Model.AzeroId
                 byte[] finalHash = HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, rootKeyHex.ToArray());
 
                 var keysPaged = await client.InvokeAsync<JArray>("childstate_getKeys", new object[2] {
-                Constants.AzeroId.TZeroIdPrefixedStorageKey,
-                "0x"
-            }, CancellationToken.None);
+                    Constants.AzeroId.TZeroIdPrefixedStorageKey,
+                    "0x"
+                }, token);
 
                 var unfilteredKeys = keysPaged.Select(p => p.ToString());
 
@@ -57,13 +57,13 @@ namespace PlutoWallet.Model.AzeroId
                         var temp = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
                         AzeroIdResolver.Constants.TzeroPrefixedStorageKey,
                         key
-                    }, CancellationToken.None);
+                    }, token);
 
                         if (temp == null) return null;
 
                         var result = Utils.HexToByteArray(temp);
 
-                        NFT nft = await GetNFTMetadata(AzeroIdResolver.Helpers.BytesToString(result));
+                        NFT nft = await GetNFTMetadata(AzeroIdResolver.Helpers.BytesToString(result), token);
 
                         nft.Endpoint = endpoint;
 
@@ -81,10 +81,10 @@ namespace PlutoWallet.Model.AzeroId
             return null;
         }
 
-        private async static Task<NFT> GetNFTMetadata(string name)
+        private async static Task<NFT> GetNFTMetadata(string name, CancellationToken token)
         {
             HttpClient httpClient = new HttpClient();
-            string metadataJson = await httpClient.GetStringAsync(new Uri("https://tzero.id/api/v1/metadata/" + name + ".tzero.json"));
+            string metadataJson = await httpClient.GetStringAsync(new Uri("https://tzero.id/api/v1/metadata/" + name + ".tzero.json"), token);
 
             Console.WriteLine(metadataJson);
             return JsonConvert.DeserializeObject<AzeroIdNFTWrapper>(metadataJson).Metadata;

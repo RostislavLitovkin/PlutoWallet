@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using Newtonsoft.Json;
 using Substrate.NetApi;
 using PlutoWallet.Constants;
+using Uniquery;
 
 namespace PlutoWallet.Model
 {
@@ -73,22 +74,55 @@ namespace PlutoWallet.Model
             }
         }
 
-        public static async Task AddRmrkNfts(Action<List<NFT>> updateNfts)
-        {
-            updateNfts.Invoke(await GetAccountRmrk());
-        }
-
-        public static async Task<List<NFT>> GetAccountRmrk()
+        public static async Task<List<NFT>> GetAllNfts(CancellationToken token)
 		{
 			string address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), 2);
 
-			List<NFT> rmrks = new List<NFT>();
+			List<Nft> nfts = new List<Nft>();
+            int limit = 100;
+            int offset = 0;
+            string orderBy = "updatedAt_DESC";
+            bool forSale = false;
+            int eventsLimit = 0;
 
-            var nfts = await Uniquery.Universal.NftListByOwner(KeysModel.GetSubstrateKey(), 100, eventsLimit: 0);
+            nfts.AddRange(await Rmrk.NftListByOwner(address, limit, offset, orderBy, forSale, eventsLimit, 10, token));
 
+            nfts.AddRange(await RmrkV2.NftListByOwner(address, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+
+            nfts.AddRange(await Unique.NftListByOwner(address, limit, offset, token));
+
+            nfts.AddRange(await Quartz.NftListByOwner(address, limit, offset, token));
+
+            nfts.AddRange(await Opal.NftListByOwner(address, limit, offset, token));
+
+            nfts.AddRange(await Basilisk.NftListByOwner(address, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+
+            try
+            {
+                nfts.AddRange(await Glmr.NftListByOwner(address, limit, offset, orderBy, forSale, eventsLimit, token));
+            }
+            catch
+            {
+
+            }
+            try
+            {
+                nfts.AddRange(await Movr.NftListByOwner(address, limit, offset, orderBy, forSale, eventsLimit, token));
+            }
+            catch
+            {
+
+            }
+            nfts.AddRange(await Acala.NftListByOwner(address, limit, offset, token));
+
+            nfts.AddRange(await Astar.NftListByOwner(address, limit, offset, token));
+
+            nfts.AddRange(await Shiden.NftListByOwner(address, limit, offset, token));
+
+            List<NFT> result = new List<NFT>();
             foreach (var nft in nfts)
             {
-                rmrks.Add(new NFT
+                result.Add(new NFT
                 {
                     Name = nft.Name,
                     Description = nft.Meta.Description,
@@ -97,7 +131,7 @@ namespace PlutoWallet.Model
                 });
             }
 
-			return rmrks;
+			return result;
         }
 	}
 }
