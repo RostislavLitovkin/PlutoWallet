@@ -43,7 +43,7 @@ public partial class NftThumbnailView : ContentView
             var control = (NftThumbnailView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
-            control.networkBubble.Icon = ((Endpoint)newValue).Icon;
+            control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
 
     public static readonly BindableProperty AttributesProperty = BindableProperty.Create(

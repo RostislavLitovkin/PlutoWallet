@@ -42,7 +42,7 @@ namespace PlutoWallet.Model
             return (objNft.Name == this.Name &&
                 objNft.Description == this.Description &&
                 objNft.Image == this.Image &&
-                objNft.Endpoint.Name == this.Endpoint.Name);
+                objNft.Endpoint.Key == this.Endpoint.Key);
         }
 
         public override string ToString()
@@ -206,7 +206,9 @@ Hopefully it will fulfill the test functionalities correctly.",
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
                 string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
-            
+
+                Console.WriteLine(metadataJson);
+
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
                 nft.Image = Model.IpfsModel.ToIpfsLink(nft.Image);

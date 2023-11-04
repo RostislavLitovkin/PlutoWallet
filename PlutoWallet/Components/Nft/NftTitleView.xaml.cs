@@ -21,7 +21,7 @@ public partial class NftTitleView : ContentView
             var control = (NftTitleView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
-            control.networkBubble.Icon = ((Endpoint)newValue).Icon;
+            control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
 
     public static readonly BindableProperty KodadotUnlockableUrlProperty = BindableProperty.Create(
