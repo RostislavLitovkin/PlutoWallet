@@ -121,6 +121,8 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 
 ### 2) Secure storage
 
+- Private key / Mnemonics are saved in the Secure storage according to these docs: https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage.
+
 # Achievements
 - 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category with PlutoWallet & Plutonication
 - 2nd place at Polkadot Global Series hackathon 2023, APEC edition in the Web3 & Tooling category with Uniquery.Net
