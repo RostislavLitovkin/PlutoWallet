@@ -119,6 +119,8 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 
 - Private key is generated with [RandomNumberGenerator](https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.randomnumbergenerator?view=net-7.0) which creates cryptographically strong random values. This entropy is then passed to `Mnemonic.MnemonicFromEntropy(<entropyBytes>, BIP39Wordlist.English);` to generate the mnemonics.
 
+### 2) Secure storage
+
 # Achievements
 - 2nd place at Polkadot Global Series hackathon 2023, Europe edition in the Web3 & Tooling category with PlutoWallet & Plutonication
 - 2nd place at Polkadot Global Series hackathon 2023, APEC edition in the Web3 & Tooling category with Uniquery.Net
