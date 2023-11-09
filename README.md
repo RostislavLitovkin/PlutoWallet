@@ -49,6 +49,9 @@ The wallet supports these functionalities:
 - connect to any dApp thanks to [Plutonication](https://github.com/cisar2218/Plutonication)
 - See detail of your account on Calamar.app
 - See your Liquidity positions on HydraDX omnipool
+- See your recent Referenda votes and view all details on Subsquare.io
+- Securely sign any extrinsics with Polkadot Vault qr signing
+- View your AZERO.ID primary name and details
 - Light and Dark mode
 
 3rd party integrations:
@@ -58,6 +61,7 @@ The wallet supports these functionalities:
 - [Awesome Ajuna Avatars](https://aaa.ajuna.io/)
 - [AZERO.ID](https://azero.id/)
 - [SubSquare](https://www.subsquare.io/)
+- [Polkadot Vault](https://signer.parity.io/)
 
 # Differentiating factors
 
