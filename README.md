@@ -24,7 +24,7 @@ Install **.net MAUI**: https://learn.microsoft.com/en-us/dotnet/maui/get-started
 Detailed description on how to run the code: https://docs.microsoft.com/en-us/dotnet/maui/get-started/first-app?tabs=vswin&pivots=devices-android
 
 # PlutoWallet
-<img width="1428" alt="Screenshot 2023-11-09 at 11 44 54" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/d8734d24-a109-4046-8ddb-2b77ab1aa261">
+<img width="1019" alt="Screenshot 2023-11-09 at 23 21 17" src="https://github.com/RostislavLitovkin/PlutoWallet/assets/77352013/e1928376-6c63-46b2-9c35-4e00ec6a9070">
 
 Multi-platform mobile wallet for substrate-based chains.
 Focuses on the best UX.
