@@ -57,6 +57,7 @@ The wallet supports these functionalities:
 - [HydraDX](https://hydradx.io/)
 - [Awesome Ajuna Avatars](https://aaa.ajuna.io/)
 - [AZERO.ID](https://azero.id/)
+- [SubSquare](https://www.subsquare.io/)
 
 # Differentiating factors
 
