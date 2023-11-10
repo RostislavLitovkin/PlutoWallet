@@ -18,6 +18,7 @@ using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Components.Mnemonics;
+using PlutoWallet.Components.Buttons;
 
 namespace PlutoWallet.Model
 {
@@ -29,10 +30,10 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, BMnR, ExSL, UsdB, SubK, ChaK, CalEx];[polkadot, kusama]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK, CalEx];[polkadot, kusama]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, SubK, ChaK, CalEx, " +
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
             "BMnR];[";
 
@@ -316,6 +317,8 @@ namespace PlutoWallet.Model
                     return new ReferendaView();
                 case "BMnR":
                     return new BackupMnemonicsReminderView();
+                case "RnT":
+                    return new ReceiveAndTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -395,6 +398,8 @@ namespace PlutoWallet.Model
                     return new ReferendaView();
                 case "BMnR":
                     return new BackupMnemonicsReminderView();
+                case "RnT":
+                    return new ReceiveAndTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -505,6 +510,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Backup Mnemonics Reminder",
                         PlutoLayoutId = "BMnR",
+                    };
+                case "RnT":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Receive and Transfer",
+                        PlutoLayoutId = "RnT",
                     };
             }
 

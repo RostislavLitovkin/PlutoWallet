@@ -237,6 +237,7 @@
 	  <None Remove="Resources\Images\logotransparentwhite.svg" />
 	  <None Remove="Resources\Images\logotransparentblack.svg" />
 	  <None Remove="Components\Mnemonics\" />
+	  <None Remove="Components\Buttons\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -475,6 +476,7 @@
 	  <Folder Include="Components\Referenda\" />
 	  <Folder Include="Components\ChangeLayoutRequest\" />
 	  <Folder Include="Components\Mnemonics\" />
+	  <Folder Include="Components\Buttons\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">

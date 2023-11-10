@@ -256,7 +256,7 @@ namespace PlutoWallet.Model
 
             if ((await KeysModel.GetMnemonicsOrPrivateKeyAsync()).IsSome(out (string, bool) secretValues))
             {
-                var (mnemonicsOrPrivateKey, usePrivateKey) = secretValues;
+                var (mnemonicsOrPrivateKey, _usePrivateKey) = secretValues;
 
                 if (Preferences.Get("usePrivateKey", false))
                 {
