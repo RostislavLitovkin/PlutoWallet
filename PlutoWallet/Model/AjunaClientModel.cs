@@ -140,7 +140,7 @@ namespace PlutoWallet.Model
 
             // Setup things, like balances..
 
-            Task getBalance = Model.AssetsModel.GetBalance();
+            await Model.AssetsModel.GetBalance();
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
@@ -160,6 +160,15 @@ namespace PlutoWallet.Model
                     var dcaViewModel = DependencyService.Get<DCAViewModel>();
 
                     await dcaViewModel.GetDCAPosition(GroupClients[i]);
+                }
+            }
+
+            for (int i = 0; i < GroupEndpoints.Length; i++)
+            {
+                if (GroupEndpoints[i].Name == "HydraDX")
+                {
+                    await Model.HydraDX.Sdk.GetAssets(GroupClients[i], CancellationToken.None);
+                    Model.AssetsModel.GetUsdBalance();
                 }
             }
         }

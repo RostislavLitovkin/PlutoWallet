@@ -39,6 +39,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public ConvictionVotingStorage ConvictionVotingStorage;
 
+        public LBPStorage LBPStorage;
+
         public Endpoint Endpoint { get; set; }
 
         // Logic for ink! contracts
@@ -66,6 +68,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.DCAStorage = new DCAStorage(this);
             this.IdentityStorage = new IdentityStorage(this);
             this.ConvictionVotingStorage = new ConvictionVotingStorage(this);
+            this.LBPStorage = new LBPStorage(this);
 
             ExtrinsicManger = new ExtrinsicManager();
 

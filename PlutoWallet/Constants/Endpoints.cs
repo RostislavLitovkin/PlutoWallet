@@ -69,7 +69,7 @@ namespace PlutoWallet.Constants
                 Icon = "polkadot.png",
                 CalamarChainName = "polkadot",
                 SubSquareChainName = "polkadot",
-                Unit = "Dot",
+                Unit = "DOT",
                 Decimals = 10,
                 SS58Prefix = 0,
                 ChainType = ChainType.Substrate,

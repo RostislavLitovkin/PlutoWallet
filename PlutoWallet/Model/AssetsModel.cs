@@ -147,6 +147,30 @@ namespace PlutoWallet.Model
 
             Assets = tempAssets;
 
+            if (Model.HydraDX.Sdk.Assets.Any())
+            {
+                GetUsdBalance();
+            }
+            else
+            {
+                usdBalanceViewModel.UpdateBalances();
+            }
+        }
+
+        public static void GetUsdBalance()
+        {
+            double usdSumValue = 0.0;
+            for(int i = 0; i < Assets.Count(); i++)
+            {
+                double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(Assets[i].Symbol);
+                Assets[i].UsdValue = Assets[i].Amount * spotPrice;
+                usdSumValue += Assets[i].UsdValue;
+            }
+
+            UsdSum = usdSumValue;
+
+            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+
             usdBalanceViewModel.UpdateBalances();
         }
 
