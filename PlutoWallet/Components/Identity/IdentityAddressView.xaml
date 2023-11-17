@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Identity.IdentityAddressView"
+             HeightRequest="90"
+             x:Name="view">
+    <Border StrokeThickness="0"
+            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+            x:Name="border"
+            Padding="0, 0, 0, 0">
+        <Border.Shadow> 
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="3"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Padding="10, 0, 10, 0">
+
+            <Image AbsoluteLayout.LayoutBounds="0, 10, 20, 20"
+                    x:Name="identityJundgementIcon"
+                    Source="{AppThemeBinding Light=unknownblack.png, Dark=unknownwhite.png}" />
+            <Label AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    VerticalTextAlignment="Center"
+                    Margin="25, 0, 0, 0"
+                    x:Name="identityLabel"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    Text="Unknown" />
+
+            <Entry Placeholder="Address / AZERO.ID"
+                    AbsoluteLayout.LayoutBounds="0, 40, 1, 40"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    Margin="0, 0, 45, 0"
+                    x:Name="addressEntry"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    PropertyChanged="OnEntryPropertyChanged"/>
+
+            <!--QR code button-->
+            <Image
+                AbsoluteLayout.LayoutBounds="1, 40, 40, 40"
+                AbsoluteLayout.LayoutFlags="XProportional"
+                x:Name="qrcode"
+                Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
+                Margin="5, 5, 5, 5"
+                >
+            
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnShowQRClicked" />
+
+                </Image.GestureRecognizers>
+            </Image>
+        </AbsoluteLayout>
+    </Border>
+</ContentView>
+

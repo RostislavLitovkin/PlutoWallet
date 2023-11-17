@@ -9,15 +9,14 @@ using static Substrate.NetApi.Model.Meta.Storage;
 using System.Numerics;
 using Substrate.NetApi.Generated.Model.pallet_dca.types;
 using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Model.HydraDX
 {
 	public class DCAModel
 	{
-        public static async Task<List<DCAPosition>> GetDCAPositions()
+        public static async Task<List<DCAPosition>> GetDCAPositions(SubstrateClientExt client)
         {
-            var client = Model.AjunaClientModel.Client;
-
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
 

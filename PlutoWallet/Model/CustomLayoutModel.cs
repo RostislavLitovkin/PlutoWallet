@@ -14,6 +14,11 @@ using PlutoWallet.Components.Contract;
 using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.ViewModel;
+using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Referenda;
+using Substrate.NetApi.Model.Types.Base;
+using PlutoWallet.Components.Mnemonics;
+using PlutoWallet.Components.Buttons;
 
 namespace PlutoWallet.Model
 {
@@ -25,13 +30,14 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx];[0, 2, 3]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK, CalEx];[polkadot, kusama]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, PubK, SubK, ChaK, CalEx, " +
-            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA];[";
+        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
+            "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
+            "BMnR];[";
 
-        // EXTRA: StDash, contract, AAASeasonCountdown,
+        // EXTRA: StDash, AAASeasonCountdown, PubK
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -42,13 +48,13 @@ namespace PlutoWallet.Model
 
             string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
 
-            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
+            string[] layoutEndpointKeys = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
 
             List<Endpoint> result = new List<Endpoint>();
 
-            foreach (string item in layoutEndpointStrings)
+            foreach (string key in layoutEndpointKeys)
             {
-                result.Add(Endpoints.GetAllEndpoints[int.Parse(item.Trim())]);
+                result.Add(Endpoints.GetEndpointDictionary[key.Trim()]);
             }
 
             return result;
@@ -127,19 +133,11 @@ namespace PlutoWallet.Model
                 result = result.Substring(0, result.Length - 2); // Remove last ", " (comma + space)
             }
 
-            result += "];[";
+            result += "];";
 
-            // Endpoint indexes
-            for (int i = 0; i < 4; i++)
-            {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
-                if (endpointIndex != -1)
-                {
-                    result += endpointIndex + ", ";
-                }
-            }
-
-            result = result.Substring(0, result.Length - 2) + "]";
+            // save Endpoints
+            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
+                
 
             // Save
             Preferences.Set("PlutoLayout", result);
@@ -171,17 +169,10 @@ namespace PlutoWallet.Model
 
             string[] plutoLayoutStrings = plutoLayout.Split(";");
 
-            string result = plutoLayoutStrings[0] + ";[";
+            string result = plutoLayoutStrings[0] + ";";
 
-            // Endpoint indexes
-            for (int i = 0; i < 4; i++)
-            {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, Endpoints.DefaultNetworks[i]);
-                if (endpointIndex != -1)
-                {
-                    result += endpointIndex + ", ";
-                }
-            }
+            // save Endpoints
+            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
 
             result = result.Substring(0, result.Length - 2) + "]";
 
@@ -201,6 +192,28 @@ namespace PlutoWallet.Model
             SaveLayout(newLayout + ";" + itemsAndNetworksStrings[1]);
         }
 
+        public static void RemoveItemFromSavedLayout(string itemId)
+        {
+            var layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
+                    Preferences.Get("PlutoLayout",
+                    Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT)
+                );
+
+            var infos = new ObservableCollection<LayoutItemInfo>();
+
+            for (int i = 0; i < layoutItemInfos.Count(); i++)
+            {
+                if (itemId == layoutItemInfos[i].PlutoLayoutId)
+                {
+                    continue;
+                }
+
+                infos.Add(layoutItemInfos[i]);
+            }
+
+            Model.CustomLayoutModel.SaveLayout(infos);
+
+        }
         private static void SaveEndpoints(string plutoLayoutString)
         {
             if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
@@ -220,19 +233,8 @@ namespace PlutoWallet.Model
                 return;
             }
 
-            string[] layoutEndpointStrings = itemsAndNetworksStrings[1].Trim(new char[] { '[', ']' }).Split(',');
-
-            int[] networks = new int[4]{-1, -1, -1, -1};
-
-            for (int i = 0; i < layoutEndpointStrings.Length; i++)
-            {
-                networks[i] = int.Parse(layoutEndpointStrings[i].Trim());
-            }
-
-            Preferences.Set("SelectedNetworks0", networks[0]);
-            Preferences.Set("SelectedNetworks1", networks[1]);
-            Preferences.Set("SelectedNetworks2", networks[2]);
-            Preferences.Set("SelectedNetworks3", networks[3]);
+            // Save Selected Networks
+            Preferences.Set("SelectedNetworks", itemsAndNetworksStrings[1]);
 
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             multiNetworkSelectViewModel.SetupDefault();
@@ -282,12 +284,14 @@ namespace PlutoWallet.Model
                     {
                         Title = "Public key",
                         Address = KeysModel.GetPublicKey(),
+                        QrAddress = KeysModel.GetPublicKey(),
                     };
                 case "SubK":
                     return new AddressView
                     {
                         Title = "Substrate key",
                         Address = KeysModel.GetSubstrateKey(),
+                        QrAddress = "substrate:" + KeysModel.GetSubstrateKey()
                     };
                 case "ChaK":
                     return new ChainAddressView();
@@ -307,6 +311,14 @@ namespace PlutoWallet.Model
                     return new OmnipoolLiquidityView();
                 case "HDXDCA":
                     return new DCAView();
+                case "id":
+                    return new IdentityView();
+                case "Ref":
+                    return new ReferendaView();
+                case "BMnR":
+                    return new BackupMnemonicsReminderView();
+                case "RnT":
+                    return new ReceiveAndTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -328,12 +340,18 @@ namespace PlutoWallet.Model
                     var tempExtrinsics = new Dictionary<string, ExtrinsicInfo>();
                     tempExtrinsics.Add("18736389", new ExtrinsicInfo
                     {
+                        CallName = "EVM.eth_call_v2",
+                        Hash = new Hash("0x97ad595390e73c9421b21d130291bdcbc24267d3ccb58dd27e71177d15e68991"),
+                        Endpoint = Endpoints.GetEndpointDictionary["acala"],
                         ExtrinsicId = "18736389",
                         Status = ExtrinsicStatusEnum.InBlock,
                     });
 
                     tempExtrinsics.Add("18737890", new ExtrinsicInfo
                     {
+                        CallName = "XcmPallet.limited_reserve_transfer_assets",
+                        Endpoint = Endpoints.GetEndpointDictionary["polkadot"],
+                        Hash = new Hash("0x89bca86385b938c90e230a9837bce7e09991dde37f44b98b347c1d8ae2813654"),
                         ExtrinsicId = "18737890",
                         Status = ExtrinsicStatusEnum.Success,
                     });
@@ -341,7 +359,7 @@ namespace PlutoWallet.Model
                     extrinsicStatusViewModel.Extrinsics = tempExtrinsics;
                     extrinsicStatusViewModel.Update();
 
-                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel, 135);
+                    return new ExtrinsicStatusStackLayout(extrinsicStatusViewModel);
                 case "UsdB":
                     return new UsdBalanceView();
                 case "PubK":
@@ -374,6 +392,14 @@ namespace PlutoWallet.Model
                     return new OmnipoolLiquidityView();
                 case "HDXDCA":
                     return new DCAView();
+                case "id":
+                    return new IdentityView();
+                case "Ref":
+                    return new ReferendaView();
+                case "BMnR":
+                    return new BackupMnemonicsReminderView();
+                case "RnT":
+                    return new ReceiveAndTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -466,6 +492,30 @@ namespace PlutoWallet.Model
                     {
                         Name = "HydraDX DCA Position",
                         PlutoLayoutId = "HDXDCA",
+                    };
+                case "id":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Identity",
+                        PlutoLayoutId = "id",
+                    };
+                case "Ref":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Referenda",
+                        PlutoLayoutId = "Ref",
+                    };
+                case "BMnR":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Backup Mnemonics Reminder",
+                        PlutoLayoutId = "BMnR",
+                    };
+                case "RnT":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Receive and Transfer",
+                        PlutoLayoutId = "RnT",
                     };
             }
 

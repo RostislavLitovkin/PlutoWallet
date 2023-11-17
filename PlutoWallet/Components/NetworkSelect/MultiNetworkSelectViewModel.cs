@@ -30,56 +30,46 @@ namespace PlutoWallet.Components.NetworkSelect
          */
         public void SetupDefault()
         {
-            int[] defaultNetworks = Endpoints.DefaultNetworks;
+            string[] selectedEndpointKeys = Endpoints.GetSelectedEndpointKeys();
 
             NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
-            int[] tempEndpointIndexes = new int[4];
 
-            for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
+            for(int i = 0; i < selectedEndpointKeys.Length; i++)
             {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
-                if (endpointIndex != -1)
+                Endpoint endpoint = Endpoints.GetEndpointDictionary[selectedEndpointKeys[i]];
+                NetworkInfos.Add(new NetworkSelectInfo
                 {
-                    NetworkInfos.Add(new NetworkSelectInfo
-                    {
-                        EndpointIndex = endpointIndex,
-                        ShowName = i == 0, // true for index 0, otherwise false
-                        Name = Endpoints.GetAllEndpoints[endpointIndex].Name,
-                        Icon = Endpoints.GetAllEndpoints[endpointIndex].Icon,
-                    });
-                }
-                tempEndpointIndexes[i] = endpointIndex;
+                    EndpointKey = selectedEndpointKeys[i],
+                    ShowName = i == 0, // true for the first endpoint, otherwise hidden
+                    Name = endpoint.Name,
+                    Icon = endpoint.Icon,
+                });
             }
 
             // Update other views
-            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(tempEndpointIndexes);
+            Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(selectedEndpointKeys);
         }
 
 
-        public void Select(Endpoint endpoint)
+        public void Select(Endpoint selectedEndpoint)
         {
-            int[] defaultNetworks = Endpoints.DefaultNetworks;
+            string[] selectedEndpointKeys = Endpoints.GetSelectedEndpointKeys();
 
             NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
-            int[] tempEndpointIndexes = new int[4];
 
-            for (int i = 0; i < MAX_BUBBLE_COUNT; i++)
+            for (int i = 0; i < selectedEndpointKeys.Length; i++)
             {
-                int endpointIndex = Preferences.Get("SelectedNetworks" + i, defaultNetworks[i]);
-                if (endpointIndex != -1)
+                Endpoint endpoint = Endpoints.GetEndpointDictionary[selectedEndpointKeys[i]];
+                NetworkInfos.Add(new NetworkSelectInfo
                 {
-                    NetworkInfos.Add(new NetworkSelectInfo
-                    {
-                        EndpointIndex = endpointIndex,
-                        ShowName = endpoint.Name == Endpoints.GetAllEndpoints[endpointIndex].Name,
-                        Name = Endpoints.GetAllEndpoints[endpointIndex].Name,
-                        Icon = Endpoints.GetAllEndpoints[endpointIndex].Icon,
-                    });
-                }
-                tempEndpointIndexes[i] = endpointIndex;
+                    EndpointKey = selectedEndpointKeys[i],
+                    ShowName = endpoint.Name == selectedEndpoint.Name,
+                    Name = endpoint.Name,
+                    Icon = endpoint.Icon,
+                });
             }
 
-            Task change = Model.AjunaClientModel.ChangeChainAsync(endpoint);
+            Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpoint);
         }
     }
 }

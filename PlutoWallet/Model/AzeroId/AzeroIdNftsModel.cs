@@ -7,27 +7,30 @@ using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi.Model.Extrinsics;
 using PlutoWallet.Constants;
 using Newtonsoft.Json;
+using AzeroIdResolver;
 
 namespace PlutoWallet.Model.AzeroId
 {
 	public class AzeroIdNftsModel
 	{
-        public static async Task<List<NFT>> GetNamesForAddress(string address)
+        public static async Task<List<NFT>> GetNamesForAddress(string address, CancellationToken token)
         {
             try
             {
-                AjunaClientExt client = new AjunaClientExt(new Uri("wss://ws.test.azero.dev"), ChargeAssetTxPayment.Default());
+                var endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
 
-                await client.ConnectAsync();
+                SubstrateClientExt client = new SubstrateClientExt(endpoint, ChargeAssetTxPayment.Default());
 
-                string tld = await AzeroIdModel.GetTld(client);
+                await client.ConnectAsync(token);
+
+                string tld = await TzeroId.GetTld(client, token);
 
                 string rootKey = "2d010000";
 
                 /// Actual code logic down here
                 List<byte> rootKeyHex = new List<byte>(Utils.HexToByteArray(rootKey));
 
-                var accountId = new AccountId32();
+                var accountId = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
                 accountId.Create(Utils.GetPublicKeyFrom(address));
 
                 // concat the rootKey and accountId param
@@ -37,9 +40,9 @@ namespace PlutoWallet.Model.AzeroId
                 byte[] finalHash = HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, rootKeyHex.ToArray());
 
                 var keysPaged = await client.InvokeAsync<JArray>("childstate_getKeys", new object[2] {
-                Constants.AzeroId.TZeroIdPrefixedStorageKey,
-                "0x"
-            }, CancellationToken.None);
+                    Constants.AzeroId.TZeroIdPrefixedStorageKey,
+                    "0x"
+                }, token);
 
                 var unfilteredKeys = keysPaged.Select(p => p.ToString());
 
@@ -52,18 +55,17 @@ namespace PlutoWallet.Model.AzeroId
                     {
                         // query the result
                         var temp = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
-                        Constants.AzeroId.TZeroIdPrefixedStorageKey,
+                        AzeroIdResolver.Constants.TzeroPrefixedStorageKey,
                         key
-                    }, CancellationToken.None);
+                    }, token);
 
                         if (temp == null) return null;
 
                         var result = Utils.HexToByteArray(temp);
 
-                        NFT nft = await GetNFTMetadata(AzeroIdModel.BytesToString(result));
+                        NFT nft = await GetNFTMetadata(AzeroIdResolver.Helpers.BytesToString(result), token);
 
-                        Console.WriteLine("NAME: " + nft.Name);
-                        nft.Endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+                        nft.Endpoint = endpoint;
 
                         nfts.Add(nft);
                     }
@@ -73,21 +75,20 @@ namespace PlutoWallet.Model.AzeroId
             }
             catch(Exception ex)
             {
-                Console.WriteLine("AZERO ID ERROR: ");
+                Console.WriteLine("AZERO ID ERROR (in PlutoWallet model): ");
                 Console.WriteLine(ex.Message);
             }
             return null;
         }
 
-        private async static Task<NFT> GetNFTMetadata(string name)
+        private async static Task<NFT> GetNFTMetadata(string name, CancellationToken token)
         {
             HttpClient httpClient = new HttpClient();
-            string metadataJson = await httpClient.GetStringAsync(new Uri("https://tzero.id/api/v1/metadata/" + name + ".tzero.json"));
+            string metadataJson = await httpClient.GetStringAsync(new Uri("https://tzero.id/api/v1/metadata/" + name + ".tzero.json"), token);
 
             Console.WriteLine(metadataJson);
             return JsonConvert.DeserializeObject<AzeroIdNFTWrapper>(metadataJson).Metadata;
         }
-
     }
 
     public class AzeroIdNFTWrapper

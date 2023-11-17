@@ -6,9 +6,9 @@ using System.Numerics;
 
 namespace PlutoWallet.ViewModel
 {
-	public partial class NftDetailViewModel : ObservableObject
-	{
-		public NFT Nft { set
+    public partial class NftDetailViewModel : ObservableObject
+    {
+        public NFT Nft { set
             {
                 Name = value.Name;
                 Description = value.Description;
@@ -41,6 +41,9 @@ namespace PlutoWallet.ViewModel
 
         [ObservableProperty]
         private Option<string> kodadotUnlockableUrl;
+
+        [ObservableProperty]
+        private string azeroIdReservedUntil;
 
         public NftDetailViewModel()
 		{

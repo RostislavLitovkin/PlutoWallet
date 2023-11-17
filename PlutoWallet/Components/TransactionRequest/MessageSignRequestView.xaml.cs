@@ -56,7 +56,7 @@ public partial class MessageSignRequestView : ContentView
                     signature = Utils.Bytes2HexString(signature).ToLower(),
                 };
 
-                await PlutonicationWalletClient.SendSignedPayloadAsync(signerResult);
+                await PlutonicationWalletClient.SendRawSignatureAsync(signerResult);
             }
 
             // Tell the dApp that the transaction was successfull

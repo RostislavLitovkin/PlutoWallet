@@ -23,7 +23,8 @@
                             VerticalTextAlignment="End">
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span FontAttributes="Bold" Text="{Binding Title}"/>
+                                    <Span FontAttributes="Bold"
+                                          Text="{Binding Title}"/>
 
                                 </FormattedString>
 

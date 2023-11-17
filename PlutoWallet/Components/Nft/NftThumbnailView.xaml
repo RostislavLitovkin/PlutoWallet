@@ -36,8 +36,6 @@
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                            x:Name="image" Aspect="AspectFill" />
                     </AbsoluteLayout>
-                    
-
                 </Border>
 
                 <AbsoluteLayout MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Width}"
@@ -59,10 +57,6 @@
 
                         <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}" >
                         </Label>
-
-
-
-
                     </StackLayout>
 
                     <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"

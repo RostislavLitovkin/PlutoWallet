@@ -21,7 +21,7 @@ public partial class NftTitleView : ContentView
             var control = (NftTitleView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
-            control.networkBubble.Icon = ((Endpoint)newValue).Icon;
+            control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
 
     public static readonly BindableProperty KodadotUnlockableUrlProperty = BindableProperty.Create(
@@ -33,6 +33,17 @@ public partial class NftTitleView : ContentView
             {
                 control.kodadotUnlockableButton.IsVisible = true;
             }
+        });
+
+    public static readonly BindableProperty AzeroIdReservedUntilProperty = BindableProperty.Create(
+        nameof(AzeroIdReservedUntil), typeof(string), typeof(NftTitleView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (NftTitleView)bindable;
+
+            control.reservedUntilLabel.IsVisible = true;
+
+            control.reservedUntilLabel.Text = (string)newValue;
         });
 
     public NftTitleView()
@@ -54,6 +65,13 @@ public partial class NftTitleView : ContentView
         set => SetValue(KodadotUnlockableUrlProperty, value);
     }
 
+    public string AzeroIdReservedUntil
+    {
+        get => (string)GetValue(AzeroIdReservedUntilProperty);
+
+        set => SetValue(AzeroIdReservedUntilProperty, value);
+    }
+
     public Endpoint Endpoint
     {
         get => (Endpoint)GetValue(EndpointProperty);
@@ -65,7 +83,7 @@ public partial class NftTitleView : ContentView
     {
         if (KodadotUnlockableUrl.IsSome(out var url))
         {
-            await Navigation.PushAsync(new Kodadot.KodadotUnlockablePage(url));
+            await Navigation.PushAsync(new WebView.WebViewPage(url));
         }
     }
 }

@@ -38,6 +38,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
+	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
@@ -82,8 +83,9 @@
 	  <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
 	  <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
 	  <PackageReference Include="Markdig" Version="0.31.0" />
-	  <PackageReference Include="Uniquery" Version="0.1.3" />
+	  <PackageReference Include="Uniquery" Version="1.0.1" />
 	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
+	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,7 +102,6 @@
 	  <None Remove="Types\AjunaExtTypes\" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
-	  <None Remove="Components\ScannerView\" /> 
 	  <None Remove="Components\ConnectionRequestView\" />
 	  <None Remove="ZXing.Net.Maui.Controls" />
 	  <None Remove="Components\UniversalScannerView\" />
@@ -196,7 +197,6 @@
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
 	  <None Remove="Model\Kodadot\" />
-	  <None Remove="Components\Kodadot\" />
 	  <None Remove="Components\AzeroId\" />
 	  <None Remove="Model\AzeroId\" />
 	  <None Remove="Resources\Images\azeroid.svg" />
@@ -221,6 +221,23 @@
 	  <None Remove="Resources\Images\darkbackground2.png" />
 	  <None Remove="Resources\Images\rightarrowblack.svg" />
 	  <None Remove="Resources\Images\rightarrowwhite.svg" />
+	  <None Remove="Components\Identity\" />
+	  <None Remove="Resources\Images\unknownwhite.svg" />
+	  <None Remove="Resources\Images\unknownblack.svg" />
+	  <None Remove="Resources\Images\redallert.svg" />
+	  <None Remove="Resources\Images\greentick.svg" />
+	  <None Remove="Components\Vault\" />
+	  <None Remove="Model\SubSquare\" />
+	  <None Remove="Components\Referenda\" />
+	  <None Remove="Resources\Images\subsquarelogo.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
+	  <None Remove="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <None Remove="Components\ChangeLayoutRequest\" />
+	  <None Remove="Resources\Images\calamar.png" />
+	  <None Remove="Resources\Images\logotransparentwhite.svg" />
+	  <None Remove="Resources\Images\logotransparentblack.svg" />
+	  <None Remove="Components\Mnemonics\" />
+	  <None Remove="Components\Buttons\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -316,6 +333,16 @@
 	  <BundleResource Include="Resources\Images\darkbackground2.png" />
 	  <BundleResource Include="Resources\Images\rightarrowblack.svg" />
 	  <BundleResource Include="Resources\Images\rightarrowwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownblack.svg" />
+	  <BundleResource Include="Resources\Images\redallert.svg" />
+	  <BundleResource Include="Resources\Images\greentick.svg" />
+	  <BundleResource Include="Resources\Images\subsquarelogo.svg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\xcavate.png" />
+	  <BundleResource Include="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <BundleResource Include="Resources\Images\calamar.png" />
+	  <BundleResource Include="Resources\Images\logotransparentwhite.svg" />
+	  <BundleResource Include="Resources\Images\logotransparentblack.svg" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -333,16 +360,10 @@
 	  <MauiXaml Update="Components\TransferView\TransferView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Components\ScannerView\ScannerView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="View\SettingsPage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="Components\UniversalScannerView\UniversalScannerView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\MessagePopup\MessagePopupView.xaml">
@@ -417,7 +438,6 @@
 	  <Folder Include="Model\AjunaExt\" />
 	  <Folder Include="Types\AjunaExtTypes\" />
 	  <Folder Include="Components\TransferView\" />
-	  <Folder Include="Components\ScannerView\" />
 	  <Folder Include="Components\ConnectionRequestView\" />
 	  <Folder Include="Components\UniversalScannerView\" />
 	  <Folder Include="Components\MessagePopup\" />
@@ -444,13 +464,19 @@
 	  <Folder Include="Components\Settings\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Model\Kodadot\" />
-	  <Folder Include="Components\Kodadot\" />
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Model\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
 	  <Folder Include="Components\HydraDX\" />
 	  <Folder Include="Model\HydraDX\" />
 	  <Folder Include="Resources\Images\FatCat\" />
+	  <Folder Include="Components\Identity\" />
+	  <Folder Include="Components\Vault\" />
+	  <Folder Include="Model\SubSquare\" />
+	  <Folder Include="Components\Referenda\" />
+	  <Folder Include="Components\ChangeLayoutRequest\" />
+	  <Folder Include="Components\Mnemonics\" />
+	  <Folder Include="Components\Buttons\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -462,6 +488,11 @@
 		<TcpPort>58181</TcpPort>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
+		
+		<CodesignProvision>PlutoWalletMacCatalystDevelopment</CodesignProvision>
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />

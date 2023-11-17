@@ -21,7 +21,7 @@ public partial class ShowMnemonic : ContentView
 			return;
 		}
 
-		var mnemonics = Preferences.Get("usePrivateKey", false) ? Preferences.Get("privateKey", "No private key saved") : Preferences.Get("mnemonics", "No mnemonics saved");
+		var mnemonics = Preferences.Get("usePrivateKey", false) ? await SecureStorage.Default.GetAsync("privateKey") : await SecureStorage.Default.GetAsync("mnemonics");
 		mnemonicLabel.Text = mnemonics;
     }
 }

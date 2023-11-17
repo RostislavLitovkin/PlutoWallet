@@ -61,7 +61,7 @@
                     </card:Card>
                 </ContentView>
 
-                 <ContentView HeightRequest="90">
+                 <!--<ContentView HeightRequest="90">
                     <card:Card>
                         <card:Card.View>
                             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -93,9 +93,9 @@
                             </AbsoluteLayout>
                         </card:Card.View>
                     </card:Card>
-                </ContentView>
+                </ContentView>-->
 
-                <Button Text="Continue" Clicked="ContinueToMainPageClicked" />
+                <Button Text="Continue" Clicked="ContinueWithMnemonicClicked" />
 
 
                 <ContentView HeightRequest="120" Margin="0, 40, 0, 0">
@@ -133,7 +133,7 @@
                     </card:Card>
                 </ContentView>
 
-                <ContentView HeightRequest="90">
+                <!--<ContentView HeightRequest="90">
                     <card:Card>
                         <card:Card.View>
                             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -165,7 +165,7 @@
                             </AbsoluteLayout>
                         </card:Card.View>
                     </card:Card>
-                </ContentView>
+                </ContentView>-->
 
                 <Button Text="Continue" Clicked="ContinueWithPrivateKeyClicked" />
             </VerticalStackLayout>

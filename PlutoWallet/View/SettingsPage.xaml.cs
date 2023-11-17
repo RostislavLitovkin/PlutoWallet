@@ -18,26 +18,22 @@ public partial class SettingsPage : ContentPage
 
     async void OnLogOutClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        Preferences.Set("privateKey", "");
-        Preferences.Set("publicKey", "");
-        Preferences.Set("mnemonics", "");
-        Preferences.Set("password", "");
+        Preferences.Remove("publicKey");
+        SecureStorage.Default.Remove("privateKey");
+        SecureStorage.Default.Remove("mnemonics");
+        SecureStorage.Default.Remove("password");
         Preferences.Set("biometricsEnabled", false);
 
+        Navigation.InsertPageBefore(new SetupPasswordPage(), Navigation.NavigationStack[0]);
 
-        Preferences.Clear("privateKey");
-        Preferences.Clear("publicKey");
-        Preferences.Clear("mnemonics");
-        Preferences.Clear("password");
-        Preferences.Clear("biometricsEnabled");
+        await Navigation.PopToRootAsync();
+    }
 
-        Console.WriteLine("Private key deleted");
-
-        await Navigation.PushAsync(new BeginPage());
-
-        for (int i = 0; i < Navigation.NavigationStack.Count() - 1; i++)
+    async void OnShowMnemonicsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        if ((await Model.KeysModel.GetMnemonicsOrPrivateKeyAsync()).IsSome(out (string, bool) secretValues))
         {
-            Navigation.RemovePage(Navigation.NavigationStack[i]);
+            await Navigation.PushAsync(new MnemonicsPage(secretValues));
         }
     }
 }

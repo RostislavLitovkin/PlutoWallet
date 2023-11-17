@@ -12,6 +12,9 @@ namespace PlutoWallet.Components.AddressView
         private string address;
 
         [ObservableProperty]
+        private string qrAddress;
+
+        [ObservableProperty]
         private string chainAddressName;
 
         [ObservableProperty]
@@ -19,15 +22,17 @@ namespace PlutoWallet.Components.AddressView
 
         public ChainAddressViewModel()
         {
+            qrAddress = "Loading";
             address = KeysModel.GetPublicKey();
-            chainAddressName = "Loading";
+            chainAddressName = "";
             isVisible = true;
         }
 
         public void SetChainAddress()
         {
-            
             var endpoint = AjunaClientModel.SelectedEndpoint;
+
+            var client = AjunaClientModel.Client;
 
             if (endpoint.Name == "(Local)ws://127.0.0.1:9944")
             {
@@ -43,8 +48,9 @@ namespace PlutoWallet.Components.AddressView
             {
                 ChainAddressName = endpoint.Name.Split(" ")[0] + " key";
             }
-            
+
             Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
+            QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + client.GenesisHash;
             IsVisible = true;
         }
     }

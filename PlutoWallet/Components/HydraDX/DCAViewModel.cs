@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.HydraDX
 {
@@ -17,13 +18,13 @@ namespace PlutoWallet.Components.HydraDX
 			loading = "Loading";
 		}
 
-		public async Task GetDCAPosition()
+		public async Task GetDCAPosition(SubstrateClientExt client)
 		{
 			Loading = "Loading";
 
 			List<DCAOrderInfo> infos = new List<DCAOrderInfo>();
 
-			var positions = await Model.HydraDX.DCAModel.GetDCAPositions();
+			var positions = await Model.HydraDX.DCAModel.GetDCAPositions(client);
 
 			if (positions.Count() == 0)
 			{

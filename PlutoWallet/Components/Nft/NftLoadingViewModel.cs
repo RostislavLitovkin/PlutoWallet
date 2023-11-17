@@ -24,9 +24,6 @@ namespace PlutoWallet.Components.Nft
                 {
                     SetProperty(ref isVisible, value);
                 }
-
-
-                
             }
         }
 

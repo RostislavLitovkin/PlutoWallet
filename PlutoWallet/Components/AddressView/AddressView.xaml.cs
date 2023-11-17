@@ -13,6 +13,12 @@ public partial class AddressView : ContentView
 			control.addressLabel.Text = ((string)newValue).Substring(0, 12) + "..";
         });
 
+    public static readonly BindableProperty QrAddressProperty = BindableProperty.Create(
+        nameof(QrAddress), typeof(string), typeof(AddressView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+        });
+
     public static readonly BindableProperty TitleProperty = BindableProperty.Create(
         nameof(Title), typeof(string), typeof(AddressView),
         defaultBindingMode: BindingMode.TwoWay,
@@ -33,6 +39,13 @@ public partial class AddressView : ContentView
 		set => SetValue(AddressProperty, value);
 	}
 
+    public string QrAddress
+    {
+        get => (string)GetValue(QrAddressProperty);
+
+        set => SetValue(QrAddressProperty, value);
+    }
+
     public string Title
     {
         get => (string)GetValue(TitleProperty);
@@ -51,7 +64,7 @@ public partial class AddressView : ContentView
     {
 		var qrViewModel = DependencyService.Get<PublicKeyQRCodeViewModel>();
 
-		qrViewModel.PublicKey = (string)GetValue(AddressProperty);
+		qrViewModel.PublicKey = (string)GetValue(QrAddressProperty);
         qrViewModel.IsVisible = true;
     }
 }

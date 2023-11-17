@@ -4,7 +4,6 @@ using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.PublicKeyQRCodeView;
-using PlutoWallet.Components.ScannerView;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Components.DAppConnectionView;
@@ -20,6 +19,10 @@ using PlutoWallet.Components.AzeroId;
 using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Nft;
+using PlutoWallet.Components.Identity;
+using PlutoWallet.Components.Vault;
+using PlutoWallet.Components.Referenda;
+using PlutoWallet.Components.ChangeLayoutRequest;
 
 namespace PlutoWallet;
 
@@ -36,8 +39,6 @@ public partial class App : Application
         DependencyService.Register<TransferViewModel>();
 
         DependencyService.Register<ConnectionRequestViewModel>();
-
-        DependencyService.Register<ScannerViewModel>();
 
         DependencyService.Register<MessagePopupViewModel>();
 
@@ -87,13 +88,23 @@ public partial class App : Application
 
         DependencyService.Register<NftLoadingViewModel>();
 
-        if ((Preferences.ContainsKey("mnemonics") && "" != Preferences.Get("mnemonics", "")) || (Preferences.ContainsKey("privateKey") && "" != Preferences.Get("privateKey", "")))
+        DependencyService.Register<IdentityViewModel>();
+
+        DependencyService.Register<VaultSignViewModel>();
+
+        DependencyService.Register<ReferendaViewModel>();
+
+        DependencyService.Register<ChangeLayoutRequestViewModel>();
+
+        DependencyService.Register<NetworkSelectPopupViewModel>();
+
+        if (Preferences.ContainsKey("publicKey"))
         {
             MainPage = new NavigationPage(new BasePage());
         }
         else
         {
-            MainPage = new NavigationPage(new BeginPage());
+            MainPage = new NavigationPage(new SetupPasswordPage());
         }
 	}
 }

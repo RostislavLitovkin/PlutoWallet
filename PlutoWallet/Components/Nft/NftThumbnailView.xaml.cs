@@ -43,7 +43,7 @@ public partial class NftThumbnailView : ContentView
             var control = (NftThumbnailView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
-            control.networkBubble.Icon = ((Endpoint)newValue).Icon;
+            control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
 
     public static readonly BindableProperty AttributesProperty = BindableProperty.Create(
@@ -142,6 +142,11 @@ public partial class NftThumbnailView : ContentView
         viewModel.Attributes = this.Attributes;
         viewModel.CollectionId = this.CollectionId;
         viewModel.ItemId = this.ItemId;
+
+        if (this.Endpoint.Name == "Aleph Zero Testnet")
+        {
+            viewModel.AzeroIdReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(this.Name);
+        }
 
         await Navigation.PushAsync(new NftDetailPage(viewModel));
 
