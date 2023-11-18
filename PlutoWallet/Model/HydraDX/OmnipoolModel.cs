@@ -12,6 +12,8 @@ namespace PlutoWallet.Model.HydraDX
 {
 	public class OmnipoolModel
 	{
+
+
 		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client)
 		{
             // Get all position keys
@@ -59,11 +61,7 @@ namespace PlutoWallet.Model.HydraDX
 
                 AccountData omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, CancellationToken.None);
 
-                Console.WriteLine(omnipoolTokens.Free);
-
                 AssetState omnipoolAssetState = await client.OmnipoolStorage.Assets(position.AssetId, CancellationToken.None);
-
-                Console.WriteLine(omnipoolAssetState.Shares);
 
                 double liquidity = (double)CalculateRemoveLiquidityStateChanges(
                         omnipoolAssetState,
