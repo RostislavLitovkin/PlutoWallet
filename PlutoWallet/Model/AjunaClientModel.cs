@@ -163,13 +163,29 @@ namespace PlutoWallet.Model
                 }
             }
 
+            bool hydraClientNotFound = true;
+
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
                 if (GroupEndpoints[i].Name == "HydraDX")
                 {
                     await Model.HydraDX.Sdk.GetAssets(GroupClients[i], CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
+
+                    hydraClientNotFound = false;
                 }
+            }
+
+            if (hydraClientNotFound)
+            {
+                var client = new SubstrateClientExt(
+                            Endpoints.GetEndpointDictionary["hydradx"],
+                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+                await client.ConnectAsync();
+
+                await Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
+                Model.AssetsModel.GetUsdBalance();
             }
         }
 
