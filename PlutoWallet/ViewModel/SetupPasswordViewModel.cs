@@ -7,6 +7,11 @@ namespace PlutoWallet.ViewModel
 	{
         [ObservableProperty]
         private string password;
+
+        public SetupPasswordViewModel()
+        {
+            password = "";
+        }
     }
 }
 
