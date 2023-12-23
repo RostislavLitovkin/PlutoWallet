@@ -14,8 +14,6 @@ using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
 
-
-
 namespace PlutoWallet.Model
 {
     public class AjunaClientModel
