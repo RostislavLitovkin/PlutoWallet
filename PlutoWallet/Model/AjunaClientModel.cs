@@ -58,8 +58,11 @@ namespace PlutoWallet.Model
 
                     groupEndpointsList.Add(endpoint);
 
+                    string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
                     var client = new PlutoWalletSubstrateClient(
                             endpoint,
+                            new Uri(bestWebSecket),
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
                     client.ConnectAsync();
@@ -179,8 +182,12 @@ namespace PlutoWallet.Model
 
             if (hydraClientNotFound)
             {
+                Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary["hydradx"];
+                string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
+
                 var client = new PlutoWalletSubstrateClient(
-                            Endpoints.GetEndpointDictionary["hydradx"],
+                            hdxEndpoint,
+                            new Uri(bestWebSecket),
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
                 await client.ConnectAsync();

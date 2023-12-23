@@ -14,8 +14,8 @@ namespace PlutoWallet.Model
 {
     public class PlutoWalletSubstrateClient : SubstrateClientExt
     {
-        public PlutoWalletSubstrateClient(Endpoint endpoint, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
-                base(endpoint, chargeType)
+        public PlutoWalletSubstrateClient(Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
+                base(endpoint, fastestWebSocket, chargeType)
         {
 
         }

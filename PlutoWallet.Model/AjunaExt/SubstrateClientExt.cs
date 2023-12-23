@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Diagnostics;
 using Substrate.NetApi;
 using PlutoWallet.Model.Storage;
 using Newtonsoft.Json;
@@ -12,6 +14,8 @@ namespace PlutoWallet.Model.AjunaExt
 {
 	public class SubstrateClientExt : SubstrateClient
 	{
+        private static readonly HttpClient _httpClient = new HttpClient();
+
         public ChargeType DefaultCharge;
 
         public System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>> StorageKeyDict;
@@ -49,8 +53,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public Metadata CustomMetadata { get; set; }
 
-        public SubstrateClientExt(Endpoint endpoint, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
-                base(new Uri(endpoint.URL), chargeType)
+        public SubstrateClientExt(Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
+                base(fastestWebSocket, chargeType)
         {
             StorageKeyDict = new System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>>();
 

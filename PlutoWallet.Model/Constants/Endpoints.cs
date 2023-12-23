@@ -13,7 +13,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Polkadot",
                 Key = "polkadot",
-                URL = "wss://rpc.polkadot.io",
+                URLs = new string[4] { "wss://polkadot-rpc.dwellir.com", "wss://1rpc.io/dot", "wss://polkadot.api.onfinality.io/public-ws", "wss://polkadot.public.curie.radiumblock.co/ws" },
                 Icon = "polkadot.png",
                 CalamarChainName = "polkadot",
                 SubSquareChainName = "polkadot",
@@ -26,7 +26,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama",
                 Key = "kusama",
-                URL = "wss://kusama-rpc.polkadot.io",
+                URLs = new string[3] { "wss://kusama-rpc.dwellir.com", "wss://rpc.ibp.network/kusama", "wss://kusama.api.onfinality.io/public-ws" },
                 Icon = "kusama.png",
                 DarkIcon = "kusama.png",
                 CalamarChainName = "kusama",
@@ -40,7 +40,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Moonbeam",
                 Key = "moonbeam",
-                URL = "wss://wss.api.moonbeam.network",
+                URLs =  new string[2] { "wss://wss.api.moonbeam.network", "wss://moonbeam.api.onfinality.io/public-ws" },
                 Icon = "moonbeam.png",
                 CalamarChainName = "moonbeam",
                 Unit = "GLMR",
@@ -52,7 +52,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Astar",
                 Key = "astar",
-                URL = "wss://rpc.astar.network",
+                URLs =  new string[2] { "wss://astar-rpc.dwellir.com", "wss://astar.api.onfinality.io/public-ws" },
                 Icon = "astar.png",
                 CalamarChainName = "astar",
                 Unit = "ASTR",
@@ -64,7 +64,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Ajuna",
                 Key = "ajuna",
-                URL = "wss://rpc-parachain.ajuna.network",
+                URLs =  new string[2] { "wss://ajuna.api.onfinality.io/public-ws", "wss://rpc-parachain.ajuna.network" },
                 Icon = "ajuna.png",
                 Unit = "AJUN",
                 Decimals = 12,
@@ -75,7 +75,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Bajun",
                 Key = "bajun",
-                URL = "wss://rpc-parachain.bajun.network",
+                URLs =  new string[2] { "wss://rpc-parachain.bajun.network", "wss://bajun.api.onfinality.io/public-ws" },
                 Icon = "bajun.png",
                 Unit = "BAJU",
                 CalamarChainName = "bajun",
@@ -87,7 +87,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Manta",
                 Key = "manta",
-                URL = "wss://ws.manta.systems",
+                URLs =  new string[1] { "wss://ws.manta.systems" },
                 Icon = "manta.png",
                 Unit = "MANTA",
                 Decimals = 18,
@@ -98,53 +98,53 @@ namespace PlutoWallet.Constants
             {
                 Name = "Westend",
                 Key = "westend",
-                URL = "wss://westend-rpc.polkadot.io",
+                URLs =  new string[2] { "wss://westend-rpc.dwellir.com", "wss://westend.api.onfinality.io/public-ws" },
                 Icon = "westend.png",
                 Unit = "WND",
                 Decimals = 12,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
             } },
-            { "rococo", new Endpoint
+            /*{ "rococo", new Endpoint
             {
                 Name = "Rococo",
                 Key = "rococo",
-                URL = "wss://rococo-rpc.polkadot.io",
+                URLs = "wss://rococo-rpc.polkadot.io",
                 Icon = "rococo.png",
                 CalamarChainName = "rococo",
                 Unit = "ROC",
                 Decimals = 12,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
-            } },
-            { "rockmine", new Endpoint
+            } },*/
+            /*{ "rockmine", new Endpoint
             {
                 Name = "Rockmine",
                 Key = "rockmine",
-                URL = "wss://rococo-rockmine-rpc.polkadot.io",
+                URLs = "wss://rococo-rockmine-rpc.polkadot.io",
                 Icon = "statemint.png",
                 Unit = "ROC",
                 Decimals = 12,
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
                 SupportsNfts = true,
-            } },
-            { "bajunrococo", new Endpoint
+            } },*/
+            /*{ "bajunrococo", new Endpoint
             {
                 Name = "Bajun rococo",
                 Key = "bajunrococo",
-                URL = "wss://rpc-rococo.bajun.network",
+                URLs = "wss://rpc-rococo.bajun.network",
                 Icon = "bajun.png",
                 Unit = "BAJU",
                 Decimals = 12,
                 SS58Prefix = 1337,
                 ChainType = ChainType.Substrate,
-            } },
+            } },*/
             { "statemine", new Endpoint
             {
-                Name = "Statemine",
+                Name = "Kusama Asset Hub",
                 Key = "statemine",
-                URL = "wss://kusama-asset-hub-rpc.polkadot.io",
+                URLs =  new string[4] { "wss://statemine-rpc.dwellir.com", "wss://kusama.api.onfinality.io/public-ws", "wss://1rpc.io/ksm", "wss://kusama.public.curie.radiumblock.co/ws" },
                 Icon = "statemint.png",
                 Unit = "KSM",
                 Decimals = 12,
@@ -154,9 +154,9 @@ namespace PlutoWallet.Constants
                 CalamarChainName = "statemine"
             } },
             { "statemint", new Endpoint {
-                Name = "Statemint",
+                Name = "Polkadot Asset Hub",
                 Key = "statemint",
-                URL = "wss://polkadot-asset-hub-rpc.polkadot.io",
+                URLs =  new string[4] { "wss://statemint-rpc.dwellir.com", "wss://statemint-rpc-tn.dwellir.com", "wss://statemint.api.onfinality.io/public-ws", "wss://dot-rpc.stakeworld.io/assethub" },
                 Icon = "statemint.png",
                 Unit = "DOT",
                 Decimals = 10,
@@ -169,7 +169,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Unique",
                 Key = "unique",
-                URL = "wss://ws.unique.network",
+                URLs =  new string[4] { "wss://ws.unique.network", "wss://eu-ws.unique.network", "wss://us-ws.unique.network", "wss://unique-rpc.dwellir.com" },
                 Icon = "unique.png",
                 CalamarChainName = "unique",
                 Unit = "UNQ",
@@ -181,7 +181,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Quartz",
                 Key = "quartz",
-                URL = "wss://eu-ws-quartz.unique.network",
+                URLs =  new string[3] { "wss://eu-ws-quartz.unique.network", "wss://ws-quartz.unique.network", "wss://quartz-rpc.dwellir.com" },
                 Icon = "quartz.png",
                 CalamarChainName = "quartz",
                 Unit = "QTZ",
@@ -193,7 +193,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Opal",
                 Key = "opal",
-                URL = "wss://eu-ws-opal.unique.network",
+                URLs =  new string[2] { "wss://eu-ws-opal.unique.network", "wss://ws-opal.unique.network" },
                 Icon = "opal.png",
                 CalamarChainName = "opal",
                 Unit = "OPL",
@@ -205,7 +205,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Shibuya",
                 Key = "shibuya",
-                URL = "wss://shibuya-rpc.dwellir.com",
+                URLs =  new string[2] { "wss://shibuya-rpc.dwellir.com", "wss://rpc.shibuya.astar.network" },
                 Icon = "shibuya.png",
                 CalamarChainName = "shibuya",
                 Unit = "SBY",
@@ -217,7 +217,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Moonbase Alpha",
                 Key = "moonbasealpha",
-                URL = "wss://wss.api.moonbase.moonbeam.network",
+                URLs =  new string[3] { "wss://wss.api.moonbase.moonbeam.network", "wss://moonbeam-alpha.api.onfinality.io/public-ws", "wss://moonbase-rpc.dwellir.com" },
                 Icon = "moonbase.png",
                 CalamarChainName = "moonbase",
                 Unit = "DEV",
@@ -229,7 +229,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Aleph Zero Testnet",
                 Key = "azerotestnet",
-                URL = "wss://ws.test.azero.dev",
+                URLs =  new string[2] { "wss://ws.test.azero.dev", "wss://aleph-zero-testnet-rpc.dwellir.com" },
                 Icon = "alephzerotestnet.png",
                 Unit = "TZERO",
                 CalamarChainName = "aleph-zero-testnet",
@@ -241,7 +241,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Acala",
                 Key = "acala",
-                URL = "wss://acala-rpc-3.aca-api.network/ws",
+                URLs =  new string[3] { "wss://acala-rpc-3.aca-api.network/ws", "wss://acala-rpc.dwellir.com", "wss://acala-polkadot.api.onfinality.io/public-ws" },
                 Icon = "acala.png",
                 CalamarChainName = "acala",
                 Unit = "ACA",
@@ -253,7 +253,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Basilisk",
                 Key = "basilisk",
-                URL = "wss://rpc.basilisk.cloud",
+                URLs =  new string[2] { "wss://rpc.basilisk.cloud", "wss://basilisk-rpc.dwellir.com" },
                 Icon = "basilisk.png",
                 Unit = "BSX",
                 SS58Prefix = 10041,
@@ -264,7 +264,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "HydraDX",
                 Key = "hydradx",
-                URL = "wss://rpc.hydradx.cloud",
+                URLs =  new string[2] { "wss://rpc.hydradx.cloud", "wss://hydradx-rpc.dwellir.com" },
                 Icon = "hydradxomnipool.png",
                 Unit = "HDX",
                 SS58Prefix = 63,
@@ -273,12 +273,12 @@ namespace PlutoWallet.Constants
                 CalamarChainName = "hydradx",
                 SupportsNfts = true
             } },
-            {
+            /*{
                 "xcavate", new Endpoint
                 {
                     Name = "XCavate",
                     Key = "xcavate",
-                    URL = "wss://fraa-dancebox-3031-rpc.a.dancebox.tanssi.network",
+                    URLs =  new string[2] { "wss://fraa-dancebox-3031-rpc.a.dancebox.tanssi.network" },
                     Icon = "xcavate.png",
                     Unit = "XCAV",
                     SS58Prefix = 42,
@@ -286,13 +286,13 @@ namespace PlutoWallet.Constants
                     ChainType = ChainType.Substrate,
                     SupportsNfts = true,
                 }
-            },
+            },*/
             {
                 "moonriver", new Endpoint
                 {
                     Name = "Moonriver",
                     Key = "moonriver",
-                    URL = "wss://wss.api.moonriver.moonbeam.network",
+                    URLs =  new string[2] { "wss://wss.api.moonriver.moonbeam.network", "wss://moonriver-rpc.dwellir.com" },
                     Icon = "moonriver.png",
                     Unit = "MOVR",
                     SS58Prefix = 1285,
@@ -305,7 +305,7 @@ namespace PlutoWallet.Constants
                 {
                     Name = "Bifrost",
                     Key = "bifrost",
-                    URL = "wss://bifrost-polkadot.api.onfinality.io/public-ws",
+                    URLs =  new string[2] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.dwellir.com" },
                     Icon = "bifrost.png",
                     Unit = "BNC",
                     SS58Prefix = 6,
@@ -317,7 +317,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "(Local) ws://127.0.0.1:9944",
                 Key = "local",
-                URL = "ws://127.0.0.1:9944",
+                URLs =  new string[1] { "ws://127.0.0.1:9944" },
                 Icon = "substrate.png",
                 Unit = "",
                 Decimals = 0,
@@ -337,7 +337,7 @@ namespace PlutoWallet.Constants
 	public class Endpoint
 	{
         public string Name { get; set; }
-        public string URL { get; set; }
+        public string[] URLs { get; set; }
 		public string Icon { get; set; }
         public string DarkIcon { get; set; }
 		public string CalamarChainName { get; set; }

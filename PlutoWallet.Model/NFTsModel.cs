@@ -55,7 +55,9 @@ namespace PlutoWallet.Model
 	{
         public static async Task<List<NFT>> GetNFTsAsync(string substrateAddress, Endpoint endpoint, CancellationToken token)
         {
-            var client = new SubstrateClientExt(endpoint, ChargeTransactionPayment.Default());
+            string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            var client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
 
             await client.ConnectAsync();
 
