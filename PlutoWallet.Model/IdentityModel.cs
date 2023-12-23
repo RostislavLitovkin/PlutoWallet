@@ -3,17 +3,16 @@ using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi;
 using Substrate.NetApi.Generated.Model.pallet_identity.types;
 using PlutoWallet.Constants;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Model
 {
 	public class IdentityModel
 	{
-		public static async Task<OnChainIdentity> GetIdentityForAddress(string address)
+		public static async Task<OnChainIdentity> GetIdentityForAddress(SubstrateClientExt client, string address)
 		{
 			try
 			{
-				var client = Model.AjunaClientModel.Client;
-
 				if (address == null)
 				{
 					return null;

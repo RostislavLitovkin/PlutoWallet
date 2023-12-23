@@ -20,7 +20,7 @@ namespace PlutoWallet.ViewModel
         /**
         * Called in the BasePageViewModel
         */
-        public async Task GetNFTsAsync(CancellationToken token)
+        public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
             var nftLoadingViewModel = DependencyService.Get<NftLoadingViewModel>();
 
@@ -30,11 +30,11 @@ namespace PlutoWallet.ViewModel
             {
                 if (endpoint.SupportsNfts)
                 {
-                    UpdateNfts(await Model.NFTsModel.GetNFTsAsync(endpoint, token));
+                    UpdateNfts(await Model.NFTsModel.GetNFTsAsync(substrateAddress, endpoint, token));
                 }
             }
 
-            UpdateNfts(await Model.UniqueryModel.GetAllNfts(token));
+            UpdateNfts(await Model.UniqueryModel.GetAllNfts(substrateAddress, token));
 
             UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey(), token));
 

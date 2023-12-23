@@ -14,11 +14,11 @@ namespace PlutoWallet.Model.HydraDX
 	{
 
 
-		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client)
+		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client, string substrateAddress)
 		{
             // Get all position keys
             var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
 
             U128 collectionId = new U128();
             collectionId.Create(1337);

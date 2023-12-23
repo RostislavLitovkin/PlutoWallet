@@ -91,15 +91,11 @@
 	<ItemGroup>
 	  <None Remove="Ajuna.NetApi" />
 	  <None Remove="Ajuna.NetWallet" />
-	  <None Remove="Constants\" />
-	  <None Remove="Types\" />
 	  <None Remove="Components\" />
 	  <None Remove="Components\NetworkSelect\" />
 	  <None Remove="Components\AddressView\" />
 	  <None Remove="CommunityToolkit.Maui" />
 	  <None Remove="SubstrateNetApi" />
-	  <None Remove="Model\AjunaExt\" />
-	  <None Remove="Types\AjunaExtTypes\" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
 	  <None Remove="Components\ConnectionRequestView\" />
@@ -196,9 +192,7 @@
 
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
-	  <None Remove="Model\Kodadot\" />
 	  <None Remove="Components\AzeroId\" />
-	  <None Remove="Model\AzeroId\" />
 	  <None Remove="Resources\Images\azeroid.svg" />
 	  <None Remove="Resources\Images\azeroiddarkbg.png" />
 	  <None Remove="Components\AssetSelect\" />
@@ -206,7 +200,6 @@
 	  <None Remove="Resources\Images\dropdownblack.svg" />
 	  <None Remove="Components\HydraDX\" />
 	  <None Remove="Resources\Images\hydradxomnipool.png" />
-	  <None Remove="Model\HydraDX\" />
 	  <None Remove="Resources\Fonts\FontOver.ttf" />
 	  <None Remove="Resources\Images\FatCat\" />
 	  <None Remove="Resources\Images\FatCat\fatcat.png" />
@@ -227,7 +220,6 @@
 	  <None Remove="Resources\Images\redallert.svg" />
 	  <None Remove="Resources\Images\greentick.svg" />
 	  <None Remove="Components\Vault\" />
-	  <None Remove="Model\SubSquare\" />
 	  <None Remove="Components\Referenda\" />
 	  <None Remove="Resources\Images\subsquarelogo.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
@@ -238,6 +230,7 @@
 	  <None Remove="Resources\Images\logotransparentblack.svg" />
 	  <None Remove="Components\Mnemonics\" />
 	  <None Remove="Components\Buttons\" />
+	  <None Remove="Model\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -430,13 +423,9 @@
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Constants\" />
-	  <Folder Include="Types\" />
 	  <Folder Include="Components\" />
 	  <Folder Include="Components\NetworkSelect\" />
 	  <Folder Include="Components\AddressView\" />
-	  <Folder Include="Model\AjunaExt\" />
-	  <Folder Include="Types\AjunaExtTypes\" />
 	  <Folder Include="Components\TransferView\" />
 	  <Folder Include="Components\ConnectionRequestView\" />
 	  <Folder Include="Components\UniversalScannerView\" />
@@ -463,20 +452,17 @@
 	  <Folder Include="Components\Contract\" />
 	  <Folder Include="Components\Settings\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
-	  <Folder Include="Model\Kodadot\" />
 	  <Folder Include="Components\AzeroId\" />
-	  <Folder Include="Model\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
 	  <Folder Include="Components\HydraDX\" />
-	  <Folder Include="Model\HydraDX\" />
 	  <Folder Include="Resources\Images\FatCat\" />
 	  <Folder Include="Components\Identity\" />
 	  <Folder Include="Components\Vault\" />
-	  <Folder Include="Model\SubSquare\" />
 	  <Folder Include="Components\Referenda\" />
 	  <Folder Include="Components\ChangeLayoutRequest\" />
 	  <Folder Include="Components\Mnemonics\" />
 	  <Folder Include="Components\Buttons\" />
+	  <Folder Include="Model\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
@@ -496,5 +482,6 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj" />
 	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
+	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
 	</ItemGroup>
 </Project>

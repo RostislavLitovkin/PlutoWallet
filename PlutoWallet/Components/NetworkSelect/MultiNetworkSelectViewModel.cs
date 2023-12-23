@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using PlutoWallet.Components.Balance;
 using System.Collections.ObjectModel;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
@@ -30,7 +31,7 @@ namespace PlutoWallet.Components.NetworkSelect
          */
         public void SetupDefault()
         {
-            string[] selectedEndpointKeys = Endpoints.GetSelectedEndpointKeys();
+            string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
 
             NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
 
@@ -53,7 +54,7 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void Select(Endpoint selectedEndpoint)
         {
-            string[] selectedEndpointKeys = Endpoints.GetSelectedEndpointKeys();
+            string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
 
             NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
 

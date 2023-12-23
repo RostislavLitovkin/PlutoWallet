@@ -25,52 +25,46 @@ namespace PlutoWallet.Model
         /**
          * Gets you a string version of transfer fee for the currently selected chain
          */
-        public static async Task<string> GetNativeTransferFeeStringAsync()
+        public static async Task<string> GetNativeTransferFeeStringAsync(SubstrateClientExt client, Endpoint endpoint)
         {
-            Endpoint endpoint = Model.AjunaClientModel.SelectedEndpoint;
-            BigInteger fee = await GetNativeTransferFeeAsync();
+            BigInteger fee = await GetNativeTransferFeeAsync(client);
             return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
         }
 
         /**
          * Gets a transfer fee for the currently selected chain
          */
-        public static async Task<BigInteger> GetNativeTransferFeeAsync()
+        public static async Task<BigInteger> GetNativeTransferFeeAsync(SubstrateClientExt client)
         {
-            var client = Model.AjunaClientModel.Client;
             Method transfer = TransferModel.NativeTransfer(client, "5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ", 1000000000);
 
-            return await GetMethodFeeAsync(transfer);
+            return await GetMethodFeeAsync(client, transfer);
         }
 
         /**
          * Gets you a string version of transfer fee for the currently selected chain
          */
-        public static async Task<string> GetAssetsTransferFeeStringAsync()
+        public static async Task<string> GetAssetsTransferFeeStringAsync(SubstrateClientExt client, Endpoint endpoint)
         {
-            Endpoint endpoint = Model.AjunaClientModel.SelectedEndpoint;
-            BigInteger fee = await GetAssetsTransferFeeAsync();
+            BigInteger fee = await GetAssetsTransferFeeAsync(client);
             return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
         }
 
         /**
          * Gets a transfer fee for the currently selected chain
          */
-        public static async Task<BigInteger> GetAssetsTransferFeeAsync()
+        public static async Task<BigInteger> GetAssetsTransferFeeAsync(SubstrateClientExt client)
         {
-            var client = Model.AjunaClientModel.Client;
             Method transfer = TransferModel.AssetsTransfer(client, "5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ", 1, 1000000000);
 
-            return await GetMethodFeeAsync(transfer);
+            return await GetMethodFeeAsync(client, transfer);
         }
 
         /**
         * Gets a transfer fee for the currently selected chain
         */
-        public static async Task<BigInteger> GetMethodFeeAsync(Method method)
+        public static async Task<BigInteger> GetMethodFeeAsync(SubstrateClientExt client, Method method)
         {
-            var client = Model.AjunaClientModel.Client;
-
             UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                 method,
                 MockModel.GetMockAccount(),
@@ -88,10 +82,8 @@ namespace PlutoWallet.Model
             return feeDetail.InclusionFee.BaseFee.Value + feeDetail.InclusionFee.AdjustedWeightFee.Value + feeDetail.InclusionFee.LenFee.Value;
         }
 
-        public static async Task<RuntimeDispatchInfoV1> GetPaymentInfoAsync(UnCheckedExtrinsic extrinsic)
+        public static async Task<RuntimeDispatchInfo> GetPaymentInfoAsync(SubstrateClientExt client, UnCheckedExtrinsic extrinsic)
         {
-            var client = Model.AjunaClientModel.Client;
-
             Hash blockHash = await client.Chain.GetFinalizedHeadAsync(CancellationToken.None);
 
             return await client.Payment.QueryInfoAsync(

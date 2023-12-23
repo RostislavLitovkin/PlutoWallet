@@ -13,14 +13,15 @@ using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Model
 {
     public class AjunaClientModel
     {
-        public static SubstrateClientExt Client;
+        public static PlutoWalletSubstrateClient Client;
 
-        public static SubstrateClientExt[] GroupClients;
+        public static PlutoWalletSubstrateClient[] GroupClients;
 
         public static Endpoint[] GroupEndpoints;
 
@@ -47,7 +48,7 @@ namespace PlutoWallet.Model
             {
                 groupEndpointKeys = endpointKeys;
 
-                List<SubstrateClientExt> groupClientList = new List<SubstrateClientExt>(endpointKeys.Length);
+                List<PlutoWalletSubstrateClient> groupClientList = new List<PlutoWalletSubstrateClient>(endpointKeys.Length);
 
                 List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointKeys.Length);
 
@@ -57,7 +58,7 @@ namespace PlutoWallet.Model
 
                     groupEndpointsList.Add(endpoint);
 
-                    var client = new SubstrateClientExt(
+                    var client = new PlutoWalletSubstrateClient(
                             endpoint,
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
@@ -138,7 +139,9 @@ namespace PlutoWallet.Model
 
             // Setup things, like balances..
 
-            await Model.AssetsModel.GetBalance();
+            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+
+            await usdBalanceViewModel.UpdateBalances();
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
@@ -176,7 +179,7 @@ namespace PlutoWallet.Model
 
             if (hydraClientNotFound)
             {
-                var client = new SubstrateClientExt(
+                var client = new PlutoWalletSubstrateClient(
                             Endpoints.GetEndpointDictionary["hydradx"],
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 

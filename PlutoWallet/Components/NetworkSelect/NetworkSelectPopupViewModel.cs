@@ -31,7 +31,7 @@ namespace PlutoWallet.Components.NetworkSelect
 						}
 					}
 
-					Endpoints.SaveEndpoints(keys);
+					EndpointsModel.SaveEndpoints(keys);
 				}
 			}
 		}
@@ -47,7 +47,7 @@ namespace PlutoWallet.Components.NetworkSelect
 		public void SetNetworks()
 		{
             Dictionary<string, Endpoint> endpoints = Endpoints.GetEndpointDictionary;
-			string[] keys = Endpoints.GetSelectedEndpointKeys();
+			string[] keys = EndpointsModel.GetSelectedEndpointKeys();
 
 			List<NetworkSelectInfo> tempNetworks = new List<NetworkSelectInfo>();
 

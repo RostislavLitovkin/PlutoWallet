@@ -136,7 +136,7 @@ namespace PlutoWallet.Model
             result += "];";
 
             // save Endpoints
-            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
+            result += Preferences.Get("SelectedNetworks", EndpointsModel.DefaultEndpoints);
                 
 
             // Save
@@ -172,7 +172,7 @@ namespace PlutoWallet.Model
             string result = plutoLayoutStrings[0] + ";";
 
             // save Endpoints
-            result += Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints);
+            result += Preferences.Get("SelectedNetworks", EndpointsModel.DefaultEndpoints);
 
             result = result.Substring(0, result.Length - 2) + "]";
 

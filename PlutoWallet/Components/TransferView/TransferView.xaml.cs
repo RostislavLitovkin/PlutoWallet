@@ -5,6 +5,7 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -53,7 +54,7 @@ public partial class TransferView : ContentView
             }
 
             Method transfer =
-                assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native ?
+                assetSelectButtonViewModel.Pallet == AssetPallet.Native ?
                 TransferModel.NativeTransfer(client, viewModel.Address, amount) :
                 TransferModel.AssetsTransfer(client, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
 

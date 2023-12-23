@@ -4,6 +4,7 @@ using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NetworkSelect;
 using System.Net;
 using PlutoWallet.Components.TransferView;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.AssetSelect;
 

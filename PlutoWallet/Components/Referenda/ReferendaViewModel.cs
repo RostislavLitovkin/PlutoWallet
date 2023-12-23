@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Model;
 using PlutoWallet.Model.SubSquare;
 
 namespace PlutoWallet.Components.Referenda
@@ -22,7 +23,7 @@ namespace PlutoWallet.Components.Referenda
 		{
 			Loading = "Loading";
 
-			var referenda = await Model.SubSquare.ReferendumModel.GetReferenda();
+			var referenda = await Model.SubSquare.ReferendumModel.GetReferenda(AjunaClientModel.GroupClients, KeysModel.GetSubstrateKey());
 			if (referenda.Count() == 0)
 			{
 				Loading = "None";

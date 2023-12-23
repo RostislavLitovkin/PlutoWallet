@@ -3,6 +3,7 @@ using PlutoWallet.Model;
 using PlutoWallet.Components.Balance;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.AssetSelect
 {

@@ -3,6 +3,7 @@ using Substrate.NetApi.Model.Extrinsics;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PlutoWallet.Types;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.TransactionRequest
 {
@@ -75,7 +76,7 @@ namespace PlutoWallet.Components.TransactionRequest
 
         private async Task CalculateFeeAsync(Method method)
         {
-            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(method);
+            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(AjunaClientModel.Client, method);
         }
     }
 }

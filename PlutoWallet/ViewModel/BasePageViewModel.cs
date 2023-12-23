@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.Nft;
+using PlutoWallet.Model;
 using PlutoWallet.View;
 
 namespace PlutoWallet.ViewModel
@@ -54,7 +55,7 @@ namespace PlutoWallet.ViewModel
          
             try
             {
-                await DependencyService.Get<NftViewModel>().GetNFTsAsync(nftsCancellationTokenSource.Token);
+                await DependencyService.Get<NftViewModel>().GetNFTsAsync(KeysModel.GetSubstrateKey(), nftsCancellationTokenSource.Token);
             }
             catch (OperationCanceledException)
             {

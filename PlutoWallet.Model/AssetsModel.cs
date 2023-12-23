@@ -1,6 +1,4 @@
 ﻿using System;
-using PlutoWallet.Components.Balance;
-using PlutoWallet.Components.MessagePopup;
 using Substrate.NetApi.Generated.Model.pallet_assets.types;
 using System.Numerics;
 using PlutoWallet.Model.AjunaExt;
@@ -9,9 +7,10 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using PlutoWallet.Model.AjunaExt;
 using static Substrate.NetApi.Model.Meta.Storage;
 using Substrate.NetApi.Generated.Model.orml_tokens;
+using PlutoWallet.Types;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
@@ -23,25 +22,21 @@ namespace PlutoWallet.Model
 
         public static double UsdSum = 0.0;
 
-        public static async Task GetBalance()
+        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress)
         {
             if (doNotReload)
             {
                 return;
             }
 
-            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
-
-            usdBalanceViewModel.UsdSum = "Loading";
-
             var tempAssets = new List<Asset>();
 
             double usdSumValue = 0;
 
-            for (int i = 0; i < Model.AjunaClientModel.GroupClients.Length; i++)
+            for (int i = 0; i < groupClients.Length; i++)
             {
-                SubstrateClientExt client = Model.AjunaClientModel.GroupClients[i];
-                var endpoint = Model.AjunaClientModel.GroupEndpoints[i];
+                SubstrateClientExt client = groupClients[i];
+                var endpoint = groupEndpoints[i];
 
                 if (endpoint.ChainType != Constants.ChainType.Substrate)
                 {
@@ -61,7 +56,7 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    var accountInfo = await client.SystemStorage.Account(Model.KeysModel.GetSubstrateKey());
+                    var accountInfo = await client.SystemStorage.Account(substrateAddress);
 
                     amount = (double)accountInfo.Data.Free.Value / Math.Pow(10, endpoint.Decimals);
                 }
@@ -91,55 +86,42 @@ namespace PlutoWallet.Model
                     });
                 }
 
-                try
+                foreach ((BigInteger, AssetDetails, AssetMetadata, AssetAccount) asset in await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(substrateAddress, 1000, CancellationToken.None))
                 {
+                    double usdRatio = 0;
 
-                    foreach ((BigInteger, AssetDetails, AssetMetadata, AssetAccount) asset in await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(Model.KeysModel.GetSubstrateKey(), 1000, CancellationToken.None))
+                    double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
+
+                    tempAssets.Add(new Asset
                     {
-                        double usdRatio = 0;
-
-                        double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
-
-                        tempAssets.Add(new Asset
-                        {
-                            Amount = assetBalance,
-                            Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
-                            ChainIcon = endpoint.Icon,
-                            Endpoint = endpoint,
-                            Pallet = AssetPallet.Assets,
-                            AssetId = asset.Item1,
-                            UsdValue = assetBalance * usdRatio,
-                            Decimals = asset.Item3.Decimals.Value,
-                        });
-                    }
-                    
-                    foreach (TokenData tokenData in await GetTokensBalance(client))
-                    {
-                        double usdRatio = 0;
-
-                        double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
-
-                        tempAssets.Add(new Asset
-                        {
-                            Amount = assetBalance,
-                            Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
-                            ChainIcon = endpoint.Icon,
-                            Endpoint = endpoint,
-                            Pallet = AssetPallet.Tokens,
-                            AssetId = tokenData.AssetId,
-                            UsdValue = assetBalance * usdRatio,
-                            Decimals = tokenData.AssetMetadata.Decimals.Value,
-                        });
-                    }
+                        Amount = assetBalance,
+                        Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
+                        ChainIcon = endpoint.Icon,
+                        Endpoint = endpoint,
+                        Pallet = AssetPallet.Assets,
+                        AssetId = asset.Item1,
+                        UsdValue = assetBalance * usdRatio,
+                        Decimals = asset.Item3.Decimals.Value,
+                    });
                 }
-                catch (Exception ex)
+
+                foreach (TokenData tokenData in await GetTokensBalance(client, substrateAddress))
                 {
-                    var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+                    double usdRatio = 0;
 
-                    messagePopup.Title = "Loading Assets Error";
-                    messagePopup.Text = ex.Message;
+                    double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
 
-                    messagePopup.IsVisible = true;
+                    tempAssets.Add(new Asset
+                    {
+                        Amount = assetBalance,
+                        Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
+                        ChainIcon = endpoint.Icon,
+                        Endpoint = endpoint,
+                        Pallet = AssetPallet.Tokens,
+                        AssetId = tokenData.AssetId,
+                        UsdValue = assetBalance * usdRatio,
+                        Decimals = tokenData.AssetMetadata.Decimals.Value,
+                    });
                 }
             }
 
@@ -150,10 +132,6 @@ namespace PlutoWallet.Model
             if (Model.HydraDX.Sdk.Assets.Any())
             {
                 GetUsdBalance();
-            }
-            else
-            {
-                usdBalanceViewModel.UpdateBalances();
             }
         }
 
@@ -168,25 +146,21 @@ namespace PlutoWallet.Model
             }
 
             UsdSum = usdSumValue;
-
-            var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
-
-            usdBalanceViewModel.UpdateBalances();
         }
 
         /// <summary>
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client)
+        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client, string substrateAddress)
         {
             var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
 
             var tokensKeyBytes = RequestGenerator.GetStorageKeyBytesHash("Tokens", "Accounts");
             var assetRegistryKeyBytes = RequestGenerator.GetStorageKeyBytesHash("AssetRegistry", "AssetMetadataMap");
 
-            byte[] prefix = tokensKeyBytes.Concat(HashExtension.Hash(Hasher.BlakeTwo128Concat, account32.Encode())).ToArray();
+            byte[] prefix = tokensKeyBytes.Concat(HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, account32.Encode())).ToArray();
             byte[] startKey = null;
 
             List<string[]> storageTokensChanges = new List<string[]>();

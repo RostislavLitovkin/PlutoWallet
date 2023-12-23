@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.HydraDX
@@ -22,7 +23,7 @@ namespace PlutoWallet.Components.HydraDX
 		{
             UsdSum = "Loading";
 
-            var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client);
+            var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client, KeysModel.GetSubstrateKey());
 
 			if (omnipoolLiquidities.Count() == 0)
 			{

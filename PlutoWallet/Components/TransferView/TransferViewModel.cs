@@ -1,6 +1,8 @@
 ﻿using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Components.AssetSelect;
+using PlutoWallet.Model;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.TransferView
 {
@@ -31,13 +33,13 @@ namespace PlutoWallet.Components.TransferView
 			{
                 var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
-				if (assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Native)
+				if (assetSelectButtonViewModel.Pallet == AssetPallet.Native)
 				{
-					Fee = "Fee: " + await Model.FeeModel.GetNativeTransferFeeStringAsync();
+					Fee = "Fee: " + await FeeModel.GetNativeTransferFeeStringAsync(AjunaClientModel.Client, AjunaClientModel.SelectedEndpoint);
 				}
-				else if (assetSelectButtonViewModel.Pallet == Balance.AssetPallet.Assets)
+				else if (assetSelectButtonViewModel.Pallet == AssetPallet.Assets)
 				{
-					Fee = "Fee: " + await Model.FeeModel.GetAssetsTransferFeeStringAsync();
+					Fee = "Fee: " + await FeeModel.GetAssetsTransferFeeStringAsync(AjunaClientModel.Client, AjunaClientModel.SelectedEndpoint);
                 }
                 else
 				{

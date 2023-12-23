@@ -12,18 +12,19 @@ using Substrate.NetApi.Generated.Model.pallet_conviction_voting.vote;
 using Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Constants;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Model.SubSquare
 {
 	public class ReferendumModel
 	{
-        public static async Task<List<ReferendumInfo>> GetReferenda()
+        public static async Task<List<ReferendumInfo>> GetReferenda(SubstrateClientExt[] groupClients, string substrateAddress)
         {
             CancellationToken token = CancellationToken.None;
 
             List<ReferendumInfo> results = new List<ReferendumInfo>();
 
-            foreach (var client in Model.AjunaClientModel.GroupClients)
+            foreach (var client in groupClients)
             {
                 if (client.Endpoint.SubSquareChainName == null)
                 {
@@ -31,7 +32,7 @@ namespace PlutoWallet.Model.SubSquare
                 }
 
                 var account32 = new AccountId32();
-                account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+                account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
 
                 var keyBytes = RequestGenerator.GetStorageKeyBytesHash("ConvictionVoting", "VotingFor");
 

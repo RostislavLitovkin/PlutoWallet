@@ -15,10 +15,10 @@ namespace PlutoWallet.Model.HydraDX
 {
 	public class DCAModel
 	{
-        public static async Task<List<DCAPosition>> GetDCAPositions(SubstrateClientExt client)
+        public static async Task<List<DCAPosition>> GetDCAPositions(SubstrateClientExt client, string substrateAddress)
         {
             var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(Model.KeysModel.GetSubstrateKey()));
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
 
             var keyBytes = RequestGenerator.GetStorageKeyBytesHash("DCA", "ScheduleOwnership");
 

@@ -1,65 +1,13 @@
 ﻿using System;
-using PlutoWallet.Components.NetworkSelect;
-using PlutoWallet.Model;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace PlutoWallet.Constants
 {
     public class Endpoints
     {
-        public static string DefaultEndpoints = "[polkadot, kusama]";
-
-        public static string[] GetSelectedEndpointKeys()
-        {
-            string[] endpointKeys = Preferences.Get("SelectedNetworks", Endpoints.DefaultEndpoints).Trim(new char[] { '[', ']' }).Split(',');
-
-            for(int i = 0; i < endpointKeys.Length; i++)
-            {
-                endpointKeys[i] = endpointKeys[i].Trim();
-            }
-
-            return endpointKeys;
-        }
-
-        public static void SaveEndpoints(List<string> keys)
-        {
-            string result = "[";
-            if (keys.Count() == 0)
-            {
-                result = "[polkadot]";
-            }
-            else
-            {
-                foreach (string key in keys)
-                {
-                    result += key + ", ";
-                }
-
-                result = result.Substring(0, result.Length - 2) + "]";
-            }
-
-            Preferences.Set("SelectedNetworks", result);
-
-            // Save it in the plutolayout:
-            string plutoLayoutString = Preferences.Get("PlutoLayout", CustomLayoutModel.DEFAULT_PLUTO_LAYOUT);
-
-            string[] itemsAndNetworksStrings = plutoLayoutString.Split(";");
-
-            string plutoLayoutResult = itemsAndNetworksStrings[0] + ";" + result;
-
-            for(int i = 2; i < itemsAndNetworksStrings.Length; i++)
-            {
-                plutoLayoutResult += ";" + itemsAndNetworksStrings[i];
-            }
-
-            Preferences.Set("PlutoLayout", plutoLayoutResult);
-
-            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
-
-            viewModel.SetupDefault();
-        }
-
         public static List<Endpoint> GetAllEndpoints => GetEndpointDictionary.Values.ToList();
 
-        public static Dictionary<string, Endpoint> GetEndpointDictionary => new Dictionary<string, Endpoint>()
+        public static readonly Dictionary<string, Endpoint> GetEndpointDictionary = new Dictionary<string, Endpoint>()
         {
             { "polkadot", new Endpoint
             {
@@ -79,8 +27,8 @@ namespace PlutoWallet.Constants
                 Name = "Kusama",
                 Key = "kusama",
                 URL = "wss://kusama-rpc.polkadot.io",
-                Icon = Application.Current.RequestedTheme == AppTheme.Light ? "kusama.png" : "kusamawhite.png",
-                DarkIcon = Application.Current.RequestedTheme == AppTheme.Dark ? "kusama.png" : "kusamawhite.png",
+                Icon = "kusama.png",
+                DarkIcon = "kusama.png",
                 CalamarChainName = "kusama",
                 SubSquareChainName = "kusama",
                 Unit = "KSM",
@@ -377,24 +325,6 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
             } }
         };
-
-
-        public static List<Endpoint> GetNftEndpoints {
-            get
-            {
-                List<Endpoint> endpoints = GetAllEndpoints;
-
-                foreach (Endpoint endpoint in endpoints)
-                {
-                    if (!endpoint.SupportsNfts)
-                    {
-                        endpoints.Remove(endpoint);
-                    }
-                }
-
-                return endpoints;
-            }
-        }
     }
 
     public enum ChainType

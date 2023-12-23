@@ -9,6 +9,8 @@ using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi.Generated.Model.pallet_assets.types;
 using Newtonsoft.Json.Linq;
+using PlutoWallet.Types;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.Balance
 {
@@ -31,11 +33,28 @@ namespace PlutoWallet.Components.Balance
             reloadIsVisible = false;
         }
 
-        public void UpdateBalances()
+        public async Task UpdateBalances()
         {
             ReloadIsVisible = false;
 
             UsdSum = "Loading";
+
+            try {
+                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
+            }
+            catch (Exception ex)
+                {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "Loading Assets Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
+
+                UsdSum = "Failed";
+
+                return;
+            }
 
             var tempAssets = new List<AssetInfo>();
 

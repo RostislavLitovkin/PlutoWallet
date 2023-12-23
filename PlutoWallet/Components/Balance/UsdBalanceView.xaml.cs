@@ -14,7 +14,9 @@ public partial class UsdBalanceView : ContentView
 
     async void OnReloadClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        await Model.AssetsModel.GetBalance();
+        var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
+
+        await usdBalanceViewModel.UpdateBalances();
     }
 }
 

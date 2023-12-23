@@ -2,7 +2,7 @@
 using System.Numerics;
 using PlutoWallet.Constants;
 
-namespace PlutoWallet.Components.Balance
+namespace PlutoWallet.Types
 {
 	public class Asset
 	{

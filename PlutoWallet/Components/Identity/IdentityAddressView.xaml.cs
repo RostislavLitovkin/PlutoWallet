@@ -72,7 +72,7 @@ public partial class IdentityAddressView : ContentView
 
             control.DestinationAddress = (string)newValue;
 
-            var identity = await Model.IdentityModel.GetIdentityForAddress((string)newValue);
+            var identity = await Model.IdentityModel.GetIdentityForAddress(AjunaClientModel.Client, (string)newValue);
 
             if (identity == null)
             {

@@ -25,7 +25,7 @@ namespace PlutoWallet.Components.Identity
             Name = "Loading";
             VerificationIconIsVisible = false;
 
-            var identity = await Model.IdentityModel.GetIdentityForAddress(Model.KeysModel.GetSubstrateKey());
+            var identity = await IdentityModel.GetIdentityForAddress(AjunaClientModel.Client, KeysModel.GetSubstrateKey());
 
             if (identity == null)
             {
