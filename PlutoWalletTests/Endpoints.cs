@@ -21,6 +21,7 @@ public class Endpoints
             {
                 var client = new SubstrateClientExt(
                                 endpoint,
+                                new Uri(endpoint.URLs[0]),
                                 Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
                 await client.ConnectAsync();
