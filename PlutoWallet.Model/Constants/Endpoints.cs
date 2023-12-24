@@ -9,6 +9,31 @@ namespace PlutoWallet.Constants
     {
         public static List<Endpoint> GetAllEndpoints => GetEndpointDictionary.Values.ToList();
 
+        public static readonly ReadOnlyDictionary<string, string> HashToKey = new ReadOnlyDictionary<string, string>(new Dictionary<string, string>()
+        {
+            { "0x91B171BB158E2D3848FA23A9F1C25182FB8E20313B2C1EB49219DA7A70CE90C3", "polkadot" },
+            { "0xB0A8D493285C2DF73290DFB7E61F870F17B41801197A149CA93654499EA3DAFE", "kusama" },
+            { "0xFE58EA77779B7ABDA7DA4EC526D14DB9B1E9CD40A217C34892AF80A9B332B76D", "moonbeam" },
+            { "0x9EB76C5184C4AB8679D2D5D819FDF90B9C001403E9E17DA2E14B6D8AEC4029C6", "astar" },
+            { "0xE358EB1D11B31255A286C12E44FE6780B7EDB171D657905A97E39F71D9C6C3EE", "ajuna" },
+            { "0x35A06BFEC2EDF0FF4BE89A6428CCD9FF5BD0167D618C5A0D4341F9600A458D14", "bajun" },
+            { "0xF3C7AD88F6A80F366C4BE216691411EF0622E8B809B1046EA297EF106058D4EB", "manta" },
+            { "0xE143F23803AC50E8F6F8E62695D1CE9E4E1D68AA36C1CD2CFD15340213F3423E", "westend" },
+            { "0x48239EF607D7928874027A43A67689209727DFB3D3DC5E5B03A39BDC2EDA771A", "statemine" },
+            { "0x68D56F15F85D3136970EC16946040BC1752654E906147F7E43E9D539D7C3DE2F", "statemint" },
+            { "0x84322D9CDDBF35088F1E54E9A85C967A41A56A4F43445768125E61AF166C7D31", "unique" },
+            { "0xCD4D732201EBE5D6B014EDDA071C4203E16867305332301DC8D092044B28E554", "quartz" },
+            { "0xC87870EF90A438D574B8E320F17DB372C50F62BEB52E479C8FF6EE5B460670B9", "opal" },
+            { "0xDDB89973361A170839F80F152D2E9E38A376A5A7ECCEFCADE763F46A8E567019", "shibuya" },
+            { "0x91BC6E169807AAA54802737E1C504B2577D4FAFEDD5A02C10293B1CD60E39527", "moonbasealpha" },
+            { "0x05D5279C52C484CC80396535A316ADD7D47B1C5B9E0398DD1F584149341460C5", "azerotestnet" },
+            { "0xFC41B9BD8EF8FE53D58C7EA67C794C7EC9A73DAF05E6D54B14FF6342C99BA64C", "acala" },
+            { "0xA85CFB9B9FD4D622A5B28289A02347AF987D8F73FA3108450E2B4A11C1CE5755", "basilisk" },
+            { "0xAFDC188F45C71DACBAA0B62E16A91F726C7B8699A9748CDF715459DE6B7F366D", "hydradx" },
+            { "0x401A1F9DCA3DA46F5C4091016C8A2F26DCEA05865116B286F60F668207D1474B", "moonriver" },
+            { "0x262E1B2AD728475FD6FE88E62D34C200ABE6FD693931DDAD144059B1EB884E5B", "bifrost" }
+        });
+
         public static readonly ReadOnlyDictionary<string, Endpoint> GetEndpointDictionary = new ReadOnlyDictionary<string, Endpoint>(new Dictionary<string, Endpoint>()
         {
             { "polkadot", new Endpoint
@@ -92,7 +117,7 @@ namespace PlutoWallet.Constants
             } },
             { "manta", new Endpoint
             {
-                Name = "Manta",
+                Name = "Manta parachain",
                 Key = "manta",
                 URLs =  new string[1] { "wss://ws.manta.systems" },
                 Icon = "manta.png",
@@ -194,7 +219,7 @@ namespace PlutoWallet.Constants
             } },
             { "quartz", new Endpoint
             {
-                Name = "Quartz",
+                Name = "QUARTZ by UNIQUE ",
                 Key = "quartz",
                 URLs =  new string[3] { "wss://eu-ws-quartz.unique.network", "wss://ws-quartz.unique.network", "wss://quartz-rpc.dwellir.com" },
                 Icon = "quartz.png",
@@ -207,7 +232,7 @@ namespace PlutoWallet.Constants
             } },
             { "opal", new Endpoint
             {
-                Name = "Opal",
+                Name = "OPAL by UNIQUE",
                 Key = "opal",
                 URLs =  new string[2] { "wss://eu-ws-opal.unique.network", "wss://ws-opal.unique.network" },
                 Icon = "opal.png",
