@@ -13,11 +13,8 @@ using System.Collections.Generic;
 
 namespace Substrate.NetApi.Generated.Model.xcm.v2
 {
-    
-    
     public enum NetworkId
     {
-        
         Any = 0,
         
         Named = 1,

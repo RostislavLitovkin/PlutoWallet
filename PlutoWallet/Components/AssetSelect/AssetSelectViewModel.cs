@@ -10,6 +10,7 @@ namespace PlutoWallet.Components.AssetSelect
 	public class AssetSelect : Asset
 	{
 		public bool IsSelected { get; set; }
+		public (string, string) ChainIcons { get; set; }
 	}
 
 	public partial class AssetSelectViewModel : ObservableObject, IPopup
@@ -37,8 +38,7 @@ namespace PlutoWallet.Components.AssetSelect
 			{
 				bool isSelected = (
 					assetSelectButtonViewModel.AssetId == a.AssetId &&
-					assetSelectButtonViewModel.ChainIcon == a.ChainIcon &&
-					assetSelectButtonViewModel.Pallet == a.Pallet &&
+                    assetSelectButtonViewModel.Pallet == a.Pallet &&
 					assetSelectButtonViewModel.Symbol == a.Symbol &&
                     assetSelectButtonViewModel.Decimals == a.Decimals
                 );
@@ -48,6 +48,8 @@ namespace PlutoWallet.Components.AssetSelect
 					Amount = a.Amount,
 					UsdValue = a.UsdValue,
 					ChainIcon = a.ChainIcon,
+					DarkChainIcon = a.DarkChainIcon,
+					ChainIcons = (a.ChainIcon, a.DarkChainIcon),
 					Pallet = a.Pallet,
 					AssetId = a.AssetId,
 					Endpoint = a.Endpoint,

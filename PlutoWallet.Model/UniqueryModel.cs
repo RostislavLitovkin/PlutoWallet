@@ -50,11 +50,11 @@ namespace PlutoWallet.Model
             switch (nftFormat)
             {
                 case "rmrk":
-                    Endpoint rmrk = Endpoints.GetEndpointDictionary["kusama"];
+                    Endpoint rmrk = Endpoints.GetEndpointDictionary["kusama"].Clone();
                     rmrk.Name = "Rmrk";
                     return rmrk;
                 case "rmrk2":
-                    Endpoint rmrk2 = Endpoints.GetEndpointDictionary["kusama"];
+                    Endpoint rmrk2 = Endpoints.GetEndpointDictionary["kusama"].Clone();
                     rmrk2.Name = "Rmrk2";
                     return rmrk2;
                 case "basilisk":

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui.Controls;
 using PlutoWallet.Constants;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.NetworkSelect;
 
@@ -42,9 +43,9 @@ public partial class NetworkBubbleView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
 
-            Endpoint endpoint = Endpoints.GetEndpointDictionary[(string)newValue];
+            Endpoint endpoint = EndpointsModel.GetEndpoint((string)newValue, true);
 
-            control.iconImage.Source = endpoint.DarkIcon != null ? endpoint.DarkIcon : endpoint.Icon;
+            control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, endpoint.DarkIcon, endpoint.Icon);
         });
 
     public NetworkBubbleView()

@@ -40,7 +40,7 @@ namespace PlutoWallet.Components.Balance
             UsdSum = "Loading";
 
             try {
-                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
+                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey(), Application.Current.UserAppTheme != AppTheme.Dark);
             }
             catch (Exception ex)
                 {
@@ -67,7 +67,7 @@ namespace PlutoWallet.Components.Balance
                         Amount = String.Format("{0:0.00}", a.Amount),
                         Symbol = a.Symbol,
                         UsdValue = String.Format("{0:0.00}", a.UsdValue) + " USD",
-                        ChainIcon = a.ChainIcon
+                        ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? a.ChainIcon : a.DarkChainIcon,
                     });
                 }
             }

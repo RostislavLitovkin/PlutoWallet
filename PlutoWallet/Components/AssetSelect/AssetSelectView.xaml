@@ -24,7 +24,7 @@
                         <DataTemplate>
                             <assetselect:AssetSelectorView Amount="{Binding Amount}"
                                                            UsdValue="{Binding UsdValue}"
-                                                           ChainIcon="{Binding ChainIcon}"
+                                                           ChainIcons="{Binding ChainIcons}"
                                                            Symbol="{Binding Symbol}"
                                                            IsSelected="{Binding IsSelected}"
                                                            Endpoint="{Binding Endpoint}"

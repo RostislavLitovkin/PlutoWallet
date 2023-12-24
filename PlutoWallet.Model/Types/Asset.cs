@@ -9,6 +9,7 @@ namespace PlutoWallet.Types
         public double Amount { get; set; }
         public string Symbol { get; set; }
         public string ChainIcon { get; set; }
+        public string DarkChainIcon { get; set; }
         public Endpoint Endpoint { get; set; }
         public double UsdValue { get; set; }
         public AssetPallet Pallet { get; set; }

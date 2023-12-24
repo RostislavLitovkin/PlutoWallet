@@ -22,7 +22,7 @@ namespace PlutoWallet.Model
 
         public static double UsdSum = 0.0;
 
-        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress)
+        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress, bool darkIcon)
         {
             if (doNotReload)
             {
@@ -45,6 +45,7 @@ namespace PlutoWallet.Model
                         Amount = "Unsupported",
                         //Symbol = endpoint.Unit, // I think it looks better without it
                         //ChainIcon = endpoint.Icon,
+                        //DarkChainIcon = endpoint.DarkIcon,
                         Endpoint = endpoint,
                         UsdValue = String.Format("{0:0.00}", 0) + " USD",
                     });*/
@@ -78,6 +79,7 @@ namespace PlutoWallet.Model
                         Amount = amount,
                         Symbol = endpoint.Unit,
                         ChainIcon = endpoint.Icon,
+                        DarkChainIcon = endpoint.DarkIcon,
                         Endpoint = endpoint,
                         Pallet = AssetPallet.Native,
                         AssetId = 0,
@@ -97,6 +99,7 @@ namespace PlutoWallet.Model
                         Amount = assetBalance,
                         Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value.Value),
                         ChainIcon = endpoint.Icon,
+                        DarkChainIcon = endpoint.DarkIcon,
                         Endpoint = endpoint,
                         Pallet = AssetPallet.Assets,
                         AssetId = asset.Item1,
@@ -116,6 +119,7 @@ namespace PlutoWallet.Model
                         Amount = assetBalance,
                         Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
                         ChainIcon = endpoint.Icon,
+                        DarkChainIcon = endpoint.DarkIcon,
                         Endpoint = endpoint,
                         Pallet = AssetPallet.Tokens,
                         AssetId = tokenData.AssetId,

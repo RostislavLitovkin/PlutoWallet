@@ -58,6 +58,13 @@ namespace PlutoWallet.Model
             viewModel.SetupDefault();
         }
 
+        public static Endpoint GetEndpoint(string key, bool reverse = false)
+        {
+            Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
+
+            return endpoint;
+        }
+
         public static List<Endpoint> GetNftEndpoints
         {
             get

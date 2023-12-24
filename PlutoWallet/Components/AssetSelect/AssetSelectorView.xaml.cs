@@ -28,13 +28,14 @@ public partial class AssetSelectorView : ContentView
             control.symbolLabel.Text = (string)newValue;
         });
 
-    public static readonly BindableProperty ChainIconProperty = BindableProperty.Create(
-        nameof(ChainIcon), typeof(string), typeof(AssetSelectorView),
+    public static readonly BindableProperty ChainIconsProperty = BindableProperty.Create(
+        nameof(ChainIcons), typeof((string, string)), typeof(AssetSelectorView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (AssetSelectorView)bindable;
 
-            control.chainIcon.Source = (string)newValue;
+            (string, string) values = ((string, string))newValue;
+            control.chainIcon.SetAppTheme<FileImageSource>(Image.SourceProperty, values.Item1, values.Item2); ;
         });
 
     public static readonly BindableProperty UsdValueProperty = BindableProperty.Create(
@@ -105,11 +106,11 @@ public partial class AssetSelectorView : ContentView
         set => SetValue(SymbolProperty, value);
     }
 
-    public string ChainIcon
+    public (string, string) ChainIcons
     {
-        get => (string)GetValue(ChainIconProperty);
+        get => ((string, string))GetValue(ChainIconsProperty);
 
-        set => SetValue(ChainIconProperty, value);
+        set => SetValue(ChainIconsProperty, value);
     }
 
     public double UsdValue
@@ -174,7 +175,7 @@ public partial class AssetSelectorView : ContentView
         }
 
         var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
-        assetSelectButtonViewModel.ChainIcon = ChainIcon;
+        assetSelectButtonViewModel.ChainIcon.SetAppTheme<FileImageSource>(Image.SourceProperty, ChainIcons.Item1, ChainIcons.Item2);
         assetSelectButtonViewModel.Symbol = Symbol;
         assetSelectButtonViewModel.AssetId = AssetId;
         assetSelectButtonViewModel.Pallet = Pallet;

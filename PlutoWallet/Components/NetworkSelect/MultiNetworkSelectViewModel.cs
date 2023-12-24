@@ -37,13 +37,14 @@ namespace PlutoWallet.Components.NetworkSelect
 
             for(int i = 0; i < selectedEndpointKeys.Length; i++)
             {
-                Endpoint endpoint = Endpoints.GetEndpointDictionary[selectedEndpointKeys[i]];
+                Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
                 NetworkInfos.Add(new NetworkSelectInfo
                 {
                     EndpointKey = selectedEndpointKeys[i],
                     ShowName = i == 0, // true for the first endpoint, otherwise hidden
                     Name = endpoint.Name,
                     Icon = endpoint.Icon,
+                    DarkIcon = endpoint.DarkIcon,
                 });
             }
 
@@ -60,13 +61,14 @@ namespace PlutoWallet.Components.NetworkSelect
 
             for (int i = 0; i < selectedEndpointKeys.Length; i++)
             {
-                Endpoint endpoint = Endpoints.GetEndpointDictionary[selectedEndpointKeys[i]];
+                Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
                 NetworkInfos.Add(new NetworkSelectInfo
                 {
                     EndpointKey = selectedEndpointKeys[i],
                     ShowName = endpoint.Name == selectedEndpoint.Name,
                     Name = endpoint.Name,
                     Icon = endpoint.Icon,
+                    DarkIcon = endpoint.DarkIcon,
                 });
             }
 

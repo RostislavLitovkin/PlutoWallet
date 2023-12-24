@@ -10,7 +10,7 @@ namespace PlutoWallet.Components.AssetSelect
 	public partial class AssetSelectButtonViewModel : ObservableObject
 	{
 		[ObservableProperty]
-		private string chainIcon;
+		private ImageSource chainIcon;
 
 		private string symbol;
         public string Symbol

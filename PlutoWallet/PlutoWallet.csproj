@@ -415,9 +415,6 @@
 	  <MauiXaml Update="Components\NetworkSelect\NetworkBubbleView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
-	  <MauiXaml Update="Components\NetworkSelect\MultiNetworkSelectOptionView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
 	  <MauiXaml Update="Components\AddressView\ChainAddressView.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>

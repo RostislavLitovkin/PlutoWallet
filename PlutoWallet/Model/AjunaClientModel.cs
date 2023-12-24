@@ -54,7 +54,7 @@ namespace PlutoWallet.Model
 
                 for (int i = 0; i < endpointKeys.Length; i++)
                 {
-                    Endpoint endpoint = Endpoints.GetEndpointDictionary[endpointKeys[i]];
+                    Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKeys[i]);
 
                     groupEndpointsList.Add(endpoint);
 
@@ -201,7 +201,7 @@ namespace PlutoWallet.Model
         {
             // Setup the AssetSelectButton
             var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
-            assetSelectButtonViewModel.ChainIcon = SelectedEndpoint.Icon;
+            assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? SelectedEndpoint.Icon : SelectedEndpoint.DarkIcon;
             assetSelectButtonViewModel.Symbol = SelectedEndpoint.Unit;
             assetSelectButtonViewModel.AssetId = 0;
             assetSelectButtonViewModel.Pallet = AssetPallet.Native;
