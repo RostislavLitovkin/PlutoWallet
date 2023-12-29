@@ -47,9 +47,6 @@ namespace PlutoWallet.Model.AjunaExt
         public Endpoint Endpoint { get; set; }
 
         // Logic for ink! contracts
-        public ExtrinsicManager ExtrinsicManger { get; }
-
-        public SubscriptionManager SubscriptionManager { get; }
 
         public Metadata CustomMetadata { get; set; }
 
@@ -72,10 +69,6 @@ namespace PlutoWallet.Model.AjunaExt
             this.IdentityStorage = new IdentityStorage(this);
             this.ConvictionVotingStorage = new ConvictionVotingStorage(this);
             this.LBPStorage = new LBPStorage(this);
-
-            ExtrinsicManger = new ExtrinsicManager();
-
-            SubscriptionManager = new SubscriptionManager();
         }
 
         public async Task ConnectAsync()

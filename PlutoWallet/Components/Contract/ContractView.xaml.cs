@@ -77,7 +77,7 @@ public partial class ContractView : ContentView
             refTimeParam.Create(new CompactInteger(refTime));
             var proofSizeParam = new BaseCom<U64>();
             proofSizeParam.Create(new CompactInteger(proofSize));
-            var gasLimit = new Weight();
+            var gasLimit = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             gasLimit.RefTime = refTimeParam;
             gasLimit.ProofSize = proofSizeParam;
 

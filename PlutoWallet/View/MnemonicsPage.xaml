@@ -58,9 +58,14 @@
                     </card:Card>
                 </ContentView>
 
-                <Button Text="Back to main screen" Clicked="ContinueToMainPageClicked" />
+                <Button Text="Export json" Clicked="ExportJsonClicked"
+                         IsEnabled="False"/>
+
                 <Button Text="Use existing mnemonics" Clicked="GoToEnterMnemonics"
                         />
+
+                <Button Text="Back to main screen" Clicked="ContinueToMainPageClicked" />
+
 
             </VerticalStackLayout>
             

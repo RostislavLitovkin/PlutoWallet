@@ -22,7 +22,7 @@ public partial class SettingsPage : ContentPage
         SecureStorage.Default.Remove("privateKey");
         SecureStorage.Default.Remove("mnemonics");
         SecureStorage.Default.Remove("password");
-        Preferences.Set("biometricsEnabled", false);
+        Preferences.Remove("biometricsEnabled");
 
         Navigation.InsertPageBefore(new SetupPasswordPage(), Navigation.NavigationStack[0]);
 

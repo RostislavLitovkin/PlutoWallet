@@ -104,6 +104,11 @@ public partial class App : Application
         }
         else
         {
+            Preferences.Remove("publicKey");
+            SecureStorage.Default.Remove("privateKey");
+            SecureStorage.Default.Remove("mnemonics");
+            SecureStorage.Default.Remove("password");
+            Preferences.Remove("biometricsEnabled");
             MainPage = new NavigationPage(new SetupPasswordPage());
         }
 	}

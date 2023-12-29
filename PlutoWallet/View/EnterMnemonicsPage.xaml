@@ -61,40 +61,6 @@
                     </card:Card>
                 </ContentView>
 
-                 <!--<ContentView HeightRequest="90">
-                    <card:Card>
-                        <card:Card.View>
-                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                                            AbsoluteLayout.LayoutFlags="All"
-                                            Margin="0, 10, 0, 10">
-                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
-                                    <VerticalStackLayout>
-                                        <Label 
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Center"
-                                            VerticalTextAlignment="End">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Password: "/>
-
-                                                </FormattedString>
-
-                                            </Label.FormattedText>
-
-                                        </Label>
-                                        <Entry HeightRequest="40" Placeholder="Password"
-                                               Text="{Binding Password}" Margin="0, 10, 0, 10"
-                                               Keyboard="Plain" IsPassword="True" />
-
-                                    </VerticalStackLayout>
-                
-                                </VerticalStackLayout>
-                            </AbsoluteLayout>
-                        </card:Card.View>
-                    </card:Card>
-                </ContentView>-->
-
                 <Button Text="Continue" Clicked="ContinueWithMnemonicClicked" />
 
 
@@ -133,41 +99,10 @@
                     </card:Card>
                 </ContentView>
 
-                <!--<ContentView HeightRequest="90">
-                    <card:Card>
-                        <card:Card.View>
-                            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-                                            AbsoluteLayout.LayoutFlags="All"
-                                            Margin="0, 10, 0, 10">
-                                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                                                     AbsoluteLayout.LayoutFlags="SizeProportional">
-                                    <VerticalStackLayout>
-                                        <Label 
-                                            FontAttributes="Bold"
-                                            HorizontalOptions="Center"
-                                            VerticalTextAlignment="End">
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span FontAttributes="Bold" Text="Password: "/>
-
-                                                </FormattedString>
-
-                                            </Label.FormattedText>
-
-                                        </Label>
-                                        <Entry HeightRequest="40" Placeholder="Password"
-                                               Text="{Binding Password2}" Margin="0, 10, 0, 10"
-                                               Keyboard="Plain" IsPassword="True" />
-
-                                    </VerticalStackLayout>
-                
-                                </VerticalStackLayout>
-                            </AbsoluteLayout>
-                        </card:Card.View>
-                    </card:Card>
-                </ContentView>-->
-
                 <Button Text="Continue" Clicked="ContinueWithPrivateKeyClicked" />
+
+                <Button Text="Import json" Clicked="ImportJsonClicked"
+                        IsEnabled="False"/>
             </VerticalStackLayout>
             
         </ScrollView>

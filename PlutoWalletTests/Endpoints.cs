@@ -10,7 +10,7 @@ namespace PlutoWalletTests;
 public class Endpoints
 {
     [Test]
-    public async Task Connect()
+    public async Task ConnectAndCheck()
     {
         foreach (Endpoint endpoint in PlutoWallet.Constants.Endpoints.GetAllEndpoints)
         {
@@ -59,7 +59,6 @@ public class Endpoints
                 }
 
                 Hash genesisHash = await client.Chain.GetBlockHashAsync(new BlockNumber(0), CancellationToken.None);
-
 
                 Assert.That(PlutoWallet.Constants.Endpoints.HashToKey[genesisHash.Value].Equals(endpoint.Key));
 

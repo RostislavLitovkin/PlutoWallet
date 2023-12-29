@@ -22,7 +22,7 @@ namespace PlutoWallet.Model
 
         public static double UsdSum = 0.0;
 
-        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress, bool darkIcon)
+        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress)
         {
             if (doNotReload)
             {

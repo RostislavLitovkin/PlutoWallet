@@ -43,7 +43,7 @@ namespace PlutoWallet.Model
                     extrinsicStackViewModel.Update();
                 }
 
-                else if (status.InBlock != null)
+                else if (status.ExtrinsicState == ExtrinsicState.InBlock)
                 {
                     Console.WriteLine("In block");
                     extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
@@ -51,7 +51,7 @@ namespace PlutoWallet.Model
                     extrinsicStackViewModel.Update();
                 }
 
-                else if (status.Finalized != null)
+                else if (status.ExtrinsicState == ExtrinsicState.Finalized)
                 {
                     Console.WriteLine("Finalized");
                     extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;

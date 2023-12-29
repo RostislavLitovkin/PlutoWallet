@@ -8,39 +8,21 @@ using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using PlutoWallet.Components.ConfirmTransaction;
 using System.Security.Cryptography;
+using Substrate.NET.Wallet;
+using Substrate.NET.Wallet.Keyring;
 
 namespace PlutoWallet.Model
 {
     public class KeysModel
     {
-        public KeysModel()
-        {
-
-        }
-
-        public static string[] GenerateMnemonicsArray()
-        {
-            var random = RandomNumberGenerator.Create();
-
-            var entropyBytes = new byte[16];
-            random.GetBytes(entropyBytes);
-
-            var mnemonic = Mnemonic.MnemonicFromEntropy(entropyBytes, BIP39Wordlist.English);
-
-            return mnemonic;
-        }
 
         public static async Task GenerateNewAccountAsync(string password)
         {
-            var mnemonicsArray = Model.KeysModel.GenerateMnemonicsArray();
-            string mnemonics = string.Empty;
+            Console.WriteLine("Generate started");
 
-            foreach (string mnemonic in mnemonicsArray)
-            {
-                mnemonics += " " + mnemonic;
-            }
+            string mnemonics = MnemonicsModel.GenerateMnemonics();
 
-            mnemonics = mnemonics.Trim();
+            Console.WriteLine("New mnemonics generated");
 
             await GenerateNewAccountAsync(mnemonics, password);
         }
@@ -78,16 +60,9 @@ namespace PlutoWallet.Model
             }
 
             // This is default, could be changed in the future or with a setting
-            ExpandMode expandMode = ExpandMode.Ed25519;
+            // ExpandMode expandMode = ExpandMode.Ed25519;
 
-            var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonics, password, BIP39Wordlist.English);
-
-            var miniSecret = new MiniSecret(secret, expandMode);
-
-            Account account = Account.Build(
-                KeyType.Sr25519,
-                miniSecret.ExpandToSecret().ToBytes(),
-                miniSecret.GetPair().Public.Key);
+            Account account = MnemonicsModel.GetAccount(mnemonics);
 
             Preferences.Set(
                 "publicKey",
@@ -111,6 +86,7 @@ namespace PlutoWallet.Model
 
         public static async Task GenerateNewAccountFromPrivateKeyAsync(string privateKey)
         {
+            // This is default, could be changed in the future or with a setting
             ExpandMode expandMode = ExpandMode.Ed25519;
 
             var miniSecret = new MiniSecret(Utils.HexToByteArray(privateKey), expandMode);
@@ -135,6 +111,34 @@ namespace PlutoWallet.Model
             Preferences.Set("usePrivateKey", true);
         }
 
+        public static async Task GenerateNewAccountFromJsonAsync(string json)
+        {
+            // This is default, could be changed in the future or with a setting
+            ExpandMode expandMode = ExpandMode.Ed25519;
+
+            Wallet wallet = MnemonicsModel.ImportJson(json, await SecureStorage.Default.GetAsync("password"));
+
+            if (wallet.IsLocked)
+            {
+                throw new Exception("Bad password");
+            }
+
+            Account account = wallet.Account;
+
+            /*await SecureStorage.Default.SetAsync(
+                "privateKey",
+                 privateKey
+            );*/
+
+            Preferences.Set(
+                "publicKey",
+                 account.Value
+            );
+
+            Preferences.Set("privateKeyExpandMode", 1);
+
+            Preferences.Set("usePrivateKey", true);
+        }
 
         public static string GetSubstrateKey()
         {
@@ -258,6 +262,7 @@ namespace PlutoWallet.Model
             {
                 var (mnemonicsOrPrivateKey, _usePrivateKey) = secretValues;
 
+                // use Private key
                 if (Preferences.Get("usePrivateKey", false))
                 {
                     var miniSecret2 = new MiniSecret(Utils.HexToByteArray(mnemonicsOrPrivateKey), expandMode);
@@ -267,13 +272,7 @@ namespace PlutoWallet.Model
                         miniSecret2.GetPair().Public.Key));
                 }
 
-                var secret = Mnemonic.GetSecretKeyFromMnemonic(mnemonicsOrPrivateKey, await SecureStorage.Default.GetAsync("password"), BIP39Wordlist.English);
-
-                var miniSecret = new MiniSecret(secret, expandMode);
-
-                return Option<Account>.Some(Account.Build(KeyType.Sr25519,
-                    miniSecret.ExpandToSecret().ToBytes(),
-                    miniSecret.GetPair().Public.Key));
+                return Option<Account>.Some(MnemonicsModel.GetAccount(mnemonicsOrPrivateKey));
             }
 
             return Option<Account>.None;
