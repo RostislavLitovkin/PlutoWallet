@@ -40,7 +40,7 @@ namespace PlutoWallet.Model.HydraDX
             byte[] startKey = null;
 
             var storageKeys = (await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token))
-               .Select(p => p.ToString().Replace(Utils.Bytes2HexString(prefix), ""));
+               .Select(p => p.ToString().ToLower().Replace(Utils.Bytes2HexString(prefix).ToLower(), ""));
 
             Dictionary<string, HydraDXTokenInfo> result = new Dictionary<string, HydraDXTokenInfo>();
 
@@ -50,12 +50,14 @@ namespace PlutoWallet.Model.HydraDX
             }
 
             var omnipoolAssetsKeys = storageKeys.Select(p => Utils.HexToByteArray(omnipoolAssetsKeyBytesString + p.ToString())).ToList();
+            
             var tokenAccountsKeys = storageKeys.Select(p => Utils.HexToByteArray(tokenAccountsKeyBytesString +
                 "12649b1d88771b22c15810b80fb0a1a96d6f646c6f6d6e69706f6f6c0000000000000000000000000000000000000000"
                 + Utils.Bytes2HexString(HashExtension.Hash(
                     Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
                     Model.HashModel.GetU32FromBlake2_128Concat(p.ToString()).Bytes
                  ), Utils.HexStringFormat.Pure))).ToList();
+
             var assetMetadataKeys = storageKeys.Select(p => Utils.HexToByteArray(assetMetadataKeyBytesString
                 + Utils.Bytes2HexString(HashExtension.Hash(
                     Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
@@ -65,7 +67,6 @@ namespace PlutoWallet.Model.HydraDX
             var omnipoolAssetsStorageChangeSets = (await client.State.GetQueryStorageAtAsync(omnipoolAssetsKeys, string.Empty, token)).ElementAt(0).Changes;
             var tokenAccountsStorageChangeSets = (await client.State.GetQueryStorageAtAsync(tokenAccountsKeys, string.Empty, token)).ElementAt(0).Changes;
             var assetMetadataStorageChangeSets = (await client.State.GetQueryStorageAtAsync(assetMetadataKeys, string.Empty, token)).ElementAt(0).Changes;
-
 
             if (omnipoolAssetsStorageChangeSets != null)
             {

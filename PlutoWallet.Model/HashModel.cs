@@ -9,7 +9,7 @@ namespace PlutoWallet.Model
 	{
 		public static U32 GetU32FromBlake2_128Concat(string hash)
 		{
-			if (hash.Substring(0, 2) == "0x")
+			if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
 			{
 				hash = hash.Substring(2);
 			}
@@ -27,7 +27,7 @@ namespace PlutoWallet.Model
 
         public static U64 GetU64FromBlake2_128Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
@@ -45,7 +45,7 @@ namespace PlutoWallet.Model
 
         public static U128 GetU128FromBlake2_128Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
@@ -63,7 +63,7 @@ namespace PlutoWallet.Model
 
         public static U32 GetU32FromTwox_64Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
@@ -81,7 +81,7 @@ namespace PlutoWallet.Model
 
         public static U16 GetU16FromTwox_64Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
@@ -99,7 +99,7 @@ namespace PlutoWallet.Model
 
         public static BigInteger GetBigIntegerFromBlake2_128Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
@@ -122,7 +122,7 @@ namespace PlutoWallet.Model
 
         public static BigInteger GetBigIntegerFromTwox_64Concat(string hash)
         {
-            if (hash.Substring(0, 2) == "0x")
+            if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
             {
                 hash = hash.Substring(2);
             }
