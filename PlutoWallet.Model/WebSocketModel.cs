@@ -10,6 +10,8 @@ namespace PlutoWallet.Model
 
         public static async Task<string> GetFastestWebSocketAsync(string[] urls)
         {
+            return urls[0];
+
             TimeSpan fastestTime = TimeSpan.MaxValue;
             string fastestUrl = null;
 

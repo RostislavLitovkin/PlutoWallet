@@ -4,11 +4,22 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Newtonsoft.Json;
 using PlutoWallet.Types;
 using PlutoWallet.Model;
+using Substrate.NetApi;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Components.TransactionRequest
 {
     public partial class TransactionRequestViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private string chainIcon;
+
+        [ObservableProperty]
+        private string chainName;
+
+        [ObservableProperty]
+        private string endpointKey;
+
         [ObservableProperty]
         private string palletIndex;
 
@@ -18,47 +29,8 @@ namespace PlutoWallet.Components.TransactionRequest
         [ObservableProperty]
         private string parameters;
 
+        [ObservableProperty]
         private Method ajunaMethod;
-
-        public Method AjunaMethod
-        {
-            get => ajunaMethod;
-            set
-            {
-                ajunaMethod = value;
-                try
-                {
-                    var client = Model.AjunaClientModel.Client;
-
-                    var pallet = client.MetaData.NodeMetadata.Modules[value.ModuleIndex];
-                    Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
-
-                    PalletIndex = pallet.Name;
-                    CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
-                        .Variants[value.CallIndex].Name;
-
-
-
-                    CalculateFeeAsync(value);
-                }
-                catch
-                {
-                    PalletIndex = "(" + value.ModuleIndex.ToString() + " index)"; 
-                    CallIndex = "(" + value.CallIndex.ToString() + " index)";
-
-                    Fee = "Fee: unknown";
-                }
-
-                if (value.Parameters.Length > 5)
-                {
-                    Parameters = "0x" + Convert.ToHexString(value.Parameters).Substring(0, 10) + "..";
-                }
-                else
-                {
-                    Parameters = "0x" + Convert.ToHexString(value.Parameters);
-                }
-            }
-        }
 
         [ObservableProperty]
         private string fee;
@@ -74,7 +46,7 @@ namespace PlutoWallet.Components.TransactionRequest
             isVisible = false;
         }
 
-        private async Task CalculateFeeAsync(Method method)
+        public async Task CalculateFeeAsync(Method method)
         {
             Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(AjunaClientModel.Client, method);
         }

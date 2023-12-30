@@ -60,7 +60,9 @@ public class Endpoints
 
                 Hash genesisHash = await client.Chain.GetBlockHashAsync(new BlockNumber(0), CancellationToken.None);
 
-                Assert.That(PlutoWallet.Constants.Endpoints.HashToKey[genesisHash.Value].Equals(endpoint.Key));
+                //Console.WriteLine("{ \"" + genesisHash.Value.ToLower() + "\": \"" + endpoint.Key + "\" },");
+
+                Assert.That(PlutoWallet.Constants.Endpoints.HashToKey[genesisHash.Value.ToLower()].Equals(endpoint.Key));
 
                 client.Dispose();
             }

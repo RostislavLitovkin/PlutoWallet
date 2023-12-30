@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card" xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.TransactionRequest.TransactionRequestView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -10,78 +10,83 @@
 
     <card:Card IsPopup="True">
         <card:Card.View>
-        <AbsoluteLayout>
+            <AbsoluteLayout>
 
-            <VerticalStackLayout Spacing="10">
-                <Label
-                    FontAttributes="Bold"
-                    Text="Transaction request"
-                    HorizontalOptions="Center"
-                    Margin="20, 0, 20, 0"/>
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        Text="Transaction request"
+                        HorizontalOptions="Center"
+                        Margin="20, 0, 20, 0"/>
 
-                <Label
-                    HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Pallet: " />
-                            <Span FontAttributes="Bold" Text="{Binding PalletIndex}"/>
+                    <networkselect:NetworkBubbleView Icon="{Binding ChainIcon}"
+                                                     Name="{Binding ChainName}"
+                                                     EndpointKey="{Binding EndpointKey}"
+                                                     ShowName="True"/>
 
-                        </FormattedString>
+                    <Label
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Pallet: " />
+                                <Span FontAttributes="Bold" Text="{Binding PalletIndex}"/>
 
-                    </Label.FormattedText>
+                            </FormattedString>
 
-                </Label>
+                        </Label.FormattedText>
 
-                <Label
-                    HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Call: " />
-                            <Span FontAttributes="Bold" Text="{Binding CallIndex}"/>
+                    </Label>
 
-                        </FormattedString>
+                    <Label
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Call: " />
+                                <Span FontAttributes="Bold" Text="{Binding CallIndex}"/>
 
-                    </Label.FormattedText>
+                            </FormattedString>
 
-                </Label>
+                        </Label.FormattedText>
 
-                <Label
-                    HorizontalOptions="Center">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Parameters: " />
-                            <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
+                    </Label>
 
-                        </FormattedString>
+                    <Label
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Parameters: " />
+                                <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
 
-                    </Label.FormattedText>
+                            </FormattedString>
 
-                </Label>
+                        </Label.FormattedText>
 
-                <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
+                    </Label>
 
-                <Label TextColor="Orange"
-                       Text="{Binding Fee}" />
+                    <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
 
-                <Button Text="Sign and submit"
-                        Clicked="OnSubmitClicked" />
+                    <Label TextColor="Orange"
+                           Text="{Binding Fee}" />
 
-                <Button Text="Reject" BackgroundColor="DarkRed"
-                        Clicked="OnRejectClicked" />
-            </VerticalStackLayout>
+                    <Button Text="Sign and submit"
+                            Clicked="OnSubmitClicked" />
 
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
-                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
-                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+                    <Button Text="Reject" BackgroundColor="DarkRed"
+                            Clicked="OnRejectClicked" />
+                </VerticalStackLayout>
 
-                <AbsoluteLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                    <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                       Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
 
-                </AbsoluteLayout.GestureRecognizers>
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackClicked" />
 
+                    </AbsoluteLayout.GestureRecognizers>
+
+                </AbsoluteLayout>
             </AbsoluteLayout>
-        </AbsoluteLayout>
-    </card:Card.View>
+        </card:Card.View>
         </card:Card>
 
 </ContentView>

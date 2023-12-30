@@ -40,23 +40,7 @@ public partial class ConnectionRequestView : ContentView
                     {
                         Plutonication.Payload payload = JsonConvert.DeserializeObject<Plutonication.Payload[]>(payloadJson.ToString())[0];
 
-                        byte[] methodBytes = Utils.HexToByteArray(payload.method);
-
-                        List<byte> methodParameters = new List<byte>();
-
-                        for (int i = 2; i < methodBytes.Length; i++)
-                        {
-                            methodParameters.Add(methodBytes[i]);
-                        }
-
-                        Method method = new Method(methodBytes[0], methodBytes[1], methodParameters.ToArray());
-
-                        var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
-
-                        transactionRequest.AjunaMethod = method;
-                        transactionRequest.Payload = payload;
-                        transactionRequest.IsVisible = true;
-
+                        Model.PlutonicationModel.ReceivePayload(payload);
                     }
                     catch (Exception ex)
                     {
@@ -67,7 +51,6 @@ public partial class ConnectionRequestView : ContentView
 
                         messagePopup.IsVisible = true;
                     }
-
                 },
                 signRaw: raw =>
                 {

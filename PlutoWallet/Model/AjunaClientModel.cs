@@ -25,7 +25,7 @@ namespace PlutoWallet.Model
 
         public static Endpoint[] GroupEndpoints;
 
-        private static string[] groupEndpointKeys;
+        public static string[] GroupEndpointKeys;
 
         public static Endpoint SelectedEndpoint;
 
@@ -46,7 +46,7 @@ namespace PlutoWallet.Model
         {
             try
             {
-                groupEndpointKeys = endpointKeys;
+                GroupEndpointKeys = endpointKeys;
 
                 List<PlutoWalletSubstrateClient> groupClientList = new List<PlutoWalletSubstrateClient>(endpointKeys.Length);
 
@@ -96,7 +96,7 @@ namespace PlutoWallet.Model
          */
         public static async Task ChangeChainAsync(string endpointKey)
         {
-            int index = Array.IndexOf(groupEndpointKeys, endpointKey);
+            int index = Array.IndexOf(GroupEndpointKeys, endpointKey);
             SelectedEndpoint = GroupEndpoints[index];
 
             // Set the selected endpoint of the group to be the "main" client
