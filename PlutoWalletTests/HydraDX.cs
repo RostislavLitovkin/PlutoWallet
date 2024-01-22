@@ -23,10 +23,7 @@ public class HydraDX
 
         Assert.That(client.IsConnected);
 
-        Console.WriteLine("Connected");
         await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
-
-        Console.WriteLine("Fetched");
 
         Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
     }
