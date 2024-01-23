@@ -9,16 +9,15 @@ public partial class NavigationBarView : ContentView
 	public NavigationBarView()
 	{
 		InitializeComponent();
-	}
+
+        BindingContext = DependencyService.Get<NavigationBarViewModel>();
+    }
 
     void OnHomeClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var viewModel = DependencyService.Get<BasePageViewModel>();
 
         viewModel.SetMainView();
-
-        nftsSpan.FontAttributes = FontAttributes.None;
-        homeSpan.FontAttributes = FontAttributes.Bold;
     }
 
     void OnNFTsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
@@ -26,9 +25,6 @@ public partial class NavigationBarView : ContentView
         var viewModel = DependencyService.Get<BasePageViewModel>();
 
         viewModel.SetNftView();
-
-        nftsSpan.FontAttributes = FontAttributes.Bold;
-        homeSpan.FontAttributes = FontAttributes.None;
     }
     
     async void OnTransferClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

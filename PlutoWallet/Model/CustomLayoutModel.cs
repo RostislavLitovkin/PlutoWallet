@@ -19,6 +19,7 @@ using PlutoWallet.Components.Referenda;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Components.Mnemonics;
 using PlutoWallet.Components.Buttons;
+using PlutoWallet.Components.Nft;
 
 namespace PlutoWallet.Model
 {
@@ -35,7 +36,7 @@ namespace PlutoWallet.Model
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
-            "BMnR];[";
+            "BMnR, NftG];[";
 
         // EXTRA: StDash, AAASeasonCountdown, PubK
 
@@ -319,6 +320,8 @@ namespace PlutoWallet.Model
                     return new BackupMnemonicsReminderView();
                 case "RnT":
                     return new ReceiveAndTransferView();
+                case "NftG":
+                    return new NftGaleryView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -400,6 +403,8 @@ namespace PlutoWallet.Model
                     return new BackupMnemonicsReminderView();
                 case "RnT":
                     return new ReceiveAndTransferView();
+                case "NftG":
+                    return new NftGaleryView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -516,6 +521,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Receive and Transfer",
                         PlutoLayoutId = "RnT",
+                    };
+                case "NftG":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Nft Galery",
+                        PlutoLayoutId = "NftG",
                     };
             }
 

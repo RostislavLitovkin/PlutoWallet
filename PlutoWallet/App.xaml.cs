@@ -23,6 +23,7 @@ using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Vault;
 using PlutoWallet.Components.Referenda;
 using PlutoWallet.Components.ChangeLayoutRequest;
+using PlutoWallet.Components.NavigationBar;
 
 namespace PlutoWallet;
 
@@ -97,6 +98,10 @@ public partial class App : Application
         DependencyService.Register<ChangeLayoutRequestViewModel>();
 
         DependencyService.Register<NetworkSelectPopupViewModel>();
+
+        DependencyService.Register<NftGaleryViewModel>();
+
+        DependencyService.Register<NavigationBarViewModel>();
 
         if (Preferences.ContainsKey("publicKey"))
         {

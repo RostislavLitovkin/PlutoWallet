@@ -82,6 +82,23 @@
                                VerticalOptions="Center" 
                                HorizontalOptions="Center"
                                Aspect="AspectFit"
+                               IsVisible="false"
+                               x:Name="filledFavouriteIcon"
+                               Grid.Column="1">
+                
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                                 Glyph="&#xf004;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="50" />
+                            </Image.Source>
+                        </Image>
+
+                        <Image WidthRequest="20"
+                               HeightRequest="20"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit"
                                x:Name="favouriteIcon"
                                Grid.Column="1">
                 
@@ -124,9 +141,5 @@
         </card:Card.View>
 
     </card:Card>
-    <ContentView.GestureRecognizers>
-        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-
-    </ContentView.GestureRecognizers>
 </ContentView>
 

@@ -26,6 +26,8 @@ namespace PlutoWallet.ViewModel
 
             nftLoadingViewModel.IsVisible = true;
 
+            UpdateNfts(NftsStorageModel.GetFavouriteNFTs());
+
             foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
             {
                 if (endpoint.SupportsNfts)

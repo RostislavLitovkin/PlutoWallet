@@ -29,6 +29,7 @@ namespace PlutoWallet.Model
         public BigInteger CollectionId { get; set; }
         public BigInteger ItemId { get; set; }
         public Endpoint Endpoint { get; set; }
+        public bool Favourite { get; set; } = false;
 
         public override bool Equals(object obj)
         {
@@ -117,11 +118,13 @@ namespace PlutoWallet.Model
             return nfts;
         }
 
-        public static List<NFT> GetMockNFTs()
+        public static List<NFT> GetMockNFTs(int n = 1)
         {
-            var nfts = new List<NFT>()
+            var nfts = new List<NFT>();
+
+            for (int i = 0; i < n; i++)
             {
-                new NFT
+                nfts.Add(new NFT
                 {
                     Name = "Mock nft - version ALPHA",
                     Description = @"This is a totally mock NFT that does nothing.
@@ -132,8 +135,8 @@ Hopefully it will fulfill the test functionalities correctly.",
                         Icon = "plutowalleticon.png",
                     },
                     Image = "dusan.jpg"
-                }
-            };
+                });
+            }
 
             return nfts;
         }
