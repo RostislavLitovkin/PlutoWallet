@@ -7,7 +7,7 @@ using Substrate.NetApi.Model.Types.Base;
 namespace PlutoWalletTests;
 
 
-public class Endpoints
+public class EndpointsTests
 {
     [Test]
     public async Task ConnectAndCheck()

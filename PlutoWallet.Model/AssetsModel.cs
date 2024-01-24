@@ -88,7 +88,7 @@ namespace PlutoWallet.Model
                     });
                 }
 
-                foreach ((BigInteger, AssetDetails, AssetMetadata, AssetAccount) asset in await client.AssetsStorage.GetAssetsMetadataAndAcountNextAsync(substrateAddress, 1000, CancellationToken.None))
+                foreach ((BigInteger, AssetDetails, AssetMetadata, AssetAccount) asset in await GetAssetsMetadataAndAcountNextAsync(client, substrateAddress, 1000, CancellationToken.None))
                 {
                     double usdRatio = 0;
 
@@ -108,7 +108,7 @@ namespace PlutoWallet.Model
                     });
                 }
 
-                foreach (TokenData tokenData in await GetTokensBalance(client, substrateAddress))
+                foreach (TokenData tokenData in await GetTokensBalance(client, substrateAddress, CancellationToken.None))
                 {
                     double usdRatio = 0;
 
@@ -156,7 +156,89 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client, string substrateAddress)
+        public static async Task<List<(BigInteger, AssetDetails, AssetMetadata, AssetAccount)>> GetAssetsMetadataAndAcountNextAsync(SubstrateClientExt client, string substrateAddress, uint page, CancellationToken token)
+        {
+            if (page < 2 || page > 1000)
+            {
+                throw new NotSupportedException("Page size must be in the range of 2 - 1000");
+            }
+            var account32 = new AccountId32();
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
+
+            var resultList = new List<(BigInteger, AssetDetails, AssetMetadata, AssetAccount)>();
+
+            var detailsKeyPrefixBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Asset");
+
+            string detailsKeyPrefixBytesString = Utils.Bytes2HexString(detailsKeyPrefixBytes);
+            string metadataKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Metadata"));
+            string accountKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Account"));
+
+            var storageKeys = (await client.State.GetKeysPagedAtAsync(detailsKeyPrefixBytes, page, null, string.Empty, token))
+                .Select(p => p.ToString().Replace(detailsKeyPrefixBytesString, ""));
+
+            var assetDetailKeys = storageKeys.Select(p => Utils.HexToByteArray(detailsKeyPrefixBytesString + p.ToString())).ToList();
+            var assetMetadataKeys = storageKeys.Select(p => Utils.HexToByteArray(metadataKeyPrefixBytesString + p.ToString())).ToList();
+            var assetAccountKeys = storageKeys.Select(p => Utils.HexToByteArray(
+                accountKeyPrefixBytesString +
+                p.ToString() +
+                Utils.Bytes2HexString(HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, account32.Bytes), Utils.HexStringFormat.Pure)
+            )).ToList();
+
+            if (storageKeys == null || !storageKeys.Any())
+            {
+                return resultList;
+            }
+
+            var assetDetailStorageChangeSets = await client.State.GetQueryStorageAtAsync(assetDetailKeys, string.Empty, token);
+            var assetMetadataStorageChangeSets = await client.State.GetQueryStorageAtAsync(assetMetadataKeys, string.Empty, token);
+            var assetAccountStorageChangeSets = await client.State.GetQueryStorageAtAsync(assetAccountKeys, string.Empty, token);
+
+
+            if (assetDetailStorageChangeSets != null)
+            {
+                for (int i = 0; i < assetDetailStorageChangeSets.ElementAt(0).Changes.Count(); i++)
+                {
+                    var assetDetailData = assetDetailStorageChangeSets.ElementAt(0).Changes[i];
+                    var assetMetadataData = assetMetadataStorageChangeSets.ElementAt(0).Changes[i];
+                    var assetAccountData = assetAccountStorageChangeSets.ElementAt(0).Changes[i];
+
+                    // If it is null, then I do not care about it.
+                    if (assetDetailData[1] == null) continue;
+                    if (assetMetadataData[1] == null) continue;
+
+                    string storageKeyString = storageKeys.ElementAt<string>(i);
+
+                    BigInteger assetId = HashModel.GetBigIntegerFromBlake2_128Concat(storageKeyString);
+
+                    var assetDetails = new AssetDetails();
+                    assetDetails.Create(assetDetailData[1]);
+
+                    var assetMetadata = new AssetMetadata();
+                    assetMetadata.Create(assetMetadataData[1]);
+
+
+                    if (assetAccountData[1] != null)
+                    {
+                        var assetAccount = new AssetAccount();
+                        assetAccount.Create(assetAccountData[1]);
+
+                        resultList.Add((assetId, assetDetails, assetMetadata, assetAccount));
+                    }
+                    else
+                    {
+                        resultList.Add((assetId, assetDetails, assetMetadata, null));
+                    }
+                }
+            }
+
+            return resultList;
+        }
+
+        /// <summary>
+        /// This is a helper function for querying Tokens balance
+        /// </summary>
+        /// <returns></returns>
+        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -175,7 +257,7 @@ namespace PlutoWallet.Model
 
             while (true)
             {
-                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
+                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
 
                 if (keysPaged == null || !keysPaged.Any())
                 {
@@ -183,10 +265,10 @@ namespace PlutoWallet.Model
                 }
                 else
                 {
-                    var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, CancellationToken.None);
+                    var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
                     storageTokensChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
 
-                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(Utils.Bytes2HexString(assetRegistryKeyBytes) + p.ToString().Substring(prefixLength))).ToList(), string.Empty, CancellationToken.None);
+                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(Utils.Bytes2HexString(assetRegistryKeyBytes) + p.ToString().Substring(prefixLength))).ToList(), string.Empty, token);
                     storageAssetRegistryChanges.AddRange(new List<string[]>(tar.ElementAt(0).Changes));
 
                     storageKeys.AddRange(keysPaged.Select(p => p.ToString().Substring(prefixLength)).ToList());
