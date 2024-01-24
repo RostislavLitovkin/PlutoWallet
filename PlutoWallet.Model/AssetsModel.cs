@@ -108,24 +108,49 @@ namespace PlutoWallet.Model
                     });
                 }
 
-                foreach (TokenData tokenData in await GetTokensBalance(client, substrateAddress, CancellationToken.None))
+                if (endpoint.Key != "bifrost")
                 {
-                    double usdRatio = 0;
-
-                    double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
-
-                    tempAssets.Add(new Asset
+                    foreach (TokenData tokenData in await GetTokensBalance(client, substrateAddress, CancellationToken.None))
                     {
-                        Amount = assetBalance,
-                        Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
-                        ChainIcon = endpoint.Icon,
-                        DarkChainIcon = endpoint.DarkIcon,
-                        Endpoint = endpoint,
-                        Pallet = AssetPallet.Tokens,
-                        AssetId = tokenData.AssetId,
-                        UsdValue = assetBalance * usdRatio,
-                        Decimals = tokenData.AssetMetadata.Decimals.Value,
-                    });
+                        double usdRatio = 0;
+
+                        double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
+
+                        tempAssets.Add(new Asset
+                        {
+                            Amount = assetBalance,
+                            Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
+                            ChainIcon = endpoint.Icon,
+                            DarkChainIcon = endpoint.DarkIcon,
+                            Endpoint = endpoint,
+                            Pallet = AssetPallet.Tokens,
+                            AssetId = tokenData.AssetId,
+                            UsdValue = assetBalance * usdRatio,
+                            Decimals = tokenData.AssetMetadata.Decimals.Value,
+                        });
+                    }
+                }
+                else
+                {
+                    foreach (BifrostTokenData tokenData in await GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None))
+                    {
+                        double usdRatio = 0;
+
+                        double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
+
+                        tempAssets.Add(new Asset
+                        {
+                            Amount = assetBalance,
+                            Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value),
+                            ChainIcon = endpoint.Icon,
+                            DarkChainIcon = endpoint.DarkIcon,
+                            Endpoint = endpoint,
+                            Pallet = AssetPallet.Tokens,
+                            AssetId = tokenData.AssetId,
+                            UsdValue = assetBalance * usdRatio,
+                            Decimals = tokenData.AssetMetadata.Decimals.Value,
+                        });
+                    }
                 }
             }
 
@@ -301,12 +326,87 @@ namespace PlutoWallet.Model
             }
             return resultList;
         }
+
+        /// <summary>
+        /// This is a helper function for querying Tokens balance
+        /// </summary>
+        /// <returns></returns>
+        public async static Task<List<BifrostTokenData>> GetBifrostTokensBalance(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        {
+            var account32 = new AccountId32();
+            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
+
+            var tokensKeyBytes = RequestGenerator.GetStorageKeyBytesHash("Tokens", "Accounts");
+            var assetRegistryKeyBytes = RequestGenerator.GetStorageKeyBytesHash("AssetRegistry", "CurrencyMetadatas");
+
+            byte[] prefix = tokensKeyBytes.Concat(HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, account32.Encode())).ToArray();
+            byte[] startKey = null;
+
+            List<string[]> storageTokensChanges = new List<string[]>();
+            List<string[]> storageAssetRegistryChanges = new List<string[]>();
+            List<string> storageKeys = new List<string>();
+
+            int prefixLength = Utils.Bytes2HexString(prefix).Length;
+
+            while (true)
+            {
+                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
+
+                if (keysPaged == null || !keysPaged.Any())
+                {
+                    break;
+                }
+                else
+                {
+                    var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
+                    storageTokensChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
+
+                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(Utils.Bytes2HexString(assetRegistryKeyBytes) + p.ToString().Substring(prefixLength))).ToList(), string.Empty, token);
+                    storageAssetRegistryChanges.AddRange(new List<string[]>(tar.ElementAt(0).Changes));
+
+                    storageKeys.AddRange(keysPaged.Select(p => p.ToString().Substring(prefixLength)).ToList());
+
+                    startKey = Utils.HexToByteArray(tt.ElementAt(0).Changes.Last()[0]);
+                }
+            }
+
+            var resultList = new List<BifrostTokenData>();
+
+            if (storageTokensChanges != null)
+            {
+                for (int i = 0; i < storageTokensChanges.Count(); i++)
+                {
+                    AccountData accountData = new AccountData();
+                    accountData.Create(storageTokensChanges[i][1]);
+
+                    Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata assetMetadata = new Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata();
+                    assetMetadata.Create(storageAssetRegistryChanges[i][1]);
+
+                    BigInteger assetId = Model.HashModel.GetBigIntegerFromTwox_64Concat(storageKeys[i]);
+
+                    resultList.Add(new BifrostTokenData
+                    {
+                        AssetId = assetId,
+                        AccountData = accountData,
+                        AssetMetadata = assetMetadata,
+                    });
+                }
+            }
+            return resultList;
+        }
     }
 
     public class TokenData {
         public BigInteger AssetId { get; set; }
         public AccountData AccountData { get; set; }
         public Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata AssetMetadata { get; set; }
+    }
+
+    public class BifrostTokenData
+    {
+        public BigInteger AssetId { get; set; }
+        public AccountData AccountData { get; set; }
+        public Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata AssetMetadata { get; set; }
     }
 }
 

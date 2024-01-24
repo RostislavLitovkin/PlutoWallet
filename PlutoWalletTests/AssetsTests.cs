@@ -49,7 +49,7 @@ public class AssetsTests
 
         try
         {
-            var tokens = await AssetsModel.GetTokensBalance(client, substrateAddress, CancellationToken.None);
+            var tokens = await AssetsModel.GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None);
 
             Console.WriteLine("Tokens: " + tokens.Count);
         }

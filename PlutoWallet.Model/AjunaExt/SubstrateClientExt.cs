@@ -9,6 +9,7 @@ using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Generated.Storage;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -44,6 +45,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public LBPStorage LBPStorage;
 
+        public BifrostAssetRegistryStorage BifrostAssetRegistryStorage;
+
         public Endpoint Endpoint { get; set; }
 
         // Logic for ink! contracts
@@ -69,6 +72,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.IdentityStorage = new IdentityStorage(this);
             this.ConvictionVotingStorage = new ConvictionVotingStorage(this);
             this.LBPStorage = new LBPStorage(this);
+            this.BifrostAssetRegistryStorage = new BifrostAssetRegistryStorage(this);
         }
 
         public async Task ConnectAsync()
