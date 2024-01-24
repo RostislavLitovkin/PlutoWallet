@@ -175,7 +175,7 @@ public partial class AssetSelectorView : ContentView
         }
 
         var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
-        assetSelectButtonViewModel.ChainIcon.SetAppTheme<FileImageSource>(Image.SourceProperty, ChainIcons.Item1, ChainIcons.Item2);
+        assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? Endpoint.Icon : Endpoint.DarkIcon;
         assetSelectButtonViewModel.Symbol = Symbol;
         assetSelectButtonViewModel.AssetId = AssetId;
         assetSelectButtonViewModel.Pallet = Pallet;

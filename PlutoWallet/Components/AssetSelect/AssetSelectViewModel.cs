@@ -40,7 +40,8 @@ namespace PlutoWallet.Components.AssetSelect
 					assetSelectButtonViewModel.AssetId == a.AssetId &&
                     assetSelectButtonViewModel.Pallet == a.Pallet &&
 					assetSelectButtonViewModel.Symbol == a.Symbol &&
-                    assetSelectButtonViewModel.Decimals == a.Decimals
+                    assetSelectButtonViewModel.Decimals == a.Decimals &&
+					assetSelectButtonViewModel.Endpoint.Key == a.Endpoint.Key
                 );
 
                 tempAssets.Add(new AssetSelect

@@ -200,13 +200,18 @@ namespace PlutoWallet.Model
         private static async Task ConnectClientAsync()
         {
             // Setup the AssetSelectButton
-            var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
-            assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? SelectedEndpoint.Icon : SelectedEndpoint.DarkIcon;
-            assetSelectButtonViewModel.Symbol = SelectedEndpoint.Unit;
-            assetSelectButtonViewModel.AssetId = 0;
-            assetSelectButtonViewModel.Pallet = AssetPallet.Native;
-            assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
-            assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
+            // Do not change it, if the TransferView is visible
+            if (!DependencyService.Get<TransferViewModel>().IsVisible)
+            {
+                var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+
+                assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? SelectedEndpoint.Icon : SelectedEndpoint.DarkIcon;
+                assetSelectButtonViewModel.Symbol = SelectedEndpoint.Unit;
+                assetSelectButtonViewModel.AssetId = 0;
+                assetSelectButtonViewModel.Pallet = AssetPallet.Native;
+                assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
+                assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
+            }
 
             Connected = false;
 
