@@ -40,7 +40,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Polkadot",
                 Key = "polkadot",
-                URLs = new string[4] { "wss://polkadot-rpc.dwellir.com", "wss://1rpc.io/dot", "wss://polkadot.api.onfinality.io/public-ws", "wss://polkadot.public.curie.radiumblock.co/ws" },
+                URLs = new string[5] { "wss://polkadot-rpc.dwellir.com", "wss://polkadot-public-rpc.blockops.network/ws", "wss://rpc.ibp.network/polkadot", "wss://polkadot.api.onfinality.io/public-ws", "wss://polkadot.public.curie.radiumblock.co/ws" },
                 Icon = "polkadot.png",
                 DarkIcon = "polkadot.png",
                 CalamarChainName = "polkadot",
@@ -54,7 +54,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama",
                 Key = "kusama",
-                URLs = new string[3] { "wss://kusama-rpc.dwellir.com", "wss://rpc.ibp.network/kusama", "wss://kusama.api.onfinality.io/public-ws" },
+                URLs = new string[4] { "wss://kusama-rpc.dwellir.com", "wss://rpc.ibp.network/kusama", "wss://kusama.public.curie.radiumblock.co/ws", "wss://kusama.api.onfinality.io/public-ws" },
                 Icon = "kusama.png",
                 DarkIcon = "kusamawhite.png",
                 CalamarChainName = "kusama",
@@ -68,7 +68,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Moonbeam",
                 Key = "moonbeam",
-                URLs =  new string[2] { "wss://wss.api.moonbeam.network", "wss://moonbeam.api.onfinality.io/public-ws" },
+                URLs =  new string[3] { "wss://wss.api.moonbeam.network", "wss://moonbeam.unitedbloc.com", "wss://moonbeam.api.onfinality.io/public-ws" },
                 Icon = "moonbeam.png",
                 DarkIcon = "moonbeam.png",
                 CalamarChainName = "moonbeam",
@@ -81,7 +81,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Astar",
                 Key = "astar",
-                URLs =  new string[2] { "wss://astar-rpc.dwellir.com", "wss://astar.api.onfinality.io/public-ws" },
+                URLs =  new string[2] { "wss://astar-rpc.dwellir.com", "wss://astar.public.blastapi.io" },
                 Icon = "astar.png",
                 DarkIcon = "astar.png",
                 CalamarChainName = "astar",
@@ -94,7 +94,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Ajuna",
                 Key = "ajuna",
-                URLs =  new string[2] { "wss://ajuna.api.onfinality.io/public-ws", "wss://rpc-parachain.ajuna.network" },
+                URLs =  new string[1] { "wss://ajuna.api.onfinality.io/public-ws" /*"wss://rpc-parachain.ajuna.network"*/ },
                 Icon = "ajuna.png",
                 DarkIcon = "ajuna.png",
                 Unit = "AJUN",
@@ -106,7 +106,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Bajun",
                 Key = "bajun",
-                URLs =  new string[2] { "wss://rpc-parachain.bajun.network", "wss://bajun.api.onfinality.io/public-ws" },
+                URLs =  new string[2] { "wss://rpc-parachain.bajun.network", "wss://bajun.api.onfinality.io/public-ws" /*"wss://bajun.public.curie.radiumblock.co/ws"*/  },
                 Icon = "bajun.png",
                 DarkIcon = "bajun.png",
                 Unit = "BAJU",
@@ -181,7 +181,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama Asset Hub",
                 Key = "statemine",
-                URLs =  new string[4] { "wss://statemine-rpc.dwellir.com", "wss://kusama.api.onfinality.io/public-ws", "wss://1rpc.io/ksm", "wss://kusama.public.curie.radiumblock.co/ws" },
+                URLs =  new string[4] { "wss://statemine-rpc.dwellir.com", "wss://rpc-asset-hub-kusama.luckyfriday.io", "wss://ksm-rpc.stakeworld.io/assethub", "wss://statemine-rpc-tn.dwellir.com" },
                 Icon = "statemint.png",
                 DarkIcon = "statemint.png",
                 Unit = "KSM",
@@ -355,7 +355,7 @@ namespace PlutoWallet.Constants
                 {
                     Name = "Bifrost",
                     Key = "bifrost",
-                    URLs =  new string[2] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.dwellir.com" },
+                    URLs =  new string[3] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.liebi.com/ws", "wss://bifrost-rpc.dwellir.com" },
                     Icon = "bifrost.png",
                     DarkIcon = "bifrost.png",
                     Unit = "BNC",

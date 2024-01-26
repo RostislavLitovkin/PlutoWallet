@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.WebSockets;
 
 namespace PlutoWallet.Model
 {
@@ -10,18 +11,16 @@ namespace PlutoWallet.Model
 
         public static async Task<string> GetFastestWebSocketAsync(string[] urls)
         {
-            return urls[0];
-
             TimeSpan fastestTime = TimeSpan.MaxValue;
             string fastestUrl = null;
 
             foreach (var url in urls)
             {
-                var responseTime = await MeasureResponseTimeAsync(url);
+                var connectionTime = await MeasureConnectionTimeAsync(url);
 
-                if (responseTime.HasValue && responseTime < fastestTime)
+                if (connectionTime.HasValue && connectionTime < fastestTime)
                 {
-                    fastestTime = responseTime.Value;
+                    fastestTime = connectionTime.Value;
                     fastestUrl = url;
                 }
             }
@@ -39,19 +38,21 @@ namespace PlutoWallet.Model
             }
         }
 
-        public static async Task<TimeSpan?> MeasureResponseTimeAsync(string url)
+        private static async Task<TimeSpan?> MeasureConnectionTimeAsync(string url)
         {
             try
             {
-                var watch = Stopwatch.StartNew();
-                var response = await _httpClient.GetAsync(url);
-                response.EnsureSuccessStatusCode(); // Throws an exception if the HTTP response status is not a success status code
-                watch.Stop();
-
-                return watch.Elapsed;
+                using (ClientWebSocket ws = new ClientWebSocket())
+                {
+                    Stopwatch stopwatch = Stopwatch.StartNew();
+                    await ws.ConnectAsync(new Uri(url), CancellationToken.None);
+                    stopwatch.Stop();
+                    return stopwatch.Elapsed;
+                }
             }
-            catch (HttpRequestException)
+            catch
             {
+                Console.WriteLine(url + " <-> Failed to connect and measure the connection time.");
                 // Handle connection failure
                 return null;
             }

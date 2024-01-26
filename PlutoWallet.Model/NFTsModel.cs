@@ -58,6 +58,8 @@ namespace PlutoWallet.Model
         {
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
+            Console.WriteLine(bestWebSecket);
+
             var client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
 
             await client.ConnectAsync();
@@ -141,7 +143,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nfts;
         }
 
-        private static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
+        public static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
@@ -158,7 +160,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nft;
         }
 
-        private static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -269,7 +271,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return collectionItemIdsList;
         }
 
-        private static void SetNftIds (ref NFT nft, string keyHash)
+        public static void SetNftIds (ref NFT nft, string keyHash)
         {
             if (keyHash.Length == 80)
             {

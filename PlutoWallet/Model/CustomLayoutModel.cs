@@ -20,6 +20,7 @@ using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Components.Mnemonics;
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.Nft;
+using PlutoWallet.Components.Fee;
 
 namespace PlutoWallet.Model
 {
@@ -322,6 +323,8 @@ namespace PlutoWallet.Model
                     return new ReceiveAndTransferView();
                 case "NftG":
                     return new NftGaleryView();
+                case "FeeA":
+                    return new FeeAssetView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -405,6 +408,8 @@ namespace PlutoWallet.Model
                     return new ReceiveAndTransferView();
                 case "NftG":
                     return new NftGaleryView();
+                case "FeeA":
+                    return new FeeAssetView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -527,6 +532,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Nft Galery",
                         PlutoLayoutId = "NftG",
+                    };
+                case "FeeA":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Fee Asset",
+                        PlutoLayoutId = "FeeA",
                     };
             }
 

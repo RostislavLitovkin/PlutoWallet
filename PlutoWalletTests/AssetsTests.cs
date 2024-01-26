@@ -45,17 +45,8 @@ public class AssetsTests
 
         string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
 
-        Console.WriteLine("Connected");
+        var tokens = await AssetsModel.GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None);
 
-        try
-        {
-            var tokens = await AssetsModel.GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None);
-
-            Console.WriteLine("Tokens: " + tokens.Count);
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex);
-        }
+        Console.WriteLine("Tokens: " + tokens.Count);
     }
 }

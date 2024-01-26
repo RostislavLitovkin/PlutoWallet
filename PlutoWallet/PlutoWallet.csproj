@@ -238,6 +238,7 @@
 	  <None Remove="Components\Mnemonics\" />
 	  <None Remove="Components\Buttons\" />
 	  <None Remove="Model\" />
+	  <None Remove="Components\Fee\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -467,6 +468,7 @@
 	  <Folder Include="Components\Mnemonics\" />
 	  <Folder Include="Components\Buttons\" />
 	  <Folder Include="Model\" />
+	  <Folder Include="Components\Fee\" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
