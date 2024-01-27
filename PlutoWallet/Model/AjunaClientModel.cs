@@ -14,6 +14,7 @@ using PlutoWallet.Components.HydraDX;
 using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
 using PlutoWallet.Types;
+using PlutoWallet.Components.VTokens;
 
 namespace PlutoWallet.Model
 {
@@ -155,7 +156,7 @@ namespace PlutoWallet.Model
                     await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
                 }
 
-                if (GroupEndpoints[i].Name == "HydraDX")
+                if (GroupEndpoints[i].Key == "hydradx")
                 {
                     var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
 
@@ -165,13 +166,20 @@ namespace PlutoWallet.Model
 
                     await dcaViewModel.GetDCAPosition(GroupClients[i]);
                 }
+
+                if (GroupEndpoints[i].Key == "bifrost")
+                {
+                    var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
+
+                    await vDotTokenViewModel.GetConversionRate(GroupClients[i], CancellationToken.None);
+                }
             }
 
             bool hydraClientNotFound = true;
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
-                if (GroupEndpoints[i].Name == "HydraDX")
+                if (GroupEndpoints[i].Key == "hydradx")
                 {
                     await Model.HydraDX.Sdk.GetAssets(GroupClients[i], CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();

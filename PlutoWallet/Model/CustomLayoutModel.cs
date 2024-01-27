@@ -21,6 +21,7 @@ using PlutoWallet.Components.Mnemonics;
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.Nft;
 using PlutoWallet.Components.Fee;
+using PlutoWallet.Components.VTokens;
 
 namespace PlutoWallet.Model
 {
@@ -37,9 +38,9 @@ namespace PlutoWallet.Model
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
-            "BMnR, NftG];[";
+            "BMnR, NftG, VDot];[";
 
-        // EXTRA: StDash, AAASeasonCountdown, PubK
+        // EXTRA: StDash, AAASeasonCountdown, PubK, FeeA
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -325,6 +326,8 @@ namespace PlutoWallet.Model
                     return new NftGaleryView();
                 case "FeeA":
                     return new FeeAssetView();
+                case "VDot":
+                    return new VDotTokenView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -410,6 +413,8 @@ namespace PlutoWallet.Model
                     return new NftGaleryView();
                 case "FeeA":
                     return new FeeAssetView();
+                case "VDot":
+                    return new VDotTokenView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -538,6 +543,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Fee Asset",
                         PlutoLayoutId = "FeeA",
+                    };
+                case "VDot":
+                    return new LayoutItemInfo
+                    {
+                        Name = "vDOT staking",
+                        PlutoLayoutId = "VDot",
                     };
             }
 

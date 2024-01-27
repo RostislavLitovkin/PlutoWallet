@@ -18,9 +18,14 @@ namespace PlutoWallet.Model
     {
         private static bool doNotReload = false;
 
-        public static List<Asset> Assets;
+        public static List<Asset> Assets = new List<Asset>();
 
         public static double UsdSum = 0.0;
+
+        public static List<Asset> GetAssetsWithSymbol(string symbol)
+        {
+            return Assets.FindAll((asset) => asset.Symbol.Equals(symbol));
+        }
 
         public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress)
         {

@@ -47,6 +47,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public BifrostAssetRegistryStorage BifrostAssetRegistryStorage;
 
+        public VtokenMintingStorage VtokenMintingStorage;
+
         public Endpoint Endpoint { get; set; }
 
         // Logic for ink! contracts
@@ -73,6 +75,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.ConvictionVotingStorage = new ConvictionVotingStorage(this);
             this.LBPStorage = new LBPStorage(this);
             this.BifrostAssetRegistryStorage = new BifrostAssetRegistryStorage(this);
+            this.VtokenMintingStorage = new VtokenMintingStorage(this);
         }
 
         public async Task ConnectAsync()

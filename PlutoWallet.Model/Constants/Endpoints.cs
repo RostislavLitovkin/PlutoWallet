@@ -355,7 +355,7 @@ namespace PlutoWallet.Constants
                 {
                     Name = "Bifrost",
                     Key = "bifrost",
-                    URLs =  new string[3] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.liebi.com/ws", "wss://bifrost-rpc.dwellir.com" },
+                    URLs =  new string[2] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.liebi.com/ws" /*"wss://bifrost-rpc.dwellir.com"*/ },
                     Icon = "bifrost.png",
                     DarkIcon = "bifrost.png",
                     Unit = "BNC",
