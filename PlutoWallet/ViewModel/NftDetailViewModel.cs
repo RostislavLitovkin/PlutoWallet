@@ -40,6 +40,9 @@ namespace PlutoWallet.ViewModel
         private BigInteger itemId;
 
         [ObservableProperty]
+        private bool favourite;
+
+        [ObservableProperty]
         private Option<string> kodadotUnlockableUrl;
 
         [ObservableProperty]

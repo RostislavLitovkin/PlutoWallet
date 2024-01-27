@@ -32,6 +32,7 @@
     <None Remove="SubSquare\" />
     <None Remove="Constants\" />
     <None Remove="Types\" />
+    <None Remove="Bifrost\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AjunaExt\" />
@@ -41,5 +42,6 @@
     <Folder Include="SubSquare\" />
     <Folder Include="Constants\" />
     <Folder Include="Types\" />
+    <Folder Include="Bifrost\" />
   </ItemGroup>
 </Project>

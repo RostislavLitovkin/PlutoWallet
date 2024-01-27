@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.Balance;
+using PlutoWallet.Components.NavigationBar;
 using PlutoWallet.Components.NetworkSelect;
 using PlutoWallet.Components.Nft;
 using PlutoWallet.Model;
@@ -25,6 +26,13 @@ namespace PlutoWallet.ViewModel
 
         public void SetMainView()
 		{
+            var navigationBarViewModel = DependencyService.Get<NavigationBarViewModel>();
+
+            navigationBarViewModel.NftsFontAttributes = FontAttributes.None;
+            navigationBarViewModel.HomeFontAttributes = FontAttributes.Bold;
+
+            Console.WriteLine("Changed to home");
+
             var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
             usdBalanceViewModel.DoNotReload = true;
 
@@ -43,6 +51,15 @@ namespace PlutoWallet.ViewModel
 
         public async Task SetNftView()
         {
+            Console.WriteLine("trying to change to nfts");
+
+            var navigationBarViewModel = DependencyService.Get<NavigationBarViewModel>();
+
+            navigationBarViewModel.NftsFontAttributes = FontAttributes.Bold;
+            navigationBarViewModel.HomeFontAttributes = FontAttributes.None;
+
+            Console.WriteLine("Changed to nfts");
+
             Content = new NftView();
 
             if (nftsCancellationTokenSource != null)

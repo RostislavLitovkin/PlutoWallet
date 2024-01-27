@@ -29,6 +29,7 @@ namespace PlutoWallet.Model
         public BigInteger CollectionId { get; set; }
         public BigInteger ItemId { get; set; }
         public Endpoint Endpoint { get; set; }
+        public bool Favourite { get; set; } = false;
 
         public override bool Equals(object obj)
         {
@@ -56,6 +57,8 @@ namespace PlutoWallet.Model
         public static async Task<List<NFT>> GetNFTsAsync(string substrateAddress, Endpoint endpoint, CancellationToken token)
         {
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            Console.WriteLine(bestWebSecket);
 
             var client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
 
@@ -117,11 +120,13 @@ namespace PlutoWallet.Model
             return nfts;
         }
 
-        public static List<NFT> GetMockNFTs()
+        public static List<NFT> GetMockNFTs(int n = 1)
         {
-            var nfts = new List<NFT>()
+            var nfts = new List<NFT>();
+
+            for (int i = 0; i < n; i++)
             {
-                new NFT
+                nfts.Add(new NFT
                 {
                     Name = "Mock nft - version ALPHA",
                     Description = @"This is a totally mock NFT that does nothing.
@@ -132,13 +137,13 @@ Hopefully it will fulfill the test functionalities correctly.",
                         Icon = "plutowalleticon.png",
                     },
                     Image = "dusan.jpg"
-                }
-            };
+                });
+            }
 
             return nfts;
         }
 
-        private static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
+        public static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
@@ -155,7 +160,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nft;
         }
 
-        private static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -266,7 +271,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return collectionItemIdsList;
         }
 
-        private static void SetNftIds (ref NFT nft, string keyHash)
+        public static void SetNftIds (ref NFT nft, string keyHash)
         {
             if (keyHash.Length == 80)
             {

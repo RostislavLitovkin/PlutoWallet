@@ -23,6 +23,7 @@
                                                 Endpoint="{Binding Endpoint}"
                                                 CollectionId="{Binding CollectionId}"
                                                 ItemId="{Binding ItemId}"
+                                                Favourite="{Binding Favourite}"
                                                 />
 
                     </DataTemplate>

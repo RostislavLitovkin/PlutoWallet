@@ -5,11 +5,13 @@ namespace PlutoWallet.Model
 {
 	public class IpfsModel
 	{
-		public static string ToIpfsLink(string ipfsLink)
+        private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
+
+        public static string ToIpfsLink(string ipfsLink)
 		{
             if (ipfsLink.Contains("ipfs://ipfs/"))
             {
-                return "https://ipfs.io/ipfs/" + ipfsLink.Remove(0, "ipfs://ipfs/".Length + ipfsLink.IndexOf("ipfs://ipfs/"));
+                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://ipfs/".Length + ipfsLink.IndexOf("ipfs://ipfs/"));
             }
 
             if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://")) {
@@ -17,7 +19,7 @@ namespace PlutoWallet.Model
                 return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
 
-            return "https://ipfs.io/ipfs/" + RemoveNonHexadecimalCharacters(ipfsLink);
+            return IPFS_ENDPOINT + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
 		public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)

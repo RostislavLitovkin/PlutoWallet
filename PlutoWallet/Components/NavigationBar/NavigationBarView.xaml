@@ -22,7 +22,8 @@
                    VerticalTextAlignment="Center">
                 <Label.FormattedText>
                   <FormattedString>
-                     <Span Text="Home" FontAttributes="Bold" x:Name="homeSpan"/>
+                     <Span Text="Home"
+                           FontAttributes="{Binding HomeFontAttributes}"/>
                   </FormattedString>
                </Label.FormattedText>
 
@@ -39,7 +40,8 @@
 
                 <Label.FormattedText>
                   <FormattedString>
-                     <Span Text="NFTs" x:Name="nftsSpan"/>
+                     <Span Text="NFTs"
+                           FontAttributes="{Binding NftsFontAttributes}"/>
                   </FormattedString>
                </Label.FormattedText>
 

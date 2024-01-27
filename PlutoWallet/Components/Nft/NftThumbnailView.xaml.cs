@@ -4,6 +4,7 @@ using PlutoWallet.Model;
 using PlutoWallet.ViewModel;
 using PlutoWallet.View;
 using System.Numerics;
+using static PlutoWallet.Model.NftsStorageModel;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -16,6 +17,16 @@ public partial class NftThumbnailView : ContentView
             var control = (NftThumbnailView)bindable;
 
             control.nameLabelText.Text = (string)newValue;
+        });
+
+    public static readonly BindableProperty FavouriteProperty = BindableProperty.Create(
+        nameof(Favourite), typeof(bool), typeof(NftThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
+            var control = (NftThumbnailView)bindable;
+
+            control.filledFavouriteIcon.IsVisible = (bool)newValue;
         });
 
     public static readonly BindableProperty DescriptionProperty = BindableProperty.Create(
@@ -79,6 +90,13 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(NameProperty, value);
     }
 
+    public bool Favourite
+    {
+        get => (bool)GetValue(FavouriteProperty);
+
+        set => SetValue(FavouriteProperty, value);
+    }
+
     public string Description
     {
         get => (string)GetValue(DescriptionProperty);
@@ -121,14 +139,32 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(ItemIdProperty, value);
     }
 
-    public NFT Nft
+    private StorageNFT GetStorageNft()
     {
-        get;
-        set;
+        return new StorageNFT
+        {
+            Name = this.Name,
+            Description = this.Description,
+            Image = this.Image,
+            EndpointKey = this.Endpoint.Key,
+            Attributes = this.Attributes,
+            CollectionId = this.CollectionId.ToString(),
+            ItemId = this.ItemId.ToString(),
+            Favourite = this.Favourite,
+        };
     }
     
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        Favourite = !Favourite;
+        if (Favourite)
+        {
+            NftsStorageModel.AddFavourite(GetStorageNft());
+        }
+        else
+        {
+            NftsStorageModel.RemoveFavourite(GetStorageNft());
+        }
     }
 
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
@@ -142,6 +178,7 @@ public partial class NftThumbnailView : ContentView
         viewModel.Attributes = this.Attributes;
         viewModel.CollectionId = this.CollectionId;
         viewModel.ItemId = this.ItemId;
+        viewModel.Favourite = this.Favourite;
 
         if (this.Endpoint.Name == "Aleph Zero Testnet")
         {
@@ -152,10 +189,5 @@ public partial class NftThumbnailView : ContentView
 
         // load these details after
         viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.CollectionId);
-    }
-
-    void TapGestureRecognizer_Tapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
-    {
-        Console.WriteLine("BAF");
     }
 }
