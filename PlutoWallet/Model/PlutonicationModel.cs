@@ -12,11 +12,6 @@ namespace PlutoWallet.Model
 	{
 		public static async Task ReceivePayload(Plutonication.Payload payload)
 		{
-            Console.WriteLine("Payload received");
-
-            Console.WriteLine("genesis: " + payload.genesisHash);
-
-
             var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
             PlutoWalletSubstrateClient client;
@@ -101,11 +96,11 @@ namespace PlutoWallet.Model
 
             if (method.Parameters.Length > 5)
             {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.Parameters).Substring(0, 10) + "..";
+                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes).Substring(0, 10) + "..";
             }
             else
             {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.Parameters);
+                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes);
             }
         }
     }

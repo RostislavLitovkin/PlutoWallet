@@ -5,10 +5,6 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWallet", "PlutoWallet\PlutoWallet.csproj", "{9B40071C-F49B-408A-895C-01711075CC52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plutonication", "Plutonication\Plutonication.csproj", "{581A75AC-15BB-4A58-B069-12CE2E683301}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Substrate.NetApi", "Substrate.NET.API\Substrate.NetApi\Substrate.NetApi.csproj", "{076B6770-65F0-4A84-9F0E-97ED401511D7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWalletTests", "PlutoWalletTests\PlutoWalletTests.csproj", "{DF6A5884-857F-420F-9855-E579A18E9F3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWallet.Model", "PlutoWallet.Model\PlutoWallet.Model.csproj", "{BC959E4C-7D25-4D96-87BD-FA52FD573836}"
@@ -25,14 +21,6 @@ Global
 		{9B40071C-F49B-408A-895C-01711075CC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B40071C-F49B-408A-895C-01711075CC52}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B40071C-F49B-408A-895C-01711075CC52}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{581A75AC-15BB-4A58-B069-12CE2E683301}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{581A75AC-15BB-4A58-B069-12CE2E683301}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{581A75AC-15BB-4A58-B069-12CE2E683301}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{581A75AC-15BB-4A58-B069-12CE2E683301}.Release|Any CPU.Build.0 = Release|Any CPU
-		{076B6770-65F0-4A84-9F0E-97ED401511D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{076B6770-65F0-4A84-9F0E-97ED401511D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{076B6770-65F0-4A84-9F0E-97ED401511D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{076B6770-65F0-4A84-9F0E-97ED401511D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DF6A5884-857F-420F-9855-E579A18E9F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DF6A5884-857F-420F-9855-E579A18E9F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6A5884-857F-420F-9855-E579A18E9F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU

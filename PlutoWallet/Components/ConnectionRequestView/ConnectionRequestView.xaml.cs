@@ -38,6 +38,7 @@ public partial class ConnectionRequestView : ContentView
                 {
                     try
                     {
+                        Console.WriteLine("Payload received: " + payloadJson.ToString());
                         Plutonication.Payload payload = JsonConvert.DeserializeObject<Plutonication.Payload[]>(payloadJson.ToString())[0];
 
                         Model.PlutonicationModel.ReceivePayload(payload);
@@ -46,7 +47,7 @@ public partial class ConnectionRequestView : ContentView
                     {
                         var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-                        messagePopup.Title = "Error";
+                        messagePopup.Title = "ConnectionRequestView Error";
                         messagePopup.Text = ex.Message;
 
                         messagePopup.IsVisible = true;
@@ -56,7 +57,7 @@ public partial class ConnectionRequestView : ContentView
                 {
                     try
                     {
-                        Plutonication.Message message = JsonConvert.DeserializeObject<Plutonication.Message[]>(raw.ToString())[0];
+                        Plutonication.RawMessage message = JsonConvert.DeserializeObject<Plutonication.RawMessage[]>(raw.ToString())[0];
 
                         if (message.type != "bytes")
                         {
@@ -73,7 +74,7 @@ public partial class ConnectionRequestView : ContentView
                     {
                         var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-                        messagePopup.Title = "Error";
+                        messagePopup.Title = "ConnectionRequestView Error";
                         messagePopup.Text = ex.Message;
 
                         messagePopup.IsVisible = true;
@@ -87,7 +88,7 @@ public partial class ConnectionRequestView : ContentView
         {
             var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-            messagePopup.Title = "Error";
+            messagePopup.Title = "ConnectionRequestView Error";
             messagePopup.Text = ex.Message;
 
             messagePopup.IsVisible = true;

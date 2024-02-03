@@ -174,7 +174,7 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             while (true)
             {
-                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
+                var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token);
 
                 if (keysPaged == null || !keysPaged.Any())
                 {
@@ -244,7 +244,7 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             while (true)
             {
-                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
+                var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token);
 
                 if (keysPaged == null || !keysPaged.Any())
                 {

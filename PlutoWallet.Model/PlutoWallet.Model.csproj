@@ -15,7 +15,7 @@
 	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 	  <PackageReference Include="Substrate.NET.Wallet" Version="1.0.7" />
-	  <PackageReference Include="Substrate.NET.API" Version="0.9.14" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.17" />
       <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />

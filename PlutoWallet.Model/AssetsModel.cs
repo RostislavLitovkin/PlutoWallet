@@ -203,7 +203,7 @@ namespace PlutoWallet.Model
             string metadataKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Metadata"));
             string accountKeyPrefixBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Assets", "Account"));
 
-            var storageKeys = (await client.State.GetKeysPagedAtAsync(detailsKeyPrefixBytes, page, null, string.Empty, token))
+            var storageKeys = (await client.State.GetKeysPagedAsync(detailsKeyPrefixBytes, page, null, string.Empty, token))
                 .Select(p => p.ToString().Replace(detailsKeyPrefixBytesString, ""));
 
             var assetDetailKeys = storageKeys.Select(p => Utils.HexToByteArray(detailsKeyPrefixBytesString + p.ToString())).ToList();
@@ -287,7 +287,7 @@ namespace PlutoWallet.Model
 
             while (true)
             {
-                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
+                var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token);
 
                 if (keysPaged == null || !keysPaged.Any())
                 {
@@ -355,7 +355,7 @@ namespace PlutoWallet.Model
 
             while (true)
             {
-                var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token);
+                var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token);
 
                 if (keysPaged == null || !keysPaged.Any())
                 {

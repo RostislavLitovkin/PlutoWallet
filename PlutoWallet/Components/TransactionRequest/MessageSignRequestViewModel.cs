@@ -9,7 +9,7 @@ namespace PlutoWallet.Components.TransactionRequest
         private string messageString;
 
         [ObservableProperty]
-        private Plutonication.Message message;
+        private Plutonication.RawMessage message;
 
         [ObservableProperty]
         private bool isVisible;

@@ -30,7 +30,7 @@ namespace PlutoWallet.Model.HydraDX
 
             List<U32> positionIds;
 
-            var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
+            var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
 
             if (keysPaged == null || !keysPaged.Any())
             {

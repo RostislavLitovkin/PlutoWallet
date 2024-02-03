@@ -61,7 +61,6 @@ public partial class BasePage : ContentPage
                     connectionRequest.Url = ac.Url;
                     connectionRequest.Key = ac.Key;
                     connectionRequest.AccessCredentials = ac;
-
                 }
                 else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
                 {
@@ -112,7 +111,7 @@ public partial class BasePage : ContentPage
 
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-                messagePopup.Title = "Error";
+                messagePopup.Title = "BasePage Error";
                 messagePopup.Text = ex.Message;
 
                 messagePopup.IsVisible = true;

@@ -26,6 +26,11 @@ public class HydraDX
         await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
 
         Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
+
+        foreach (var asset in PlutoWallet.Model.HydraDX.Sdk.Assets.Keys)
+        {
+            Console.WriteLine(asset);
+        }
     }
 }
 

@@ -222,7 +222,7 @@ namespace PlutoWallet.Model
 
                             if (subType.Primitive != null)
                             {
-                                var temp = Model.ToStringModel.SequenceValueToString(subType, method.Parameters, ref p);
+                                var temp = Model.ToStringModel.SequenceValueToString(subType, method.ParametersBytes, ref p);
                                 if (temp == null)
                                 {
                                     parameters = "Unable to show";
@@ -239,13 +239,13 @@ namespace PlutoWallet.Model
 
                         case TypeDef.Compact:
                             BaseCom<U128> com = new BaseCom<U128>();
-                            com.Decode(method.Parameters, ref p);
+                            com.Decode(method.ParametersBytes, ref p);
 
                             data = com.Value.ToString();
                             break;
 
                         case TypeDef.Primitive:
-                            data = Model.ToStringModel.PrimitiveValueToString(t, method.Parameters, ref p);
+                            data = Model.ToStringModel.PrimitiveValueToString(t, method.ParametersBytes, ref p);
                             break;
 
                         case TypeDef.Variant:
@@ -253,7 +253,7 @@ namespace PlutoWallet.Model
                             {
                                 case "AccountIdLookupOf<T>":
                                     var multiAddress = new EnumMultiAddress();
-                                    multiAddress.Decode(method.Parameters, ref p);
+                                    multiAddress.Decode(method.ParametersBytes, ref p);
 
                                     if (multiAddress.Value != MultiAddress.Index)
                                     {

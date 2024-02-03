@@ -9,9 +9,19 @@ namespace PlutoWallet.Model
 
         public static string ToIpfsLink(string ipfsLink)
 		{
-            if (ipfsLink.Contains("ipfs://ipfs/"))
+            if (ipfsLink.Contains("ipfs//"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://ipfs/".Length + ipfsLink.IndexOf("ipfs://ipfs/"));
+                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
+            }
+
+            if (ipfsLink.Contains("ipfs/"))
+            {
+                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs/".Length + ipfsLink.IndexOf("ipfs/"));
+            }
+
+            if (ipfsLink.Contains("ipfs://"))
+            {
+                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
             }
 
             if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://")) {
@@ -33,12 +43,18 @@ namespace PlutoWallet.Model
             if (string.IsNullOrEmpty(input))
                 return input;
 
-            string pattern = "[^0-9a-zA-Z]";
-            string replacement = "";
+            Regex regex = new Regex("[^0-9a-zA-Z]", RegexOptions.IgnoreCase);
 
-            Regex regex = new Regex(pattern, RegexOptions.IgnoreCase);
+            if (input.Contains("/"))
+            {
+                string[] inputSplit = input.Split("/", 2);
 
-            return regex.Replace(input, replacement);
+                return regex.Replace(inputSplit[0], "")  + "/" + inputSplit[1];
+            }
+            else
+            {
+                return regex.Replace(input, "");
+            }
         }
     }
 }

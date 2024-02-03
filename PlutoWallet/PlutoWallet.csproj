@@ -87,12 +87,12 @@
 		<PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 		<PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 		<PackageReference Include="Substrate.NET.Wallet" Version="1.0.7" />
-		<PackageReference Include="Substrate.NET.API" Version="0.9.14" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
 		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
 		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+		<PackageReference Include="Plutonication" Version="2.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -473,6 +473,10 @@
 	  <Folder Include="Components\VTokens\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
+	  <ProjectReference Include="..\Plutonication\Plutonication\Plutonication.csproj" />
+	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
@@ -487,8 +491,4 @@
 		<CodesignProvision>PlutoWalletMacCatalystDevelopment</CodesignProvision>
 		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
-	<ItemGroup>
-	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
-	  <ProjectReference Include="..\Plutonication\Plutonication.csproj" />
-	</ItemGroup>
 </Project>

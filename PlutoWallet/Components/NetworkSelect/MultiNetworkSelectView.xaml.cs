@@ -58,7 +58,7 @@ public partial class MultiNetworkSelectView : ContentView
         {
             var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-            messagePopup.Title = "Error";
+            messagePopup.Title = "MultiNetworkSelectView Error";
             messagePopup.Text = ex.Message;
 
             messagePopup.IsVisible = true;

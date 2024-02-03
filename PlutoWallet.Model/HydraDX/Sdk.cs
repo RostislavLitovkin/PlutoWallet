@@ -27,7 +27,7 @@ namespace PlutoWallet.Model.HydraDX
         public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClientExt client, CancellationToken token)
         {
             var omnipoolAccount = new AccountId32();
-            omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OmnipoolAddress));
+            omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OMNIPOOL_ADDRESS));
 
             var omnipoolAssetsKeyBytes = RequestGenerator.GetStorageKeyBytesHash("Omnipool", "Assets");
 
@@ -39,7 +39,7 @@ namespace PlutoWallet.Model.HydraDX
 
             byte[] startKey = null;
 
-            var storageKeys = (await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, token))
+            var storageKeys = (await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token))
                .Select(p => p.ToString().ToLower().Replace(Utils.Bytes2HexString(prefix).ToLower(), ""));
 
             Dictionary<string, HydraDXTokenInfo> result = new Dictionary<string, HydraDXTokenInfo>();
@@ -118,8 +118,14 @@ namespace PlutoWallet.Model.HydraDX
             if (!Assets.ContainsKey(tokenSymbol)) {
                 return 0;
             }
+
+            if (!Assets.ContainsKey(Constants.HydraDX.STABLE_TOKEN))
+            {
+                return 0;
+            }
+
             HydraDXTokenInfo token = Assets[tokenSymbol];
-            HydraDXTokenInfo usdToken = Assets["USDT"];
+            HydraDXTokenInfo usdToken = Assets[Constants.HydraDX.STABLE_TOKEN];
             
             double price_a = token.HubReserve / token.PoolBalance;
             double price_b = usdToken.PoolBalance / usdToken.HubReserve;

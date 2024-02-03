@@ -33,7 +33,7 @@ public partial class DAppConnectionView : ContentView
         {
             var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-            messagePopup.Title = "Error";
+            messagePopup.Title = "DAppConnectionView Error";
             messagePopup.Text = ex.Message;
 
             messagePopup.IsVisible = true;

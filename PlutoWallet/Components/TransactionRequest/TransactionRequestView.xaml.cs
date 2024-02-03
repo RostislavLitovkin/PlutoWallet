@@ -82,13 +82,30 @@ public partial class TransactionRequestView : ContentView
 
             // This will need the AssetId update.
             // I was lazy now to fill it in, because it is very rare.
-            ChargeType charge = payload.signedExtensions.Contains("ChargeAssetTxPayment") ?
-                new ChargeAssetTxPayment(HexStringToUint(payload.tip), 0) :
-                new ChargeTransactionPayment(HexStringToUint(payload.tip));
+            int _p = 0;
+
+            ChargeType charge;
+            if (payload.tip.Length == 34) {
+                charge = new ChargeTransactionPayment(HexStringToUint(payload.tip));
+                    }
+            else
+            {
+                charge = new ChargeAssetTxPayment(0, 0);
+                charge.Decode(Utils.HexToByteArray(payload.tip), ref _p);
+            }
 
             if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
             {
-                var extrinsic = RequestGenerator.SubmitExtrinsic(
+                UnCheckedExtrinsic unCheckedExtrinsic = new UnCheckedExtrinsic(true, account, method, Era.Decode(Utils.HexToByteArray(payload.era)),
+                    HexStringToUint(payload.nonce), charge, genesisHash, blockHash);
+
+                byte[] array = unCheckedExtrinsic.GetPayload(runtime).Encode();
+
+                Console.WriteLine("Payload encoded: " + Utils.Bytes2HexString(array));
+
+                Console.WriteLine("Nonce: " + HexStringToUint(payload.nonce));
+
+                var extrinsic = await RequestGenerator.SubmitExtrinsicAsync(
                     true,
                     account,
                     method,

@@ -101,7 +101,7 @@ namespace PlutoWallet.Model.AjunaExt
             var resultList = new List<(string, AssetDetails)>();
             var keyBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Asset");
 
-            var storageKeys = await _client.State.GetKeysPagedAtAsync(keyBytes, page, null, string.Empty, token);
+            var storageKeys = await _client.State.GetKeysPagedAsync(keyBytes, page, null, string.Empty, token);
 
             if (storageKeys == null || !storageKeys.Any())
             {
@@ -240,7 +240,7 @@ namespace PlutoWallet.Model.AjunaExt
             var resultList = new List<(string, AssetMetadata)>();
             var keyBytes = RequestGenerator.GetStorageKeyBytesHash("Assets", "Metadata");
 
-            var storageKeys = await _client.State.GetKeysPagedAtAsync(keyBytes, page, null, string.Empty, token);
+            var storageKeys = await _client.State.GetKeysPagedAsync(keyBytes, page, null, string.Empty, token);
 
             if (storageKeys == null || !storageKeys.Any())
             {

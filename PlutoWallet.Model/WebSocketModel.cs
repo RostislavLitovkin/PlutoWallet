@@ -23,6 +23,12 @@ namespace PlutoWallet.Model
                     fastestTime = connectionTime.Value;
                     fastestUrl = url;
                 }
+
+                // <500 ms is fast enough
+                if (connectionTime.Value.TotalMilliseconds < 500)
+                {
+                    return url;
+                }
             }
 
             if (fastestUrl != null)

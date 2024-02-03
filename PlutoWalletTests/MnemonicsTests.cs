@@ -35,7 +35,6 @@ namespace PlutoWalletTests
             Console.WriteLine(json + "\n\n");
             Assert.That(json.Contains("5CDYtN4QFWUNtRkoAKB5oSGBCpbMJXEjNDAtQYyqAVmCadYQ"));
             Assert.That(json.Contains("ed25519"));
-
         }
 
         [Test]

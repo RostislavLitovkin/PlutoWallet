@@ -38,7 +38,8 @@ namespace PlutoWallet.ViewModel
 
             UpdateNfts(await Model.UniqueryModel.GetAllNfts(substrateAddress, token));
 
-            UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey(), token));
+            // Broken, not a priority rn to fix
+            //UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey(), token));
 
             nftLoadingViewModel.IsVisible = false;
         }

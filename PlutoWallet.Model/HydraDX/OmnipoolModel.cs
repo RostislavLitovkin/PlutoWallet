@@ -34,7 +34,7 @@ namespace PlutoWallet.Model.HydraDX
 
             List<U128> positionIds;
 
-            var keysPaged = await client.State.GetKeysPagedAtAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
+            var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
 
             if (keysPaged == null || !keysPaged.Any())
             {
@@ -54,7 +54,7 @@ namespace PlutoWallet.Model.HydraDX
                 AssetMetadata assetMetadata = await client.AssetRegistryStorage.AssetMetadataMap(position.AssetId, CancellationToken.None);
 
                 var omnipoolAccount = new AccountId32();
-                omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OmnipoolAddress));
+                omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OMNIPOOL_ADDRESS));
 
                 var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
                 omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);

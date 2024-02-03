@@ -78,18 +78,44 @@ namespace PlutoWallet.Model
                 Client = GroupClients[0];
                 SelectedEndpoint = GroupEndpoints[0];
 
+            }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "AjunaClientModel Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
+            }
+            try
+            {
                 await ConnectClientAsync();
+            }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "AjunaClientModel ConnectClientAsync Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
+            }
+            try
+            {
                 await ConnectGroupAsync();
             }
             catch (Exception ex)
             {
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-                messagePopup.Title = "Error";
+                messagePopup.Title = "AjunaClientModel ConnectGroupAsync Error";
+                Console.WriteLine("AjunaClientModel Error: " + ex);
                 messagePopup.Text = ex.Message;
 
                 messagePopup.IsVisible = true;
             }
+
         }
 
         /**

@@ -6,24 +6,35 @@ namespace PlutoWalletTests;
 
 public class AssetsTests
 {
-    [Test]
-    public async Task AssetsBifrost()
+    SubstrateClientExt client;
+
+    string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
+
+    [SetUp]
+    public async Task Setup()
     {
         var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["bifrost"];
 
         string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
-        var client = new SubstrateClientExt(
+        client = new SubstrateClientExt(
                     endpoint,
                     new Uri(bestWebSecket),
                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
         await client.ConnectAsync();
+    }
 
-        string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
+    [Test]
+    public async Task BalanceBifrost()
+    {
+        var accountInfo = await client.SystemStorage.Account(substrateAddress);
+        Console.WriteLine("Free: " + accountInfo.Data.Free.Value);
+    }
 
-        Console.WriteLine("Connected");
-
+    [Test]
+    public async Task AssetsBifrost()
+    {
         var assets = await AssetsModel.GetAssetsMetadataAndAcountNextAsync(client, substrateAddress, 1000, CancellationToken.None);
 
         Console.WriteLine("Assets: " + assets.Count);
@@ -32,19 +43,6 @@ public class AssetsTests
     [Test]
     public async Task TokensBifrost()
     {
-        var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["bifrost"];
-
-        string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
-
-        var client = new SubstrateClientExt(
-                    endpoint,
-                    new Uri(bestWebSecket),
-                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-        await client.ConnectAsync();
-
-        string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
-
         var tokens = await AssetsModel.GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None);
 
         Console.WriteLine("Tokens: " + tokens.Count);
