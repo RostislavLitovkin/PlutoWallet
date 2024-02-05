@@ -171,7 +171,29 @@ namespace PlutoWallet.Model
 
             var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
 
-            await usdBalanceViewModel.UpdateBalances();
+            try
+            {
+                usdBalanceViewModel.UsdSum = "Loading";
+
+                usdBalanceViewModel.ReloadIsVisible = false;
+
+                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
+            }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "Loading Assets Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
+
+                usdBalanceViewModel.UsdSum = "Failed";
+
+                return;
+            }
+
+            usdBalanceViewModel.UpdateBalances();
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
@@ -209,6 +231,8 @@ namespace PlutoWallet.Model
                 {
                     await Model.HydraDX.Sdk.GetAssets(GroupClients[i], CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
+
+                    usdBalanceViewModel.UpdateBalances();
 
                     hydraClientNotFound = false;
                 }

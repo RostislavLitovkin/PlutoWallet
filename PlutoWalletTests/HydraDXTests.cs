@@ -31,6 +31,8 @@ public class HydraDX
         {
             Console.WriteLine(asset);
         }
+
+        Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
     }
 }
 

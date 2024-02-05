@@ -1,35 +1,33 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Plutonication;
+using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
 using PlutoWallet.Types;
 using Substrate.NetApi;
+using Substrate.NetApi.Generated.Model.sp_version;
 using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Model
 {
 	public class PlutonicationModel
 	{
-		public static async Task ReceivePayload(Plutonication.Payload payload)
+		public static async Task ReceivePayload(UnCheckedExtrinsic unCheckedExtrinsic, Substrate.NetApi.Model.Rpc.RuntimeVersion runtime)
 		{
             var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
             PlutoWalletSubstrateClient client;
 
-            byte[] methodBytes = Utils.HexToByteArray(payload.method);
+            Method method = unCheckedExtrinsic.Method;
 
-            List<byte> methodParameters = new List<byte>();
+            Substrate.NetApi.Model.Extrinsics.Payload payload = unCheckedExtrinsic.GetPayload(runtime);
 
-            for (int i = 2; i < methodBytes.Length; i++)
+            string genesisHash = Utils.Bytes2HexString(payload.SignedExtension.Genesis).ToLower();
+
+            if (Endpoints.HashToKey.ContainsKey(genesisHash))
             {
-                methodParameters.Add(methodBytes[i]);
-            }
-
-            Method method = new Method(methodBytes[0], methodBytes[1], methodParameters.ToArray());
-
-            if (Endpoints.HashToKey.ContainsKey(payload.genesisHash))
-            {
-                var key = Endpoints.HashToKey[payload.genesisHash];
+                var key = Endpoints.HashToKey[genesisHash];
 
                 Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
 
@@ -63,9 +61,7 @@ namespace PlutoWallet.Model
                     transactionRequest.CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[method.CallIndex].Name;
 
-
-
-                    transactionRequest.CalculateFeeAsync(method);
+                    Task calculateFee = transactionRequest.CalculateFeeAsync(method);
                 }
                 catch
                 {
@@ -74,8 +70,6 @@ namespace PlutoWallet.Model
 
                     transactionRequest.Fee = "Fee: unknown";
                 }
-
-                
             }
             else
             {
@@ -101,6 +95,32 @@ namespace PlutoWallet.Model
             else
             {
                 transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes);
+            }
+        }
+
+        public static async Task ReceiveRaw(RawMessage message)
+        {
+            try
+            {
+                if (message.type != "bytes")
+                {
+                    throw new Exception("Message signing is supported only for bytes format");
+                }
+
+                var messageSignRequest = DependencyService.Get<MessageSignRequestViewModel>();
+
+                messageSignRequest.Message = message;
+                messageSignRequest.MessageString = message.data;
+                messageSignRequest.IsVisible = true;
+            }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "ConnectionRequestView Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
             }
         }
     }

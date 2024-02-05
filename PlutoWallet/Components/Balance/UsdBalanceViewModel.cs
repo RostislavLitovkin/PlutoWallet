@@ -33,29 +33,8 @@ namespace PlutoWallet.Components.Balance
             reloadIsVisible = false;
         }
 
-        public async Task UpdateBalances()
+        public void UpdateBalances()
         {
-            ReloadIsVisible = false;
-
-            UsdSum = "Loading";
-
-            try {
-                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
-            }
-            catch (Exception ex)
-                {
-                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-                messagePopup.Title = "Loading Assets Error";
-                messagePopup.Text = ex.Message;
-
-                messagePopup.IsVisible = true;
-
-                UsdSum = "Failed";
-
-                return;
-            }
-
             var tempAssets = new List<AssetInfo>();
 
             foreach (Asset a in Model.AssetsModel.Assets)

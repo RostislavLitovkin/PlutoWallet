@@ -69,7 +69,6 @@ public partial class MessageSignRequestView : ContentView
             errorLabel.Text = ex.Message;
             errorLabel.IsVisible = true;
         }
-
     }
 
     async void OnRejectClicked(System.Object sender, System.EventArgs e)

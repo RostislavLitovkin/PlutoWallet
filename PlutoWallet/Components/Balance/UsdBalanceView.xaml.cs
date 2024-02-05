@@ -1,4 +1,5 @@
 ﻿using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Model;
 using Substrate.NetApi.Generated.Model.pallet_assets.types;
 
 namespace PlutoWallet.Components.Balance;
@@ -16,7 +17,13 @@ public partial class UsdBalanceView : ContentView
     {
         var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
 
-        await usdBalanceViewModel.UpdateBalances();
+        usdBalanceViewModel.UsdSum = "Loading";
+
+        usdBalanceViewModel.ReloadIsVisible = false;
+
+        await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
+
+        usdBalanceViewModel.UpdateBalances();
     }
 }
 
