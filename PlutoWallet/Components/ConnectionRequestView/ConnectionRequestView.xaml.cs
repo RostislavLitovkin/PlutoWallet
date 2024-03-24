@@ -26,10 +26,8 @@ public partial class ConnectionRequestView : ContentView
         {
             var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
 
-            DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
-            dAppViewModel.Icon = viewModel.Icon;
-            dAppViewModel.Name = viewModel.Name;
-            dAppViewModel.IsVisible = true;
+            viewModel.RequestViewIsVisible = false;
+            viewModel.ConnectionStatusIsVisible = true;
 
             await PlutonicationWalletClient.InitializeAsync(
                 ac: viewModel.AccessCredentials,
@@ -38,7 +36,15 @@ public partial class ConnectionRequestView : ContentView
                 signRaw: Model.PlutonicationModel.ReceiveRaw
             );
 
-            viewModel.IsVisible = false;
+            // Connection successful
+
+            viewModel.CheckIsVisible = true;
+            viewModel.ConnectionStatusText = $"Connected successfully. You can now go back to {viewModel.Name}.";
+
+            DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+            dAppViewModel.Icon = viewModel.Icon;
+            dAppViewModel.Name = viewModel.Name;
+            dAppViewModel.IsVisible = true;
         }
         catch (Exception ex)
         {
@@ -52,6 +58,12 @@ public partial class ConnectionRequestView : ContentView
     }
 
     private async void RejectClicked(System.Object sender, System.EventArgs e)
+    {
+        var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
+        viewModel.IsVisible = false;
+    }
+
+    private async void DismissClicked(System.Object sender, System.EventArgs e)
     {
         var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
         viewModel.IsVisible = false;

@@ -29,6 +29,11 @@ namespace PlutoWallet.Components.AzeroId
 
 		public async Task GetPrimaryName(PlutoWalletSubstrateClient client)
 		{
+			if (client is null)
+			{
+				return;
+			}
+
 			var temp = await TzeroId.GetPrimaryNameForAddress(client, KeysModel.GetSubstrateKey());
 
 			if (temp == null)
@@ -45,7 +50,6 @@ namespace PlutoWallet.Components.AzeroId
 				ReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(temp);
 
 				ReservedUntilIsVisible = true;
-
 			}
 		}
 	}

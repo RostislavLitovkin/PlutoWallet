@@ -51,6 +51,7 @@
                     </Label>
 
                     <Label
+                        IsVisible="false"
                         HorizontalOptions="Center">
                         <Label.FormattedText>
                             <FormattedString>

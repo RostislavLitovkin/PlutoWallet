@@ -21,7 +21,14 @@ namespace PlutoWallet.Components.HydraDX
 
 		public async Task GetDCAPosition(SubstrateClientExt client)
 		{
-			Loading = "Loading";
+            if (client is null)
+            {
+                Loading = "Failed";
+
+                return;
+            }
+
+            Loading = "Loading";
 
 			List<DCAOrderInfo> infos = new List<DCAOrderInfo>();
 

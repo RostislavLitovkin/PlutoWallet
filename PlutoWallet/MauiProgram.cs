@@ -20,6 +20,8 @@ public static class MauiProgram
                 fonts.AddFont("fontawesome-webfont.ttf", "FontAwesome");
                 fonts.AddFont("Exodar-Outline.ttf", "Exodar");
                 fonts.AddFont("FontOver.ttf", "FontOver");
+                fonts.AddFont("sourcecode.ttf", "SourceCode");
+
             });
 
         //builder.Services.AddSingleton<Model.PlutonicationModel>();

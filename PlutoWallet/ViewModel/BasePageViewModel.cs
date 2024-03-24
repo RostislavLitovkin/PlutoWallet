@@ -22,7 +22,12 @@ namespace PlutoWallet.ViewModel
 		public BasePageViewModel()
 		{
 			content = MainView;
-		}
+
+            Console.WriteLine("Calling BasePageViewModel constructor.");
+
+            var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+            networkViewModel.SetupDefault();
+        }
 
         public void SetMainView()
 		{
@@ -44,6 +49,8 @@ namespace PlutoWallet.ViewModel
             }
             
             Content = MainView;
+
+            Console.WriteLine("SetMainView() -> Calling MultiNetworkSelectViewModel.SetupDefault()");
 
             var networkViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             networkViewModel.SetupDefault();

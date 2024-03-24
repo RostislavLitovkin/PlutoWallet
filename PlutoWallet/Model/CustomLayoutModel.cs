@@ -22,6 +22,7 @@ using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.Nft;
 using PlutoWallet.Components.Fee;
 using PlutoWallet.Components.VTokens;
+using PlutoWallet.Components.UpdateView;
 
 namespace PlutoWallet.Model
 {
@@ -33,10 +34,10 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK, CalEx];[polkadot, kusama]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [U, dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK, CalEx];[polkadot, kusama]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
+        public const string ALL_ITEMS = "plutolayout: [U, dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
             "BMnR, NftG, VDot];[";
 
@@ -239,6 +240,8 @@ namespace PlutoWallet.Model
             // Save Selected Networks
             Preferences.Set("SelectedNetworks", itemsAndNetworksStrings[1]);
 
+            Console.WriteLine("Save Endpoint -> Calling MultiNetworkSelectViewModel.SetupDefault()");
+
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
             multiNetworkSelectViewModel.SetupDefault();
         }
@@ -276,6 +279,8 @@ namespace PlutoWallet.Model
         {
             switch (plutoLayoutId)
             {
+                case "U":
+                    return new UpdateView();
                 case "dApp":
                     return new DAppConnectionView();
                 case "ExSL":
@@ -337,6 +342,8 @@ namespace PlutoWallet.Model
         {
             switch (plutoLayoutId)
             {
+                case "U":
+                    return new UpdateView();
                 case "dApp":
                     var dAppConnectionViewModel = new DAppConnectionViewModel();
                     dAppConnectionViewModel.Name = "Galaxy Logic Game";
@@ -424,6 +431,12 @@ namespace PlutoWallet.Model
         {
             switch (plutoLayoutId)
             {
+                case "U":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Update notification",
+                        PlutoLayoutId = "U"
+                    };
                 case "dApp":
                     return new LayoutItemInfo
                     {

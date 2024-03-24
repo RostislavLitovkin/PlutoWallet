@@ -26,6 +26,7 @@ using PlutoWallet.Components.ChangeLayoutRequest;
 using PlutoWallet.Components.NavigationBar;
 using PlutoWallet.Components.Fee;
 using PlutoWallet.Components.VTokens;
+using PlutoWallet.Components.UpdateView;
 
 namespace PlutoWallet;
 
@@ -108,6 +109,8 @@ public partial class App : Application
         DependencyService.Register<FeeAssetViewModel>();
 
         DependencyService.Register<VDotTokenViewModel>();
+
+        DependencyService.Register<UpdateViewModel>();
 
         if (Preferences.ContainsKey("publicKey"))
         {

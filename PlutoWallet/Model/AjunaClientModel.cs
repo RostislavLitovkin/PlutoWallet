@@ -15,6 +15,8 @@ using PlutoWallet.Components.Identity;
 using PlutoWallet.Components.Referenda;
 using PlutoWallet.Types;
 using PlutoWallet.Components.VTokens;
+using PlutoWallet.Components.NetworkSelect;
+using PlutoWallet.Components.UpdateView;
 
 namespace PlutoWallet.Model
 {
@@ -30,8 +32,6 @@ namespace PlutoWallet.Model
 
         public static Endpoint SelectedEndpoint;
 
-        public static bool Connected = false;
-
         public AjunaClientModel()
         {
 
@@ -45,20 +45,41 @@ namespace PlutoWallet.Model
          */
         public static async Task ChangeChainGroupAsync(string[] endpointKeys)
         {
+            var updateViewModel = DependencyService.Get<UpdateViewModel>();
+
             try
             {
-                GroupEndpointKeys = endpointKeys;
+                await updateViewModel.CheckLatestVersionAsync();
+            }
+            catch
+            {
+                // Do nothing.
+            }
 
-                List<PlutoWalletSubstrateClient> groupClientList = new List<PlutoWalletSubstrateClient>(endpointKeys.Length);
+            GroupEndpointKeys = endpointKeys;
 
-                List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointKeys.Length);
+            List<PlutoWalletSubstrateClient> groupClientList = new List<PlutoWalletSubstrateClient>(endpointKeys.Length);
 
-                for (int i = 0; i < endpointKeys.Length; i++)
+            List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointKeys.Length);
+
+            var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
+            for (int i = 0; i < endpointKeys.Length; i++)
+            {
+                multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Loading;
+            }
+
+            multiNetworkSelectViewModel.UpdateNetworkInfos();
+
+
+            for (int i = 0; i < endpointKeys.Length; i++)
+            {
+                Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKeys[i]);
+
+                groupEndpointsList.Add(endpoint);
+
+                try
                 {
-                    Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKeys[i]);
-
-                    groupEndpointsList.Add(endpoint);
-
                     string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
                     var client = new PlutoWalletSubstrateClient(
@@ -66,28 +87,31 @@ namespace PlutoWallet.Model
                             new Uri(bestWebSecket),
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    client.ConnectAsync();
+                    await client.ConnectAsync();
+
+                    multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Connected;
+
+                    multiNetworkSelectViewModel.UpdateNetworkInfos();
 
                     groupClientList.Add(client);
                 }
+                catch
+                {
+                    multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Failed;
 
-                GroupClients = groupClientList.ToArray();
-                GroupEndpoints = groupEndpointsList.ToArray();
+                    multiNetworkSelectViewModel.UpdateNetworkInfos();
 
-                // Set the first endpoint of the group to be the "main" client
-                Client = GroupClients[0];
-                SelectedEndpoint = GroupEndpoints[0];
-
+                    groupClientList.Add(null);
+                }
             }
-            catch (Exception ex)
-            {
-                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-                messagePopup.Title = "AjunaClientModel Error";
-                messagePopup.Text = ex.Message;
+            GroupClients = groupClientList.ToArray();
+            GroupEndpoints = groupEndpointsList.ToArray();
 
-                messagePopup.IsVisible = true;
-            }
+            // Set the first endpoint of the group to be the "main" client
+            Client = GroupClients[0];
+            SelectedEndpoint = GroupEndpoints[0];
+            
             try
             {
                 await ConnectClientAsync();
@@ -149,7 +173,7 @@ namespace PlutoWallet.Model
         private static async Task ConnectGroupAsync()
         {
             // Wait up to 10 seconds for all clients to connect. 
-            for (int i = 0; i < 20; i++)
+            /*for (int i = 0; i < 20; i++)
             {
                 await Task.Delay(500);
 
@@ -165,7 +189,7 @@ namespace PlutoWallet.Model
                 }
 
                 if (allConnected) break;
-            }
+            }*/
 
             // Setup things, like balances..
 
@@ -240,18 +264,25 @@ namespace PlutoWallet.Model
 
             if (hydraClientNotFound)
             {
-                Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary["hydradx"];
-                string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
+                try
+                {
+                    Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary["hydradx"];
+                    string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
 
-                var client = new PlutoWalletSubstrateClient(
-                            hdxEndpoint,
-                            new Uri(bestWebSecket),
-                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+                    var client = new PlutoWalletSubstrateClient(
+                                hdxEndpoint,
+                                new Uri(bestWebSecket),
+                                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                await client.ConnectAsync();
+                    await client.ConnectAsync();
 
-                await Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
-                Model.AssetsModel.GetUsdBalance();
+                    await Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
+                    Model.AssetsModel.GetUsdBalance();
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -271,10 +302,8 @@ namespace PlutoWallet.Model
                 assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
             }
 
-            Connected = false;
-
             // Wait up to 10 seconds for the Client to connect. 
-            for (int i = 0; i < 20; i++)
+            /*for (int i = 0; i < 20; i++)
             {
                 await Task.Delay(500);
 
@@ -293,10 +322,9 @@ namespace PlutoWallet.Model
                 messagePopup.IsVisible = true;
 
                 return;
-            }
+            }*/
 
             // task completed within timeout
-            Connected = true;
 
             // Setup things, like balances..
             //var customCallsViewModel = DependencyService.Get<CustomCallsViewModel>();
@@ -315,6 +343,10 @@ namespace PlutoWallet.Model
             await referendaViewModel.GetReferenda();
             //customCallsViewModel.GetMetadata();
 
+            if (Client is null)
+            {
+                return;
+            }
 
             // Wait up to 10 seconds for the Client to fetch metadata 
             for (int i = 0; i < 20; i++)
@@ -336,8 +368,6 @@ namespace PlutoWallet.Model
 
                 return;
             }
-
-            Console.WriteLine("All done");
         }
     }
 }

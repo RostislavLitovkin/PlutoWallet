@@ -48,6 +48,13 @@ namespace PlutoWallet.Components.TransactionRequest
 
         public async Task CalculateFeeAsync(Method method)
         {
+            if (AjunaClientModel.Client is null)
+            {
+                Fee = "Fee: Failed";
+
+                return;
+            }
+
             Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(AjunaClientModel.Client, method);
         }
     }

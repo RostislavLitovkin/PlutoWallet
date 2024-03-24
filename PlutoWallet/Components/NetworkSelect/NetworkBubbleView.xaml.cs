@@ -48,6 +48,38 @@ public partial class NetworkBubbleView : ContentView
             control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, endpoint.DarkIcon, endpoint.Icon);
         });
 
+    public static readonly BindableProperty EndpointConnectionStatusProperty = BindableProperty.Create(
+        nameof(EndpointConnectionStatus), typeof(EndpointConnectionStatus), typeof(NetworkBubbleView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) => {
+            var control = (NetworkBubbleView)bindable;
+
+            switch ((EndpointConnectionStatus)newValue) {
+                case EndpointConnectionStatus.Loading:
+                    control.connectionStatusBorder.BackgroundColor = Colors.RoyalBlue;
+                    control.connectionStatusIcon.Source = "loadingdotswhite.png";
+
+                    break;
+
+                case EndpointConnectionStatus.Connected:
+                    control.connectionStatusBorder.BackgroundColor = Colors.Green;
+                    control.connectionStatusIcon.Source = "connectedwhite.png";
+
+                    break;
+
+                case EndpointConnectionStatus.Failed:
+                    control.connectionStatusBorder.BackgroundColor = Colors.DarkRed;
+                    control.connectionStatusIcon.Source = "disconnectedwhite.png";
+
+                    break;
+                case EndpointConnectionStatus.None:
+                    control.connectionStatusBorder.BackgroundColor = Color.FromArgb("#00000000");
+                    control.connectionStatusIcon.Source = "";
+
+                    break;
+            }
+        });
+
     public NetworkBubbleView()
 	{
 		InitializeComponent();
@@ -74,6 +106,12 @@ public partial class NetworkBubbleView : ContentView
     {
         get => (string)GetValue(EndpointKeyProperty);
         set => SetValue(EndpointKeyProperty, value);
+    }
+
+    public EndpointConnectionStatus EndpointConnectionStatus
+    {
+        get => (EndpointConnectionStatus)GetValue(EndpointConnectionStatusProperty);
+        set => SetValue(EndpointConnectionStatusProperty, value);
     }
 
     public event EventHandler<TappedEventArgs> Tapped

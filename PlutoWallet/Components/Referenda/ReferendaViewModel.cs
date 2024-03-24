@@ -21,6 +21,13 @@ namespace PlutoWallet.Components.Referenda
 
 		public async Task GetReferenda()
 		{
+			if (AjunaClientModel.Client is null)
+			{
+				Loading = "Failed";
+
+				return;
+			}
+
 			Loading = "Loading";
 
 			var referenda = await Model.SubSquare.ReferendumModel.GetReferenda(AjunaClientModel.GroupClients, KeysModel.GetSubstrateKey());

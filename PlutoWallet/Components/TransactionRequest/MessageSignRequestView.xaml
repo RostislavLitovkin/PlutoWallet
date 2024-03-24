@@ -23,7 +23,9 @@
                     WidthRequest="{Binding Source={x:Reference stackLayout}, Path=Width}">
                     <Label.FormattedText>
                         <FormattedString>
-                            <Span FontAttributes="Bold" Text="{Binding MessageString}"/>
+                            <Span FontAttributes="Bold"
+                                  FontFamily="SourceCode"
+                                  Text="{Binding MessageString}"/>
 
                         </FormattedString>
 

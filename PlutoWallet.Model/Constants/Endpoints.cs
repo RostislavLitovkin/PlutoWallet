@@ -311,7 +311,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "HydraDX",
                 Key = "hydradx",
-                URLs =  new string[2] { "wss://rpc.hydradx.cloud", "wss://hydradx-rpc.dwellir.com" },
+                URLs =  new string[3] { "wss://rpc.helikon.io/hydradx", "wss://rpc.hydradx.cloud", "wss://hydradx-rpc.dwellir.com" },
                 Icon = "hydradxomnipool.png",
                 DarkIcon = "hydradxomnipool.png",
                 Unit = "HDX",
@@ -355,7 +355,7 @@ namespace PlutoWallet.Constants
                 {
                     Name = "Bifrost",
                     Key = "bifrost",
-                    URLs =  new string[2] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://bifrost-rpc.liebi.com/ws" /*"wss://bifrost-rpc.dwellir.com"*/ },
+                    URLs =  new string[3] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://eu.bifrost-polkadot-rpc.liebi.com/ws", "wss://hk.p.bifrost-rpc.liebi.com/ws" /*"wss://bifrost-rpc.dwellir.com"*/ },
                     Icon = "bifrost.png",
                     DarkIcon = "bifrost.png",
                     Unit = "BNC",
@@ -402,7 +402,6 @@ namespace PlutoWallet.Constants
 		public short SS58Prefix { get; set; }
         public ChainType ChainType { get; set; }
         public bool SupportsNfts { get; set; } = false;
-
 
         /*public Endpoint Clone()
         {

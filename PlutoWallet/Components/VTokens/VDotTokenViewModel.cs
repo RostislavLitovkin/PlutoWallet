@@ -24,6 +24,11 @@ namespace PlutoWallet.Components.VTokens
 
         public async Task GetConversionRate(SubstrateClientExt client, CancellationToken token)
         {
+            if (client is null)
+            {
+                Conversion = "Failed";
+            }
+
             Conversion = "Loading";
 
             From = "";

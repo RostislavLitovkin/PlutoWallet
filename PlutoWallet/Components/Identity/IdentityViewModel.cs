@@ -22,6 +22,13 @@ namespace PlutoWallet.Components.Identity
 
         public async Task GetIdentity()
         {
+            if (AjunaClientModel.Client is null)
+            {
+                Name = "Failed";
+
+                return;
+            }
+
             Name = "Loading";
             VerificationIconIsVisible = false;
 

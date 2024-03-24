@@ -32,8 +32,6 @@ namespace PlutoWallet.Components.AddressView
         {
             var endpoint = AjunaClientModel.SelectedEndpoint;
 
-            var client = AjunaClientModel.Client;
-
             if (endpoint.Name == "(Local)ws://127.0.0.1:9944")
             {
                 IsVisible = false;
@@ -50,7 +48,16 @@ namespace PlutoWallet.Components.AddressView
             }
 
             Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
-            QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + client.GenesisHash;
+
+            if (AjunaClientModel.Client is null)
+            {
+                QrAddress = "Failed to load genesis hash";
+            }
+            else
+            {
+                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + AjunaClientModel.Client.GenesisHash;
+            }
+
             IsVisible = true;
         }
     }

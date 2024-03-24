@@ -28,6 +28,13 @@ namespace PlutoWallet.Components.TransferView
 
 		public async Task GetFeeAsync()
 		{
+			if (AjunaClientModel.Client is null)
+			{
+				Fee = "Fee: Failed.";
+
+				return;
+			}
+
             Fee = "Fee: loading";
             try
 			{

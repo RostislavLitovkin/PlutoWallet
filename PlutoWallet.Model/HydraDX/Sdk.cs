@@ -26,6 +26,11 @@ namespace PlutoWallet.Model.HydraDX
 
         public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClientExt client, CancellationToken token)
         {
+            if (client is null)
+            {
+                return new Dictionary<string, HydraDXTokenInfo>();
+            }
+
             var omnipoolAccount = new AccountId32();
             omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OMNIPOOL_ADDRESS));
 

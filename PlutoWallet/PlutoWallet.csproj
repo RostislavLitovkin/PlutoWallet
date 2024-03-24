@@ -19,8 +19,8 @@
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.7</ApplicationDisplayVersion>
-		<ApplicationVersion>8</ApplicationVersion>
+		<ApplicationDisplayVersion>1.10</ApplicationDisplayVersion>
+		<ApplicationVersion>11</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -240,6 +240,14 @@
 	  <None Remove="Model\" />
 	  <None Remove="Components\Fee\" />
 	  <None Remove="Components\VTokens\" />
+	  <None Remove="Resources\Images\disconnectedblack.svg" />
+	  <None Remove="Resources\Images\disconnectedwhite.svg" />
+	  <None Remove="Resources\Images\loadingdotswhite.svg" />
+	  <None Remove="Resources\Images\emptycirclewhite.svg" />
+	  <None Remove="Resources\Images\emptycircleblack.svg" />
+	  <None Remove="Resources\Images\checkgreen.svg" />
+	  <None Remove="Resources\Fonts\sourcecode.ttf" />
+	  <None Remove="Components\UpdateView\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
@@ -345,6 +353,13 @@
 	  <BundleResource Include="Resources\Images\calamar.png" />
 	  <BundleResource Include="Resources\Images\logotransparentwhite.svg" />
 	  <BundleResource Include="Resources\Images\logotransparentblack.svg" />
+	  <BundleResource Include="Resources\Images\disconnectedblack.svg" />
+	  <BundleResource Include="Resources\Images\disconnectedwhite.svg" />
+	  <BundleResource Include="Resources\Images\loadingdotswhite.svg" />
+	  <BundleResource Include="Resources\Images\emptycirclewhite.svg" />
+	  <BundleResource Include="Resources\Images\emptycircleblack.svg" />
+	  <BundleResource Include="Resources\Images\checkgreen.svg" />
+	  <BundleResource Include="Resources\Fonts\sourcecode.ttf" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -471,6 +486,7 @@
 	  <Folder Include="Model\" />
 	  <Folder Include="Components\Fee\" />
 	  <Folder Include="Components\VTokens\" />
+	  <Folder Include="Components\UpdateView\" />
 	</ItemGroup>
 
 	<ItemGroup>

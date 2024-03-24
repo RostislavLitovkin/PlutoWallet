@@ -40,6 +40,11 @@ namespace PlutoWallet.Model
 
             for (int i = 0; i < groupClients.Length; i++)
             {
+                if (groupClients[i] is null)
+                {
+                    continue;
+                }
+
                 SubstrateClientExt client = groupClients[i];
                 var endpoint = groupEndpoints[i];
 

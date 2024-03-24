@@ -52,6 +52,8 @@ namespace PlutoWallet.Model
             }
 
             Preferences.Set("PlutoLayout", plutoLayoutResult);
+            
+            Console.WriteLine("Other Save Endpoint -> Calling MultiNetworkSelectViewModel.SetupDefault()");
 
             var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 

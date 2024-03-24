@@ -2,7 +2,7 @@
 
 public partial class HydraDXOmnipoolLayoutItem : ContentView
 {
-    private const string LAYOUT = "plutolayout: [dApp, ExSL, UsdB, ChaK, HDXOmniLiquidity, HDXDCA];[hydradx]";
+    private const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, HDXOmniLiquidity, HDXDCA];[hydradx]";
 
     public HydraDXOmnipoolLayoutItem()
 	{

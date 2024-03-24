@@ -54,7 +54,7 @@ public partial class BasePage : ContentPage
 
                     var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
 
-                    connectionRequest.IsVisible = true;
+                    connectionRequest.Show();
                     connectionRequest.Icon = ac.Icon;
                     connectionRequest.Name = ac.Name;
 

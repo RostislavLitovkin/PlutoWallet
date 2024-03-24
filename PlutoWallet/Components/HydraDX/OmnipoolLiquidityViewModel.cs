@@ -21,6 +21,13 @@ namespace PlutoWallet.Components.HydraDX
 
 		public async Task GetLiquidityAmount(SubstrateClientExt client)
 		{
+			if (client is null)
+			{
+				UsdSum = "Failed";
+
+                return;
+			}
+
             UsdSum = "Loading";
 
             var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client, KeysModel.GetSubstrateKey());

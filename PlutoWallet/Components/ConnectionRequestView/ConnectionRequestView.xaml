@@ -9,8 +9,12 @@
              >
     <card:Card IsPopup="True">
         <card:Card.View>
-            <AbsoluteLayout>
-                <VerticalStackLayout Spacing="10">
+            <AbsoluteLayout
+                            WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}">
+                <VerticalStackLayout Spacing="10"
+                                     x:Name="verticalStackLayout"
+                                     IsVisible="{Binding RequestViewIsVisible}"
+                                     >
                     <Image x:Name="icon"
                            Source="{Binding Icon}"
                            WidthRequest="100"
@@ -27,14 +31,57 @@
                         </Label.FormattedText>
 
                     </Label>
-                    <Label 
+                    <Label
+                        x:Name="thisLabel"
                         Text="Would you like to connect to this dApp?"
+                        HorizontalTextAlignment="Center"
                         VerticalOptions="Center"
                         HorizontalOptions="Center" />
                     <Button Text="Accept"
                             Clicked="AcceptClicked" />
                     <Button Text="Reject" BackgroundColor="DarkRed" TextColor="White"
                             Clicked="RejectClicked"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="10"
+                                     x:Name="connectionStatusLayout"
+                                     IsVisible="{Binding ConnectionStatusIsVisible}"
+                                     HorizontalOptions="Center"
+                                     >
+                    <AbsoluteLayout WidthRequest="100"
+                                    HeightRequest="100" 
+                                    >
+                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 60, 60"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=emptycircleblack.png, Dark=emptycirclewhite.png}"
+                               />
+
+                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="checkgreen.png"
+                               IsVisible="{Binding CheckIsVisible}"
+                               />
+                    </AbsoluteLayout>
+
+                    <Label
+                        WidthRequest="{Binding Source={x:Reference thisLabel}, Path=Width}"
+                        Text="{Binding ConnectionStatusText}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Start"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        MinimumHeightRequest="40"
+                        />
+
+                    <Label
+                        WidthRequest="{Binding Source={x:Reference thisLabel}, Path=Width}"
+                        Text="Keep PlutoWallet open!"
+                        TextColor="Red"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+
+                    <Button Text="Dismiss"
+                            Clicked="DismissClicked" />
                 </VerticalStackLayout>
             </AbsoluteLayout>
         </card:Card.View>

@@ -12,27 +12,37 @@ public class HydraDX
     {
         Endpoint hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["hydradx"];
 
-        string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
-
-        var client = new SubstrateClientExt(
-                    hdxEndpoint,
-                    new Uri(bestWebSecket),
-                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-        await client.ConnectAsync();
-
-        Assert.That(client.IsConnected);
-
-        await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
-
-        Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
-
-        foreach (var asset in PlutoWallet.Model.HydraDX.Sdk.Assets.Keys)
+        foreach (string url in hdxEndpoint.URLs)
         {
-            Console.WriteLine(asset);
-        }
+            try
+            {
+                var client = new SubstrateClientExt(
+                            hdxEndpoint,
+                            new Uri(url),
+                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-        Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
+                await client.ConnectAsync();
+
+                Assert.That(client.IsConnected);
+
+                await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
+
+                Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
+
+                foreach (var asset in PlutoWallet.Model.HydraDX.Sdk.Assets.Keys)
+                {
+                    Console.WriteLine(asset);
+                }
+
+                Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+                Console.WriteLine("At: " + url);
+
+            }
+        }
     }
 }
 

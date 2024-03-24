@@ -60,6 +60,7 @@ namespace PlutoWallet.Components.NetworkSelect
 					DarkIcon = endpoints[key].DarkIcon,
                     Name = endpoints[key].Name,
 					IsSelected = keys.Contains(key),
+					EndpointConnectionStatus = EndpointConnectionStatus.Loading,
 				});
 			}
 

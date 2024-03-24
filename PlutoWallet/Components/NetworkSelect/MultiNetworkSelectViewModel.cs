@@ -13,8 +13,6 @@ namespace PlutoWallet.Components.NetworkSelect
 {
     public partial class MultiNetworkSelectViewModel : ObservableObject
 	{
-        private const int MAX_BUBBLE_COUNT = 4;
-
         [ObservableProperty]
         private ObservableCollection<NetworkSelectInfo> networkInfos = new ObservableCollection<NetworkSelectInfo>();
 
@@ -23,56 +21,73 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public MultiNetworkSelectViewModel()
         {
-            SetupDefault();
+            Console.WriteLine("MultiNetworkSelectViewMode Constructor");
         }
 
-        /**
-         * Also called in the BasePageViewModel
-         */
+        /// <summary>
+        /// Also called in the BasePageViewModel
+        /// </summary>
         public void SetupDefault()
         {
             string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
 
-            NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
+            var networkInfosList = new List<NetworkSelectInfo>();
 
             for(int i = 0; i < selectedEndpointKeys.Length; i++)
             {
                 Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
-                NetworkInfos.Add(new NetworkSelectInfo
+                networkInfosList.Add(new NetworkSelectInfo
                 {
                     EndpointKey = selectedEndpointKeys[i],
                     ShowName = i == 0, // true for the first endpoint, otherwise hidden
                     Name = endpoint.Name,
                     Icon = endpoint.Icon,
                     DarkIcon = endpoint.DarkIcon,
+                    EndpointConnectionStatus = EndpointConnectionStatus.Loading,
                 });
             }
+
+            NetworkInfos = new ObservableCollection<NetworkSelectInfo>(networkInfosList);
 
             // Update other views
             Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(selectedEndpointKeys);
         }
 
-
         public void Select(Endpoint selectedEndpoint)
         {
             string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
 
-            NetworkInfos = new ObservableCollection<NetworkSelectInfo>();
-
             for (int i = 0; i < selectedEndpointKeys.Length; i++)
             {
                 Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
-                NetworkInfos.Add(new NetworkSelectInfo
+                NetworkInfos[i].ShowName = endpoint.Name == selectedEndpoint.Name;
+            }
+
+            UpdateNetworkInfos();
+
+
+            Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpoint);
+        }
+
+        public void UpdateNetworkInfos()
+        {
+            var tempOldValues = NetworkInfos;
+            var networkInfos = new ObservableCollection<NetworkSelectInfo>();
+            for (int i = 0; i < tempOldValues.Count; i++)
+            {
+                networkInfos.Add(new NetworkSelectInfo
                 {
-                    EndpointKey = selectedEndpointKeys[i],
-                    ShowName = endpoint.Name == selectedEndpoint.Name,
-                    Name = endpoint.Name,
-                    Icon = endpoint.Icon,
-                    DarkIcon = endpoint.DarkIcon,
+                    ShowName = tempOldValues[i].ShowName,
+                    Name = tempOldValues[i].Name,
+                    Icon = tempOldValues[i].Icon,
+                    EndpointKey = tempOldValues[i].EndpointKey,
+                    DarkIcon = tempOldValues[i].DarkIcon,
+                    EndpointConnectionStatus = tempOldValues[i].EndpointConnectionStatus,
+                    IsSelected = tempOldValues[i].IsSelected,
                 });
             }
 
-            Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpoint);
+            NetworkInfos = networkInfos;
         }
     }
 }

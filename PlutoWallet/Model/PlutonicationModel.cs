@@ -110,7 +110,7 @@ namespace PlutoWallet.Model
                 var messageSignRequest = DependencyService.Get<MessageSignRequestViewModel>();
 
                 messageSignRequest.Message = message;
-                messageSignRequest.MessageString = message.data;
+                messageSignRequest.MessageString = GetMessageString(message.data);
                 messageSignRequest.IsVisible = true;
             }
             catch (Exception ex)
@@ -122,6 +122,20 @@ namespace PlutoWallet.Model
 
                 messagePopup.IsVisible = true;
             }
+        }
+
+        private static string GetMessageString(string hex)
+        {
+            int maxChars = 30;
+
+            string result = hex.Length >= maxChars ? hex.Substring(0, maxChars) : hex;
+
+            for (int i = 1; i <= hex.Length / maxChars; i++)
+            {
+                result += "\n" + (hex.Length - i * maxChars >= maxChars ? hex.Substring(i * maxChars, maxChars) : hex.Substring(i * maxChars));
+            }
+
+            return result;
         }
     }
 }

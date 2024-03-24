@@ -22,7 +22,7 @@ public partial class MultiNetworkSelectView : ContentView
         {
             var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
-            if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent).ShowName)
+            if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent.Parent).ShowName)
             {
                 // Probably do nothing
             }
@@ -38,12 +38,13 @@ public partial class MultiNetworkSelectView : ContentView
                         Name = tempOldValues[i].Name,
                         Icon = tempOldValues[i].Icon,
                         EndpointKey = tempOldValues[i].EndpointKey,
+                        DarkIcon = tempOldValues[i].DarkIcon,
+                        EndpointConnectionStatus = tempOldValues[i].EndpointConnectionStatus,
                     });
                     endpointKeys.Add(networkInfos[i].EndpointKey);
-
                 }
 
-                var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent);
+                var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent.Parent);
 
                 int thisBubbleIndex = Array.IndexOf(endpointKeys.ToArray(), senderBubble.EndpointKey);
                 networkInfos[thisBubbleIndex].ShowName = true;
@@ -59,7 +60,7 @@ public partial class MultiNetworkSelectView : ContentView
             var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
             messagePopup.Title = "MultiNetworkSelectView Error";
-            messagePopup.Text = ex.Message;
+            messagePopup.Text = ex.ToString();
 
             messagePopup.IsVisible = true;
         }

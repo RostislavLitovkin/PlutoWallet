@@ -37,7 +37,8 @@
                                                              EndpointKey="{Binding EndpointKey}"
                                                              ShowName="{Binding ShowName}"
                                                              Name="{Binding Name}"
-                                                             Icon="{Binding Icon}">
+                                                             Icon="{Binding Icon}"
+                                                             EndpointConnectionStatus="{Binding EndpointConnectionStatus}">
 
                                         </networkselect:NetworkBubbleView>
 

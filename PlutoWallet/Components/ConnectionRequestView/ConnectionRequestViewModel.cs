@@ -22,11 +22,36 @@ namespace PlutoWallet.Components.ConnectionRequestView
         private string key;
 
 		[ObservableProperty]
+		private bool requestViewIsVisible;
+
+        [ObservableProperty]
+        private bool connectionStatusIsVisible;
+
+		[ObservableProperty]
+		private bool checkIsVisible;
+
+		[ObservableProperty]
+		private string connectionStatusText;
+
+        [ObservableProperty]
 		private AccessCredentials accessCredentials;
 
         public ConnectionRequestViewModel()
 		{
-			isVisible = false;
+			requestViewIsVisible = true;
+			connectionStatusIsVisible = false;
+            isVisible = false;
+			checkIsVisible = false;
+			connectionStatusText = "Connecting";
+        }
+
+		public void Show()
+		{
+            RequestViewIsVisible = true;
+            ConnectionStatusIsVisible = false;
+            IsVisible = true;
+			CheckIsVisible = false;
+			ConnectionStatusText = "Connecting";
         }
     }
 }
