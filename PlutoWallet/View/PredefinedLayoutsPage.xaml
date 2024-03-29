@@ -24,8 +24,10 @@
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Just Crypto"
                                                                PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, ChaK];[polkadot, kusama]"/>
 
-                <predefinedlayouts:GenericPredefinedLayoutItem Title="Default"
-                                                               PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, PubK, SubK, ChaK, CalEx];[polkadot, moonbeam, astar]"/>
+                <!--<predefinedlayouts:GenericPredefinedLayoutItem Title="Default"
+                                                               PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, PubK, SubK, ChaK, CalEx];[polkadot, moonbeam, astar]"/>-->
+
+                <predefinedlayouts:GalaxyLogicGameLayoutItem />
 
                 <predefinedlayouts:AwesomaAjunaAvatarsLayoutItem />
 

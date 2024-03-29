@@ -44,6 +44,7 @@ public class MainActivity : MauiAppCompatActivity
                 connectionRequest.Name = ac.Name;
                 connectionRequest.Url = ac.Url;
                 connectionRequest.Key = ac.Key;
+                connectionRequest.PlutoLayout = ac.PlutoLayout;
                 connectionRequest.AccessCredentials = ac;
             }
         }

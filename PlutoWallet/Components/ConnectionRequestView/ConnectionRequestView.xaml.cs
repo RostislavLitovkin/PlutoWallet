@@ -8,6 +8,7 @@ using Schnorrkel;
 using Substrate.NetApi;
 using Newtonsoft.Json;
 using PlutoWallet.Components.TransactionRequest;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.ConnectionRequestView;
 
@@ -45,6 +46,11 @@ public partial class ConnectionRequestView : ContentView
             dAppViewModel.Icon = viewModel.Icon;
             dAppViewModel.Name = viewModel.Name;
             dAppViewModel.IsVisible = true;
+
+            if (viewModel.PlutoLayout is not null) {
+                var plutoLayoutString = CustomLayoutModel.GetLayoutString(viewModel.PlutoLayout);
+                CustomLayoutModel.MergePlutoLayouts(plutoLayoutString);
+            }
         }
         catch (Exception ex)
         {

@@ -9,8 +9,15 @@ public partial class UpdateView : ContentView
 		BindingContext = DependencyService.Get<UpdateViewModel>();
     }
 
-    void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        try
+        {
+            await Launcher.Default.OpenAsync("https://play.google.com/store/apps/details?id=com.rostislavlitovkin.plutowallet");
+        }
+        catch
+        {
 
+        }
     }
 }

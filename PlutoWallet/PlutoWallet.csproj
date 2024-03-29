@@ -67,6 +67,8 @@
 		<MauiImage Include="Resources\Images\NetworkIcons\*png" />
 		<MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
 		<MauiImage Include="Resources\Images\PredefinedLayouts\*png" />
+		<MauiImage Include="Resources\Images\GalaxyLogicGame\*svg" />
+		<MauiImage Include="Resources\Images\GalaxyLogicGame\*png" />
 		<MauiImage Include="Resources\Images\FatCat\*png" />
 
 		<!-- fonts -->
@@ -92,7 +94,7 @@
 		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
 		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
 		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
-		<PackageReference Include="Plutonication" Version="2.2.0" />
+		<PackageReference Include="Plutonication" Version="2.3.6" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -248,9 +250,21 @@
 	  <None Remove="Resources\Images\checkgreen.svg" />
 	  <None Remove="Resources\Fonts\sourcecode.ttf" />
 	  <None Remove="Components\UpdateView\" />
+	  <None Remove="Components\GalaxyLogicGame\" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\extraplusshiny.png" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
+	  <None Remove="Resources\Images\lockwhite.svg" />
+	  <None Remove="Resources\Images\lockblack.svg" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
+	  <None Remove="Resources\Fonts\samsungone700.ttf" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
+	  <MauiImage Remove="Resources\Images\lockwhite.svg" />
+	  <MauiImage Remove="Resources\Images\lockblack.svg" />
+	  <MauiImage Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
@@ -360,6 +374,16 @@
 	  <BundleResource Include="Resources\Images\emptycircleblack.svg" />
 	  <BundleResource Include="Resources\Images\checkgreen.svg" />
 	  <BundleResource Include="Resources\Fonts\sourcecode.ttf" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\extraplusshiny.png" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
+	  <BundleResource Include="Resources\Images\lockwhite.svg" />
+	  <BundleResource Include="Resources\Images\lockblack.svg" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
+	  <BundleResource Include="Resources\Images\lockwhite.svg" />
+	  <BundleResource Include="Resources\Images\lockblack.svg" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
+	  <BundleResource Include="Resources\Fonts\samsungone700.ttf" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
@@ -487,6 +511,8 @@
 	  <Folder Include="Components\Fee\" />
 	  <Folder Include="Components\VTokens\" />
 	  <Folder Include="Components\UpdateView\" />
+	  <Folder Include="Components\GalaxyLogicGame\" />
+	  <Folder Include="Resources\Images\GalaxyLogicGame\" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.PredefinedLayouts.GalaxyLogicGameLayoutItem"
+             HeightRequest="60">
+    <card:Card Color="#222">
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <HorizontalStackLayout>
+                        <Label 
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End"
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold"
+                                          Text="Galaxy Logic Game"
+                                          FontFamily="SamsungOne"/>
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Image Source="infowhite.png" 
+                                   VerticalOptions="Center"
+                                   Margin="5, 0, 0, 0"
+                                   HeightRequest="15" WidthRequest="15"/>
+                    </HorizontalStackLayout>
+                
+                </VerticalStackLayout>
+
+                <Image AbsoluteLayout.LayoutBounds="1, 0.5, 50, 50"
+                             AbsoluteLayout.LayoutFlags="PositionProportional"
+                             Aspect="AspectFit"
+                             Source="galaxylogo.png"
+                             />
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All">
+
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClicked" />
+
+                    </AbsoluteLayout.GestureRecognizers>
+                </AbsoluteLayout>
+                
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

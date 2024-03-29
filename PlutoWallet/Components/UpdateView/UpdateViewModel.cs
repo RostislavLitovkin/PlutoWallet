@@ -25,7 +25,9 @@ namespace PlutoWallet.Components.UpdateView
 				return;
 			}
 
-			IsVisible = plutoWalletVersion.Version > currentBuild;
+			Console.WriteLine("Versions: " + plutoWalletVersion.Version + " > " + currentBuild);
+
+            IsVisible = plutoWalletVersion.Version > currentBuild;
         }
     }
 }

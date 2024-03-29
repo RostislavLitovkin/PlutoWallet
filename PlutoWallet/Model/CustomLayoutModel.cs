@@ -23,6 +23,8 @@ using PlutoWallet.Components.Nft;
 using PlutoWallet.Components.Fee;
 using PlutoWallet.Components.VTokens;
 using PlutoWallet.Components.UpdateView;
+using PlutoWallet.Components.GalaxyLogicGame;
+using PlutoWallet.Components.PredefinedLayouts;
 
 namespace PlutoWallet.Model
 {
@@ -34,14 +36,14 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [U, dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK, CalEx];[polkadot, kusama]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [U, dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK];[polkadot, kusama]";
 
         // This constant is used to fetch all items
-        public const string ALL_ITEMS = "plutolayout: [U, dApp, ExSL, UsdB, RnT, SubK, ChaK, CalEx, " +
+        public const string ALL_ITEMS = "plutolayout: [U, dApp, ExSL, UsdB, RnT, SubK, ChaK, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
-            "BMnR, NftG, VDot];[";
+            "BMnR, NftG, VDot, GLGPowerups];[";
 
-        // EXTRA: StDash, AAASeasonCountdown, PubK, FeeA
+        // EXTRA: StDash, AAASeasonCountdown, PubK, FeeA, CalEx
 
         public static List<Endpoint> ParsePlutoEndpoints(string plutoLayoutString)
         {
@@ -148,8 +150,6 @@ namespace PlutoWallet.Model
 
             var basePageViewModel = DependencyService.Get<BasePageViewModel>();
             basePageViewModel.MainView.Setup();
-
-            //ShowRestartNeededMessage();
         }
 
         public static void SaveLayout(string layoutItemInfos)
@@ -160,8 +160,6 @@ namespace PlutoWallet.Model
 
             var basePageViewModel = DependencyService.Get<BasePageViewModel>();
             basePageViewModel.MainView.Setup();
-
-            //ShowRestartNeededMessage();
         }
 
         /**
@@ -216,8 +214,41 @@ namespace PlutoWallet.Model
             }
 
             Model.CustomLayoutModel.SaveLayout(infos);
-
         }
+
+        public static void MergePlutoLayouts(string plutoLayout)
+        {
+            var layoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
+                plutoLayout
+            );
+
+            var savedLayoutItemInfos = Model.CustomLayoutModel.ParsePlutoLayoutItemInfos(
+                Preferences.Get("PlutoLayout",
+                Model.CustomLayoutModel.DEFAULT_PLUTO_LAYOUT)
+            );
+
+            for (int i = 0; i < layoutItemInfos.Count(); i++)
+            {
+                var itemPlutoLayoutId = layoutItemInfos[i].PlutoLayoutId;
+
+                for (int j = 0; j < savedLayoutItemInfos.Count(); j++) {
+                    if (savedLayoutItemInfos[j].PlutoLayoutId == itemPlutoLayoutId)
+                    {
+                        goto OUTER;
+                    }
+                }
+
+                savedLayoutItemInfos.Add(layoutItemInfos[i]);
+
+                OUTER:
+                {
+
+                }
+            }
+
+            Model.CustomLayoutModel.SaveLayout(savedLayoutItemInfos);
+        }
+
         private static void SaveEndpoints(string plutoLayoutString)
         {
             if (plutoLayoutString.Substring(0, 13) != "plutolayout: ")
@@ -272,8 +303,6 @@ namespace PlutoWallet.Model
 
             messagePopup.IsVisible = true;
         }
-
-
 
         public static IView GetItem(string plutoLayoutId)
         {
@@ -333,6 +362,8 @@ namespace PlutoWallet.Model
                     return new FeeAssetView();
                 case "VDot":
                     return new VDotTokenView();
+                case "GLGPowerups":
+                    return new GLGPowerupsView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -422,6 +453,8 @@ namespace PlutoWallet.Model
                     return new FeeAssetView();
                 case "VDot":
                     return new VDotTokenView();
+                case "GLGPowerups":
+                    return new GLGPowerupsView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -563,6 +596,25 @@ namespace PlutoWallet.Model
                         Name = "vDOT staking",
                         PlutoLayoutId = "VDot",
                     };
+                case "GLGPowerups":
+                    return new LayoutItemInfo
+                    {
+                        Name = "Galaxy Logic Game Powerups",
+                        PlutoLayoutId = "GLGPowerups",
+                    };
+            }
+
+            throw new Exception("Could not parse the PlutoLayoutId");
+        }
+
+        public static string GetLayoutString(string plutoLayout)
+        {
+            switch (plutoLayout)
+            {
+                case "GalaxyLogicGame":
+                    return GalaxyLogicGameLayoutItem.LAYOUT;
+                case "AwesomeAjunaAwatars":
+                    return AwesomaAjunaAvatarsLayoutItem.LAYOUT;
             }
 
             throw new Exception("Could not parse the PlutoLayout");

@@ -21,6 +21,7 @@ public static class MauiProgram
                 fonts.AddFont("Exodar-Outline.ttf", "Exodar");
                 fonts.AddFont("FontOver.ttf", "FontOver");
                 fonts.AddFont("sourcecode.ttf", "SourceCode");
+                fonts.AddFont("samsungone700.ttf", "SamsungOne");
 
             });
 

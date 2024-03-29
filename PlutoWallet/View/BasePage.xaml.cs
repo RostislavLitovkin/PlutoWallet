@@ -36,6 +36,7 @@ public partial class BasePage : ContentPage
 
     async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
+#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
         MainThread.BeginInvokeOnMainThread(async () =>
         {
             if (e.Results.Length <= 0)
@@ -61,6 +62,7 @@ public partial class BasePage : ContentPage
                     connectionRequest.Url = ac.Url;
                     connectionRequest.Key = ac.Key;
                     connectionRequest.AccessCredentials = ac;
+
                 }
                 else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
                 {
@@ -117,5 +119,6 @@ public partial class BasePage : ContentPage
                 messagePopup.IsVisible = true;
             }
         });
+#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
     }
 }

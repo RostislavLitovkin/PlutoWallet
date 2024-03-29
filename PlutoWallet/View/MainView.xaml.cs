@@ -1,4 +1,5 @@
-﻿using PlutoWallet.ViewModel;
+﻿using PlutoWallet.Model;
+using PlutoWallet.ViewModel;
 
 namespace PlutoWallet.View;
 
@@ -10,7 +11,7 @@ public partial class MainView : ContentView
 
         BindingContext = DependencyService.Get<MainViewModel>();
 
-        Setup();
+		Setup();
     }
 
 	public void Setup()
