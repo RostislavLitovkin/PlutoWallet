@@ -198,7 +198,6 @@
 	  <None Remove="Resources\Images\fingerprintwhite.svg" />
 	  <None Remove="Resources\Images\transferblack.svg" />
 	  <None Remove="Resources\Images\transferwhite.svg" />
-
 	  <None Remove="Components\ConfirmTransaction\" />
 	  <None Remove="Resources\Images\space.png" />
 	  <None Remove="Components\AzeroId\" />
@@ -259,12 +258,6 @@
 	  <None Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <None Remove="Resources\Fonts\samsungone700.ttf" />
 	  <None Remove="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\dotnet_bot.svg" />
-	  <MauiImage Remove="Resources\Images\lockwhite.svg" />
-	  <MauiImage Remove="Resources\Images\lockblack.svg" />
-	  <MauiImage Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
@@ -337,7 +330,6 @@
 	  <BundleResource Include="Resources\Images\fingerprintwhite.svg" />
 	  <BundleResource Include="Resources\Images\transferblack.svg" />
 	  <BundleResource Include="Resources\Images\transferwhite.svg" />
-
 	  <BundleResource Include="Resources\Images\space.png" />
 	  <BundleResource Include="Resources\Images\azeroid.svg" />
 	  <BundleResource Include="Resources\Images\azeroiddarkbg.png" />
@@ -376,12 +368,9 @@
 	  <BundleResource Include="Resources\Fonts\sourcecode.ttf" />
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\extraplusshiny.png" />
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
-	  <BundleResource Include="Resources\Images\lockwhite.svg" />
-	  <BundleResource Include="Resources\Images\lockblack.svg" />
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <BundleResource Include="Resources\Images\lockwhite.svg" />
 	  <BundleResource Include="Resources\Images\lockblack.svg" />
-	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <BundleResource Include="Resources\Fonts\samsungone700.ttf" />
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
 	</ItemGroup>

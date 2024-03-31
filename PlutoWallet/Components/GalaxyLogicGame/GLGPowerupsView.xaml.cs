@@ -15,6 +15,5 @@ public partial class GLGPowerupsView : ContentView
     {
         powerupsLayout.WidthRequest = absoluteLayout.Width;
         powerupsLayout.Margin = new Thickness(0, watchImage.Height - 90, 0, 10);
-
     }
 }

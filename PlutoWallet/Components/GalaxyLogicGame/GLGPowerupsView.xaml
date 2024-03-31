@@ -19,19 +19,22 @@
                 <Image Source="glgwatch.png"
                        AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
                        AbsoluteLayout.LayoutFlags="WidthProportional"
-                       x:Name="watchImage"/>
-             <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <Label
-                    HeightRequest="30"
-                    VerticalTextAlignment="Center"
-                    Text="Powerups"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    TextColor="White"
-                    />
-            </VerticalStackLayout>
+                       x:Name="watchImage"
+                       />
 
-            <VerticalStackLayout Margin="0, 100, 0, 10"
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Powerups"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="0, 100, 0, 10"
+                                     
                                  Padding="10, 0, 10, 0"
                                      BindableLayout.ItemsSource="{Binding Powerups}"
                                      Spacing="5"
