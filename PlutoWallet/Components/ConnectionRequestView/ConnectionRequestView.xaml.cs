@@ -48,15 +48,27 @@ public partial class ConnectionRequestView : ContentView
             dAppViewModel.IsVisible = true;
 
             if (viewModel.PlutoLayout is not null) {
-                var plutoLayoutString = CustomLayoutModel.GetLayoutString(viewModel.PlutoLayout);
-                CustomLayoutModel.MergePlutoLayouts(plutoLayoutString);
+                try
+                {
+                    var plutoLayoutString = CustomLayoutModel.GetLayoutString(viewModel.PlutoLayout);
+                    CustomLayoutModel.MergePlutoLayouts(plutoLayoutString);
+                }
+                catch
+                {
+                    var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                    messagePopup.Title = "Outdated version";
+                    messagePopup.Text = "Failed to import the dApp layout. Try updating PlutoWallet to newest version to fix this issue.";
+
+                    messagePopup.IsVisible = true;
+                }
             }
         }
         catch (Exception ex)
         {
             var messagePopup = DependencyService.Get<MessagePopupViewModel>();
 
-            messagePopup.Title = "ConnectionRequestView Error";
+            messagePopup.Title = "Connection Request Error";
             messagePopup.Text = ex.Message;
 
             messagePopup.IsVisible = true;
