@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui.Alerts;
-using PlutoWallet.Components.PublicKeyQRCodeView;
 
 namespace PlutoWallet.Components.AddressView;
 
@@ -55,16 +54,15 @@ public partial class AddressView : ContentView
 
     private async void OnTapped(System.Object sender, System.EventArgs e)
     {
-		await Clipboard.Default.SetTextAsync((string)GetValue(AddressProperty));
-        var toast = Toast.Make("Copied to clipboard");
-        await toast.Show();
+		await CopyAddress.CopyToClipboardAsync((string)GetValue(AddressProperty));
     }
 
-    void OnQRTapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    private void OnQRTapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-		var qrViewModel = DependencyService.Get<PublicKeyQRCodeViewModel>();
+		var qrViewModel = DependencyService.Get<AddressQrCodeViewModel>();
 
-		qrViewModel.PublicKey = (string)GetValue(QrAddressProperty);
+		qrViewModel.QrAddress = (string)GetValue(QrAddressProperty);
+        qrViewModel.Address = (string)GetValue(AddressProperty);
         qrViewModel.IsVisible = true;
     }
 }

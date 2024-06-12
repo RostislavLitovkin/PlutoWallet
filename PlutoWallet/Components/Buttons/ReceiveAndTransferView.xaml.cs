@@ -1,5 +1,4 @@
 ﻿using PlutoWallet.Components.AddressView;
-using PlutoWallet.Components.PublicKeyQRCodeView;
 using PlutoWallet.Components.TransferView;
 
 namespace PlutoWallet.Components.Buttons;
@@ -15,9 +14,10 @@ public partial class ReceiveAndTransferView : ContentView
     {
         var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
 
-        var qrViewModel = DependencyService.Get<PublicKeyQRCodeViewModel>();
+        var qrViewModel = DependencyService.Get<AddressQrCodeViewModel>();
 
-        qrViewModel.PublicKey = chainAddressViewModel.QrAddress;
+        qrViewModel.QrAddress = chainAddressViewModel.QrAddress;
+        qrViewModel.Address = chainAddressViewModel.Address;
         qrViewModel.IsVisible = true;
     }
 
