@@ -13,6 +13,34 @@ public partial class BottomPopupCard : AbsoluteLayout
 
     public Microsoft.Maui.Controls.View View { set { contentView.Content = value; } }
 
+    private async Task CloseCardAsync()
+    {
+        await Task.WhenAll(
+                    border.TranslateTo(0, border.Height, 250, Easing.CubicOut),
+                    dragger.TranslateTo(0, border.Height, 250, Easing.CubicOut),
+                    contentView.TranslateTo(0, border.Height, 250, Easing.CubicOut),
+                    closeButton.TranslateTo(0, border.Height, 250, Easing.CubicOut)
+
+                );
+
+        try
+        {
+
+            // This is a great workaround.
+            // Most of the times, you will use this inside of a ContentView that has got a IPopup BindingContext.
+            // If not, then nothing will happen
+            ((IPopup)((ContentView)this.Parent).BindingContext).IsVisible = false;
+        }
+        catch
+        {
+
+        }
+
+        border.TranslationY = 0;
+        dragger.TranslationY = 0;
+        contentView.TranslationY = 0;
+        closeButton.TranslationY = 0;
+    }
     private async void OnPanUpdated(System.Object sender, Microsoft.Maui.Controls.PanUpdatedEventArgs e)
     {
         if (e.StatusType == GestureStatus.Started)
@@ -35,6 +63,7 @@ public partial class BottomPopupCard : AbsoluteLayout
                 border.TranslationY = yAverage;
                 dragger.TranslationY = yAverage;
                 contentView.TranslationY = yAverage;
+                closeButton.TranslationY = yAverage;
             }
         }
 
@@ -45,34 +74,19 @@ public partial class BottomPopupCard : AbsoluteLayout
                 await Task.WhenAll(
                     border.TranslateTo(0, 0, 250, Easing.CubicOut),
                     dragger.TranslateTo(0, 0, 250, Easing.CubicOut),
-                    contentView.TranslateTo(0, 0, 250, Easing.CubicOut)
+                    contentView.TranslateTo(0, 0, 250, Easing.CubicOut),
+                    closeButton.TranslateTo(0, 0, 250, Easing.CubicOut)
                     );
             }
             else
             {
-                await Task.WhenAll(
-                    border.TranslateTo(0, border.Height, 250, Easing.CubicOut),
-                    dragger.TranslateTo(0, border.Height, 250, Easing.CubicOut),
-                    contentView.TranslateTo(0, border.Height, 250, Easing.CubicOut)
-                );
-
-                try
-                {
-
-                    // This is a great workaround.
-                    // Most of the times, you will use this inside of a ContentView that has got a IPopup BindingContext.
-                    // If not, then nothing will happen
-                    ((IPopup)((ContentView)this.Parent).BindingContext).IsVisible = false;
-                }
-                catch
-                {
-                    
-                }
-
-                border.TranslationY = 0;
-                dragger.TranslationY = 0;
-                contentView.TranslationY = 0;
+                await CloseCardAsync();
             }
         }
+    }
+
+    private async void OnCloseClicked(object sender, EventArgs e)
+    {
+        await CloseCardAsync();
     }
 }

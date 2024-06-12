@@ -506,7 +506,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
-	  <ProjectReference Include="..\Plutonication\Plutonication\Plutonication.csproj" />
 	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>

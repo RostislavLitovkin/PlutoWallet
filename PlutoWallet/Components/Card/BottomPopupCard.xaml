@@ -5,11 +5,11 @@
              AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
             AbsoluteLayout.LayoutFlags="All"
             BackgroundColor="#66000000">
-                    
 
-        <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5, 1, 1, .6"
+
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5, 1, 1, .6"
                 AbsoluteLayout.LayoutFlags="All">
-            <Border AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+        <Border AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
                     AbsoluteLayout.LayoutFlags="All"
                     BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark=#0a0a0a}"
                     StrokeThickness="0"
@@ -17,44 +17,52 @@
                     x:Name="border"
                 >
 
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20" />
+
+            </Border.StrokeShape>
+
+        </Border>
+
+        <ContentView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Margin="10, 85, 10, 0"
+                         x:Name="contentView">
+
+
+        </ContentView>
+
+        <AbsoluteLayout
+                        Padding="0, 10, 0, 10"
+                        AbsoluteLayout.LayoutBounds="0.5, 0, 1, 85"
+                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+            <Border BackgroundColor="#888888"
+                        AbsoluteLayout.LayoutBounds=".5, 0, 100, 5"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        x:Name="dragger"
+                        ZIndex="10">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="20" />
+                    <RoundRectangle CornerRadius="2.5"/>
 
                 </Border.StrokeShape>
 
+
             </Border>
-            <ContentView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
-                         AbsoluteLayout.LayoutFlags="All"
-                         Margin="10, 25, 10, 0"
-                         x:Name="contentView">
-
-                
-            </ContentView>
-
-            <AbsoluteLayout
-                        Padding="0, 10, 0, 10"
-                        AbsoluteLayout.LayoutBounds="0.5, 0, 100, 25"
-                        AbsoluteLayout.LayoutFlags="PositionProportional">
-                <Border BackgroundColor="#888888"
-                        AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
-                        AbsoluteLayout.LayoutFlags="All"
-                        x:Name="dragger"
-                        ZIndex="10">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="2.5"/>
-
-                    </Border.StrokeShape>
-
-                
-                </Border>
-
-                <AbsoluteLayout.GestureRecognizers>
-                    <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-                </AbsoluteLayout.GestureRecognizers>
-            </AbsoluteLayout>
             
+            <Button AbsoluteLayout.LayoutBounds=".5, 1, 1, 50"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                    Text="Confirm"
+                    Margin="10, 10, 10, 0"
+                    x:Name="closeButton"
+                    Clicked="OnCloseClicked"/>
+
+            <AbsoluteLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </AbsoluteLayout.GestureRecognizers>
         </AbsoluteLayout>
-        
-    
+
+    </AbsoluteLayout>
+
+
 </AbsoluteLayout>
 
