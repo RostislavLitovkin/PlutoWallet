@@ -23,6 +23,9 @@
                                                  HeightRequest="200"
                                                  BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
                                                  Value="{Binding PlutoLayoutValue}"/>
+
+                    <Button Text="Export PNG"
+                            IsEnabled="False"/> 
                 </VerticalStackLayout>
 
                 <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
