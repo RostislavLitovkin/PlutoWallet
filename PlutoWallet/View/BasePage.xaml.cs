@@ -6,6 +6,7 @@ using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.Vault;
 using Substrate.NetApi;
 using PlutoWallet.Components.TransferView;
+using PlutoWallet.Components.DAppConnectionView;
 
 namespace PlutoWallet.View;
 
@@ -63,6 +64,11 @@ public partial class BasePage : ContentPage
                     connectionRequest.Key = ac.Key;
                     connectionRequest.AccessCredentials = ac;
 
+                    DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+                    dAppViewModel.Icon = ac.Icon;
+                    dAppViewModel.Name = ac.Name;
+                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Waiting);
+                    dAppViewModel.IsVisible = true;
                 }
                 else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
                 {

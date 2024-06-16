@@ -21,7 +21,8 @@
                             HeightRequest="40"
                             VerticalTextAlignment="End"/>
                         <Label
-                            Text="Connected" TextColor="Green"
+                            Text="{Binding ConnectionState}"
+                            TextColor="{Binding ConnectionStateColor}"
                             HorizontalOptions="Start" />
                     </VerticalStackLayout>
 

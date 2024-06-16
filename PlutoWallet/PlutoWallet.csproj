@@ -80,6 +80,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="3.0.0-preview.7" />
 		<PackageReference Include="websocketsharp.core" Version="1.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
@@ -88,13 +89,13 @@
 		<PackageReference Include="Uniquery" Version="1.0.1" />
 		<PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 		<PackageReference Include="AzeroIdResolver" Version="1.0.2" />
-		<PackageReference Include="Substrate.NET.Wallet" Version="1.0.7" />
+		<PackageReference Include="Substrate.NET.Wallet" Version="1.0.8" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
 		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
 		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
-		<PackageReference Include="Plutonication" Version="2.3.6" />
+		<PackageReference Include="Plutonication" Version="2.4.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -468,7 +469,6 @@
 	  <Folder Include="Components\ArgumentsView\" />
 	  <Folder Include="Resources\Splash\" />
 	  <Folder Include="Resources\AppIcon\" />
-	  <Folder Include="Components\DAppConnectionView\" />
 	  <Folder Include="Components\Staking\" />
 	  <Folder Include="Components\Switch\" />
 	  <Folder Include="Components\WebView\" />

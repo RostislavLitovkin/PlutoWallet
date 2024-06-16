@@ -2,7 +2,7 @@
 using Plutonication;
 using Substrate.NetApi.Model.Types;
 using Chaos.NaCl;
-using Schnorrkel;
+using Substrate.NET.Schnorrkel;
 
 namespace PlutoWallet.Components.TransactionRequest;
 

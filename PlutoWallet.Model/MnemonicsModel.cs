@@ -11,7 +11,7 @@ namespace PlutoWallet.Model
 {
 	public class MnemonicsModel
 	{
-        private static readonly Meta META = new Meta() { name = "PlutoWallet" };
+        private static readonly Meta META = new Meta() { Name = "PlutoWallet" };
 
         public static string[] GenerateMnemonicsArray()
         {
@@ -79,7 +79,7 @@ namespace PlutoWallet.Model
             return wallet;
         }
 
-        public static Wallet GetWalletFromPair(PairInfo pair, string password)
+        /*public static Wallet GetWalletFromPair(PairInfo pair, string password)
         {
             var setup = new KeyringAddress(KeyType.Sr25519);
 
@@ -103,7 +103,7 @@ namespace PlutoWallet.Model
             Account account = wallet.Account;
 
             return wallet.ToJson("PlutoWallet", password);
-        }
+        }*/
     }
 }
 

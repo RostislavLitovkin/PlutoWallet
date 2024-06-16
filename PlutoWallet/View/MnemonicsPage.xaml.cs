@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using PlutoWallet.Model;
-using Schnorrkel.Keys;
+using Substrate.NET.Schnorrkel.Keys;
 using Substrate.NET.Wallet.Keyring;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
@@ -52,12 +52,12 @@ public partial class MnemonicsPage : ContentPage
         Console.WriteLine(Utils.Bytes2HexString(((BaseType)account).Bytes));
         Console.WriteLine(Utils.Bytes2HexString(account.PrivateKey));
 
-        string json = MnemonicsModel.ExportJsonFromPair(new PairInfo(((BaseType)account).Bytes, account.PrivateKey), "akr379AB");
+        /*
 
         // Source: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/essentials/file-saver?tabs=macos
         using var stream = new MemoryStream(System.Text.Encoding.Default.GetBytes(json));
         var fileSaverResult = await FileSaver.Default.SaveAsync("PlutoWallet.json", stream, CancellationToken.None);
-
+        */
         /*if (fileSaverResult.IsSuccessful)
         {
             await Toast.Make($"The file was saved successfully to location: {fileSaverResult.FilePath}").Show(cancellationToken);

@@ -1,15 +1,11 @@
-﻿using System;
-using Substrate.NetApi;
+﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
-using Schnorrkel.Keys;
-using static Substrate.NetApi.Mnemonic;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using PlutoWallet.Components.ConfirmTransaction;
-using System.Security.Cryptography;
 using Substrate.NET.Wallet;
-using Substrate.NET.Wallet.Keyring;
+using Substrate.NET.Schnorrkel.Keys;
 
 namespace PlutoWallet.Model
 {
