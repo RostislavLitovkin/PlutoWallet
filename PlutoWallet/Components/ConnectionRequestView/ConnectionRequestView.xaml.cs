@@ -20,8 +20,11 @@ public partial class ConnectionRequestView : ContentView
         {
             var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
 
+            viewModel.Connecting = true;
+
             viewModel.RequestViewIsVisible = false;
             viewModel.ConnectionStatusIsVisible = true;
+            viewModel.ConnectionStatusText = $"Connecting.";
 
             DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
             dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connecting);
@@ -32,12 +35,19 @@ public partial class ConnectionRequestView : ContentView
                 signPayload: Model.PlutonicationModel.ReceivePayload,
                 signRaw: Model.PlutonicationModel.ReceiveRaw,
                 onConnected: (object sender, EventArgs args) => {
+                    viewModel.Connecting = false;
+                    viewModel.Connected = true;
+                    viewModel.Confirming = true;
+
+                    viewModel.ConnectionStatusText = $"Confirming.";
+
                     dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Confirming);
                 },
                 onConfirmDAppConnection: () => {
                     dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connected);
 
-                    viewModel.CheckIsVisible = true;
+                    viewModel.Confirming = false;
+                    viewModel.Confirmed = true;
                     viewModel.ConnectionStatusText = $"Connected successfully. You can now go back to {viewModel.Name}.";
                 },
                 onDisconnected: (object sender, string args) => {
@@ -83,7 +93,7 @@ public partial class ConnectionRequestView : ContentView
         }
     }
 
-    private async void RejectClicked(System.Object sender, System.EventArgs e)
+    private void RejectClicked(System.Object sender, System.EventArgs e)
     {
         DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
         dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Rejected);
@@ -92,7 +102,7 @@ public partial class ConnectionRequestView : ContentView
         viewModel.IsVisible = false;
     }
 
-    private async void DismissClicked(System.Object sender, System.EventArgs e)
+    private void DismissClicked(System.Object sender, System.EventArgs e)
     {
         var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
         viewModel.IsVisible = false;

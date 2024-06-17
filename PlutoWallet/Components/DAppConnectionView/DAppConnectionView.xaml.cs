@@ -25,18 +25,13 @@ public partial class DAppConnectionView : ContentView
         {
             // Disconnect from the dApp
             await PlutonicationWalletClient.DisconnectAsync();
-
-            var viewModel = DependencyService.Get<DAppConnectionViewModel>();
-            viewModel.IsVisible = false;
         }
-        catch (Exception ex)
+        catch
         {
-            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-            messagePopup.Title = "DAppConnectionView Error";
-            messagePopup.Text = ex.Message;
-
-            messagePopup.IsVisible = true;
+            // Fails if it is not connected to anything. (Which is fine)
         }
+
+        var viewModel = DependencyService.Get<DAppConnectionViewModel>();
+        viewModel.IsVisible = false;
     }
 }

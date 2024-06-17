@@ -105,8 +105,14 @@
 	  <None Remove="Components\NetworkSelect\" />
 	  <None Remove="Components\AddressView\" />
 	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="Resources\Images\cloudblack.svg" />
+	  <None Remove="Resources\Images\cloudwhite.svg" />
 	  <None Remove="Resources\Images\copyblack.svg" />
 	  <None Remove="Resources\Images\copywhite.svg" />
+	  <None Remove="Resources\Images\dappblack.svg" />
+	  <None Remove="Resources\Images\dappwhite.svg" />
+	  <None Remove="Resources\Images\deviceblack.svg" />
+	  <None Remove="Resources\Images\devicewhite.svg" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
@@ -381,6 +387,9 @@
 	  <MauiXaml Update="Components\AddressView\AddressQrCodeView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Animations\LoadingView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
@@ -504,6 +513,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Components\Animations\LoadingView.xaml.cs">
+	    <DependentUpon>LoadingView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>

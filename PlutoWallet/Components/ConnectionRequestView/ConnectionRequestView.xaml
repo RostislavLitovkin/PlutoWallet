@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:animations="clr-namespace:PlutoWallet.Components.Animations"
              x:Class="PlutoWallet.Components.ConnectionRequestView.ConnectionRequestView"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
@@ -47,18 +49,43 @@
                                      IsVisible="{Binding ConnectionStatusIsVisible}"
                                      HorizontalOptions="Center"
                                      >
-                    <AbsoluteLayout WidthRequest="100"
-                                    HeightRequest="100" 
-                                    >
-                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 60, 60"
-                               AbsoluteLayout.LayoutFlags="PositionProportional"
-                               Source="{AppThemeBinding Light=emptycircleblack.png, Dark=emptycirclewhite.png}"
-                               />
+                    <AbsoluteLayout WidthRequest="220"
+                                 HeightRequest="40">
 
+                        <Image AbsoluteLayout.LayoutBounds="0, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=deviceblack.png, Dark=devicewhite.png}"
+                               />
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 40, 40"
                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=cloudblack.png, Dark=cloudwhite.png}"
+                               />
+                        
+                        <Image AbsoluteLayout.LayoutBounds="1, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=dappblack.png, Dark=dappwhite.png}"
+                               />
+
+                        
+
+                        <animations:LoadingView AbsoluteLayout.LayoutBounds=".25, 0.5, 40, 10"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                Playing="{Binding Connecting}"/>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.27, 0.5, 20, 20"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
                                Source="checkgreen.png"
-                               IsVisible="{Binding CheckIsVisible}"
+                               IsVisible="{Binding Connected}"
+                               />
+
+                        <animations:LoadingView AbsoluteLayout.LayoutBounds=".75, 0.5, 40, 10"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                Playing="{Binding Confirming}"/>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.72, 0.5, 20, 20"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="checkgreen.png"
+                               IsVisible="{Binding Confirmed}"
                                />
                     </AbsoluteLayout>
 
