@@ -29,33 +29,50 @@ namespace PlutoWallet.Model
         /// <returns>subscription ID</returns>
         public async Task<string> SubmitExtrinsicAsync(UnCheckedExtrinsic extrinsic, CancellationToken token)
         {
+            Hash extrinsicHash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256));
+            string extrinsicHashString = Utils.Bytes2HexString(extrinsicHash);
+
+            var (palletName, callName) = Model.PalletCallModel.GetPalletAndCallName(this, extrinsic.Method.ModuleIndex, extrinsic.Method.CallIndex);
+
             var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+            extrinsicStackViewModel.Update();
+
+            extrinsicStackViewModel.Extrinsics.Add(
+                extrinsicHashString,
+                new ExtrinsicInfo
+                {
+                    ExtrinsicId = extrinsicHashString,
+                    Status = ExtrinsicStatusEnum.Submitting,
+                    Endpoint = this.Endpoint,
+                    Hash = extrinsicHash,
+                    CallName = palletName + "." + callName,
+                });
 
             extrinsicStackViewModel.Update();
 
             Action<string, ExtrinsicStatus> callback = (string id, ExtrinsicStatus status) =>
             {
                 if (status.ExtrinsicState == ExtrinsicState.Ready)
-                    Console.WriteLine("Ready");
+                {
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Pending;
+                    extrinsicStackViewModel.Update();
+                }
                 else if (status.ExtrinsicState == ExtrinsicState.Dropped)
                 {
-                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Failed;
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Failed;
                     extrinsicStackViewModel.Update();
                 }
 
                 else if (status.ExtrinsicState == ExtrinsicState.InBlock)
                 {
-                    Console.WriteLine("In block");
-                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
-                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.InBlock;
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlock;
                     extrinsicStackViewModel.Update();
                 }
 
                 else if (status.ExtrinsicState == ExtrinsicState.Finalized)
                 {
-                    Console.WriteLine("Finalized");
-                    extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
-                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.Finalized;
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Finalized;
                     extrinsicStackViewModel.Update();
                 }
 
@@ -64,19 +81,6 @@ namespace PlutoWallet.Model
             };
 
             string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()), token);
-
-            var (palletName, callName) = Model.PalletCallModel.GetPalletAndCallName(this, extrinsic.Method.ModuleIndex, extrinsic.Method.CallIndex);
-
-            extrinsicStackViewModel.Extrinsics.Add(
-                extrinsicId,
-                new ExtrinsicInfo
-                {
-                    ExtrinsicId = extrinsicId,
-                    Status = ExtrinsicStatusEnum.Pending,
-                    Endpoint = this.Endpoint,
-                    Hash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256)),
-                    CallName = palletName + "." + callName,
-                });
 
             return extrinsicId;
         }

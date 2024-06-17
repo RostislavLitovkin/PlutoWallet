@@ -400,7 +400,7 @@ namespace PlutoWallet.Model
                         Endpoint = Endpoints.GetEndpointDictionary["polkadot"],
                         Hash = new Hash("0x89bca86385b938c90e230a9837bce7e09991dde37f44b98b347c1d8ae2813654"),
                         ExtrinsicId = "18737890",
-                        Status = ExtrinsicStatusEnum.Success,
+                        Status = ExtrinsicStatusEnum.Finalized,
                     });
 
                     extrinsicStatusViewModel.Extrinsics = tempExtrinsics;

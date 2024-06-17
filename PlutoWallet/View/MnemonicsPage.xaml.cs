@@ -46,7 +46,7 @@ public partial class MnemonicsPage : ContentPage
         var miniSecret2 = new MiniSecret(Utils.HexToByteArray(rawPrivateKey), ExpandMode.Ed25519);
 
         Account account = Account.Build(KeyType.Sr25519,
-            miniSecret2.ExpandToSecret().ToBytes(),
+            miniSecret2.ExpandToSecret().ToEd25519Bytes(),
             miniSecret2.GetPair().Public.Key);
 
         Console.WriteLine(Utils.Bytes2HexString(((BaseType)account).Bytes));

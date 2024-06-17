@@ -3,10 +3,11 @@ namespace PlutoWallet.Components.Extrinsic
 {
 	public enum ExtrinsicStatusEnum
 	{
+		Submitting,
 		Error,
         Pending,
         InBlock,
-		Success,
+		Finalized,
 		Failed,
 	}
 }
