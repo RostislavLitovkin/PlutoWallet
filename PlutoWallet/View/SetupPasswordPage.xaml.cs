@@ -19,4 +19,12 @@ public partial class SetupPasswordPage : ContentPage
         Navigation.InsertPageBefore(new BasePage(), Navigation.NavigationStack[0]);
         await Navigation.PopToRootAsync();
     }
+
+    private void OnEyeballClicked(object sender, TappedEventArgs e)
+    {
+        passwordEntry.IsPassword = !passwordEntry.IsPassword;
+
+        eyeball.IsVisible = passwordEntry.IsPassword;
+        eyeballSlash.IsVisible = !passwordEntry.IsPassword;
+    }
 }
