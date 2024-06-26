@@ -10,29 +10,26 @@
     <card:BottomPopupCard>
         <card:BottomPopupCard.View>
 
-            
-                <ScrollView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
-                                       AbsoluteLayout.LayoutFlags="All"
-                                       Orientation="Vertical">
+            <ScrollView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Orientation="Vertical">
 
-                    <VerticalStackLayout 
+                <VerticalStackLayout 
                                        BindableLayout.ItemsSource="{Binding Networks}"
                                        Padding="0, 0, 0, 20"
                                        Spacing="10">
 
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <networkselect:NetworkSelectorView Name="{Binding Name}"
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <networkselect:NetworkSelectorView Name="{Binding Name}"
                                                                    WsAddress="{Binding Url}"
                                                                    Icon="{Binding Icon}"
                                                                    Key="{Binding EndpointKey}"
                                                                    IsSelected="{Binding IsSelected}" />
-                            </DataTemplate>
-
-                        </BindableLayout.ItemTemplate>
-                    </VerticalStackLayout>
-                </ScrollView>
-                
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </ScrollView>
 
         </card:BottomPopupCard.View>
 

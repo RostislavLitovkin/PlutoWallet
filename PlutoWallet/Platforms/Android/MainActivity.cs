@@ -4,8 +4,7 @@ using Android.Content.PM;
 using Android.OS;
 using Plugin.Fingerprint;
 using Plutonication;
-using PlutoWallet.Components.ConnectionRequestView;
-using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Model;
 
 namespace PlutoWallet;
 
@@ -37,15 +36,7 @@ public class MainActivity : MauiAppCompatActivity
             {
                 AccessCredentials ac = new AccessCredentials(new Uri(uriString));
 
-                var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
-
-                connectionRequest.Show();
-                connectionRequest.Icon = ac.Icon;
-                connectionRequest.Name = ac.Name;
-                connectionRequest.Url = ac.Url;
-                connectionRequest.Key = ac.Key;
-                connectionRequest.PlutoLayout = ac.PlutoLayout;
-                connectionRequest.AccessCredentials = ac;
+                PlutonicationModel.ProcessAccessCredentials(ac);
             }
         }
     }

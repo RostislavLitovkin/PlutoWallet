@@ -89,7 +89,7 @@ namespace PlutoWallet.Model
 
             Account account = Account.Build(
                 KeyType.Sr25519,
-                miniSecret.ExpandToSecret().ToBytes(),
+                miniSecret.ExpandToSecret().ToEd25519Bytes(),
                 miniSecret.GetPair().Public.Key);
 
             await SecureStorage.Default.SetAsync(
@@ -109,9 +109,6 @@ namespace PlutoWallet.Model
 
         public static async Task GenerateNewAccountFromJsonAsync(string json)
         {
-            // This is default, could be changed in the future or with a setting
-            ExpandMode expandMode = ExpandMode.Ed25519;
-
             Wallet wallet = MnemonicsModel.ImportJson(json, await SecureStorage.Default.GetAsync("password"));
 
             if (wallet.IsLocked)
@@ -120,11 +117,6 @@ namespace PlutoWallet.Model
             }
 
             Account account = wallet.Account;
-
-            /*await SecureStorage.Default.SetAsync(
-                "privateKey",
-                 privateKey
-            );*/
 
             Preferences.Set(
                 "publicKey",
@@ -264,7 +256,7 @@ namespace PlutoWallet.Model
                     var miniSecret2 = new MiniSecret(Utils.HexToByteArray(mnemonicsOrPrivateKey), expandMode);
 
                     return Option<Account>.Some(Account.Build(KeyType.Sr25519,
-                        miniSecret2.ExpandToSecret().ToBytes(),
+                        miniSecret2.ExpandToSecret().ToEd25519Bytes(),
                         miniSecret2.GetPair().Public.Key));
                 }
 

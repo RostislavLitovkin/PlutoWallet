@@ -8,7 +8,7 @@ using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
-	public class FeeModel
+    public class FeeModel
 	{
         /**
          * Gets you a string version of transfer fee for the currently selected chain

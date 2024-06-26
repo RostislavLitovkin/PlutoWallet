@@ -46,18 +46,18 @@ public partial class MnemonicsPage : ContentPage
         var miniSecret2 = new MiniSecret(Utils.HexToByteArray(rawPrivateKey), ExpandMode.Ed25519);
 
         Account account = Account.Build(KeyType.Sr25519,
-            miniSecret2.ExpandToSecret().ToBytes(),
+            miniSecret2.ExpandToSecret().ToEd25519Bytes(),
             miniSecret2.GetPair().Public.Key);
 
         Console.WriteLine(Utils.Bytes2HexString(((BaseType)account).Bytes));
         Console.WriteLine(Utils.Bytes2HexString(account.PrivateKey));
 
-        string json = MnemonicsModel.ExportJsonFromPair(new PairInfo(((BaseType)account).Bytes, account.PrivateKey), "akr379AB");
+        /*
 
         // Source: https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/essentials/file-saver?tabs=macos
         using var stream = new MemoryStream(System.Text.Encoding.Default.GetBytes(json));
         var fileSaverResult = await FileSaver.Default.SaveAsync("PlutoWallet.json", stream, CancellationToken.None);
-
+        */
         /*if (fileSaverResult.IsSuccessful)
         {
             await Toast.Make($"The file was saved successfully to location: {fileSaverResult.FilePath}").Show(cancellationToken);

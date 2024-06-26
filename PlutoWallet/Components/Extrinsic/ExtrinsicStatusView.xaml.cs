@@ -28,20 +28,23 @@ public partial class ExtrinsicStatusView : ContentView
             {
                 case ExtrinsicStatusEnum.InBlock:
                     control.statusLabel.Text = "In block";
-                    control.statusLabel.TextColor = Color.Parse("Orange");
+                    control.statusLabel.TextColor = Colors.Green;
                     break;
                 case ExtrinsicStatusEnum.Pending:
-                    Console.WriteLine("Pending");
                     control.statusLabel.Text = "Pending";
-                    control.statusLabel.TextColor = Color.Parse("Orange");
+                    control.statusLabel.TextColor = Colors.Orange;
+                    break;
+                case ExtrinsicStatusEnum.Submitting:
+                    control.statusLabel.Text = "Submitting";
+                    control.statusLabel.TextColor = Colors.Gray;
                     break;
                 case ExtrinsicStatusEnum.Failed:
                     control.statusLabel.Text = "Failed";
-                    control.statusLabel.TextColor = Color.Parse("Red");
+                    control.statusLabel.TextColor = Colors.DarkRed;
                     break;
-                case ExtrinsicStatusEnum.Success:
-                    control.statusLabel.Text = "Success";
-                    control.statusLabel.TextColor = Color.Parse("Green");
+                case ExtrinsicStatusEnum.Finalized:
+                    control.statusLabel.Text = "Finalized";
+                    control.statusLabel.TextColor = Colors.Green;
                     break;
                 default:
                     // Handle errors

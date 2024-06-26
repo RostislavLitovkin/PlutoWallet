@@ -30,10 +30,19 @@ namespace PlutoWallet.Components.ConnectionRequestView
         [ObservableProperty]
         private bool connectionStatusIsVisible;
 
-		[ObservableProperty]
-		private bool checkIsVisible;
+        [ObservableProperty]
+        private bool connecting;
 
-		[ObservableProperty]
+        [ObservableProperty]
+		private bool connected;
+
+        [ObservableProperty]
+        private bool confirming;
+
+        [ObservableProperty]
+        private bool confirmed;
+
+        [ObservableProperty]
 		private string connectionStatusText;
 
         [ObservableProperty]
@@ -44,8 +53,11 @@ namespace PlutoWallet.Components.ConnectionRequestView
 			requestViewIsVisible = true;
 			connectionStatusIsVisible = false;
             isVisible = false;
-			checkIsVisible = false;
-			connectionStatusText = "Connecting";
+            connecting = false;
+            connected = false;
+            confirming = false;
+            confirmed = false;
+            connectionStatusText = "Connecting";
         }
 
 		public void Show()
@@ -53,8 +65,11 @@ namespace PlutoWallet.Components.ConnectionRequestView
             RequestViewIsVisible = true;
             ConnectionStatusIsVisible = false;
             IsVisible = true;
-			CheckIsVisible = false;
-			ConnectionStatusText = "Connecting";
+            Connecting = false;
+            Connected = false;
+            Confirming = false;
+            Confirmed = false;
+            ConnectionStatusText = "Connecting";
         }
     }
 }

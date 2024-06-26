@@ -31,11 +31,6 @@ namespace PlutoWallet.Components.Extrinsic
 
             HeightRequest = 75 * ExtrinsicInfos.Count() - 15;
         }
-
-		public void Remove(string id)
-		{
-
-		}
 	}
 }
 

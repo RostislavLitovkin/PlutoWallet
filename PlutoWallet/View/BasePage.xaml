@@ -8,7 +8,7 @@
              xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
              xmlns:messagepopup="clr-namespace:PlutoWallet.Components.MessagePopup"
              xmlns:transactionrequest="clr-namespace:PlutoWallet.Components.TransactionRequest"
-             xmlns:publickeyqrcodeview="clr-namespace:PlutoWallet.Components.PublicKeyQRCodeView"
+             xmlns:addressview="clr-namespace:PlutoWallet.Components.AddressView"
              xmlns:staking="clr-namespace:PlutoWallet.Components.Staking"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
@@ -56,7 +56,7 @@
         </Image>
 
 
-        <publickeyqrcodeview:PublicKeyQRCodeView />
+        <addressview:AddressQrCodeView />
 
         <transferview:TransferView x:Name="transferView" />
 

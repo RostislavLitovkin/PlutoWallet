@@ -1,6 +1,4 @@
-﻿using System;
-using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Constants;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Substrate.NetApi;
 using PlutoWallet.Model;
 

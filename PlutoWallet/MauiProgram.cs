@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using PlutoWallet.Components.NetworkSelect;
 using ZXing.Net.Maui.Controls;
 
 namespace PlutoWallet;
