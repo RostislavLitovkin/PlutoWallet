@@ -3,6 +3,10 @@ using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Model;
 
+#if ANDROID26_0_OR_GREATER
+using PlutoWallet.Platforms.Android;
+#endif
+
 namespace PlutoWallet.Components.ConnectionRequestView;
 
 public partial class ConnectionRequestView : ContentView
@@ -16,81 +20,11 @@ public partial class ConnectionRequestView : ContentView
 
     private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
-        try
-        {
-            var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
-
-            viewModel.Connecting = true;
-
-            viewModel.RequestViewIsVisible = false;
-            viewModel.ConnectionStatusIsVisible = true;
-            viewModel.ConnectionStatusText = $"Connecting.";
-
-            DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
-            dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connecting);
-
-            await PlutonicationWalletClient.InitializeAsync(
-                ac: viewModel.AccessCredentials,
-                pubkey: Model.KeysModel.GetSubstrateKey(),
-                signPayload: Model.PlutonicationModel.ReceivePayload,
-                signRaw: Model.PlutonicationModel.ReceiveRaw,
-                onConnected: (object sender, EventArgs args) => {
-                    viewModel.Connecting = false;
-                    viewModel.Connected = true;
-                    viewModel.Confirming = true;
-
-                    viewModel.ConnectionStatusText = $"Confirming.";
-
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Confirming);
-                },
-                onConfirmDAppConnection: () => {
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connected);
-
-                    viewModel.Confirming = false;
-                    viewModel.Confirmed = true;
-                    viewModel.ConnectionStatusText = $"Connected successfully. You can now go back to {viewModel.Name}.";
-                },
-                onDisconnected: (object sender, string args) => {
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
-                },
-                onReconnected: (object sender, int args) => {
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Reconnecting);
-                },
-                onReconnectFailed: (object sender, EventArgs args) => {
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
-                },
-                onDAppDisconnected: () => {
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
-                }
-            );
-
-            if (viewModel.PlutoLayout is not null)
-            {
-                try
-                {
-                    var plutoLayoutString = CustomLayoutModel.GetLayoutString(viewModel.PlutoLayout);
-                    CustomLayoutModel.MergePlutoLayouts(plutoLayoutString);
-                }
-                catch
-                {
-                    var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-                    messagePopup.Title = "Outdated version";
-                    messagePopup.Text = "Failed to import the dApp layout. Try updating PlutoWallet to newest version to fix this issue.";
-
-                    messagePopup.IsVisible = true;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-            messagePopup.Title = "Connection Request Error";
-            messagePopup.Text = ex.Message;
-
-            messagePopup.IsVisible = true;
-        }
+#if ANDROID26_0_OR_GREATER
+        PlutonicationAndroidForegroundService.
+#else
+        await PlutonicationModel.AcceptConnection();
+#endif
     }
 
     private void RejectClicked(System.Object sender, System.EventArgs e)
