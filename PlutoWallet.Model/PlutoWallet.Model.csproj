@@ -15,7 +15,7 @@
 	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 	  <PackageReference Include="Substrate.NET.Wallet" Version="1.0.7" />
-	  <PackageReference Include="Substrate.NET.API" Version="0.9.17" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.20" />
       <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
@@ -34,6 +34,10 @@
     <None Remove="Constants\" />
     <None Remove="Types\" />
     <None Remove="Bifrost\" />
+    <None Remove="Types\Hydration\" />
+    <None Remove="Types\Bifrost\" />
+    <None Remove="Types\Polkadot\" />
+    <None Remove="Types\PolkadotAssetHub\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AjunaExt\" />
@@ -44,5 +48,9 @@
     <Folder Include="Constants\" />
     <Folder Include="Types\" />
     <Folder Include="Bifrost\" />
+    <Folder Include="Types\Hydration\" />
+    <Folder Include="Types\Bifrost\" />
+    <Folder Include="Types\Polkadot\" />
+    <Folder Include="Types\PolkadotAssetHub\" />
   </ItemGroup>
 </Project>

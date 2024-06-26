@@ -15,31 +15,79 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.pall
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> hrmp_init_open_channel
+        /// See [`Pallet::hrmp_init_open_channel`].
+        /// </summary>
         hrmp_init_open_channel = 0,
         
+        /// <summary>
+        /// >> hrmp_accept_open_channel
+        /// See [`Pallet::hrmp_accept_open_channel`].
+        /// </summary>
         hrmp_accept_open_channel = 1,
         
+        /// <summary>
+        /// >> hrmp_close_channel
+        /// See [`Pallet::hrmp_close_channel`].
+        /// </summary>
         hrmp_close_channel = 2,
         
+        /// <summary>
+        /// >> force_clean_hrmp
+        /// See [`Pallet::force_clean_hrmp`].
+        /// </summary>
         force_clean_hrmp = 3,
         
+        /// <summary>
+        /// >> force_process_hrmp_open
+        /// See [`Pallet::force_process_hrmp_open`].
+        /// </summary>
         force_process_hrmp_open = 4,
         
+        /// <summary>
+        /// >> force_process_hrmp_close
+        /// See [`Pallet::force_process_hrmp_close`].
+        /// </summary>
         force_process_hrmp_close = 5,
         
+        /// <summary>
+        /// >> hrmp_cancel_open_request
+        /// See [`Pallet::hrmp_cancel_open_request`].
+        /// </summary>
         hrmp_cancel_open_request = 6,
         
+        /// <summary>
+        /// >> force_open_hrmp_channel
+        /// See [`Pallet::force_open_hrmp_channel`].
+        /// </summary>
         force_open_hrmp_channel = 7,
+        
+        /// <summary>
+        /// >> establish_system_channel
+        /// See [`Pallet::establish_system_channel`].
+        /// </summary>
+        establish_system_channel = 8,
+        
+        /// <summary>
+        /// >> poke_channel_deposits
+        /// See [`Pallet::poke_channel_deposits`].
+        /// </summary>
+        poke_channel_deposits = 9,
     }
     
     /// <summary>
-    /// >> 409 - Variant[polkadot_runtime_parachains.hrmp.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 368 - Variant[polkadot_runtime_parachains.hrmp.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HrmpChannelId, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HrmpChannelId, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HrmpChannelId, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HrmpChannelId, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>>
     {
     }
 }

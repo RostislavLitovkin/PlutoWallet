@@ -15,28 +15,72 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inh
 {
     
     
+    /// <summary>
+    /// >> Error
+    /// The `Error` enum of this pallet.
+    /// </summary>
     public enum Error
     {
         
+        /// <summary>
+        /// >> TooManyInclusionInherents
+        /// Inclusion inherent called more than once per block.
+        /// </summary>
         TooManyInclusionInherents = 0,
         
+        /// <summary>
+        /// >> InvalidParentHeader
+        /// The hash of the submitted parent header doesn't correspond to the saved block hash of
+        /// the parent.
+        /// </summary>
         InvalidParentHeader = 1,
         
+        /// <summary>
+        /// >> CandidateConcludedInvalid
+        /// Disputed candidate that was concluded invalid.
+        /// </summary>
         CandidateConcludedInvalid = 2,
         
+        /// <summary>
+        /// >> InherentOverweight
+        /// The data given to the inherent will result in an overweight block.
+        /// </summary>
         InherentOverweight = 3,
         
+        /// <summary>
+        /// >> DisputeStatementsUnsortedOrDuplicates
+        /// The ordering of dispute statements was invalid.
+        /// </summary>
         DisputeStatementsUnsortedOrDuplicates = 4,
         
+        /// <summary>
+        /// >> DisputeInvalid
+        /// A dispute statement was invalid.
+        /// </summary>
         DisputeInvalid = 5,
+        
+        /// <summary>
+        /// >> BackedByDisabled
+        /// A candidate was backed by a disabled validator
+        /// </summary>
+        BackedByDisabled = 6,
+        
+        /// <summary>
+        /// >> BackedOnUnscheduledCore
+        /// A candidate was backed even though the paraid was not scheduled.
+        /// </summary>
+        BackedOnUnscheduledCore = 7,
+        
+        /// <summary>
+        /// >> UnscheduledCandidate
+        /// Too many candidates supplied.
+        /// </summary>
+        UnscheduledCandidate = 8,
     }
     
     /// <summary>
-    /// >> 652 - Variant[polkadot_runtime_parachains.paras_inherent.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 757 - Variant[polkadot_runtime_parachains.paras_inherent.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

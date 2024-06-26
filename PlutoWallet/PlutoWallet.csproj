@@ -30,12 +30,6 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
-	  <CreatePackage>false</CreatePackage>
-	</PropertyGroup>
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
-	  <CreatePackage>false</CreatePackage>
-	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
@@ -47,6 +41,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
+	  <AndroidKeyStore>True</AndroidKeyStore>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
 	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
@@ -188,7 +183,6 @@
 	  <None Remove="Resources\Images\PredefinedLayouts\aaabackground.png" />
 	  <None Remove="Components\AwesomeAjunaAvatars\" />
 	  <None Remove="Components\Nft\" />
-	  <None Remove="Resources\Images\plutowalleticon.svg" />
 	  <None Remove="Resources\Images\dusan.jpg" />
 	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
 	  <None Remove="Resources\Images\NetworkIcons\pba.png" />
@@ -258,6 +252,7 @@
 	  <None Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <None Remove="Resources\Fonts\samsungone700.ttf" />
 	  <None Remove="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
+	  <None Remove="Components\Xcm\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
@@ -322,7 +317,6 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.png" />
 	  <BundleResource Include="Resources\Images\PredefinedLayouts\aaabackground.png" />
-	  <BundleResource Include="Resources\Images\plutowalleticon.svg" />
 	  <BundleResource Include="Resources\Images\dusan.jpg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\basilisk.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
@@ -379,9 +373,6 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="View\EnterMnemonics.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\CustomCallPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\AddressView\AddressView.xaml">
@@ -502,6 +493,7 @@
 	  <Folder Include="Components\UpdateView\" />
 	  <Folder Include="Components\GalaxyLogicGame\" />
 	  <Folder Include="Resources\Images\GalaxyLogicGame\" />
+	  <Folder Include="Components\Xcm\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -519,7 +511,6 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">
 		
-		<CodesignProvision>PlutoWalletMacCatalystDevelopment</CodesignProvision>
 		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
 	</PropertyGroup>
 </Project>

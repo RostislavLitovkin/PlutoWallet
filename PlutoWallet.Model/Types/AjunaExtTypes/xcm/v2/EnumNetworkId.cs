@@ -13,19 +13,37 @@ using System.Collections.Generic;
 
 namespace Substrate.NetApi.Generated.Model.xcm.v2
 {
+    
+    
+    /// <summary>
+    /// >> NetworkId
+    /// </summary>
     public enum NetworkId
     {
+        
+        /// <summary>
+        /// >> Any
+        /// </summary>
         Any = 0,
         
+        /// <summary>
+        /// >> Named
+        /// </summary>
         Named = 1,
         
+        /// <summary>
+        /// >> Polkadot
+        /// </summary>
         Polkadot = 2,
         
+        /// <summary>
+        /// >> Kusama
+        /// </summary>
         Kusama = 3,
     }
     
     /// <summary>
-    /// >> 92 - Variant[xcm.v2.NetworkId]
+    /// >> 94 - Variant[xcm.v2.NetworkId]
     /// </summary>
     public sealed class EnumNetworkId : BaseEnumExt<NetworkId, BaseVoid, Substrate.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseVoid>
     {

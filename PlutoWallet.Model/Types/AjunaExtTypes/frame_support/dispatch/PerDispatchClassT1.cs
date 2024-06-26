@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
     
     
     /// <summary>
-    /// >> 7 - Composite[frame_support.dispatch.PerDispatchClassT1]
+    /// >> 8 - Composite[frame_support.dispatch.PerDispatchClassT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT1 : BaseType
@@ -27,59 +27,23 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
         /// <summary>
         /// >> normal
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _normal;
-        
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Normal { get; set; }
         /// <summary>
         /// >> operational
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _operational;
-        
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Operational { get; set; }
         /// <summary>
         /// >> mandatory
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _mandatory;
+        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Mandatory { get; set; }
         
-        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Normal
-        {
-            get
-            {
-                return this._normal;
-            }
-            set
-            {
-                this._normal = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Operational
-        {
-            get
-            {
-                return this._operational;
-            }
-            set
-            {
-                this._operational = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight Mandatory
-        {
-            get
-            {
-                return this._mandatory;
-            }
-            set
-            {
-                this._mandatory = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "PerDispatchClassT1";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -89,6 +53,7 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -98,7 +63,10 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
             Operational.Decode(byteArray, ref p);
             Mandatory = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
             Mandatory.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

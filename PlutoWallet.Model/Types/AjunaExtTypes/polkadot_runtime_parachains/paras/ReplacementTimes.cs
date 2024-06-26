@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
     
     
     /// <summary>
-    /// >> 674 - Composite[polkadot_runtime_parachains.paras.ReplacementTimes]
+    /// >> 777 - Composite[polkadot_runtime_parachains.paras.ReplacementTimes]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReplacementTimes : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
         /// <summary>
         /// >> expected_at
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _expectedAt;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 ExpectedAt { get; set; }
         /// <summary>
         /// >> activated_at
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _activatedAt;
+        public Substrate.NetApi.Model.Types.Primitive.U32 ActivatedAt { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U32 ExpectedAt
-        {
-            get
-            {
-                return this._expectedAt;
-            }
-            set
-            {
-                this._expectedAt = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ActivatedAt
-        {
-            get
-            {
-                return this._activatedAt;
-            }
-            set
-            {
-                this._activatedAt = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ReplacementTimes";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -78,7 +56,10 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             ExpectedAt.Decode(byteArray, ref p);
             ActivatedAt = new Substrate.NetApi.Model.Types.Primitive.U32();
             ActivatedAt.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

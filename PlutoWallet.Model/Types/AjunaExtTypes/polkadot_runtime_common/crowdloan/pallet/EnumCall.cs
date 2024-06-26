@@ -15,33 +15,73 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.pal
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> create
+        /// See [`Pallet::create`].
+        /// </summary>
         create = 0,
         
+        /// <summary>
+        /// >> contribute
+        /// See [`Pallet::contribute`].
+        /// </summary>
         contribute = 1,
         
+        /// <summary>
+        /// >> withdraw
+        /// See [`Pallet::withdraw`].
+        /// </summary>
         withdraw = 2,
         
+        /// <summary>
+        /// >> refund
+        /// See [`Pallet::refund`].
+        /// </summary>
         refund = 3,
         
+        /// <summary>
+        /// >> dissolve
+        /// See [`Pallet::dissolve`].
+        /// </summary>
         dissolve = 4,
         
+        /// <summary>
+        /// >> edit
+        /// See [`Pallet::edit`].
+        /// </summary>
         edit = 5,
         
+        /// <summary>
+        /// >> add_memo
+        /// See [`Pallet::add_memo`].
+        /// </summary>
         add_memo = 6,
         
+        /// <summary>
+        /// >> poke
+        /// See [`Pallet::poke`].
+        /// </summary>
         poke = 7,
         
+        /// <summary>
+        /// >> contribute_all
+        /// See [`Pallet::contribute_all`].
+        /// </summary>
         contribute_all = 8,
     }
     
     /// <summary>
-    /// >> 415 - Variant[polkadot_runtime_common.crowdloan.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 379 - Variant[polkadot_runtime_common.crowdloan.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner>>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner>>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>>
     {
     }
 }

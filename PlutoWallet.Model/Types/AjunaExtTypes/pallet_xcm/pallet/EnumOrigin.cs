@@ -15,18 +15,27 @@ namespace Substrate.NetApi.Generated.Model.pallet_xcm.pallet
 {
     
     
+    /// <summary>
+    /// >> Origin
+    /// </summary>
     public enum Origin
     {
         
+        /// <summary>
+        /// >> Xcm
+        /// </summary>
         Xcm = 0,
         
+        /// <summary>
+        /// >> Response
+        /// </summary>
         Response = 1,
     }
     
     /// <summary>
-    /// >> 261 - Variant[pallet_xcm.pallet.Origin]
+    /// >> 175 - Variant[pallet_xcm.pallet.Origin]
     /// </summary>
-    public sealed class EnumOrigin : BaseEnumExt<Origin, Substrate.NetApi.Generated.Model.xcm.v1.multilocation.MultiLocation, Substrate.NetApi.Generated.Model.xcm.v1.multilocation.MultiLocation>
+    public sealed class EnumOrigin : BaseEnumExt<Origin, Substrate.NetApi.Generated.Model.staging_xcm.v4.location.Location, Substrate.NetApi.Generated.Model.staging_xcm.v4.location.Location>
     {
     }
 }

@@ -15,26 +15,47 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3
 {
     
     
+    /// <summary>
+    /// >> Response
+    /// </summary>
     public enum Response
     {
         
+        /// <summary>
+        /// >> Null
+        /// </summary>
         Null = 0,
         
+        /// <summary>
+        /// >> Assets
+        /// </summary>
         Assets = 1,
         
+        /// <summary>
+        /// >> ExecutionResult
+        /// </summary>
         ExecutionResult = 2,
         
+        /// <summary>
+        /// >> Version
+        /// </summary>
         Version = 3,
         
+        /// <summary>
+        /// >> PalletsInfo
+        /// </summary>
         PalletsInfo = 4,
         
+        /// <summary>
+        /// >> DispatchResult
+        /// </summary>
         DispatchResult = 5,
     }
     
     /// <summary>
-    /// >> 66 - Variant[xcm.v3.Response]
+    /// >> 417 - Variant[xcm.v3.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.xcm.v3.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1, Substrate.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>
+    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.xcm.v3.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8, Substrate.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>
     {
     }
 }

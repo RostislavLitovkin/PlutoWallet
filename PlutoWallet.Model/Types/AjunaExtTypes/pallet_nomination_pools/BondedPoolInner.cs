@@ -18,107 +18,69 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
     
     
     /// <summary>
-    /// >> 622 - Composite[pallet_nomination_pools.BondedPoolInner]
+    /// >> 721 - Composite[pallet_nomination_pools.BondedPoolInner]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BondedPoolInner : BaseType
     {
         
         /// <summary>
-        /// >> points
+        /// >> commission
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _points;
-        
-        /// <summary>
-        /// >> state
-        /// </summary>
-        private Substrate.NetApi.Generated.Model.pallet_nomination_pools.EnumPoolState _state;
-        
+        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.Commission Commission { get; set; }
         /// <summary>
         /// >> member_counter
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _memberCounter;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MemberCounter { get; set; }
+        /// <summary>
+        /// >> points
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 Points { get; set; }
         /// <summary>
         /// >> roles
         /// </summary>
-        private Substrate.NetApi.Generated.Model.pallet_nomination_pools.PoolRoles _roles;
+        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.PoolRoles Roles { get; set; }
+        /// <summary>
+        /// >> state
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.EnumPoolState State { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U128 Points
-        {
-            get
-            {
-                return this._points;
-            }
-            set
-            {
-                this._points = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.EnumPoolState State
-        {
-            get
-            {
-                return this._state;
-            }
-            set
-            {
-                this._state = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MemberCounter
-        {
-            get
-            {
-                return this._memberCounter;
-            }
-            set
-            {
-                this._memberCounter = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.PoolRoles Roles
-        {
-            get
-            {
-                return this._roles;
-            }
-            set
-            {
-                this._roles = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "BondedPoolInner";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(Points.Encode());
-            result.AddRange(State.Encode());
+            result.AddRange(Commission.Encode());
             result.AddRange(MemberCounter.Encode());
+            result.AddRange(Points.Encode());
             result.AddRange(Roles.Encode());
+            result.AddRange(State.Encode());
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Points = new Substrate.NetApi.Model.Types.Primitive.U128();
-            Points.Decode(byteArray, ref p);
-            State = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.EnumPoolState();
-            State.Decode(byteArray, ref p);
+            Commission = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.Commission();
+            Commission.Decode(byteArray, ref p);
             MemberCounter = new Substrate.NetApi.Model.Types.Primitive.U32();
             MemberCounter.Decode(byteArray, ref p);
+            Points = new Substrate.NetApi.Model.Types.Primitive.U128();
+            Points.Decode(byteArray, ref p);
             Roles = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.PoolRoles();
             Roles.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            State = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.EnumPoolState();
+            State.Decode(byteArray, ref p);
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

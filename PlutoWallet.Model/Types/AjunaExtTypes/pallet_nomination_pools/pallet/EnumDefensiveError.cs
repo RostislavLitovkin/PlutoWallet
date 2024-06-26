@@ -15,22 +15,40 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools.pallet
 {
     
     
+    /// <summary>
+    /// >> DefensiveError
+    /// </summary>
     public enum DefensiveError
     {
         
+        /// <summary>
+        /// >> NotEnoughSpaceInUnbondPool
+        /// </summary>
         NotEnoughSpaceInUnbondPool = 0,
         
+        /// <summary>
+        /// >> PoolNotFound
+        /// </summary>
         PoolNotFound = 1,
         
+        /// <summary>
+        /// >> RewardPoolNotFound
+        /// </summary>
         RewardPoolNotFound = 2,
         
+        /// <summary>
+        /// >> SubPoolsNotFound
+        /// </summary>
         SubPoolsNotFound = 3,
         
+        /// <summary>
+        /// >> BondedStashKilledPrematurely
+        /// </summary>
         BondedStashKilledPrematurely = 4,
     }
     
     /// <summary>
-    /// >> 633 - Variant[pallet_nomination_pools.pallet.DefensiveError]
+    /// >> 735 - Variant[pallet_nomination_pools.pallet.DefensiveError]
     /// </summary>
     public sealed class EnumDefensiveError : BaseEnum<DefensiveError>
     {

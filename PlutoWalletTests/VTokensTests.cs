@@ -1,15 +1,12 @@
-﻿using System;
-using System.Numerics;
-using Newtonsoft.Json.Linq;
+﻿using System.Numerics;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.Bifrost;
-using Substrate.NetApi.Model.Types.Primitive;
 
 namespace PlutoWalletTests
 {
-	public class VTokensTests
+	public class VTokensTestsss
 	{
         [Test]
         public async Task VTokensRedeem()
@@ -23,7 +20,7 @@ namespace PlutoWalletTests
                         new Uri(bestWebSecket),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-            await client.ConnectAsync();
+            await client.ConnectAndLoadMetadataAsync();
 
             BigInteger redeemAmount = await VTokenModel.VDotToDot(client, new BigInteger(10000000000), CancellationToken.None);
 

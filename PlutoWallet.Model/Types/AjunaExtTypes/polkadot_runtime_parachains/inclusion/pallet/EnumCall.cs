@@ -15,13 +15,17 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
     }
     
     /// <summary>
-    /// >> 377 - Variant[polkadot_runtime_parachains.inclusion.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 329 - Variant[polkadot_runtime_parachains.inclusion.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnum<Call>
     {

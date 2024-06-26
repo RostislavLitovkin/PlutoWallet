@@ -15,40 +15,87 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
+    /// <summary>
+    /// >> DispatchError
+    /// </summary>
     public enum DispatchError
     {
         
+        /// <summary>
+        /// >> Other
+        /// </summary>
         Other = 0,
         
+        /// <summary>
+        /// >> CannotLookup
+        /// </summary>
         CannotLookup = 1,
         
+        /// <summary>
+        /// >> BadOrigin
+        /// </summary>
         BadOrigin = 2,
         
+        /// <summary>
+        /// >> Module
+        /// </summary>
         Module = 3,
         
+        /// <summary>
+        /// >> ConsumerRemaining
+        /// </summary>
         ConsumerRemaining = 4,
         
+        /// <summary>
+        /// >> NoProviders
+        /// </summary>
         NoProviders = 5,
         
+        /// <summary>
+        /// >> TooManyConsumers
+        /// </summary>
         TooManyConsumers = 6,
         
+        /// <summary>
+        /// >> Token
+        /// </summary>
         Token = 7,
         
+        /// <summary>
+        /// >> Arithmetic
+        /// </summary>
         Arithmetic = 8,
         
+        /// <summary>
+        /// >> Transactional
+        /// </summary>
         Transactional = 9,
         
+        /// <summary>
+        /// >> Exhausted
+        /// </summary>
         Exhausted = 10,
         
+        /// <summary>
+        /// >> Corruption
+        /// </summary>
         Corruption = 11,
         
+        /// <summary>
+        /// >> Unavailable
+        /// </summary>
         Unavailable = 12,
+        
+        /// <summary>
+        /// >> RootNotAllowed
+        /// </summary>
+        RootNotAllowed = 13,
     }
     
     /// <summary>
-    /// >> 24 - Variant[sp_runtime.DispatchError]
+    /// >> 25 - Variant[sp_runtime.DispatchError]
     /// </summary>
-    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.EnumTokenError, Substrate.NetApi.Generated.Model.sp_runtime.EnumArithmeticError, Substrate.NetApi.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.sp_runtime.EnumTokenError, Substrate.NetApi.Generated.Model.sp_arithmetic.EnumArithmeticError, Substrate.NetApi.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
     {
     }
 }

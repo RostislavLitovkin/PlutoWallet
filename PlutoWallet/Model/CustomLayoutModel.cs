@@ -25,6 +25,7 @@ using PlutoWallet.Components.VTokens;
 using PlutoWallet.Components.UpdateView;
 using PlutoWallet.Components.GalaxyLogicGame;
 using PlutoWallet.Components.PredefinedLayouts;
+using PlutoWallet.Components.Xcm;
 
 namespace PlutoWallet.Model
 {
@@ -41,7 +42,7 @@ namespace PlutoWallet.Model
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [U, dApp, ExSL, UsdB, RnT, SubK, ChaK, " +
             "AAALeaderboard, AZEROPrimaryName, HDXOmniLiquidity, HDXDCA, id, Ref, contract, " +
-            "BMnR, NftG, VDot, GLGPowerups];[";
+            "BMnR, NftG, VDot, GLGPowerups, xTrnsfr];[";
 
         // EXTRA: StDash, AAASeasonCountdown, PubK, FeeA, CalEx
 
@@ -364,6 +365,8 @@ namespace PlutoWallet.Model
                     return new VDotTokenView();
                 case "GLGPowerups":
                     return new GLGPowerupsView();
+                case "xTrnsfr":
+                    return new XcmTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -455,6 +458,8 @@ namespace PlutoWallet.Model
                     return new VDotTokenView();
                 case "GLGPowerups":
                     return new GLGPowerupsView();
+                case "xTrnsfr":
+                    return new XcmTransferView();
             }
 
             throw new Exception("Could not parse the PlutoLayout");
@@ -601,6 +606,12 @@ namespace PlutoWallet.Model
                     {
                         Name = "Galaxy Logic Game Powerups",
                         PlutoLayoutId = "GLGPowerups",
+                    };
+                case "xTrnsfr":
+                    return new LayoutItemInfo
+                    {
+                        Name = "XCM Transfer",
+                        PlutoLayoutId = "xTrnsfr",
                     };
             }
 

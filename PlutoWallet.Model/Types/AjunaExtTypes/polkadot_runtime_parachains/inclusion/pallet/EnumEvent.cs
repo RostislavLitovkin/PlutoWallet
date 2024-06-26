@@ -15,24 +15,43 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> CandidateBacked
+        /// A candidate was backed. `[candidate, head_data]`
+        /// </summary>
         CandidateBacked = 0,
         
+        /// <summary>
+        /// >> CandidateIncluded
+        /// A candidate was included. `[candidate, head_data]`
+        /// </summary>
         CandidateIncluded = 1,
         
+        /// <summary>
+        /// >> CandidateTimedOut
+        /// A candidate timed out. `[candidate, head_data]`
+        /// </summary>
         CandidateTimedOut = 2,
+        
+        /// <summary>
+        /// >> UpwardMessagesReceived
+        /// Some upward messages have been received and will be processed.
+        /// </summary>
+        UpwardMessagesReceived = 3,
     }
     
     /// <summary>
-    /// >> 95 - Variant[polkadot_runtime_parachains.inclusion.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 499 - Variant[polkadot_runtime_parachains.inclusion.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

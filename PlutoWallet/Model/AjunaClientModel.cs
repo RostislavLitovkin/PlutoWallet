@@ -87,7 +87,7 @@ namespace PlutoWallet.Model
                             new Uri(bestWebSecket),
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    await client.ConnectAsync();
+                    await client.ConnectAndLoadMetadataAsync();
 
                     multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Connected;
 
@@ -209,6 +209,9 @@ namespace PlutoWallet.Model
 
                 messagePopup.Title = "Loading Assets Error";
                 messagePopup.Text = ex.Message;
+                Console.WriteLine("Assets error");
+                Console.WriteLine(ex);
+
 
                 messagePopup.IsVisible = true;
 
@@ -274,7 +277,7 @@ namespace PlutoWallet.Model
                                 new Uri(bestWebSecket),
                                 Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    await client.ConnectAsync();
+                    await client.ConnectAndLoadMetadataAsync();
 
                     await Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();

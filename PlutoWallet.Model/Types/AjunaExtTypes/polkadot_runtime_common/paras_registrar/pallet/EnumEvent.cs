@@ -15,24 +15,39 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registr
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> Registered
+        /// </summary>
         Registered = 0,
         
+        /// <summary>
+        /// >> Deregistered
+        /// </summary>
         Deregistered = 1,
         
+        /// <summary>
+        /// >> Reserved
+        /// </summary>
         Reserved = 2,
+        
+        /// <summary>
+        /// >> Swapped
+        /// </summary>
+        Swapped = 3,
     }
     
     /// <summary>
-    /// >> 117 - Variant[polkadot_runtime_common.paras_registrar.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 508 - Variant[polkadot_runtime_common.paras_registrar.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>>
     {
     }
 }

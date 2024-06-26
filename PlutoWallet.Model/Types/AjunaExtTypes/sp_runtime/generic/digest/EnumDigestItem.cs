@@ -15,22 +15,40 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.digest
 {
     
     
+    /// <summary>
+    /// >> DigestItem
+    /// </summary>
     public enum DigestItem
     {
         
+        /// <summary>
+        /// >> PreRuntime
+        /// </summary>
         PreRuntime = 6,
         
+        /// <summary>
+        /// >> Consensus
+        /// </summary>
         Consensus = 4,
         
+        /// <summary>
+        /// >> Seal
+        /// </summary>
         Seal = 5,
         
+        /// <summary>
+        /// >> Other
+        /// </summary>
         Other = 0,
         
+        /// <summary>
+        /// >> RuntimeEnvironmentUpdated
+        /// </summary>
         RuntimeEnvironmentUpdated = 8,
     }
     
     /// <summary>
-    /// >> 15 - Variant[sp_runtime.generic.digest.DigestItem]
+    /// >> 16 - Variant[sp_runtime.generic.digest.DigestItem]
     /// </summary>
     public sealed class EnumDigestItem : BaseEnumExt<DigestItem, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, BaseVoid, BaseVoid, BaseVoid, BaseTuple<Substrate.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<Substrate.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<Substrate.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid, BaseVoid>
     {

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp
     
     
     /// <summary>
-    /// >> 686 - Composite[polkadot_runtime_parachains.hrmp.HrmpOpenChannelRequest]
+    /// >> 787 - Composite[polkadot_runtime_parachains.hrmp.HrmpOpenChannelRequest]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HrmpOpenChannelRequest : BaseType
@@ -27,110 +27,35 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp
         /// <summary>
         /// >> confirmed
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.Bool _confirmed;
-        
+        public Substrate.NetApi.Model.Types.Primitive.Bool Confirmed { get; set; }
         /// <summary>
         /// >> _age
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _age;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 Age { get; set; }
         /// <summary>
         /// >> sender_deposit
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _senderDeposit;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 SenderDeposit { get; set; }
         /// <summary>
         /// >> max_message_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxMessageSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxMessageSize { get; set; }
         /// <summary>
         /// >> max_capacity
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxCapacity;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxCapacity { get; set; }
         /// <summary>
         /// >> max_total_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxTotalSize;
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxTotalSize { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.Bool Confirmed
-        {
-            get
-            {
-                return this._confirmed;
-            }
-            set
-            {
-                this._confirmed = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 Age
-        {
-            get
-            {
-                return this._age;
-            }
-            set
-            {
-                this._age = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 SenderDeposit
-        {
-            get
-            {
-                return this._senderDeposit;
-            }
-            set
-            {
-                this._senderDeposit = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxMessageSize
-        {
-            get
-            {
-                return this._maxMessageSize;
-            }
-            set
-            {
-                this._maxMessageSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxCapacity
-        {
-            get
-            {
-                return this._maxCapacity;
-            }
-            set
-            {
-                this._maxCapacity = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxTotalSize
-        {
-            get
-            {
-                return this._maxTotalSize;
-            }
-            set
-            {
-                this._maxTotalSize = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "HrmpOpenChannelRequest";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -143,6 +68,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -158,7 +84,10 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp
             MaxCapacity.Decode(byteArray, ref p);
             MaxTotalSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxTotalSize.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

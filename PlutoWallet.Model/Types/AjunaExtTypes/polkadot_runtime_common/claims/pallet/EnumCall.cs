@@ -15,23 +15,47 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> claim
+        /// See [`Pallet::claim`].
+        /// </summary>
         claim = 0,
         
+        /// <summary>
+        /// >> mint_claim
+        /// See [`Pallet::mint_claim`].
+        /// </summary>
         mint_claim = 1,
         
+        /// <summary>
+        /// >> claim_attest
+        /// See [`Pallet::claim_attest`].
+        /// </summary>
         claim_attest = 2,
         
+        /// <summary>
+        /// >> attest
+        /// See [`Pallet::attest`].
+        /// </summary>
         attest = 3,
         
+        /// <summary>
+        /// >> move_claim
+        /// See [`Pallet::move_claim`].
+        /// </summary>
         move_claim = 4,
     }
     
     /// <summary>
-    /// >> 245 - Variant[polkadot_runtime_common.claims.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 180 - Variant[polkadot_runtime_common.claims.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EcdsaSignature>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EnumStatementKind>>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EcdsaSignature, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>>>
     {

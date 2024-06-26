@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
     
     
     /// <summary>
-    /// >> 638 - Composite[polkadot_runtime_parachains.configuration.HostConfiguration]
+    /// >> 740 - Composite[polkadot_runtime_parachains.configuration.HostConfiguration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HostConfiguration : BaseType
@@ -27,739 +27,191 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
         /// <summary>
         /// >> max_code_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxCodeSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxCodeSize { get; set; }
         /// <summary>
         /// >> max_head_data_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxHeadDataSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxHeadDataSize { get; set; }
         /// <summary>
         /// >> max_upward_queue_count
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxUpwardQueueCount;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardQueueCount { get; set; }
         /// <summary>
         /// >> max_upward_queue_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxUpwardQueueSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardQueueSize { get; set; }
         /// <summary>
         /// >> max_upward_message_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxUpwardMessageSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardMessageSize { get; set; }
         /// <summary>
         /// >> max_upward_message_num_per_candidate
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxUpwardMessageNumPerCandidate;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardMessageNumPerCandidate { get; set; }
         /// <summary>
         /// >> hrmp_max_message_num_per_candidate
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpMaxMessageNumPerCandidate;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxMessageNumPerCandidate { get; set; }
         /// <summary>
         /// >> validation_upgrade_cooldown
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _validationUpgradeCooldown;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 ValidationUpgradeCooldown { get; set; }
         /// <summary>
         /// >> validation_upgrade_delay
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _validationUpgradeDelay;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 ValidationUpgradeDelay { get; set; }
+        /// <summary>
+        /// >> async_backing_params
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams AsyncBackingParams { get; set; }
         /// <summary>
         /// >> max_pov_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxPovSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxPovSize { get; set; }
         /// <summary>
         /// >> max_downward_message_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _maxDownwardMessageSize;
-        
-        /// <summary>
-        /// >> ump_service_total_weight
-        /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _umpServiceTotalWeight;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxDownwardMessageSize { get; set; }
         /// <summary>
         /// >> hrmp_max_parachain_outbound_channels
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpMaxParachainOutboundChannels;
-        
-        /// <summary>
-        /// >> hrmp_max_parathread_outbound_channels
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpMaxParathreadOutboundChannels;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParachainOutboundChannels { get; set; }
         /// <summary>
         /// >> hrmp_sender_deposit
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _hrmpSenderDeposit;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 HrmpSenderDeposit { get; set; }
         /// <summary>
         /// >> hrmp_recipient_deposit
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _hrmpRecipientDeposit;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 HrmpRecipientDeposit { get; set; }
         /// <summary>
         /// >> hrmp_channel_max_capacity
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpChannelMaxCapacity;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxCapacity { get; set; }
         /// <summary>
         /// >> hrmp_channel_max_total_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpChannelMaxTotalSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxTotalSize { get; set; }
         /// <summary>
         /// >> hrmp_max_parachain_inbound_channels
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpMaxParachainInboundChannels;
-        
-        /// <summary>
-        /// >> hrmp_max_parathread_inbound_channels
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpMaxParathreadInboundChannels;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParachainInboundChannels { get; set; }
         /// <summary>
         /// >> hrmp_channel_max_message_size
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _hrmpChannelMaxMessageSize;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxMessageSize { get; set; }
+        /// <summary>
+        /// >> executor_params
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams ExecutorParams { get; set; }
         /// <summary>
         /// >> code_retention_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _codeRetentionPeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 CodeRetentionPeriod { get; set; }
         /// <summary>
-        /// >> parathread_cores
+        /// >> coretime_cores
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _parathreadCores;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 CoretimeCores { get; set; }
         /// <summary>
-        /// >> parathread_retries
+        /// >> on_demand_retries
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _parathreadRetries;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandRetries { get; set; }
+        /// <summary>
+        /// >> on_demand_queue_max_size
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandQueueMaxSize { get; set; }
+        /// <summary>
+        /// >> on_demand_target_queue_utilization
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill OnDemandTargetQueueUtilization { get; set; }
+        /// <summary>
+        /// >> on_demand_fee_variability
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill OnDemandFeeVariability { get; set; }
+        /// <summary>
+        /// >> on_demand_base_fee
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 OnDemandBaseFee { get; set; }
+        /// <summary>
+        /// >> on_demand_ttl
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandTtl { get; set; }
         /// <summary>
         /// >> group_rotation_frequency
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _groupRotationFrequency;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 GroupRotationFrequency { get; set; }
         /// <summary>
-        /// >> chain_availability_period
+        /// >> paras_availability_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _chainAvailabilityPeriod;
-        
-        /// <summary>
-        /// >> thread_availability_period
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _threadAvailabilityPeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 ParasAvailabilityPeriod { get; set; }
         /// <summary>
         /// >> scheduling_lookahead
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _schedulingLookahead;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 SchedulingLookahead { get; set; }
         /// <summary>
         /// >> max_validators_per_core
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _maxValidatorsPerCore;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> MaxValidatorsPerCore { get; set; }
         /// <summary>
         /// >> max_validators
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _maxValidators;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> MaxValidators { get; set; }
         /// <summary>
         /// >> dispute_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _disputePeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 DisputePeriod { get; set; }
         /// <summary>
         /// >> dispute_post_conclusion_acceptance_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _disputePostConclusionAcceptancePeriod;
-        
-        /// <summary>
-        /// >> dispute_max_spam_slots
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _disputeMaxSpamSlots;
-        
-        /// <summary>
-        /// >> dispute_conclusion_by_time_out_period
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _disputeConclusionByTimeOutPeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 DisputePostConclusionAcceptancePeriod { get; set; }
         /// <summary>
         /// >> no_show_slots
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _noShowSlots;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 NoShowSlots { get; set; }
         /// <summary>
         /// >> n_delay_tranches
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _nDelayTranches;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 NDelayTranches { get; set; }
         /// <summary>
         /// >> zeroth_delay_tranche_width
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _zerothDelayTrancheWidth;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 ZerothDelayTrancheWidth { get; set; }
         /// <summary>
         /// >> needed_approvals
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _neededApprovals;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 NeededApprovals { get; set; }
         /// <summary>
         /// >> relay_vrf_modulo_samples
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _relayVrfModuloSamples;
-        
-        /// <summary>
-        /// >> ump_max_individual_weight
-        /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight _umpMaxIndividualWeight;
-        
-        /// <summary>
-        /// >> pvf_checking_enabled
-        /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.Bool _pvfCheckingEnabled;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 RelayVrfModuloSamples { get; set; }
         /// <summary>
         /// >> pvf_voting_ttl
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _pvfVotingTtl;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 PvfVotingTtl { get; set; }
         /// <summary>
         /// >> minimum_validation_upgrade_delay
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _minimumValidationUpgradeDelay;
+        public Substrate.NetApi.Model.Types.Primitive.U32 MinimumValidationUpgradeDelay { get; set; }
+        /// <summary>
+        /// >> minimum_backing_votes
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 MinimumBackingVotes { get; set; }
+        /// <summary>
+        /// >> node_features
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> NodeFeatures { get; set; }
+        /// <summary>
+        /// >> approval_voting_params
+        /// </summary>
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams ApprovalVotingParams { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxCodeSize
-        {
-            get
-            {
-                return this._maxCodeSize;
-            }
-            set
-            {
-                this._maxCodeSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxHeadDataSize
-        {
-            get
-            {
-                return this._maxHeadDataSize;
-            }
-            set
-            {
-                this._maxHeadDataSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardQueueCount
-        {
-            get
-            {
-                return this._maxUpwardQueueCount;
-            }
-            set
-            {
-                this._maxUpwardQueueCount = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardQueueSize
-        {
-            get
-            {
-                return this._maxUpwardQueueSize;
-            }
-            set
-            {
-                this._maxUpwardQueueSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardMessageSize
-        {
-            get
-            {
-                return this._maxUpwardMessageSize;
-            }
-            set
-            {
-                this._maxUpwardMessageSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUpwardMessageNumPerCandidate
-        {
-            get
-            {
-                return this._maxUpwardMessageNumPerCandidate;
-            }
-            set
-            {
-                this._maxUpwardMessageNumPerCandidate = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxMessageNumPerCandidate
-        {
-            get
-            {
-                return this._hrmpMaxMessageNumPerCandidate;
-            }
-            set
-            {
-                this._hrmpMaxMessageNumPerCandidate = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ValidationUpgradeCooldown
-        {
-            get
-            {
-                return this._validationUpgradeCooldown;
-            }
-            set
-            {
-                this._validationUpgradeCooldown = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ValidationUpgradeDelay
-        {
-            get
-            {
-                return this._validationUpgradeDelay;
-            }
-            set
-            {
-                this._validationUpgradeDelay = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxPovSize
-        {
-            get
-            {
-                return this._maxPovSize;
-            }
-            set
-            {
-                this._maxPovSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxDownwardMessageSize
-        {
-            get
-            {
-                return this._maxDownwardMessageSize;
-            }
-            set
-            {
-                this._maxDownwardMessageSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight UmpServiceTotalWeight
-        {
-            get
-            {
-                return this._umpServiceTotalWeight;
-            }
-            set
-            {
-                this._umpServiceTotalWeight = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParachainOutboundChannels
-        {
-            get
-            {
-                return this._hrmpMaxParachainOutboundChannels;
-            }
-            set
-            {
-                this._hrmpMaxParachainOutboundChannels = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParathreadOutboundChannels
-        {
-            get
-            {
-                return this._hrmpMaxParathreadOutboundChannels;
-            }
-            set
-            {
-                this._hrmpMaxParathreadOutboundChannels = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 HrmpSenderDeposit
-        {
-            get
-            {
-                return this._hrmpSenderDeposit;
-            }
-            set
-            {
-                this._hrmpSenderDeposit = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 HrmpRecipientDeposit
-        {
-            get
-            {
-                return this._hrmpRecipientDeposit;
-            }
-            set
-            {
-                this._hrmpRecipientDeposit = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxCapacity
-        {
-            get
-            {
-                return this._hrmpChannelMaxCapacity;
-            }
-            set
-            {
-                this._hrmpChannelMaxCapacity = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxTotalSize
-        {
-            get
-            {
-                return this._hrmpChannelMaxTotalSize;
-            }
-            set
-            {
-                this._hrmpChannelMaxTotalSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParachainInboundChannels
-        {
-            get
-            {
-                return this._hrmpMaxParachainInboundChannels;
-            }
-            set
-            {
-                this._hrmpMaxParachainInboundChannels = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpMaxParathreadInboundChannels
-        {
-            get
-            {
-                return this._hrmpMaxParathreadInboundChannels;
-            }
-            set
-            {
-                this._hrmpMaxParathreadInboundChannels = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 HrmpChannelMaxMessageSize
-        {
-            get
-            {
-                return this._hrmpChannelMaxMessageSize;
-            }
-            set
-            {
-                this._hrmpChannelMaxMessageSize = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 CodeRetentionPeriod
-        {
-            get
-            {
-                return this._codeRetentionPeriod;
-            }
-            set
-            {
-                this._codeRetentionPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ParathreadCores
-        {
-            get
-            {
-                return this._parathreadCores;
-            }
-            set
-            {
-                this._parathreadCores = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ParathreadRetries
-        {
-            get
-            {
-                return this._parathreadRetries;
-            }
-            set
-            {
-                this._parathreadRetries = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 GroupRotationFrequency
-        {
-            get
-            {
-                return this._groupRotationFrequency;
-            }
-            set
-            {
-                this._groupRotationFrequency = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ChainAvailabilityPeriod
-        {
-            get
-            {
-                return this._chainAvailabilityPeriod;
-            }
-            set
-            {
-                this._chainAvailabilityPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ThreadAvailabilityPeriod
-        {
-            get
-            {
-                return this._threadAvailabilityPeriod;
-            }
-            set
-            {
-                this._threadAvailabilityPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 SchedulingLookahead
-        {
-            get
-            {
-                return this._schedulingLookahead;
-            }
-            set
-            {
-                this._schedulingLookahead = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> MaxValidatorsPerCore
-        {
-            get
-            {
-                return this._maxValidatorsPerCore;
-            }
-            set
-            {
-                this._maxValidatorsPerCore = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> MaxValidators
-        {
-            get
-            {
-                return this._maxValidators;
-            }
-            set
-            {
-                this._maxValidators = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 DisputePeriod
-        {
-            get
-            {
-                return this._disputePeriod;
-            }
-            set
-            {
-                this._disputePeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 DisputePostConclusionAcceptancePeriod
-        {
-            get
-            {
-                return this._disputePostConclusionAcceptancePeriod;
-            }
-            set
-            {
-                this._disputePostConclusionAcceptancePeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 DisputeMaxSpamSlots
-        {
-            get
-            {
-                return this._disputeMaxSpamSlots;
-            }
-            set
-            {
-                this._disputeMaxSpamSlots = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 DisputeConclusionByTimeOutPeriod
-        {
-            get
-            {
-                return this._disputeConclusionByTimeOutPeriod;
-            }
-            set
-            {
-                this._disputeConclusionByTimeOutPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 NoShowSlots
-        {
-            get
-            {
-                return this._noShowSlots;
-            }
-            set
-            {
-                this._noShowSlots = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 NDelayTranches
-        {
-            get
-            {
-                return this._nDelayTranches;
-            }
-            set
-            {
-                this._nDelayTranches = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 ZerothDelayTrancheWidth
-        {
-            get
-            {
-                return this._zerothDelayTrancheWidth;
-            }
-            set
-            {
-                this._zerothDelayTrancheWidth = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 NeededApprovals
-        {
-            get
-            {
-                return this._neededApprovals;
-            }
-            set
-            {
-                this._neededApprovals = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 RelayVrfModuloSamples
-        {
-            get
-            {
-                return this._relayVrfModuloSamples;
-            }
-            set
-            {
-                this._relayVrfModuloSamples = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight UmpMaxIndividualWeight
-        {
-            get
-            {
-                return this._umpMaxIndividualWeight;
-            }
-            set
-            {
-                this._umpMaxIndividualWeight = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.Bool PvfCheckingEnabled
-        {
-            get
-            {
-                return this._pvfCheckingEnabled;
-            }
-            set
-            {
-                this._pvfCheckingEnabled = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 PvfVotingTtl
-        {
-            get
-            {
-                return this._pvfVotingTtl;
-            }
-            set
-            {
-                this._pvfVotingTtl = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 MinimumValidationUpgradeDelay
-        {
-            get
-            {
-                return this._minimumValidationUpgradeDelay;
-            }
-            set
-            {
-                this._minimumValidationUpgradeDelay = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "HostConfiguration";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -772,43 +224,46 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
             result.AddRange(HrmpMaxMessageNumPerCandidate.Encode());
             result.AddRange(ValidationUpgradeCooldown.Encode());
             result.AddRange(ValidationUpgradeDelay.Encode());
+            result.AddRange(AsyncBackingParams.Encode());
             result.AddRange(MaxPovSize.Encode());
             result.AddRange(MaxDownwardMessageSize.Encode());
-            result.AddRange(UmpServiceTotalWeight.Encode());
             result.AddRange(HrmpMaxParachainOutboundChannels.Encode());
-            result.AddRange(HrmpMaxParathreadOutboundChannels.Encode());
             result.AddRange(HrmpSenderDeposit.Encode());
             result.AddRange(HrmpRecipientDeposit.Encode());
             result.AddRange(HrmpChannelMaxCapacity.Encode());
             result.AddRange(HrmpChannelMaxTotalSize.Encode());
             result.AddRange(HrmpMaxParachainInboundChannels.Encode());
-            result.AddRange(HrmpMaxParathreadInboundChannels.Encode());
             result.AddRange(HrmpChannelMaxMessageSize.Encode());
+            result.AddRange(ExecutorParams.Encode());
             result.AddRange(CodeRetentionPeriod.Encode());
-            result.AddRange(ParathreadCores.Encode());
-            result.AddRange(ParathreadRetries.Encode());
+            result.AddRange(CoretimeCores.Encode());
+            result.AddRange(OnDemandRetries.Encode());
+            result.AddRange(OnDemandQueueMaxSize.Encode());
+            result.AddRange(OnDemandTargetQueueUtilization.Encode());
+            result.AddRange(OnDemandFeeVariability.Encode());
+            result.AddRange(OnDemandBaseFee.Encode());
+            result.AddRange(OnDemandTtl.Encode());
             result.AddRange(GroupRotationFrequency.Encode());
-            result.AddRange(ChainAvailabilityPeriod.Encode());
-            result.AddRange(ThreadAvailabilityPeriod.Encode());
+            result.AddRange(ParasAvailabilityPeriod.Encode());
             result.AddRange(SchedulingLookahead.Encode());
             result.AddRange(MaxValidatorsPerCore.Encode());
             result.AddRange(MaxValidators.Encode());
             result.AddRange(DisputePeriod.Encode());
             result.AddRange(DisputePostConclusionAcceptancePeriod.Encode());
-            result.AddRange(DisputeMaxSpamSlots.Encode());
-            result.AddRange(DisputeConclusionByTimeOutPeriod.Encode());
             result.AddRange(NoShowSlots.Encode());
             result.AddRange(NDelayTranches.Encode());
             result.AddRange(ZerothDelayTrancheWidth.Encode());
             result.AddRange(NeededApprovals.Encode());
             result.AddRange(RelayVrfModuloSamples.Encode());
-            result.AddRange(UmpMaxIndividualWeight.Encode());
-            result.AddRange(PvfCheckingEnabled.Encode());
             result.AddRange(PvfVotingTtl.Encode());
             result.AddRange(MinimumValidationUpgradeDelay.Encode());
+            result.AddRange(MinimumBackingVotes.Encode());
+            result.AddRange(NodeFeatures.Encode());
+            result.AddRange(ApprovalVotingParams.Encode());
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -830,16 +285,14 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
             ValidationUpgradeCooldown.Decode(byteArray, ref p);
             ValidationUpgradeDelay = new Substrate.NetApi.Model.Types.Primitive.U32();
             ValidationUpgradeDelay.Decode(byteArray, ref p);
+            AsyncBackingParams = new Substrate.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams();
+            AsyncBackingParams.Decode(byteArray, ref p);
             MaxPovSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxPovSize.Decode(byteArray, ref p);
             MaxDownwardMessageSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxDownwardMessageSize.Decode(byteArray, ref p);
-            UmpServiceTotalWeight = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
-            UmpServiceTotalWeight.Decode(byteArray, ref p);
             HrmpMaxParachainOutboundChannels = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpMaxParachainOutboundChannels.Decode(byteArray, ref p);
-            HrmpMaxParathreadOutboundChannels = new Substrate.NetApi.Model.Types.Primitive.U32();
-            HrmpMaxParathreadOutboundChannels.Decode(byteArray, ref p);
             HrmpSenderDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             HrmpSenderDeposit.Decode(byteArray, ref p);
             HrmpRecipientDeposit = new Substrate.NetApi.Model.Types.Primitive.U128();
@@ -850,22 +303,30 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
             HrmpChannelMaxTotalSize.Decode(byteArray, ref p);
             HrmpMaxParachainInboundChannels = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpMaxParachainInboundChannels.Decode(byteArray, ref p);
-            HrmpMaxParathreadInboundChannels = new Substrate.NetApi.Model.Types.Primitive.U32();
-            HrmpMaxParathreadInboundChannels.Decode(byteArray, ref p);
             HrmpChannelMaxMessageSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpChannelMaxMessageSize.Decode(byteArray, ref p);
+            ExecutorParams = new Substrate.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams();
+            ExecutorParams.Decode(byteArray, ref p);
             CodeRetentionPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             CodeRetentionPeriod.Decode(byteArray, ref p);
-            ParathreadCores = new Substrate.NetApi.Model.Types.Primitive.U32();
-            ParathreadCores.Decode(byteArray, ref p);
-            ParathreadRetries = new Substrate.NetApi.Model.Types.Primitive.U32();
-            ParathreadRetries.Decode(byteArray, ref p);
+            CoretimeCores = new Substrate.NetApi.Model.Types.Primitive.U32();
+            CoretimeCores.Decode(byteArray, ref p);
+            OnDemandRetries = new Substrate.NetApi.Model.Types.Primitive.U32();
+            OnDemandRetries.Decode(byteArray, ref p);
+            OnDemandQueueMaxSize = new Substrate.NetApi.Model.Types.Primitive.U32();
+            OnDemandQueueMaxSize.Decode(byteArray, ref p);
+            OnDemandTargetQueueUtilization = new Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill();
+            OnDemandTargetQueueUtilization.Decode(byteArray, ref p);
+            OnDemandFeeVariability = new Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill();
+            OnDemandFeeVariability.Decode(byteArray, ref p);
+            OnDemandBaseFee = new Substrate.NetApi.Model.Types.Primitive.U128();
+            OnDemandBaseFee.Decode(byteArray, ref p);
+            OnDemandTtl = new Substrate.NetApi.Model.Types.Primitive.U32();
+            OnDemandTtl.Decode(byteArray, ref p);
             GroupRotationFrequency = new Substrate.NetApi.Model.Types.Primitive.U32();
             GroupRotationFrequency.Decode(byteArray, ref p);
-            ChainAvailabilityPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
-            ChainAvailabilityPeriod.Decode(byteArray, ref p);
-            ThreadAvailabilityPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
-            ThreadAvailabilityPeriod.Decode(byteArray, ref p);
+            ParasAvailabilityPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
+            ParasAvailabilityPeriod.Decode(byteArray, ref p);
             SchedulingLookahead = new Substrate.NetApi.Model.Types.Primitive.U32();
             SchedulingLookahead.Decode(byteArray, ref p);
             MaxValidatorsPerCore = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
@@ -876,10 +337,6 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
             DisputePeriod.Decode(byteArray, ref p);
             DisputePostConclusionAcceptancePeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             DisputePostConclusionAcceptancePeriod.Decode(byteArray, ref p);
-            DisputeMaxSpamSlots = new Substrate.NetApi.Model.Types.Primitive.U32();
-            DisputeMaxSpamSlots.Decode(byteArray, ref p);
-            DisputeConclusionByTimeOutPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
-            DisputeConclusionByTimeOutPeriod.Decode(byteArray, ref p);
             NoShowSlots = new Substrate.NetApi.Model.Types.Primitive.U32();
             NoShowSlots.Decode(byteArray, ref p);
             NDelayTranches = new Substrate.NetApi.Model.Types.Primitive.U32();
@@ -890,15 +347,20 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configura
             NeededApprovals.Decode(byteArray, ref p);
             RelayVrfModuloSamples = new Substrate.NetApi.Model.Types.Primitive.U32();
             RelayVrfModuloSamples.Decode(byteArray, ref p);
-            UmpMaxIndividualWeight = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
-            UmpMaxIndividualWeight.Decode(byteArray, ref p);
-            PvfCheckingEnabled = new Substrate.NetApi.Model.Types.Primitive.Bool();
-            PvfCheckingEnabled.Decode(byteArray, ref p);
             PvfVotingTtl = new Substrate.NetApi.Model.Types.Primitive.U32();
             PvfVotingTtl.Decode(byteArray, ref p);
             MinimumValidationUpgradeDelay = new Substrate.NetApi.Model.Types.Primitive.U32();
             MinimumValidationUpgradeDelay.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            MinimumBackingVotes = new Substrate.NetApi.Model.Types.Primitive.U32();
+            MinimumBackingVotes.Decode(byteArray, ref p);
+            NodeFeatures = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0>();
+            NodeFeatures.Decode(byteArray, ref p);
+            ApprovalVotingParams = new Substrate.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams();
+            ApprovalVotingParams.Decode(byteArray, ref p);
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializ
     
     
     /// <summary>
-    /// >> 681 - Composite[polkadot_runtime_parachains.initializer.BufferedSessionChange]
+    /// >> 784 - Composite[polkadot_runtime_parachains.initializer.BufferedSessionChange]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BufferedSessionChange : BaseType
@@ -27,59 +27,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializ
         /// <summary>
         /// >> validators
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> _validators;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public> Validators { get; set; }
         /// <summary>
         /// >> queued
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> _queued;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public> Queued { get; set; }
         /// <summary>
         /// >> session_index
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _sessionIndex;
+        public Substrate.NetApi.Model.Types.Primitive.U32 SessionIndex { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> Validators
-        {
-            get
-            {
-                return this._validators;
-            }
-            set
-            {
-                this._validators = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public> Queued
-        {
-            get
-            {
-                return this._queued;
-            }
-            set
-            {
-                this._queued = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 SessionIndex
-        {
-            get
-            {
-                return this._sessionIndex;
-            }
-            set
-            {
-                this._sessionIndex = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "BufferedSessionChange";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -89,16 +53,20 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializ
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public>();
             Validators.Decode(byteArray, ref p);
-            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Public>();
+            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public>();
             Queued.Decode(byteArray, ref p);
             SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

@@ -8,14 +8,7 @@
 //------------------------------------------------------------------------------
 
 using PlutoWallet.Model.AjunaExt;
-using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi.Model.Meta;
-using Substrate.NetApi.Model.Types;
-using Substrate.NetApi.Model.Types.Base;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace Substrate.NetApi.Generated.Storage
@@ -37,34 +30,34 @@ namespace Substrate.NetApi.Generated.Storage
         public VtokenMintingStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "Fees"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "Fees"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "TokenPool"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "UnlockDuration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "OngoingTimeUnit"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "MinimumMint"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "MinimumRedeem"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "TokenUnlockNextId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "TokenUnlockLedger"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "UserUnlockLedger"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "TimeUnitUnlockLedger"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "TokenToRebond"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "MinTimeUnit"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "UnlockingTotal"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenMinting", "HookIterationLimit"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
         }
         
@@ -88,17 +81,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> Fees
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>> Fees(CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>> Fees(CancellationToken token)
         {
             string parameters = VtokenMintingStorage.FeesParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> TokenPoolParams
         /// </summary>
-        public static string TokenPoolParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string TokenPoolParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "TokenPool", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -117,7 +110,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenPool
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> TokenPool(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> TokenPool(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.TokenPoolParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
@@ -130,7 +123,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> UnlockDurationParams
         /// </summary>
-        public static string UnlockDurationParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string UnlockDurationParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "UnlockDuration", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -149,17 +142,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> UnlockDuration
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> UnlockDuration(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> UnlockDuration(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.UnlockDurationParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> OngoingTimeUnitParams
         /// </summary>
-        public static string OngoingTimeUnitParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string OngoingTimeUnitParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "OngoingTimeUnit", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -178,17 +171,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> OngoingTimeUnit
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> OngoingTimeUnit(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> OngoingTimeUnit(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.OngoingTimeUnitParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> MinimumMintParams
         /// </summary>
-        public static string MinimumMintParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string MinimumMintParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "MinimumMint", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -207,7 +200,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> MinimumMint
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> MinimumMint(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> MinimumMint(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.MinimumMintParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
@@ -217,7 +210,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> MinimumRedeemParams
         /// </summary>
-        public static string MinimumRedeemParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string MinimumRedeemParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "MinimumRedeem", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -236,7 +229,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> MinimumRedeem
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> MinimumRedeem(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> MinimumRedeem(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.MinimumRedeemParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
@@ -246,7 +239,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenUnlockNextIdParams
         /// </summary>
-        public static string TokenUnlockNextIdParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string TokenUnlockNextIdParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "TokenUnlockNextId", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -265,7 +258,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenUnlockNextId
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> TokenUnlockNextId(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> TokenUnlockNextId(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.TokenUnlockNextIdParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, token);
@@ -275,7 +268,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenUnlockLedgerParams
         /// </summary>
-        public static string TokenUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        public static string TokenUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "TokenUnlockLedger", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -294,17 +287,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenUnlockLedger
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>> TokenUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>> TokenUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.TokenUnlockLedgerParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumRedeemType>>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> UserUnlockLedgerParams
         /// </summary>
-        public static string UserUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key)
+        public static string UserUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "UserUnlockLedger", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -323,17 +316,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> UserUnlockLedger
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>> UserUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>> UserUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.UserUnlockLedgerParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> TimeUnitUnlockLedgerParams
         /// </summary>
-        public static string TimeUnitUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key)
+        public static string TimeUnitUnlockLedgerParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "TimeUnitUnlockLedger", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -352,17 +345,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TimeUnitUnlockLedger
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>> TimeUnitUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>> TimeUnitUnlockLedger(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.TimeUnitUnlockLedgerParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(parameters, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> TokenToRebondParams
         /// </summary>
-        public static string TokenToRebondParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string TokenToRebondParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "TokenToRebond", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -381,7 +374,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> TokenToRebond
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> TokenToRebond(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> TokenToRebond(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.TokenToRebondParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
@@ -391,7 +384,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> MinTimeUnitParams
         /// </summary>
-        public static string MinTimeUnitParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string MinTimeUnitParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "MinTimeUnit", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -410,17 +403,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> MinTimeUnit
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> MinTimeUnit(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit> MinTimeUnit(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.MinTimeUnitParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> UnlockingTotalParams
         /// </summary>
-        public static string UnlockingTotalParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string UnlockingTotalParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("VtokenMinting", "UnlockingTotal", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -439,7 +432,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> UnlockingTotal
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> UnlockingTotal(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U128> UnlockingTotal(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = VtokenMintingStorage.UnlockingTotalParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U128>(parameters, token);
@@ -484,7 +477,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> mint
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Mint(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 token_amount, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 remark, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> channel_id)
+        public static Method Mint(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 token_amount, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 remark, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> channel_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -498,7 +491,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> redeem
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Redeem(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId vtoken_id, Substrate.NetApi.Model.Types.Primitive.U128 vtoken_amount)
+        public static Method Redeem(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId vtoken_id, Substrate.NetApi.Model.Types.Primitive.U128 vtoken_amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(vtoken_id.Encode());
@@ -510,7 +503,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> rebond
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Rebond(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 token_amount)
+        public static Method Rebond(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 token_amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -522,7 +515,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> rebond_by_unlock_id
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RebondByUnlockId(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U32 unlock_id)
+        public static Method RebondByUnlockId(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U32 unlock_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -534,7 +527,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_unlock_duration
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetUnlockDuration(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit unlock_duration)
+        public static Method SetUnlockDuration(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit unlock_duration)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -546,7 +539,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_minimum_mint
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMinimumMint(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
+        public static Method SetMinimumMint(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -558,7 +551,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_minimum_redeem
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMinimumRedeem(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
+        public static Method SetMinimumRedeem(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -570,7 +563,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> add_support_rebond_token
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method AddSupportRebondToken(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id)
+        public static Method AddSupportRebondToken(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -581,7 +574,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> remove_support_rebond_token
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RemoveSupportRebondToken(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id)
+        public static Method RemoveSupportRebondToken(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -592,7 +585,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_fees
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetFees(Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill mint_fee, Substrate.NetApi.Generated.Model.sp_arithmetic.per_things.Permill redeem_fee)
+        public static Method SetFees(Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill mint_fee, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill redeem_fee)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(mint_fee.Encode());
@@ -615,7 +608,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_unlocking_total
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetUnlockingTotal(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
+        public static Method SetUnlockingTotal(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Model.Types.Primitive.U128 amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -627,7 +620,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> set_min_time_unit
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMinTimeUnit(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit time_unit)
+        public static Method SetMinTimeUnit(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit time_unit)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -639,7 +632,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// >> recreate_currency_ongoing_time_unit
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RecreateCurrencyOngoingTimeUnit(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Substrate.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit time_unit)
+        public static Method RecreateCurrencyOngoingTimeUnit(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId token_id, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit time_unit)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(token_id.Encode());
@@ -678,9 +671,9 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> EntranceAccount
         /// </summary>
-        public Substrate.NetApi.Generated.Model.frame_support.PalletId EntranceAccount()
+        public Bifrost.NetApi.Generated.Model.frame_support.PalletId EntranceAccount()
         {
-            var result = new Substrate.NetApi.Generated.Model.frame_support.PalletId();
+            var result = new Bifrost.NetApi.Generated.Model.frame_support.PalletId();
             result.Create("0x62662F76746B696E");
             return result;
         }
@@ -688,9 +681,9 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> ExitAccount
         /// </summary>
-        public Substrate.NetApi.Generated.Model.frame_support.PalletId ExitAccount()
+        public Bifrost.NetApi.Generated.Model.frame_support.PalletId ExitAccount()
         {
-            var result = new Substrate.NetApi.Generated.Model.frame_support.PalletId();
+            var result = new Bifrost.NetApi.Generated.Model.frame_support.PalletId();
             result.Create("0x62662F76746F7574");
             return result;
         }
@@ -698,9 +691,9 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> FeeAccount
         /// </summary>
-        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 FeeAccount()
+        public Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 FeeAccount()
         {
-            var result = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
+            var result = new Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             result.Create("0x6D6F646C62662F74727372790000000000000000000000000000000000000000");
             return result;
         }
@@ -708,9 +701,9 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> RelayChainToken
         /// </summary>
-        public Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId RelayChainToken()
+        public Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId RelayChainToken()
         {
-            var result = new Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
+            var result = new Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
             result.Create("0x0800");
             return result;
         }

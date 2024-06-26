@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.frame_support.traits.tokens.misc
 {
     
     
+    /// <summary>
+    /// >> BalanceStatus
+    /// </summary>
     public enum BalanceStatus
     {
         
+        /// <summary>
+        /// >> Free
+        /// </summary>
         Free = 0,
         
+        /// <summary>
+        /// >> Reserved
+        /// </summary>
         Reserved = 1,
     }
     
     /// <summary>
-    /// >> 37 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
+    /// >> 39 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
     /// </summary>
     public sealed class EnumBalanceStatus : BaseEnum<BalanceStatus>
     {

@@ -21,7 +21,7 @@ namespace PlutoWallet.Components.HydraDX
 
 		public async Task GetLiquidityAmount(SubstrateClientExt client)
 		{
-			if (client is null)
+			if (client is null || client.IsConnected)
 			{
 				UsdSum = "Failed";
 

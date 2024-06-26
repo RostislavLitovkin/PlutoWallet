@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
     
     
     /// <summary>
-    /// >> 666 - Composite[polkadot_runtime_parachains.paras.PvfCheckActiveVoteState]
+    /// >> 767 - Composite[polkadot_runtime_parachains.paras.PvfCheckActiveVoteState]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PvfCheckActiveVoteState : BaseType
@@ -27,93 +27,31 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
         /// <summary>
         /// >> votes_accept
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> _votesAccept;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> VotesAccept { get; set; }
         /// <summary>
         /// >> votes_reject
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> _votesReject;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> VotesReject { get; set; }
         /// <summary>
         /// >> age
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _age;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 Age { get; set; }
         /// <summary>
         /// >> created_at
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _createdAt;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 CreatedAt { get; set; }
         /// <summary>
         /// >> causes
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> _causes;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> Causes { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> VotesAccept
-        {
-            get
-            {
-                return this._votesAccept;
-            }
-            set
-            {
-                this._votesAccept = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> VotesReject
-        {
-            get
-            {
-                return this._votesReject;
-            }
-            set
-            {
-                this._votesReject = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 Age
-        {
-            get
-            {
-                return this._age;
-            }
-            set
-            {
-                this._age = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 CreatedAt
-        {
-            get
-            {
-                return this._createdAt;
-            }
-            set
-            {
-                this._createdAt = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause> Causes
-        {
-            get
-            {
-                return this._causes;
-            }
-            set
-            {
-                this._causes = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "PvfCheckActiveVoteState";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -125,6 +63,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -138,7 +77,10 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             CreatedAt.Decode(byteArray, ref p);
             Causes = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumPvfCheckCause>();
             Causes.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

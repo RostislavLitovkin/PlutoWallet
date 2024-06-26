@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
+    /// <summary>
+    /// >> DispatchClass
+    /// </summary>
     public enum DispatchClass
     {
         
+        /// <summary>
+        /// >> Normal
+        /// </summary>
         Normal = 0,
         
+        /// <summary>
+        /// >> Operational
+        /// </summary>
         Operational = 1,
         
+        /// <summary>
+        /// >> Mandatory
+        /// </summary>
         Mandatory = 2,
     }
     
     /// <summary>
-    /// >> 22 - Variant[frame_support.dispatch.DispatchClass]
+    /// >> 23 - Variant[frame_support.dispatch.DispatchClass]
     /// </summary>
     public sealed class EnumDispatchClass : BaseEnum<DispatchClass>
     {

@@ -15,20 +15,32 @@ namespace Substrate.NetApi.Generated.Model.frame_support.traits.preimages
 {
     
     
+    /// <summary>
+    /// >> Bounded
+    /// </summary>
     public enum Bounded
     {
         
+        /// <summary>
+        /// >> Legacy
+        /// </summary>
         Legacy = 0,
         
+        /// <summary>
+        /// >> Inline
+        /// </summary>
         Inline = 1,
         
+        /// <summary>
+        /// >> Lookup
+        /// </summary>
         Lookup = 2,
     }
     
     /// <summary>
-    /// >> 180 - Variant[frame_support.traits.preimages.Bounded]
+    /// >> 101 - Variant[frame_support.traits.preimages.Bounded]
     /// </summary>
-    public sealed class EnumBounded : BaseEnumExt<Bounded, Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT3, BaseTuple<Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumBounded : BaseEnumExt<Bounded, Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13, BaseTuple<Substrate.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

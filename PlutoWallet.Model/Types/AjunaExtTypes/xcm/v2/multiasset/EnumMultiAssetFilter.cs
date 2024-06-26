@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.xcm.v2.multiasset
 {
     
     
+    /// <summary>
+    /// >> MultiAssetFilter
+    /// </summary>
     public enum MultiAssetFilter
     {
         
+        /// <summary>
+        /// >> Definite
+        /// </summary>
         Definite = 0,
         
+        /// <summary>
+        /// >> Wild
+        /// </summary>
         Wild = 1,
     }
     
     /// <summary>
-    /// >> 252 - Variant[xcm.v2.multiasset.MultiAssetFilter]
+    /// >> 405 - Variant[xcm.v2.multiasset.MultiAssetFilter]
     /// </summary>
     public sealed class EnumMultiAssetFilter : BaseEnumExt<MultiAssetFilter, Substrate.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>
     {

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
     
     
     /// <summary>
-    /// >> 623 - Composite[pallet_nomination_pools.PoolRoles]
+    /// >> 725 - Composite[pallet_nomination_pools.PoolRoles]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PoolRoles : BaseType
@@ -27,86 +27,38 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> depositor
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _depositor;
-        
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor { get; set; }
         /// <summary>
         /// >> root
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _root;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Root { get; set; }
         /// <summary>
         /// >> nominator
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _nominator;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Nominator { get; set; }
         /// <summary>
-        /// >> state_toggler
+        /// >> bouncer
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _stateToggler;
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Bouncer { get; set; }
         
-        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor
-        {
-            get
-            {
-                return this._depositor;
-            }
-            set
-            {
-                this._depositor = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Root
-        {
-            get
-            {
-                return this._root;
-            }
-            set
-            {
-                this._root = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Nominator
-        {
-            get
-            {
-                return this._nominator;
-            }
-            set
-            {
-                this._nominator = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> StateToggler
-        {
-            get
-            {
-                return this._stateToggler;
-            }
-            set
-            {
-                this._stateToggler = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "PoolRoles";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
             result.AddRange(Depositor.Encode());
             result.AddRange(Root.Encode());
             result.AddRange(Nominator.Encode());
-            result.AddRange(StateToggler.Encode());
+            result.AddRange(Bouncer.Encode());
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -116,9 +68,12 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
             Root.Decode(byteArray, ref p);
             Nominator = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Nominator.Decode(byteArray, ref p);
-            StateToggler = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
-            StateToggler.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            Bouncer = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
+            Bouncer.Decode(byteArray, ref p);
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

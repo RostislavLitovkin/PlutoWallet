@@ -15,20 +15,35 @@ namespace Substrate.NetApi.Generated.Model.pallet_xcm.pallet
 {
     
     
+    /// <summary>
+    /// >> VersionMigrationStage
+    /// </summary>
     public enum VersionMigrationStage
     {
         
+        /// <summary>
+        /// >> MigrateSupportedVersion
+        /// </summary>
         MigrateSupportedVersion = 0,
         
+        /// <summary>
+        /// >> MigrateVersionNotifiers
+        /// </summary>
         MigrateVersionNotifiers = 1,
         
+        /// <summary>
+        /// >> NotifyCurrentTargets
+        /// </summary>
         NotifyCurrentTargets = 2,
         
+        /// <summary>
+        /// >> MigrateAndNotifyOldTargets
+        /// </summary>
         MigrateAndNotifyOldTargets = 3,
     }
     
     /// <summary>
-    /// >> 724 - Variant[pallet_xcm.pallet.VersionMigrationStage]
+    /// >> 831 - Variant[pallet_xcm.pallet.VersionMigrationStage]
     /// </summary>
     public sealed class EnumVersionMigrationStage : BaseEnumExt<VersionMigrationStage, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid>
     {

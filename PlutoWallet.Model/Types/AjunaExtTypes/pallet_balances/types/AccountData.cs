@@ -27,76 +27,27 @@ namespace Substrate.NetApi.Generated.Model.pallet_balances.types
         /// <summary>
         /// >> free
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _free;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Free { get; set; }
         /// <summary>
         /// >> reserved
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _reserved;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Reserved { get; set; }
         /// <summary>
         /// >> frozen
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _frozen;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Frozen { get; set; }
         /// <summary>
         /// >> flags
         /// </summary>
-        private Substrate.NetApi.Generated.Model.pallet_balances.types.ExtraFlags _flags;
+        public Substrate.NetApi.Generated.Model.pallet_balances.types.ExtraFlags Flags { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U128 Free
-        {
-            get
-            {
-                return this._free;
-            }
-            set
-            {
-                this._free = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Reserved
-        {
-            get
-            {
-                return this._reserved;
-            }
-            set
-            {
-                this._reserved = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Frozen
-        {
-            get
-            {
-                return this._frozen;
-            }
-            set
-            {
-                this._frozen = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.pallet_balances.types.ExtraFlags Flags
-        {
-            get
-            {
-                return this._flags;
-            }
-            set
-            {
-                this._flags = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "AccountData";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -107,6 +58,7 @@ namespace Substrate.NetApi.Generated.Model.pallet_balances.types
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -118,7 +70,10 @@ namespace Substrate.NetApi.Generated.Model.pallet_balances.types
             Frozen.Decode(byteArray, ref p);
             Flags = new Substrate.NetApi.Generated.Model.pallet_balances.types.ExtraFlags();
             Flags.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

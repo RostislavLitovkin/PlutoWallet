@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
 {
     
     
+    /// <summary>
+    /// >> LastContribution
+    /// </summary>
     public enum LastContribution
     {
         
+        /// <summary>
+        /// >> Never
+        /// </summary>
         Never = 0,
         
+        /// <summary>
+        /// >> PreEnding
+        /// </summary>
         PreEnding = 1,
         
+        /// <summary>
+        /// >> Ending
+        /// </summary>
         Ending = 2,
     }
     
     /// <summary>
-    /// >> 713 - Variant[polkadot_runtime_common.crowdloan.LastContribution]
+    /// >> 819 - Variant[polkadot_runtime_common.crowdloan.LastContribution]
     /// </summary>
     public sealed class EnumLastContribution : BaseEnumExt<LastContribution, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
     {

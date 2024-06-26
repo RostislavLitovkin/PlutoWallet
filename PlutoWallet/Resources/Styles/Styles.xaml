@@ -47,6 +47,7 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="CornerRadius" Value="8"/>
         <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="FontAutoScalingEnabled" Value="False"/>
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -118,6 +119,7 @@
     </Style>
 
     <Style TargetType="Entry">
+        <Setter Property="FontAutoScalingEnabled" Value="False"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
@@ -163,6 +165,7 @@
     </Style>
 
     <Style TargetType="Label">
+        <Setter Property="FontAutoScalingEnabled" Value="False"/>
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontSize" Value="14" />

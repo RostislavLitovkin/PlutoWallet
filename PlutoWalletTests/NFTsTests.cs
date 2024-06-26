@@ -24,7 +24,7 @@ public class NFTsTests
                         new Uri(bestWebSecket),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-            await client.ConnectAsync();
+            await client.ConnectAndLoadMetadataAsync();
 
             List<NFT> nfts = new List<NFT>();
             
@@ -63,7 +63,7 @@ public class NFTsTests
                     new Uri(bestWebSecket),
                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-        await client.ConnectAsync();
+        await client.ConnectAndLoadMetadataAsync();
 
 
         List<NFT> nfts = new List<NFT>();

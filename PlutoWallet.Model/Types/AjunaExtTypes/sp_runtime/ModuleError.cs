@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
     
     
     /// <summary>
-    /// >> 25 - Composite[sp_runtime.ModuleError]
+    /// >> 26 - Composite[sp_runtime.ModuleError]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ModuleError : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
         /// <summary>
         /// >> index
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U8 _index;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U8 Index { get; set; }
         /// <summary>
         /// >> error
         /// </summary>
-        private Substrate.NetApi.Generated.Types.Base.Arr4U8 _error;
+        public Substrate.NetApi.Generated.Types.Base.Arr4U8 Error { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U8 Index
-        {
-            get
-            {
-                return this._index;
-            }
-            set
-            {
-                this._index = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Types.Base.Arr4U8 Error
-        {
-            get
-            {
-                return this._error;
-            }
-            set
-            {
-                this._error = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ModuleError";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -78,7 +56,10 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
             Index.Decode(byteArray, ref p);
             Error = new Substrate.NetApi.Generated.Types.Base.Arr4U8();
             Error.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

@@ -15,42 +15,89 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pal
 {
     
     
+    /// <summary>
+    /// >> Error
+    /// The `Error` enum of this pallet.
+    /// </summary>
     public enum Error
     {
         
+        /// <summary>
+        /// >> NotRegistered
+        /// Para is not registered in our system.
+        /// </summary>
         NotRegistered = 0,
         
+        /// <summary>
+        /// >> CannotOnboard
+        /// Para cannot be onboarded because it is already tracked by our system.
+        /// </summary>
         CannotOnboard = 1,
         
+        /// <summary>
+        /// >> CannotOffboard
+        /// Para cannot be offboarded at this time.
+        /// </summary>
         CannotOffboard = 2,
         
+        /// <summary>
+        /// >> CannotUpgrade
+        /// Para cannot be upgraded to a lease holding parachain.
+        /// </summary>
         CannotUpgrade = 3,
         
+        /// <summary>
+        /// >> CannotDowngrade
+        /// Para cannot be downgraded to an on-demand parachain.
+        /// </summary>
         CannotDowngrade = 4,
         
+        /// <summary>
+        /// >> PvfCheckStatementStale
+        /// The statement for PVF pre-checking is stale.
+        /// </summary>
         PvfCheckStatementStale = 5,
         
+        /// <summary>
+        /// >> PvfCheckStatementFuture
+        /// The statement for PVF pre-checking is for a future session.
+        /// </summary>
         PvfCheckStatementFuture = 6,
         
+        /// <summary>
+        /// >> PvfCheckValidatorIndexOutOfBounds
+        /// Claimed validator index is out of bounds.
+        /// </summary>
         PvfCheckValidatorIndexOutOfBounds = 7,
         
+        /// <summary>
+        /// >> PvfCheckInvalidSignature
+        /// The signature for the PVF pre-checking is invalid.
+        /// </summary>
         PvfCheckInvalidSignature = 8,
         
+        /// <summary>
+        /// >> PvfCheckDoubleVote
+        /// The given validator already has cast a vote.
+        /// </summary>
         PvfCheckDoubleVote = 9,
         
+        /// <summary>
+        /// >> PvfCheckSubjectInvalid
+        /// The given PVF does not exist at the moment of process a vote.
+        /// </summary>
         PvfCheckSubjectInvalid = 10,
         
-        PvfCheckDisabled = 11,
-        
-        CannotUpgradeCode = 12,
+        /// <summary>
+        /// >> CannotUpgradeCode
+        /// Parachain cannot currently schedule a code upgrade.
+        /// </summary>
+        CannotUpgradeCode = 11,
     }
     
     /// <summary>
-    /// >> 679 - Variant[polkadot_runtime_parachains.paras.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 782 - Variant[polkadot_runtime_parachains.paras.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

@@ -15,106 +15,237 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime
 {
     
     
+    /// <summary>
+    /// >> RuntimeCall
+    /// </summary>
     public enum RuntimeCall
     {
         
+        /// <summary>
+        /// >> System
+        /// </summary>
         System = 0,
         
+        /// <summary>
+        /// >> Scheduler
+        /// </summary>
         Scheduler = 1,
         
+        /// <summary>
+        /// >> Preimage
+        /// </summary>
         Preimage = 10,
         
+        /// <summary>
+        /// >> Babe
+        /// </summary>
         Babe = 2,
         
+        /// <summary>
+        /// >> Timestamp
+        /// </summary>
         Timestamp = 3,
         
+        /// <summary>
+        /// >> Indices
+        /// </summary>
         Indices = 4,
         
+        /// <summary>
+        /// >> Balances
+        /// </summary>
         Balances = 5,
         
-        Authorship = 6,
-        
+        /// <summary>
+        /// >> Staking
+        /// </summary>
         Staking = 7,
         
+        /// <summary>
+        /// >> Session
+        /// </summary>
         Session = 9,
         
+        /// <summary>
+        /// >> Grandpa
+        /// </summary>
         Grandpa = 11,
         
-        ImOnline = 12,
-        
-        Democracy = 14,
-        
-        Council = 15,
-        
-        TechnicalCommittee = 16,
-        
-        PhragmenElection = 17,
-        
-        TechnicalMembership = 18,
-        
+        /// <summary>
+        /// >> Treasury
+        /// </summary>
         Treasury = 19,
         
+        /// <summary>
+        /// >> ConvictionVoting
+        /// </summary>
+        ConvictionVoting = 20,
+        
+        /// <summary>
+        /// >> Referenda
+        /// </summary>
+        Referenda = 21,
+        
+        /// <summary>
+        /// >> Whitelist
+        /// </summary>
+        Whitelist = 23,
+        
+        /// <summary>
+        /// >> Claims
+        /// </summary>
         Claims = 24,
         
+        /// <summary>
+        /// >> Vesting
+        /// </summary>
         Vesting = 25,
         
+        /// <summary>
+        /// >> Utility
+        /// </summary>
         Utility = 26,
         
+        /// <summary>
+        /// >> Identity
+        /// </summary>
         Identity = 28,
         
+        /// <summary>
+        /// >> Proxy
+        /// </summary>
         Proxy = 29,
         
+        /// <summary>
+        /// >> Multisig
+        /// </summary>
         Multisig = 30,
         
+        /// <summary>
+        /// >> Bounties
+        /// </summary>
         Bounties = 34,
         
+        /// <summary>
+        /// >> ChildBounties
+        /// </summary>
         ChildBounties = 38,
         
-        Tips = 35,
-        
+        /// <summary>
+        /// >> ElectionProviderMultiPhase
+        /// </summary>
         ElectionProviderMultiPhase = 36,
         
+        /// <summary>
+        /// >> VoterList
+        /// </summary>
         VoterList = 37,
         
+        /// <summary>
+        /// >> NominationPools
+        /// </summary>
         NominationPools = 39,
         
+        /// <summary>
+        /// >> FastUnstake
+        /// </summary>
         FastUnstake = 40,
         
+        /// <summary>
+        /// >> Configuration
+        /// </summary>
         Configuration = 51,
         
+        /// <summary>
+        /// >> ParasShared
+        /// </summary>
         ParasShared = 52,
         
+        /// <summary>
+        /// >> ParaInclusion
+        /// </summary>
         ParaInclusion = 53,
         
+        /// <summary>
+        /// >> ParaInherent
+        /// </summary>
         ParaInherent = 54,
         
+        /// <summary>
+        /// >> Paras
+        /// </summary>
         Paras = 56,
         
+        /// <summary>
+        /// >> Initializer
+        /// </summary>
         Initializer = 57,
         
-        Dmp = 58,
-        
-        Ump = 59,
-        
+        /// <summary>
+        /// >> Hrmp
+        /// </summary>
         Hrmp = 60,
         
+        /// <summary>
+        /// >> ParasDisputes
+        /// </summary>
         ParasDisputes = 62,
         
+        /// <summary>
+        /// >> ParasSlashing
+        /// </summary>
+        ParasSlashing = 63,
+        
+        /// <summary>
+        /// >> Registrar
+        /// </summary>
         Registrar = 70,
         
+        /// <summary>
+        /// >> Slots
+        /// </summary>
         Slots = 71,
         
+        /// <summary>
+        /// >> Auctions
+        /// </summary>
         Auctions = 72,
         
+        /// <summary>
+        /// >> Crowdloan
+        /// </summary>
         Crowdloan = 73,
         
+        /// <summary>
+        /// >> StateTrieMigration
+        /// </summary>
+        StateTrieMigration = 98,
+        
+        /// <summary>
+        /// >> XcmPallet
+        /// </summary>
         XcmPallet = 99,
+        
+        /// <summary>
+        /// >> MessageQueue
+        /// </summary>
+        MessageQueue = 100,
+        
+        /// <summary>
+        /// >> AssetRate
+        /// </summary>
+        AssetRate = 101,
+        
+        /// <summary>
+        /// >> Beefy
+        /// </summary>
+        Beefy = 200,
     }
     
     /// <summary>
-    /// >> 181 - Variant[polkadot_runtime.RuntimeCall]
+    /// >> 102 - Variant[polkadot_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, Substrate.NetApi.Generated.Model.frame_system.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_babe.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_indices.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_authorship.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_session.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_grandpa.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_im_online.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_membership.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_bounties.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_tips.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_bags_list.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_child_bounties.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_fast_unstake.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configuration.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.shared.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializer.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.dmp.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.ump.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.auctions.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, Substrate.NetApi.Generated.Model.frame_system.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_babe.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_indices.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_session.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_grandpa.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_conviction_voting.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_referenda.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_whitelist.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_bounties.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.pallet_election_provider_multi_phase.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_bags_list.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_child_bounties.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_fast_unstake.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.configuration.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.shared.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializer.pallet.EnumCall, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.pallet.EnumCall, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.slashing.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.auctions.pallet.EnumCall, Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall, Substrate.NetApi.Generated.Model.pallet_asset_rate.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.pallet_beefy.pallet.EnumCall>
     {
     }
 }

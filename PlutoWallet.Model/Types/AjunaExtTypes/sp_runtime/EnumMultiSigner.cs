@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
+    /// <summary>
+    /// >> MultiSigner
+    /// </summary>
     public enum MultiSigner
     {
         
+        /// <summary>
+        /// >> Ed25519
+        /// </summary>
         Ed25519 = 0,
         
+        /// <summary>
+        /// >> Sr25519
+        /// </summary>
         Sr25519 = 1,
         
+        /// <summary>
+        /// >> Ecdsa
+        /// </summary>
         Ecdsa = 2,
     }
     
     /// <summary>
-    /// >> 417 - Variant[sp_runtime.MultiSigner]
+    /// >> 381 - Variant[sp_runtime.MultiSigner]
     /// </summary>
     public sealed class EnumMultiSigner : BaseEnumExt<MultiSigner, Substrate.NetApi.Generated.Model.sp_core.ed25519.Public, Substrate.NetApi.Generated.Model.sp_core.sr25519.Public, Substrate.NetApi.Generated.Model.sp_core.ecdsa.Public>
     {

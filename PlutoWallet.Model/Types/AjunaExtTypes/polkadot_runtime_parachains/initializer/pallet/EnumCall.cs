@@ -15,15 +15,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.initializ
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> force_approve
+        /// See [`Pallet::force_approve`].
+        /// </summary>
         force_approve = 0,
     }
     
     /// <summary>
-    /// >> 406 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 367 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32>
     {

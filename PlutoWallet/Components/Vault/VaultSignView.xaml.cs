@@ -1,10 +1,7 @@
-﻿using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi;
-using Substrate.NetApi.Model.Rpc;
+﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
-using Substrate.NetApi.Model.Types.Base;
 using Chaos.NaCl;
-using Schnorrkel;
+using Substrate.NET.Schnorrkel;
 
 namespace PlutoWallet.Components.Vault;
 

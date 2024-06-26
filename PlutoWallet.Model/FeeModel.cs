@@ -1,22 +1,10 @@
-﻿using System;
-using System.Numerics;
+﻿using System.Numerics;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi;
-using Newtonsoft.Json;
-using PlutoWallet.Types;
-using Substrate.NetApi.Model.Meta;
 using PlutoWallet.Model.AjunaExt;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
-using Substrate.NetApi.Model.Types;
-using Chaos.NaCl;
-using Schnorrkel;
 using PlutoWallet.Constants;
-using PlutoWallet.Model;
-
 
 namespace PlutoWallet.Model
 {
@@ -73,7 +61,6 @@ namespace PlutoWallet.Model
                 signed: true,
                 CancellationToken.None);
 
-            Console.WriteLine("Here is the extrinsics bytes: " + Utils.Bytes2HexString(extrinsic.Encode()));
             var feeDetail = await client.Payment.QueryFeeDetailAsync(
                 Utils.Bytes2HexString(extrinsic.Encode()),
                 null,

@@ -35,7 +35,7 @@ public class EndpointsTests
                                     new Uri(url),
                                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    await client.ConnectAsync();
+                    await client.ConnectAndLoadMetadataAsync();
 
                     //Console.WriteLine(endpoint.Name + " done ^^");
 

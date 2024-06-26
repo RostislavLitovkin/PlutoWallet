@@ -15,26 +15,65 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime
 {
     
     
+    /// <summary>
+    /// >> TokenError
+    /// </summary>
     public enum TokenError
     {
         
-        NoFunds = 0,
+        /// <summary>
+        /// >> FundsUnavailable
+        /// </summary>
+        FundsUnavailable = 0,
         
-        WouldDie = 1,
+        /// <summary>
+        /// >> OnlyProvider
+        /// </summary>
+        OnlyProvider = 1,
         
+        /// <summary>
+        /// >> BelowMinimum
+        /// </summary>
         BelowMinimum = 2,
         
+        /// <summary>
+        /// >> CannotCreate
+        /// </summary>
         CannotCreate = 3,
         
+        /// <summary>
+        /// >> UnknownAsset
+        /// </summary>
         UnknownAsset = 4,
         
+        /// <summary>
+        /// >> Frozen
+        /// </summary>
         Frozen = 5,
         
+        /// <summary>
+        /// >> Unsupported
+        /// </summary>
         Unsupported = 6,
+        
+        /// <summary>
+        /// >> CannotCreateHold
+        /// </summary>
+        CannotCreateHold = 7,
+        
+        /// <summary>
+        /// >> NotExpendable
+        /// </summary>
+        NotExpendable = 8,
+        
+        /// <summary>
+        /// >> Blocked
+        /// </summary>
+        Blocked = 9,
     }
     
     /// <summary>
-    /// >> 26 - Variant[sp_runtime.TokenError]
+    /// >> 27 - Variant[sp_runtime.TokenError]
     /// </summary>
     public sealed class EnumTokenError : BaseEnum<TokenError>
     {

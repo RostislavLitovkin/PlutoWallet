@@ -15,22 +15,33 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> NewLeasePeriod
+        /// A new `[lease_period]` is beginning.
+        /// </summary>
         NewLeasePeriod = 0,
         
+        /// <summary>
+        /// >> Leased
+        /// A para has won the right to a continuous set of lease periods as a parachain.
+        /// First balance is any extra amount reserved on top of the para's existing deposit.
+        /// Second balance is the total amount reserved.
+        /// </summary>
         Leased = 1,
     }
     
     /// <summary>
-    /// >> 118 - Variant[polkadot_runtime_common.slots.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 509 - Variant[polkadot_runtime_common.slots.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
     {
     }
 }

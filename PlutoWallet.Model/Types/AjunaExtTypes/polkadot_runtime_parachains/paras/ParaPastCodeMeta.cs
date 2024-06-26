@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
     
     
     /// <summary>
-    /// >> 672 - Composite[polkadot_runtime_parachains.paras.ParaPastCodeMeta]
+    /// >> 775 - Composite[polkadot_runtime_parachains.paras.ParaPastCodeMeta]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParaPastCodeMeta : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
         /// <summary>
         /// >> upgrade_times
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> _upgradeTimes;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> UpgradeTimes { get; set; }
         /// <summary>
         /// >> last_pruned
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> _lastPruned;
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> LastPruned { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.ReplacementTimes> UpgradeTimes
-        {
-            get
-            {
-                return this._upgradeTimes;
-            }
-            set
-            {
-                this._upgradeTimes = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> LastPruned
-        {
-            get
-            {
-                return this._lastPruned;
-            }
-            set
-            {
-                this._lastPruned = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ParaPastCodeMeta";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -78,7 +56,10 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             UpgradeTimes.Decode(byteArray, ref p);
             LastPruned = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             LastPruned.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

@@ -34,9 +34,9 @@ namespace PlutoWallet.Model.AjunaExt
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "AssetIds"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT4), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "AssetLocations"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "LocationAssets"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "AssetMetadataMap"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata)));
         }
@@ -156,10 +156,10 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> AssetLocations
         ///  Native location of an asset.
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation> AssetLocations(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
+        public async Task<Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation> AssetLocations(Substrate.NetApi.Model.Types.Primitive.U32 key, CancellationToken token)
         {
             string parameters = AssetRegistryStorage.AssetLocationsParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation>(parameters, token);
+            var result = await _client.GetStorageAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation>(parameters, token);
             return result;
         }
         
@@ -167,7 +167,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> LocationAssetsParams
         ///  Local asset for native location.
         /// </summary>
-        public static string LocationAssetsParams(Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation key)
+        public static string LocationAssetsParams(Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation key)
         {
             return RequestGenerator.GetStorage("AssetRegistry", "LocationAssets", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -187,7 +187,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> LocationAssets
         ///  Local asset for native location.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> LocationAssets(Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation key, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> LocationAssets(Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation key, CancellationToken token)
         {
             string parameters = AssetRegistryStorage.LocationAssetsParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, token);
@@ -233,7 +233,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> register
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method Register(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType asset_type, Substrate.NetApi.Model.Types.Primitive.U128 existential_deposit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> asset_id, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_asset_registry.types.Metadata> metadata, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation> location, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> xcm_rate_limit)
+        public static Method Register(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType asset_type, Substrate.NetApi.Model.Types.Primitive.U128 existential_deposit, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> asset_id, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.pallet_asset_registry.types.Metadata> metadata, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation> location, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> xcm_rate_limit)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(name.Encode());
@@ -278,7 +278,7 @@ namespace PlutoWallet.Model.AjunaExt
         /// >> set_location
         /// Contains one variant per dispatchable that can be called by an extrinsic.
         /// </summary>
-        public static Method SetLocation(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, Substrate.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation location)
+        public static Method SetLocation(Substrate.NetApi.Model.Types.Primitive.U32 asset_id, Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation location)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset_id.Encode());

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.sp_arithmetic.per_things
     
     
     /// <summary>
-    /// >> 320 - Composite[sp_arithmetic.per_things.PerU16]
+    /// >> 254 - Composite[sp_arithmetic.per_things.PerU16]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PerU16 : BaseType
@@ -27,25 +27,15 @@ namespace Substrate.NetApi.Generated.Model.sp_arithmetic.per_things
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U16 _value;
+        public Substrate.NetApi.Model.Types.Primitive.U16 Value { get; set; }
         
-        public Substrate.NetApi.Model.Types.Primitive.U16 Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "PerU16";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,12 +43,16 @@ namespace Substrate.NetApi.Generated.Model.sp_arithmetic.per_things
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             Value = new Substrate.NetApi.Model.Types.Primitive.U16();
             Value.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

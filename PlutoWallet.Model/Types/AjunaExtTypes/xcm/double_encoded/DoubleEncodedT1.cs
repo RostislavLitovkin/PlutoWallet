@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.xcm.double_encoded
     
     
     /// <summary>
-    /// >> 77 - Composite[xcm.double_encoded.DoubleEncodedT1]
+    /// >> 404 - Composite[xcm.double_encoded.DoubleEncodedT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DoubleEncodedT1 : BaseType
@@ -27,25 +27,15 @@ namespace Substrate.NetApi.Generated.Model.xcm.double_encoded
         /// <summary>
         /// >> encoded
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> _encoded;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> Encoded { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> Encoded
-        {
-            get
-            {
-                return this._encoded;
-            }
-            set
-            {
-                this._encoded = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "DoubleEncodedT1";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,12 +43,16 @@ namespace Substrate.NetApi.Generated.Model.xcm.double_encoded
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             Encoded = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>();
             Encoded.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

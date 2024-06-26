@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
     
     
     /// <summary>
-    /// >> 678 - Composite[polkadot_runtime_parachains.paras.ParaGenesisArgs]
+    /// >> 781 - Composite[polkadot_runtime_parachains.paras.ParaGenesisArgs]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParaGenesisArgs : BaseType
@@ -27,59 +27,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
         /// <summary>
         /// >> genesis_head
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData _genesisHead;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData GenesisHead { get; set; }
         /// <summary>
         /// >> validation_code
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode _validationCode;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode ValidationCode { get; set; }
         /// <summary>
         /// >> para_kind
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.Bool _paraKind;
+        public Substrate.NetApi.Model.Types.Primitive.Bool ParaKind { get; set; }
         
-        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData GenesisHead
-        {
-            get
-            {
-                return this._genesisHead;
-            }
-            set
-            {
-                this._genesisHead = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode ValidationCode
-        {
-            get
-            {
-                return this._validationCode;
-            }
-            set
-            {
-                this._validationCode = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.Bool ParaKind
-        {
-            get
-            {
-                return this._paraKind;
-            }
-            set
-            {
-                this._paraKind = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ParaGenesisArgs";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -89,16 +53,20 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            GenesisHead = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData();
+            GenesisHead = new Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData();
             GenesisHead.Decode(byteArray, ref p);
-            ValidationCode = new Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode();
+            ValidationCode = new Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode();
             ValidationCode.Decode(byteArray, ref p);
             ParaKind = new Substrate.NetApi.Model.Types.Primitive.Bool();
             ParaKind.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

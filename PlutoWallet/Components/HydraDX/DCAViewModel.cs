@@ -21,7 +21,7 @@ namespace PlutoWallet.Components.HydraDX
 
 		public async Task GetDCAPosition(SubstrateClientExt client)
 		{
-            if (client is null)
+            if (client is null || client.IsConnected)
             {
                 Loading = "Failed";
 

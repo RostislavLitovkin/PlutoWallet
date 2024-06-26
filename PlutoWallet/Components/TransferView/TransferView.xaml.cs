@@ -60,6 +60,17 @@ public partial class TransferView : ContentView
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
+                Console.WriteLine(account.Value);
+                Console.WriteLine(account.KeyType);
+
+                Console.WriteLine("connected: " + client.System.ChainAsync());
+
+
+                Console.WriteLine("connected: " + client.Properties.TokenSymbol);
+
+                Console.WriteLine("connected: " + client.IsConnected);
+                Console.WriteLine("Nonce: " + await client.System.AccountNextIndexAsync(account.Value, default));
+
                 UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                     transfer,
                     account,
@@ -67,6 +78,15 @@ public partial class TransferView : ContentView
                     lifeTime: 64,
                     signed: true,
                     CancellationToken.None);
+
+                byte[] hash = HashExtension.Blake2(extrinsic.GetPayload(client.RuntimeVersion).Encode(), 256);
+                byte[] sig = account.Sign(hash);
+
+                Console.WriteLine("Signature: " + Utils.Bytes2HexString(sig).ToLower());
+                Console.WriteLine("Signature: " + Utils.Bytes2HexString(hash).ToLower());
+
+                Console.WriteLine(account.Verify(sig, hash));
+
 
                 string extrinsicId = await client.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
             }
@@ -82,6 +102,7 @@ public partial class TransferView : ContentView
         catch (Exception ex)
         {
             errorLabel.Text = ex.Message;
+            Console.WriteLine(ex);
         }
 
         

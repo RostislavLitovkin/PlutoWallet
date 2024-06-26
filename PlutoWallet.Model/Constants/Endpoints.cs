@@ -49,6 +49,11 @@ namespace PlutoWallet.Constants
                 Decimals = 10,
                 SS58Prefix = 0,
                 ChainType = ChainType.Substrate,
+                ParachainId = new ParachainId
+                {
+                    Chain = Chain.Relay,
+                    Id = null,
+                }
             } },
             { "kusama", new Endpoint
             {
@@ -202,7 +207,12 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 0,
                 ChainType = ChainType.Substrate,
                 SupportsNfts = true,
-                CalamarChainName = "statemint"
+                CalamarChainName = "statemint",
+                ParachainId = new ParachainId
+                {
+                    Chain = Chain.Parachain,
+                    Id = 1000,
+                }
             } },
             { "unique", new Endpoint
             {
@@ -375,6 +385,57 @@ namespace PlutoWallet.Constants
                 Decimals = 0,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
+            } },
+            { "8000", new Endpoint
+            {
+                Name = "(Local) ws://127.0.0.1:8000",
+                Key = "8000",
+                URLs =  new string[1] { "ws://127.0.0.1:8000" },
+                Icon = "substrate.png",
+                DarkIcon = "substrate.png",
+                Unit = "",
+                Decimals = 0,
+                SS58Prefix = 42,
+                ChainType = ChainType.Substrate,
+                ParachainId = new ParachainId
+                {
+                    Chain = Chain.Parachain,
+                    Id = 2034,
+                }
+            } },
+            { "8001", new Endpoint
+            {
+                Name = "(Local) ws://127.0.0.1:8001",
+                Key = "8001",
+                URLs =  new string[1] { "ws://127.0.0.1:8001" },
+                Icon = "substrate.png",
+                DarkIcon = "substrate.png",
+                Unit = "",
+                Decimals = 0,
+                SS58Prefix = 42,
+                ChainType = ChainType.Substrate,
+                ParachainId = new ParachainId
+                {
+                    Chain = Chain.Parachain,
+                    Id = 1000,
+                }
+            } },
+            { "8002", new Endpoint
+            {
+                Name = "(Local) ws://127.0.0.1:8002",
+                Key = "8002",
+                URLs =  new string[1] { "ws://127.0.0.1:8002" },
+                Icon = "substrate.png",
+                DarkIcon = "substrate.png",
+                Unit = "",
+                Decimals = 0,
+                SS58Prefix = 42,
+                ChainType = ChainType.Substrate,
+                ParachainId = new ParachainId
+                {
+                    Chain = Chain.Relay,
+                    Id = null,
+                }
             } }
         });
     }
@@ -384,6 +445,19 @@ namespace PlutoWallet.Constants
         Substrate,
         Ethereum,
         Other,
+    }
+
+    public class ParachainId
+    {
+        public Chain Chain { get; set; }
+        public uint? Id { get; set; }
+    }
+
+    public enum Chain
+    {
+        Relay,
+        Parachain,
+        Solo,
     }
 
 	public class Endpoint
@@ -402,6 +476,8 @@ namespace PlutoWallet.Constants
 		public short SS58Prefix { get; set; }
         public ChainType ChainType { get; set; }
         public bool SupportsNfts { get; set; } = false;
+
+        public ParachainId? ParachainId { get; set; }
 
         /*public Endpoint Clone()
         {

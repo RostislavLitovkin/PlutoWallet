@@ -15,18 +15,32 @@ namespace Substrate.NetApi.Generated.Model.xcm
 {
     
     
+    /// <summary>
+    /// >> VersionedResponse
+    /// </summary>
     public enum VersionedResponse
     {
         
+        /// <summary>
+        /// >> V2
+        /// </summary>
         V2 = 2,
         
+        /// <summary>
+        /// >> V3
+        /// </summary>
         V3 = 3,
+        
+        /// <summary>
+        /// >> V4
+        /// </summary>
+        V4 = 4,
     }
     
     /// <summary>
-    /// >> 229 - Variant[xcm.VersionedResponse]
+    /// >> 825 - Variant[xcm.VersionedResponse]
     /// </summary>
-    public sealed class EnumVersionedResponse : BaseEnumExt<VersionedResponse, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v2.EnumResponse, Substrate.NetApi.Generated.Model.xcm.v3.EnumResponse>
+    public sealed class EnumVersionedResponse : BaseEnumExt<VersionedResponse, BaseVoid, BaseVoid, Substrate.NetApi.Generated.Model.xcm.v2.EnumResponse, Substrate.NetApi.Generated.Model.xcm.v3.EnumResponse, Substrate.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>
     {
     }
 }

@@ -15,20 +15,35 @@ namespace Substrate.NetApi.Generated.Model.xcm.v2
 {
     
     
+    /// <summary>
+    /// >> OriginKind
+    /// </summary>
     public enum OriginKind
     {
         
+        /// <summary>
+        /// >> Native
+        /// </summary>
         Native = 0,
         
+        /// <summary>
+        /// >> SovereignAccount
+        /// </summary>
         SovereignAccount = 1,
         
+        /// <summary>
+        /// >> Superuser
+        /// </summary>
         Superuser = 2,
         
+        /// <summary>
+        /// >> Xcm
+        /// </summary>
         Xcm = 3,
     }
     
     /// <summary>
-    /// >> 76 - Variant[xcm.v2.OriginKind]
+    /// >> 403 - Variant[xcm.v2.OriginKind]
     /// </summary>
     public sealed class EnumOriginKind : BaseEnum<OriginKind>
     {

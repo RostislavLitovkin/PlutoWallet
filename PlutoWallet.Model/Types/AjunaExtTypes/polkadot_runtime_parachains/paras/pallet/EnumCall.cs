@@ -15,31 +15,73 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pal
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> force_set_current_code
+        /// See [`Pallet::force_set_current_code`].
+        /// </summary>
         force_set_current_code = 0,
         
+        /// <summary>
+        /// >> force_set_current_head
+        /// See [`Pallet::force_set_current_head`].
+        /// </summary>
         force_set_current_head = 1,
         
+        /// <summary>
+        /// >> force_schedule_code_upgrade
+        /// See [`Pallet::force_schedule_code_upgrade`].
+        /// </summary>
         force_schedule_code_upgrade = 2,
         
+        /// <summary>
+        /// >> force_note_new_head
+        /// See [`Pallet::force_note_new_head`].
+        /// </summary>
         force_note_new_head = 3,
         
+        /// <summary>
+        /// >> force_queue_action
+        /// See [`Pallet::force_queue_action`].
+        /// </summary>
         force_queue_action = 4,
         
+        /// <summary>
+        /// >> add_trusted_validation_code
+        /// See [`Pallet::add_trusted_validation_code`].
+        /// </summary>
         add_trusted_validation_code = 5,
         
+        /// <summary>
+        /// >> poke_unused_validation_code
+        /// See [`Pallet::poke_unused_validation_code`].
+        /// </summary>
         poke_unused_validation_code = 6,
         
+        /// <summary>
+        /// >> include_pvf_check_statement
+        /// See [`Pallet::include_pvf_check_statement`].
+        /// </summary>
         include_pvf_check_statement = 7,
+        
+        /// <summary>
+        /// >> force_set_most_recent_context
+        /// See [`Pallet::force_set_most_recent_context`].
+        /// </summary>
+        force_set_most_recent_context = 8,
     }
     
     /// <summary>
-    /// >> 404 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 365 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.HeadData>, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCode, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.ValidationCodeHash, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v2.PvfCheckStatement, Substrate.NetApi.Generated.Model.polkadot_primitives.v2.validator_app.Signature>>
+    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCodeHash, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_primitives.v6.PvfCheckStatement, Substrate.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Signature>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

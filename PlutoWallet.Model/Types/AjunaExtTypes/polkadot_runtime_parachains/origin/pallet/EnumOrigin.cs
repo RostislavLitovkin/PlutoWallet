@@ -15,16 +15,22 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.origin.pa
 {
     
     
+    /// <summary>
+    /// >> Origin
+    /// </summary>
     public enum Origin
     {
         
+        /// <summary>
+        /// >> Parachain
+        /// </summary>
         Parachain = 0,
     }
     
     /// <summary>
-    /// >> 260 - Variant[polkadot_runtime_parachains.origin.pallet.Origin]
+    /// >> 173 - Variant[polkadot_runtime_parachains.origin.pallet.Origin]
     /// </summary>
-    public sealed class EnumOrigin : BaseEnumExt<Origin, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id>
+    public sealed class EnumOrigin : BaseEnumExt<Origin, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
     {
     }
 }

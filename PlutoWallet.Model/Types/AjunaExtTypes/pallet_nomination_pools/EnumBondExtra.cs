@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
+    /// <summary>
+    /// >> BondExtra
+    /// </summary>
     public enum BondExtra
     {
         
+        /// <summary>
+        /// >> FreeBalance
+        /// </summary>
         FreeBalance = 0,
         
+        /// <summary>
+        /// >> Rewards
+        /// </summary>
         Rewards = 1,
     }
     
     /// <summary>
-    /// >> 370 - Variant[pallet_nomination_pools.BondExtra]
+    /// >> 307 - Variant[pallet_nomination_pools.BondExtra]
     /// </summary>
     public sealed class EnumBondExtra : BaseEnumExt<BondExtra, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid>
     {

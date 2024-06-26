@@ -15,32 +15,65 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.junction
 {
     
     
+    /// <summary>
+    /// >> BodyId
+    /// </summary>
     public enum BodyId
     {
         
+        /// <summary>
+        /// >> Unit
+        /// </summary>
         Unit = 0,
         
+        /// <summary>
+        /// >> Moniker
+        /// </summary>
         Moniker = 1,
         
+        /// <summary>
+        /// >> Index
+        /// </summary>
         Index = 2,
         
+        /// <summary>
+        /// >> Executive
+        /// </summary>
         Executive = 3,
         
+        /// <summary>
+        /// >> Technical
+        /// </summary>
         Technical = 4,
         
+        /// <summary>
+        /// >> Legislative
+        /// </summary>
         Legislative = 5,
         
+        /// <summary>
+        /// >> Judicial
+        /// </summary>
         Judicial = 6,
         
+        /// <summary>
+        /// >> Defense
+        /// </summary>
         Defense = 7,
         
+        /// <summary>
+        /// >> Administration
+        /// </summary>
         Administration = 8,
         
+        /// <summary>
+        /// >> Treasury
+        /// </summary>
         Treasury = 9,
     }
     
     /// <summary>
-    /// >> 53 - Variant[xcm.v3.junction.BodyId]
+    /// >> 73 - Variant[xcm.v3.junction.BodyId]
     /// </summary>
     public sealed class EnumBodyId : BaseEnumExt<BodyId, BaseVoid, Substrate.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
     {

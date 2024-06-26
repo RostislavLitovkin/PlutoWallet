@@ -62,7 +62,7 @@ namespace PlutoWallet.Model
 
             var client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
 
-            await client.ConnectAsync();
+            await client.ConnectAndLoadMetadataAsync();
 
             List<NFT> nfts = new List<NFT>();
 

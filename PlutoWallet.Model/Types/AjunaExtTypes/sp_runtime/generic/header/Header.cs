@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.header
     
     
     /// <summary>
-    /// >> 187 - Composite[sp_runtime.generic.header.Header]
+    /// >> 113 - Composite[sp_runtime.generic.header.Header]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Header : BaseType
@@ -27,93 +27,31 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.header
         /// <summary>
         /// >> parent_hash
         /// </summary>
-        private Substrate.NetApi.Generated.Model.primitive_types.H256 _parentHash;
-        
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 ParentHash { get; set; }
         /// <summary>
         /// >> number
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> _number;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> Number { get; set; }
         /// <summary>
         /// >> state_root
         /// </summary>
-        private Substrate.NetApi.Generated.Model.primitive_types.H256 _stateRoot;
-        
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 StateRoot { get; set; }
         /// <summary>
         /// >> extrinsics_root
         /// </summary>
-        private Substrate.NetApi.Generated.Model.primitive_types.H256 _extrinsicsRoot;
-        
+        public Substrate.NetApi.Generated.Model.primitive_types.H256 ExtrinsicsRoot { get; set; }
         /// <summary>
         /// >> digest
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest _digest;
+        public Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest Digest { get; set; }
         
-        public Substrate.NetApi.Generated.Model.primitive_types.H256 ParentHash
-        {
-            get
-            {
-                return this._parentHash;
-            }
-            set
-            {
-                this._parentHash = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> Number
-        {
-            get
-            {
-                return this._number;
-            }
-            set
-            {
-                this._number = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.primitive_types.H256 StateRoot
-        {
-            get
-            {
-                return this._stateRoot;
-            }
-            set
-            {
-                this._stateRoot = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.primitive_types.H256 ExtrinsicsRoot
-        {
-            get
-            {
-                return this._extrinsicsRoot;
-            }
-            set
-            {
-                this._extrinsicsRoot = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest Digest
-        {
-            get
-            {
-                return this._digest;
-            }
-            set
-            {
-                this._digest = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "Header";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -125,6 +63,7 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.header
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -138,7 +77,10 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.header
             ExtrinsicsRoot.Decode(byteArray, ref p);
             Digest = new Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.Digest();
             Digest.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

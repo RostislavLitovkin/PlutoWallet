@@ -1,7 +1,6 @@
-﻿using System;
-using Schnorrkel.Keys;
-using Substrate.NetApi.Model.Types;
+﻿using Substrate.NetApi.Model.Types;
 using Substrate.NetApi;
+using Substrate.NET.Schnorrkel.Keys;
 
 namespace PlutoWallet.Model
 {

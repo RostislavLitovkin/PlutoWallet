@@ -1,13 +1,6 @@
-﻿using System.Net;
-using Substrate.NetApi.Model.Extrinsics;
-using Plutonication;
-using PlutoWallet.ViewModel;
+﻿using Plutonication;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
-using Schnorrkel;
-using Substrate.NetApi;
-using Newtonsoft.Json;
-using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.ConnectionRequestView;

@@ -1,20 +1,9 @@
-﻿using System;
-using System.Numerics;
-using System.Buffers.Binary;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using Substrate.NetApi;
+﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
-using static Substrate.NetApi.Model.Meta.Storage;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using System.Globalization;
-using Substrate.NetApi.Generated.Model.pallet_conviction_voting.vote;
-using Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec;
-using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Model.AjunaExt;
-using Substrate.NetApi.Generated.Model.pallet_omnipool.types;
-using Substrate.NetApi.Generated.Model.orml_tokens;
-using Substrate.NetApi.Generated.Model.pallet_asset_registry.types;
+using Hydration.NetApi.Generated.Model.pallet_omnipool.types;
+using Hydration.NetApi.Generated.Model.orml_tokens;
 
 namespace PlutoWallet.Model.HydraDX
 {
@@ -38,7 +27,7 @@ namespace PlutoWallet.Model.HydraDX
 
             string omnipoolAssetsKeyBytesString = Utils.Bytes2HexString(omnipoolAssetsKeyBytes);
             string tokenAccountsKeyBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Tokens", "Accounts"));
-            string assetMetadataKeyBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("AssetRegistry", "AssetMetadataMap"));
+            string assetMetadataKeyBytesString = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("AssetRegistry", "Assets"));
 
             byte[] prefix = omnipoolAssetsKeyBytes;
 
@@ -65,7 +54,7 @@ namespace PlutoWallet.Model.HydraDX
 
             var assetMetadataKeys = storageKeys.Select(p => Utils.HexToByteArray(assetMetadataKeyBytesString
                 + Utils.Bytes2HexString(HashExtension.Hash(
-                    Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                    Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                     Model.HashModel.GetU32FromBlake2_128Concat(p.ToString()).Bytes
                  ), Utils.HexStringFormat.Pure))).ToList();
 
@@ -87,7 +76,7 @@ namespace PlutoWallet.Model.HydraDX
                         AccountData omnipoolTokens = new AccountData();
                         omnipoolTokens.Create(tokenAccountsStorageChangeSets[i][1]);
 
-                        AssetMetadata assetMetadata = new AssetMetadata();
+                        var assetMetadata = new Hydration.NetApi.Generated.Model.pallet_asset_registry.types.AssetDetails();
 
                         assetMetadata.Create(assetMetadataStorageChangeSets[i][1]);
 

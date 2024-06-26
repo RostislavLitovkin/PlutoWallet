@@ -15,18 +15,27 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
 {
     
     
+    /// <summary>
+    /// >> PvfCheckCause
+    /// </summary>
     public enum PvfCheckCause
     {
         
+        /// <summary>
+        /// >> Onboarding
+        /// </summary>
         Onboarding = 0,
         
+        /// <summary>
+        /// >> Upgrade
+        /// </summary>
         Upgrade = 1,
     }
     
     /// <summary>
-    /// >> 668 - Variant[polkadot_runtime_parachains.paras.PvfCheckCause]
+    /// >> 769 - Variant[polkadot_runtime_parachains.paras.PvfCheckCause]
     /// </summary>
-    public sealed class EnumPvfCheckCause : BaseEnumExt<PvfCheckCause, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumPvfCheckCause : BaseEnumExt<PvfCheckCause, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumSetGoAhead>>
     {
     }
 }

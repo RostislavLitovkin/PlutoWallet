@@ -15,20 +15,29 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet
 {
     
     
+    /// <summary>
+    /// >> Error
+    /// The `Error` enum of this pallet.
+    /// </summary>
     public enum Error
     {
         
+        /// <summary>
+        /// >> ParaNotOnboarding
+        /// The parachain ID is not onboarding.
+        /// </summary>
         ParaNotOnboarding = 0,
         
+        /// <summary>
+        /// >> LeaseError
+        /// There was an error with the lease.
+        /// </summary>
         LeaseError = 1,
     }
     
     /// <summary>
-    /// >> 706 - Variant[polkadot_runtime_common.slots.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 812 - Variant[polkadot_runtime_common.slots.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

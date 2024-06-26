@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation
     
     
     /// <summary>
-    /// >> 113 - Composite[staging_xcm.v3.multilocation.MultiLocation]
+    /// >> 66 - Composite[staging_xcm.v3.multilocation.MultiLocation]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiLocation : BaseType
@@ -31,7 +31,7 @@ namespace Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation
         /// <summary>
         /// >> interior
         /// </summary>
-        public Substrate.NetApi.Generated.Model.staging_xcm.v3.junctions.EnumJunctions Interior { get; set; }
+        public Substrate.NetApi.Generated.Model.xcm.v3.junctions.EnumJunctions Interior { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -54,7 +54,7 @@ namespace Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation
             var start = p;
             Parents = new Substrate.NetApi.Model.Types.Primitive.U8();
             Parents.Decode(byteArray, ref p);
-            Interior = new Substrate.NetApi.Generated.Model.staging_xcm.v3.junctions.EnumJunctions();
+            Interior = new Substrate.NetApi.Generated.Model.xcm.v3.junctions.EnumJunctions();
             Interior.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

@@ -1,8 +1,4 @@
-﻿using System;
-using Substrate.NetApi;
-using PlutoWallet.Model.Storage;
-using Newtonsoft.Json;
-using PlutoWallet.Types;
+﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using PlutoWallet.Components.Extrinsic;
@@ -29,6 +25,10 @@ namespace PlutoWallet.Model
         /// <returns>subscription ID</returns>
         public async Task<string> SubmitExtrinsicAsync(UnCheckedExtrinsic extrinsic, CancellationToken token)
         {
+            Console.WriteLine(Utils.Bytes2HexString(extrinsic.GetPayload(this.RuntimeVersion).Encode()).ToLower());
+            Console.WriteLine(Utils.Bytes2HexString(HashExtension.Blake2(extrinsic.GetPayload(this.RuntimeVersion).Encode(), 256)).ToLower());
+            Console.WriteLine(Utils.Bytes2HexString(extrinsic.Signature).ToLower());
+
             var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
 
             extrinsicStackViewModel.Update();
@@ -47,7 +47,6 @@ namespace PlutoWallet.Model
                 {
                     Console.WriteLine("In block");
                     extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.InBlock;
-                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.InBlock;
                     extrinsicStackViewModel.Update();
                 }
 
@@ -55,7 +54,6 @@ namespace PlutoWallet.Model
                 {
                     Console.WriteLine("Finalized");
                     extrinsicStackViewModel.Extrinsics[id].Status = ExtrinsicStatusEnum.Success;
-                    //extrinsicStackViewModel.Extrinsics[id].Hash = status.Finalized;
                     extrinsicStackViewModel.Update();
                 }
 
@@ -63,7 +61,7 @@ namespace PlutoWallet.Model
                     Console.WriteLine(status.ExtrinsicState);
             };
 
-            string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()), token);
+            string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
 
             var (palletName, callName) = Model.PalletCallModel.GetPalletAndCallName(this, extrinsic.Method.ModuleIndex, extrinsic.Method.CallIndex);
 

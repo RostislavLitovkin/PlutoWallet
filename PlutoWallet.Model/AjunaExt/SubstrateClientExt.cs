@@ -31,6 +31,8 @@ namespace PlutoWallet.Model.AjunaExt
 
         public AssetRegistryStorage AssetRegistryStorage;
 
+        public HydrationAssetRegistryStorage HydrationAssetRegistryStorage;
+
         public TokensStorage TokensStorage;
 
         public ContractsStorage ContractsStorage;
@@ -66,7 +68,8 @@ namespace PlutoWallet.Model.AjunaExt
             this.BalancesStorage = new BalancesStorage(this);
             this.AssetsStorage = new AssetsStorage(this);
             this.NftsStorage = new NftsStorage(this);
-            this.AssetRegistryStorage = new AssetRegistryStorage(this);
+            //this.AssetRegistryStorage = new AssetRegistryStorage(this);
+            this.HydrationAssetRegistryStorage = new HydrationAssetRegistryStorage(this);
             this.TokensStorage = new TokensStorage(this);
             this.ContractsStorage = new ContractsStorage(this);
             this.OmnipoolStorage = new OmnipoolStorage(this);
@@ -78,7 +81,7 @@ namespace PlutoWallet.Model.AjunaExt
             this.VtokenMintingStorage = new VtokenMintingStorage(this);
         }
 
-        public async Task ConnectAsync()
+        public async Task ConnectAndLoadMetadataAsync()
         {
             await base.ConnectAsync();
 

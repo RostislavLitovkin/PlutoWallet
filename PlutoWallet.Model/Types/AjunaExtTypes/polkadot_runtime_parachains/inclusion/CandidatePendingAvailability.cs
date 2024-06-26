@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
     
     
     /// <summary>
-    /// >> 645 - Composite[polkadot_runtime_parachains.inclusion.CandidatePendingAvailability]
+    /// >> 750 - Composite[polkadot_runtime_parachains.inclusion.CandidatePendingAvailability]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidatePendingAvailability : BaseType
@@ -27,144 +27,43 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
         /// <summary>
         /// >> core
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex _core;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex Core { get; set; }
         /// <summary>
         /// >> hash
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash _hash;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash Hash { get; set; }
         /// <summary>
         /// >> descriptor
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor _descriptor;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CandidateDescriptor Descriptor { get; set; }
         /// <summary>
         /// >> availability_votes
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> _availabilityVotes;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> AvailabilityVotes { get; set; }
         /// <summary>
         /// >> backers
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> _backers;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> Backers { get; set; }
         /// <summary>
         /// >> relay_parent_number
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _relayParentNumber;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 RelayParentNumber { get; set; }
         /// <summary>
         /// >> backed_in_number
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _backedInNumber;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 BackedInNumber { get; set; }
         /// <summary>
         /// >> backing_group
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex _backingGroup;
+        public Substrate.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex BackingGroup { get; set; }
         
-        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex Core
-        {
-            get
-            {
-                return this._core;
-            }
-            set
-            {
-                this._core = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash Hash
-        {
-            get
-            {
-                return this._hash;
-            }
-            set
-            {
-                this._hash = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor Descriptor
-        {
-            get
-            {
-                return this._descriptor;
-            }
-            set
-            {
-                this._descriptor = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> AvailabilityVotes
-        {
-            get
-            {
-                return this._availabilityVotes;
-            }
-            set
-            {
-                this._availabilityVotes = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0> Backers
-        {
-            get
-            {
-                return this._backers;
-            }
-            set
-            {
-                this._backers = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 RelayParentNumber
-        {
-            get
-            {
-                return this._relayParentNumber;
-            }
-            set
-            {
-                this._relayParentNumber = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 BackedInNumber
-        {
-            get
-            {
-                return this._backedInNumber;
-            }
-            set
-            {
-                this._backedInNumber = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex BackingGroup
-        {
-            get
-            {
-                return this._backingGroup;
-            }
-            set
-            {
-                this._backingGroup = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "CandidatePendingAvailability";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -179,14 +78,15 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Core = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CoreIndex();
+            Core = new Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex();
             Core.Decode(byteArray, ref p);
             Hash = new Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash();
             Hash.Decode(byteArray, ref p);
-            Descriptor = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.CandidateDescriptor();
+            Descriptor = new Substrate.NetApi.Generated.Model.polkadot_primitives.v6.CandidateDescriptor();
             Descriptor.Decode(byteArray, ref p);
             AvailabilityVotes = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Generated.Model.bitvec.order.Lsb0>();
             AvailabilityVotes.Decode(byteArray, ref p);
@@ -196,9 +96,12 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
             RelayParentNumber.Decode(byteArray, ref p);
             BackedInNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             BackedInNumber.Decode(byteArray, ref p);
-            BackingGroup = new Substrate.NetApi.Generated.Model.polkadot_primitives.v2.GroupIndex();
+            BackingGroup = new Substrate.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex();
             BackingGroup.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

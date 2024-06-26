@@ -40,15 +40,15 @@ namespace Substrate.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "NextForeignAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "NextTokenId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U8)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "CurrencyIdToLocations"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "LocationToCurrencyIds"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "CurrencyIdToWeights"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "AssetMetadatas"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds), typeof(Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds), typeof(Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetRegistry", "CurrencyMetadatas"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata)));
         }
         
         /// <summary>
@@ -123,7 +123,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  CurrencyIdToLocations: map CurrencyId => Option<MultiLocation>
         /// </summary>
-        public static string CurrencyIdToLocationsParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string CurrencyIdToLocationsParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("AssetRegistry", "CurrencyIdToLocations", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -145,7 +145,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  CurrencyIdToLocations: map CurrencyId => Option<MultiLocation>
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> CurrencyIdToLocations(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> CurrencyIdToLocations(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = BifrostAssetRegistryStorage.CurrencyIdToLocationsParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(parameters, token);
@@ -180,17 +180,17 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  LocationToCurrencyIds: map MultiLocation => Option<CurrencyId>
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> LocationToCurrencyIds(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> LocationToCurrencyIds(Substrate.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, CancellationToken token)
         {
             string parameters = BifrostAssetRegistryStorage.LocationToCurrencyIdsParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(parameters, token);
             return result;
         }
         
         /// <summary>
         /// >> CurrencyIdToWeightsParams
         /// </summary>
-        public static string CurrencyIdToWeightsParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string CurrencyIdToWeightsParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("AssetRegistry", "CurrencyIdToWeights", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -209,7 +209,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// <summary>
         /// >> CurrencyIdToWeights
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> CurrencyIdToWeights(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight> CurrencyIdToWeights(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = BifrostAssetRegistryStorage.CurrencyIdToWeightsParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(parameters, token);
@@ -222,7 +222,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  AssetMetadatas: map AssetIds => Option<AssetMetadata>
         /// </summary>
-        public static string AssetMetadatasParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds key)
+        public static string AssetMetadatasParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds key)
         {
             return RequestGenerator.GetStorage("AssetRegistry", "AssetMetadatas", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -244,10 +244,10 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  AssetMetadatas: map AssetIds => Option<AssetMetadata>
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata> AssetMetadatas(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata> AssetMetadatas(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds key, CancellationToken token)
         {
             string parameters = BifrostAssetRegistryStorage.AssetMetadatasParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>(parameters, token);
             return result;
         }
         
@@ -257,7 +257,7 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  CurrencyMetadatas: map CurrencyId => Option<AssetMetadata>
         /// </summary>
-        public static string CurrencyMetadatasParams(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        public static string CurrencyMetadatasParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
         {
             return RequestGenerator.GetStorage("AssetRegistry", "CurrencyMetadatas", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -279,10 +279,10 @@ namespace Substrate.NetApi.Generated.Storage
         /// 
         ///  CurrencyMetadatas: map CurrencyId => Option<AssetMetadata>
         /// </summary>
-        public async Task<Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata> CurrencyMetadatas(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata> CurrencyMetadatas(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
         {
             string parameters = BifrostAssetRegistryStorage.CurrencyMetadatasParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>(parameters, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>(parameters, token);
             return result;
         }
     }
@@ -292,38 +292,11 @@ namespace Substrate.NetApi.Generated.Storage
     /// </summary>
     public sealed class AssetRegistryCalls
     {
-        
-        /// <summary>
-        /// >> register_native_asset
-        /// Contains a variant per dispatchable extrinsic that this pallet has.
-        /// </summary>
-        public static Method RegisterNativeAsset(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Substrate.NetApi.Generated.Model.staging_xcm.EnumVersionedMultiLocation location, Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata metadata)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(currency_id.Encode());
-            byteArray.AddRange(location.Encode());
-            byteArray.AddRange(metadata.Encode());
-            return new Method(114, "AssetRegistry", 0, "register_native_asset", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> update_native_asset
-        /// Contains a variant per dispatchable extrinsic that this pallet has.
-        /// </summary>
-        public static Method UpdateNativeAsset(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Substrate.NetApi.Generated.Model.staging_xcm.EnumVersionedMultiLocation location, Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata metadata)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(currency_id.Encode());
-            byteArray.AddRange(location.Encode());
-            byteArray.AddRange(metadata.Encode());
-            return new Method(114, "AssetRegistry", 1, "update_native_asset", byteArray.ToArray());
-        }
-        
         /// <summary>
         /// >> register_token_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RegisterTokenMetadata(Substrate.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata metadata)
+        public static Method RegisterTokenMetadata(Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata metadata)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(metadata.Encode());
@@ -364,32 +337,6 @@ namespace Substrate.NetApi.Generated.Storage
             byteArray.AddRange(first_slot.Encode());
             byteArray.AddRange(last_slot.Encode());
             return new Method(114, "AssetRegistry", 5, "register_vsbond_metadata", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> register_multilocation
-        /// Contains a variant per dispatchable extrinsic that this pallet has.
-        /// </summary>
-        public static Method RegisterMultilocation(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Substrate.NetApi.Generated.Model.staging_xcm.EnumVersionedMultiLocation location, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight weight)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(currency_id.Encode());
-            byteArray.AddRange(location.Encode());
-            byteArray.AddRange(weight.Encode());
-            return new Method(114, "AssetRegistry", 6, "register_multilocation", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> force_set_multilocation
-        /// Contains a variant per dispatchable extrinsic that this pallet has.
-        /// </summary>
-        public static Method ForceSetMultilocation(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Substrate.NetApi.Generated.Model.staging_xcm.EnumVersionedMultiLocation location, Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight weight)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(currency_id.Encode());
-            byteArray.AddRange(location.Encode());
-            byteArray.AddRange(weight.Encode());
-            return new Method(114, "AssetRegistry", 7, "force_set_multilocation", byteArray.ToArray());
         }
     }
     

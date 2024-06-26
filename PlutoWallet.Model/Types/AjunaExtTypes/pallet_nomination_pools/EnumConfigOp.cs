@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
+    /// <summary>
+    /// >> ConfigOp
+    /// </summary>
     public enum ConfigOp
     {
         
+        /// <summary>
+        /// >> Noop
+        /// </summary>
         Noop = 0,
         
+        /// <summary>
+        /// >> Set
+        /// </summary>
         Set = 1,
         
+        /// <summary>
+        /// >> Remove
+        /// </summary>
         Remove = 2,
     }
     
     /// <summary>
-    /// >> 373 - Variant[pallet_nomination_pools.ConfigOp]
+    /// >> 312 - Variant[pallet_nomination_pools.ConfigOp]
     /// </summary>
     public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
     {

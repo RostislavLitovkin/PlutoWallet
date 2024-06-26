@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
     
     
     /// <summary>
-    /// >> 624 - Composite[pallet_nomination_pools.RewardPool]
+    /// >> 726 - Composite[pallet_nomination_pools.RewardPool]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RewardPool : BaseType
@@ -27,68 +27,43 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> last_recorded_reward_counter
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 _lastRecordedRewardCounter;
-        
+        public Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter { get; set; }
         /// <summary>
         /// >> last_recorded_total_payouts
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _lastRecordedTotalPayouts;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 LastRecordedTotalPayouts { get; set; }
         /// <summary>
         /// >> total_rewards_claimed
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _totalRewardsClaimed;
+        public Substrate.NetApi.Model.Types.Primitive.U128 TotalRewardsClaimed { get; set; }
+        /// <summary>
+        /// >> total_commission_pending
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 TotalCommissionPending { get; set; }
+        /// <summary>
+        /// >> total_commission_claimed
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 TotalCommissionClaimed { get; set; }
         
-        public Substrate.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128 LastRecordedRewardCounter
-        {
-            get
-            {
-                return this._lastRecordedRewardCounter;
-            }
-            set
-            {
-                this._lastRecordedRewardCounter = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 LastRecordedTotalPayouts
-        {
-            get
-            {
-                return this._lastRecordedTotalPayouts;
-            }
-            set
-            {
-                this._lastRecordedTotalPayouts = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 TotalRewardsClaimed
-        {
-            get
-            {
-                return this._totalRewardsClaimed;
-            }
-            set
-            {
-                this._totalRewardsClaimed = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "RewardPool";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
             result.AddRange(LastRecordedRewardCounter.Encode());
             result.AddRange(LastRecordedTotalPayouts.Encode());
             result.AddRange(TotalRewardsClaimed.Encode());
+            result.AddRange(TotalCommissionPending.Encode());
+            result.AddRange(TotalCommissionClaimed.Encode());
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -98,7 +73,14 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
             LastRecordedTotalPayouts.Decode(byteArray, ref p);
             TotalRewardsClaimed = new Substrate.NetApi.Model.Types.Primitive.U128();
             TotalRewardsClaimed.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            TotalCommissionPending = new Substrate.NetApi.Model.Types.Primitive.U128();
+            TotalCommissionPending.Decode(byteArray, ref p);
+            TotalCommissionClaimed = new Substrate.NetApi.Model.Types.Primitive.U128();
+            TotalCommissionClaimed.Decode(byteArray, ref p);
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

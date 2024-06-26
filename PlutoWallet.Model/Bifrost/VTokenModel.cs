@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Numerics;
+using Bifrost.NetApi.Generated.Model.bifrost_primitives.currency;
+using Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things;
 using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.bifrost_primitives.currency;
-using Substrate.NetApi.Generated.Model.sp_arithmetic.per_things;
 using Substrate.NetApi.Model.Types.Primitive;
 
 namespace PlutoWallet.Model.Bifrost
@@ -22,12 +22,12 @@ namespace PlutoWallet.Model.Bifrost
         public static async Task<BigInteger> VDotToDot(SubstrateClientExt client, BigInteger amount, CancellationToken token)
         {
             // VDOT
-            var substrateVTokenId = new Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
-            substrateVTokenId.Create(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.CurrencyId.VToken2, new U8(0));
+            var substrateVTokenId = new EnumCurrencyId();
+            substrateVTokenId.Create(CurrencyId.VToken2, new U8(0));
 
             // DOT
-            var substrateTokenId = new Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
-            substrateTokenId.Create(Substrate.NetApi.Generated.Model.bifrost_primitives.currency.CurrencyId.Token2, new U8(0));
+            var substrateTokenId = new EnumCurrencyId();
+            substrateTokenId.Create(CurrencyId.Token2, new U8(0));
 
             return await RedeemInner(client, substrateVTokenId, amount, substrateTokenId, token);
         }
@@ -38,7 +38,7 @@ namespace PlutoWallet.Model.Bifrost
 		/// <param name="vTokenId"></param>
 		/// <param name="amount"></param>
 		/// <returns></returns>
-        public static async Task<BigInteger> RedeemInner(SubstrateClientExt client, EnumCurrencyId inTokenId, BigInteger inAmount, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId toTokenId, CancellationToken token)
+        public static async Task<BigInteger> RedeemInner(SubstrateClientExt client, EnumCurrencyId inTokenId, BigInteger inAmount, EnumCurrencyId toTokenId, CancellationToken token)
         {
             // 1) Subtract redeem fee
             var fees = await client.VtokenMintingStorage.Fees(token);
@@ -76,7 +76,7 @@ namespace PlutoWallet.Model.Bifrost
         /// >> TotalIssuance
         ///  The total issuance of a token type.
         /// </summary>
-        public static async Task<Substrate.NetApi.Model.Types.Primitive.U128> BifrostTokenTotalIssuance(SubstrateClientExt client, Substrate.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, CancellationToken token)
+        public static async Task<Substrate.NetApi.Model.Types.Primitive.U128> BifrostTokenTotalIssuance(SubstrateClientExt client, EnumCurrencyId key, CancellationToken token)
         {
             string parameters = RequestGenerator.GetStorage("Tokens", "TotalIssuance", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {

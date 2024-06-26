@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
     
     
     /// <summary>
-    /// >> 60 - Composite[xcm.v3.multiasset.MultiAsset]
+    /// >> 414 - Composite[xcm.v3.multiasset.MultiAsset]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiAsset : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
         /// <summary>
         /// >> id
         /// </summary>
-        private Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId _id;
-        
+        public Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId Id { get; set; }
         /// <summary>
         /// >> fun
         /// </summary>
-        private Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumFungibility _fun;
+        public Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumFungibility Fun { get; set; }
         
-        public Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId Id
-        {
-            get
-            {
-                return this._id;
-            }
-            set
-            {
-                this._id = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumFungibility Fun
-        {
-            get
-            {
-                return this._fun;
-            }
-            set
-            {
-                this._fun = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "MultiAsset";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,6 +48,7 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -78,7 +56,10 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
             Id.Decode(byteArray, ref p);
             Fun = new Substrate.NetApi.Generated.Model.xcm.v3.multiasset.EnumFungibility();
             Fun.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

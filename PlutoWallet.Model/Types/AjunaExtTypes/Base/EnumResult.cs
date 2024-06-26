@@ -15,18 +15,27 @@ namespace Substrate.NetApi.Generated.Types.Base
 {
     
     
+    /// <summary>
+    /// >> Result
+    /// </summary>
     public enum Result
     {
         
+        /// <summary>
+        /// >> Ok
+        /// </summary>
         Ok = 0,
         
+        /// <summary>
+        /// >> Err
+        /// </summary>
         Err = 1,
     }
     
     /// <summary>
-    /// >> 32 - Variant[Result]
+    /// >> 480 - Variant[Result]
     /// </summary>
-    public sealed class EnumResult : BaseEnumExt<Result, Substrate.NetApi.Model.Types.Base.BaseTuple, Substrate.NetApi.Generated.Model.sp_runtime.EnumDispatchError>
+    public sealed class EnumResult : BaseEnumExt<Result, Substrate.NetApi.Generated.Model.frame_support.dispatch.PostDispatchInfo, Substrate.NetApi.Generated.Model.sp_runtime.DispatchErrorWithPostInfo>
     {
     }
 }

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3
     
     
     /// <summary>
-    /// >> 55 - Composite[xcm.v3.XcmT1]
+    /// >> 409 - Composite[xcm.v3.XcmT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class XcmT1 : BaseType
@@ -27,25 +27,15 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.EnumInstruction> _value;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.EnumInstruction> Value { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.EnumInstruction> Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "XcmT1";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,12 +43,16 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.EnumInstruction>();
             Value.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

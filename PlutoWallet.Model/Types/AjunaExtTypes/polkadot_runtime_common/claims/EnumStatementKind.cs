@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims
 {
     
     
+    /// <summary>
+    /// >> StatementKind
+    /// </summary>
     public enum StatementKind
     {
         
+        /// <summary>
+        /// >> Regular
+        /// </summary>
         Regular = 0,
         
+        /// <summary>
+        /// >> Saft
+        /// </summary>
         Saft = 1,
     }
     
     /// <summary>
-    /// >> 251 - Variant[polkadot_runtime_common.claims.StatementKind]
+    /// >> 187 - Variant[polkadot_runtime_common.claims.StatementKind]
     /// </summary>
     public sealed class EnumStatementKind : BaseEnum<StatementKind>
     {

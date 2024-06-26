@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registr
     
     
     /// <summary>
-    /// >> 703 - Composite[polkadot_runtime_common.paras_registrar.ParaInfo]
+    /// >> 808 - Composite[polkadot_runtime_common.paras_registrar.ParaInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParaInfo : BaseType
@@ -27,59 +27,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registr
         /// <summary>
         /// >> manager
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _manager;
-        
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Manager { get; set; }
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit { get; set; }
         /// <summary>
         /// >> locked
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.Bool _locked;
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool> Locked { get; set; }
         
-        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Manager
-        {
-            get
-            {
-                return this._manager;
-            }
-            set
-            {
-                this._manager = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
-        {
-            get
-            {
-                return this._deposit;
-            }
-            set
-            {
-                this._deposit = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.Bool Locked
-        {
-            get
-            {
-                return this._locked;
-            }
-            set
-            {
-                this._locked = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "ParaInfo";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -89,6 +53,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registr
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -96,9 +61,12 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.paras_registr
             Manager.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Locked = new Substrate.NetApi.Model.Types.Primitive.Bool();
+            Locked = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool>();
             Locked.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

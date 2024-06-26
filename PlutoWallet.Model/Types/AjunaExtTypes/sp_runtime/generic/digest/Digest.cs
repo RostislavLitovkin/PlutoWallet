@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.digest
     
     
     /// <summary>
-    /// >> 13 - Composite[sp_runtime.generic.digest.Digest]
+    /// >> 14 - Composite[sp_runtime.generic.digest.Digest]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Digest : BaseType
@@ -27,25 +27,15 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.digest
         /// <summary>
         /// >> logs
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> _logs;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem> Logs
-        {
-            get
-            {
-                return this._logs;
-            }
-            set
-            {
-                this._logs = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "Digest";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,12 +43,16 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.generic.digest
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             Logs = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_runtime.generic.digest.EnumDigestItem>();
             Logs.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.xcm.v2
 {
     
     
+    /// <summary>
+    /// >> WeightLimit
+    /// </summary>
     public enum WeightLimit
     {
         
+        /// <summary>
+        /// >> Unlimited
+        /// </summary>
         Unlimited = 0,
         
+        /// <summary>
+        /// >> Limited
+        /// </summary>
         Limited = 1,
     }
     
     /// <summary>
-    /// >> 255 - Variant[xcm.v2.WeightLimit]
+    /// >> 408 - Variant[xcm.v2.WeightLimit]
     /// </summary>
     public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>
     {

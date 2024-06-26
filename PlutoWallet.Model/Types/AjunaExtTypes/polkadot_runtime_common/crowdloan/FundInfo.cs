@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
     
     
     /// <summary>
-    /// >> 712 - Composite[polkadot_runtime_common.crowdloan.FundInfo]
+    /// >> 818 - Composite[polkadot_runtime_common.crowdloan.FundInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class FundInfo : BaseType
@@ -27,178 +27,51 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
         /// <summary>
         /// >> depositor
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 _depositor;
-        
+        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor { get; set; }
         /// <summary>
         /// >> verifier
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner> _verifier;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner> Verifier { get; set; }
         /// <summary>
         /// >> deposit
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _deposit;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit { get; set; }
         /// <summary>
         /// >> raised
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _raised;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Raised { get; set; }
         /// <summary>
         /// >> end
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _end;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 End { get; set; }
         /// <summary>
         /// >> cap
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U128 _cap;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U128 Cap { get; set; }
         /// <summary>
         /// >> last_contribution
         /// </summary>
-        private Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution _lastContribution;
-        
+        public Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution LastContribution { get; set; }
         /// <summary>
         /// >> first_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _firstPeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 FirstPeriod { get; set; }
         /// <summary>
         /// >> last_period
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _lastPeriod;
-        
+        public Substrate.NetApi.Model.Types.Primitive.U32 LastPeriod { get; set; }
         /// <summary>
         /// >> fund_index
         /// </summary>
-        private Substrate.NetApi.Model.Types.Primitive.U32 _fundIndex;
+        public Substrate.NetApi.Model.Types.Primitive.U32 FundIndex { get; set; }
         
-        public Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32 Depositor
-        {
-            get
-            {
-                return this._depositor;
-            }
-            set
-            {
-                this._depositor = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Generated.Model.sp_runtime.EnumMultiSigner> Verifier
-        {
-            get
-            {
-                return this._verifier;
-            }
-            set
-            {
-                this._verifier = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Deposit
-        {
-            get
-            {
-                return this._deposit;
-            }
-            set
-            {
-                this._deposit = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Raised
-        {
-            get
-            {
-                return this._raised;
-            }
-            set
-            {
-                this._raised = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 End
-        {
-            get
-            {
-                return this._end;
-            }
-            set
-            {
-                this._end = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U128 Cap
-        {
-            get
-            {
-                return this._cap;
-            }
-            set
-            {
-                this._cap = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.EnumLastContribution LastContribution
-        {
-            get
-            {
-                return this._lastContribution;
-            }
-            set
-            {
-                this._lastContribution = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 FirstPeriod
-        {
-            get
-            {
-                return this._firstPeriod;
-            }
-            set
-            {
-                this._firstPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 LastPeriod
-        {
-            get
-            {
-                return this._lastPeriod;
-            }
-            set
-            {
-                this._lastPeriod = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Primitive.U32 FundIndex
-        {
-            get
-            {
-                return this._fundIndex;
-            }
-            set
-            {
-                this._fundIndex = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "FundInfo";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -215,6 +88,7 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -238,7 +112,10 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.crowdloan
             LastPeriod.Decode(byteArray, ref p);
             FundIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             FundIndex.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

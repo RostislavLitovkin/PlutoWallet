@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes
 {
     
     
+    /// <summary>
+    /// >> DisputeLocation
+    /// </summary>
     public enum DisputeLocation
     {
         
+        /// <summary>
+        /// >> Local
+        /// </summary>
         Local = 0,
         
+        /// <summary>
+        /// >> Remote
+        /// </summary>
         Remote = 1,
     }
     
     /// <summary>
-    /// >> 115 - Variant[polkadot_runtime_parachains.disputes.DisputeLocation]
+    /// >> 506 - Variant[polkadot_runtime_parachains.disputes.DisputeLocation]
     /// </summary>
     public sealed class EnumDisputeLocation : BaseEnum<DisputeLocation>
     {

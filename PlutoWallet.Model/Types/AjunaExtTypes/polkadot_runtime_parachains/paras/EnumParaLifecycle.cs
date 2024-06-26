@@ -15,26 +15,50 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.paras
 {
     
     
+    /// <summary>
+    /// >> ParaLifecycle
+    /// </summary>
     public enum ParaLifecycle
     {
         
+        /// <summary>
+        /// >> Onboarding
+        /// </summary>
         Onboarding = 0,
         
+        /// <summary>
+        /// >> Parathread
+        /// </summary>
         Parathread = 1,
         
+        /// <summary>
+        /// >> Parachain
+        /// </summary>
         Parachain = 2,
         
+        /// <summary>
+        /// >> UpgradingParathread
+        /// </summary>
         UpgradingParathread = 3,
         
+        /// <summary>
+        /// >> DowngradingParachain
+        /// </summary>
         DowngradingParachain = 4,
         
+        /// <summary>
+        /// >> OffboardingParathread
+        /// </summary>
         OffboardingParathread = 5,
         
+        /// <summary>
+        /// >> OffboardingParachain
+        /// </summary>
         OffboardingParachain = 6,
     }
     
     /// <summary>
-    /// >> 670 - Variant[polkadot_runtime_parachains.paras.ParaLifecycle]
+    /// >> 773 - Variant[polkadot_runtime_parachains.paras.ParaLifecycle]
     /// </summary>
     public sealed class EnumParaLifecycle : BaseEnum<ParaLifecycle>
     {

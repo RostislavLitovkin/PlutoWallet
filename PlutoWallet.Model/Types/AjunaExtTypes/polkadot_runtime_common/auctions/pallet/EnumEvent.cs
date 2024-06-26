@@ -15,32 +15,65 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.auctions.pall
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> AuctionStarted
+        /// An auction started. Provides its index and the block number where it will begin to
+        /// close and the first lease period of the quadruplet that is auctioned.
+        /// </summary>
         AuctionStarted = 0,
         
+        /// <summary>
+        /// >> AuctionClosed
+        /// An auction ended. All funds become unreserved.
+        /// </summary>
         AuctionClosed = 1,
         
+        /// <summary>
+        /// >> Reserved
+        /// Funds were reserved for a winning bid. First balance is the extra amount reserved.
+        /// Second is the total.
+        /// </summary>
         Reserved = 2,
         
+        /// <summary>
+        /// >> Unreserved
+        /// Funds were unreserved since bidder is no longer active. `[bidder, amount]`
+        /// </summary>
         Unreserved = 3,
         
+        /// <summary>
+        /// >> ReserveConfiscated
+        /// Someone attempted to lease the same slot twice for a parachain. The amount is held in
+        /// reserve but no parachain slot has been leased.
+        /// </summary>
         ReserveConfiscated = 4,
         
+        /// <summary>
+        /// >> BidAccepted
+        /// A new bid has been accepted as the current winner.
+        /// </summary>
         BidAccepted = 5,
         
+        /// <summary>
+        /// >> WinningOffset
+        /// The winning offset was chosen for an auction. This will map into the `Winning` storage
+        /// map.
+        /// </summary>
         WinningOffset = 6,
     }
     
     /// <summary>
-    /// >> 119 - Variant[polkadot_runtime_common.auctions.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 510 - Variant[polkadot_runtime_common.auctions.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
     {
     }
 }

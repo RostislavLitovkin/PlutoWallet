@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Plutonication;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
 using PlutoWallet.Types;
 using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.sp_version;
 using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Model
@@ -46,7 +44,7 @@ namespace PlutoWallet.Model
                             new Uri(bestWebSecket),
                             Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    await client.ConnectAsync();
+                    await client.ConnectAndLoadMetadataAsync();
                 }
 
                 transactionRequest.EndpointKey = key;

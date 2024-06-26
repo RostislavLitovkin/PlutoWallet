@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
+    /// <summary>
+    /// >> Pays
+    /// </summary>
     public enum Pays
     {
         
+        /// <summary>
+        /// >> Yes
+        /// </summary>
         Yes = 0,
         
+        /// <summary>
+        /// >> No
+        /// </summary>
         No = 1,
     }
     
     /// <summary>
-    /// >> 23 - Variant[frame_support.dispatch.Pays]
+    /// >> 24 - Variant[frame_support.dispatch.Pays]
     /// </summary>
     public sealed class EnumPays : BaseEnum<Pays>
     {

@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.xcm.v2.multiasset
 {
     
     
+    /// <summary>
+    /// >> WildMultiAsset
+    /// </summary>
     public enum WildMultiAsset
     {
         
+        /// <summary>
+        /// >> All
+        /// </summary>
         All = 0,
         
+        /// <summary>
+        /// >> AllOf
+        /// </summary>
         AllOf = 1,
     }
     
     /// <summary>
-    /// >> 253 - Variant[xcm.v2.multiasset.WildMultiAsset]
+    /// >> 406 - Variant[xcm.v2.multiasset.WildMultiAsset]
     /// </summary>
     public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId, Substrate.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildFungibility>>
     {

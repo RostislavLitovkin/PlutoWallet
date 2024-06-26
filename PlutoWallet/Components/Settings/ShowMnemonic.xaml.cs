@@ -1,9 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-using static Substrate.NetApi.Mnemonic;
-using Substrate.NetApi;
-using Schnorrkel.Keys;
-
-namespace PlutoWallet.Components.Settings;
+﻿namespace PlutoWallet.Components.Settings;
 
 public partial class ShowMnemonic : ContentView
 {

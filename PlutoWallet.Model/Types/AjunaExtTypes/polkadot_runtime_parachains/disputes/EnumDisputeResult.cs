@@ -15,16 +15,25 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes
 {
     
     
+    /// <summary>
+    /// >> DisputeResult
+    /// </summary>
     public enum DisputeResult
     {
         
+        /// <summary>
+        /// >> Valid
+        /// </summary>
         Valid = 0,
         
+        /// <summary>
+        /// >> Invalid
+        /// </summary>
         Invalid = 1,
     }
     
     /// <summary>
-    /// >> 116 - Variant[polkadot_runtime_parachains.disputes.DisputeResult]
+    /// >> 507 - Variant[polkadot_runtime_parachains.disputes.DisputeResult]
     /// </summary>
     public sealed class EnumDisputeResult : BaseEnum<DisputeResult>
     {

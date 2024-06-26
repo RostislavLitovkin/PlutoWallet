@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.sp_staking.offence
     
     
     /// <summary>
-    /// >> 508 - Composite[sp_staking.offence.OffenceDetails]
+    /// >> 610 - Composite[sp_staking.offence.OffenceDetails]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OffenceDetails : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.sp_staking.offence
         /// <summary>
         /// >> offender
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.pallet_staking.Exposure> _offender;
-        
+        public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_staking.Exposure> Offender { get; set; }
         /// <summary>
         /// >> reporters
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> _reporters;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Reporters { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.pallet_staking.Exposure> Offender
-        {
-            get
-            {
-                return this._offender;
-            }
-            set
-            {
-                this._offender = value;
-            }
-        }
-        
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32> Reporters
-        {
-            get
-            {
-                return this._reporters;
-            }
-            set
-            {
-                this._reporters = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "OffenceDetails";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,14 +48,18 @@ namespace Substrate.NetApi.Generated.Model.sp_staking.offence
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Offender = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.pallet_staking.Exposure>();
+            Offender = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.sp_staking.Exposure>();
             Offender.Decode(byteArray, ref p);
             Reporters = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Reporters.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

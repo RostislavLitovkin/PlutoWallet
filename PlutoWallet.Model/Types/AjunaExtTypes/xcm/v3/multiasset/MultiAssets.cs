@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
     
     
     /// <summary>
-    /// >> 58 - Composite[xcm.v3.multiasset.MultiAssets]
+    /// >> 412 - Composite[xcm.v3.multiasset.MultiAssets]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiAssets : BaseType
@@ -27,25 +27,15 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
         /// <summary>
         /// >> value
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset> _value;
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset> Value { get; set; }
         
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset> Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "MultiAssets";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -53,12 +43,16 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.multiasset
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset>();
             Value.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

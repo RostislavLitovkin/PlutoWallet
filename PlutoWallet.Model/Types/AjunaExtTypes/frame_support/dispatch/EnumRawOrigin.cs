@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.frame_support.dispatch
 {
     
     
+    /// <summary>
+    /// >> RawOrigin
+    /// </summary>
     public enum RawOrigin
     {
         
+        /// <summary>
+        /// >> Root
+        /// </summary>
         Root = 0,
         
+        /// <summary>
+        /// >> Signed
+        /// </summary>
         Signed = 1,
         
+        /// <summary>
+        /// >> None
+        /// </summary>
         None = 2,
     }
     
     /// <summary>
-    /// >> 257 - Variant[frame_support.dispatch.RawOrigin]
+    /// >> 171 - Variant[frame_support.dispatch.RawOrigin]
     /// </summary>
     public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseVoid, Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
     {

@@ -15,26 +15,41 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> DisputeInitiated
+        /// A dispute has been initiated. \[candidate hash, dispute location\]
+        /// </summary>
         DisputeInitiated = 0,
         
+        /// <summary>
+        /// >> DisputeConcluded
+        /// A dispute has concluded for or against a candidate.
+        /// `\[para id, candidate hash, dispute result\]`
+        /// </summary>
         DisputeConcluded = 1,
         
-        DisputeTimedOut = 2,
-        
-        Revert = 3,
+        /// <summary>
+        /// >> Revert
+        /// A dispute has concluded with supermajority against a candidate.
+        /// Block authors should no longer build on top of this head and should
+        /// instead revert the block at the given height. This should be the
+        /// number of the child of the last known valid block in the chain.
+        /// </summary>
+        Revert = 2,
     }
     
     /// <summary>
-    /// >> 113 - Variant[polkadot_runtime_parachains.disputes.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 505 - Variant[polkadot_runtime_parachains.disputes.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>, Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>, BaseTuple<Substrate.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>, Substrate.NetApi.Model.Types.Primitive.U32>
     {
     }
 }

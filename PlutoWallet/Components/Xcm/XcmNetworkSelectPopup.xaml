@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Xcm.XcmNetworkSelectPopup"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card" xmlns:xcm="clr-namespace:PlutoWallet.Components.Xcm"
+             AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             IsVisible="{Binding IsVisible}">
+    <card:BottomPopupCard>
+        <card:BottomPopupCard.View>
+
+            
+                <ScrollView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       Orientation="Vertical">
+
+                    <VerticalStackLayout 
+                                       BindableLayout.ItemsSource="{Binding Networks}"
+                                       Padding="0, 0, 0, 20"
+                                       Spacing="10">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <xcm:XcmNetworkSelectorView Name="{Binding Name}"
+                                                            WsAddress="{Binding Url}"
+                                                            Icon="{Binding Icon}"
+                                                            Key="{Binding EndpointKey}"
+                                                            IsSelected="{Binding IsSelected}"
+                                                            ParachainId="{Binding ParachainId}"
+                                                            />
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+                    </VerticalStackLayout>
+                </ScrollView>
+                
+
+        </card:BottomPopupCard.View>
+
+    </card:BottomPopupCard>
+</ContentView>
+

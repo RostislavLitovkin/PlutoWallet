@@ -15,15 +15,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.
 {
     
     
+    /// <summary>
+    /// >> Call
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
+    /// </summary>
     public enum Call
     {
         
+        /// <summary>
+        /// >> force_unfreeze
+        /// See [`Pallet::force_unfreeze`].
+        /// </summary>
         force_unfreeze = 0,
     }
     
     /// <summary>
-    /// >> 410 - Variant[polkadot_runtime_parachains.disputes.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 370 - Variant[polkadot_runtime_parachains.disputes.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnum<Call>
     {

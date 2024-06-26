@@ -15,18 +15,30 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
 {
     
     
+    /// <summary>
+    /// >> PoolState
+    /// </summary>
     public enum PoolState
     {
         
+        /// <summary>
+        /// >> Open
+        /// </summary>
         Open = 0,
         
+        /// <summary>
+        /// >> Blocked
+        /// </summary>
         Blocked = 1,
         
+        /// <summary>
+        /// >> Destroying
+        /// </summary>
         Destroying = 2,
     }
     
     /// <summary>
-    /// >> 91 - Variant[pallet_nomination_pools.PoolState]
+    /// >> 308 - Variant[pallet_nomination_pools.PoolState]
     /// </summary>
     public sealed class EnumPoolState : BaseEnum<PoolState>
     {

@@ -18,7 +18,7 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
     
     
     /// <summary>
-    /// >> 625 - Composite[pallet_nomination_pools.SubPools]
+    /// >> 727 - Composite[pallet_nomination_pools.SubPools]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SubPools : BaseType
@@ -27,42 +27,19 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
         /// <summary>
         /// >> no_era
         /// </summary>
-        private Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool _noEra;
-        
+        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool NoEra { get; set; }
         /// <summary>
         /// >> with_era
         /// </summary>
-        private Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 _withEra;
+        public Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMapT2 WithEra { get; set; }
         
-        public Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool NoEra
-        {
-            get
-            {
-                return this._noEra;
-            }
-            set
-            {
-                this._noEra = value;
-            }
-        }
-        
-        public Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2 WithEra
-        {
-            get
-            {
-                return this._withEra;
-            }
-            set
-            {
-                this._withEra = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "SubPools";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -71,14 +48,18 @@ namespace Substrate.NetApi.Generated.Model.pallet_nomination_pools
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
             NoEra = new Substrate.NetApi.Generated.Model.pallet_nomination_pools.UnbondPool();
             NoEra.Decode(byteArray, ref p);
-            WithEra = new Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_btree_map.BoundedBTreeMapT2();
+            WithEra = new Substrate.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMapT2();
             WithEra.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

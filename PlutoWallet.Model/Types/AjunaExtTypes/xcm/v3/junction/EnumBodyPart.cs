@@ -15,22 +15,40 @@ namespace Substrate.NetApi.Generated.Model.xcm.v3.junction
 {
     
     
+    /// <summary>
+    /// >> BodyPart
+    /// </summary>
     public enum BodyPart
     {
         
+        /// <summary>
+        /// >> Voice
+        /// </summary>
         Voice = 0,
         
+        /// <summary>
+        /// >> Members
+        /// </summary>
         Members = 1,
         
+        /// <summary>
+        /// >> Fraction
+        /// </summary>
         Fraction = 2,
         
+        /// <summary>
+        /// >> AtLeastProportion
+        /// </summary>
         AtLeastProportion = 3,
         
+        /// <summary>
+        /// >> MoreThanProportion
+        /// </summary>
         MoreThanProportion = 4,
     }
     
     /// <summary>
-    /// >> 54 - Variant[xcm.v3.junction.BodyPart]
+    /// >> 74 - Variant[xcm.v3.junction.BodyPart]
     /// </summary>
     public sealed class EnumBodyPart : BaseEnumExt<BodyPart, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>
     {

@@ -14,35 +14,26 @@ public class HydraDX
 
         foreach (string url in hdxEndpoint.URLs)
         {
-            try
+            var client = new SubstrateClientExt(
+                        hdxEndpoint,
+                        new Uri(url),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            await client.ConnectAndLoadMetadataAsync();
+
+            Assert.That(client.IsConnected);
+
+            await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
+
+            Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
+
+            foreach (var asset in PlutoWallet.Model.HydraDX.Sdk.Assets.Keys)
             {
-                var client = new SubstrateClientExt(
-                            hdxEndpoint,
-                            new Uri(url),
-                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-                await client.ConnectAsync();
-
-                Assert.That(client.IsConnected);
-
-                await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
-
-                Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
-
-                foreach (var asset in PlutoWallet.Model.HydraDX.Sdk.Assets.Keys)
-                {
-                    Console.WriteLine(asset);
-                }
-
-                Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
+                Console.WriteLine(asset);
             }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex);
-                Console.WriteLine("At: " + url);
 
-            }
-        }
+            Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
+        } 
     }
 }
 

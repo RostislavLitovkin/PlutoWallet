@@ -15,18 +15,23 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet
 {
     
     
+    /// <summary>
+    /// >> Event
+    /// The `Event` enum of this pallet
+    /// </summary>
     public enum Event
     {
         
+        /// <summary>
+        /// >> Claimed
+        /// Someone claimed some DOTs.
+        /// </summary>
         Claimed = 0,
     }
     
     /// <summary>
-    /// >> 72 - Variant[polkadot_runtime_common.claims.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 484 - Variant[polkadot_runtime_common.claims.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Generated.Model.polkadot_runtime_common.claims.EthereumAddress, Substrate.NetApi.Model.Types.Primitive.U128>>
     {

@@ -15,30 +15,71 @@ namespace Substrate.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.
 {
     
     
+    /// <summary>
+    /// >> Error
+    /// The `Error` enum of this pallet.
+    /// </summary>
     public enum Error
     {
         
+        /// <summary>
+        /// >> DuplicateDisputeStatementSets
+        /// Duplicate dispute statement sets provided.
+        /// </summary>
         DuplicateDisputeStatementSets = 0,
         
+        /// <summary>
+        /// >> AncientDisputeStatement
+        /// Ancient dispute statement provided.
+        /// </summary>
         AncientDisputeStatement = 1,
         
+        /// <summary>
+        /// >> ValidatorIndexOutOfBounds
+        /// Validator index on statement is out of bounds for session.
+        /// </summary>
         ValidatorIndexOutOfBounds = 2,
         
+        /// <summary>
+        /// >> InvalidSignature
+        /// Invalid signature on statement.
+        /// </summary>
         InvalidSignature = 3,
         
+        /// <summary>
+        /// >> DuplicateStatement
+        /// Validator vote submitted more than once to dispute.
+        /// </summary>
         DuplicateStatement = 4,
         
-        PotentialSpam = 5,
+        /// <summary>
+        /// >> SingleSidedDispute
+        /// A dispute where there are only votes on one side.
+        /// </summary>
+        SingleSidedDispute = 5,
         
-        SingleSidedDispute = 6,
+        /// <summary>
+        /// >> MaliciousBacker
+        /// A dispute vote from a malicious backer.
+        /// </summary>
+        MaliciousBacker = 6,
+        
+        /// <summary>
+        /// >> MissingBackingVotes
+        /// No backing votes were provides along dispute statements.
+        /// </summary>
+        MissingBackingVotes = 7,
+        
+        /// <summary>
+        /// >> UnconfirmedDispute
+        /// Unconfirmed dispute statement sets provided.
+        /// </summary>
+        UnconfirmedDispute = 8,
     }
     
     /// <summary>
-    /// >> 702 - Variant[polkadot_runtime_parachains.disputes.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 802 - Variant[polkadot_runtime_parachains.disputes.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

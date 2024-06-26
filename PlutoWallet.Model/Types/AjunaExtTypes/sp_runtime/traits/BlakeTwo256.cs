@@ -18,27 +18,33 @@ namespace Substrate.NetApi.Generated.Model.sp_runtime.traits
     
     
     /// <summary>
-    /// >> 188 - Composite[sp_runtime.traits.BlakeTwo256]
+    /// >> 476 - Composite[sp_runtime.traits.BlakeTwo256]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BlakeTwo256 : BaseType
     {
         
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return "BlakeTwo256";
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

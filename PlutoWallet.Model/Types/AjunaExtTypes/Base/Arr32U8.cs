@@ -24,8 +24,12 @@ namespace Substrate.NetApi.Generated.Types.Base
     public sealed class Arr32U8 : BaseType
     {
         
-        private Substrate.NetApi.Model.Types.Primitive.U8[] _value;
+        /// <summary>
+        /// >> Substrate.NetApi.Model.Types.Primitive.U8[]
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U8[] Value { get; set; }
         
+        /// <inheritdoc/>
         public override int TypeSize
         {
             get
@@ -34,23 +38,13 @@ namespace Substrate.NetApi.Generated.Types.Base
             }
         }
         
-        public Substrate.NetApi.Model.Types.Primitive.U8[] Value
-        {
-            get
-            {
-                return this._value;
-            }
-            set
-            {
-                this._value = value;
-            }
-        }
-        
+        /// <inheritdoc/>
         public override string TypeName()
         {
             return string.Format("[{0}; {1}]", new Substrate.NetApi.Model.Types.Primitive.U8().TypeName(), this.TypeSize);
         }
         
+        /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
@@ -58,6 +52,7 @@ namespace Substrate.NetApi.Generated.Types.Base
             return result.ToArray();
         }
         
+        /// <inheritdoc/>
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
@@ -69,6 +64,7 @@ namespace Substrate.NetApi.Generated.Types.Base
             Value = array;
         }
         
+        /// <inheritdoc/>
         public void Create(Substrate.NetApi.Model.Types.Primitive.U8[] array)
         {
             Value = array;
