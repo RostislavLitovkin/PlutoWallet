@@ -1,10 +1,9 @@
-﻿using Plutonication;
-using PlutoWallet.Components.DAppConnectionView;
-using PlutoWallet.Components.MessagePopup;
+﻿using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Model;
 
 #if ANDROID26_0_OR_GREATER
 using PlutoWallet.Platforms.Android;
+using Android.Content;
 #endif
 
 namespace PlutoWallet.Components.ConnectionRequestView;
@@ -21,9 +20,12 @@ public partial class ConnectionRequestView : ContentView
     private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
 #if ANDROID26_0_OR_GREATER
-        PlutonicationAndroidForegroundService.
+        var mainActivity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+        Intent serviceIntent = new Intent(mainActivity, typeof(PlutonicationAndroidForegroundService));
+
+        mainActivity.StartForegroundService(serviceIntent);
 #else
-        await PlutonicationModel.AcceptConnection();
+        await PlutonicationModel.AcceptConnectionAsync();
 #endif
     }
 

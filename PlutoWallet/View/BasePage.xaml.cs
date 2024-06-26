@@ -2,11 +2,10 @@
 using PlutoWallet.Components.UniversalScannerView;
 using Plutonication;
 using PlutoWallet.Components.MessagePopup;
-using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.Vault;
 using Substrate.NetApi;
 using PlutoWallet.Components.TransferView;
-using PlutoWallet.Components.DAppConnectionView;
+using PlutoWallet.Model;
 
 namespace PlutoWallet.View;
 
@@ -54,21 +53,7 @@ public partial class BasePage : ContentPage
                 {
                     AccessCredentials ac = new AccessCredentials(new Uri(scannedValue));
 
-                    var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
-
-                    connectionRequest.Show();
-                    connectionRequest.Icon = ac.Icon;
-                    connectionRequest.Name = ac.Name;
-
-                    connectionRequest.Url = ac.Url;
-                    connectionRequest.Key = ac.Key;
-                    connectionRequest.AccessCredentials = ac;
-
-                    DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
-                    dAppViewModel.Icon = ac.Icon;
-                    dAppViewModel.Name = ac.Name;
-                    dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Waiting);
-                    dAppViewModel.IsVisible = true;
+                    PlutonicationModel.ProcessAccessCredentials(ac);
                 }
                 else if (scannedValue.Length > 13 && scannedValue.Substring(0, 13) == "plutolayout: ")
                 {

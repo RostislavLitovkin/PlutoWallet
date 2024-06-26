@@ -1,20 +1,123 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Plutonication;
+using PlutoWallet.Components.ConnectionRequestView;
+using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
 using PlutoWallet.Types;
 using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.sp_version;
 using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Model
 {
-	public class PlutonicationModel
-	{
-		public static async Task ReceivePayload(UnCheckedExtrinsic unCheckedExtrinsic, Substrate.NetApi.Model.Rpc.RuntimeVersion runtime)
-		{
+    public class PlutonicationModel
+    {
+        public static void ProcessAccessCredentials(AccessCredentials ac)
+        {
+            var connectionRequest = DependencyService.Get<ConnectionRequestViewModel>();
+
+            connectionRequest.Show();
+            connectionRequest.Icon = ac.Icon;
+            connectionRequest.Name = ac.Name;
+
+            connectionRequest.Url = ac.Url;
+            connectionRequest.Key = ac.Key;
+            connectionRequest.AccessCredentials = ac;
+
+            DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+            dAppViewModel.Icon = ac.Icon;
+            dAppViewModel.Name = ac.Name;
+            dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Waiting);
+            dAppViewModel.IsVisible = true;
+        }        
+        public static async Task AcceptConnectionAsync()
+        {
+            try
+            {
+                var viewModel = DependencyService.Get<ConnectionRequestViewModel>();
+
+                viewModel.Connecting = true;
+
+                viewModel.RequestViewIsVisible = false;
+                viewModel.ConnectionStatusIsVisible = true;
+                viewModel.ConnectionStatusText = $"Connecting.";
+
+                DAppConnectionViewModel dAppViewModel = DependencyService.Get<DAppConnectionViewModel>();
+                dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connecting);
+
+                await PlutonicationWalletClient.InitializeAsync(
+                    ac: viewModel.AccessCredentials,
+                    pubkey: Model.KeysModel.GetSubstrateKey(),
+                    signPayload: Model.PlutonicationModel.ReceivePayload,
+                    signRaw: Model.PlutonicationModel.ReceiveRaw,
+                    onConnected: (object sender, EventArgs args) =>
+                    {
+                        viewModel.Connecting = false;
+                        viewModel.Connected = true;
+                        viewModel.Confirming = true;
+
+                        viewModel.ConnectionStatusText = $"Confirming.";
+
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Confirming);
+                    },
+                    onConfirmDAppConnection: () =>
+                    {
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Connected);
+
+                        viewModel.Confirming = false;
+                        viewModel.Confirmed = true;
+                        viewModel.ConnectionStatusText = $"Connected successfully. You can now go back to {viewModel.Name}.";
+                    },
+                    onDisconnected: (object sender, string args) =>
+                    {
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
+                    },
+                    onReconnected: (object sender, int args) =>
+                    {
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Reconnecting);
+                    },
+                    onReconnectFailed: (object sender, EventArgs args) =>
+                    {
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
+                    },
+                    onDAppDisconnected: () =>
+                    {
+                        dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Disconnected);
+                    }
+                );
+
+                if (viewModel.PlutoLayout is not null)
+                {
+                    try
+                    {
+                        var plutoLayoutString = CustomLayoutModel.GetLayoutString(viewModel.PlutoLayout);
+                        CustomLayoutModel.MergePlutoLayouts(plutoLayoutString);
+                    }
+                    catch
+                    {
+                        var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                        messagePopup.Title = "Outdated version";
+                        messagePopup.Text = "Failed to import the dApp layout. Try updating PlutoWallet to newest version to fix this issue.";
+
+                        messagePopup.IsVisible = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
+
+                messagePopup.Title = "Connection Request Error";
+                messagePopup.Text = ex.Message;
+
+                messagePopup.IsVisible = true;
+            }
+        }
+        public static async Task ReceivePayload(UnCheckedExtrinsic unCheckedExtrinsic, Substrate.NetApi.Model.Rpc.RuntimeVersion runtime)
+        {
             var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
             PlutoWalletSubstrateClient client;

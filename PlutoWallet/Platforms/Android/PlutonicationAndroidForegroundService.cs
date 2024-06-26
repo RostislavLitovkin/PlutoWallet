@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using PlutoWallet.Model;
@@ -12,7 +13,7 @@ namespace PlutoWallet.Platforms.Android
     /// https://www.youtube.com/watch?v=-eyKlpJI02o,
     /// https://www.youtube.com/watch?v=Q_renpfnbk4,
     /// </summary>
-    [Service]
+    [Service(ForegroundServiceType = ForegroundService.TypeRemoteMessaging)]
     class PlutonicationAndroidForegroundService : Service
     {
         CancellationTokenSource _cts;
@@ -28,12 +29,17 @@ namespace PlutoWallet.Platforms.Android
             _cts = new CancellationTokenSource();
 
             Notification notification = new AndroidNotificationHelper().GetNotification("Connected via Plutonication");
-            
+#if ANDROID29_0_OR_GREATER
+#pragma warning disable CA1416 // Validate platform compatibility
+            StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notification, ForegroundService.TypeRemoteMessaging);
+#pragma warning restore CA1416 // Validate platform compatibility
+#else
             StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notification);
+#endif
 
             _ = Task.Run(() =>
             {
-                Task accept = PlutonicationModel.AcceptConnection();
+                Task accept = PlutonicationModel.AcceptConnectionAsync();
             }, _cts.Token);
 
             return StartCommandResult.Sticky;

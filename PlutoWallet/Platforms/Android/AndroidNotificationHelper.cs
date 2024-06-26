@@ -26,11 +26,11 @@ namespace PlutoWallet.Platforms.Android
             intent.AddFlags(ActivityFlags.SingleTop);
             intent.PutExtra("PlutoWallet", description);
 
-            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.UpdateCurrent);
+            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.Immutable);
 
             var notificationBuilder = new Notification.Builder(context, foregroundChannelId)
                 .SetContentTitle("PlutoWallet")
-                .SetContentText("Connected via Plutonication")
+                .SetContentText(description)
                 .SetSmallIcon(CommunityToolkit.Maui.Core.Resource.Drawable.plutowalleticon)
                 .SetContentIntent(pendingIntent)
                 .SetOngoing(true)
@@ -38,17 +38,15 @@ namespace PlutoWallet.Platforms.Android
 
             if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.O)
             {
-                NotificationChannel notificationChannel = new NotificationChannel(foregroundChannelId, "PlutoWallet", NotificationImportance.Low);
+                NotificationChannel notificationChannel = new NotificationChannel(foregroundChannelId, "PlutoWallet", NotificationImportance.High);
                 NotificationManager notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
-                if (notificationManager != null)
-                {
-                    notificationManager.CreateNotificationChannel(notificationChannel);
-                }
+                notificationManager.CreateNotificationChannel(notificationChannel);
             }
 
             return notificationBuilder.Build();
-#endif
+#else
             return null;
+#endif
         }
     }
 }
