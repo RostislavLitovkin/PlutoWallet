@@ -550,13 +550,13 @@ namespace PlutoWallet.Model
                 case "HDXOmniLiquidity":
                     return new LayoutItemInfo
                     {
-                        Name = "HydraDX Omnipool Liquidity",
+                        Name = "Hydration Omnipool Liquidity",
                         PlutoLayoutId = "HDXOmniLiquidity",
                     };
                 case "HDXDCA":
                     return new LayoutItemInfo
                     {
-                        Name = "HydraDX DCA Position",
+                        Name = "Hydration DCA Position",
                         PlutoLayoutId = "HDXDCA",
                     };
                 case "id":
@@ -626,6 +626,8 @@ namespace PlutoWallet.Model
                     return GalaxyLogicGameLayoutItem.LAYOUT;
                 case "AwesomeAjunaAwatars":
                     return AwesomaAjunaAvatarsLayoutItem.LAYOUT;
+                case "Hydration":
+                    return HydrationOmnipoolLayoutItem.LAYOUT;
             }
 
             throw new Exception("Could not parse the PlutoLayout");

@@ -319,11 +319,11 @@ namespace PlutoWallet.Constants
             } },
             { "hydradx", new Endpoint
             {
-                Name = "HydraDX",
+                Name = "Hydration",
                 Key = "hydradx",
                 URLs =  new string[3] { "wss://rpc.helikon.io/hydradx", "wss://rpc.hydradx.cloud", "wss://hydradx-rpc.dwellir.com" },
-                Icon = "hydradxomnipool.png",
-                DarkIcon = "hydradxomnipool.png",
+                Icon = "hydration.png",
+                DarkIcon = "hydration.png",
                 Unit = "HDX",
                 SS58Prefix = 63,
                 Decimals = 12,

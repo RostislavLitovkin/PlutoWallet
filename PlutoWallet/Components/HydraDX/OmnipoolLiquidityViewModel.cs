@@ -21,7 +21,7 @@ namespace PlutoWallet.Components.HydraDX
 
 		public async Task GetLiquidityAmount(SubstrateClientExt client)
 		{
-			if (client is null || client.IsConnected)
+			if (client is null || !client.IsConnected)
 			{
 				UsdSum = "Failed";
 
@@ -43,9 +43,9 @@ namespace PlutoWallet.Components.HydraDX
 			Assets = new ObservableCollection<AssetLiquidityInfo>();
 
 			foreach (var omnipoolLiquidity in omnipoolLiquidities) {
-				double usdRatio = 0;
+                double usdRatio = Model.HydraDX.Sdk.GetSpotPrice(omnipoolLiquidity.Symbol);
 
-				double usdValue = usdRatio * omnipoolLiquidity.Amount;
+                double usdValue = usdRatio * omnipoolLiquidity.Amount;
 
 				tempUsdSum += usdValue;
 

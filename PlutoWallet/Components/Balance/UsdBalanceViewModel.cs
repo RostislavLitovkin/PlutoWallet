@@ -45,7 +45,7 @@ namespace PlutoWallet.Components.Balance
                     {
                         Amount = String.Format("{0:0.00}", a.Amount),
                         Symbol = a.Symbol,
-                        UsdValue = String.Format("{0:0.00}", a.UsdValue) + " USD",
+                        UsdValue = a.UsdValue > 0 ? String.Format("{0:0.00}", a.UsdValue) + " USD" : "~ USD",
                         ChainIcon = Application.Current.UserAppTheme != AppTheme.Dark ? a.ChainIcon : a.DarkChainIcon,
                     });
                 }
@@ -57,7 +57,7 @@ namespace PlutoWallet.Components.Balance
 
             ReloadIsVisible = true;
         }
-	}
+    }
 
     public class AssetInfo
     {

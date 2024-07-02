@@ -222,34 +222,6 @@ namespace PlutoWallet.Model
 
             usdBalanceViewModel.UpdateBalances();
 
-            for (int i = 0; i < GroupEndpoints.Length; i++)
-            {
-                if (GroupEndpoints[i].Name == "Aleph Zero Testnet")
-                {
-                    var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
-
-                    await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
-                }
-
-                if (GroupEndpoints[i].Key == "hydradx")
-                {
-                    var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
-
-                    await omnipoolLiquidityViewModel.GetLiquidityAmount(GroupClients[i]);
-
-                    var dcaViewModel = DependencyService.Get<DCAViewModel>();
-
-                    await dcaViewModel.GetDCAPosition(GroupClients[i]);
-                }
-
-                if (GroupEndpoints[i].Key == "bifrost")
-                {
-                    var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
-
-                    await vDotTokenViewModel.GetConversionRate(GroupClients[i], CancellationToken.None);
-                }
-            }
-
             bool hydraClientNotFound = true;
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
@@ -262,6 +234,15 @@ namespace PlutoWallet.Model
                     usdBalanceViewModel.UpdateBalances();
 
                     hydraClientNotFound = false;
+
+                    // Other hydration stuff :)
+                    var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
+
+                    await omnipoolLiquidityViewModel.GetLiquidityAmount(GroupClients[i]);
+
+                    var dcaViewModel = DependencyService.Get<DCAViewModel>();
+
+                    await dcaViewModel.GetDCAPosition(GroupClients[i]);
                 }
             }
 
@@ -285,6 +266,23 @@ namespace PlutoWallet.Model
                 catch
                 {
 
+                }
+            }
+
+            for (int i = 0; i < GroupEndpoints.Length; i++)
+            {
+                if (GroupEndpoints[i].Name == "Aleph Zero Testnet")
+                {
+                    var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
+
+                    await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
+                }
+
+                if (GroupEndpoints[i].Key == "bifrost")
+                {
+                    var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
+
+                    await vDotTokenViewModel.GetConversionRate(GroupClients[i], CancellationToken.None);
                 }
             }
         }

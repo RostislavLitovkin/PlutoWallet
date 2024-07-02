@@ -1,10 +1,10 @@
 ﻿namespace PlutoWallet.Components.PredefinedLayouts;
 
-public partial class HydraDXOmnipoolLayoutItem : ContentView
+public partial class HydrationOmnipoolLayoutItem : ContentView
 {
-    private const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, HDXOmniLiquidity, HDXDCA];[hydradx]";
+    public const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, HDXOmniLiquidity, HDXDCA];[hydradx]";
 
-    public HydraDXOmnipoolLayoutItem()
+    public HydrationOmnipoolLayoutItem()
 	{
 		InitializeComponent();
 	}

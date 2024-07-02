@@ -15,6 +15,7 @@ namespace PlutoWallet.Model.HydraDX
 {
 	public class DCAModel
 	{
+        private const long TICKS_PER_BLOCK = 12_0000000; // 12 seconds
         public static async Task<List<DCAPosition>> GetDCAPositions(SubstrateClientExt client, string substrateAddress)
         {
             var account32 = new AccountId32();
@@ -72,7 +73,7 @@ namespace PlutoWallet.Model.HydraDX
 
                 Console.WriteLine("Blocks: " + blocks);
 
-                TimeSpan time = new TimeSpan((long)(blocks) * 120000000 + 3600 * (long)120000000);
+                TimeSpan time = new TimeSpan((long)blocks * TICKS_PER_BLOCK + 3600 * TICKS_PER_BLOCK);
 
                 Console.WriteLine("Seconds: " + time.TotalSeconds);
 

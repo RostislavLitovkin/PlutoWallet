@@ -90,7 +90,7 @@
 		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
 		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
 		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
-		<PackageReference Include="Plutonication" Version="2.4.0" />
+		<PackageReference Include="Plutonication" Version="2.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -108,6 +108,7 @@
 	  <None Remove="Resources\Images\dappwhite.svg" />
 	  <None Remove="Resources\Images\deviceblack.svg" />
 	  <None Remove="Resources\Images\devicewhite.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
@@ -473,11 +474,9 @@
 	  <Folder Include="Components\Switch\" />
 	  <Folder Include="Components\WebView\" />
 	  <Folder Include="Components\Extrinsic\" />
-	  <Folder Include="Resources\Images\NetworkIcons\" />
 	  <Folder Include="Components\NavigationBar\" />
 	  <Folder Include="Components\Card\" />
 	  <Folder Include="Components\CustomLayouts\" />
-	  <Folder Include="Components\PredefinedLayouts\" />
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	  <Folder Include="Components\Nft\" />
@@ -510,6 +509,9 @@
 	<ItemGroup>
 	  <Compile Update="Components\Animations\LoadingView.xaml.cs">
 	    <DependentUpon>LoadingView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\PredefinedLayouts\HydrationOmnipoolLayoutItem.xaml.cs">
+	    <DependentUpon>HydrationOmnipoolLayoutItem.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
