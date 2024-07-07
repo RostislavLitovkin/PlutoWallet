@@ -27,6 +27,15 @@ namespace PlutoWalletTests
         }
 
         [Test]
+        public async Task GetAlice()
+        {
+            Account account = MnemonicsModel.GetAccount("//Alice");
+
+            string addressFromPolkadotJs = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
+            Assert.That(account.Value == addressFromPolkadotJs);
+        }
+
+        [Test]
         public async Task ExportJson()
         {
             string json = MnemonicsModel.ExportJson("flight rent steel toddler casino party exact duck square segment charge swap", "PlutoWallet");

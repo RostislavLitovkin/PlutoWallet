@@ -13,7 +13,8 @@
                                                Status="{Binding Status}"
                                                Hash="{Binding Hash}"
                                                Endpoint="{Binding Endpoint}"
-                                               CallName="{Binding CallName}" />
+                                               CallName="{Binding CallName}"
+                                               EventsListViewModel="{Binding EventsListViewModel}"/>
 
             </DataTemplate>
 

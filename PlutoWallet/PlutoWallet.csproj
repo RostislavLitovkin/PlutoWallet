@@ -48,10 +48,8 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#000000" Resize="false" />
 
 		<!-- Images -->
 
@@ -268,8 +266,6 @@
 	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
 	  <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
 	  <BundleResource Include="Resources\Fonts\Exodar-Outline.ttf" />
-	  <BundleResource Include="Resources\Splash\splash.svg" />
-	  <BundleResource Include="Resources\AppIcon\appicon.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\unique.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\t0rn.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\subsocial.png" />
@@ -385,6 +381,18 @@
 	  <MauiXaml Update="Components\Animations\LoadingView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventParameterView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventsListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
@@ -468,12 +476,9 @@
 	  <Folder Include="Components\TransactionRequest\" />
 	  <Folder Include="Components\CalamarView\" />
 	  <Folder Include="Components\ArgumentsView\" />
-	  <Folder Include="Resources\Splash\" />
-	  <Folder Include="Resources\AppIcon\" />
 	  <Folder Include="Components\Staking\" />
 	  <Folder Include="Components\Switch\" />
 	  <Folder Include="Components\WebView\" />
-	  <Folder Include="Components\Extrinsic\" />
 	  <Folder Include="Components\NavigationBar\" />
 	  <Folder Include="Components\Card\" />
 	  <Folder Include="Components\CustomLayouts\" />

@@ -92,7 +92,8 @@ namespace PlutoWallet.Model
 
             nfts.AddRange(await Quartz.NftListByOwner(substrateAddress, limit, offset, token));
 
-            nfts.AddRange(await Opal.NftListByOwner(substrateAddress, limit, offset, token));
+            // NFTs will be fixed soon in the next update..
+            //nfts.AddRange(await Opal.NftListByOwner(substrateAddress, limit, offset, token));
 
             nfts.AddRange(await Basilisk.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
 

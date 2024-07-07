@@ -38,7 +38,7 @@
                         HorizontalOptions="Start" />
                 </VerticalStackLayout>
 
-                <Image Source="calamar.png"
+                <Image Source="{AppThemeBinding Light=closeblack.png, Dark=closewhite.png}"
                        x:Name="calamarButton"
                        IsVisible="false"
                        Aspect="AspectFit"
@@ -46,7 +46,7 @@
                        Margin="10"
                        AbsoluteLayout.LayoutFlags="PositionProportional">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnCalamarClicked" />
+                        <TapGestureRecognizer Tapped="OnCloseClicked" />
 
                     </Image.GestureRecognizers>
 
@@ -57,7 +57,7 @@
 
     <ContentView.GestureRecognizers>
         <PanGestureRecognizer PanUpdated="OnPanUpdated" />
-
+        <TapGestureRecognizer Tapped="OnClicked" />
     </ContentView.GestureRecognizers>
 </ContentView>
 

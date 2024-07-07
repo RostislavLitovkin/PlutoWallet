@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicDetailPage"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:events="clr-namespace:PlutoWallet.Components.Events"
+             Title="ExtrinsicDetailPage"
+         BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+           Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+           Opacity="{AppThemeBinding Light=0.96}"
+           Aspect="AspectFill"/>
+
+        <ScrollView Orientation="Vertical"
+                x:Name="scrollView"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                Padding="0, 55, 0, 0">
+            <VerticalStackLayout HorizontalOptions="Center"
+                             Padding="20, 10, 20, 100"
+                             Spacing="15">
+                <events:EventsListView x:Name="eventsListView" />
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <navigationbar:TopNavigationBar Title="Extrinsic detail"
+                                    x:Name="topNavigationBar" />
+
+        <confirmtransaction:ConfirmTransactionView />
+
+    </AbsoluteLayout>
+
+</ContentPage>

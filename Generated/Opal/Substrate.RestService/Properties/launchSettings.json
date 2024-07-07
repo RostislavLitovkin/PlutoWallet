@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Substrate.RestService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:61752/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:61751;http://localhost:61752"
+    }
+  }
+}

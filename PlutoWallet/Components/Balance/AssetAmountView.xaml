@@ -2,9 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.Balance.AssetAmountView"
-             
-             HeightRequest="30"
-             x:Name="view">
+             HeightRequest="30">
     <Border StrokeThickness="0"
             BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
             Padding="10, 0, 10, 0">

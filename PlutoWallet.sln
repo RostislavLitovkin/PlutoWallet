@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWallet", "PlutoWallet\PlutoWallet.csproj", "{9B40071C-F49B-408A-895C-01711075CC52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlutoWallet", "PlutoWallet\PlutoWallet.csproj", "{9B40071C-F49B-408A-895C-01711075CC52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWalletTests", "PlutoWalletTests\PlutoWalletTests.csproj", "{DF6A5884-857F-420F-9855-E579A18E9F3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlutoWalletTests", "PlutoWalletTests\PlutoWalletTests.csproj", "{DF6A5884-857F-420F-9855-E579A18E9F3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlutoWallet.Model", "PlutoWallet.Model\PlutoWallet.Model.csproj", "{BC959E4C-7D25-4D96-87BD-FA52FD573836}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlutoWallet.Model", "PlutoWallet.Model\PlutoWallet.Model.csproj", "{BC959E4C-7D25-4D96-87BD-FA52FD573836}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generated", "Generated", "{C36A2351-FAA4-4E50-BA30-4F7D776A6808}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Opal.NetApi", "Generated\Opal\Opal.NetApi\Opal.NetApi.csproj", "{9334C972-8642-4D0D-B44A-1C71385C62C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,9 +33,16 @@ Global
 		{BC959E4C-7D25-4D96-87BD-FA52FD573836}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC959E4C-7D25-4D96-87BD-FA52FD573836}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC959E4C-7D25-4D96-87BD-FA52FD573836}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9334C972-8642-4D0D-B44A-1C71385C62C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9334C972-8642-4D0D-B44A-1C71385C62C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9334C972-8642-4D0D-B44A-1C71385C62C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9334C972-8642-4D0D-B44A-1C71385C62C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9334C972-8642-4D0D-B44A-1C71385C62C0} = {C36A2351-FAA4-4E50-BA30-4F7D776A6808}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

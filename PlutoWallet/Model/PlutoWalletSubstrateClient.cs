@@ -5,6 +5,7 @@ using PlutoWallet.Components.Extrinsic;
 using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Model.AjunaExt;
+using System.Collections.ObjectModel;
 
 namespace PlutoWallet.Model
 {
@@ -47,7 +48,8 @@ namespace PlutoWallet.Model
 
             extrinsicStackViewModel.Update();
 
-            Action<string, ExtrinsicStatus> callback = (string id, ExtrinsicStatus status) =>
+#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
+            Action<string, ExtrinsicStatus> callback = async (string id, ExtrinsicStatus status) =>
             {
                 if (status.ExtrinsicState == ExtrinsicState.Ready)
                 {
@@ -56,25 +58,63 @@ namespace PlutoWallet.Model
                 }
                 else if (status.ExtrinsicState == ExtrinsicState.Dropped)
                 {
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Failed;
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Dropped;
                     extrinsicStackViewModel.Update();
                 }
 
                 else if (status.ExtrinsicState == ExtrinsicState.InBlock)
                 {
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlock;
+                    var events = await EventsModel.GetExtrinsicEventsAsync(
+                     this,
+                     this.Endpoint.Key,
+                     status.Hash,
+                     extrinsicHash.Encode()
+                     );
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents = new ObservableCollection<ExtrinsicEvent>(events);
+
+                    var lastEvent = events.Last();
+
+                    if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockSuccess;
+                    }
+                    else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockFailed;
+                    }
+                    else
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
+                    }
+
                     extrinsicStackViewModel.Update();
                 }
 
                 else if (status.ExtrinsicState == ExtrinsicState.Finalized)
                 {
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Finalized;
+
+                    var lastEvent = extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents.Last();
+
+                    if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedSuccess;
+                    }
+                    else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedFailed;
+                    }
+                    else
+                    {
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
+                    }
+
                     extrinsicStackViewModel.Update();
                 }
 
                 else
                     Console.WriteLine(status.ExtrinsicState);
             };
+#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
 
             string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
 

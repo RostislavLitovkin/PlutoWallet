@@ -3,12 +3,12 @@ using PlutoWallet.Components.WebView;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.ViewModel;
+using PlutoWallet.Components.Events;
 
 namespace PlutoWallet.Components.Extrinsic;
 
 public partial class ExtrinsicStatusView : ContentView
 {
-
     private Queue<(float x, float y)> _positions = new Queue<(float, float)>();
 
     public static readonly BindableProperty ExtrinsicIdProperty = BindableProperty.Create(
@@ -26,9 +26,21 @@ public partial class ExtrinsicStatusView : ContentView
 
             switch ((ExtrinsicStatusEnum)newValue)
             {
-                case ExtrinsicStatusEnum.InBlock:
-                    control.statusLabel.Text = "In block";
+                case ExtrinsicStatusEnum.InBlockSuccess:
+                    control.statusLabel.Text = "In block - Success";
                     control.statusLabel.TextColor = Colors.Green;
+                    break;
+                case ExtrinsicStatusEnum.InBlockFailed:
+                    control.statusLabel.Text = "In block - Failed";
+                    control.statusLabel.TextColor = Colors.DarkRed;
+                    break;
+                case ExtrinsicStatusEnum.FinalizedSuccess:
+                    control.statusLabel.Text = "Finalized - Success";
+                    control.statusLabel.TextColor = Colors.Green;
+                    break;
+                case ExtrinsicStatusEnum.FinalizedFailed:
+                    control.statusLabel.Text = "Finalized - Failed";
+                    control.statusLabel.TextColor = Colors.DarkRed;
                     break;
                 case ExtrinsicStatusEnum.Pending:
                     control.statusLabel.Text = "Pending";
@@ -38,16 +50,13 @@ public partial class ExtrinsicStatusView : ContentView
                     control.statusLabel.Text = "Submitting";
                     control.statusLabel.TextColor = Colors.Gray;
                     break;
-                case ExtrinsicStatusEnum.Failed:
-                    control.statusLabel.Text = "Failed";
+                case ExtrinsicStatusEnum.Dropped:
+                    control.statusLabel.Text = "Dropped";
                     control.statusLabel.TextColor = Colors.DarkRed;
                     break;
-                case ExtrinsicStatusEnum.Finalized:
-                    control.statusLabel.Text = "Finalized";
-                    control.statusLabel.TextColor = Colors.Green;
-                    break;
-                default:
-                    // Handle errors
+                case ExtrinsicStatusEnum.Error:
+                    control.statusLabel.Text = "Error";
+                    control.statusLabel.TextColor = Colors.DarkRed;
                     break;
             }
         });
@@ -78,6 +87,12 @@ public partial class ExtrinsicStatusView : ContentView
 
            control.nameLabelText.Text = (string)newValue;
 
+       });
+
+    public static readonly BindableProperty EventsListViewModelProperty = BindableProperty.Create(
+       nameof(EventsListViewModel), typeof(EventsListViewModel), typeof(ExtrinsicStatusView),
+       defaultBindingMode: BindingMode.TwoWay,
+       propertyChanging: (bindable, oldValue, newValue) => {
        });
 
     public ExtrinsicStatusView()
@@ -120,6 +135,12 @@ public partial class ExtrinsicStatusView : ContentView
         set => SetValue(CallNameProperty, value);
     }
 
+    public EventsListViewModel EventsListViewModel
+    {
+        get => (EventsListViewModel)GetValue(EventsListViewModelProperty);
+        set => SetValue(EventsListViewModelProperty, value);
+    }
+
     void OnRemoveClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
@@ -129,12 +150,13 @@ public partial class ExtrinsicStatusView : ContentView
         extrinsicStackViewModel.Update();
     }
 
-    async void OnCalamarClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnCloseClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        if(Endpoint.CalamarChainName != null)
-        {
-            await Navigation.PushAsync(new WebViewPage("https://calamar.app/" + Endpoint.CalamarChainName + "/search?query=" + Hash.Value));
-        }
+        var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
+
+        extrinsicStackViewModel.Extrinsics.Remove(ExtrinsicId);
+
+        extrinsicStackViewModel.Update();
     }
 
     async void OnPanUpdated(System.Object sender, Microsoft.Maui.Controls.PanUpdatedEventArgs e)
@@ -191,5 +213,15 @@ public partial class ExtrinsicStatusView : ContentView
 
             mainViewModel.ScrollIsEnabled = true;
         }
+    }
+
+    private async void OnClicked(object sender, TappedEventArgs e)
+    {
+        if (EventsListViewModel == null)
+        {
+            return;
+        }
+
+        await Navigation.PushAsync(new ExtrinsicDetailPage(EventsListViewModel));
     }
 }
