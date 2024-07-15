@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "substrate.dotnet": {
+      "version": "0.6.5",
+      "commands": [
+        "substrate"
+      ],
+      "rollForward": false
+    }
+  }
+}
