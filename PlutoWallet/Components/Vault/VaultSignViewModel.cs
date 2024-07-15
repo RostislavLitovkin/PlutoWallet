@@ -140,8 +140,6 @@ namespace PlutoWallet.Components.Vault
 
             IsVisible = true;
 
-            Console.WriteLine("Done");
-
             return;
             /*
             Console.WriteLine(payload.method);

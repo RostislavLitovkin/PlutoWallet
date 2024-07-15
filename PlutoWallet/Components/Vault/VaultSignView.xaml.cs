@@ -34,7 +34,7 @@ public partial class VaultSignView : ContentView
                     break;
 
                 case KeyType.Sr25519:
-                    signature = "01" + Utils.Bytes2HexString(Sr25519v091.SignSimple(account.Bytes, account.PrivateKey, viewModel.Payload), Utils.HexStringFormat.Pure);
+                    signature = "01" + Utils.Bytes2HexString(await account.SignAsync(viewModel.Payload), Utils.HexStringFormat.Pure);
                     break;
 
                 default:
@@ -42,7 +42,7 @@ public partial class VaultSignView : ContentView
             }
 
             viewModel.Signature = signature;
-            viewModel.SignatureIsVisible = !true;
+            viewModel.SignatureIsVisible = false;
             viewModel.SignButtonIsVisible = false;
 
             Console.WriteLine(signature);
