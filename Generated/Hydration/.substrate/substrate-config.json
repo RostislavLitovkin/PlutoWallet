@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "net_api": "Hydration.NetApi",
+    "net_integration": "Substrate.Integration",
+    "rest_service": "Substrate.RestService",
+    "rest_client": "Substrate.RestClient"
+  },
+   "metadata": {
+      "websocket": "wss://rpc.hydradx.cloud"
+   },
+  "rest_client_settings": {
+    "service_assembly": "Substrate.RestService.dll"
+  }
+}

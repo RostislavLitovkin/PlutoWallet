@@ -1,6 +1,22 @@
 {
   "chains": [
     {
+      "name": "Polkadot",
+      "websocket": "wss://polkadot.api.onfinality.io/public-ws"
+    },
+    {
+      "name": "PolkadotAssetHub",
+      "websocket": "wss://polkadot-asset-hub-rpc.polkadot.io"
+    },
+    {
+      "name": "Bifrost",
+      "websocket": "wss://bifrost-polkadot.api.onfinality.io/public-ws"
+    },
+    {
+      "name": "Hydration",
+      "websocket": "wss://rpc.hydradx.cloud"
+    },
+    {
       "name": "Bajun",
       "websocket": "wss://bajun.public.curie.radiumblock.co/ws"
     },
