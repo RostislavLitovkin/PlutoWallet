@@ -1,0 +1,12 @@
+{
+  "chains": [
+    {
+      "name": "Bajun",
+      "websocket": "wss://bajun.public.curie.radiumblock.co/ws"
+    },
+    {
+      "name": "Opal",
+      "websocket": "wss://eu-ws-opal.unique.network"
+    }
+  ]
+}

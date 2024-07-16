@@ -15,7 +15,7 @@
 	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 	  <PackageReference Include="Substrate.NET.Wallet" Version="1.0.8" />
-	  <PackageReference Include="Substrate.NET.API" Version="0.9.22" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.22-rc" />
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
@@ -54,6 +54,11 @@
     <Folder Include="Types\PolkadotAssetHub\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Generated\Bajun\Bajun.NetApi\Bajun.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Bifrost\Bifrost.NetApi\Bifrost.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Hydration\Hydration.NetApi\Hydration.NetApi.csproj" />
     <ProjectReference Include="..\Generated\Opal\Opal.NetApi\Opal.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Polkadot\Polkadot.NetApi\Polkadot.NetApi.csproj" />
   </ItemGroup>
 </Project>

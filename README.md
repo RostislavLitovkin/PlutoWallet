@@ -176,3 +176,22 @@ development terminology:
 
 
 - `/Properties` nothing important
+
+# Generator
+
+description..
+
+### install dependencies (WSL)
+
+```
+sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
+
+dotnet new -i Substrate.DotNet.Template
+
+sudo apt-get install jq
+```
+
+### Run
+```
+./generator.sh
+```
