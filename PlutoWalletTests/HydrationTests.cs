@@ -1,5 +1,6 @@
 ﻿using System;
 using PlutoWallet.Constants;
+using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.HydraDX;
 
@@ -74,6 +75,14 @@ public class Hydration
             Console.WriteLine(list[i].Amount + "   - " + list[i].Symbol);
             Console.WriteLine(list[i].ToString());
         }
+    }
+
+    [Test]
+    public static void CalculateSpotPriceWebAssembly()
+    {
+        string result = HydrationMath.CalculateSpotPrice("1", "1", "1", "1");
+
+        Console.WriteLine("result: " + result);
     }
 }
 

@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <NativeFileReference Include="Hydration/hydra_dx_wasm_bg.wasm" />
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+	  <PackageReference Include="Wasmtime" Version="22.0.0" />
+	  <PackageReference Include="WebAssembly" Version="1.2.1" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
 	  <PackageReference Include="Markdig" Version="0.31.0" />
@@ -29,6 +35,7 @@
     <None Remove="AjunaExt\" />
     <None Remove="AzeroId\" />
     <None Remove="HydraDX\" />
+    <None Remove="Hydration\hydra_dx_wasm_bg.wasm" />
     <None Remove="Kodadot\" />
     <None Remove="SubSquare\" />
     <None Remove="Constants\" />
@@ -60,5 +67,10 @@
     <ProjectReference Include="..\Generated\Opal\Opal.NetApi\Opal.NetApi.csproj" />
     <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
     <ProjectReference Include="..\Generated\Polkadot\Polkadot.NetApi\Polkadot.NetApi.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Hydration\hydra_dx_wasm_bg.wasm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
