@@ -45,7 +45,7 @@ namespace PlutoWallet.Model
                 SubstrateClientExt client = groupClients[i];
                 var endpoint = groupEndpoints[i];
 
-                if (endpoint.ChainType != Constants.ChainType.Substrate)
+                if (endpoint.ChainType != PlutoWallet.Constants.ChainType.Substrate)
                 {
                     /*tempAssets.Add(new Asset
                     {

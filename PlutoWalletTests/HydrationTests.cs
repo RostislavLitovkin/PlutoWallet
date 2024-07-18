@@ -10,6 +10,20 @@ public class Hydration
     static string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
 
     [Test]
+    public static async Task GetAllAssetsAsync()
+    {
+        var assets = await PlutoWallet.Model.HydrationModel.HydrationSdk.GetAllAssetsAsync();
+
+        Assert.That(assets.Any());
+
+        foreach(var asset in assets)
+        {
+            Console.WriteLine(asset.Name + " " + asset.Id);
+        }
+    }
+
+
+    [Test]
     public static async Task GetAssetsAsync()
     {
         Endpoint hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["hydradx"];

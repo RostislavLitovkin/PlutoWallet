@@ -21,7 +21,7 @@ namespace PlutoWallet.Model.HydraDX
             }
 
             var omnipoolAccount = new AccountId32();
-            omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OMNIPOOL_ADDRESS));
+            omnipoolAccount.Create(Utils.GetPublicKeyFrom(PlutoWallet.Constants.HydraDX.OMNIPOOL_ADDRESS));
 
             var omnipoolAssetsKeyBytes = RequestGenerator.GetStorageKeyBytesHash("Omnipool", "Assets");
 
@@ -113,13 +113,13 @@ namespace PlutoWallet.Model.HydraDX
                 return 0;
             }
 
-            if (!Assets.ContainsKey(Constants.HydraDX.STABLE_TOKEN))
+            if (!Assets.ContainsKey(PlutoWallet.Constants.HydraDX.STABLE_TOKEN))
             {
                 return 0;
             }
 
             HydraDXTokenInfo token = Assets[tokenSymbol];
-            HydraDXTokenInfo usdToken = Assets[Constants.HydraDX.STABLE_TOKEN];
+            HydraDXTokenInfo usdToken = Assets[PlutoWallet.Constants.HydraDX.STABLE_TOKEN];
             
             double price_a = token.HubReserve / token.PoolBalance;
             double price_b = usdToken.PoolBalance / usdToken.HubReserve;

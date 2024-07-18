@@ -54,7 +54,7 @@ namespace PlutoWallet.Model.HydraDX
                 var assetMetadata = await client.HydrationAssetRegistryStorage.Assets(position.AssetId, null, CancellationToken.None);
 
                 var omnipoolAccount = new AccountId32();
-                omnipoolAccount.Create(Utils.GetPublicKeyFrom(Constants.HydraDX.OMNIPOOL_ADDRESS));
+                omnipoolAccount.Create(Utils.GetPublicKeyFrom(PlutoWallet.Constants.HydraDX.OMNIPOOL_ADDRESS));
 
                 var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
                 omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);

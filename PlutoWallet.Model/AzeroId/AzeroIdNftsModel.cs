@@ -42,7 +42,7 @@ namespace PlutoWallet.Model.AzeroId
                 byte[] finalHash = HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, rootKeyHex.ToArray());
 
                 var keysPaged = await client.InvokeAsync<JArray>("childstate_getKeys", new object[2] {
-                    Constants.AzeroId.TZeroIdPrefixedStorageKey,
+                    PlutoWallet.Constants.AzeroId.TZeroIdPrefixedStorageKey,
                     "0x"
                 }, token);
 
