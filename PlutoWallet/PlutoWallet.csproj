@@ -48,10 +48,12 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
+    <MauiIcon Include="Resources\AppIcon\plutowalleticonwhite.png" />
 
 		<!-- Splash Screen -->
+    <MauiSplashScreen Include="Resources\Splash\plutowalleticonwhite.png" Color="#000000" />
 
-		<!-- Images -->
+    <!-- Images -->
 
 		<MauiImage Include="Resources\Images\*svg" />
 		<MauiImage Include="Resources\Images\*png" />
