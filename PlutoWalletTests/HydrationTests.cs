@@ -2,10 +2,12 @@
 using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.HydraDX;
+using PlutoWallet.Model.HydrationModel;
+using Substrate.NetApi;
 
 namespace PlutoWalletTests;
 
-public class Hydration
+public class HydrationTests
 {
     static string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
 
@@ -20,6 +22,24 @@ public class Hydration
         {
             Console.WriteLine(asset.Name + " " + asset.Id);
         }
+    }
+
+    [Test]
+    public static async Task GetLiquidityMiningDepositAsync()
+    {
+        Endpoint hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["hydradx"];
+
+        var client = new Hydration.NetApi.Generated.SubstrateClientExt(
+                    new Uri(hdxEndpoint.URLs[0]),
+                    Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+        await client.ConnectAsync();
+
+
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit(client, 5595);
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit(client, 5592);
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit(client, 5593);
+
     }
 
 
