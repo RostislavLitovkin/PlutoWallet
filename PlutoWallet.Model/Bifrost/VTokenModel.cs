@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Numerics;
+using Bifrost.NetApi.Generated;
 using Bifrost.NetApi.Generated.Model.bifrost_primitives.currency;
 using Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things;
-using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
 
-namespace PlutoWallet.Model.Bifrost
+namespace PlutoWallet.Model
 {
 	public class VTokenModel
 	{
@@ -41,7 +41,7 @@ namespace PlutoWallet.Model.Bifrost
         public static async Task<BigInteger> RedeemInner(SubstrateClientExt client, EnumCurrencyId inTokenId, BigInteger inAmount, EnumCurrencyId toTokenId, CancellationToken token)
         {
             // 1) Subtract redeem fee
-            var fees = await client.VtokenMintingStorage.Fees(token);
+            var fees = await client.VtokenMintingStorage.Fees(null, token);
 
             inAmount -= (BigInteger)((double)inAmount * (1.0 / ((Permill)fees.Value[1]).Value.Value));
 
@@ -53,7 +53,7 @@ namespace PlutoWallet.Model.Bifrost
             }
             else
             {
-                toTokensInPool = await client.VtokenMintingStorage.TokenPool(toTokenId, token);
+                toTokensInPool = await client.VtokenMintingStorage.TokenPool(toTokenId, null, token);
                 tokenPoolDictionary[toTokenId] = toTokensInPool;
             }
 

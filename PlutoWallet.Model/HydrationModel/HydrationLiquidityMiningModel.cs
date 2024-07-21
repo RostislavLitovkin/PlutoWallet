@@ -5,11 +5,46 @@ using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
 using System;
+using PlutoWallet.Model.HydraDX;
+using Substrate.NetApi;
 
 namespace PlutoWallet.Model.HydrationModel
 {
+    public class OmnipoolLiquidityMiningInfo
+    {
+
+    }
+    public class OmnipoolLiquidityInfoExpanded : OmnipoolLiquidityInfo
+    {
+        public List<OmnipoolLiquidityMiningInfo> LiquidityMiningInfos { get; set; }
+    }
+
     public static class HydrationLiquidityMiningModel
     {
+        public static async Task<List<OmnipoolLiquidityInfoExpanded>> GetOmnipoolLiquidityWithLiquidityMining(SubstrateClientExt substrateClient, string substrateAddress, CancellationToken token = default)
+        {
+            var liquidityMiningPositionIds = await UniquesModel.GetUniquesInCollection(substrateClient, 2584, substrateAddress, token);
+
+            List<OmnipoolLiquidityInfoExpanded> result = new List<OmnipoolLiquidityInfoExpanded>();
+
+            foreach (U128 liquidityMiningPositionId in liquidityMiningPositionIds)
+            {
+                var positionId = await substrateClient.OmnipoolLiquidityMiningStorage.OmniPositionId(liquidityMiningPositionId, null, token);
+
+                var liquidityInfo = await OmnipoolModel.GetOmnipoolLiquidityAtPosition(substrateClient, positionId, token);
+
+                result.Add(new OmnipoolLiquidityInfoExpanded
+                {
+                    Amount = liquidityInfo.Amount,
+                    Symbol = liquidityInfo.Symbol,
+                    InitialAmount = liquidityInfo.InitialAmount,
+
+                });
+            }
+
+            return result;
+        }
+
         public static async Task GetLiquidityMiningDeposit(SubstrateClientExt substrateClient, BigInteger id, CancellationToken token = default)
         {
             var data = await substrateClient.OmnipoolWarehouseLMStorage.Deposit((U128)id, null, token);

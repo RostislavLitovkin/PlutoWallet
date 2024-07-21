@@ -24,10 +24,10 @@ namespace PlutoWallet.Components.Xcm
         private XcmLocation xcmLocation;
 
         [ObservableProperty]
-        private string originKey;
+        private EndpointEnum originKey;
 
         [ObservableProperty]
-        private string destinationKey;
+        private EndpointEnum destinationKey;
 
         [ObservableProperty]
         private ObservableCollection<XcmNetworkSelectInfo> networks = new ObservableCollection<XcmNetworkSelectInfo>();
@@ -37,8 +37,8 @@ namespace PlutoWallet.Components.Xcm
             xcmLocation = XcmLocation.Origin;
             isVisible = false;
 
-            originKey = "polkadot";
-            destinationKey = "statemint";
+            originKey = EndpointEnum.Polkadot;
+            destinationKey = EndpointEnum.PolkadotAssetHub;
         }
 
         public void SetNetworks()
@@ -50,11 +50,11 @@ namespace PlutoWallet.Components.Xcm
 
             List<XcmNetworkSelectInfo> tempNetworks = new List<XcmNetworkSelectInfo>();
 
-            string selectedKey = this.XcmLocation == XcmLocation.Origin ? OriginKey : DestinationKey;
+            EndpointEnum selectedKey = this.XcmLocation == XcmLocation.Origin ? OriginKey : DestinationKey;
 
             Console.WriteLine(selectedKey);
 
-            foreach (string key in endpoints.Keys)
+            foreach (EndpointEnum key in endpoints.Keys)
             {
                 if (endpoints[key].ParachainId == null)
                 {
@@ -83,7 +83,7 @@ namespace PlutoWallet.Components.Xcm
             IsVisible = true;
         }
 
-        public void SelectEndpoint(string key)
+        public void SelectEndpoint(EndpointEnum key)
         {
             Console.WriteLine("SelectEndpoint");
 

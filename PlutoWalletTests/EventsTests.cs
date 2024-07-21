@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi;
+using PlutoWallet.Constants;
 
 namespace PlutoWalletTests
 {
@@ -20,7 +21,7 @@ namespace PlutoWalletTests
         [SetUp]
         public async Task Setup()
         {
-            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["statemint"];
+            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
@@ -58,7 +59,7 @@ namespace PlutoWalletTests
         [Test]
         public async Task GetTransferEventsAsync()
         {
-            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["opal"];
+            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Opal];
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
@@ -73,7 +74,7 @@ namespace PlutoWalletTests
             
             byte[] extrinsicHash = Utils.HexToByteArray("0x2087b2359e6a923d723751f685d41ccfdd6ce763eddab4a7473ffd2a727744b9");
 
-            var events = await EventsModel.GetExtrinsicEventsAsync(opalClient, "opal", blockHash, extrinsicHash);
+            var events = await EventsModel.GetExtrinsicEventsAsync(opalClient, EndpointEnum.Opal, blockHash, extrinsicHash);
 
             Console.WriteLine(events.Count() + " events found");
 

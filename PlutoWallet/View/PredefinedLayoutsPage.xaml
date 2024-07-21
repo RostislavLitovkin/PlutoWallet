@@ -22,7 +22,7 @@
                                  Padding="20, 10, 20, 100"
                                  Spacing="5">
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Just Crypto"
-                                                               PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, ChaK];[polkadot, kusama]"/>
+                                                               PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, ChaK];[Polkadot, Kusama]"/>
 
                 <!--<predefinedlayouts:GenericPredefinedLayoutItem Title="Default"
                                                                PlutoLayout="plutolayout: [U, dApp, ExSL, UsdB, RnT, PubK, SubK, ChaK, CalEx];[polkadot, moonbeam, astar]"/>-->
@@ -34,7 +34,7 @@
                 <predefinedlayouts:HydrationOmnipoolLayoutItem />
 
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Azero Testnet"
-                                                               PlutoLayout="plutolayout: [U, dApp, contract, ExSL, AZEROPrimaryName, UsdB, RnT, SubK, ChaK];[azerotestnet]"/>
+                                                               PlutoLayout="plutolayout: [U, dApp, contract, ExSL, AZEROPrimaryName, UsdB, RnT, SubK, ChaK];[AzeroTestnet]"/>
 
                 <customlayouts:PlusItemView>
                     <customlayouts:PlusItemView.GestureRecognizers>

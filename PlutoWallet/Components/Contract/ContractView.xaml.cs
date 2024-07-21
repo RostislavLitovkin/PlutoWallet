@@ -32,7 +32,7 @@ public partial class ContractView : ContentView
 
         try
         {
-            var result = await client.InvokeAsync<string>("childstate_getStorage", new object[2] {
+            var result = await client.SubstrateClient.InvokeAsync<string>("childstate_getStorage", new object[2] {
                 "0x3a6368696c645f73746f726167653a64656661756c743a902a38b8b1a57ba428b384b941199431aac82ebda1ba798cc4d7921c176a9682",
                 "0x11d2df4e979aa105cf552e9544ebd2b500000000"
             }, CancellationToken.None);
@@ -110,7 +110,7 @@ public partial class ContractView : ContentView
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
-                UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
+                UnCheckedExtrinsic extrinsic = await client.SubstrateClient.GetExtrinsicParametersAsync(
                     transfer,
                     account,
                     charge,

@@ -32,7 +32,7 @@ public partial class XcmNetworkSelectorView : ContentView
         });
 
     public static readonly BindableProperty KeyProperty = BindableProperty.Create(
-        nameof(Key), typeof(string), typeof(XcmNetworkSelectorView),
+        nameof(Key), typeof(EndpointEnum), typeof(XcmNetworkSelectorView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (XcmNetworkSelectorView)bindable;
@@ -87,9 +87,9 @@ public partial class XcmNetworkSelectorView : ContentView
         set => SetValue(WsAddressProperty, value);
     }
 
-    public string Key
+    public EndpointEnum Key
     {
-        get => (string)GetValue(KeyProperty);
+        get => (EndpointEnum)GetValue(KeyProperty);
 
         set => SetValue(KeyProperty, value);
     }

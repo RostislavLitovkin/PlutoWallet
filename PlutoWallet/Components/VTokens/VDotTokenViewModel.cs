@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Numerics;
+using Bifrost.NetApi.Generated;
 using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.Model.Bifrost;
+using PlutoWallet.Model;
 using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.VTokens

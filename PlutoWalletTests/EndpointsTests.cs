@@ -30,14 +30,14 @@ public class EndpointsTests
 
                 try
                 {
-                    SubstrateClientExt client = new SubstrateClientExt(
+                    SubstrateClientExt clientExt = new SubstrateClientExt(
                                     endpoint,
                                     new Uri(url),
                                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-                    await client.ConnectAndLoadMetadataAsync();
+                    await clientExt.ConnectAndLoadMetadataAsync();
 
-                    //Console.WriteLine(endpoint.Name + " done ^^");
+                    var client = clientExt.SubstrateClient;
 
                     if (!endpoint.Name.Equals("Acala") && !endpoint.Name.Equals("Bifrost"))
                     {

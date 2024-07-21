@@ -116,7 +116,7 @@ namespace PlutoWallet.Model
             };
 #pragma warning restore VSTHRD101 // Avoid unsupported async delegates
 
-            string extrinsicId = await this.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
+            string extrinsicId = await this.SubstrateClient.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
 
             return extrinsicId;
         }

@@ -72,7 +72,24 @@ public partial class IdentityAddressView : ContentView
 
             control.DestinationAddress = (string)newValue;
 
-            var identity = await Model.IdentityModel.GetIdentityForAddress(AjunaClientModel.Client, (string)newValue);
+            // TODO: This part can be definitelly improved
+
+            if (AjunaClientModel.GroupEndpointKeys[0] != Constants.EndpointEnum.Polkadot) {
+                control.identityLabel.Text = "Unknown";
+                if (Application.Current.RequestedTheme == AppTheme.Light)
+                {
+                    control.identityJundgementIcon.Source = "unknownblack.png";
+                }
+                else
+                {
+                    control.identityJundgementIcon.Source = "unknownwhite.png";
+                }
+                return;
+            }
+            var client = (Polkadot.NetApi.Generated.SubstrateClientExt)AjunaClientModel.Client.SubstrateClient;
+
+            var identity = await Model.IdentityModel.GetIdentityForAddress(client, (string)newValue);
+        
 
             if (identity == null)
             {
@@ -134,6 +151,7 @@ public partial class IdentityAddressView : ContentView
 
             }
         });
+#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
 
     public IdentityAddressView()
 	{

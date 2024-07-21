@@ -2,7 +2,7 @@
 
 public partial class GalaxyLogicGameLayoutItem : ContentView
 {
-    public const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, GLGPowerups];[polkadot]";
+    public const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, GLGPowerups];[Polkadot]";
 
     public GalaxyLogicGameLayoutItem()
     {

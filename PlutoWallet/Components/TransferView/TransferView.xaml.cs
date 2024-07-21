@@ -30,7 +30,9 @@ public partial class TransferView : ContentView
         
         errorLabel.Text = "";
 
-        var client = Model.AjunaClientModel.Client;
+        var clientExt = Model.AjunaClientModel.Client;
+
+        var client = clientExt.SubstrateClient;
 
         try
         {
@@ -55,26 +57,18 @@ public partial class TransferView : ContentView
 
             Method transfer =
                 assetSelectButtonViewModel.Pallet == AssetPallet.Native ?
-                TransferModel.NativeTransfer(client, viewModel.Address, amount) :
-                TransferModel.AssetsTransfer(client, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
+                TransferModel.NativeTransfer(clientExt, viewModel.Address, amount) :
+                TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
                 Console.WriteLine(account.Value);
                 Console.WriteLine(account.KeyType);
 
-                Console.WriteLine("connected: " + client.System.ChainAsync());
-
-
-                Console.WriteLine("connected: " + client.Properties.TokenSymbol);
-
-                Console.WriteLine("connected: " + client.IsConnected);
-                Console.WriteLine("Nonce: " + await client.System.AccountNextIndexAsync(account.Value, default));
-
                 UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                     transfer,
                     account,
-                    client.DefaultCharge,
+                    clientExt.DefaultCharge,
                     lifeTime: 64,
                     signed: true,
                     CancellationToken.None);
@@ -88,7 +82,7 @@ public partial class TransferView : ContentView
                 Console.WriteLine(account.Verify(sig, hash));
 
 
-                string extrinsicId = await client.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
             }
             else
             {
@@ -104,8 +98,6 @@ public partial class TransferView : ContentView
             errorLabel.Text = ex.Message;
             Console.WriteLine(ex);
         }
-
-        
     }
 
     async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

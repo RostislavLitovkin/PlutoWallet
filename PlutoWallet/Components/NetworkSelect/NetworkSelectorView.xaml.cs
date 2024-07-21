@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlutoWallet.Constants;
+using System;
 
 namespace PlutoWallet.Components.NetworkSelect;
 
@@ -32,7 +33,7 @@ public partial class NetworkSelectorView : ContentView
         });
 
     public static readonly BindableProperty KeyProperty = BindableProperty.Create(
-        nameof(Key), typeof(string), typeof(NetworkSelectorView),
+        nameof(Key), typeof(EndpointEnum), typeof(NetworkSelectorView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkSelectorView)bindable;
@@ -80,9 +81,9 @@ public partial class NetworkSelectorView : ContentView
         set => SetValue(WsAddressProperty, value);
     }
 
-    public string Key
+    public EndpointEnum Key
     {
-        get => (string)GetValue(KeyProperty);
+        get => (EndpointEnum)GetValue(KeyProperty);
 
         set => SetValue(KeyProperty, value);
     }

@@ -1,88 +1,63 @@
-﻿using Substrate.NetApi.Generated.Model.orml_tokens;
-using Substrate.NetApi.Generated.Model.pallet_asset_registry.types;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.pallet_omnipool.types;
-using Substrate.NetApi.Model.Types.Primitive;
-using static Substrate.NetApi.Model.Meta.Storage;
+﻿using Hydration.NetApi.Generated.Model.pallet_omnipool.types;
 using System.Numerics;
-using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Model.HydrationModel;
+using Hydration.NetApi.Generated;
+using Hydration.NetApi.Generated.Model.sp_core.crypto;
+using Substrate.NetApi;
+using Substrate.NetApi.Model.Types.Primitive;
+using Hydration.NetApi.Generated.Model.orml_tokens;
 
 namespace PlutoWallet.Model.HydraDX
 {
 	public class OmnipoolModel
 	{
-
-
-		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client, string substrateAddress)
+		public static async Task<List<OmnipoolLiquidityInfo>> GetOmnipoolLiquidityAmount(SubstrateClientExt client, string substrateAddress, CancellationToken token = default)
 		{
-            // Get all position keys
-            var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
-
-            U128 collectionId = new U128();
-            collectionId.Create(1337);
-
-            var keyBytes = RequestGenerator.GetStorageKeyBytesHash("Uniques", "Account");
-
-            byte[] prefix = keyBytes.Concat(HashExtension.Hash(Hasher.BlakeTwo128Concat, account32.Encode()))
-                .Concat(HashExtension.Hash(Hasher.BlakeTwo128Concat, collectionId.Encode())).ToArray();
-
-            string prefixString = Utils.Bytes2HexString(prefix);
-
-            byte[] startKey = null;
-
-            List<U128> positionIds;
-
-            var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, CancellationToken.None);
-
-            if (keysPaged == null || !keysPaged.Any())
-            {
-                return new List<OmnipoolLiquidityInfo>();
-            }
-            else
-            {
-                positionIds = keysPaged.Select(p => HashModel.GetU128FromBlake2_128Concat(p.ToString().Substring(226))).ToList();
-            }
+            var positionIds = await UniquesModel.GetUniquesInCollection(client, 1337, substrateAddress, token);
 
             List<OmnipoolLiquidityInfo> result = new List<OmnipoolLiquidityInfo>();
 
             foreach (U128 positionId in positionIds)
             {
-                Position position = await client.OmnipoolStorage.Positions(positionId, CancellationToken.None);
-
-                var assetMetadata = await client.HydrationAssetRegistryStorage.Assets(position.AssetId, null, CancellationToken.None);
-
-                var omnipoolAccount = new AccountId32();
-                omnipoolAccount.Create(Utils.GetPublicKeyFrom(PlutoWallet.Constants.HydraDX.OMNIPOOL_ADDRESS));
-
-                var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
-                omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);
-
-                AccountData omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, CancellationToken.None);
-
-                AssetState omnipoolAssetState = await client.OmnipoolStorage.Assets(position.AssetId, CancellationToken.None);
-
-                double liquidity = (double)CalculateRemoveLiquidityStateChanges(
-                        omnipoolAssetState,
-                        omnipoolTokens,
-                        position.Shares,
-                        position,
-                        omnipoolAssetState.Shares,
-                        0
-                    ).Asset.DeltaReserve / Math.Pow(10, assetMetadata.Decimals.Value);
-                double initialLiquidity = (double)position.Amount.Value / Math.Pow(10, assetMetadata.Decimals.Value);
-
-                result.Add(new OmnipoolLiquidityInfo
-                {
-                    Amount = liquidity,
-                    Symbol = Model.ToStringModel.VecU8ToString(assetMetadata.Symbol.Value.Value),
-                    InitialAmount = initialLiquidity,
-                });
+                result.Add(await GetOmnipoolLiquidityAtPosition(client, positionId, token));
             }
 
             return result;
 		}
+
+        public static async Task<OmnipoolLiquidityInfo> GetOmnipoolLiquidityAtPosition(SubstrateClientExt client, U128 positionId, CancellationToken token)
+        {
+            Position position = await client.OmnipoolStorage.Positions(positionId, null, token);
+
+            var assetMetadata = await client.AssetRegistryStorage.Assets(position.AssetId, null, token);
+
+            var omnipoolAccount = new AccountId32();
+            omnipoolAccount.Create(Utils.GetPublicKeyFrom(PlutoWallet.Constants.HydraDX.OMNIPOOL_ADDRESS));
+
+            var omnipoolTokensKey = new Substrate.NetApi.Model.Types.Base.BaseTuple<AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>();
+            omnipoolTokensKey.Create(omnipoolAccount, position.AssetId);
+
+            var omnipoolTokens = await client.TokensStorage.Accounts(omnipoolTokensKey, null, token);
+
+            AssetState omnipoolAssetState = await client.OmnipoolStorage.Assets(position.AssetId, null, token);
+
+            double liquidity = (double)CalculateRemoveLiquidityStateChanges(
+                    omnipoolAssetState,
+                    omnipoolTokens,
+                    position.Shares,
+                    position,
+                    omnipoolAssetState.Shares,
+                    0
+                ).Asset.DeltaReserve / Math.Pow(10, assetMetadata.Decimals.Value);
+            double initialLiquidity = (double)position.Amount.Value / Math.Pow(10, assetMetadata.Decimals.Value);
+
+            return new OmnipoolLiquidityInfo
+            {
+                Amount = liquidity,
+                Symbol = Model.ToStringModel.VecU8ToString(assetMetadata.Symbol.Value.Value),
+                InitialAmount = initialLiquidity,
+            };
+        }
 
         // Source: https://github.com/galacticcouncil/HydraDX-node/blob/a578bc00023a2b0acce4034602b5a5dfb38045d5/math/src/omnipool/math.rs#L397
         public static LiquidityStateChange CalculateRemoveLiquidityStateChanges(

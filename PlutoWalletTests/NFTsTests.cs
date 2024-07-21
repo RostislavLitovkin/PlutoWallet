@@ -15,16 +15,18 @@ public class NFTsTests
     {
         try
         {
-            Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["statemint"];
+            Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
-            var client = new SubstrateClientExt(
+            var clientExt = new SubstrateClientExt(
                         endpoint,
                         new Uri(bestWebSecket),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-            await client.ConnectAndLoadMetadataAsync();
+            await clientExt.ConnectAndLoadMetadataAsync();
+
+            var client = clientExt.SubstrateClient;
 
             List<NFT> nfts = new List<NFT>();
             
@@ -54,20 +56,20 @@ public class NFTsTests
     [Test]
     public async Task KusamaAssetHubNftsPallet()
     {
-        Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["statemine"];
+        Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.KusamaAssetHub];
 
         string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
-        var client = new SubstrateClientExt(
+        var clientExt = new SubstrateClientExt(
                     endpoint,
                     new Uri(bestWebSecket),
                     Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-        await client.ConnectAndLoadMetadataAsync();
+        await clientExt.ConnectAndLoadMetadataAsync();
 
+        var client = clientExt.SubstrateClient;
 
         List<NFT> nfts = new List<NFT>();
-
 
         List<string> collectionItemIds = await NFTsModel.GetNftsAccountAsync(client, substrateAddress, CancellationToken.None);
 

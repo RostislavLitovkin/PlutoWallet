@@ -1,91 +1,32 @@
-﻿using System;
-using System.Net.Http;
-using System.Diagnostics;
-using Substrate.NetApi;
-using PlutoWallet.Model.Storage;
+﻿using Substrate.NetApi;
 using Newtonsoft.Json;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi.Model.Rpc;
 using PlutoWallet.Constants;
-using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Generated.Storage;
 
 namespace PlutoWallet.Model.AjunaExt
 {
-	public class SubstrateClientExt : SubstrateClient
+	public class SubstrateClientExt
 	{
         private static readonly HttpClient _httpClient = new HttpClient();
 
         public ChargeType DefaultCharge;
-
-        public System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>> StorageKeyDict;
-
-        public BalancesStorage BalancesStorage;
-
-        public SystemStorage SystemStorage;
-
-        public AssetsStorage AssetsStorage;
-
-        public NftsStorage NftsStorage;
-
-        public AssetRegistryStorage AssetRegistryStorage;
-
-        public HydrationAssetRegistryStorage HydrationAssetRegistryStorage;
-
-        public TokensStorage TokensStorage;
-
-        public ContractsStorage ContractsStorage;
-
-        public OmnipoolStorage OmnipoolStorage;
-
-        public DCAStorage DCAStorage;
-
-        public IdentityStorage IdentityStorage;
-
-        public ConvictionVotingStorage ConvictionVotingStorage;
-
-        public LBPStorage LBPStorage;
-
-        public BifrostAssetRegistryStorage BifrostAssetRegistryStorage;
-
-        public VtokenMintingStorage VtokenMintingStorage;
-
         public Endpoint Endpoint { get; set; }
-
-        // Logic for ink! contracts
-
         public Metadata CustomMetadata { get; set; }
+        public SubstrateClient SubstrateClient { get; set; }
 
-        public SubstrateClientExt(Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) :
-                base(fastestWebSocket, chargeType)
+        public SubstrateClientExt(Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) 
         {
-            StorageKeyDict = new System.Collections.Generic.Dictionary<System.Tuple<string, string>, System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>>();
-
             Endpoint = endpoint;
 
-            this.SystemStorage = new SystemStorage(this);
-            this.BalancesStorage = new BalancesStorage(this);
-            this.AssetsStorage = new AssetsStorage(this);
-            this.NftsStorage = new NftsStorage(this);
-            //this.AssetRegistryStorage = new AssetRegistryStorage(this);
-            this.HydrationAssetRegistryStorage = new HydrationAssetRegistryStorage(this);
-            this.TokensStorage = new TokensStorage(this);
-            this.ContractsStorage = new ContractsStorage(this);
-            this.OmnipoolStorage = new OmnipoolStorage(this);
-            this.DCAStorage = new DCAStorage(this);
-            this.IdentityStorage = new IdentityStorage(this);
-            this.ConvictionVotingStorage = new ConvictionVotingStorage(this);
-            this.LBPStorage = new LBPStorage(this);
-            this.BifrostAssetRegistryStorage = new BifrostAssetRegistryStorage(this);
-            this.VtokenMintingStorage = new VtokenMintingStorage(this);
+            SubstrateClient = GetSubstrateClient(endpoint.Key, fastestWebSocket);
         }
 
         public async Task ConnectAndLoadMetadataAsync()
         {
-            await base.ConnectAsync();
+            await SubstrateClient.ConnectAsync();
 
-            CustomMetadata = JsonConvert.DeserializeObject<Metadata>(MetaData.Serialize());
+            CustomMetadata = JsonConvert.DeserializeObject<Metadata>(SubstrateClient.MetaData.Serialize());
 
             foreach (SignedExtension signedExtension in CustomMetadata.NodeMetadata.Extrinsic.SignedExtensions)
             {
@@ -99,6 +40,21 @@ namespace PlutoWallet.Model.AjunaExt
                     DefaultCharge = ChargeAssetTxPayment.Default();
                 }
             }
+        }
+
+        private SubstrateClient GetSubstrateClient(EndpointEnum endpointKey, Uri websocket)
+        {
+            return endpointKey switch
+            {
+                EndpointEnum.Polkadot => new Polkadot.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.PolkadotAssetHub => new PolkadotAssetHub.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.Hydration => new Hydration.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.Bifrost => new Bifrost.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.Opal => new Opal.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.Bajun => new Bajun.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+
+                _ => new SubstrateClient(websocket, ChargeTransactionPayment.Default()),
+            };
         }
     }
 }

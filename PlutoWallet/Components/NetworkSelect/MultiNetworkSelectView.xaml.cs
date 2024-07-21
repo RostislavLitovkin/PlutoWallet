@@ -30,7 +30,7 @@ public partial class MultiNetworkSelectView : ContentView
             {
                 var tempOldValues = viewModel.NetworkInfos;
                 var networkInfos = new ObservableCollection<NetworkSelectInfo>();
-                var endpointKeys = new List<string>();
+                var endpointKeys = new List<EndpointEnum>();
                 for (int i = 0; i < tempOldValues.Count; i++)
                 {
                     networkInfos.Add(new NetworkSelectInfo {

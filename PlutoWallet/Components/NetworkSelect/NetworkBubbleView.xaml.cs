@@ -38,12 +38,12 @@ public partial class NetworkBubbleView : ContentView
         });
 
     public static readonly BindableProperty EndpointKeyProperty = BindableProperty.Create(
-        nameof(EndpointKey), typeof(string), typeof(NetworkBubbleView),
+        nameof(EndpointKey), typeof(EndpointEnum), typeof(NetworkBubbleView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
 
-            Endpoint endpoint = EndpointsModel.GetEndpoint((string)newValue, true);
+            Endpoint endpoint = EndpointsModel.GetEndpoint((EndpointEnum)newValue, true);
 
             control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, endpoint.DarkIcon, endpoint.Icon);
         });
@@ -102,9 +102,9 @@ public partial class NetworkBubbleView : ContentView
         set => SetValue(ShowNameProperty, value);
     }
 
-    public string EndpointKey
+    public EndpointEnum EndpointKey
     {
-        get => (string)GetValue(EndpointKeyProperty);
+        get => (EndpointEnum)GetValue(EndpointKeyProperty);
         set => SetValue(EndpointKeyProperty, value);
     }
 

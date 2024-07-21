@@ -20,9 +20,9 @@ namespace PlutoWallet.Components.Identity
             verificationIconIsVisible = false;
 		}
 
-        public async Task GetIdentity()
+        public async Task GetIdentity(Polkadot.NetApi.Generated.SubstrateClientExt client)
         {
-            if (AjunaClientModel.Client is null)
+            if (client is null)
             {
                 Name = "Failed";
 
@@ -32,7 +32,7 @@ namespace PlutoWallet.Components.Identity
             Name = "Loading";
             VerificationIconIsVisible = false;
 
-            var identity = await IdentityModel.GetIdentityForAddress(AjunaClientModel.Client, KeysModel.GetSubstrateKey());
+            var identity = await IdentityModel.GetIdentityForAddress(client, KeysModel.GetSubstrateKey());
 
             if (identity == null)
             {

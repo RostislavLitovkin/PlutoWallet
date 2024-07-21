@@ -1,15 +1,14 @@
 ﻿using System;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi;
 using Substrate.NetApi.Generated.Model.pallet_identity.types;
 using PlutoWallet.Constants;
-using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Model
 {
 	public class IdentityModel
 	{
-		public static async Task<OnChainIdentity> GetIdentityForAddress(SubstrateClientExt client, string address)
+		public static async Task<OnChainIdentity> GetIdentityForAddress(Polkadot.NetApi.Generated.SubstrateClientExt client, string address)
 		{
 			try
 			{
@@ -21,16 +20,18 @@ namespace PlutoWallet.Model
 				var account32 = new AccountId32();
 				account32.Create(Utils.GetPublicKeyFrom(address));
 
-				Registration registration = await client.IdentityStorage.IdentityOf(account32, CancellationToken.None);
+				var identity = await client.IdentityStorage.IdentityOf(account32, null, CancellationToken.None);
 
-				if (registration == null)
+				if (identity == null)
 				{
 					return null;
 				}
 
 				Judgement finalJudgement = Judgement.Unknown;
 
-				foreach (var thing in registration.Judgements.Value.Value)
+				var registration = ((Polkadot.NetApi.Generated.Model.pallet_identity.types.Registration)identity.Value[0]);
+
+                foreach (var thing in registration.Judgements.Value.Value)
 				{
 					switch (thing.Value[1].ToString())
 					{

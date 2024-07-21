@@ -18,7 +18,7 @@ namespace PlutoWallet.Components.TransactionRequest
         private string chainName;
 
         [ObservableProperty]
-        private string endpointKey;
+        private EndpointEnum endpointKey;
 
         [ObservableProperty]
         private string palletIndex;

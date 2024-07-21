@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using Hydration.NetApi.Generated;
 using PlutoWallet.Model;
-using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.HydraDX
 {

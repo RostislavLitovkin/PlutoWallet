@@ -17,11 +17,11 @@ namespace PlutoWallet.Model.AzeroId
         {
             try
             {
-                var endpoint = Endpoints.GetEndpointDictionary["azerotestnet"];
+                var endpoint = Endpoints.GetEndpointDictionary[EndpointEnum.AzeroTestnet];
 
                 string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
-                SubstrateClientExt client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeAssetTxPayment.Default());
+                SubstrateClient client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeAssetTxPayment.Default()).SubstrateClient;
 
                 await client.ConnectAsync(token);
 

@@ -1,7 +1,4 @@
-﻿using System;
-using Plutonication;
-using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.ViewModel;
+﻿using PlutoWallet.ViewModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Components.AddressView;
 using PlutoWallet.Components.Balance;
@@ -28,7 +25,7 @@ namespace PlutoWallet.Model
 
         public static Endpoint[] GroupEndpoints;
 
-        public static string[] GroupEndpointKeys;
+        public static EndpointEnum[] GroupEndpointKeys;
 
         public static Endpoint SelectedEndpoint;
 
@@ -43,7 +40,7 @@ namespace PlutoWallet.Model
          * This method is called in MultiNetworkSelectView.xaml.cs (even during the initialization),
          * so you do not have to worry about not having a chain set up.
          */
-        public static async Task ChangeChainGroupAsync(string[] endpointKeys)
+        public static async Task ChangeChainGroupAsync(EndpointEnum[] endpointKeys)
         {
             var updateViewModel = DependencyService.Get<UpdateViewModel>();
 
@@ -145,7 +142,7 @@ namespace PlutoWallet.Model
         /**
          * A Method that assures that when a chain is changed, all views associated also update.
          */
-        public static async Task ChangeChainAsync(string endpointKey)
+        public static async Task ChangeChainAsync(EndpointEnum endpointKey)
         {
             int index = Array.IndexOf(GroupEndpointKeys, endpointKey);
             SelectedEndpoint = GroupEndpoints[index];
@@ -226,9 +223,9 @@ namespace PlutoWallet.Model
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
-                if (GroupEndpoints[i].Key == "hydradx")
+                if (GroupEndpoints[i].Key == EndpointEnum.Hydration)
                 {
-                    await Model.HydraDX.Sdk.GetAssets(GroupClients[i], CancellationToken.None);
+                    await Model.HydraDX.Sdk.GetAssets(GroupClients[i].SubstrateClient, CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
 
                     usdBalanceViewModel.UpdateBalances();
@@ -238,11 +235,11 @@ namespace PlutoWallet.Model
                     // Other hydration stuff :)
                     var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
 
-                    await omnipoolLiquidityViewModel.GetLiquidityAmount(GroupClients[i]);
+                    await omnipoolLiquidityViewModel.GetLiquidityAmount((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
 
                     var dcaViewModel = DependencyService.Get<DCAViewModel>();
 
-                    await dcaViewModel.GetDCAPosition(GroupClients[i]);
+                    await dcaViewModel.GetDCAPosition((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
                 }
             }
 
@@ -250,7 +247,7 @@ namespace PlutoWallet.Model
             {
                 try
                 {
-                    Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary["hydradx"];
+                    Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
                     string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
 
                     var client = new PlutoWalletSubstrateClient(
@@ -260,7 +257,7 @@ namespace PlutoWallet.Model
 
                     await client.ConnectAndLoadMetadataAsync();
 
-                    await Model.HydraDX.Sdk.GetAssets(client, CancellationToken.None);
+                    await Model.HydraDX.Sdk.GetAssets(client.SubstrateClient, CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
                 }
                 catch
@@ -271,18 +268,26 @@ namespace PlutoWallet.Model
 
             for (int i = 0; i < GroupEndpoints.Length; i++)
             {
-                if (GroupEndpoints[i].Name == "Aleph Zero Testnet")
+                if (GroupEndpoints[i].Key == EndpointEnum.AzeroTestnet)
                 {
                     var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
 
                     await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
                 }
 
-                if (GroupEndpoints[i].Key == "bifrost")
+                if (GroupEndpoints[i].Key == EndpointEnum.Bifrost)
                 {
                     var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
 
-                    await vDotTokenViewModel.GetConversionRate(GroupClients[i], CancellationToken.None);
+                    await vDotTokenViewModel.GetConversionRate((Bifrost.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient, CancellationToken.None);
+                }
+
+                if (GroupEndpoints[i].Key == EndpointEnum.Polkadot)
+                {
+                    var identityViewModel = DependencyService.Get<IdentityViewModel>();
+
+                    await identityViewModel.GetIdentity((Polkadot.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
+
                 }
             }
         }
@@ -334,12 +339,10 @@ namespace PlutoWallet.Model
             var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
             var calamarViewModel = DependencyService.Get<CalamarViewModel>();
 
-            var identityViewModel = DependencyService.Get<IdentityViewModel>();
             var referendaViewModel = DependencyService.Get<ReferendaViewModel>();
 
             chainAddressViewModel.SetChainAddress();
             calamarViewModel.Reload();
-            await identityViewModel.GetIdentity();
 
             await referendaViewModel.GetReferenda();
             //customCallsViewModel.GetMetadata();
@@ -354,10 +357,10 @@ namespace PlutoWallet.Model
             {
                 await Task.Delay(500);
 
-                if (Client.MetaData != null) break;
+                if (Client.SubstrateClient.MetaData != null) break;
             }
 
-            if (Client.MetaData == null)
+            if (Client.SubstrateClient.MetaData == null)
             {
                 // show unable to connect error message
                 var messagePopup = DependencyService.Get<MessagePopupViewModel>();

@@ -4,32 +4,39 @@ using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model
 {
-    public class EndpointsModel
+    public static class EndpointsModel
     {
-        public static string DefaultEndpoints = "[polkadot, kusama]";
+        public static string DefaultEndpoints = "[Polkadot, Kusama]";
 
-        public static string[] GetSelectedEndpointKeys()
+        public static IEnumerable<EndpointEnum> GetSelectedEndpointKeys()
         {
-            string[] endpointKeys = Preferences.Get("SelectedNetworks", DefaultEndpoints).Trim(new char[] { '[', ']' }).Split(',');
-
-            for (int i = 0; i < endpointKeys.Length; i++)
-            {
-                endpointKeys[i] = endpointKeys[i].Trim();
-            }
-
-            return endpointKeys;
+            return Preferences.Get("SelectedNetworks", DefaultEndpoints)
+                .ToEndpointEnums();
         }
 
-        public static void SaveEndpoints(List<string> keys)
+        public static IEnumerable<EndpointEnum> ToEndpointEnums(this string plutoLayoutKeys)
+        {
+            return plutoLayoutKeys
+                .Trim(new char[] { '[', ']' })
+                .Split(',')
+                .ToEndpointEnums();
+        }
+
+        public static IEnumerable<EndpointEnum> ToEndpointEnums(this string[] keys)
+        {
+            return keys.Select(str => (EndpointEnum)EndpointEnum.Parse(typeof(EndpointEnum), str));
+        }
+
+        public static void SaveEndpoints(List<EndpointEnum> keys)
         {
             string result = "[";
             if (keys.Count() == 0)
             {
-                result = "[polkadot]";
+                result = "[Polkadot]";
             }
             else
             {
-                foreach (string key in keys)
+                foreach(var key in keys)
                 {
                     result += key + ", ";
                 }
@@ -52,7 +59,7 @@ namespace PlutoWallet.Model
             }
 
             Preferences.Set("PlutoLayout", plutoLayoutResult);
-            
+
             Console.WriteLine("Other Save Endpoint -> Calling MultiNetworkSelectViewModel.SetupDefault()");
 
             var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
@@ -60,7 +67,7 @@ namespace PlutoWallet.Model
             viewModel.SetupDefault();
         }
 
-        public static Endpoint GetEndpoint(string key, bool reverse = false)
+        public static Endpoint GetEndpoint(EndpointEnum key, bool reverse = false)
         {
             Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
 

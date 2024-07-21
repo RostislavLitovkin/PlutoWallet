@@ -32,7 +32,7 @@ public partial class XcmTransferPage : ContentPage
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(originEndpoint.URLs);
 
-            PlutoWalletSubstrateClient client = new PlutoWalletSubstrateClient(
+            PlutoWalletSubstrateClient clientExt = new PlutoWalletSubstrateClient(
                 originEndpoint,
                 new Uri(bestWebSecket),
                 ChargeTransactionPayment.Default()
@@ -41,10 +41,12 @@ public partial class XcmTransferPage : ContentPage
             Console.WriteLine("Origin key: " + popupViewModel.OriginKey);
             Console.WriteLine("Destination key: " + popupViewModel.DestinationKey);
 
-            await client.ConnectAndLoadMetadataAsync();
+            await clientExt.ConnectAndLoadMetadataAsync();
+
+            var client = clientExt.SubstrateClient;
 
             Method transferMethod = XcmTransferModel.XcmTransfer(
-                 client,
+                 clientExt,
                  originEndpoint,
                  Endpoints.GetEndpointDictionary[popupViewModel.DestinationKey],
                  KeysModel.GetSubstrateKey(),
@@ -63,7 +65,7 @@ public partial class XcmTransferPage : ContentPage
                 UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
                     transferMethod,
                     account,
-                    client.DefaultCharge,
+                    clientExt.DefaultCharge,
                     lifeTime: 64,
                     signed: true,
                     CancellationToken.None);
@@ -71,7 +73,7 @@ public partial class XcmTransferPage : ContentPage
                 Console.WriteLine(Utils.Bytes2HexString(extrinsic.GetPayload(client.RuntimeVersion).Encode()).ToLower());
 
 
-                string extrinsicId = await client.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
 
                 Console.WriteLine("Extrinsic ID: " + extrinsicId);
             }

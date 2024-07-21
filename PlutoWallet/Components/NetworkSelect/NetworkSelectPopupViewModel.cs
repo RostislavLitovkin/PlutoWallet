@@ -21,7 +21,7 @@ namespace PlutoWallet.Components.NetworkSelect
 				if (!value)
 				{
 					// Save and change the endpoints
-					List<string> keys = new List<string>();
+					List<EndpointEnum> keys = new List<EndpointEnum>();
 
 					foreach (NetworkSelectInfo info in Networks)
 					{
@@ -47,11 +47,11 @@ namespace PlutoWallet.Components.NetworkSelect
 		public void SetNetworks()
 		{
             var endpoints = Endpoints.GetEndpointDictionary;
-			string[] keys = EndpointsModel.GetSelectedEndpointKeys();
+            var keys = EndpointsModel.GetSelectedEndpointKeys();
 
 			List<NetworkSelectInfo> tempNetworks = new List<NetworkSelectInfo>();
 
-			foreach (string key in endpoints.Keys)
+			foreach (EndpointEnum key in endpoints.Keys)
 			{
 				tempNetworks.Add(new NetworkSelectInfo
 				{
@@ -69,10 +69,10 @@ namespace PlutoWallet.Components.NetworkSelect
 			IsVisible = true;
         }
 
-		public void SelectEndpoint(string key)
+		public void SelectEndpoint(EndpointEnum key)
 		{
 			List<NetworkSelectInfo> tempNetworks = new List<NetworkSelectInfo>(Networks);
-			List<string> selectedKeys = new List<string>();
+			List<EndpointEnum> selectedKeys = new List<EndpointEnum>();
 
 			for(int i = 0; i < tempNetworks.Count(); i++)
 			{

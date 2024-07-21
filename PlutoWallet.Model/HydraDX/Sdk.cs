@@ -1,7 +1,6 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using PlutoWallet.Model.AjunaExt;
 using Hydration.NetApi.Generated.Model.pallet_omnipool.types;
 using Hydration.NetApi.Generated.Model.orml_tokens;
 
@@ -13,7 +12,7 @@ namespace PlutoWallet.Model.HydraDX
 
         public static Dictionary<string, HydraDXTokenInfo> Assets = new Dictionary<string, HydraDXTokenInfo>();
 
-        public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClientExt client, CancellationToken token)
+        public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClient client, CancellationToken token)
         {
             if (client is null)
             {

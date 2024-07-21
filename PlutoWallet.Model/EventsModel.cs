@@ -1,4 +1,5 @@
-﻿using PlutoWallet.Model.AjunaExt;
+﻿using PlutoWallet.Constants;
+using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
@@ -127,7 +128,7 @@ namespace PlutoWallet.Model
         /// <exception cref="ExtrinsicIndexNotFoundException"></exception>
         public static async Task<IEnumerable<ExtrinsicEvent>> GetExtrinsicEventsAsync(
             this SubstrateClientExt substrateClient,
-            string endpointKey,
+           EndpointEnum endpointKey,
             Hash blockHash,
             byte[] extrinsicHash,
             CancellationToken token = default
@@ -135,10 +136,10 @@ namespace PlutoWallet.Model
         {
             return endpointKey switch
             {
-                "polkadot" => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                "statemint" => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                "opal" => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                "hydration" => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
+                EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
+                EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
+                EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
+                EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
                 _ => new List<ExtrinsicEvent>(),
             };
         }
@@ -161,9 +162,9 @@ namespace PlutoWallet.Model
             string blockHashString = Utils.Bytes2HexString(blockHash);
 
             var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-            var events = await substrateClient.GetStorageAsync<BaseVec<UniversalEventRecord<T>>>(eventsParameters, blockHashString, token);
+            var events = await substrateClient.SubstrateClient.GetStorageAsync<BaseVec<UniversalEventRecord<T>>>(eventsParameters, blockHashString, token);
 
-            BlockData block = await substrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
+            BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
 
             int? extrinsicIndex = null;
             for (int i = 0; i < block.Block.Extrinsics.Count(); i++)

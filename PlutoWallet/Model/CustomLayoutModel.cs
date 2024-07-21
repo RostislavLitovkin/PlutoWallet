@@ -37,7 +37,7 @@ namespace PlutoWallet.Model
 
     public class CustomLayoutModel
     {
-        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [U, dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK];[polkadot, kusama]";
+        public const string DEFAULT_PLUTO_LAYOUT = "plutolayout: [U, dApp, BMnR, ExSL, UsdB, RnT, SubK, ChaK];[Polkadot, Kusama]";
 
         // This constant is used to fetch all items
         public const string ALL_ITEMS = "plutolayout: [U, dApp, ExSL, UsdB, RnT, SubK, ChaK, " +
@@ -59,9 +59,9 @@ namespace PlutoWallet.Model
 
             List<Endpoint> result = new List<Endpoint>();
 
-            foreach (string key in layoutEndpointKeys)
+            foreach (var key in layoutEndpointKeys.ToEndpointEnums())
             {
-                result.Add(Endpoints.GetEndpointDictionary[key.Trim()]);
+                result.Add(Endpoints.GetEndpointDictionary[key]);
             }
 
             return result;
@@ -392,7 +392,7 @@ namespace PlutoWallet.Model
                     {
                         CallName = "EVM.eth_call_v2",
                         Hash = new Hash("0x97ad595390e73c9421b21d130291bdcbc24267d3ccb58dd27e71177d15e68991"),
-                        Endpoint = Endpoints.GetEndpointDictionary["acala"],
+                        Endpoint = Endpoints.GetEndpointDictionary[EndpointEnum.Acala],
                         ExtrinsicId = "18736389",
                         Status = ExtrinsicStatusEnum.InBlockSuccess,
                     });
@@ -400,7 +400,7 @@ namespace PlutoWallet.Model
                     tempExtrinsics.Add("18737890", new ExtrinsicInfo
                     {
                         CallName = "XcmPallet.limited_reserve_transfer_assets",
-                        Endpoint = Endpoints.GetEndpointDictionary["polkadot"],
+                        Endpoint = Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot],
                         Hash = new Hash("0x89bca86385b938c90e230a9837bce7e09991dde37f44b98b347c1d8ae2813654"),
                         ExtrinsicId = "18737890",
                         Status = ExtrinsicStatusEnum.FinalizedSuccess,

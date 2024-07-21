@@ -53,7 +53,7 @@ namespace PlutoWallet.Components.AddressView
             }
             else
             {
-                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + AjunaClientModel.Client.GenesisHash;
+                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + AjunaClientModel.Client.SubstrateClient.GenesisHash;
             }
 
             IsVisible = true;

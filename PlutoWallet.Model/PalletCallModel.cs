@@ -58,7 +58,7 @@ namespace PlutoWallet.Model
         /// <exception cref="CallNotFoundException"></exception>
         public static (byte, byte) GetPalletAndCallIndex(SubstrateClientExt client, string palletName, string callName)
 		{
-            var pallets = client.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
+            var pallets = client.SubstrateClient.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
 
             int palletIndex = -1;
             int metadataPalletIndex = -1;

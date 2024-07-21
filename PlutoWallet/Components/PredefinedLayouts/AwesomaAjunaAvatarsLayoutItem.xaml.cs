@@ -5,7 +5,7 @@ namespace PlutoWallet.Components.PredefinedLayouts;
 
 public partial class AwesomaAjunaAvatarsLayoutItem : ContentView
 {
-	public const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, AAALeaderboard];[bajun, ajuna]";
+	public const string LAYOUT = "plutolayout: [U, dApp, ExSL, UsdB, ChaK, AAALeaderboard];[Bajun, Ajuna]";
 
     // EXTRA: AAASeasonCountdown,
 

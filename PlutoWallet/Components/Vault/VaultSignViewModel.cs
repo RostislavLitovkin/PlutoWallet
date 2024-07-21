@@ -32,7 +32,8 @@ namespace PlutoWallet.Components.Vault
             set
             {
                 ajunaMethod = value;
-                var client = Model.AjunaClientModel.Client;
+                var clientExt = Model.AjunaClientModel.Client;
+                var client = clientExt.SubstrateClient;
 
                 try
                 {
@@ -41,7 +42,7 @@ namespace PlutoWallet.Components.Vault
                     var pallet = client.MetaData.NodeMetadata.Modules[value.ModuleIndex];
 
                     PalletIndex = pallet.Name;
-                    CallIndex = client.CustomMetadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
+                    CallIndex = clientExt.CustomMetadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[value.CallIndex].Name;
                 }
                 catch
@@ -50,7 +51,7 @@ namespace PlutoWallet.Components.Vault
                     CallIndex = "(" + value.CallIndex.ToString() + " index)";
                 }
 
-                Parameters = Model.PalletCallModel.GetJsonMethod(client, value);
+                Parameters = Model.PalletCallModel.GetJsonMethod(clientExt, value);
             }
         }
 
@@ -72,7 +73,7 @@ namespace PlutoWallet.Components.Vault
 
 		public void SignExtrinsic(string encodedBytes)
 		{
-            var client = Model.AjunaClientModel.Client;
+            var client = Model.AjunaClientModel.Client.SubstrateClient;
 
             if (!client.IsConnected)
             {

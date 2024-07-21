@@ -50,25 +50,25 @@ namespace PlutoWallet.Model
             switch (nftFormat)
             {
                 case "rmrk":
-                    Endpoint rmrk = Endpoints.GetEndpointDictionary["kusama"].Clone();
+                    Endpoint rmrk = Endpoints.GetEndpointDictionary[EndpointEnum.Kusama].Clone();
                     rmrk.Name = "Rmrk";
                     return rmrk;
                 case "rmrk2":
-                    Endpoint rmrk2 = Endpoints.GetEndpointDictionary["kusama"].Clone();
+                    Endpoint rmrk2 = Endpoints.GetEndpointDictionary[EndpointEnum.Kusama].Clone();
                     rmrk2.Name = "Rmrk2";
                     return rmrk2;
                 case "basilisk":
-                    return Endpoints.GetEndpointDictionary["basilisk"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Basilisk];
                 case "glmr":
-                    return Endpoints.GetEndpointDictionary["moonbeam"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Moonbeam];
                 case "movr":
-                    return Endpoints.GetEndpointDictionary["moonriver"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Moonriver];
                 case "unique":
-                    return Endpoints.GetEndpointDictionary["unique"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Unique];
                 case "quartz":
-                    return Endpoints.GetEndpointDictionary["quartz"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Quartz];
                 case "opal":
-                    return Endpoints.GetEndpointDictionary["opal"];
+                    return Endpoints.GetEndpointDictionary[EndpointEnum.Opal];
                 default:
                     return null;
             }

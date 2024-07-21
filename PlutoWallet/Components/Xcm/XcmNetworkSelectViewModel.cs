@@ -20,11 +20,11 @@ namespace PlutoWallet.Components.Xcm
         public XcmNetworkSelectViewModel()
 		{
 
-            originName = Endpoints.GetEndpointDictionary["polkadot"].Name;
-            originIcon = Endpoints.GetEndpointDictionary["polkadot"].Icon;
+            originName = Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot].Name;
+            originIcon = Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot].Icon;
 
-            destinationName = Endpoints.GetEndpointDictionary["statemint"].Name;
-            destinationIcon = Endpoints.GetEndpointDictionary["statemint"].Icon;
+            destinationName = Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub].Name;
+            destinationIcon = Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub].Icon;
         }
 	}
 }

@@ -29,7 +29,7 @@ namespace PlutoWallet.Components.NetworkSelect
         /// </summary>
         public void SetupDefault()
         {
-            string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
+            var selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys().ToArray();
 
             var networkInfosList = new List<NetworkSelectInfo>();
 
@@ -55,7 +55,7 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void Select(Endpoint selectedEndpoint)
         {
-            string[] selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys();
+            var selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys().ToArray();
 
             for (int i = 0; i < selectedEndpointKeys.Length; i++)
             {

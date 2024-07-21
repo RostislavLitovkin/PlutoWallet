@@ -60,9 +60,11 @@ namespace PlutoWallet.Model
 
             Console.WriteLine(bestWebSecket);
 
-            var client = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
+            var clientExt = new SubstrateClientExt(endpoint, new Uri(bestWebSecket), ChargeTransactionPayment.Default());
 
-            await client.ConnectAndLoadMetadataAsync();
+            await clientExt.ConnectAndLoadMetadataAsync();
+
+            var client = clientExt.SubstrateClient;
 
             List<NFT> nfts = new List<NFT>();
 
@@ -143,7 +145,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nfts;
         }
 
-        public static async Task<NFT> GetNftMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
+        public static async Task<NFT> GetNftMetadataAsync(SubstrateClient client, string collectionItemId, CancellationToken token)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
@@ -160,7 +162,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             return nft;
         }
 
-        public static async Task<List<string>> GetNftsAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public static async Task<List<string>> GetNftsAccountAsync(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -202,7 +204,7 @@ Hopefully it will fulfill the test functionalities correctly.",
         }
         
 
-        private static async Task<NFT> GetUniquesMetadataAsync(SubstrateClientExt client, string collectionItemId, CancellationToken token)
+        private static async Task<NFT> GetUniquesMetadataAsync(SubstrateClient client, string collectionItemId, CancellationToken token)
         {
             try
             {
@@ -229,7 +231,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             }
         }
 
-        private static async Task<List<string>> GetUniquesAccountAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        private static async Task<List<string>> GetUniquesAccountAsync(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));

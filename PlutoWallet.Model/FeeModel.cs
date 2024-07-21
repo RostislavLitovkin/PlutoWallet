@@ -53,7 +53,7 @@ namespace PlutoWallet.Model
         */
         public static async Task<BigInteger> GetMethodFeeAsync(SubstrateClientExt client, Method method)
         {
-            UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
+            UnCheckedExtrinsic extrinsic = await client.SubstrateClient.GetExtrinsicParametersAsync(
                 method,
                 MockModel.GetMockAccount(),
                 client.DefaultCharge,
@@ -61,7 +61,7 @@ namespace PlutoWallet.Model
                 signed: true,
                 CancellationToken.None);
 
-            var feeDetail = await client.Payment.QueryFeeDetailAsync(
+            var feeDetail = await client.SubstrateClient.Payment.QueryFeeDetailAsync(
                 Utils.Bytes2HexString(extrinsic.Encode()),
                 null,
                 CancellationToken.None);
@@ -71,9 +71,9 @@ namespace PlutoWallet.Model
 
         public static async Task<RuntimeDispatchInfo> GetPaymentInfoAsync(SubstrateClientExt client, UnCheckedExtrinsic extrinsic)
         {
-            Hash blockHash = await client.Chain.GetFinalizedHeadAsync(CancellationToken.None);
+            Hash blockHash = await client.SubstrateClient.Chain.GetFinalizedHeadAsync(CancellationToken.None);
 
-            return await client.Payment.QueryInfoAsync(
+            return await client.SubstrateClient.Payment.QueryInfoAsync(
                 Utils.Bytes2HexString(extrinsic.Encode()),
                 Utils.Bytes2HexString(blockHash.Encode()),
                 CancellationToken.None);

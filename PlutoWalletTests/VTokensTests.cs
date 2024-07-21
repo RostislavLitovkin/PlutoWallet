@@ -2,7 +2,6 @@
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
-using PlutoWallet.Model.Bifrost;
 
 namespace PlutoWalletTests
 {
@@ -11,7 +10,7 @@ namespace PlutoWalletTests
         [Test]
         public async Task VTokensRedeem()
         {
-            Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary["bifrost"];
+            Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Bifrost];
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
@@ -22,7 +21,7 @@ namespace PlutoWalletTests
 
             await client.ConnectAndLoadMetadataAsync();
 
-            BigInteger redeemAmount = await VTokenModel.VDotToDot(client, new BigInteger(10000000000), CancellationToken.None);
+            BigInteger redeemAmount = await VTokenModel.VDotToDot((Bifrost.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, new BigInteger(10000000000), CancellationToken.None);
 
             Console.WriteLine((double)redeemAmount / 10000000000);
         }

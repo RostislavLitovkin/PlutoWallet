@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Numerics;
-using System.Buffers.Binary;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
 using static Substrate.NetApi.Model.Meta.Storage;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using System.Globalization;
 using Substrate.NetApi.Generated.Model.pallet_conviction_voting.vote;
-using Substrate.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
@@ -24,12 +20,14 @@ namespace PlutoWallet.Model.SubSquare
 
             List<ReferendumInfo> results = new List<ReferendumInfo>();
 
-            foreach (var client in groupClients)
+            foreach (var clientExt in groupClients)
             {
-                if (client.Endpoint.SubSquareChainName == null)
+                if (clientExt.Endpoint.SubSquareChainName == null)
                 {
                     continue;
                 }
+
+                var client = clientExt.SubstrateClient;
 
                 var account32 = new AccountId32();
                 account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -104,7 +102,7 @@ namespace PlutoWallet.Model.SubSquare
                             // Subsquare things
                             uint referendumId = ((U32)vote.Value[0]).Value;
 
-                            Root root = await GetReferendumInfo(client.Endpoint, referendumId);
+                            Root root = await GetReferendumInfo(clientExt.Endpoint, referendumId);
 
                             Console.WriteLine(root.OnchainData.Tally.Ayes);
 
@@ -128,8 +126,8 @@ namespace PlutoWallet.Model.SubSquare
                                     Decision = voteDecision,
                                 },
                                 ReferendumIndex = root.ReferendumIndex,
-                                SubSquareLink = "https://" + client.Endpoint.SubSquareChainName + ".subsquare.io/referenda/" + root.ReferendumIndex,
-                                Endpoint = client.Endpoint,
+                                SubSquareLink = "https://" + clientExt.Endpoint.SubSquareChainName + ".subsquare.io/referenda/" + root.ReferendumIndex,
+                                Endpoint = clientExt.Endpoint,
                             });
                         }
                     }

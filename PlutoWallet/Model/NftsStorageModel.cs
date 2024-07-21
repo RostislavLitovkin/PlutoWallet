@@ -86,7 +86,7 @@ namespace PlutoWallet.Model
             public string Type { get; set; }
             public string CollectionId { get; set; }
             public string ItemId { get; set; }
-            public string EndpointKey { get; set; }
+            public EndpointEnum EndpointKey { get; set; }
             public object[] Attributes { get; set; }
             public bool Favourite { get; set; } = false;
 

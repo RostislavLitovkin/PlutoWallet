@@ -4,7 +4,7 @@ namespace PlutoWallet.Components.Xcm
 {
     public class XcmNetworkSelectInfo
     {
-        public string EndpointKey { get; set; }
+        public EndpointEnum EndpointKey { get; set; }
         public bool ShowName { get; set; }
         public string Name { get; set; }
         public string Icon { get; set; }

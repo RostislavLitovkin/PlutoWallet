@@ -24,7 +24,7 @@ namespace PlutoWallet.Model
             return Assets.FindAll((asset) => asset.Symbol.Equals(symbol));
         }
 
-        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress)
+        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress, CancellationToken token = default)
         {
             if (doNotReload)
             {
@@ -64,7 +64,7 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    var accountInfo = await client.SystemStorage.Account(substrateAddress);
+                    var accountInfo = await GetNativeBalance(client.SubstrateClient, substrateAddress, token);
 
                     amount = (double)accountInfo.Data.Free.Value / Math.Pow(10, endpoint.Decimals);
                 }
@@ -97,7 +97,7 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    foreach ((BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount) asset in await GetPolkadotAssetHubAssetsAsync(client, substrateAddress, 1000, CancellationToken.None))
+                    foreach ((BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount) asset in await GetPolkadotAssetHubAssetsAsync(client.SubstrateClient, substrateAddress, 1000, CancellationToken.None))
                     {
                         double usdRatio = 0;
 
@@ -124,9 +124,9 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    if (endpoint.Key != "bifrost")
+                    if (endpoint.Key != EndpointEnum.Bifrost)
                     {
-                        foreach (HydrationTokenData tokenData in await GetHydrationTokensBalance(client, substrateAddress, CancellationToken.None))
+                        foreach (HydrationTokenData tokenData in await GetHydrationTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
                         {
                             double usdRatio = 0;
 
@@ -148,7 +148,7 @@ namespace PlutoWallet.Model
                     }
                     else
                     {
-                        foreach (BifrostTokenData tokenData in await GetBifrostTokensBalance(client, substrateAddress, CancellationToken.None))
+                        foreach (BifrostTokenData tokenData in await GetBifrostTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
                         {
                             double usdRatio = 0;
 
@@ -200,10 +200,25 @@ namespace PlutoWallet.Model
         }
 
         /// <summary>
+        /// Assumption: All chains use the same Balances pallet as Polkadot
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="substrateAddress"></param>
+        /// <returns></returns>
+        public static async Task<Polkadot.NetApi.Generated.Model.frame_system.AccountInfo> GetNativeBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
+        {
+            var account = new Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32();
+            account.Create(Utils.GetPublicKeyFrom(substrateAddress));
+
+            string parameters = Polkadot.NetApi.Generated.Storage.SystemStorage.AccountParams(account);
+            return await client.GetStorageAsync<Polkadot.NetApi.Generated.Model.frame_system.AccountInfo>(parameters, null, token);
+        }
+
+        /// <summary>
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public static async Task<List<(BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)>> GetPolkadotAssetHubAssetsAsync(SubstrateClientExt client, string substrateAddress, uint page, CancellationToken token)
+        public static async Task<List<(BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)>> GetPolkadotAssetHubAssetsAsync(SubstrateClient client, string substrateAddress, uint page, CancellationToken token)
         {
             if (page < 2 || page > 1000)
             {
@@ -288,7 +303,7 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -356,7 +371,7 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<HydrationTokenData>> GetHydrationTokensBalance(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public async static Task<List<HydrationTokenData>> GetHydrationTokensBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
@@ -432,7 +447,7 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<BifrostTokenData>> GetBifrostTokensBalance(SubstrateClientExt client, string substrateAddress, CancellationToken token)
+        public async static Task<List<BifrostTokenData>> GetBifrostTokensBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
             account32.Create(Utils.GetPublicKeyFrom(substrateAddress));

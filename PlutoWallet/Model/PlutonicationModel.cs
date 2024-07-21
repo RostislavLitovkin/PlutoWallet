@@ -129,7 +129,7 @@ namespace PlutoWallet.Model
 
             if (Endpoints.HashToKey.ContainsKey(genesisHash))
             {
-                var key = Endpoints.HashToKey[genesisHash];
+                EndpointEnum key = Endpoints.HashToKey[genesisHash];
 
                 Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
 
@@ -156,8 +156,8 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    var pallet = client.MetaData.NodeMetadata.Modules[method.ModuleIndex];
-                    Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.MetaData.Serialize());
+                    var pallet = client.SubstrateClient.MetaData.NodeMetadata.Modules[method.ModuleIndex];
+                    Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.SubstrateClient.MetaData.Serialize());
 
                     transactionRequest.PalletIndex = pallet.Name;
                     transactionRequest.CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
