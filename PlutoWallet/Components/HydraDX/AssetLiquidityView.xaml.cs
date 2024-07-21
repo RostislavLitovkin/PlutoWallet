@@ -1,4 +1,6 @@
-﻿namespace PlutoWallet.Components.HydraDX;
+﻿using System.Collections.ObjectModel;
+
+namespace PlutoWallet.Components.HydraDX;
 
 public partial class AssetLiquidityView : ContentView
 {
@@ -29,9 +31,21 @@ public partial class AssetLiquidityView : ContentView
             control.usdLabel.Text = (string)newValue;
         });
 
+    public static readonly BindableProperty LiquidityMiningInfosProperty = BindableProperty.Create(
+        nameof(LiquidityMiningInfos), typeof(List<AssetLiquidityInfo>), typeof(AssetLiquidityView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
+            var control = (AssetLiquidityView)bindable;
+
+            ((AssetLiquidityViewModel)control.BindingContext).LiquidityMiningInfos = new ObservableCollection<LiquidityMiningInfo>((List<LiquidityMiningInfo>)newValue);
+        }
+        );
     public AssetLiquidityView()
 	{
 		InitializeComponent();
+
+        BindingContext = new AssetLiquidityViewModel();
 	}
 
     public string Amount
@@ -53,5 +67,11 @@ public partial class AssetLiquidityView : ContentView
         get => (string)GetValue(UsdValueProperty);
 
         set => SetValue(UsdValueProperty, value);
+    }
+
+    public LiquidityMiningInfo LiquidityMiningInfos
+    {
+        get => (LiquidityMiningInfo)GetValue(LiquidityMiningInfosProperty);
+        set => SetValue(LiquidityMiningInfosProperty, value);
     }
 }

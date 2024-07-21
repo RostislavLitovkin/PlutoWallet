@@ -12,7 +12,9 @@ namespace PlutoWallet.Model.HydrationModel
 {
     public class OmnipoolLiquidityMiningInfo
     {
-
+        public double RewardAmount { get; set; }
+        public uint RewardAssetId { get; set; }
+        public string RewardSymbol { get; set; }
     }
     public class OmnipoolLiquidityInfoExpanded : OmnipoolLiquidityInfo
     {
@@ -36,23 +38,23 @@ namespace PlutoWallet.Model.HydrationModel
                 result.Add(new OmnipoolLiquidityInfoExpanded
                 {
                     Amount = liquidityInfo.Amount,
+                    AssetId = liquidityInfo.AssetId,
                     Symbol = liquidityInfo.Symbol,
                     InitialAmount = liquidityInfo.InitialAmount,
-
+                    LiquidityMiningInfos = await GetLiquidityMiningDeposit(substrateClient, positionId, token),
                 });
             }
 
             return result;
         }
 
-        public static async Task GetLiquidityMiningDeposit(SubstrateClientExt substrateClient, BigInteger id, CancellationToken token = default)
+        public static async Task<List<OmnipoolLiquidityMiningInfo>> GetLiquidityMiningDeposit(SubstrateClientExt substrateClient, U128 id, CancellationToken token = default)
         {
-            var data = await substrateClient.OmnipoolWarehouseLMStorage.Deposit((U128)id, null, token);
+            var data = await substrateClient.OmnipoolWarehouseLMStorage.Deposit(id, null, token);
 
-            Console.WriteLine(data.AmmPoolId);
-            Console.WriteLine(data.Shares);
+            var liquidityMiningData = new List<OmnipoolLiquidityMiningInfo>();
 
-            foreach (YieldFarmEntryT1 farmEntry in data.YieldFarmEntries.Value.Value)
+            foreach (YieldFarmEntryT1 farmEntry in data?.YieldFarmEntries.Value.Value ?? [])
             {
                 var globalFarmData = await substrateClient.OmnipoolWarehouseLMStorage.GlobalFarm(farmEntry.GlobalFarmId, null, token);
 
@@ -60,8 +62,12 @@ namespace PlutoWallet.Model.HydrationModel
                     new BaseTuple<U32, U32, U32>(data.AmmPoolId, farmEntry.GlobalFarmId, farmEntry.YieldFarmId), null, token
                 );
 
-                Console.WriteLine("Token reward in: " + globalFarmData.RewardCurrency);
-                Console.WriteLine("incentivized: " + globalFarmData.IncentivizedAsset);
+                if(Sdk.AssetsById.Count() == 0) { 
+                    await Sdk.GetAssets(substrateClient, token);
+                }
+
+
+                var assetInfo = Sdk.AssetsById[globalFarmData.RewardCurrency.Value];
 
                 var deltaStopped = yieldFarmData.TotalStopped - farmEntry.StoppedAtCreation;
 
@@ -77,10 +83,15 @@ namespace PlutoWallet.Model.HydrationModel
                     loyaltyMultiplier
                 );
 
-                Console.WriteLine("Reward: " + rewards);
-
-                Console.WriteLine();
+                liquidityMiningData.Add(new OmnipoolLiquidityMiningInfo
+                {
+                    RewardAmount = (double)(rewards - unclaimableRwards) / Math.Pow(10, assetInfo.Decimals),
+                    RewardSymbol = assetInfo.Symbol,
+                    RewardAssetId = globalFarmData.RewardCurrency.Value
+                });
             }
+
+            return liquidityMiningData;
         }
 
         /// <summary>

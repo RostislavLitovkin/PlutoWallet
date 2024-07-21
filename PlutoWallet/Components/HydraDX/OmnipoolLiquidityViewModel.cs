@@ -11,7 +11,10 @@ namespace PlutoWallet.Components.HydraDX
 		[ObservableProperty]
 		private ObservableCollection<AssetLiquidityInfo> assets;
 
-		[ObservableProperty]
+        [ObservableProperty]
+        private ObservableCollection<AssetLiquidityInfo> assetsLiquidityMining;
+
+        [ObservableProperty]
 		private string usdSum;
 
         public OmnipoolLiquidityViewModel()
@@ -30,20 +33,12 @@ namespace PlutoWallet.Components.HydraDX
 
             UsdSum = "Loading";
 
-            var omnipoolLiquidities = await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client, KeysModel.GetSubstrateKey());
-
-			if (omnipoolLiquidities.Count() == 0)
-			{
-				UsdSum = "None";
-				return;
-			}
-
             double tempUsdSum = 0;
 
 			Assets = new ObservableCollection<AssetLiquidityInfo>();
 
-			foreach (var omnipoolLiquidity in omnipoolLiquidities) {
-                double usdRatio = Model.HydraDX.Sdk.GetSpotPrice(omnipoolLiquidity.Symbol);
+			foreach (var omnipoolLiquidity in await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client, KeysModel.GetSubstrateKey())) {
+                double usdRatio = Model.HydraDX.Sdk.GetSpotPrice(omnipoolLiquidity.AssetId);
 
                 double usdValue = usdRatio * omnipoolLiquidity.Amount;
 
@@ -53,10 +48,40 @@ namespace PlutoWallet.Components.HydraDX
 					Amount = String.Format("{0:0.00}", omnipoolLiquidity.Amount),
 					Symbol = omnipoolLiquidity.Symbol,
 					UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
-				});
-			} 
+                    LiquidityMiningInfos = []
+                });
+			}
 
-			UsdSum = String.Format("{0:0.00}", tempUsdSum) + " USD";
+            foreach (var omnipoolLiquidity in await Model.HydrationModel.HydrationLiquidityMiningModel.GetOmnipoolLiquidityWithLiquidityMining(client, KeysModel.GetSubstrateKey()))
+            {
+                double usdRatio = Model.HydraDX.Sdk.GetSpotPrice(omnipoolLiquidity.AssetId);
+
+                double usdValue = usdRatio * omnipoolLiquidity.Amount;
+
+                tempUsdSum += usdValue;
+
+                Assets.Add(new AssetLiquidityInfo
+                {
+                    Amount = String.Format("{0:0.00}", omnipoolLiquidity.Amount),
+                    Symbol = omnipoolLiquidity.Symbol,
+                    UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
+                    LiquidityMiningInfos = omnipoolLiquidity.LiquidityMiningInfos.Select(lm => new LiquidityMiningInfo
+                    {
+                        Amount = String.Format("{0:0.00}", lm.RewardAmount),
+                        Symbol = lm.RewardSymbol,
+                        UsdValue = String.Format("{0:0.00}", lm.RewardAmount * Model.HydraDX.Sdk.GetSpotPrice(lm.RewardAssetId)) + " USD",
+                    }).ToList(),
+                });
+            }
+
+            UsdSum = String.Format("{0:0.00}", tempUsdSum) + " USD";
+
+
+            if (Assets.Count() == 0)
+            {
+                UsdSum = "None";
+                return;
+            }
         }
     }
 
@@ -65,6 +90,14 @@ namespace PlutoWallet.Components.HydraDX
 		public string Amount { get; set; }
 		public string Symbol { get; set; }
 		public string UsdValue { get; set; }
-	}
+        public List<LiquidityMiningInfo> LiquidityMiningInfos { get; set; }
+    }
+
+    public class LiquidityMiningInfo
+    {
+        public string Amount { get; set; }
+        public string Symbol { get; set; }
+        public string UsdValue { get; set; }
+    }
 }
 

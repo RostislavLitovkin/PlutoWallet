@@ -45,6 +45,7 @@
                             <hydradx:AssetLiquidityView Amount="{Binding Amount}"
                                                         Symbol="{Binding Symbol}"
                                                         UsdValue="{Binding UsdValue}"
+                                                        LiquidityMiningInfos="{Binding LiqudityMiningInfos}"
                                                         />
 
                         </DataTemplate>

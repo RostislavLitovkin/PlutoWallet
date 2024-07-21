@@ -54,6 +54,7 @@ namespace PlutoWallet.Model.HydraDX
             return new OmnipoolLiquidityInfo
             {
                 Amount = liquidity,
+                AssetId = position.AssetId.Value,
                 Symbol = Model.ToStringModel.VecU8ToString(assetMetadata.Symbol.Value.Value),
                 InitialAmount = initialLiquidity,
             };
@@ -143,6 +144,8 @@ namespace PlutoWallet.Model.HydraDX
     {
         public double Amount { get; set; }
         public string Symbol { get; set; }
+
+        public uint AssetId { get; set; }
         public double InitialAmount { get; set; }
     }
 

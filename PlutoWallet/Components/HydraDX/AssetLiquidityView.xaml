@@ -2,7 +2,6 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.Components.HydraDX.AssetLiquidityView"
-             HeightRequest="30"
              x:Name="view">
     <Border StrokeThickness="0"
             BackgroundColor="#041b47"
@@ -18,31 +17,66 @@
             <RoundRectangle CornerRadius="15" />
 
         </Border.StrokeShape>
-         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="120"/>
-            </Grid.ColumnDefinitions>
+        <VerticalStackLayout>
+            <Grid HeightRequest="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
 
-            <Label x:Name="amountLabel"
+                <Label x:Name="amountLabel"
                    TextColor="#dddddd"
                    HorizontalTextAlignment="End"
                    VerticalTextAlignment="Center" />
-            <Label x:Name="symbolLabel"
+                <Label x:Name="symbolLabel"
                    TextColor="#dddddd"
                    HorizontalTextAlignment="Start"
                    VerticalTextAlignment="Center"
                    Margin="5, 0, 0, 0"
                    Grid.Column="1"/>
 
-            <Label x:Name="usdLabel"
+                <Label x:Name="usdLabel"
                    TextColor="#dddddd"
                    HorizontalTextAlignment="End"
                    VerticalTextAlignment="Center"
                    Grid.Column="3"/>
-        </Grid>
+            </Grid>
+            <VerticalStackLayout
+                BindableLayout.ItemsSource="{Binding LiquidityMiningInfos}"
+                 Spacing="0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Amount}"
+                                   TextColor="LightYellow"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center" />
+                            <Label Text="{Binding Symbol}"
+                                   TextColor="LightYellow"
+                                   HorizontalTextAlignment="Start"
+                                   VerticalTextAlignment="Center"
+                                   Margin="5, 0, 0, 0"
+                                   Grid.Column="1"/>
+
+                            <Label Text="{Binding UsdValue}"
+                                   TextColor="#dddddd"
+                                   HorizontalTextAlignment="End"
+                                   VerticalTextAlignment="Center"
+                                   Grid.Column="3"/>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
     </Border>
 </ContentView>
 

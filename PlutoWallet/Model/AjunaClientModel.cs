@@ -225,7 +225,7 @@ namespace PlutoWallet.Model
             {
                 if (GroupEndpoints[i].Key == EndpointEnum.Hydration)
                 {
-                    await Model.HydraDX.Sdk.GetAssets(GroupClients[i].SubstrateClient, CancellationToken.None);
+                    await Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient, CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
 
                     usdBalanceViewModel.UpdateBalances();
@@ -257,7 +257,7 @@ namespace PlutoWallet.Model
 
                     await client.ConnectAndLoadMetadataAsync();
 
-                    await Model.HydraDX.Sdk.GetAssets(client.SubstrateClient, CancellationToken.None);
+                    await Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, CancellationToken.None);
                     Model.AssetsModel.GetUsdBalance();
                 }
                 catch

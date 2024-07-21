@@ -3,7 +3,6 @@ using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.HydraDX;
 using PlutoWallet.Model.HydrationModel;
-using Substrate.NetApi;
 
 namespace PlutoWalletTests;
 
@@ -42,21 +41,16 @@ public class HydrationTests
     [Test]
     public static async Task GetLiquidityMiningDepositAsync()
     {
-
-
-
-        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, 5595);
-        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, 5592);
-        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, 5593);
-
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, new Substrate.NetApi.Model.Types.Primitive.U128(5595));
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, new Substrate.NetApi.Model.Types.Primitive.U128(5592));
+        await HydrationLiquidityMiningModel.GetLiquidityMiningDeposit((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, new Substrate.NetApi.Model.Types.Primitive.U128(5593));
     }
 
 
     [Test]
     public static async Task GetAssetsAsync()
     {
-
-        await PlutoWallet.Model.HydraDX.Sdk.GetAssets(client.SubstrateClient, CancellationToken.None);
+        await PlutoWallet.Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, CancellationToken.None);
 
         Assert.That(PlutoWallet.Model.HydraDX.Sdk.Assets.Any());
 
@@ -66,6 +60,8 @@ public class HydrationTests
         }
 
         Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice("DOT"));
+
+        Console.WriteLine(PlutoWallet.Model.HydraDX.Sdk.GetSpotPrice(5));
 
     }
 
@@ -79,6 +75,21 @@ public class HydrationTests
     public static async Task GetOmnipoolLiquidityAmountAsync()
     {
         var list = await OmnipoolModel.GetOmnipoolLiquidityAmount((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, substrateAddress);
+
+        Assert.That(list.Any());
+
+        for (int i = 0; i < list.Count; i++)
+        {
+            Console.WriteLine(list[i].Amount + "   - " + list[i].Symbol);
+            Console.WriteLine(list[i].ToString());
+        }
+    }
+
+    [Test]
+    public static async Task GetOmnipoolLiquidityWithLiquidityMiningAsync()
+    {
+        string anotherSubstrateAddress = "7J7Kfj7vMsrcRotqZ8BtgFCCSoaVUp21XifM8AYC9Q1SZiax";
+        var list = await HydrationLiquidityMiningModel.GetOmnipoolLiquidityWithLiquidityMining((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, anotherSubstrateAddress);
 
         Assert.That(list.Any());
 

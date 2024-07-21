@@ -1,8 +1,10 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Hydration.NetApi.Generated.Model.sp_core.crypto;
 using Hydration.NetApi.Generated.Model.pallet_omnipool.types;
 using Hydration.NetApi.Generated.Model.orml_tokens;
+using PlutoWallet.Constants;
+using Hydration.NetApi.Generated;
 
 namespace PlutoWallet.Model.HydraDX
 {
@@ -12,7 +14,10 @@ namespace PlutoWallet.Model.HydraDX
 
         public static Dictionary<string, HydraDXTokenInfo> Assets = new Dictionary<string, HydraDXTokenInfo>();
 
-        public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClient client, CancellationToken token)
+        public static Dictionary<uint, HydraDXTokenInfo> AssetsById = new Dictionary<uint, HydraDXTokenInfo>();
+
+
+        public static async Task<Dictionary<string, HydraDXTokenInfo>> GetAssets(SubstrateClientExt client, CancellationToken token)
         {
             if (client is null)
             {
@@ -36,6 +41,8 @@ namespace PlutoWallet.Model.HydraDX
                .Select(p => p.ToString().ToLower().Replace(Utils.Bytes2HexString(prefix).ToLower(), ""));
 
             Dictionary<string, HydraDXTokenInfo> result = new Dictionary<string, HydraDXTokenInfo>();
+            Dictionary<uint, HydraDXTokenInfo> assetsById = new Dictionary<uint, HydraDXTokenInfo>();
+
 
             if (storageKeys == null || !storageKeys.Any())
             {
@@ -43,7 +50,7 @@ namespace PlutoWallet.Model.HydraDX
             }
 
             var omnipoolAssetsKeys = storageKeys.Select(p => Utils.HexToByteArray(omnipoolAssetsKeyBytesString + p.ToString())).ToList();
-            
+
             var tokenAccountsKeys = storageKeys.Select(p => Utils.HexToByteArray(tokenAccountsKeyBytesString +
                 "12649b1d88771b22c15810b80fb0a1a96d6f646c6f6d6e69706f6f6c0000000000000000000000000000000000000000"
                 + Utils.Bytes2HexString(HashExtension.Hash(
@@ -63,7 +70,7 @@ namespace PlutoWallet.Model.HydraDX
 
             if (omnipoolAssetsStorageChangeSets != null)
             {
-                for(int i = 0; i < omnipoolAssetsStorageChangeSets.Length; i++)
+                for (int i = 0; i < omnipoolAssetsStorageChangeSets.Length; i++)
                 {
                     AssetState asset = new AssetState();
                     asset.Create(omnipoolAssetsStorageChangeSets[i][1]);
@@ -89,26 +96,60 @@ namespace PlutoWallet.Model.HydraDX
                         double poolBalance = (double)(omnipoolTokens.Free.Value - omnipoolTokens.Frozen.Value) / Math.Pow(10, assetMetadata.Decimals.Value);
                         double hubReserveBalance = (double)(asset.HubReserve.Value) / Math.Pow(10, 12);
 
-                        result.Add(symbol, new HydraDXTokenInfo
+                        var tokenInfo = new HydraDXTokenInfo
                         {
                             Symbol = symbol,
                             PoolBalance = poolBalance,
                             HubReserve = hubReserveBalance,
                             Decimals = assetMetadata.Decimals.Value,
-                        });
 
+                        };
+
+                        result.Add(symbol, tokenInfo);
+
+                        assetsById.Add(assetId.Value, tokenInfo);
+                    }
+                    else
+                    {
+                        Endpoint endpoint = Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
+
+                        var omnipoolTokens = await client.SystemStorage.Account(omnipoolAccount, null, token);
+
+                        string symbol = endpoint.Unit;
+
+                        if (result.ContainsKey(symbol))
+                        {
+                            continue;
+                        }
+
+                        double poolBalance = (double)(omnipoolTokens.Data.Free.Value - omnipoolTokens.Data.Frozen.Value) / Math.Pow(10, endpoint.Decimals);
+                        double hubReserveBalance = (double)(asset.HubReserve.Value) / Math.Pow(10, 12);
+
+                        var tokenInfo = new HydraDXTokenInfo
+                        {
+                            Symbol = symbol,
+                            PoolBalance = poolBalance,
+                            HubReserve = hubReserveBalance,
+                            Decimals = endpoint.Decimals,
+                        };
+
+                        result.Add(symbol, tokenInfo);
+
+                        assetsById.Add(assetId.Value, tokenInfo);
                     }
                 }
             }
 
             Assets = result;
+            AssetsById = assetsById;
 
             return result;
         }
 
         public static double GetSpotPrice(string tokenSymbol)
         {
-            if (!Assets.ContainsKey(tokenSymbol)) {
+            if (!Assets.ContainsKey(tokenSymbol))
+            {
                 return 0;
             }
 
@@ -119,7 +160,31 @@ namespace PlutoWallet.Model.HydraDX
 
             HydraDXTokenInfo token = Assets[tokenSymbol];
             HydraDXTokenInfo usdToken = Assets[PlutoWallet.Constants.HydraDX.STABLE_TOKEN];
-            
+
+            double price_a = token.HubReserve / token.PoolBalance;
+            double price_b = usdToken.PoolBalance / usdToken.HubReserve;
+
+            double result = price_a * price_b;
+
+            return result;
+        }
+
+        public static double GetSpotPrice(uint assetId)
+        {
+            if (!AssetsById.ContainsKey(assetId))
+            {
+                return 2;
+            }
+
+            if (!Assets.ContainsKey(PlutoWallet.Constants.HydraDX.STABLE_TOKEN))
+            {
+
+                return 5;
+            }
+
+            HydraDXTokenInfo token = AssetsById[assetId];
+            HydraDXTokenInfo usdToken = Assets[PlutoWallet.Constants.HydraDX.STABLE_TOKEN];
+
             double price_a = token.HubReserve / token.PoolBalance;
             double price_b = usdToken.PoolBalance / usdToken.HubReserve;
 

@@ -492,7 +492,6 @@
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />
-	  <Folder Include="Components\HydraDX\" />
 	  <Folder Include="Resources\Images\FatCat\" />
 	  <Folder Include="Components\Identity\" />
 	  <Folder Include="Components\Vault\" />
