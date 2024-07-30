@@ -72,9 +72,9 @@ public class HydrationTests
     }
 
     [Test]
-    public static async Task GetOmnipoolLiquidityAmountAsync()
+    public static async Task GetOmnipoolLiquiditiesAsync()
     {
-        var list = await OmnipoolModel.GetOmnipoolLiquidityAmount((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, substrateAddress);
+        var list = await HydrationOmnipoolModel.GetOmnipoolLiquiditiesAsync((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, substrateAddress, CancellationToken.None);
 
         Assert.That(list.Any());
 
@@ -96,7 +96,11 @@ public class HydrationTests
         for (int i = 0; i < list.Count; i++)
         {
             Console.WriteLine(list[i].Amount + "   - " + list[i].Symbol);
-            Console.WriteLine(list[i].ToString());
+
+            foreach (var item in list[i].LiquidityMiningInfos)
+            {
+                Console.WriteLine("   " + item.RewardAmount + "   - " + item.RewardSymbol);
+            }
         }
     }
 }

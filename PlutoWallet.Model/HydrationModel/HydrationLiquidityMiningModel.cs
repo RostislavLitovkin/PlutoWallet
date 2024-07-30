@@ -7,6 +7,7 @@ using System.Numerics;
 using System;
 using PlutoWallet.Model.HydraDX;
 using Substrate.NetApi;
+using Hydration.NetApi.Generated.Model.pallet_omnipool.types;
 
 namespace PlutoWallet.Model.HydrationModel
 {
@@ -33,7 +34,7 @@ namespace PlutoWallet.Model.HydrationModel
             {
                 var positionId = await substrateClient.OmnipoolLiquidityMiningStorage.OmniPositionId(liquidityMiningPositionId, null, token);
 
-                var liquidityInfo = await OmnipoolModel.GetOmnipoolLiquidityAtPosition(substrateClient, positionId, token);
+                var liquidityInfo = await HydrationOmnipoolModel.GetOmnipoolLiquidityAtPositionAsync(substrateClient, positionId, token);
 
                 result.Add(new OmnipoolLiquidityInfoExpanded
                 {
@@ -41,7 +42,7 @@ namespace PlutoWallet.Model.HydrationModel
                     AssetId = liquidityInfo.AssetId,
                     Symbol = liquidityInfo.Symbol,
                     InitialAmount = liquidityInfo.InitialAmount,
-                    LiquidityMiningInfos = await GetLiquidityMiningDeposit(substrateClient, positionId, token),
+                    LiquidityMiningInfos = await GetLiquidityMiningDeposit(substrateClient, liquidityMiningPositionId, token),
                 });
             }
 
@@ -87,7 +88,7 @@ namespace PlutoWallet.Model.HydrationModel
                 {
                     RewardAmount = (double)(rewards - unclaimableRwards) / Math.Pow(10, assetInfo.Decimals),
                     RewardSymbol = assetInfo.Symbol,
-                    RewardAssetId = globalFarmData.RewardCurrency.Value
+                    RewardAssetId = globalFarmData.RewardCurrency.Value,
                 });
             }
 

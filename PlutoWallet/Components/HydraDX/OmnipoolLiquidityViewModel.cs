@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Hydration.NetApi.Generated;
 using PlutoWallet.Model;
+using PlutoWallet.Model.HydrationModel;
 
 namespace PlutoWallet.Components.HydraDX
 {
@@ -37,7 +38,7 @@ namespace PlutoWallet.Components.HydraDX
 
 			Assets = new ObservableCollection<AssetLiquidityInfo>();
 
-			foreach (var omnipoolLiquidity in await Model.HydraDX.OmnipoolModel.GetOmnipoolLiquidityAmount(client, KeysModel.GetSubstrateKey())) {
+			foreach (var omnipoolLiquidity in await HydrationOmnipoolModel.GetOmnipoolLiquiditiesAsync(client, KeysModel.GetSubstrateKey())) {
                 double usdRatio = Model.HydraDX.Sdk.GetSpotPrice(omnipoolLiquidity.AssetId);
 
                 double usdValue = usdRatio * omnipoolLiquidity.Amount;
@@ -67,9 +68,9 @@ namespace PlutoWallet.Components.HydraDX
                     UsdValue = String.Format("{0:0.00}", usdValue) + " USD",
                     LiquidityMiningInfos = omnipoolLiquidity.LiquidityMiningInfos.Select(lm => new LiquidityMiningInfo
                     {
-                        Amount = String.Format("{0:0.00}", lm.RewardAmount),
+                        Amount = "+ " + String.Format("{0:0.00}", lm.RewardAmount),
                         Symbol = lm.RewardSymbol,
-                        UsdValue = String.Format("{0:0.00}", lm.RewardAmount * Model.HydraDX.Sdk.GetSpotPrice(lm.RewardAssetId)) + " USD",
+                        UsdValue = "+ " + String.Format("{0:0.00}", lm.RewardAmount * Model.HydraDX.Sdk.GetSpotPrice(lm.RewardAssetId)) + " USD",
                     }).ToList(),
                 });
             }

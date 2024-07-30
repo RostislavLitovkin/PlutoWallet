@@ -60,6 +60,7 @@
                                    TextColor="LightYellow"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center" />
+                            
                             <Label Text="{Binding Symbol}"
                                    TextColor="LightYellow"
                                    HorizontalTextAlignment="Start"
@@ -68,7 +69,7 @@
                                    Grid.Column="1"/>
 
                             <Label Text="{Binding UsdValue}"
-                                   TextColor="#dddddd"
+                                   TextColor="#bbbbbb"
                                    HorizontalTextAlignment="End"
                                    VerticalTextAlignment="Center"
                                    Grid.Column="3"/>

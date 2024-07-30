@@ -16,7 +16,6 @@ namespace PlutoWallet.Model
 {
 	public class TransferModel
 	{
-
 		public static Method NativeTransfer(SubstrateClientExt client, string address, CompactInteger amount)
 		{
             // Later: Recognize what type of the address it is and convert it into ss58 one
