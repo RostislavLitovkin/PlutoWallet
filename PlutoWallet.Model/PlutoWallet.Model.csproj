@@ -8,14 +8,14 @@
 
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.22-rc" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 	  <PackageReference Include="Markdig" Version="0.31.0" />
 	  <PackageReference Include="Uniquery" Version="1.0.1" />
 	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
 	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
 	  <PackageReference Include="Substrate.NET.Wallet" Version="1.0.8" />
-	  <PackageReference Include="Substrate.NET.API" Version="0.9.22-rc" />
     <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
 		<PackageReference Include="System.Collections" Version="4.3.0" />
 		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />

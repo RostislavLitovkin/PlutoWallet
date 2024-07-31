@@ -1,10 +1,5 @@
 ﻿using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi;
@@ -40,11 +35,11 @@ namespace PlutoWalletTests
 
             byte[] extrinsicHash = Utils.HexToByteArray("0xb6cdde5912b61a8e7f687092bbd9537ad3ebc5ab69d2f23239eed97ad38d1b98");
 
-            var events = await EventsModel.GetExtrinsicEventsAsync<EnumRuntimeEvent>(client, blockHash, extrinsicHash);
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync<EnumRuntimeEvent>(client, blockHash, extrinsicHash);
 
-            Console.WriteLine(events.Count() + " events found");
+            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
 
-            foreach(var e in events)
+            foreach(var e in extrinsicDetails.Events)
             {
                 Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
 
@@ -74,11 +69,11 @@ namespace PlutoWalletTests
             
             byte[] extrinsicHash = Utils.HexToByteArray("0x2087b2359e6a923d723751f685d41ccfdd6ce763eddab4a7473ffd2a727744b9");
 
-            var events = await EventsModel.GetExtrinsicEventsAsync(opalClient, EndpointEnum.Opal, blockHash, extrinsicHash);
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(opalClient, EndpointEnum.Opal, blockHash, extrinsicHash);
 
-            Console.WriteLine(events.Count() + " events found");
+            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
 
-            foreach (var e in events)
+            foreach (var e in extrinsicDetails.Events)
             {
                 Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
 

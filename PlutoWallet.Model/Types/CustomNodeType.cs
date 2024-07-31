@@ -225,7 +225,7 @@ namespace PlutoWallet.Types
 
     public enum StorageType { Map, Plain };
 
-    public enum Hasher { BlakeTwo128Concat, Identity, Twox64Concat, Twox128, BlakeTwo128 };
+    public enum Hasher { BlakeTwo128Concat, Identity, Twox64Concat, Twox128, Twox256, BlakeTwo128 };
 
     public enum TypeDef { Array, Compact, Composite, Primitive, Sequence, Tuple, Variant, BitSequence };
 
@@ -346,6 +346,8 @@ namespace PlutoWallet.Types
                     return Hasher.Twox64Concat;
                 case "Twox128":
                     return Hasher.Twox128;
+                case "Twox256":
+                    return Hasher.Twox256;
                 case "BlakeTwo128":
                     return Hasher.BlakeTwo128;
             }
