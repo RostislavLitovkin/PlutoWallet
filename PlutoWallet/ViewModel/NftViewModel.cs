@@ -36,6 +36,7 @@ namespace PlutoWallet.ViewModel
                 }
             }
 
+
             UpdateNfts(await Model.UniqueryModel.GetAllNfts(substrateAddress, token));
 
             // Broken, not a priority rn to fix

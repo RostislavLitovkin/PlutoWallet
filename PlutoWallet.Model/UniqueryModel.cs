@@ -44,7 +44,7 @@ namespace PlutoWallet.Model
     }
 
     public class UniqueryModel
-	{
+    {
         private static Endpoint GetEndpointFromFormat(string nftFormat)
         {
             switch (nftFormat)
@@ -75,27 +75,60 @@ namespace PlutoWallet.Model
         }
 
         public static async Task<List<NFT>> GetAllNfts(string substrateAddress, CancellationToken token)
-		{
+        {
 
-			List<Nft> nfts = new List<Nft>();
+            List<Nft> nfts = new List<Nft>();
             int limit = 100;
             int offset = 0;
             string orderBy = "updatedAt_DESC";
             bool forSale = false;
             int eventsLimit = 0;
 
-            nfts.AddRange(await Rmrk.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            try
+            {
+                nfts.AddRange(await Rmrk.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            }
+            catch
+            {
 
-            nfts.AddRange(await RmrkV2.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            }
 
-            nfts.AddRange(await Unique.NftListByOwner(substrateAddress, limit, offset, token));
+            try
+            {
+                nfts.AddRange(await RmrkV2.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            }
+            catch
+            {
 
-            nfts.AddRange(await Quartz.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+
+            try
+            {
+
+                nfts.AddRange(await Unique.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+            catch
+            {
+
+            }
+
+            try
+            {
+                nfts.AddRange(await Quartz.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+            catch
+            {
+
+            }
 
             // NFTs will be fixed soon in the next update..
             //nfts.AddRange(await Opal.NftListByOwner(substrateAddress, limit, offset, token));
 
-            nfts.AddRange(await Basilisk.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            try
+            {
+                nfts.AddRange(await Basilisk.NftListByOwner(substrateAddress, limit, offset, orderBy, forSale, eventsLimit, 10, token));
+            }
+            catch { }
 
             try
             {
@@ -113,11 +146,31 @@ namespace PlutoWallet.Model
             {
 
             }
-            nfts.AddRange(await Acala.NftListByOwner(substrateAddress, limit, offset, token));
+            try
+            {
+                nfts.AddRange(await Acala.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+            catch
+            {
 
-            nfts.AddRange(await Astar.NftListByOwner(substrateAddress, limit, offset, token));
+            }
 
-            nfts.AddRange(await Shiden.NftListByOwner(substrateAddress, limit, offset, token));
+            try
+            {
+                nfts.AddRange(await Astar.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+            catch
+            {
+            }
+
+            try
+            {
+                nfts.AddRange(await Shiden.NftListByOwner(substrateAddress, limit, offset, token));
+            }
+            catch
+            {
+
+            }
 
             List<NFT> result = new List<NFT>();
             foreach (var nft in nfts)
@@ -131,8 +184,8 @@ namespace PlutoWallet.Model
                 });
             }
 
-			return result;
+            return result;
         }
-	}
+    }
 }
 
