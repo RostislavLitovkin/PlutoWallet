@@ -74,8 +74,6 @@ public partial class ExtrinsicStatusView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ExtrinsicStatusView)bindable;
 
-            control.calamarButton.IsVisible = ((Endpoint)newValue).CalamarChainName != null;
-
             control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });
 
@@ -139,15 +137,6 @@ public partial class ExtrinsicStatusView : ContentView
     {
         get => (EventsListViewModel)GetValue(EventsListViewModelProperty);
         set => SetValue(EventsListViewModelProperty, value);
-    }
-
-    void OnRemoveClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
-    {
-        var extrinsicStackViewModel = DependencyService.Get<ExtrinsicStatusStackViewModel>();
-
-        extrinsicStackViewModel.Extrinsics.Remove(ExtrinsicId);
-
-        extrinsicStackViewModel.Update();
     }
 
     async void OnCloseClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
