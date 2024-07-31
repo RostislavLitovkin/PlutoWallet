@@ -398,6 +398,12 @@
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Settings\DeveloperSettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Settings\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Subscan\OpenSubscanButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -414,9 +420,6 @@
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	  <MauiXaml Update="View\SettingsPage.xaml">
 	    <SubType></SubType>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\MessagePopup\MessagePopupView.xaml">
@@ -494,7 +497,6 @@
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	  <Folder Include="Components\Nft\" />
 	  <Folder Include="Components\Contract\" />
-	  <Folder Include="Components\Settings\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Components\AzeroId\" />
 	  <Folder Include="Components\AssetSelect\" />

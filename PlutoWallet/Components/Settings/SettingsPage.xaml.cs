@@ -1,5 +1,6 @@
-﻿namespace PlutoWallet.View;
-using CommunityToolkit.Maui.Alerts;
+using PlutoWallet.View;
+
+namespace PlutoWallet.Components.Settings;
 
 public partial class SettingsPage : ContentPage
 {
@@ -27,6 +28,11 @@ public partial class SettingsPage : ContentPage
         Navigation.InsertPageBefore(new SetupPasswordPage(), Navigation.NavigationStack[0]);
 
         await Navigation.PopToRootAsync();
+    }
+
+    async void OnDeveloperSettingsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new DeveloperSettingsPage());
     }
 
     async void OnShowMnemonicsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

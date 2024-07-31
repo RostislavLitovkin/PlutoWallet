@@ -36,14 +36,6 @@
                 <predefinedlayouts:GenericPredefinedLayoutItem Title="Azero Testnet"
                                                                PlutoLayout="plutolayout: [U, dApp, contract, ExSL, AZEROPrimaryName, UsdB, RnT, SubK, ChaK];[AzeroTestnet]"/>
 
-                <customlayouts:PlusItemView>
-                    <customlayouts:PlusItemView.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnPlusClicked" />
-
-                    </customlayouts:PlusItemView.GestureRecognizers>
-
-                </customlayouts:PlusItemView>
-
             </VerticalStackLayout>
             
         </ScrollView>

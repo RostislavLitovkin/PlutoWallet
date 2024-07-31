@@ -6,6 +6,7 @@ using PlutoWallet.Components.Vault;
 using Substrate.NetApi;
 using PlutoWallet.Components.TransferView;
 using PlutoWallet.Model;
+using PlutoWallet.Components.Settings;
 
 namespace PlutoWallet.View;
 

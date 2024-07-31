@@ -9,9 +9,4 @@ public partial class PredefinedLayoutsPage : ContentPage
 
         InitializeComponent();
 	}
-
-    private async void OnPlusClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
-    {
-        await Navigation.PushAsync(new CustomLayoutsPage());
-    }
 }
