@@ -109,6 +109,7 @@
 	  <None Remove="Resources\Images\deviceblack.svg" />
 	  <None Remove="Resources\Images\devicewhite.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
+	  <None Remove="Resources\Images\subscan.png" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
@@ -393,6 +394,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Subscan\OpenSubscanButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

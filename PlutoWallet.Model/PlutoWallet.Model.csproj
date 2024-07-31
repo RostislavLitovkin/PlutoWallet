@@ -45,7 +45,6 @@
     <Folder Include="HydraDX\" />
     <Folder Include="Kodadot\" />
     <Folder Include="SubSquare\" />
-    <Folder Include="Constants\" />
     <Folder Include="Types\" />
     <Folder Include="Bifrost\" />
     <Folder Include="Types\Hydration\" />

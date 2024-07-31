@@ -76,6 +76,7 @@ namespace PlutoWallet.Constants
                 DarkIcon = "polkadot.png",
                 CalamarChainName = "polkadot",
                 SubSquareChainName = "polkadot",
+                SubscanChainName = "polkadot",
                 Unit = "DOT",
                 Decimals = 10,
                 SS58Prefix = 0,
@@ -95,6 +96,7 @@ namespace PlutoWallet.Constants
                 DarkIcon = "kusamawhite.png",
                 CalamarChainName = "kusama",
                 SubSquareChainName = "kusama",
+                SubscanChainName = "kusama",
                 Unit = "KSM",
                 Decimals = 12,
                 SS58Prefix = 2,
@@ -108,6 +110,7 @@ namespace PlutoWallet.Constants
                 Icon = "moonbeam.png",
                 DarkIcon = "moonbeam.png",
                 CalamarChainName = "moonbeam",
+                SubscanChainName = "moonbeam",
                 Unit = "GLMR",
                 Decimals = 18,
                 SS58Prefix = 1284,
@@ -121,6 +124,7 @@ namespace PlutoWallet.Constants
                 Icon = "astar.png",
                 DarkIcon = "astar.png",
                 CalamarChainName = "astar",
+                SubscanChainName = "astar",
                 Unit = "ASTR",
                 Decimals = 18,
                 SS58Prefix = 5,
@@ -133,6 +137,7 @@ namespace PlutoWallet.Constants
                 URLs =  new string[1] { "wss://ajuna.api.onfinality.io/public-ws" /*"wss://rpc-parachain.ajuna.network"*/ },
                 Icon = "ajuna.png",
                 DarkIcon = "ajuna.png",
+                SubscanChainName = "ajuna",
                 Unit = "AJUN",
                 Decimals = 12,
                 SS58Prefix = 1328,
@@ -147,6 +152,7 @@ namespace PlutoWallet.Constants
                 DarkIcon = "bajun.png",
                 Unit = "BAJU",
                 CalamarChainName = "bajun",
+                SubscanChainName = "bajun",
                 Decimals = 12,
                 SS58Prefix = 1337,
                 ChainType = ChainType.Substrate,
@@ -158,12 +164,13 @@ namespace PlutoWallet.Constants
                 URLs =  new string[1] { "wss://ws.manta.systems" },
                 Icon = "manta.png",
                 DarkIcon = "manta.png",
+                SubscanChainName = "manta",
                 Unit = "MANTA",
                 Decimals = 18,
                 SS58Prefix = 77,
                 ChainType = ChainType.Substrate,
             } },
-            { EndpointEnum.Westend, new Endpoint
+            /*{ EndpointEnum.Westend, new Endpoint
             {
                 Name = "Westend",
                 Key = EndpointEnum.Westend,
@@ -174,7 +181,7 @@ namespace PlutoWallet.Constants
                 Decimals = 12,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
-            } },
+            } },*/
             /*{ "rococo", new Endpoint
             {
                 Name = "Rococo",
@@ -225,7 +232,8 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 2,
                 ChainType = ChainType.Substrate,
                 SupportsNfts = true,
-                CalamarChainName = "statemine"
+                CalamarChainName = "statemine",
+                SubscanChainName = "assethub-kusama",
             } },
             { EndpointEnum.PolkadotAssetHub, new Endpoint {
                 Name = "Polkadot Asset Hub",
@@ -239,6 +247,7 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
                 SupportsNfts = true,
                 CalamarChainName = "statemint",
+                SubscanChainName = "assethub-polkadot",
                 ParachainId = new ParachainId
                 {
                     Chain = Chain.Parachain,
@@ -253,6 +262,7 @@ namespace PlutoWallet.Constants
                 Icon = "unique.png",
                 DarkIcon = "unique.png",
                 CalamarChainName = "unique",
+                SubscanChainName = "unique",
                 Unit = "UNQ",
                 Decimals = 18,
                 SS58Prefix = 7391,
@@ -266,6 +276,7 @@ namespace PlutoWallet.Constants
                 Icon = "quartz.png",
                 DarkIcon = "quartz.png",
                 CalamarChainName = "quartz",
+                SubscanChainName = "quartz",
                 Unit = "QTZ",
                 Decimals = 18,
                 SS58Prefix = 255,
@@ -279,6 +290,7 @@ namespace PlutoWallet.Constants
                 Icon = "opal.png",
                 DarkIcon = "opal.png",
                 CalamarChainName = "opal",
+                SubscanChainName = "opal",
                 Unit = "OPL",
                 Decimals = 18,
                 SS58Prefix = 42,
@@ -292,6 +304,7 @@ namespace PlutoWallet.Constants
                 Icon = "shibuya.png",
                 DarkIcon = "shibuya.png",
                 CalamarChainName = "shibuya",
+                SubscanChainName = "shibuya",
                 Unit = "SBY",
                 Decimals = 18,
                 SS58Prefix = 5,
@@ -305,6 +318,7 @@ namespace PlutoWallet.Constants
                 Icon = "moonbase.png",
                 DarkIcon = "moonbase.png",
                 CalamarChainName = "moonbase",
+                SubscanChainName = "moonbase",
                 Unit = "DEV",
                 Decimals = 18,
                 SS58Prefix = 1287,
@@ -319,6 +333,7 @@ namespace PlutoWallet.Constants
                 DarkIcon = "alephzerotestnet.png",
                 Unit = "TZERO",
                 CalamarChainName = "aleph-zero-testnet",
+                SubscanChainName = "alephzero-testnet",
                 Decimals = 12,
                 SS58Prefix = 42,
                 ChainType = ChainType.Substrate,
@@ -331,6 +346,7 @@ namespace PlutoWallet.Constants
                 Icon = "acala.png",
                 DarkIcon = "acala.png",
                 CalamarChainName = "acala",
+                SubscanChainName = "acala",
                 Unit = "ACA",
                 Decimals = 12,
                 SS58Prefix = 10,
@@ -343,6 +359,7 @@ namespace PlutoWallet.Constants
                 URLs =  new string[2] { "wss://rpc.basilisk.cloud", "wss://basilisk-rpc.dwellir.com" },
                 Icon = "basilisk.png",
                 DarkIcon = "basilisk.png",
+                SubscanChainName = "basilisk",
                 Unit = "BSX",
                 SS58Prefix = 10041,
                 Decimals = 12,
@@ -355,6 +372,7 @@ namespace PlutoWallet.Constants
                 URLs =  new string[3] { "wss://rpc.helikon.io/hydradx", "wss://rpc.hydradx.cloud", "wss://hydradx-rpc.dwellir.com" },
                 Icon = "hydration.png",
                 DarkIcon = "hydration.png",
+                SubscanChainName = "hydradx",
                 Unit = "HDX",
                 SS58Prefix = 63,
                 Decimals = 12,
@@ -385,6 +403,7 @@ namespace PlutoWallet.Constants
                     URLs =  new string[2] { "wss://wss.api.moonriver.moonbeam.network", "wss://moonriver-rpc.dwellir.com" },
                     Icon = "moonriver.png",
                     DarkIcon = "moonriver.png",
+                    SubscanChainName = "moonriver",
                     Unit = "MOVR",
                     SS58Prefix = 1285,
                     Decimals = 18,
@@ -399,6 +418,7 @@ namespace PlutoWallet.Constants
                     URLs =  new string[3] { "wss://bifrost-polkadot.api.onfinality.io/public-ws", "wss://eu.bifrost-polkadot-rpc.liebi.com/ws", "wss://hk.p.bifrost-rpc.liebi.com/ws" /*"wss://bifrost-rpc.dwellir.com"*/ },
                     Icon = "bifrost.png",
                     DarkIcon = "bifrost.png",
+                    SubscanChainName = "bifrost",
                     Unit = "BNC",
                     SS58Prefix = 6,
                     Decimals = 12,
@@ -491,20 +511,21 @@ namespace PlutoWallet.Constants
         Solo,
     }
 
-	public class Endpoint
-	{
+    public class Endpoint
+    {
         public string Name { get; set; }
         public string[] URLs { get; set; }
-		public string Icon { get; set; }
+        public string Icon { get; set; }
         public string DarkIcon { get; set; }
-		public string CalamarChainName { get; set; }
-        public string SubSquareChainName { get; set; }
+        public string? CalamarChainName { get; set; }
+        public string? SubSquareChainName { get; set; }
+        public string? SubscanChainName { get; set; }
         public EndpointEnum Key { get; set; }
 
         // Symbol and Unit are interchangeable names.
-		public string Unit { get; set; }
-		public int Decimals { get; set; }
-		public short SS58Prefix { get; set; }
+        public string Unit { get; set; }
+        public int Decimals { get; set; }
+        public short SS58Prefix { get; set; }
         public ChainType ChainType { get; set; }
         public bool SupportsNfts { get; set; } = false;
 
@@ -531,6 +552,7 @@ namespace PlutoWallet.Constants
                 DarkIcon = this.DarkIcon,
                 CalamarChainName = this.CalamarChainName,
                 SubSquareChainName = this.SubSquareChainName,
+                SubscanChainName = this.SubscanChainName,
                 Key = this.Key,
                 Unit = this.Unit,
                 Decimals = this.Decimals,

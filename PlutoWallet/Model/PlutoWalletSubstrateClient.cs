@@ -64,15 +64,17 @@ namespace PlutoWallet.Model
 
                 else if (status.ExtrinsicState == ExtrinsicState.InBlock)
                 {
-                    var events = await EventsModel.GetExtrinsicEventsAsync(
-                     this,
-                     this.Endpoint.Key,
-                     status.Hash,
-                     extrinsicHash.Encode()
-                     );
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents = new ObservableCollection<ExtrinsicEvent>(events);
+                    var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(
+                         this,
+                         this.Endpoint.Key,
+                         status.Hash,
+                         extrinsicHash.Encode()
+                    );
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents = new ObservableCollection<ExtrinsicEvent>(extrinsicDetails.Events);
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].BlockNumber = extrinsicDetails.BlockNumber;
+                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].ExtrinsicIndex = extrinsicDetails.ExtrinsicIndex;
 
-                    var lastEvent = events.Last();
+                    var lastEvent = extrinsicDetails.Events.Last();
 
                     if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
                     {
@@ -92,7 +94,6 @@ namespace PlutoWallet.Model
 
                 else if (status.ExtrinsicState == ExtrinsicState.Finalized)
                 {
-
                     var lastEvent = extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents.Last();
 
                     if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")

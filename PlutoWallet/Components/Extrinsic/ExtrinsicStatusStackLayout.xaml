@@ -14,7 +14,9 @@
                                                Hash="{Binding Hash}"
                                                Endpoint="{Binding Endpoint}"
                                                CallName="{Binding CallName}"
-                                               EventsListViewModel="{Binding EventsListViewModel}"/>
+                                               EventsListViewModel="{Binding EventsListViewModel}"
+                                               BlockNumber="{Binding BlockNumber}"
+                                               ExtrinsicIndex="{Binding ExtrinsicIndex}" />
 
             </DataTemplate>
 

@@ -2,6 +2,7 @@
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Constants;
 using PlutoWallet.Components.Events;
+using System.Numerics;
 
 namespace PlutoWallet.Components.Extrinsic
 {
@@ -13,6 +14,8 @@ namespace PlutoWallet.Components.Extrinsic
         public Endpoint Endpoint { get; set; }
 		public Hash Hash { get; set; }
 		public string CallName { get; set; }
+        public BigInteger BlockNumber { get; set; }
+        public uint? ExtrinsicIndex { get; set; }
     }
 }
 

@@ -5,6 +5,7 @@
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
              xmlns:events="clr-namespace:PlutoWallet.Components.Events"
+             xmlns:subscan="clr-namespace:PlutoWallet.Components.Subscan"
              Title="ExtrinsicDetailPage"
          BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
@@ -23,6 +24,12 @@
                              Padding="20, 10, 20, 100"
                              Spacing="15">
                 <events:EventsListView x:Name="eventsListView" />
+
+                <subscan:OpenSubscanButton >
+                    <subscan:OpenSubscanButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOpenSubscanClicked" />
+                    </subscan:OpenSubscanButton.GestureRecognizers>
+                </subscan:OpenSubscanButton>
             </VerticalStackLayout>
 
         </ScrollView>

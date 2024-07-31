@@ -4,6 +4,8 @@ using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Events;
+using CommunityToolkit.Maui.Converters;
+using System.Numerics;
 
 namespace PlutoWallet.Components.Extrinsic;
 
@@ -93,6 +95,14 @@ public partial class ExtrinsicStatusView : ContentView
        propertyChanging: (bindable, oldValue, newValue) => {
        });
 
+    public static readonly BindableProperty BlockNumberProperty = BindableProperty.Create(
+        nameof(BlockNumber), typeof(BigInteger), typeof(ExtrinsicStatusView),
+        defaultBindingMode: BindingMode.TwoWay);
+
+    public static readonly BindableProperty ExtrinsicIndexProperty = BindableProperty.Create(
+        nameof(ExtrinsicIndex), typeof(uint?), typeof(ExtrinsicStatusView),
+        defaultBindingMode: BindingMode.TwoWay);
+
     public ExtrinsicStatusView()
 	{
 		InitializeComponent();
@@ -131,6 +141,18 @@ public partial class ExtrinsicStatusView : ContentView
         get => (string)GetValue(CallNameProperty);
 
         set => SetValue(CallNameProperty, value);
+    }
+
+    public BigInteger BlockNumber
+    {
+        get => (BigInteger)GetValue(BlockNumberProperty);
+        set => SetValue(BlockNumberProperty, value);
+    }
+
+    public uint? ExtrinsicIndex
+    {
+        get => (uint?)GetValue(ExtrinsicIndexProperty);
+        set => SetValue(ExtrinsicIndexProperty, value);
     }
 
     public EventsListViewModel EventsListViewModel
@@ -211,6 +233,10 @@ public partial class ExtrinsicStatusView : ContentView
             return;
         }
 
-        await Navigation.PushAsync(new ExtrinsicDetailPage(EventsListViewModel));
+        await Navigation.PushAsync(new ExtrinsicDetailPage(
+            EventsListViewModel,
+            Endpoint,
+            BlockNumber + "-" + ExtrinsicIndex
+        ));
     }
 }

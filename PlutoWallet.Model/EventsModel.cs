@@ -5,9 +5,16 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
+using System.Numerics;
 
 namespace PlutoWallet.Model
 {
+    public class ExtrinsicDetails
+    {
+        public IEnumerable<ExtrinsicEvent> Events { get; set; }
+        public BigInteger BlockNumber { get; set; }
+        public uint? ExtrinsicIndex { get; set; }
+    }
     public enum EventSafety
     {
         NothingUpdateUIBug,
@@ -123,10 +130,10 @@ namespace PlutoWallet.Model
         /// </summary>
         /// <param name="substrateClient"></param>
         /// <param name="blockHash"></param>
-        /// <param name="unCheckedExtrinsic"></param>
+        /// <param name="extrinsicHash"></param>
         /// <returns>all events for the given extrinsic</returns>
         /// <exception cref="ExtrinsicIndexNotFoundException"></exception>
-        public static async Task<IEnumerable<ExtrinsicEvent>> GetExtrinsicEventsAsync(
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync(
             this SubstrateClientExt substrateClient,
            EndpointEnum endpointKey,
             Hash blockHash,
@@ -140,7 +147,7 @@ namespace PlutoWallet.Model
                 EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
                 EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
                 EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                _ => new List<ExtrinsicEvent>(),
+                _ => await GetExtrinsicDetailsAsync(substrateClient, blockHash, extrinsicHash, token),
             };
         }
 
@@ -151,8 +158,7 @@ namespace PlutoWallet.Model
         /// <param name="blockHash"></param>
         /// <param name="unCheckedExtrinsic"></param>
         /// <returns>all events for the given extrinsic</returns>
-        /// <exception cref="ExtrinsicIndexNotFoundException"></exception>
-        public static async Task<IEnumerable<ExtrinsicEvent>> GetExtrinsicEventsAsync<T>(
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
             this SubstrateClientExt substrateClient,
             Hash blockHash,
             byte[] extrinsicHash,
@@ -166,8 +172,8 @@ namespace PlutoWallet.Model
 
             BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
 
-            int? extrinsicIndex = null;
-            for (int i = 0; i < block.Block.Extrinsics.Count(); i++)
+            uint? extrinsicIndex = null;
+            for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
             {
                 // Same extrinsic
                 if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
@@ -179,21 +185,70 @@ namespace PlutoWallet.Model
 
             if (extrinsicIndex is null || events is null)
             {
-                return new List<ExtrinsicEvent>();
+                return new ExtrinsicDetails
+                {
+                    BlockNumber = block.Block.Header.Number.Value,
+                    ExtrinsicIndex = extrinsicIndex,
+                    Events = new List<ExtrinsicEvent>()
+                };
             }
 
             var sortedEvents = events.Value.Where(p => p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex);
 
 
-            return sortedEvents.Select(e =>
+            return new ExtrinsicDetails
             {
-                string palletName = e.Event.GetValueString();
-                object? eventValue2 = e.Event.GetProperty("Value2");
-                string eventName = eventValue2.GetValueString();
-                object? parameters = eventValue2.GetProperty("Value2");
+                BlockNumber = block.Block.Header.Number.Value,
+                ExtrinsicIndex = extrinsicIndex,
+                Events = sortedEvents.Select(e =>
+                {
+                    string palletName = e.Event.GetValueString();
+                    object? eventValue2 = e.Event.GetProperty("Value2");
+                    string eventName = eventValue2.GetValueString();
+                    object? parameters = eventValue2.GetProperty("Value2");
 
-                return new ExtrinsicEvent(palletName, eventName, parameters);
-            });
+                    return new ExtrinsicEvent(palletName, eventName, parameters);
+                })
+            };
+        }
+
+        /// <summary>
+        /// Gets extrinsic details without events
+        /// </summary>
+        /// <param name="substrateClient"></param>
+        /// <param name="blockHash"></param>
+        /// <param name="extrinsicHash"></param>
+        /// <returns>all events for the given extrinsic</returns>
+        public static async Task<ExtrinsicDetails> GetExtrinsicDetailsAsync(
+            this SubstrateClientExt substrateClient,
+            Hash blockHash,
+            byte[] extrinsicHash,
+            CancellationToken token = default
+        )
+        {
+            string blockHashString = Utils.Bytes2HexString(blockHash);
+
+            var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+
+            BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
+
+            uint? extrinsicIndex = null;
+            for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
+            {
+                // Same extrinsic
+                if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
+                {
+                    extrinsicIndex = i;
+                    break;
+                }
+            };
+
+            return new ExtrinsicDetails
+            {
+                BlockNumber = block.Block.Header.Number.Value,
+                ExtrinsicIndex = extrinsicIndex,
+                Events = new List<ExtrinsicEvent>()
+            };
         }
     }
 
