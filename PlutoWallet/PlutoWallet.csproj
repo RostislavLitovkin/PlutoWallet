@@ -544,10 +544,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls" Version="9.0.0-preview.6.24327.7" />
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.21" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="9.0.0-preview.5.24307.10" />
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 	</ItemGroup>
 </Project>
