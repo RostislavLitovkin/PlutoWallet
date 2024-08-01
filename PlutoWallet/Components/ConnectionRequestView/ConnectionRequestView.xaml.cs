@@ -21,11 +21,20 @@ public partial class ConnectionRequestView : ContentView
 
     private async void AcceptClicked(System.Object sender, System.EventArgs e)
     {
-#if ANDROID26_0_OR_GREATER
-        var mainActivity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
-        Intent serviceIntent = new Intent(mainActivity, typeof(PlutonicationAndroidForegroundService));
+#if ANDROID29_0_OR_GREATER
+        PermissionStatus status = await Permissions.RequestAsync<NotificationPermission>();
 
-        mainActivity.StartForegroundService(serviceIntent);
+        if (status == PermissionStatus.Granted)
+        {
+            var mainActivity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+            Intent serviceIntent = new Intent(mainActivity, typeof(PlutonicationAndroidForegroundService));
+
+            mainActivity.StartForegroundService(serviceIntent);
+        }
+        else
+        {
+            await PlutonicationModel.AcceptConnectionAsync();
+        }
 #else
         await PlutonicationModel.AcceptConnectionAsync();
 #endif

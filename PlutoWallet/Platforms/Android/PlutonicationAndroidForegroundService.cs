@@ -2,7 +2,6 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
 using PlutoWallet.Model;
 
 namespace PlutoWallet.Platforms.Android
@@ -17,7 +16,7 @@ namespace PlutoWallet.Platforms.Android
     class PlutonicationAndroidForegroundService : Service
     {
         CancellationTokenSource _cts;
-        public const int SERVICE_RUNNING_NOTIFICATION_ID = 96062; // Random id
+        public const int SERVICE_RUNNING_NOTIFICATION_ID = 96063; // Random id
         
         public override IBinder OnBind(Intent intent)
         {
@@ -29,13 +28,8 @@ namespace PlutoWallet.Platforms.Android
             _cts = new CancellationTokenSource();
 
             Notification notification = new AndroidNotificationHelper().GetNotification("Connected via Plutonication");
-#if ANDROID29_0_OR_GREATER
-#pragma warning disable CA1416 // Validate platform compatibility
+
             StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notification, ForegroundService.TypeRemoteMessaging);
-#pragma warning restore CA1416 // Validate platform compatibility
-#else
-            StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notification);
-#endif
 
             _ = Task.Run(() =>
             {
@@ -43,6 +37,16 @@ namespace PlutoWallet.Platforms.Android
             }, _cts.Token);
 
             return StartCommandResult.Sticky;
+        }
+
+        public override void OnDestroy()
+        {
+            if (_cts != null)
+            {
+                _cts.Token.ThrowIfCancellationRequested();
+                _cts.Cancel();
+            }
+            base.OnDestroy();
         }
     }
 }

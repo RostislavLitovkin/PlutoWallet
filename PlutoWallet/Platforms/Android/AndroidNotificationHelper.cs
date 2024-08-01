@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using AndroidX.Core.App;
 
 namespace PlutoWallet.Platforms.Android
 {
@@ -11,42 +12,36 @@ namespace PlutoWallet.Platforms.Android
     {
         private static string foregroundChannelId = "96062"; // Random id
 
-#if ANDROID26_0_OR_GREATER
-#pragma warning disable CA1416 // Validate platform compatibility
         private static readonly Context context = global::Android.App.Application.Context;
-#pragma warning restore CA1416 // Validate platform compatibility
-#endif
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Validate platform compatibility", Justification = "Runs only on android")]
         public Notification GetNotification(string description)
         {
-#if ANDROID26_0_OR_GREATER
 
             var intent = new Intent(context, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.SingleTop);
             intent.PutExtra("PlutoWallet", description);
 
-            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.Immutable);
+            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.Immutable | PendingIntentFlags.UpdateCurrent);
 
-            var notificationBuilder = new Notification.Builder(context, foregroundChannelId)
+            var notificationBuilder = new NotificationCompat.Builder(context, foregroundChannelId)
                 .SetContentTitle("PlutoWallet")
                 .SetContentText(description)
                 .SetSmallIcon(CommunityToolkit.Maui.Core.Resource.Drawable.plutowalleticon)
                 .SetContentIntent(pendingIntent)
-                .SetOngoing(true)
-                .SetChannelId(foregroundChannelId);
+                .SetOngoing(true);
 
-            if (global::Android.OS.Build.VERSION.SdkInt >= global::Android.OS.BuildVersionCodes.O)
-            {
-                NotificationChannel notificationChannel = new NotificationChannel(foregroundChannelId, "PlutoWallet", NotificationImportance.High);
-                NotificationManager notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
-                notificationManager.CreateNotificationChannel(notificationChannel);
-            }
+            NotificationChannel notificationChannel = new NotificationChannel(foregroundChannelId, "PlutoWallet", NotificationImportance.High);
+            notificationChannel.Importance = NotificationImportance.High;
+            notificationChannel.EnableLights(true);
+            notificationChannel.EnableVibration(true);
+            notificationChannel.SetShowBadge(true);
+            notificationChannel.SetVibrationPattern([100, 200, 300]);
+
+
+            NotificationManager notificationManager = context.GetSystemService(Context.NotificationService) as NotificationManager;
+            notificationBuilder.SetChannelId(foregroundChannelId);
+            notificationManager.CreateNotificationChannel(notificationChannel);
 
             return notificationBuilder.Build();
-#else
-            return null;
-#endif
         }
     }
 }
