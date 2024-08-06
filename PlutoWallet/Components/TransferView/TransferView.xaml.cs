@@ -1,7 +1,5 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.AssetSelect;
-using PlutoWallet.Components.Extrinsic;
-using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;

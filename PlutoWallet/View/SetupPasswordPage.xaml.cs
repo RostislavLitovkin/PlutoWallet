@@ -27,4 +27,11 @@ public partial class SetupPasswordPage : ContentPage
         eyeball.IsVisible = passwordEntry.IsPassword;
         eyeballSlash.IsVisible = !passwordEntry.IsPassword;
     }
+
+    private async void OnEnterPressedAsync(object sender, EventArgs e)
+    {
+        var entry = (Entry)sender;
+        if (entry.IsSoftInputShowing())
+            await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+    }
 }

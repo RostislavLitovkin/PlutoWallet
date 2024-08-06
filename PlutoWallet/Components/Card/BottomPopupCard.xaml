@@ -18,7 +18,7 @@
                 >
 
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="20" />
+                <RoundRectangle CornerRadius="20, 20, 0, 0" />
 
             </Border.StrokeShape>
 
@@ -32,9 +32,9 @@
 
         </ContentView>
 
-        <AbsoluteLayout
+        <AbsoluteLayout 
                         Padding="0, 10, 0, 10"
-                        AbsoluteLayout.LayoutBounds="0.5, 0, 1, 85"
+                        AbsoluteLayout.LayoutBounds="0.5, 0, 1, 65"
                         AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
             <Border BackgroundColor="#888888"
                         AbsoluteLayout.LayoutBounds=".5, 0, 100, 5"
@@ -49,12 +49,22 @@
 
             </Border>
             
-            <Button AbsoluteLayout.LayoutBounds=".5, 1, 1, 50"
+            <!--<Button AbsoluteLayout.LayoutBounds=".5, 1, 1, 50"
                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
                     Text="Confirm"
                     Margin="10, 10, 10, 0"
                     x:Name="closeButton"
-                    Clicked="OnCloseClicked"/>
+                    Clicked="OnCloseClicked"/>-->
+
+            <Label
+                AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                FontAttributes="Bold"
+                Text=""
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="20, 0, 20, 0"
+                x:Name="titleLabel"  />
 
             <AbsoluteLayout.GestureRecognizers>
                 <PanGestureRecognizer PanUpdated="OnPanUpdated" />

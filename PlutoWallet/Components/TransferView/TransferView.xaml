@@ -8,70 +8,55 @@
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
-             Padding="20"
              BackgroundColor="#66000000">
-    
-    <card:Card IsPopup="True">
-        <card:Card.View>
+
+    <card:BottomPopupCard Title="Transfer">
+        <card:BottomPopupCard.View>
             <AbsoluteLayout>
 
-            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
                                  AbsoluteLayout.LayoutFlags="WidthProportional"
+                                     x:Name="verticalStackLayout"
                                  Spacing="10">
 
-                <Label
-                    FontAttributes="Bold"
-                    Text="Transfer"
-                    HeightRequest="30"
-                    HorizontalOptions="Center"
-                    Margin="20, 0, 20, 0" />
+                    <AbsoluteLayout x:Name="qrLayout">
 
-                <AbsoluteLayout x:Name="qrLayout">
+                    </AbsoluteLayout>
 
-                </AbsoluteLayout>
+                    <identity:IdentityAddressView DestinationAddress="{Binding Address}" />
 
-                <identity:IdentityAddressView DestinationAddress="{Binding Address}" />
+                    <Grid HeightRequest="40"
+                          WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
 
-                <Grid HeightRequest="40">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                    </Grid.ColumnDefinitions>
 
-                   
-                    <Entry Placeholder="Amount" Text="{Binding Amount}"
+                        <Entry Placeholder="Amount" Text="{Binding Amount}"
                            Keyboard="Numeric"
                            HeightRequest="40"
                            Margin="0, 0, 10, 0"
-                           Grid.Column="0" />
-                    <assetselect:AssetSelectButtonView HeightRequest="40"
+                           Grid.Column="0"
+                           IsSpellCheckEnabled="false"
+                            IsTextPredictionEnabled="false"/>
+                        <assetselect:AssetSelectButtonView HeightRequest="40"
                                                        Grid.Column="1" />
-                 </Grid>
+                    </Grid>
 
-                <Label Text="{Binding Fee}" TextColor="Orange" />
+                    <Label Text="{Binding Fee}" TextColor="Orange" />
 
-                <Label Text="" x:Name="errorLabel" TextColor="Red" />
+                    <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
-                <Button Text="Sign and transfer"
+                    <Button Text="Sign and transfer"
                         Clicked="SignAndTransferClicked"/>
 
-            </VerticalStackLayout>
-
-           <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
-                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
-                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
-
-                <AbsoluteLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackClicked" />
-
-                </AbsoluteLayout.GestureRecognizers>
-
+                </VerticalStackLayout>
             </AbsoluteLayout>
-        </AbsoluteLayout>
-        
-    </card:Card.View>
-        </card:Card>
-    
+
+        </card:BottomPopupCard.View>
+    </card:BottomPopupCard>
+
 </ContentView>
 

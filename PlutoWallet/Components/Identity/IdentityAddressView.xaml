@@ -40,7 +40,9 @@
                     Margin="0, 0, 45, 0"
                     x:Name="addressEntry"
                     TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                    PropertyChanged="OnEntryPropertyChanged"/>
+                    PropertyChanged="OnEntryPropertyChanged"
+                   IsSpellCheckEnabled="false"
+                    IsTextPredictionEnabled="false"/>
 
             <!--QR code button-->
             <Image

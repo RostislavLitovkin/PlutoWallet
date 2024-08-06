@@ -6,8 +6,8 @@ using PlutoWallet.Types;
 
 namespace PlutoWallet.Components.TransferView
 {
-	public partial class TransferViewModel : ObservableObject
-	{
+	public partial class TransferViewModel : ObservableObject, IPopup
+    {
 		[ObservableProperty]
 		private string address;
 

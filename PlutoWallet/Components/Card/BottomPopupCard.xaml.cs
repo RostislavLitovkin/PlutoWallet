@@ -13,14 +13,16 @@ public partial class BottomPopupCard : AbsoluteLayout
 
     public Microsoft.Maui.Controls.View View { set { contentView.Content = value; } }
 
+    public string Title { set { titleLabel.Text = value; } }
+
     private async Task CloseCardAsync()
     {
         await Task.WhenAll(
                     border.TranslateTo(0, border.Height, 250, Easing.CubicOut),
                     dragger.TranslateTo(0, border.Height, 250, Easing.CubicOut),
                     contentView.TranslateTo(0, border.Height, 250, Easing.CubicOut),
-                    closeButton.TranslateTo(0, border.Height, 250, Easing.CubicOut)
-
+                    //,closeButton.TranslateTo(0, border.Height, 250, Easing.CubicOut)
+                    titleLabel.TranslateTo(0, border.Height, 250, Easing.CubicOut)
                 );
 
         try
@@ -39,7 +41,8 @@ public partial class BottomPopupCard : AbsoluteLayout
         border.TranslationY = 0;
         dragger.TranslationY = 0;
         contentView.TranslationY = 0;
-        closeButton.TranslationY = 0;
+        //closeButton.TranslationY = 0;
+        titleLabel.TranslationY = 0;
     }
     private async void OnPanUpdated(System.Object sender, Microsoft.Maui.Controls.PanUpdatedEventArgs e)
     {
@@ -63,7 +66,8 @@ public partial class BottomPopupCard : AbsoluteLayout
                 border.TranslationY = yAverage;
                 dragger.TranslationY = yAverage;
                 contentView.TranslationY = yAverage;
-                closeButton.TranslationY = yAverage;
+                //closeButton.TranslationY = yAverage;
+                titleLabel.TranslationY = yAverage;
             }
         }
 
@@ -74,8 +78,9 @@ public partial class BottomPopupCard : AbsoluteLayout
                 await Task.WhenAll(
                     border.TranslateTo(0, 0, 250, Easing.CubicOut),
                     dragger.TranslateTo(0, 0, 250, Easing.CubicOut),
-                    contentView.TranslateTo(0, 0, 250, Easing.CubicOut),
-                    closeButton.TranslateTo(0, 0, 250, Easing.CubicOut)
+                    contentView.TranslateTo(0, 0, 250, Easing.CubicOut)
+                    //,closeButton.TranslateTo(0, 0, 250, Easing.CubicOut)
+                    , titleLabel.TranslateTo(0, 0, 250, Easing.CubicOut)
                     );
             }
             else
