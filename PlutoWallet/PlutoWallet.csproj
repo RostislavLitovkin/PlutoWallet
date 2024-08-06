@@ -19,9 +19,9 @@
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.13</ApplicationDisplayVersion>
-    <PackageVersion>1.13</PackageVersion>
-    <ApplicationVersion>14</ApplicationVersion>
+		<ApplicationDisplayVersion>1.14</ApplicationDisplayVersion>
+    <PackageVersion>1.14</PackageVersion>
+    <ApplicationVersion>15</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -112,6 +112,7 @@
 	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamaassethub.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\polkadotassethub.svg" />
+	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
 	  <None Remove="Resources\Images\subscan.png" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />

@@ -13,19 +13,19 @@ namespace PlutoWallet.Platforms.Android
         private static string foregroundChannelId = "96062"; // Random id
 
         private static readonly Context context = global::Android.App.Application.Context;
-        public Notification GetNotification(string description)
+        public Notification GetNotification(string title, string description)
         {
 
             var intent = new Intent(context, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.SingleTop);
-            intent.PutExtra("PlutoWallet", description);
+            intent.PutExtra(title, description);
 
             var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.Immutable | PendingIntentFlags.UpdateCurrent);
 
             var notificationBuilder = new NotificationCompat.Builder(context, foregroundChannelId)
-                .SetContentTitle("PlutoWallet")
+                .SetContentTitle(title)
                 .SetContentText(description)
-                .SetSmallIcon(CommunityToolkit.Maui.Core.Resource.Drawable.plutowalleticon)
+                .SetSmallIcon(CommunityToolkit.Maui.Core.Resource.Drawable.plutowalleticonwhite)
                 .SetContentIntent(pendingIntent)
                 .SetOngoing(true);
 

@@ -1,13 +1,17 @@
 ﻿using Plutonication;
-using PlutoWallet.Components.MessagePopup;
+
+#if ANDROID29_0_OR_GREATER
+using PlutoWallet.Platforms.Android;
+using Android.Content;
+#endif
 
 namespace PlutoWallet.Components.DAppConnectionView;
 
 public partial class DAppConnectionView : ContentView
 {
-	public DAppConnectionView()
-	{
-		InitializeComponent();
+    public DAppConnectionView()
+    {
+        InitializeComponent();
 
         BindingContext = DependencyService.Get<DAppConnectionViewModel>();
     }
@@ -25,6 +29,13 @@ public partial class DAppConnectionView : ContentView
         {
             // Disconnect from the dApp
             await PlutonicationWalletClient.DisconnectAsync();
+
+#if ANDROID29_0_OR_GREATER
+            var mainActivity = Microsoft.Maui.ApplicationModel.Platform.CurrentActivity;
+            Intent serviceIntent = new Intent(mainActivity, typeof(PlutonicationAndroidForegroundService));
+
+            mainActivity.StopService(serviceIntent);
+#endif
         }
         catch
         {

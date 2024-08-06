@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Model;
 
 namespace PlutoWallet.Platforms.Android
@@ -27,7 +28,9 @@ namespace PlutoWallet.Platforms.Android
         {
             _cts = new CancellationTokenSource();
 
-            Notification notification = new AndroidNotificationHelper().GetNotification("Connected via Plutonication");
+            var dAppConnectionViewModel = DependencyService.Get<DAppConnectionViewModel>();
+
+            Notification notification = new AndroidNotificationHelper().GetNotification($"Connected to {dAppConnectionViewModel.Name}", "Connected securely via Plutonication");
 
             StartForeground(SERVICE_RUNNING_NOTIFICATION_ID, notification, ForegroundService.TypeRemoteMessaging);
 
@@ -46,6 +49,7 @@ namespace PlutoWallet.Platforms.Android
                 _cts.Token.ThrowIfCancellationRequested();
                 _cts.Cancel();
             }
+
             base.OnDestroy();
         }
     }
