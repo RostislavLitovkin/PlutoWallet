@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Substrate.NetApi;
 using PlutoWallet.Model;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.AddressView
 {
@@ -26,9 +27,9 @@ namespace PlutoWallet.Components.AddressView
             isVisible = true;
         }
 
-        public void SetChainAddress()
+        public void SetChainAddress(SubstrateClientExt client)
         {
-            var endpoint = AjunaClientModel.SelectedEndpoint;
+            var endpoint = client.Endpoint;
 
             if (endpoint.Name == "(Local)ws://127.0.0.1:9944")
             {
@@ -47,13 +48,12 @@ namespace PlutoWallet.Components.AddressView
 
             Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
 
-            if (AjunaClientModel.Client is null)
+            try
             {
-                QrAddress = "Failed to load genesis hash";
-            }
-            else
-            {
-                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + AjunaClientModel.Client.SubstrateClient.GenesisHash;
+                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + client.SubstrateClient.GenesisHash;
+
+            } catch {
+                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
             }
 
             IsVisible = true;

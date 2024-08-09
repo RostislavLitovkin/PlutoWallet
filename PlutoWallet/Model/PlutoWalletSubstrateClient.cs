@@ -6,6 +6,8 @@ using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.Model.AjunaExt;
 using System.Collections.ObjectModel;
+using PlutoWallet.Components.NetworkSelect;
+using System.Net;
 
 namespace PlutoWallet.Model
 {
@@ -15,6 +17,64 @@ namespace PlutoWallet.Model
                 base(endpoint, fastestWebSocket, chargeType)
         {
 
+        }
+
+        public void Disconnect()
+        {
+            SubstrateClient.Dispose();
+
+            // Better dispose this? Ok, later :)
+
+            var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
+            if (multiNetworkSelectViewModel.NetworkInfoDict.ContainsKey(Endpoint.Key))
+            {
+                multiNetworkSelectViewModel.NetworkInfoDict.Remove(Endpoint.Key);
+
+                if (multiNetworkSelectViewModel.SelectedKey == Endpoint.Key)
+                {
+                    var selectedEndpointKey = multiNetworkSelectViewModel.SelectFirst();
+
+                    multiNetworkSelectViewModel.UpdateNetworkInfos();
+
+                    Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpointKey);
+                }
+            }
+
+            multiNetworkSelectViewModel.UpdateNetworkInfos();
+        }
+
+        public override async Task<bool> ConnectAndLoadMetadataAsync()
+        {
+            var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
+            if (multiNetworkSelectViewModel.NetworkInfoDict.ContainsKey(Endpoint.Key)) {
+                multiNetworkSelectViewModel.NetworkInfoDict[Endpoint.Key].EndpointConnectionStatus = EndpointConnectionStatus.Loading;
+            }
+            else
+            {
+                multiNetworkSelectViewModel.NetworkInfoDict.Add(Endpoint.Key, new NetworkSelectInfo
+                {
+                    EndpointKey = Endpoint.Key,
+                    ShowName = false,
+                    Name = Endpoint.Name,
+                    Icon = Endpoint.Icon,
+                    DarkIcon = Endpoint.DarkIcon,
+                    EndpointConnectionStatus = EndpointConnectionStatus.Loading,
+                });
+
+                EndpointsModel.SaveEndpoint(Endpoint.Key, setupMultiNetworkSelect: false);
+            }
+
+            multiNetworkSelectViewModel.UpdateNetworkInfos();
+
+            var connected = await base.ConnectAndLoadMetadataAsync();
+
+            multiNetworkSelectViewModel.NetworkInfoDict[Endpoint.Key].EndpointConnectionStatus = connected ? EndpointConnectionStatus.Connected : EndpointConnectionStatus.Failed;
+
+            multiNetworkSelectViewModel.UpdateNetworkInfos();
+
+            return connected;
         }
 
         /// <summary>

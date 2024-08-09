@@ -20,6 +20,7 @@ namespace PlutoWallet.Constants
         Westend,
         KusamaAssetHub,
         PolkadotAssetHub,
+        PolkadotPeople,
         Unique,
         Quartz,
         Opal,
@@ -52,6 +53,7 @@ namespace PlutoWallet.Constants
             { "0xe143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e", EndpointEnum.Westend },
             { "0x48239ef607d7928874027a43a67689209727dfb3d3dc5e5b03a39bdc2eda771a", EndpointEnum.KusamaAssetHub },
             { "0x68d56f15f85d3136970ec16946040bc1752654e906147f7e43e9d539d7c3de2f", EndpointEnum.PolkadotAssetHub },
+            { "0x67fa177a097bfa18f77ea95ab56e9bcdfeb0e5b8a40e46298bb93e16b6fc5008", EndpointEnum.PolkadotPeople },
             { "0x84322d9cddbf35088f1e54e9a85c967a41a56a4f43445768125e61af166c7d31", EndpointEnum.Unique },
             { "0xcd4d732201ebe5d6b014edda071c4203e16867305332301dc8d092044b28e554", EndpointEnum.Quartz },
             { "0xc87870ef90a438d574b8e320f17db372c50f62beb52e479c8ff6ee5b460670b9", EndpointEnum.Opal },
@@ -253,6 +255,18 @@ namespace PlutoWallet.Constants
                     Chain = Chain.Parachain,
                     Id = 1000,
                 }
+            } },
+            { EndpointEnum.PolkadotPeople, new Endpoint {
+                Name = "Polkadot People",
+                Key = EndpointEnum.PolkadotPeople,
+                URLs = ["wss://polkadot-people-rpc.polkadot.io"],
+                Icon = "polkadot.png",
+                DarkIcon = "polkadot.png",
+                Unit = "DOT",
+                Decimals = 10,
+                SS58Prefix = 0,
+                ChainType = ChainType.Substrate,
+
             } },
             { EndpointEnum.Unique, new Endpoint
             {

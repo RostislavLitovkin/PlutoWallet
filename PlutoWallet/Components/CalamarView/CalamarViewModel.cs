@@ -15,10 +15,9 @@ namespace PlutoWallet.Components.CalamarView
 
 		}
 
-		public void Reload()
+		public void Reload(Endpoint endpoint)
 		{
 			string address = KeysModel.GetPublicKey();
-			Endpoint endpoint = Model.AjunaClientModel.SelectedEndpoint;
 
 			if (endpoint.CalamarChainName == null)
 			{

@@ -28,7 +28,7 @@ public partial class ContractView : ContentView
 
 	private async Task Setup()
 	{
-        var client = Model.AjunaClientModel.Client;
+        var client = await Model.AjunaClientModel.GetMainClientAsync();
 
         try
         {
@@ -97,7 +97,7 @@ public partial class ContractView : ContentView
             byteArray.AddRange(storageDepositLimitParam.Encode());
             byteArray.AddRange(dataParam.Encode());
 
-            var client = Model.AjunaClientModel.Client;
+            var client = await Model.AjunaClientModel.GetMainClientAsync();
 
             var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Contracts", "call");
 

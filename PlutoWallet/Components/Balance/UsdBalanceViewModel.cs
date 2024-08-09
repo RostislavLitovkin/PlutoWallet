@@ -29,15 +29,16 @@ namespace PlutoWallet.Components.Balance
 
         public UsdBalanceViewModel()
 		{
+            assets = new ObservableCollection<AssetInfo>();
             usdSum = "Loading";
             reloadIsVisible = false;
         }
 
         public void UpdateBalances()
         {
-            var tempAssets = new List<AssetInfo>();
+            var tempAssets = new ObservableCollection<AssetInfo>();
 
-            foreach (Asset a in Model.AssetsModel.Assets)
+            foreach (Asset a in Model.AssetsModel.AssetsDict.Values)
             {
                 if (a.Amount > 0 || a.Pallet == AssetPallet.Native)
                 {
@@ -51,11 +52,9 @@ namespace PlutoWallet.Components.Balance
                 }
             }
 
-            Assets = new ObservableCollection<AssetInfo>(tempAssets);
+            Assets = tempAssets;
 
             UsdSum = String.Format("{0:0.00}", Model.AssetsModel.UsdSum) + " USD";
-
-            ReloadIsVisible = true;
         }
     }
 

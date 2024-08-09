@@ -26,6 +26,8 @@ public class BifrostAssetsTests
 
         await clientExt.ConnectAndLoadMetadataAsync();
 
+        Assert.That(await clientExt.IsConnectedAsync());
+
         client = clientExt.SubstrateClient;
     }
 

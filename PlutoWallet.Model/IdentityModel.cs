@@ -1,14 +1,12 @@
-﻿using System;
-using Polkadot.NetApi.Generated.Model.sp_core.crypto;
-using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.pallet_identity.types;
+﻿using PolkadotPeople.NetApi.Generated.Model.sp_core.crypto;
 using PlutoWallet.Constants;
+using Substrate.NetApi;
 
 namespace PlutoWallet.Model
 {
 	public class IdentityModel
 	{
-		public static async Task<OnChainIdentity> GetIdentityForAddress(Polkadot.NetApi.Generated.SubstrateClientExt client, string address)
+		public static async Task<OnChainIdentity?> GetIdentityForAddressAsync(PolkadotPeople.NetApi.Generated.SubstrateClientExt client, string address)
 		{
 			try
 			{
@@ -29,7 +27,7 @@ namespace PlutoWallet.Model
 
 				Judgement finalJudgement = Judgement.Unknown;
 
-				var registration = ((Polkadot.NetApi.Generated.Model.pallet_identity.types.Registration)identity.Value[0]);
+				var registration = ((PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Registration)identity.Value[0]);
 
                 foreach (var thing in registration.Judgements.Value.Value)
 				{
@@ -55,6 +53,9 @@ namespace PlutoWallet.Model
 							break;
 						case "6":
 							finalJudgement = Judgement.Erroneous;
+							break;
+						default:
+							finalJudgement = Judgement.Unknown;
 							break;
 					}
 				}

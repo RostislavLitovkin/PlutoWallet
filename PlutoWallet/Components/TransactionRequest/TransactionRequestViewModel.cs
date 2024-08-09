@@ -6,6 +6,7 @@ using PlutoWallet.Types;
 using PlutoWallet.Model;
 using Substrate.NetApi;
 using PlutoWallet.Constants;
+using PlutoWallet.Model.AjunaExt;
 
 namespace PlutoWallet.Components.TransactionRequest
 {
@@ -46,16 +47,16 @@ namespace PlutoWallet.Components.TransactionRequest
             isVisible = false;
         }
 
-        public async Task CalculateFeeAsync(Method method)
+        public async Task CalculateFeeAsync(SubstrateClientExt client, Method method)
         {
-            if (AjunaClientModel.Client is null)
+            if (!await client.IsConnectedAsync())
             {
                 Fee = "Fee: Failed";
 
                 return;
             }
 
-            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(AjunaClientModel.Client, method);
+            Fee = "Fee: " + await Model.FeeModel.GetMethodFeeAsync(client, method);
         }
     }
 }

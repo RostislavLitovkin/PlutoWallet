@@ -119,8 +119,6 @@ namespace PlutoWallet.Model
         {
             var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
-            PlutoWalletSubstrateClient client;
-
             Method method = unCheckedExtrinsic.Method;
 
             Substrate.NetApi.Model.Extrinsics.Payload payload = unCheckedExtrinsic.GetPayload(runtime);
@@ -133,23 +131,7 @@ namespace PlutoWallet.Model
 
                 Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
 
-                if (AjunaClientModel.GroupEndpointKeys.Contains(key))
-                {
-                    await AjunaClientModel.ChangeChainAsync(key);
-
-                    client = AjunaClientModel.Client;
-                }
-                else
-                {
-                    string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
-
-                    client = new PlutoWalletSubstrateClient(
-                            endpoint,
-                            new Uri(bestWebSecket),
-                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-                    await client.ConnectAndLoadMetadataAsync();
-                }
+                var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(key);
 
                 transactionRequest.EndpointKey = key;
                 transactionRequest.ChainName = endpoint.Name;
@@ -163,7 +145,7 @@ namespace PlutoWallet.Model
                     transactionRequest.CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
                         .Variants[method.CallIndex].Name;
 
-                    Task calculateFee = transactionRequest.CalculateFeeAsync(method);
+                    Task calculateFee = transactionRequest.CalculateFeeAsync(client, method);
                 }
                 catch
                 {

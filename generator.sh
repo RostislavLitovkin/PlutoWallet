@@ -2,6 +2,13 @@
 
 echo "Starting Substrate.Net.Toolchain code generation :)"
 
+SELECTED_NAME=""
+
+# Check if a name was passed as an argument
+if [ $# -gt 0 ]; then
+    SELECTED_NAME="$1"
+fi
+
 # Load chains data from the chains.json file
 CHAINS=$(jq -c '.chains[]' "chains.json")
 
@@ -9,8 +16,15 @@ cd Generated
 
 # Loop through all chains
 echo "$CHAINS" | while read -r chain; do
-  # Extract the name and websocket values from the current chain object
+# Extract the name and websocket values from the current chain object
   NAME=$(echo "$chain" | jq -r '.name')
+
+  # skip other chains, generate only the selected name chain
+  if [ "$SELECTED_NAME" != "" ]; then
+    if [ "$SELECTED_NAME" != $NAME ]; then
+      continue
+    fi
+  fi
 
   echo "Generating: "$NAME
 

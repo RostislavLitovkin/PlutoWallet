@@ -20,62 +20,146 @@ public partial class IdentityAddressView : ContentView
     public static readonly BindableProperty AddressProperty = BindableProperty.Create(
         nameof(Address), typeof(string), typeof(IdentityAddressView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: async(bindable, oldValue, newValue) =>
+        propertyChanging: AddressPropertyChangingAsync);
+
+    private static async void AddressPropertyChangingAsync(object bindable, object oldValue, object newValue)
+    {
+        var control = (IdentityAddressView)bindable;
+
+        control.addressEntry.Text = (string)newValue;
+
+        // I had to duplicate these lines because of a weird error on Android.
+        if (((string)newValue).Contains("."))
         {
-            var control = (IdentityAddressView)bindable;
+            var newAddress = await TzeroId.GetAddressForName((string)newValue);
 
-            control.addressEntry.Text = (string)newValue;
+            Console.WriteLine(newAddress);
 
-            // I had to duplicate these lines because of a weird error on Android.
-            if (((string)newValue).Contains("."))
+            if (newAddress != null)
             {
-                var newAddress = await TzeroId.GetAddressForName((string)newValue);
+                control.DestinationAddress = newAddress;
 
-                Console.WriteLine(newAddress);
-
-                if (newAddress != null)
+                if (!control.isAzeroIdStyle)
                 {
-                    control.DestinationAddress = newAddress;
+                    control.border.BackgroundColor = Color.FromArgb("222222");
 
-                    if (!control.isAzeroIdStyle)
+                    control.identityJundgementIcon.Source = "azeroid.png";
+
+                    control.identityLabel.Text = newAddress;
+
+                    control.identityLabel.TextColor = Color.FromArgb("FFFFFF");
+
+                    control.addressEntry.TextColor = Color.FromArgb("FFFFFF");
+
+                    control.qrcode.Source = "qrcodewhite.png";
+
+                    control.isAzeroIdStyle = true;
+                }
+                return;
+            }
+        }
+
+        if (control.isAzeroIdStyle)
+        {
+            control.border.SetAppThemeColor(Border.BackgroundColorProperty, Color.FromArgb("fdfdfd"), Color.FromArgb("0a0a0a"));
+
+            control.identityLabel.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
+
+            control.addressEntry.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
+
+            control.qrcode.SetAppTheme<FileImageSource>(Image.SourceProperty, "qrcodeblack.png", "qrcodewhite.png");
+
+            control.isAzeroIdStyle = false;
+        }
+
+        control.DestinationAddress = (string)newValue;
+
+        try
+        {
+            var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(Constants.EndpointEnum.PolkadotPeople);
+
+            if (!await client.IsConnectedAsync())
+            {
+                control.identityLabel.Text = "Loading";
+                if (Application.Current.RequestedTheme == AppTheme.Light)
+                {
+                    control.identityJundgementIcon.Source = "unknownblack.png";
+                }
+                else
+                {
+                    control.identityJundgementIcon.Source = "unknownwhite.png";
+                }
+
+                return;
+            }
+
+            try
+            {
+                var identity = await Model.IdentityModel.GetIdentityForAddressAsync((PolkadotPeople.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, (string)newValue);
+
+                if (identity == null)
+                {
+                    control.identityLabel.Text = "Unknown";
+                    if (Application.Current.RequestedTheme == AppTheme.Light)
                     {
-                        control.border.BackgroundColor = Color.FromArgb("222222");
-
-                        control.identityJundgementIcon.Source = "azeroid.png";
-
-                        control.identityLabel.Text = newAddress;
-
-                        control.identityLabel.TextColor = Color.FromArgb("FFFFFF");
-
-                        control.addressEntry.TextColor = Color.FromArgb("FFFFFF");
-
-                        control.qrcode.Source = "qrcodewhite.png";
-
-                        control.isAzeroIdStyle = true;
+                        control.identityJundgementIcon.Source = "unknownblack.png";
+                    }
+                    else
+                    {
+                        control.identityJundgementIcon.Source = "unknownwhite.png";
                     }
                     return;
                 }
-            }
 
-            if (control.isAzeroIdStyle)
+                control.identityLabel.Text = identity.DisplayName;
+
+                switch (identity.FinalJudgement)
+                {
+                    case Judgement.Unknown:
+                        if (Application.Current.RequestedTheme == AppTheme.Light)
+                        {
+                            control.identityJundgementIcon.Source = "unknownblack.png";
+                        }
+                        else
+                        {
+                            control.identityJundgementIcon.Source = "unknownwhite.png";
+                        }
+                        break;
+                    case Judgement.LowQuality:
+                        if (Application.Current.RequestedTheme == AppTheme.Light)
+                        {
+                            control.identityJundgementIcon.Source = "unknownblack.png";
+                        }
+                        else
+                        {
+                            control.identityJundgementIcon.Source = "unknownwhite.png";
+                        }
+                        break;
+                    case Judgement.OutOfDate:
+                        if (Application.Current.RequestedTheme == AppTheme.Light)
+                        {
+                            control.identityJundgementIcon.Source = "unknownblack.png";
+                        }
+                        else
+                        {
+                            control.identityJundgementIcon.Source = "unknownwhite.png";
+                        }
+                        break;
+                    case Judgement.Reasonable:
+                        control.identityJundgementIcon.Source = "greentick.png";
+                        break;
+                    case Judgement.KnownGood:
+                        control.identityJundgementIcon.Source = "greentick.png";
+                        break;
+                    case Judgement.Erroneous:
+                        control.identityJundgementIcon.Source = "redallert.png";
+                        break;
+
+                }
+            }
+            catch
             {
-                control.border.SetAppThemeColor(Border.BackgroundColorProperty, Color.FromArgb("fdfdfd"), Color.FromArgb("0a0a0a"));
-
-                control.identityLabel.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
-
-                control.addressEntry.SetAppThemeColor(Label.TextColorProperty, Colors.Black, Colors.White);
-
-                control.qrcode.SetAppTheme<FileImageSource>(Image.SourceProperty, "qrcodeblack.png", "qrcodewhite.png");
-
-                control.isAzeroIdStyle = false;
-            }
-
-            control.DestinationAddress = (string)newValue;
-
-            // TODO: This part can be definitelly improved
-
-            if (AjunaClientModel.GroupEndpointKeys[0] != Constants.EndpointEnum.Polkadot) {
-                control.identityLabel.Text = "Unknown";
+                control.identityLabel.Text = "Failed to load";
                 if (Application.Current.RequestedTheme == AppTheme.Light)
                 {
                     control.identityJundgementIcon.Source = "unknownblack.png";
@@ -84,79 +168,19 @@ public partial class IdentityAddressView : ContentView
                 {
                     control.identityJundgementIcon.Source = "unknownwhite.png";
                 }
-                return;
             }
-            var client = (Polkadot.NetApi.Generated.SubstrateClientExt)AjunaClientModel.Client.SubstrateClient;
-
-            var identity = await Model.IdentityModel.GetIdentityForAddress(client, (string)newValue);
-        
-
-            if (identity == null)
-            {
-                control.identityLabel.Text = "Unknown";
-                if (Application.Current.RequestedTheme == AppTheme.Light)
-                {
-                    control.identityJundgementIcon.Source = "unknownblack.png";
-                }
-                else
-                {
-                    control.identityJundgementIcon.Source = "unknownwhite.png";
-                }
-                return;
-            }
-
-            control.identityLabel.Text = identity.DisplayName;
-
-            switch (identity.FinalJudgement)
-            {
-                case Judgement.Unknown:
-                    if (Application.Current.RequestedTheme == AppTheme.Light)
-                    {
-                        control.identityJundgementIcon.Source = "unknownblack.png";
-                    }
-                    else
-                    {
-                        control.identityJundgementIcon.Source = "unknownwhite.png";
-                    }
-                    break;
-                case Judgement.LowQuality:
-                    if (Application.Current.RequestedTheme == AppTheme.Light)
-                    {
-                        control.identityJundgementIcon.Source = "unknownblack.png";
-                    }
-                    else
-                    {
-                        control.identityJundgementIcon.Source = "unknownwhite.png";
-                    }
-                    break;
-                case Judgement.OutOfDate:
-                    if (Application.Current.RequestedTheme == AppTheme.Light)
-                    {
-                        control.identityJundgementIcon.Source = "unknownblack.png";
-                    }
-                    else
-                    {
-                        control.identityJundgementIcon.Source = "unknownwhite.png";
-                    }
-                    break;
-                case Judgement.Reasonable:
-                    control.identityJundgementIcon.Source = "greentick.png";
-                    break;
-                case Judgement.KnownGood:
-                    control.identityJundgementIcon.Source = "greentick.png";
-                    break;
-                case Judgement.Erroneous:
-                    control.identityJundgementIcon.Source = "redallert.png";
-                    break;
-
-            }
-        });
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
 #pragma warning restore VSTHRD101 // Avoid unsupported async delegates
 
     public IdentityAddressView()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
     public string DestinationAddress
     {

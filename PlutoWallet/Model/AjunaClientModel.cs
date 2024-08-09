@@ -1,5 +1,4 @@
-﻿using PlutoWallet.ViewModel;
-using PlutoWallet.Constants;
+﻿using PlutoWallet.Constants;
 using PlutoWallet.Components.AddressView;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.TransferView;
@@ -19,19 +18,61 @@ namespace PlutoWallet.Model
 {
     public class AjunaClientModel
     {
-        public static PlutoWalletSubstrateClient Client;
+        public static Dictionary<EndpointEnum, TaskCompletionSource<PlutoWalletSubstrateClient>> Clients = new Dictionary<EndpointEnum, TaskCompletionSource<PlutoWalletSubstrateClient>> ();
 
-        public static PlutoWalletSubstrateClient[] GroupClients;
-
-        public static Endpoint[] GroupEndpoints;
-
-        public static EndpointEnum[] GroupEndpointKeys;
-
-        public static Endpoint SelectedEndpoint;
+        public static async Task<PlutoWalletSubstrateClient> GetMainClientAsync() => await Clients[DependencyService.Get<MultiNetworkSelectViewModel>().SelectedKey.Value].Task;
 
         public AjunaClientModel()
         {
 
+        }
+
+        public static async Task<PlutoWalletSubstrateClient> GetOrAddSubstrateClientAsync(EndpointEnum endpointKey)
+        {
+            await ConnectNewSubstrateClientAsync(endpointKey);
+
+            return await Clients[endpointKey].Task;
+        }
+
+        public static async Task ConnectNewSubstrateClientAsync(EndpointEnum endpointKey)
+        {
+            if (Clients.ContainsKey(endpointKey))
+            {
+                // Client is not connected, reconnect it
+                if (!await (await Clients[endpointKey].Task).IsConnectedAsync())
+                {
+                    await (await Clients[endpointKey].Task).ConnectAndLoadMetadataAsync();
+                }
+
+                return;
+            }
+
+            Clients.Add(endpointKey, new TaskCompletionSource<PlutoWalletSubstrateClient>());
+
+            Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKey);
+
+            string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            var client = new PlutoWalletSubstrateClient(
+                        endpoint,
+                        new Uri(bestWebSecket),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            Clients[endpointKey].SetResult(client);
+
+            await client.ConnectAndLoadMetadataAsync();
+        }
+
+        public static async Task RemoveAndDisconnectSubstrateClientAsync(EndpointEnum endpointKey)
+        {
+            if (!Clients.ContainsKey(endpointKey))
+            {
+                return;
+            }
+
+            (await Clients[endpointKey].Task).Disconnect();
+
+            Clients.Remove(endpointKey);
         }
 
         /**
@@ -40,8 +81,9 @@ namespace PlutoWallet.Model
          * This method is called in MultiNetworkSelectView.xaml.cs (even during the initialization),
          * so you do not have to worry about not having a chain set up.
          */
-        public static async Task ChangeChainGroupAsync(EndpointEnum[] endpointKeys)
+        public static async Task ChangeChainGroupAsync(IEnumerable<EndpointEnum> endpointKeys)
         {
+            #region Check for updates
             var updateViewModel = DependencyService.Get<UpdateViewModel>();
 
             try
@@ -52,63 +94,29 @@ namespace PlutoWallet.Model
             {
                 // Do nothing.
             }
-
-            GroupEndpointKeys = endpointKeys;
-
-            List<PlutoWalletSubstrateClient> groupClientList = new List<PlutoWalletSubstrateClient>(endpointKeys.Length);
-
-            List<Endpoint> groupEndpointsList = new List<Endpoint>(endpointKeys.Length);
+            #endregion
 
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
-            for (int i = 0; i < endpointKeys.Length; i++)
+            #region Remove clients that are not used anymore
+            // Remove keys that are not present anymore
+            foreach (var key in Clients.Keys)
             {
-                multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Loading;
-            }
-
-            multiNetworkSelectViewModel.UpdateNetworkInfos();
-
-
-            for (int i = 0; i < endpointKeys.Length; i++)
-            {
-                Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKeys[i]);
-
-                groupEndpointsList.Add(endpoint);
-
-                try
+                if (!endpointKeys.Contains(key))
                 {
-                    string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
-
-                    var client = new PlutoWalletSubstrateClient(
-                            endpoint,
-                            new Uri(bestWebSecket),
-                            Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-                    await client.ConnectAndLoadMetadataAsync();
-
-                    multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Connected;
-
-                    multiNetworkSelectViewModel.UpdateNetworkInfos();
-
-                    groupClientList.Add(client);
-                }
-                catch
-                {
-                    multiNetworkSelectViewModel.NetworkInfos[i].EndpointConnectionStatus = EndpointConnectionStatus.Failed;
-
-                    multiNetworkSelectViewModel.UpdateNetworkInfos();
-
-                    groupClientList.Add(null);
+                    await RemoveAndDisconnectSubstrateClientAsync(key);
                 }
             }
+            #endregion
 
-            GroupClients = groupClientList.ToArray();
-            GroupEndpoints = groupEndpointsList.ToArray();
+            #region Connect clients (one by one)
+            foreach (var endpointKey in endpointKeys)
+            {
+                await ConnectNewSubstrateClientAsync(endpointKey);
+                Console.WriteLine("Connected to " + endpointKey.ToString());
+            }
+            #endregion
 
-            // Set the first endpoint of the group to be the "main" client
-            Client = GroupClients[0];
-            SelectedEndpoint = GroupEndpoints[0];
-            
             try
             {
                 await ConnectClientAsync();
@@ -136,7 +144,6 @@ namespace PlutoWallet.Model
 
                 messagePopup.IsVisible = true;
             }
-
         }
 
         /**
@@ -144,52 +151,12 @@ namespace PlutoWallet.Model
          */
         public static async Task ChangeChainAsync(EndpointEnum endpointKey)
         {
-            int index = Array.IndexOf(GroupEndpointKeys, endpointKey);
-            SelectedEndpoint = GroupEndpoints[index];
-
-            // Set the selected endpoint of the group to be the "main" client
-            Client = GroupClients[index];
-
-            await ConnectClientAsync();
-        }
-
-        /**
-         * A Method that assures that when a chain is changed, all views associated also update.
-         */
-        public static async Task ChangeChainAsync(Endpoint endpoint)
-        {
-            int index = Array.IndexOf(GroupEndpoints, endpoint);
-            SelectedEndpoint = GroupEndpoints[index];
-
-            // Set the selected endpoint of the group to be the "main" client
-            Client = GroupClients[index];
-
             await ConnectClientAsync();
         }
 
         private static async Task ConnectGroupAsync()
         {
-            // Wait up to 10 seconds for all clients to connect. 
-            /*for (int i = 0; i < 20; i++)
-            {
-                await Task.Delay(500);
-
-                bool allConnected = true;
-
-                foreach (var client in GroupClients)
-                {
-                    if (!client.IsConnected)
-                    {
-                        allConnected = false;
-                        break;
-                    }
-                }
-
-                if (allConnected) break;
-            }*/
-
-            // Setup things, like balances..
-
+            #region Balance view
             var usdBalanceViewModel = DependencyService.Get<UsdBalanceViewModel>();
 
             try
@@ -198,180 +165,103 @@ namespace PlutoWallet.Model
 
                 usdBalanceViewModel.ReloadIsVisible = false;
 
-                await Model.AssetsModel.GetBalance(Model.AjunaClientModel.GroupClients, Model.AjunaClientModel.GroupEndpoints, KeysModel.GetSubstrateKey());
+                foreach (var client in Clients.Values)
+                {
+                    await Model.AssetsModel.GetBalanceAsync(await client.Task, KeysModel.GetSubstrateKey());
+
+                    usdBalanceViewModel.UpdateBalances();
+                }
+
+                usdBalanceViewModel.ReloadIsVisible = true;
+
             }
             catch (Exception ex)
             {
-                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-                messagePopup.Title = "Loading Assets Error";
-                messagePopup.Text = ex.Message;
                 Console.WriteLine("Assets error");
                 Console.WriteLine(ex);
 
-
-                messagePopup.IsVisible = true;
-
                 usdBalanceViewModel.UsdSum = "Failed";
-
-                return;
             }
+            #endregion
+
+            #region Hydration
+            if (!Clients.ContainsKey(EndpointEnum.Hydration))
+            {
+                await GetOrAddSubstrateClientAsync(EndpointEnum.Hydration);
+            }
+
+
+            await Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)(await Clients[EndpointEnum.Hydration].Task).SubstrateClient, CancellationToken.None);
+            Model.AssetsModel.GetUsdBalance();
 
             usdBalanceViewModel.UpdateBalances();
 
-            bool hydraClientNotFound = true;
+            // Other hydration stuff :)
+            var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
 
-            for (int i = 0; i < GroupEndpoints.Length; i++)
+            await omnipoolLiquidityViewModel.GetLiquidityAmount((Hydration.NetApi.Generated.SubstrateClientExt)(await Clients[EndpointEnum.Hydration].Task).SubstrateClient);
+
+            var dcaViewModel = DependencyService.Get<DCAViewModel>();
+
+            await dcaViewModel.GetDCAPosition((Hydration.NetApi.Generated.SubstrateClientExt)(await Clients[EndpointEnum.Hydration].Task).SubstrateClient);
+            #endregion
+
+            if (Clients.ContainsKey(EndpointEnum.AzeroTestnet))
             {
-                if (GroupEndpoints[i].Key == EndpointEnum.Hydration)
-                {
-                    await Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient, CancellationToken.None);
-                    Model.AssetsModel.GetUsdBalance();
+                var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
 
-                    usdBalanceViewModel.UpdateBalances();
-
-                    hydraClientNotFound = false;
-
-                    // Other hydration stuff :)
-                    var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();
-
-                    await omnipoolLiquidityViewModel.GetLiquidityAmount((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
-
-                    var dcaViewModel = DependencyService.Get<DCAViewModel>();
-
-                    await dcaViewModel.GetDCAPosition((Hydration.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
-                }
+                await azeroPrimaryNameViewModel.GetPrimaryName(await Clients[EndpointEnum.AzeroTestnet].Task);
             }
 
-            if (hydraClientNotFound)
+            if (Clients.ContainsKey(EndpointEnum.Bifrost))
             {
-                try
-                {
-                    Endpoint hdxEndpoint = Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
-                    string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(hdxEndpoint.URLs);
+                var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
 
-                    var client = new PlutoWalletSubstrateClient(
-                                hdxEndpoint,
-                                new Uri(bestWebSecket),
-                                Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-                    await client.ConnectAndLoadMetadataAsync();
-
-                    await Model.HydraDX.Sdk.GetAssets((Hydration.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, CancellationToken.None);
-                    Model.AssetsModel.GetUsdBalance();
-                }
-                catch
-                {
-
-                }
+                await vDotTokenViewModel.GetConversionRate((Bifrost.NetApi.Generated.SubstrateClientExt)(await Clients[EndpointEnum.Bifrost].Task).SubstrateClient, CancellationToken.None);
             }
 
-            for (int i = 0; i < GroupEndpoints.Length; i++)
+            if (Clients.ContainsKey(EndpointEnum.PolkadotPeople))
             {
-                if (GroupEndpoints[i].Key == EndpointEnum.AzeroTestnet)
-                {
-                    var azeroPrimaryNameViewModel = DependencyService.Get<AzeroPrimaryNameViewModel>();
+                var identityViewModel = DependencyService.Get<IdentityViewModel>();
 
-                    await azeroPrimaryNameViewModel.GetPrimaryName(GroupClients[i]);
-                }
-
-                if (GroupEndpoints[i].Key == EndpointEnum.Bifrost)
-                {
-                    var vDotTokenViewModel = DependencyService.Get<VDotTokenViewModel>();
-
-                    await vDotTokenViewModel.GetConversionRate((Bifrost.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient, CancellationToken.None);
-                }
-
-                if (GroupEndpoints[i].Key == EndpointEnum.Polkadot)
-                {
-                    var identityViewModel = DependencyService.Get<IdentityViewModel>();
-
-                    await identityViewModel.GetIdentity((Polkadot.NetApi.Generated.SubstrateClientExt)GroupClients[i].SubstrateClient);
-
-                }
+                await identityViewModel.GetIdentity((PolkadotPeople.NetApi.Generated.SubstrateClientExt)(await Clients[EndpointEnum.PolkadotPeople].Task).SubstrateClient);
             }
         }
 
         private static async Task ConnectClientAsync()
         {
+            var mainClient = await GetMainClientAsync();
+
             // Setup the AssetSelectButton
             // Do not change it, if the TransferView is visible
             if (!DependencyService.Get<TransferViewModel>().IsVisible)
             {
+                var selectedEndpoint = mainClient.Endpoint;
+
                 var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
-                assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? SelectedEndpoint.Icon : SelectedEndpoint.DarkIcon;
-                assetSelectButtonViewModel.Symbol = SelectedEndpoint.Unit;
+                assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? selectedEndpoint.Icon : selectedEndpoint.DarkIcon;
+                assetSelectButtonViewModel.Symbol = selectedEndpoint.Unit;
                 assetSelectButtonViewModel.AssetId = 0;
                 assetSelectButtonViewModel.Pallet = AssetPallet.Native;
-                assetSelectButtonViewModel.Endpoint = SelectedEndpoint;
-                assetSelectButtonViewModel.Decimals = SelectedEndpoint.Decimals;
+                assetSelectButtonViewModel.Endpoint = selectedEndpoint;
+                assetSelectButtonViewModel.Decimals = selectedEndpoint.Decimals;
             }
 
-            // Wait up to 10 seconds for the Client to connect. 
-            /*for (int i = 0; i < 20; i++)
+            if (!await mainClient.IsConnectedAsync())
             {
-                await Task.Delay(500);
-
-                if (Client.IsConnected) break;
-            }
-
-            if (!Client.IsConnected)
-            {
-                // show unable to connect error message
-                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-                messagePopup.Title = "Failed to connect";
-                messagePopup.Text = "Failed to establish connection to the selected endpoint. " +
-                    "Check your internet connection or try a different endpoint.";
-
-                messagePopup.IsVisible = true;
-
                 return;
-            }*/
+            }
 
-            // task completed within timeout
-
-            // Setup things, like balances..
-            //var customCallsViewModel = DependencyService.Get<CustomCallsViewModel>();
-            var mainViewModel = DependencyService.Get<MainViewModel>();
-            var transferViewModel = DependencyService.Get<TransferViewModel>();
             var chainAddressViewModel = DependencyService.Get<ChainAddressViewModel>();
             var calamarViewModel = DependencyService.Get<CalamarViewModel>();
 
             var referendaViewModel = DependencyService.Get<ReferendaViewModel>();
 
-            chainAddressViewModel.SetChainAddress();
-            calamarViewModel.Reload();
+            chainAddressViewModel.SetChainAddress(mainClient);
+            calamarViewModel.Reload(mainClient.Endpoint);
 
-            await referendaViewModel.GetReferenda();
-            //customCallsViewModel.GetMetadata();
-
-            if (Client is null)
-            {
-                return;
-            }
-
-            // Wait up to 10 seconds for the Client to fetch metadata 
-            for (int i = 0; i < 20; i++)
-            {
-                await Task.Delay(500);
-
-                if (Client.SubstrateClient.MetaData != null) break;
-            }
-
-            if (Client.SubstrateClient.MetaData == null)
-            {
-                // show unable to connect error message
-                var messagePopup = DependencyService.Get<MessagePopupViewModel>();
-
-                messagePopup.Title = "Failed to connect";
-                messagePopup.Text = "Failed to fetch metadata";
-
-                messagePopup.IsVisible = true;
-
-                return;
-            }
+            await referendaViewModel.GetReferenda(CancellationToken.None);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Numerics;
 using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
@@ -9,191 +10,192 @@ using Bifrost.NetApi.Generated.Model.orml_tokens;
 using Substrate.NetApi.Model.Types.Primitive;
 using Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet;
 
+using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+
 namespace PlutoWallet.Model
 {
     public class AssetsModel
     {
         private static bool doNotReload = false;
 
-        public static List<Asset> Assets = new List<Asset>();
-
         public static double UsdSum = 0.0;
 
-        public static List<Asset> GetAssetsWithSymbol(string symbol)
+        public static Dictionary<AssetKey, Asset> AssetsDict = new System.Collections.Generic.Dictionary<AssetKey, Asset>();
+
+        public static IEnumerable<Asset> GetAssetsWithSymbol(string symbol)
         {
-            return Assets.FindAll((asset) => asset.Symbol.Equals(symbol));
+            return AssetsDict.Values
+                     .Where(asset => asset.Symbol.Equals(symbol, StringComparison.Ordinal));
         }
 
-        public static async Task GetBalance(SubstrateClientExt[] groupClients, Endpoint[] groupEndpoints, string substrateAddress, CancellationToken token = default)
+        public static async Task GetBalanceAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token = default)
         {
             if (doNotReload)
             {
                 return;
             }
 
-            var tempAssets = new List<Asset>();
-
             double usdSumValue = 0;
 
-            for (int i = 0; i < groupClients.Length; i++)
+            var endpoint = client.Endpoint;
+
+            if (endpoint.ChainType != PlutoWallet.Constants.ChainType.Substrate)
             {
-                if (groupClients[i] is null)
+                /*tempAssets.Add(new Asset
                 {
-                    continue;
-                }
+                    Amount = "Unsupported",
+                    //Symbol = endpoint.Unit, // I think it looks better without it
+                    //ChainIcon = endpoint.Icon,
+                    //DarkChainIcon = endpoint.DarkIcon,
+                    Endpoint = endpoint,
+                    UsdValue = String.Format("{0:0.00}", 0) + " USD",
+                });*/
 
-                SubstrateClientExt client = groupClients[i];
-                var endpoint = groupEndpoints[i];
+                return;
+            }
 
-                if (endpoint.ChainType != PlutoWallet.Constants.ChainType.Substrate)
+            if (!await client.IsConnectedAsync())
+            {
+                return;
+            }
+
+            double amount = 0;
+
+            try
+            {
+                var accountInfo = await GetNativeBalance(client.SubstrateClient, substrateAddress, token);
+
+                amount = (double)accountInfo.Data.Free.Value / Math.Pow(10, endpoint.Decimals);
+            }
+            catch
+            {
+                // this usually means that nothing is saved for this account
+            }
+
+            // Calculate a real USD value
+            {
+                double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(endpoint.Unit);
+
+                AssetsDict[(endpoint.Key, AssetPallet.Native, 0)] = new Asset
                 {
-                    /*tempAssets.Add(new Asset
+                    Amount = amount,
+                    Symbol = endpoint.Unit,
+                    ChainIcon = endpoint.Icon,
+                    DarkChainIcon = endpoint.DarkIcon,
+                    Endpoint = endpoint,
+                    Pallet = AssetPallet.Native,
+                    AssetId = 0,
+                    UsdValue = amount * spotPrice,
+                    Decimals = endpoint.Decimals,
+                };
+            }
+
+            try
+            {
+                foreach ((BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount) asset in await GetPolkadotAssetHubAssetsAsync(client.SubstrateClient, substrateAddress, 1000, CancellationToken.None))
+                {
+                    var symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value);
+                    double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(symbol);
+
+                    double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
+
+                    AssetsDict[(endpoint.Key, AssetPallet.Native, asset.Item1)] = new Asset
                     {
-                        Amount = "Unsupported",
-                        //Symbol = endpoint.Unit, // I think it looks better without it
-                        //ChainIcon = endpoint.Icon,
-                        //DarkChainIcon = endpoint.DarkIcon,
-                        Endpoint = endpoint,
-                        UsdValue = String.Format("{0:0.00}", 0) + " USD",
-                    });*/
-
-                    continue;
-                }
-
-                double amount = 0;
-
-                try
-                {
-                    var accountInfo = await GetNativeBalance(client.SubstrateClient, substrateAddress, token);
-
-                    amount = (double)accountInfo.Data.Free.Value / Math.Pow(10, endpoint.Decimals);
-                }
-                catch
-                {
-                    // this usually means that nothing is saved for this account
-                }
-
-                // Calculate a real USD value
-                {
-                    double usdRatio = 0;
-
-                    double usdValue = amount * usdRatio;
-
-                    usdSumValue += usdValue;
-
-                    tempAssets.Add(new Asset
-                    {
-                        Amount = amount,
-                        Symbol = endpoint.Unit,
+                        Amount = assetBalance,
+                        Symbol = symbol,
                         ChainIcon = endpoint.Icon,
                         DarkChainIcon = endpoint.DarkIcon,
                         Endpoint = endpoint,
-                        Pallet = AssetPallet.Native,
-                        AssetId = 0,
-                        UsdValue = usdValue,
-                        Decimals = endpoint.Decimals,
-                    });
+                        Pallet = AssetPallet.Assets,
+                        AssetId = asset.Item1,
+                        UsdValue = assetBalance * spotPrice,
+                        Decimals = asset.Item3.Decimals.Value,
+                    };
                 }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
-                try
+            try
+            {
+                if (endpoint.Key != EndpointEnum.Bifrost)
                 {
-                    foreach ((BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount) asset in await GetPolkadotAssetHubAssetsAsync(client.SubstrateClient, substrateAddress, 1000, CancellationToken.None))
+                    foreach (HydrationTokenData tokenData in await GetHydrationTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
                     {
-                        double usdRatio = 0;
+                        var symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value);
+                        double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(symbol);
 
-                        double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
+                        double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
 
-                        tempAssets.Add(new Asset
+                        AssetsDict[(endpoint.Key, AssetPallet.Native, tokenData.AssetId)] = new Asset
                         {
                             Amount = assetBalance,
-                            Symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value),
+                            Symbol = symbol,
                             ChainIcon = endpoint.Icon,
                             DarkChainIcon = endpoint.DarkIcon,
                             Endpoint = endpoint,
-                            Pallet = AssetPallet.Assets,
-                            AssetId = asset.Item1,
-                            UsdValue = assetBalance * usdRatio,
-                            Decimals = asset.Item3.Decimals.Value,
-                        });
+                            Pallet = AssetPallet.Tokens,
+                            AssetId = tokenData.AssetId,
+                            UsdValue = assetBalance * spotPrice,
+                            Decimals = tokenData.AssetMetadata.Decimals.Value,
+                        };
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex);
-                }
-
-                try
-                {
-                    if (endpoint.Key != EndpointEnum.Bifrost)
+                    foreach (BifrostTokenData tokenData in await GetBifrostTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
                     {
-                        foreach (HydrationTokenData tokenData in await GetHydrationTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
+                        var symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value);
+                        double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(symbol);
+
+                        double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
+
+                        AssetsDict[(endpoint.Key, AssetPallet.Native, tokenData.AssetId)] = new Asset
                         {
-                            double usdRatio = 0;
-
-                            double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
-
-                            tempAssets.Add(new Asset
-                            {
-                                Amount = assetBalance,
-                                Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value),
-                                ChainIcon = endpoint.Icon,
-                                DarkChainIcon = endpoint.DarkIcon,
-                                Endpoint = endpoint,
-                                Pallet = AssetPallet.Tokens,
-                                AssetId = tokenData.AssetId,
-                                UsdValue = assetBalance * usdRatio,
-                                Decimals = tokenData.AssetMetadata.Decimals.Value,
-                            });
-                        }
+                            Amount = assetBalance,
+                            Symbol = symbol,
+                            ChainIcon = endpoint.Icon,
+                            DarkChainIcon = endpoint.DarkIcon,
+                            Endpoint = endpoint,
+                            Pallet = AssetPallet.Tokens,
+                            AssetId = tokenData.AssetId,
+                            UsdValue = assetBalance * spotPrice,
+                            Decimals = tokenData.AssetMetadata.Decimals.Value,
+                        };
                     }
-                    else
-                    {
-                        foreach (BifrostTokenData tokenData in await GetBifrostTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
-                        {
-                            double usdRatio = 0;
-
-                            double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
-
-                            tempAssets.Add(new Asset
-                            {
-                                Amount = assetBalance,
-                                Symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value),
-                                ChainIcon = endpoint.Icon,
-                                DarkChainIcon = endpoint.DarkIcon,
-                                Endpoint = endpoint,
-                                Pallet = AssetPallet.Tokens,
-                                AssetId = tokenData.AssetId,
-                                UsdValue = assetBalance * usdRatio,
-                                Decimals = tokenData.AssetMetadata.Decimals.Value,
-                            });
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
                 }
             }
-
-            UsdSum = usdSumValue;
-
-            Assets = tempAssets;
-
-            if (Model.HydraDX.Sdk.Assets.Any())
+            catch (Exception ex)
             {
-                GetUsdBalance();
+                Console.WriteLine(ex);
             }
+
+            CalculateTotalUsdBalance();
         }
 
         public static void GetUsdBalance()
         {
             double usdSumValue = 0.0;
 
-            for (int i = 0; i < Assets.Count(); i++)
+            foreach (var asset in AssetsDict.Values)
             {
-                double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(Assets[i].Symbol);
-                Assets[i].UsdValue = Assets[i].Amount * spotPrice;
-                usdSumValue += Assets[i].UsdValue;
+                double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(asset.Symbol);
+                asset.UsdValue = asset.Amount * spotPrice;
+                usdSumValue += asset.UsdValue;
+            }
+
+            UsdSum = usdSumValue;
+        }
+
+        public static void CalculateTotalUsdBalance()
+        {
+            double usdSumValue = 0.0;
+
+            foreach (var asset in AssetsDict.Values)
+            {
+                usdSumValue += asset.UsdValue;
             }
 
             UsdSum = usdSumValue;
@@ -401,7 +403,8 @@ namespace PlutoWallet.Model
                     var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
                     storageTokensChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
 
-                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => {
+                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p =>
+                    {
 
                         U32 tokenId = HashModel.GetU32FromTwox_64Concat(p.ToString().Substring(prefixLength));
 
@@ -512,7 +515,8 @@ namespace PlutoWallet.Model
         }
     }
 
-    public class TokenData {
+    public class TokenData
+    {
         public BigInteger AssetId { get; set; }
         public Hydration.NetApi.Generated.Model.orml_tokens.AccountData AccountData { get; set; }
         public Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata AssetMetadata { get; set; }

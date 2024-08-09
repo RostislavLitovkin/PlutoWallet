@@ -13,10 +13,10 @@ namespace PlutoWallet.Model
         /**
          * Gets you a string version of transfer fee for the currently selected chain
          */
-        public static async Task<string> GetNativeTransferFeeStringAsync(SubstrateClientExt client, Endpoint endpoint)
+        public static async Task<string> GetNativeTransferFeeStringAsync(SubstrateClientExt client)
         {
             BigInteger fee = await GetNativeTransferFeeAsync(client);
-            return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
+            return (double)fee / Math.Pow(10, client.Endpoint.Decimals) + " " + client.Endpoint.Unit;
         }
 
         /**
@@ -32,10 +32,10 @@ namespace PlutoWallet.Model
         /**
          * Gets you a string version of transfer fee for the currently selected chain
          */
-        public static async Task<string> GetAssetsTransferFeeStringAsync(SubstrateClientExt client, Endpoint endpoint)
+        public static async Task<string> GetAssetsTransferFeeStringAsync(SubstrateClientExt client)
         {
             BigInteger fee = await GetAssetsTransferFeeAsync(client);
-            return (double)fee / Math.Pow(10, endpoint.Decimals) + " " + endpoint.Unit;
+            return (double)fee / Math.Pow(10, client.Endpoint.Decimals) + " " + client.Endpoint.Unit;
         }
 
         /**

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+   <PropertyGroup>
+      <OutputType>Exe</OutputType>
+      <TargetFramework>net6.0</TargetFramework>
+      
+      <OpenApiGenerateDocumentsOnBuild>False</OpenApiGenerateDocumentsOnBuild>      
+
+      <!-- 
+         .NET 6 removed runtime configuration. 
+         This is required for resolving assemblies (having local NuGet feeds) when reflection hits this service. 
+      -->
+      <GenerateRuntimeConfigDevFile>true</GenerateRuntimeConfigDevFile>
+
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
+      <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.2" />
+      <PackageReference Include="Substrate.AspNetCore" Version="0.6.5" />
+      <PackageReference Include="Substrate.ServiceLayer" Version="0.6.5" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\Polkadot.NetApi\Polkadot.NetApi.csproj" />
+   </ItemGroup>
+
+</Project>

@@ -34,8 +34,15 @@ namespace PlutoWallet.Components.AssetSelect
 
             List<AssetSelect> tempAssets = new List<AssetSelect>();
 
-			foreach(Asset a in Model.AssetsModel.Assets)
+			foreach(var valuePair in Model.AssetsModel.AssetsDict)
 			{
+				if (!AjunaClientModel.Clients.ContainsKey(valuePair.Key.Item1))
+				{
+					continue;
+				}
+
+				var a = valuePair.Value;
+
 				bool isSelected = (
 					assetSelectButtonViewModel.AssetId == a.AssetId &&
                     assetSelectButtonViewModel.Pallet == a.Pallet &&

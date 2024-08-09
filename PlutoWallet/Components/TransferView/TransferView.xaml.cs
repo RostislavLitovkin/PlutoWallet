@@ -28,7 +28,7 @@ public partial class TransferView : ContentView
         
         errorLabel.Text = "";
 
-        var clientExt = Model.AjunaClientModel.Client;
+        var clientExt = await Model.AjunaClientModel.GetMainClientAsync();
 
         var client = clientExt.SubstrateClient;
 

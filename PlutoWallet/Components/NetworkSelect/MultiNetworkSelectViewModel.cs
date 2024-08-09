@@ -1,20 +1,19 @@
 ﻿using PlutoWallet.Constants;
-using PlutoWallet.ViewModel;
-using System;
 using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using PlutoWallet.Components.Balance;
 using System.Collections.ObjectModel;
 using PlutoWallet.Model;
+using Substrate.NET.Wallet.Derivation;
 
 namespace PlutoWallet.Components.NetworkSelect
 {
     public partial class MultiNetworkSelectViewModel : ObservableObject
-	{
+    {
         [ObservableProperty]
         private ObservableCollection<NetworkSelectInfo> networkInfos = new ObservableCollection<NetworkSelectInfo>();
+
+        public Dictionary<EndpointEnum, NetworkSelectInfo> NetworkInfoDict = new Dictionary<EndpointEnum, NetworkSelectInfo>();
+
+        public EndpointEnum? SelectedKey { get; set; }
 
         [ObservableProperty]
         private bool clicked;
@@ -31,15 +30,19 @@ namespace PlutoWallet.Components.NetworkSelect
         {
             var selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys().ToArray();
 
-            var networkInfosList = new List<NetworkSelectInfo>();
-
-            for(int i = 0; i < selectedEndpointKeys.Length; i++)
+            foreach (var key in selectedEndpointKeys)
             {
-                Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
-                networkInfosList.Add(new NetworkSelectInfo
+                if (NetworkInfoDict.ContainsKey(key))
                 {
-                    EndpointKey = selectedEndpointKeys[i],
-                    ShowName = i == 0, // true for the first endpoint, otherwise hidden
+                    continue;
+                }
+
+                Endpoint endpoint = EndpointsModel.GetEndpoint(key);
+                NetworkInfoDict.Add(key, new NetworkSelectInfo
+                {
+                    EndpointKey = key,
+                    ShowName = false,
+                    IsSelected = false,
                     Name = endpoint.Name,
                     Icon = endpoint.Icon,
                     DarkIcon = endpoint.DarkIcon,
@@ -47,43 +50,59 @@ namespace PlutoWallet.Components.NetworkSelect
                 });
             }
 
-            NetworkInfos = new ObservableCollection<NetworkSelectInfo>(networkInfosList);
+            // Set the first endpoint of the group to be the "main" client
+            if (!(SelectedKey.HasValue && NetworkInfoDict.ContainsKey(SelectedKey.Value)))
+            {
+                SelectFirst();
+            }
+            
+            UpdateNetworkInfos();
 
             // Update other views
             Task changeChain = Model.AjunaClientModel.ChangeChainGroupAsync(selectedEndpointKeys);
         }
 
-        public void Select(Endpoint selectedEndpoint)
+        public EndpointEnum SelectFirst()
         {
-            var selectedEndpointKeys = EndpointsModel.GetSelectedEndpointKeys().ToArray();
+            var firstNetwork = NetworkInfoDict.First();
 
-            for (int i = 0; i < selectedEndpointKeys.Length; i++)
-            {
-                Endpoint endpoint = EndpointsModel.GetEndpoint(selectedEndpointKeys[i]);
-                NetworkInfos[i].ShowName = endpoint.Name == selectedEndpoint.Name;
-            }
+            firstNetwork.Value.IsSelected = true;
+            firstNetwork.Value.ShowName = true;
+
+            SelectedKey = firstNetwork.Key;
+
+            return firstNetwork.Key;
+        }
+
+        public void Select(EndpointEnum selectedEndpointKey)
+        {
+            NetworkInfoDict[SelectedKey.Value].ShowName = false;
+            NetworkInfoDict[SelectedKey.Value].IsSelected = false;
+
+            SelectedKey = selectedEndpointKey;
+
+            NetworkInfoDict[selectedEndpointKey].ShowName = true;
+            NetworkInfoDict[selectedEndpointKey].IsSelected = true;
 
             UpdateNetworkInfos();
 
-
-            Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpoint);
+            Task change = Model.AjunaClientModel.ChangeChainAsync(selectedEndpointKey);
         }
 
         public void UpdateNetworkInfos()
         {
-            var tempOldValues = NetworkInfos;
             var networkInfos = new ObservableCollection<NetworkSelectInfo>();
-            for (int i = 0; i < tempOldValues.Count; i++)
+            foreach (var info in NetworkInfoDict.Values)
             {
                 networkInfos.Add(new NetworkSelectInfo
                 {
-                    ShowName = tempOldValues[i].ShowName,
-                    Name = tempOldValues[i].Name,
-                    Icon = tempOldValues[i].Icon,
-                    EndpointKey = tempOldValues[i].EndpointKey,
-                    DarkIcon = tempOldValues[i].DarkIcon,
-                    EndpointConnectionStatus = tempOldValues[i].EndpointConnectionStatus,
-                    IsSelected = tempOldValues[i].IsSelected,
+                    ShowName = info.ShowName,
+                    Name = info.Name,
+                    Icon = info.Icon,
+                    EndpointKey = info.EndpointKey,
+                    DarkIcon = info.DarkIcon,
+                    EndpointConnectionStatus = info.EndpointConnectionStatus,
+                    IsSelected = info.IsSelected,
                 });
             }
 

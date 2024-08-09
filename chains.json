@@ -9,6 +9,10 @@
       "websocket": "wss://polkadot-asset-hub-rpc.polkadot.io"
     },
     {
+      "name": "PolkadotPeople",
+      "websocket": "wss://polkadot-people-rpc.polkadot.io"
+    },
+    {
       "name": "Bifrost",
       "websocket": "wss://bifrost-polkadot.api.onfinality.io/public-ws"
     },

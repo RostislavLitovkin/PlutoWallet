@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using System.Net.Http;
+﻿using System.Diagnostics;
 using System.Net.WebSockets;
 
 namespace PlutoWallet.Model
@@ -22,12 +20,12 @@ namespace PlutoWallet.Model
                 {
                     fastestTime = connectionTime.Value;
                     fastestUrl = url;
-                }
 
-                // <500 ms is fast enough
-                if (connectionTime.Value.TotalMilliseconds < 500)
-                {
-                    return url;
+                    // <500 ms is fast enough
+                    if (connectionTime.Value.TotalMilliseconds < 500)
+                    {
+                        return url;
+                    }
                 }
             }
 

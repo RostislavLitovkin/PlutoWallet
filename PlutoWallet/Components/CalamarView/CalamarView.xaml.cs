@@ -12,7 +12,7 @@ public partial class CalamarView : ContentView
     void OnReloadClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var viewModel = DependencyService.Get<CalamarViewModel>();
-        viewModel.Reload();
+        viewModel.WebAddress = viewModel.WebAddress;
     }
 
     async void OnOpenClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

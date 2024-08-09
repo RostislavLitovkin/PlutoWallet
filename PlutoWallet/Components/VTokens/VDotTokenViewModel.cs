@@ -33,7 +33,7 @@ namespace PlutoWallet.Components.VTokens
 
             From = "";
 
-            List<Asset> vdots = Model.AssetsModel.GetAssetsWithSymbol("vDOT");
+            var vdots = Model.AssetsModel.GetAssetsWithSymbol("vDOT").ToList();
 
             if (!vdots.Any())
             {

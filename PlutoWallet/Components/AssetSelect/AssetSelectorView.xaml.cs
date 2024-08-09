@@ -170,7 +170,7 @@ public partial class AssetSelectorView : ContentView
             {
                 // Change the network if not selected
                 // This line also updates the fee
-                networkingViewModel.Select(Endpoint);
+                networkingViewModel.Select(Endpoint.Key);
             }
         }
 

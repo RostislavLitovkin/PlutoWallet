@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Model;
+using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.SubSquare;
 
 namespace PlutoWallet.Components.Referenda
@@ -19,19 +20,16 @@ namespace PlutoWallet.Components.Referenda
 			loading = "Loading";
 		}
 
-		public async Task GetReferenda()
+		public async Task GetReferenda(CancellationToken token)
 		{
-			if (AjunaClientModel.Client is null)
-			{
-				Loading = "Failed";
-
-				return;
-			}
-
 			Loading = "Loading";
 
-			var referenda = await Model.SubSquare.ReferendumModel.GetReferenda(AjunaClientModel.GroupClients, KeysModel.GetSubstrateKey());
-			if (referenda.Count() == 0)
+			foreach (var client in AjunaClientModel.Clients.Values)
+            {
+                await Model.SubSquare.ReferendumModel.GetReferendaAsync(await client.Task, KeysModel.GetSubstrateKey(), token);
+            }
+
+            if (Model.SubSquare.ReferendumModel.Referenda.Count() == 0)
 			{
 				Loading = "None";
 				return;
@@ -39,7 +37,7 @@ namespace PlutoWallet.Components.Referenda
 
 			Loading = "";
 
-            Referenda = new ObservableCollection<ReferendumInfo>(referenda);
+            Referenda = new ObservableCollection<ReferendumInfo>(ReferendumModel.Referenda.Values);
 
 
 		}

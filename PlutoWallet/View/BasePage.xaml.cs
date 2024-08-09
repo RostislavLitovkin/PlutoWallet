@@ -83,7 +83,7 @@ public partial class BasePage : ContentPage
                 {
                     var vaultSign = DependencyService.Get<VaultSignViewModel>();
 
-                    vaultSign.SignExtrinsic("0x" + Utils.Bytes2HexString(e.Results[0].Raw).Substring(Utils.Bytes2HexString(e.Results[0].Raw).IndexOf("530102") + 6));
+                    await vaultSign.SignExtrinsicAsync("0x" + Utils.Bytes2HexString(e.Results[0].Raw).Substring(Utils.Bytes2HexString(e.Results[0].Raw).IndexOf("530102") + 6));
                 }
                 else
                 {

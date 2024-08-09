@@ -23,6 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hydration.NetApi", "Generat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bifrost.NetApi", "Generated\Bifrost\Bifrost.NetApi\Bifrost.NetApi.csproj", "{38220B08-5054-4EAF-BD0D-56B2F00DC86E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolkadotPeople.NetApi", "Generated\PolkadotPeople\PolkadotPeople.NetApi\PolkadotPeople.NetApi.csproj", "{1D073760-F41A-4A88-A818-580DCBC0E8EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{38220B08-5054-4EAF-BD0D-56B2F00DC86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38220B08-5054-4EAF-BD0D-56B2F00DC86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38220B08-5054-4EAF-BD0D-56B2F00DC86E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,6 +84,7 @@ Global
 		{F52FD8F9-16FC-4F7A-9B06-E4080773E2DC} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{3706F026-AFC9-44B0-83F9-2CC1BF8B17D7} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{38220B08-5054-4EAF-BD0D-56B2F00DC86E} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
+		{1D073760-F41A-4A88-A818-580DCBC0E8EC} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

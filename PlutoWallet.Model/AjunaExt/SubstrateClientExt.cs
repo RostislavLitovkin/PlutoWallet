@@ -15,6 +15,24 @@ namespace PlutoWallet.Model.AjunaExt
         public Metadata CustomMetadata { get; set; }
         public SubstrateClient SubstrateClient { get; set; }
 
+        private TaskCompletionSource<bool> taskCompletionSource = new TaskCompletionSource<bool>();
+        public async Task<bool> IsConnectedAsync()
+        {
+            var timeoutTask = Task.Delay(TimeSpan.FromSeconds(5));
+            var completedTask = await Task.WhenAny(taskCompletionSource.Task, timeoutTask);
+
+            if (completedTask == taskCompletionSource.Task)
+            {
+                // Task completed within timeout.
+                return await taskCompletionSource.Task;
+            }
+            else
+            {
+                // Timeout occurred.
+                return false;
+            }
+        }
+
         public SubstrateClientExt(Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) 
         {
             Endpoint = endpoint;
@@ -22,23 +40,40 @@ namespace PlutoWallet.Model.AjunaExt
             SubstrateClient = GetSubstrateClient(endpoint.Key, fastestWebSocket);
         }
 
-        public async Task ConnectAndLoadMetadataAsync()
+        /// <summary>
+        /// Appart from connecting to the endpoint, this method also loads the metadata
+        /// </summary>
+        /// <returns>True if connected successfully, False otherwise</returns>
+        public virtual async Task<bool> ConnectAndLoadMetadataAsync()
         {
-            await SubstrateClient.ConnectAsync();
-
-            CustomMetadata = JsonConvert.DeserializeObject<Metadata>(SubstrateClient.MetaData.Serialize());
-
-            foreach (SignedExtension signedExtension in CustomMetadata.NodeMetadata.Extrinsic.SignedExtensions)
+            try
             {
-                if (signedExtension.SignedIdentifier == "ChargeTransactionPayment")
+                await SubstrateClient.ConnectAsync();
+
+                CustomMetadata = JsonConvert.DeserializeObject<Metadata>(SubstrateClient.MetaData.Serialize());
+
+                foreach (SignedExtension signedExtension in CustomMetadata.NodeMetadata.Extrinsic.SignedExtensions)
                 {
-                    DefaultCharge = ChargeTransactionPayment.Default();
+                    if (signedExtension.SignedIdentifier == "ChargeTransactionPayment")
+                    {
+                        DefaultCharge = ChargeTransactionPayment.Default();
+                    }
+
+                    if (signedExtension.SignedIdentifier == "ChargeAssetTxPayment")
+                    {
+                        DefaultCharge = ChargeAssetTxPayment.Default();
+                    }
                 }
 
-                if (signedExtension.SignedIdentifier == "ChargeAssetTxPayment")
-                {
-                    DefaultCharge = ChargeAssetTxPayment.Default();
-                }
+                taskCompletionSource.SetResult(SubstrateClient.IsConnected);
+
+                return SubstrateClient.IsConnected;
+            }
+            catch
+            {
+                taskCompletionSource.SetResult(false);
+
+                return false;
             }
         }
 
@@ -52,6 +87,7 @@ namespace PlutoWallet.Model.AjunaExt
                 EndpointEnum.Bifrost => new Bifrost.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
                 EndpointEnum.Opal => new Opal.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
                 EndpointEnum.Bajun => new Bajun.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.PolkadotPeople => new PolkadotPeople.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
 
                 _ => new SubstrateClient(websocket, ChargeTransactionPayment.Default()),
             };

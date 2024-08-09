@@ -27,7 +27,14 @@ namespace PlutoWallet.Model
             return keys.Select(str => (EndpointEnum)EndpointEnum.Parse(typeof(EndpointEnum), str));
         }
 
-        public static void SaveEndpoints(List<EndpointEnum> keys)
+        public static void SaveEndpoint(EndpointEnum newKey, bool setupMultiNetworkSelect = true)
+        {
+            var savedKeys = GetSelectedEndpointKeys().Append(newKey);
+
+            SaveEndpoints(savedKeys, setupMultiNetworkSelect);
+        }
+
+        public static void SaveEndpoints(IEnumerable<EndpointEnum> keys, bool setupMultiNetworkSelect = true)
         {
             string result = "[";
             if (keys.Count() == 0)
@@ -62,16 +69,17 @@ namespace PlutoWallet.Model
 
             Console.WriteLine("Other Save Endpoint -> Calling MultiNetworkSelectViewModel.SetupDefault()");
 
-            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+            if (setupMultiNetworkSelect)
+            {
+                var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
-            viewModel.SetupDefault();
+                viewModel.SetupDefault();
+            }
         }
 
-        public static Endpoint GetEndpoint(EndpointEnum key, bool reverse = false)
+        public static Endpoint GetEndpoint(EndpointEnum key)
         {
-            Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
-
-            return endpoint;
+            return Endpoints.GetEndpointDictionary[key];
         }
 
         public static List<Endpoint> GetNftEndpoints

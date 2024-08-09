@@ -43,7 +43,7 @@ public partial class NetworkBubbleView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
 
-            Endpoint endpoint = EndpointsModel.GetEndpoint((EndpointEnum)newValue, true);
+            Endpoint endpoint = EndpointsModel.GetEndpoint((EndpointEnum)newValue);
 
             control.iconImage.SetAppTheme<FileImageSource>(Image.SourceProperty, endpoint.DarkIcon, endpoint.Icon);
         });

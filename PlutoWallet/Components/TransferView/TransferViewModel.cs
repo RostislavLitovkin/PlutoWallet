@@ -28,25 +28,27 @@ namespace PlutoWallet.Components.TransferView
 
 		public async Task GetFeeAsync()
 		{
-			if (AjunaClientModel.Client is null)
+            Fee = "Fee: loading";
+
+            var mainClient = await Model.AjunaClientModel.GetMainClientAsync();
+            if (mainClient is null || !await mainClient.IsConnectedAsync())
 			{
 				Fee = "Fee: Failed.";
 
 				return;
 			}
 
-            Fee = "Fee: loading";
             try
 			{
                 var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
 				if (assetSelectButtonViewModel.Pallet == AssetPallet.Native)
 				{
-					Fee = "Fee: " + await FeeModel.GetNativeTransferFeeStringAsync(AjunaClientModel.Client, AjunaClientModel.SelectedEndpoint);
+					Fee = "Fee: " + await FeeModel.GetNativeTransferFeeStringAsync(mainClient);
 				}
 				else if (assetSelectButtonViewModel.Pallet == AssetPallet.Assets)
 				{
-					Fee = "Fee: " + await FeeModel.GetAssetsTransferFeeStringAsync(AjunaClientModel.Client, AjunaClientModel.SelectedEndpoint);
+					Fee = "Fee: " + await FeeModel.GetAssetsTransferFeeStringAsync(mainClient);
                 }
                 else
 				{

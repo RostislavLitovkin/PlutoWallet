@@ -20,39 +20,18 @@ public partial class MultiNetworkSelectView : ContentView
     {
         try
         {
-            var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
-
             if (((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent.Parent).ShowName)
             {
                 // Probably do nothing
             }
             else
             {
-                var tempOldValues = viewModel.NetworkInfos;
-                var networkInfos = new ObservableCollection<NetworkSelectInfo>();
-                var endpointKeys = new List<EndpointEnum>();
-                for (int i = 0; i < tempOldValues.Count; i++)
-                {
-                    networkInfos.Add(new NetworkSelectInfo {
-                        ShowName = false,
-                        Name = tempOldValues[i].Name,
-                        Icon = tempOldValues[i].Icon,
-                        EndpointKey = tempOldValues[i].EndpointKey,
-                        DarkIcon = tempOldValues[i].DarkIcon,
-                        EndpointConnectionStatus = tempOldValues[i].EndpointConnectionStatus,
-                    });
-                    endpointKeys.Add(networkInfos[i].EndpointKey);
-                }
+                var viewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
                 var senderBubble = ((NetworkBubbleView)((HorizontalStackLayout)sender).Parent.Parent.Parent);
 
-                int thisBubbleIndex = Array.IndexOf(endpointKeys.ToArray(), senderBubble.EndpointKey);
-                networkInfos[thisBubbleIndex].ShowName = true;
-
-                viewModel.NetworkInfos = networkInfos;
-
-                // Update other views
-                Task changeChain = Model.AjunaClientModel.ChangeChainAsync(senderBubble.EndpointKey);
+                Console.WriteLine("Selecting " + senderBubble.EndpointKey);    
+                viewModel.Select(senderBubble.EndpointKey);
             }
         }
         catch (Exception ex)

@@ -195,3 +195,9 @@ sudo apt-get install jq
 ```
 ./generator.sh
 ```
+
+### Single chain generation
+enter the name property, like PolkadotPeople, Hydration...
+```
+./generator.sh PolkadotPeople
+```
