@@ -124,6 +124,8 @@ namespace PlutoWallet.Model
             return (palletName, callName);
         }
 
+        
+
         /// <summary>
         /// Finds and formats a Method in a JSON format according to the Metadata found in the supplied SubstrateClient
         /// </summary>

@@ -41,6 +41,16 @@ namespace PlutoWallet.Model.AjunaExt
         }
 
         /// <summary>
+        /// Used only for Testing
+        /// </summary>
+        public SubstrateClientExt(EndpointEnum mockKey, Endpoint endpoint, Uri fastestWebSocket, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType)
+        {
+            Endpoint = endpoint;
+
+            SubstrateClient = GetSubstrateClient(mockKey, fastestWebSocket);
+        }
+
+        /// <summary>
         /// Appart from connecting to the endpoint, this method also loads the metadata
         /// </summary>
         /// <returns>True if connected successfully, False otherwise</returns>
@@ -69,8 +79,9 @@ namespace PlutoWallet.Model.AjunaExt
 
                 return SubstrateClient.IsConnected;
             }
-            catch
+            catch(Exception e)
             {
+                Console.WriteLine(e);
                 taskCompletionSource.SetResult(false);
 
                 return false;

@@ -455,7 +455,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "(Local) ws://127.0.0.1:8000",
                 Key = EndpointEnum.Local8000,
-                URLs =  new string[1] { "ws://127.0.0.1:8000" },
+                URLs =  new string[1] { "ws://172.26.118.8:8000" },
                 Icon = "substrate.png",
                 DarkIcon = "substrate.png",
                 Unit = "",

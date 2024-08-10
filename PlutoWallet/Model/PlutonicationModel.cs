@@ -138,12 +138,11 @@ namespace PlutoWallet.Model
 
                 try
                 {
-                    var pallet = client.SubstrateClient.MetaData.NodeMetadata.Modules[method.ModuleIndex];
-                    Metadata metadata = JsonConvert.DeserializeObject<Metadata>(client.SubstrateClient.MetaData.Serialize());
+                    (var pallet, var call) = PalletCallModel.GetPalletAndCallName(client, method.ModuleIndex, method.CallIndex);
 
-                    transactionRequest.PalletIndex = pallet.Name;
-                    transactionRequest.CallIndex = metadata.NodeMetadata.Types[pallet.Calls.TypeId.ToString()]
-                        .Variants[method.CallIndex].Name;
+
+                    transactionRequest.PalletIndex = pallet;
+                    transactionRequest.CallIndex = call;
 
                     Task calculateFee = transactionRequest.CalculateFeeAsync(client, method);
                 }

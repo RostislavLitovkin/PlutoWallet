@@ -35,6 +35,11 @@ public partial class TransactionRequestView : ContentView
 
             if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
             {
+                Console.WriteLine(Utils.Bytes2HexString(payload.Encode()));
+                Console.WriteLine(Utils.Bytes2HexString(payload.Call.Encode()));
+                Console.WriteLine(Utils.Bytes2HexString(payload.SignedExtension.Charge.Encode()));
+
+
                 byte[] signature = await account.SignPayloadAsync(payload);
 
                 var signerResult = new SignerResult
