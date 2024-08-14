@@ -63,24 +63,7 @@ public partial class TransferView : ContentView
                 Console.WriteLine(account.Value);
                 Console.WriteLine(account.KeyType);
 
-                UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
-                    transfer,
-                    account,
-                    clientExt.DefaultCharge,
-                    lifeTime: 64,
-                    signed: true,
-                    CancellationToken.None);
-
-                byte[] hash = HashExtension.Blake2(extrinsic.GetPayload(client.RuntimeVersion).Encode(), 256);
-                byte[] sig = account.Sign(hash);
-
-                Console.WriteLine("Signature: " + Utils.Bytes2HexString(sig).ToLower());
-                Console.WriteLine("Signature: " + Utils.Bytes2HexString(hash).ToLower());
-
-                Console.WriteLine(account.Verify(sig, hash));
-
-
-                string extrinsicId = await clientExt.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transfer, account, token: CancellationToken.None);
             }
             else
             {

@@ -10,9 +10,9 @@ namespace PlutoWallet.Components.TransactionRequest;
 
 public partial class TransactionRequestView : ContentView
 {
-	public TransactionRequestView()
-	{
-		InitializeComponent();
+    public TransactionRequestView()
+    {
+        InitializeComponent();
 
         BindingContext = DependencyService.Get<TransactionRequestViewModel>();
     }
@@ -35,12 +35,25 @@ public partial class TransactionRequestView : ContentView
 
             if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
             {
-                Console.WriteLine(Utils.Bytes2HexString(payload.Encode()));
-                Console.WriteLine(Utils.Bytes2HexString(payload.Call.Encode()));
-                Console.WriteLine(Utils.Bytes2HexString(payload.SignedExtension.Charge.Encode()));
+                #region Temp
+                var signedExtensions = payload.SignedExtension;
 
+                var tempPayload = new TempPayload(
+                    payload.Call,
+                    new TempSignedExtensions(
+                        specVersion: signedExtensions.SpecVersion,
+                        txVersion: signedExtensions.TxVersion,
+                        genesis: signedExtensions.Genesis,
+                        startEra: signedExtensions.StartEra,
+                        mortality: signedExtensions.Mortality,
+                        nonce: signedExtensions.Nonce,
+                        charge: signedExtensions.Charge
+                    )
+                );
 
-                byte[] signature = await account.SignPayloadAsync(payload);
+                #endregion
+
+                byte[] signature = account.Sign(tempPayload.Encode());
 
                 var signerResult = new SignerResult
                 {

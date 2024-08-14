@@ -58,48 +58,10 @@ namespace PlutoWalletTests
                 Console.WriteLine(status.ExtrinsicState);
             };
 
-            var extrinsicId = await client.SubstrateClient.Author.SubmitAndWatchExtrinsicAsync(callback, transfer, alice, ChargeTransactionPayment.Default(), 64);
+            var extrinsicId = await client.SubmitExtrinsicAsync(transfer, alice, callback);
 
             await Task.Delay(20_000);
         }
 
-        [Test]
-        public async Task Polka()
-        {
-            Endpoint hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Local8000];
-
-            var keyring = new Substrate.NET.Wallet.Keyring.Keyring();
-
-            var alice = keyring.AddFromUri("//Alice", default, KeyType.Sr25519).Account;
-
-            var polka = new Polkadot.NetApi.Generated.SubstrateClientExt(
-                        new Uri("ws://172.26.118.8:8000"),
-                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
-
-            await polka.ConnectAsync();
-
-            var accountId = new AccountId32();
-            accountId.Create(Utils.GetPublicKeyFrom(substrateAddress));
-
-            var multiAddress = new EnumMultiAddress();
-            multiAddress.Create(0, accountId);
-
-            var baseComAmount = new BaseCom<U128>();
-            baseComAmount.Create(10_000_000_000); // 1 DOT
-
-            var transfer = BalancesCalls.TransferKeepAlive(multiAddress, baseComAmount);
-            var remark = SystemCalls.Remark(new BaseVec<U8>([(U8)1, (U8)2]));
-
-            Console.WriteLine();
-
-            Action<string, ExtrinsicStatus> callback = async (string id, ExtrinsicStatus status) =>
-            {
-                Console.WriteLine(status.ExtrinsicState);
-            };
-
-            var extrinsicId = await polka.Author.SubmitAndWatchExtrinsicAsync(callback, remark, alice, ChargeTransactionPayment.Default(), 64, CancellationToken.None);
-
-            await Task.Delay(20_000);
-        }
     }
 }

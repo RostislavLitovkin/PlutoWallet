@@ -8,6 +8,7 @@ using PlutoWallet.Model.AjunaExt;
 using System.Collections.ObjectModel;
 using PlutoWallet.Components.NetworkSelect;
 using System.Net;
+using Substrate.NetApi.Model.Types;
 
 namespace PlutoWallet.Model
 {
@@ -81,11 +82,16 @@ namespace PlutoWallet.Model
         /// A custom method for submitting extrinsics.
         /// Please prefer using this one.
         /// </summary>
-        /// <param name="extrinsic">Extrinsic you want to submit</param>
-        /// <param name="token">cancellation token</param>
         /// <returns>subscription ID</returns>
-        public async Task<string> SubmitExtrinsicAsync(UnCheckedExtrinsic extrinsic, CancellationToken token)
+        public override async Task<string> SubmitExtrinsicAsync(Method method, Account account, Action<string, ExtrinsicStatus> callback = null, uint lifeTime = 64, CancellationToken token = default)
         {
+            ///
+            /// This part is temporary fix before the next Substrate.Net.Api version, that would fix the code gen and sign metadata checks
+            ///
+            #region Temp
+            var extrinsic = await GetTempUnCheckedExtrinsicAsync(method, account, lifeTime, token);
+            #endregion
+
             Hash extrinsicHash = new Hash(HashExtension.Blake2(extrinsic.Encode(), 256));
             string extrinsicHashString = Utils.Bytes2HexString(extrinsicHash);
 
@@ -109,7 +115,7 @@ namespace PlutoWallet.Model
             extrinsicStackViewModel.Update();
 
 #pragma warning disable VSTHRD101 // Avoid unsupported async delegates
-            Action<string, ExtrinsicStatus> callback = async (string id, ExtrinsicStatus status) =>
+            Action<string, ExtrinsicStatus> updateExtrinsicsCallback = async (string id, ExtrinsicStatus status) =>
             {
                 if (status.ExtrinsicState == ExtrinsicState.Ready)
                 {

@@ -12,10 +12,14 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private ObservableCollection<NFT> nfts = new ObservableCollection<NFT>() { };
 
+        [ObservableProperty]
+        private bool noNftsIsVisible = false;
+
         public NftViewModel()
 		{
 
         }
+
 
         /**
         * Called in the BasePageViewModel
@@ -43,6 +47,8 @@ namespace PlutoWallet.ViewModel
             //UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey(), token));
 
             nftLoadingViewModel.IsVisible = false;
+
+            NoNftsIsVisible = Nfts.Count() == 0;
         }
 
         public void UpdateNfts(List<NFT> newNfts)

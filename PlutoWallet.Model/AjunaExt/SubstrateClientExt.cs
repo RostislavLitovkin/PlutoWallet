@@ -3,6 +3,9 @@ using Newtonsoft.Json;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Extrinsics;
 using PlutoWallet.Constants;
+using Substrate.NetApi.Model.Rpc;
+using Substrate.NetApi.Model.Types;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWallet.Model.AjunaExt
 {
@@ -86,6 +89,44 @@ namespace PlutoWallet.Model.AjunaExt
 
                 return false;
             }
+        }
+
+        public virtual async Task<string> SubmitExtrinsicAsync(Method method, Account account, Action<string, ExtrinsicStatus> callback, uint lifeTime = 64, CancellationToken token = default)
+        {
+
+            ///
+            /// This part is temporary fix before the next Substrate.Net.Api version, that would fix the code gen and sign metadata checks
+            ///
+            #region Temp
+            var unCheckedExtrinsic = await GetTempUnCheckedExtrinsicAsync(method, account, lifeTime, token);
+            #endregion
+
+
+            string extrinsicId = await this.SubstrateClient.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(unCheckedExtrinsic.Encode()).ToLower(), token);
+
+            return extrinsicId;
+        }
+
+        public async Task<TempUnCheckedExtrinsic> GetTempUnCheckedExtrinsicAsync(Method method, Account account, uint lifeTime, CancellationToken token)
+        {
+            bool signed = true;
+
+            ///
+            /// This part is temporary fix before the next Substrate.Net.Api version, that would fix the code gen and sign metadata checks
+            ///
+            #region Temp
+            uint nonce = await SubstrateClient.System.AccountNextIndexAsync(account.Value, token);
+
+            Hash startEra = await SubstrateClient.Chain.GetFinalizedHeadAsync(token);
+            Era era = Era.Create(lifeTime, (await SubstrateClient.Chain.GetHeaderAsync(startEra, token)).Number.Value);
+
+            TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra);
+
+            TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
+            uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));
+            #endregion
+
+            return uncheckedExtrinsic;
         }
 
         private SubstrateClient GetSubstrateClient(EndpointEnum endpointKey, Uri websocket)

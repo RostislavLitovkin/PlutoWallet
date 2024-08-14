@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Microsoft.Maui.Controls.Shapes;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using Substrate.NetApi;
@@ -62,18 +63,8 @@ public partial class XcmTransferPage : ContentPage
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
-                UnCheckedExtrinsic extrinsic = await client.GetExtrinsicParametersAsync(
-                    transferMethod,
-                    account,
-                    clientExt.DefaultCharge,
-                    lifeTime: 64,
-                    signed: true,
-                    CancellationToken.None);
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transferMethod, account, token: CancellationToken.None);
 
-                Console.WriteLine(Utils.Bytes2HexString(extrinsic.GetPayload(client.RuntimeVersion).Encode()).ToLower());
-
-
-                string extrinsicId = await clientExt.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
 
                 Console.WriteLine("Extrinsic ID: " + extrinsicId);
             }

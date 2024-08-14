@@ -53,13 +53,8 @@ namespace PlutoWallet.Model
         */
         public static async Task<BigInteger> GetMethodFeeAsync(SubstrateClientExt client, Method method)
         {
-            UnCheckedExtrinsic extrinsic = await client.SubstrateClient.GetExtrinsicParametersAsync(
-                method,
-                MockModel.GetMockAccount(),
-                client.DefaultCharge,
-                lifeTime: 64,
-                signed: true,
-                CancellationToken.None);
+            
+            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, MockModel.GetMockAccount(), 64, CancellationToken.None);
 
             var feeDetail = await client.SubstrateClient.Payment.QueryFeeDetailAsync(
                 Utils.Bytes2HexString(extrinsic.Encode()),
