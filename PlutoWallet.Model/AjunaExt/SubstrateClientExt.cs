@@ -107,10 +107,8 @@ namespace PlutoWallet.Model.AjunaExt
             return extrinsicId;
         }
 
-        public async Task<TempUnCheckedExtrinsic> GetTempUnCheckedExtrinsicAsync(Method method, Account account, uint lifeTime, CancellationToken token)
+        public async Task<TempUnCheckedExtrinsic> GetTempUnCheckedExtrinsicAsync(Method method, Account account, uint lifeTime, CancellationToken token, bool signed = true)
         {
-            bool signed = true;
-
             ///
             /// This part is temporary fix before the next Substrate.Net.Api version, that would fix the code gen and sign metadata checks
             ///
@@ -122,8 +120,10 @@ namespace PlutoWallet.Model.AjunaExt
 
             TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra);
 
-            TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
-            uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));
+            if (signed) {
+                TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
+                uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));
+            }
             #endregion
 
             return uncheckedExtrinsic;

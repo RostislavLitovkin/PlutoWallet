@@ -4,20 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.Net;
+using Substrate.NetApi.Model.Extrinsics;
+using Substrate.NetApi;
 
 namespace PlutoWallet.Model
 {
     public class ChopsticksModel
     {
-        public static async Task<string> PostAsync()
+        private const string url = "http://localhost:8000";
+
+        public static async Task<string> GetExtrinsicEventsAsync(string endpoint, TempUnCheckedExtrinsic extrinsic)
         {
             var httpClient = new HttpClient();
 
             using StringContent jsonContent = new(
                 JsonSerializer.Serialize(new
                 {
-                    endpoint = "wss://acala-rpc-2.aca-api.network/ws",
-                    extrinsic = "0x1234"
+                    endpoint,
+                    extrinsic = Utils.Bytes2HexString(extrinsic.Encode())
                 }),
                 Encoding.UTF8,
                 "application/json");
@@ -27,16 +32,8 @@ namespace PlutoWallet.Model
                 jsonContent);
     
             var jsonResponse = await response.Content.ReadAsStringAsync();
-            Console.WriteLine($"{jsonResponse}\n");
 
             return jsonResponse;
-
-            // Expected output:
-            //   POST https://jsonplaceholder.typicode.com/todos HTTP/1.1
-            //   {
-            //     "userId": 77,
-            //     "id": 201,
         }
-
     }
 }
