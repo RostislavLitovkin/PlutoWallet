@@ -110,15 +110,7 @@ public partial class ContractView : ContentView
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
-                UnCheckedExtrinsic extrinsic = await client.SubstrateClient.GetExtrinsicParametersAsync(
-                    transfer,
-                    account,
-                    charge,
-                    lifeTime: 64,
-                    signed: true,
-                    CancellationToken.None);
-
-                string extrinsicId = await client.SubmitExtrinsicAsync(extrinsic, CancellationToken.None);
+                string extrinsicId = await client.SubmitExtrinsicAsync(transfer, account, token: CancellationToken.None);
             }
             else
             {
