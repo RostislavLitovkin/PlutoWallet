@@ -37,7 +37,9 @@ namespace PlutoWalletTests
 
             var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: false);
 
-            var events = await ChopsticksModel.GetExtrinsicEventsAsync(hdxEndpoint.URLs[0], extrinsic);
+            var url = hdxEndpoint.URLs[0];
+
+            var events = await ChopsticksModel.GetExtrinsicEventsAsync(url, extrinsic);
 
             Console.WriteLine(events);
         }

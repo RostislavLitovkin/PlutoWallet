@@ -12,23 +12,25 @@ namespace PlutoWallet.Model
 {
     public class ChopsticksModel
     {
-        private const string url = "http://localhost:8000";
+        private const string url = "http://localhost:8000/get-extrinsic-events";
 
         public static async Task<string> GetExtrinsicEventsAsync(string endpoint, TempUnCheckedExtrinsic extrinsic)
         {
             var httpClient = new HttpClient();
 
+            var serialized = JsonSerializer.Serialize(new
+            {
+                endpoint = "wss://polkadot-rpc.dwellir.com",
+                extrinsic = Utils.Bytes2HexString(extrinsic.Encode())
+            });
+
             using StringContent jsonContent = new(
-                JsonSerializer.Serialize(new
-                {
-                    endpoint,
-                    extrinsic = Utils.Bytes2HexString(extrinsic.Encode())
-                }),
+                serialized,
                 Encoding.UTF8,
                 "application/json");
 
             using HttpResponseMessage response = await httpClient.PostAsync(
-                "http://localhost:8000",
+                url,
                 jsonContent);
     
             var jsonResponse = await response.Content.ReadAsStringAsync();
