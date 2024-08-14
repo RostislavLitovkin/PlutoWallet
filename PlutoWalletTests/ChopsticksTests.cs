@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
@@ -15,11 +12,11 @@ namespace PlutoWalletTests
     {
         static string substrateAddress = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
 
-        static string senderAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
+        static string senderAddress = "13QPPJVtxCyJzBdXdqbyYaL3kFxjwVi7FPCxSHNzbmhLS6TR";
 
 
         [Test]
-        public async Task ConnectionTestAsync()
+        public async Task SimulateCallAsync()
         {
 
             var hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot];
@@ -40,7 +37,7 @@ namespace PlutoWalletTests
 
             var url = hdxEndpoint.URLs[0];
 
-            var events_string = await ChopsticksModel.GetExtrinsicEventsAsync(url, extrinsic);
+            var events_string = await ChopsticksModel.SimulateCallAsync(url, transfer.Encode(), senderAddress);
 
             Assert.IsNotNull(events_string, "Response is null!");
             Assert.That(events_string != "No chopsticks input provided!", "Server responded with code 400!");
