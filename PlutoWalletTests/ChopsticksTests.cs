@@ -17,6 +17,7 @@ namespace PlutoWalletTests
 
         static string senderAddress = "5GrwvaEF5zXb26Fz9rcQpDWS57CtERHpNehXCPcNoHGKutQY";
 
+
         [Test]
         public async Task ConnectionTestAsync()
         {
@@ -39,9 +40,12 @@ namespace PlutoWalletTests
 
             var url = hdxEndpoint.URLs[0];
 
-            var events = await ChopsticksModel.GetExtrinsicEventsAsync(url, extrinsic);
+            var events_string = await ChopsticksModel.GetExtrinsicEventsAsync(url, extrinsic);
 
-            Console.WriteLine(events);
+            Assert.IsNotNull(events_string, "Response is null!");
+            Assert.That(events_string != "No chopsticks input provided!", "Server responded with code 400!");
+
+            Console.WriteLine(events_string);
         }
     }
 }
