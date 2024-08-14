@@ -19,9 +19,9 @@
 		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
 
 		<!-- Versions -->
-		<ApplicationDisplayVersion>1.15</ApplicationDisplayVersion>
-    <PackageVersion>1.15</PackageVersion>
-    <ApplicationVersion>16</ApplicationVersion>
+		<ApplicationDisplayVersion>1.16</ApplicationDisplayVersion>
+    <PackageVersion>1.16</PackageVersion>
+    <ApplicationVersion>17</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -400,6 +400,9 @@
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NoNftsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Settings\DeveloperSettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -497,7 +500,6 @@
 	  <Folder Include="Components\CustomLayouts\" />
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
-	  <Folder Include="Components\Nft\" />
 	  <Folder Include="Components\Contract\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Components\AzeroId\" />

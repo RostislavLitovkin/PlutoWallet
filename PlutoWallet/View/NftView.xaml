@@ -33,6 +33,8 @@
 
             <nft:NftLoadingView Margin="20, 0, 20, 0" />
 
+            <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="{Binding NoNftsIsVisible}"/>
+
         </VerticalStackLayout>
         
     </ScrollView>
