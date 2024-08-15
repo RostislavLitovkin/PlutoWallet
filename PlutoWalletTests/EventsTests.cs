@@ -43,7 +43,7 @@ namespace PlutoWalletTests
             {
                 Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
 
-                foreach (var parameter in EventsModel.GetParametersList(e.Parameters))
+                foreach (var parameter in e.Parameters)
                 {
                     Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
                 }
@@ -77,7 +77,7 @@ namespace PlutoWalletTests
             {
                 Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
 
-                foreach (var parameter in EventsModel.GetParametersList(e.Parameters))
+                foreach (var parameter in e.Parameters)
                 {
                     Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
                 }

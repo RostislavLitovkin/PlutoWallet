@@ -1,10 +1,12 @@
 ﻿using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace PlutoWallet.Model
@@ -28,10 +30,10 @@ namespace PlutoWallet.Model
     {
         public string PalletName { get; set; }
         public string EventName { get; set; }
-        public object? Parameters { get; set; }
+        public List<EventParameter> Parameters { get; set; }
         public EventSafety Safety { get; set; }
 
-        public ExtrinsicEvent(string palletName, string eventName, object? parameters)
+        public ExtrinsicEvent(string palletName, string eventName, List<EventParameter> parameters)
         {
             PalletName = palletName;
             EventName = eventName;
@@ -65,7 +67,7 @@ namespace PlutoWallet.Model
     public static class EventsModel
     {
 
-        public static List<EventParameter> GetParametersList(object parameters)
+        public static List<EventParameter> GetParametersList(object parameters, TypeField[] eventTypeFields)
         {
             if (parameters == null)
             {
@@ -81,8 +83,13 @@ namespace PlutoWallet.Model
                 return new List<EventParameter>();
             }
 
-            foreach (var parameter in (IType[])pValue)
+            var pValues = (IType[])pValue;
+
+            for(int i = 0; i < pValues.Length; i++)
             {
+                var parameter = pValues[i];
+                var eventTypeField = eventTypeFields[i];
+
                 Type type = parameter.GetType();
 
                 if (type.Name == "AccountId32")
@@ -91,7 +98,7 @@ namespace PlutoWallet.Model
                     string address = Utils.GetAddressFrom(accountIdEncoded);
                     parametersList.Add(new EventParameter
                     {
-                        Name = type.Name,
+                        Name = eventTypeField.Name,
                         Value = address
                     });
 
@@ -100,7 +107,7 @@ namespace PlutoWallet.Model
                 {
                     parametersList.Add(new EventParameter
                     {
-                        Name = type.Name,
+                        Name = eventTypeField.Name,
                         Value = parameter.ToString(),
                     });
                 }
@@ -204,19 +211,33 @@ namespace PlutoWallet.Model
 
             var sortedEvents = events.Value.Where(p => p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex);
 
-
             return new ExtrinsicDetails
             {
                 BlockNumber = blockNumber,
                 ExtrinsicIndex = extrinsicIndex,
                 Events = sortedEvents.Select(e =>
                 {
+                    byte palletIndex = Convert.ToByte(e.Event.GetProperty("Value"));
                     string palletName = e.Event.GetValueString();
                     object? eventValue2 = e.Event.GetProperty("Value2");
+                    byte eventIndex = Convert.ToByte(eventValue2.GetProperty("Value"));
                     string eventName = eventValue2.GetValueString();
                     object? parameters = eventValue2.GetProperty("Value2");
 
-                    return new ExtrinsicEvent(palletName, eventName, parameters);
+                    string _palletName = substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Name;
+
+                    TypeField[]? eventTypeFields = null;
+
+                    foreach (var variant in substrateClient.CustomMetadata.NodeMetadata.Types[substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Events.TypeId.ToString()].Variants)
+                    {
+                        if (variant.Index == eventIndex)
+                        {
+                            eventTypeFields = variant.TypeFields;
+                            break;
+                        }
+                    }
+
+                    return new ExtrinsicEvent(palletName, eventName, GetParametersList(parameters, eventTypeFields ?? []));
                 })
             };
         }
