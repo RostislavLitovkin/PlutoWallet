@@ -132,7 +132,6 @@ namespace PlutoWallet.Model
                 {
                     var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(
                          this,
-                         this.Endpoint.Key,
                          status.Hash,
                          extrinsicHash.Encode()
                     );

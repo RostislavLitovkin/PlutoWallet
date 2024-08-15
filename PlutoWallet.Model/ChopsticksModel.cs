@@ -25,11 +25,20 @@ namespace PlutoWallet.Model
         public string Address { get; set; }
     }
 
+    public record class ChopsticksEventsOutput
+    {
+        [JsonPropertyName("events")]
+        public string Events { get; set; }
+
+        [JsonPropertyName("extrinsicIndex")]
+        public uint ExtrinsicIndex { get; set; }
+    }
+
     public class ChopsticksModel
     {
         private const string url = "http://localhost:8000/get-extrinsic-events";
 
-        public static async Task<string> SimulateCallAsync(string endpoint, byte[] extrinsic, string senderAddress)
+        public static async Task<ChopsticksEventsOutput> SimulateCallAsync(string endpoint, byte[] extrinsic, string senderAddress)
         {
             var httpClient = new HttpClient();
 
@@ -45,8 +54,8 @@ namespace PlutoWallet.Model
             using HttpResponseMessage response = await httpClient.PostAsync(
                 url,
                 jsonContent);
-    
-            var jsonResponse = await response.Content.ReadAsStringAsync();
+
+            var jsonResponse = await response.Content.ReadFromJsonAsync<ChopsticksEventsOutput>();
 
             return jsonResponse;
         }

@@ -35,7 +35,7 @@ namespace PlutoWalletTests
 
             byte[] extrinsicHash = Utils.HexToByteArray("0xb6cdde5912b61a8e7f687092bbd9537ad3ebc5ab69d2f23239eed97ad38d1b98");
 
-            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync<EnumRuntimeEvent>(client, blockHash, extrinsicHash);
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(client, blockHash, extrinsicHash);
 
             Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
 
@@ -69,7 +69,7 @@ namespace PlutoWalletTests
             
             byte[] extrinsicHash = Utils.HexToByteArray("0x2087b2359e6a923d723751f685d41ccfdd6ce763eddab4a7473ffd2a727744b9");
 
-            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(opalClient, EndpointEnum.Opal, blockHash, extrinsicHash);
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(opalClient, blockHash, extrinsicHash);
 
             Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
 

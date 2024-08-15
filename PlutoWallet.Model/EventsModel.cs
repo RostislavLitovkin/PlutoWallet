@@ -128,47 +128,20 @@ namespace PlutoWallet.Model
         /// <summary>
         /// Gets all extrinsic events in the block
         /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="extrinsicHash"></param>
         /// <returns>all events for the given extrinsic</returns>
         /// <exception cref="ExtrinsicIndexNotFoundException"></exception>
         public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync(
             this SubstrateClientExt substrateClient,
-           EndpointEnum endpointKey,
             Hash blockHash,
             byte[] extrinsicHash,
             CancellationToken token = default
         )
         {
-            return endpointKey switch
-            {
-                EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                _ => await GetExtrinsicDetailsAsync(substrateClient, blockHash, extrinsicHash, token),
-            };
-        }
-
-        /// <summary>
-        /// Gets all extrinsic events in the block
-        /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="unCheckedExtrinsic"></param>
-        /// <returns>all events for the given extrinsic</returns>
-        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
-            this SubstrateClientExt substrateClient,
-            Hash blockHash,
-            byte[] extrinsicHash,
-            CancellationToken token = default
-        ) where T : BaseEnumType, new()
-        {
             string blockHashString = Utils.Bytes2HexString(blockHash);
 
             var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-            var events = await substrateClient.SubstrateClient.GetStorageAsync<BaseVec<UniversalEventRecord<T>>>(eventsParameters, blockHashString, token);
+
+            string eventsBytes = await substrateClient.SubstrateClient.InvokeAsync<string>("state_getStorage", new object[2] { eventsParameters, blockHashString }, token);
 
             BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
 
@@ -183,22 +156,58 @@ namespace PlutoWallet.Model
                 }
             };
 
-            if (extrinsicIndex is null || events is null)
+            return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
+        }
+
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsForClientAsync(
+            this SubstrateClientExt substrateClient,
+            uint? extrinsicIndex,
+            string? eventsBytes,
+            BigInteger blockNumber,
+            CancellationToken token
+        )
+        {
+            return substrateClient.Endpoint.Key switch
+            {
+                EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                _ => await GetExtrinsicDetailsAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+            };
+        }
+
+        /// <summary>
+        /// Gets all extrinsic events in the block
+        /// </summary>
+        /// <returns>all events for the given extrinsic</returns>
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
+            this SubstrateClientExt substrateClient,
+            uint? extrinsicIndex,
+            string? eventsBytes,
+            BigInteger blockNumber,
+            CancellationToken token
+        ) where T : BaseEnumType, new()
+        {
+            if (extrinsicIndex is null || eventsBytes == null || eventsBytes.Length == 0)
             {
                 return new ExtrinsicDetails
                 {
-                    BlockNumber = block.Block.Header.Number.Value,
+                    BlockNumber = blockNumber,
                     ExtrinsicIndex = extrinsicIndex,
                     Events = new List<ExtrinsicEvent>()
                 };
             }
+
+            var events = new BaseVec<UniversalEventRecord<T>>();
+            events.Create(eventsBytes);
 
             var sortedEvents = events.Value.Where(p => p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex);
 
 
             return new ExtrinsicDetails
             {
-                BlockNumber = block.Block.Header.Number.Value,
+                BlockNumber = blockNumber,
                 ExtrinsicIndex = extrinsicIndex,
                 Events = sortedEvents.Select(e =>
                 {
@@ -215,37 +224,18 @@ namespace PlutoWallet.Model
         /// <summary>
         /// Gets extrinsic details without events
         /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="extrinsicHash"></param>
         /// <returns>all events for the given extrinsic</returns>
         public static async Task<ExtrinsicDetails> GetExtrinsicDetailsAsync(
             this SubstrateClientExt substrateClient,
-            Hash blockHash,
-            byte[] extrinsicHash,
+            uint? extrinsicIndex,
+            string? _eventsBytes,
+            BigInteger blockNumber,
             CancellationToken token = default
         )
         {
-            string blockHashString = Utils.Bytes2HexString(blockHash);
-
-            var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-
-            BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
-
-            uint? extrinsicIndex = null;
-            for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
-            {
-                // Same extrinsic
-                if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
-                {
-                    extrinsicIndex = i;
-                    break;
-                }
-            };
-
             return new ExtrinsicDetails
             {
-                BlockNumber = block.Block.Header.Number.Value,
+                BlockNumber = blockNumber,
                 ExtrinsicIndex = extrinsicIndex,
                 Events = new List<ExtrinsicEvent>()
             };

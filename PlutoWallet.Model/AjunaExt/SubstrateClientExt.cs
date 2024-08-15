@@ -120,10 +120,12 @@ namespace PlutoWallet.Model.AjunaExt
 
             TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra);
 
-            if (signed) {
-                TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
-                uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));
+            if (!signed) {
+                return uncheckedExtrinsic;
             }
+
+            TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
+            uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));
             #endregion
 
             return uncheckedExtrinsic;

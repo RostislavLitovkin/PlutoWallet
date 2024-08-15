@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using PlutoWallet.Constants;
+﻿using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
@@ -14,10 +12,12 @@ namespace PlutoWalletTests
 
         static string senderAddress = "13QPPJVtxCyJzBdXdqbyYaL3kFxjwVi7FPCxSHNzbmhLS6TR";
 
-
         [Test]
         public async Task SimulateCallAsync()
         {
+            var keyring = new Substrate.NET.Wallet.Keyring.Keyring();
+
+            var alice = keyring.AddFromUri("//Alice", default, KeyType.Sr25519).Account;
 
             var hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot];
 
@@ -33,16 +33,29 @@ namespace PlutoWalletTests
             var account = new Account();
             account.Create(KeyType.Sr25519, Utils.GetPublicKeyFrom(senderAddress));
 
-            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: false);
+            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, alice, 64, CancellationToken.None, signed: true);
 
             var url = hdxEndpoint.URLs[0];
 
-            var events_string = await ChopsticksModel.SimulateCallAsync(url, transfer.Encode(), senderAddress);
+            Console.WriteLine(Utils.Bytes2HexString(extrinsic.Encode()).ToLower());
 
-            Assert.IsNotNull(events_string, "Response is null!");
-            Assert.That(events_string != "No chopsticks input provided!", "Server responded with code 400!");
+            var events = await ChopsticksModel.SimulateCallAsync(url, extrinsic.Encode(), senderAddress);
 
-            Console.WriteLine(events_string);
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: events.ExtrinsicIndex, events.Events, blockNumber: 0, CancellationToken.None);
+
+            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
+
+            foreach (var e in extrinsicDetails.Events)
+            {
+                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                foreach (var parameter in EventsModel.GetParametersList(e.Parameters))
+                {
+                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                }
+                Console.WriteLine();
+            }
+
         }
     }
 }
