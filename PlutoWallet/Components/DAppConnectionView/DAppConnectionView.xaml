@@ -10,8 +10,12 @@
         <card:Card.View>
             <AbsoluteLayout>
                 <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                    <Image AbsoluteLayout.LayoutBounds="0, 10, 50, 50"
-                           Source="{Binding Icon}"/>
+                    <Frame CornerRadius="15"  AbsoluteLayout.LayoutBounds="0, 10, 50, 50"
+                            BorderColor="#00000000">
+                        <Image HeightRequest="50" WidthRequest="50"
+                                Source="{Binding Icon}"/>
+                    </Frame>
+
                     <VerticalStackLayout AbsoluteLayout.LayoutBounds="70, 0, AutoSize, AutoSize">
                         <Label 
                             Text="{Binding Name}"
@@ -38,7 +42,7 @@
                 </AbsoluteLayout>
 
             </AbsoluteLayout>
-            
+
         </card:Card.View>
     </card:Card>
 </ContentView>

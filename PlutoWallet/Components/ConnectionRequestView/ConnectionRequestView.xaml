@@ -17,10 +17,16 @@
                                      x:Name="verticalStackLayout"
                                      IsVisible="{Binding RequestViewIsVisible}"
                                      >
-                    <Image x:Name="icon"
-                           Source="{Binding Icon}"
+                    <Frame CornerRadius="30"
                            WidthRequest="100"
-                           HeightRequest="100" />
+                            HeightRequest="100"
+                            BorderColor="#00000000">
+                        <Image x:Name="icon"
+                               Source="{Binding Icon}"
+                               WidthRequest="100"
+                               HeightRequest="100" />
+                    </Frame>
+                    
                     <Label 
                         VerticalOptions="Center"
                         HorizontalOptions="Center">

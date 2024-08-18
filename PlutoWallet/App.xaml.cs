@@ -27,6 +27,7 @@ using PlutoWallet.Components.Fee;
 using PlutoWallet.Components.VTokens;
 using PlutoWallet.Components.UpdateView;
 using PlutoWallet.Components.Xcm;
+using PlutoWallet.Components.TransactionAnalyzer;
 
 namespace PlutoWallet;
 
@@ -115,6 +116,10 @@ public partial class App : Application
         DependencyService.Register<XcmNetworkSelectPopupViewModel>();
 
         DependencyService.Register<XcmNetworkSelectViewModel>();
+
+        DependencyService.Register<AnalyzedOutcomeViewModel>();
+
+        DependencyService.Register<TransactionAnalyzerConfirmationViewModel>();
 
         if (Preferences.ContainsKey("publicKey"))
         {

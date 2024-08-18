@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.TransactionAnalyzer.TransactionAnalyzerConfirmationView"
+             xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
+             xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             BackgroundColor="#88000000"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             IsVisible="{Binding IsVisible}">
+    <card:BottomPopupCard Title="Transaction request">
+        <card:BottomPopupCard.View>
+            <AbsoluteLayout>
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                         AbsoluteLayout.LayoutFlags="WidthProportional"
+                             x:Name="verticalStackLayout"
+                         Spacing="20">
+
+                    <txanalyzer:DAppNetworkView Name="{Binding DAppName}"
+                                            Icon="{Binding DAppIcon}"
+                                            Endpoint="{Binding Endpoint}"/>
+
+                    <txanalyzer:PalletCallView PalletCallName="{Binding PalletCallName}" />
+
+                    <txanalyzer:AnalyzedOutcomeView />
+
+                    <Label TextColor="#888888"
+                           FontAttributes="Bold"
+                        
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           Text="{Binding EstimatedFee}"
+                           Margin="0, 0, 0, -15"/>
+
+                    <Label TextColor="#888888"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Start"
+                           VerticalTextAlignment="Center"
+                           Text="{Binding EstimatedTime}"/>
+
+
+                </VerticalStackLayout>
+
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 1, 1, 80"
+                      AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional">
+
+
+                    <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 50"
+                      AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                      ColumnSpacing="15"
+                          Margin="0, 0, 0, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"
+                        Clicked="OnCancelClicked"/>
+
+                        <buttons:PlutoWalletElevatedButton Text="Confirm" Grid.Column="1"
+                        Clicked="OnConfirmClicked"/>
+
+                    </Grid>
+                </AbsoluteLayout>
+
+            </AbsoluteLayout>
+
+        </card:BottomPopupCard.View>
+    </card:BottomPopupCard>
+</ContentView>

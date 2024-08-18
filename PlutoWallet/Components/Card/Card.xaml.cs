@@ -21,7 +21,19 @@ public partial class Card : ContentView
             }
 		} }
 
-	public Thickness CardPadding { set { border.Padding = value; } }
+    public bool IsThin
+    {
+        set
+        {
+			if (value)
+			{
+				roundRectangle.CornerRadius = 15;
+				border.Padding = new Thickness(20, 0, 20, 0);
+			}
+        }
+    }
+
+    public Thickness CardPadding { set { border.Padding = value; } }
 
 	public Color Color { set { border.BackgroundColor = value; } }
 

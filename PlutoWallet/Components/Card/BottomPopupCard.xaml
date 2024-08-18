@@ -10,23 +10,22 @@
     <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5, 1, 1, .6"
                 AbsoluteLayout.LayoutFlags="All">
         <Border AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
-                    AbsoluteLayout.LayoutFlags="All"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark=#0a0a0a}"
-                    StrokeThickness="0"
-                    Padding="0, 0, 0, 0"
-                    x:Name="border"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark=#0a0a0a}"
+                StrokeThickness="0"
+                Padding="0, 0, 0, 0"
+                x:Name="border"
                 >
 
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="20, 20, 0, 0" />
-
             </Border.StrokeShape>
 
         </Border>
 
         <ContentView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
                          AbsoluteLayout.LayoutFlags="All"
-                         Margin="10, 85, 10, 0"
+                         Margin="10, 65, 10, 0"
                          x:Name="contentView">
 
 

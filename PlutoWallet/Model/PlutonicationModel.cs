@@ -1,14 +1,14 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Maui;
 using Plutonication;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
-using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-
+using Substrate.NetApi.Model.Types;
 namespace PlutoWallet.Model
 {
     public class PlutonicationModel
@@ -119,6 +119,8 @@ namespace PlutoWallet.Model
         {
             var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
 
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
             Method method = unCheckedExtrinsic.Method;
 
             Substrate.NetApi.Model.Extrinsics.Payload payload = unCheckedExtrinsic.GetPayload(runtime);
@@ -129,22 +131,49 @@ namespace PlutoWallet.Model
             {
                 EndpointEnum key = Endpoints.HashToKey[genesisHash];
 
-                Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
-
                 var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(key);
 
                 transactionRequest.EndpointKey = key;
-                transactionRequest.ChainName = endpoint.Name;
+                transactionRequest.ChainName = client.Endpoint.Name;
 
                 try
                 {
                     (var pallet, var call) = PalletCallModel.GetPalletAndCallName(client, method.ModuleIndex, method.CallIndex);
 
+                    transactionAnalyzerConfirmationViewModel.PalletCallName = pallet + " " + call;
 
-                    transactionRequest.PalletIndex = pallet;
-                    transactionRequest.CallIndex = call;
+                    transactionAnalyzerConfirmationViewModel.Endpoint = client.Endpoint;
 
-                    Task calculateFee = transactionRequest.CalculateFeeAsync(client, method);
+                    var dAppConnectionViewModel = DependencyService.Get<DAppConnectionViewModel>();
+
+                    transactionAnalyzerConfirmationViewModel.DAppName = dAppConnectionViewModel.Name;
+                    transactionAnalyzerConfirmationViewModel.DAppIcon = dAppConnectionViewModel.Icon;
+
+                    transactionAnalyzerConfirmationViewModel.Payload = payload;
+
+                    var account = new ChopsticksMockAccount();
+                    account.Create(KeyType.Sr25519, KeysModel.GetPublicKeyBytes());
+
+                    var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, account, 64, CancellationToken.None, signed: true);
+
+                    Console.WriteLine(Utils.Bytes2HexString(extrinsic.Encode()).ToLower());
+
+                    var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], extrinsic.Encode(), account.Value);
+
+                    if (!(events is null))
+                    {
+                        var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: events.ExtrinsicIndex, events.Events, blockNumber: 0, CancellationToken.None);
+
+                        var currencyChanges = TransactionAnalyzerModel.AnalyzeEvents(extrinsicDetails.Events, client.Endpoint);
+
+                        var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
+
+                        analyzedOutcomeViewModel.UpdateAssetChanges(currencyChanges);
+
+                        transactionAnalyzerConfirmationViewModel.EstimatedFee = FeeModel.GetEstimatedFeeString(currencyChanges["fee"].First().Value);
+                    }
+
+                    transactionAnalyzerConfirmationViewModel.IsVisible = true;
                 }
                 catch
                 {
@@ -152,6 +181,11 @@ namespace PlutoWallet.Model
                     transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
 
                     transactionRequest.Fee = "Fee: unknown";
+
+                    transactionRequest.AjunaMethod = method;
+
+                    transactionRequest.Payload = payload;
+                    transactionRequest.IsVisible = true;
                 }
             }
             else
@@ -164,12 +198,12 @@ namespace PlutoWallet.Model
                 transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
 
                 transactionRequest.Fee = "Fee: unknown";
+
+                transactionRequest.AjunaMethod = method;
+
+                transactionRequest.Payload = payload;
+                transactionRequest.IsVisible = true;
             }
-
-            transactionRequest.AjunaMethod = method;
-
-            transactionRequest.Payload = payload;
-            transactionRequest.IsVisible = true;
 
             if (method.Parameters.Length > 5)
             {

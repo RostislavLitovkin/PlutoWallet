@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:network="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             x:Class="PlutoWallet.Components.TransactionAnalyzer.DAppNetworkView"
+                HeightRequest="70"
+         >
+    <card:Card HorizontalOptions="CenterAndExpand">
+        <card:Card.View>
+            <AbsoluteLayout>
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <Frame CornerRadius="15"  AbsoluteLayout.LayoutBounds="0, 10, 50, 50"
+                           BorderColor="#00000000">
+                        <Image HeightRequest="50" WidthRequest="50"
+                                x:Name="icon"/>
+                    </Frame>
+                    
+                    <VerticalStackLayout AbsoluteLayout.LayoutBounds="70, 0, AutoSize, AutoSize" Spacing="0">
+                        <Label 
+                                x:Name="nameLabel"
+                                FontAttributes="Bold"
+                                HorizontalOptions="Start"
+                                HeightRequest="25"
+                            Margin="0, 5, 0, -5"
+                                VerticalTextAlignment="End"/>
+                        <network:NetworkBubbleView EndpointConnectionStatus="None"
+                                                   ShowName="True"
+                                                   x:Name="networkBubble"
+                                                   Scale="0.6"
+                                                   AnchorX="0"
+                                                   HorizontalOptions="Start"
+                                                   />
+                    </VerticalStackLayout>
+                </AbsoluteLayout>
+
+            </AbsoluteLayout>
+
+        </card:Card.View>
+    </card:Card>
+</ContentView>

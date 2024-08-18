@@ -1,19 +1,29 @@
-﻿using Polkadot.NetApi.Generated.Model.staging_xcm.v3.multilocation;
-using Substrate.NetApi.Model.Types.Base;
-using Polkadot.NetApi.Generated.Model.xcm.v3.junctions;
-using Polkadot.NetApi.Generated.Model.xcm.v3.junction;
-using Substrate.NetApi.Model.Types.Primitive;
-using Polkadot.NetApi.Generated.Model.xcm;
-using Substrate.NetApi;
-using Polkadot.NetApi.Generated.Types.Base;
-using Polkadot.NetApi.Generated.Model.xcm.v2.multiasset;
+﻿using Polkadot.NetApi.Generated.Model.staging_xcm.v4.junctions;
 using System.Numerics;
 using PlutoWallet.Constants;
+using Location = Polkadot.NetApi.Generated.Model.staging_xcm.v4.location.Location;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Model
 {
 	public class XcmModel
 	{
+
+        public static (EndpointEnum, AssetPallet, BigInteger)? GetAssetFromXcmLocation(Location location, Endpoint endpoint)
+        {
+            return location switch
+            {
+                Location { 
+                    Parents: { Value: 0 },
+                    Interior: { Value: Junctions.Here }
+                } => (endpoint.Key, AssetPallet.Native, 0),
+
+                // Support Other Locations
+                _ => null
+            };
+        }
+
+        /*
 		public static EnumVersionedLocation GetChainLocation(ParachainId parachainId, byte parents = 0)
 		{
 
@@ -116,6 +126,7 @@ namespace PlutoWallet.Model
 
             return assets;
         }
+        */
     }
 }
 

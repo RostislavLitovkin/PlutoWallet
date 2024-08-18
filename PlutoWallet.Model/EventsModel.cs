@@ -61,12 +61,12 @@ namespace PlutoWallet.Model
 
     public class EventParameter
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public required string Name { get; set; }
+        public required string Value { get; set; }
+        public required byte[] EncodedValue { get; set; }
     }
     public static class EventsModel
     {
-
         public static List<EventParameter> GetParametersList(object parameters, TypeField[] eventTypeFields)
         {
             if (parameters == null)
@@ -99,7 +99,8 @@ namespace PlutoWallet.Model
                     parametersList.Add(new EventParameter
                     {
                         Name = eventTypeField.Name,
-                        Value = address
+                        Value = address,
+                        EncodedValue = parameter.Encode(),
                     });
 
                 }
@@ -109,6 +110,7 @@ namespace PlutoWallet.Model
                     {
                         Name = eventTypeField.Name,
                         Value = parameter.ToString(),
+                        EncodedValue = parameter.Encode(),
                     });
                 }
             }

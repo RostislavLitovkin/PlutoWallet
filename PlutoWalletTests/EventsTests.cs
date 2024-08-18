@@ -9,28 +9,22 @@ namespace PlutoWalletTests
 {
     internal class EventsTests
     {
-        SubstrateClientExt client;
-
         string substrateAddress = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
 
-        [SetUp]
-        public async Task Setup()
+        [Test]
+        public async Task GetExtrinsicEventsAsync()
         {
             var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
 
-            client = new SubstrateClientExt(
+            var client = new SubstrateClientExt(
                         endpoint,
                         new Uri(bestWebSecket),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             await client.ConnectAndLoadMetadataAsync();
-        }
 
-        [Test]
-        public async Task GetExtrinsicEventsAsync()
-        {
             Hash blockHash = new Hash("0xdc6b77382b2a4e38f6acec43a9ed7f6dfd96563cedcb8110cb6dcef150de6820");
 
             byte[] extrinsicHash = Utils.HexToByteArray("0xb6cdde5912b61a8e7f687092bbd9537ad3ebc5ab69d2f23239eed97ad38d1b98");
@@ -49,6 +43,45 @@ namespace PlutoWalletTests
                 }
                 Console.WriteLine();
             }
+        }
+
+        [Test]
+        public async Task GetXcmPalletTransferEventsAsync()
+        {
+            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Polkadot];
+
+            string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            var client = new SubstrateClientExt(
+                        endpoint,
+                        new Uri(bestWebSecket),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            await client.ConnectAndLoadMetadataAsync();
+
+
+            Hash blockHash = new Hash("0x923ee600b390697dce0e45e08676f0982a03ada57785762bce26aa0cccece051");
+
+            byte[] extrinsicHash = Utils.HexToByteArray("0x24a20fec41ee54fe78719179ab92f1450cb17fda74beea7b525fec7646b4d0e9");
+
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(client, blockHash, extrinsicHash);
+
+            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
+
+            foreach (var e in extrinsicDetails.Events)
+            {
+                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                Console.WriteLine(e.Parameters.Count() + " parameters found");
+
+                foreach (var parameter in e.Parameters)
+                {
+                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                }
+                Console.WriteLine();
+            }
+
+            var currencyChanges = TransactionAnalyzerModel.AnalyzeEvents(extrinsicDetails.Events, endpoint);
         }
 
         [Test]

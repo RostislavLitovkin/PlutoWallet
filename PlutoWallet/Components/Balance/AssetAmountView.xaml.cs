@@ -5,7 +5,8 @@ public partial class AssetAmountView : ContentView
     public static readonly BindableProperty AmountProperty = BindableProperty.Create(
         nameof(Amount), typeof(string), typeof(AssetAmountView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
             var control = (AssetAmountView)bindable;
 
             control.amountLabel.Text = (string)newValue;
@@ -14,7 +15,8 @@ public partial class AssetAmountView : ContentView
     public static readonly BindableProperty SymbolProperty = BindableProperty.Create(
         nameof(Symbol), typeof(string), typeof(AssetAmountView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
             var control = (AssetAmountView)bindable;
 
             control.symbolLabel.Text = (string)newValue;
@@ -23,7 +25,8 @@ public partial class AssetAmountView : ContentView
     public static readonly BindableProperty ChainIconProperty = BindableProperty.Create(
         nameof(ChainIcon), typeof(string), typeof(AssetAmountView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
             var control = (AssetAmountView)bindable;
 
             control.chainIcon.Source = (string)newValue;
@@ -32,16 +35,27 @@ public partial class AssetAmountView : ContentView
     public static readonly BindableProperty UsdValueProperty = BindableProperty.Create(
         nameof(UsdValue), typeof(string), typeof(AssetAmountView),
         defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
             var control = (AssetAmountView)bindable;
 
             control.usdLabel.Text = (string)newValue;
         });
 
+    public static readonly BindableProperty UsdColorProperty = BindableProperty.Create(
+            nameof(UsdColor), typeof(Color), typeof(AssetAmountView),
+            defaultBindingMode: BindingMode.TwoWay,
+            propertyChanging: (bindable, oldValue, newValue) =>
+            {
+                var control = (AssetAmountView)bindable;
+
+                control.usdLabel.TextColor = (Color)newValue;
+            });
+
     public AssetAmountView()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
     public string Amount
     {
@@ -69,5 +83,12 @@ public partial class AssetAmountView : ContentView
         get => (string)GetValue(UsdValueProperty);
 
         set => SetValue(UsdValueProperty, value);
+    }
+
+    public Color UsdColor
+    {
+        get => (Color)GetValue(UsdColorProperty);
+
+        set => SetValue(UsdColorProperty, value);
     }
 }
