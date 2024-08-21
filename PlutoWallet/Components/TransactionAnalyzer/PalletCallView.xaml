@@ -2,6 +2,7 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:network="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.TransactionAnalyzer.PalletCallView"
              HeightRequest="40">
     <card:Card IsThin="True">
@@ -13,6 +14,7 @@
                 <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
@@ -20,16 +22,27 @@
                 <Label x:Name="palletCallLabel"
                        VerticalOptions="Center" 
                        HorizontalOptions="StartAndExpand"
-                   FontAttributes="Bold"
+                        FontAttributes="Bold"
                        >
                 </Label>
+
+
+                <network:NetworkBubbleView EndpointConnectionStatus="None"
+                                            x:Name="networkBubble"
+                                            Scale="0.6"
+                                            AnchorX="0"
+                                            HorizontalOptions="Start"
+                                           Grid.Column="1"
+                                           Margin="10, 0, 0, 0"
+                                           IsVisible="false"
+                                                />
 
                 <Image WidthRequest="20"
                        HeightRequest="20"
                        Margin="5, 0, 0, 0"
                        VerticalOptions="Center" 
                        HorizontalOptions="End"
-                       Grid.Column="1"
+                       Grid.Column="2"
                        Source="{AppThemeBinding Light=expandblack.png, Dark=expandwhite.png}">
                 </Image>
 

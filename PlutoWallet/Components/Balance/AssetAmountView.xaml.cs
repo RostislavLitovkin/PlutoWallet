@@ -50,6 +50,11 @@ public partial class AssetAmountView : ContentView
                 var control = (AssetAmountView)bindable;
 
                 control.usdLabel.TextColor = (Color)newValue;
+
+                //control.shadow.Brush = (Color)newValue;
+
+                //control.border.Stroke = (Color)newValue;
+                //control.border.StrokeThickness = 1;
             });
 
     public AssetAmountView()

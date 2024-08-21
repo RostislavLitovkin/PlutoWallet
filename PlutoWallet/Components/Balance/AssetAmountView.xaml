@@ -5,12 +5,15 @@
              HeightRequest="30">
     <Border StrokeThickness="0"
             BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
-            Padding="10, 0, 10, 0">
+            Padding="10, 0, 10, 0"
+            x:Name="border"
+            >
         <Border.Shadow> 
-            <Shadow Brush="Black"
+            <Shadow x:Name="shadow"
+                    Brush="Black"
                     Offset="0,2" 
                     Radius="3"
-                    Opacity="0.1" />
+                    Opacity="0.2" />
 
         </Border.Shadow>
         <Border.StrokeShape>
@@ -35,15 +38,16 @@
                    Margin="5, 0, 0, 0"
                    Grid.Column="1"/>
             <Image x:Name="chainIcon"
-                           HeightRequest="15" WidthRequest="15"
-                           Margin="10, 0, 10, 0"
-                           Grid.Column="2"/>
+                    HeightRequest="15" WidthRequest="15"
+                    Margin="10, 0, 10, 0"
+                    Grid.Column="2"/>
 
             <Label x:Name="usdLabel"
                    HorizontalTextAlignment="End"
                    VerticalTextAlignment="Center"
                    TextColor="#888888"
-                   Grid.Column="4"/>
+                   Grid.Column="4"
+                   FontAttributes="Bold"/>
         </Grid>
     </Border>
 </ContentView>

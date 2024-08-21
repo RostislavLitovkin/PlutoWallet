@@ -20,9 +20,10 @@
 
                     <txanalyzer:DAppNetworkView Name="{Binding DAppName}"
                                             Icon="{Binding DAppIcon}"
-                                            Endpoint="{Binding Endpoint}"/>
+                                                 Endpoint="{Binding Endpoint}"/>
 
-                    <txanalyzer:PalletCallView PalletCallName="{Binding PalletCallName}" />
+                    <txanalyzer:PalletCallView PalletCallName="{Binding PalletCallName}" 
+                                            Endpoint="{Binding Endpoint}"/>
 
                     <txanalyzer:AnalyzedOutcomeView />
 
