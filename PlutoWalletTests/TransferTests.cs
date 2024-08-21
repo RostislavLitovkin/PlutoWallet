@@ -30,12 +30,12 @@ namespace PlutoWalletTests
         [Test]
         public async Task PolkadotNativeTransferAsync()
         {
-            Endpoint hdxEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Local8000];
+            Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Local8000];
 
             client = new SubstrateClientExt(
                 EndpointEnum.Polkadot,
-                    hdxEndpoint,
-                        new Uri(hdxEndpoint.URLs[0]),
+                    endpoint,
+                        new Uri(endpoint.URLs[0]),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             var x = await client.ConnectAndLoadMetadataAsync();
