@@ -10,8 +10,6 @@ namespace PlutoWalletTests
     {
         static string substrateAddress = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
 
-        static SubstrateClientExt client;
-
         static Account alice;
 
         [SetUp]
@@ -32,13 +30,20 @@ namespace PlutoWalletTests
         {
             Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Local8000];
 
-            client = new SubstrateClientExt(
+            var client = new SubstrateClientExt(
                 EndpointEnum.Polkadot,
                     endpoint,
                         new Uri(endpoint.URLs[0]),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
+
             var x = await client.ConnectAndLoadMetadataAsync();
+
+            var accountInfo = await AssetsModel.GetNativeBalance(client.SubstrateClient, substrateAddress, CancellationToken.None);
+
+            Console.WriteLine("Free: " + accountInfo.Data.Free.Value);
+
+            Assert.Greater(accountInfo.Data.Free.Value, 0);
 
             var transfer = TransferModel.NativeTransfer(client, substrateAddress, 10000000000);
 
