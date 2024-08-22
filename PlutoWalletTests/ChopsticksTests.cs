@@ -61,5 +61,39 @@ namespace PlutoWalletTests
             Assert.Greater(-1, currencyChanges[senderAddress].Values.ElementAt(0).Amount);
 
         }
+
+        [Test]
+        public async Task SimulateXcmCallAsync()
+        {
+            var fromEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
+
+            var toEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
+
+
+            var client = new SubstrateClientExt(
+                    fromEndpoint,
+                        new Uri(fromEndpoint.URLs[0]),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            var x = await client.ConnectAndLoadMetadataAsync();
+
+            Console.WriteLine("Connected to chain");
+
+            var transfer = new Substrate.NetApi.Model.Extrinsics.Method(Utils.HexToByteArray("0x89")[0], 0, Utils.HexToByteArray("0x0a00000000e1f50500000000000000000000000004010200419c0100faeb3f91b59c6fa4460a5bd32219f20f404111846ab11fc35c59730e2054523000"));
+
+            var account = new ChopsticksMockAccount();
+            account.Create(KeyType.Sr25519, Utils.GetPublicKeyFrom(senderAddress));
+
+            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: true);
+
+            Console.WriteLine("simulating");
+            var events = await ChopsticksModel.SimulateXcmCallAsync(fromEndpoint.URLs[0], toEndpoint.URLs[0], extrinsic.Encode(), senderAddress);
+
+            Console.WriteLine(events);
+
+            Console.WriteLine("simulate completed");
+
+            Assert.That(!(events is null));
+        }
     }
 }
