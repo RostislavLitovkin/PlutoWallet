@@ -30,7 +30,7 @@ namespace PlutoWallet.Model
             dAppViewModel.Name = ac.Name;
             dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Waiting);
             dAppViewModel.IsVisible = true;
-        }        
+        }
         public static async Task AcceptConnectionAsync()
         {
             try
@@ -156,9 +156,11 @@ namespace PlutoWallet.Model
 
                     var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, account, 64, CancellationToken.None, signed: true);
 
+                    var header = await client.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
+
                     Console.WriteLine(Utils.Bytes2HexString(extrinsic.Encode()).ToLower());
 
-                    var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], extrinsic.Encode(), account.Value);
+                    var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], extrinsic.Encode(), header.Number.Value, account.Value);
 
                     if (!(events is null))
                     {

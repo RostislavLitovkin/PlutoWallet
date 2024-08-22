@@ -8,9 +8,9 @@ namespace PlutoWalletTests
 {
     internal class ChopsticksTests
     {
-        static string substrateAddress = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
+        static string substrateAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
 
-        static string senderAddress = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y";
+        static string senderAddress = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
 
         [Test]
         public async Task SimulateCallAsync()
@@ -31,11 +31,13 @@ namespace PlutoWalletTests
 
             var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: true);
 
+            var header = await client.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
+
             var url = endpoint.URLs[0];
 
             Console.WriteLine(Utils.Bytes2HexString(extrinsic.Encode()).ToLower());
 
-            var events = await ChopsticksModel.SimulateCallAsync(url, extrinsic.Encode(), senderAddress);
+            var events = await ChopsticksModel.SimulateCallAsync(url, extrinsic.Encode(), header.Number.Value, senderAddress);
 
             Assert.That(!(events is null));
 
@@ -70,12 +72,20 @@ namespace PlutoWalletTests
             var toEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
 
 
-            var client = new SubstrateClientExt(
+            var fromClient = new SubstrateClientExt(
                     fromEndpoint,
-                        new Uri(fromEndpoint.URLs[0]),
+                        new Uri(fromEndpoint.URLs[1]),
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
-            var x = await client.ConnectAndLoadMetadataAsync();
+            var toClient = new SubstrateClientExt(
+                   fromEndpoint,
+                       new Uri(fromEndpoint.URLs[0]),
+                       Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            var x = await fromClient.ConnectAndLoadMetadataAsync();
+
+            var xa = await toClient.ConnectAndLoadMetadataAsync();
+
 
             Console.WriteLine("Connected to chain");
 
@@ -84,12 +94,46 @@ namespace PlutoWalletTests
             var account = new ChopsticksMockAccount();
             account.Create(KeyType.Sr25519, Utils.GetPublicKeyFrom(senderAddress));
 
-            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: true);
+            var extrinsic = await fromClient.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: true);
+
+            var header = await fromClient.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
 
             Console.WriteLine("simulating");
-            var events = await ChopsticksModel.SimulateXcmCallAsync(fromEndpoint.URLs[0], toEndpoint.URLs[0], extrinsic.Encode(), senderAddress);
+            //var events = await ChopsticksModel.SimulateCallAsync(fromEndpoint.URLs[0], extrinsic.Encode(), senderAddress);
 
-            Console.WriteLine(events);
+            var events = await ChopsticksModel.SimulateXcmCallAsync(fromEndpoint.URLs[1], toEndpoint.URLs[0], extrinsic.Encode(), senderAddress);
+
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(fromClient, extrinsicIndex: events.FromEvents.ExtrinsicIndex, events.FromEvents.Events, blockNumber: 0, CancellationToken.None);
+
+            Console.WriteLine(extrinsicDetails.Events.Count());
+
+            foreach (var e in extrinsicDetails.Events)
+            {
+                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                foreach (var parameter in e.Parameters)
+                {
+                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine(events.ToEvents.Events.Length);
+
+
+            var toExtrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(toClient, extrinsicIndex: null, events.ToEvents.Events, blockNumber: 0, CancellationToken.None);
+
+            foreach (var e in toExtrinsicDetails.Events)
+            {
+                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                foreach (var parameter in e.Parameters)
+                {
+                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                }
+                Console.WriteLine();
+            }
+
 
             Console.WriteLine("simulate completed");
 

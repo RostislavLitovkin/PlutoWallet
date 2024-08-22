@@ -84,7 +84,7 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     //
     // Exceptions:
     //   T:System.NotSupportedException:
-    public new byte[] Encode()
+    public new byte[] Encode(bool includeCheckMetadata = true)
     {
         if (base.Signed && base.Signature == null)
         {
@@ -103,7 +103,10 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
         list.AddRange(base.Era.Encode());
         list.AddRange(base.Nonce.Encode());
         list.AddRange(base.Charge.Encode());
-        list.AddRange(base.CheckMetadataHash.EncodeExtra());
+        if (includeCheckMetadata)
+        {
+            list.AddRange(base.CheckMetadataHash.EncodeExtra());
+        }
         list.AddRange(base.Method.Encode());
         return Utils.SizePrefixedByteArray(list);
     }

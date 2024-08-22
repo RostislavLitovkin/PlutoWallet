@@ -4,6 +4,8 @@ using System.Text.Json.Serialization;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
 using Substrate.NetApi.Model.Types;
+using System.Numerics;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWallet.Model
 {
@@ -22,35 +24,31 @@ namespace PlutoWallet.Model
     }
     internal record class ChopsticksInput
     {
-        [JsonPropertyName("endpoint")]
-        public string Endpoint { get; set; }
+        [JsonPropertyName("fromEndpoint")]
+        public required string FromEndpoint { get; set; }
 
         [JsonPropertyName("extrinsic")]
-        public string Extrinsic { get; set; }
+        public required string Extrinsic { get; set; }
 
-        [JsonPropertyName("address")]
-        public string Address { get; set; }
+        [JsonPropertyName("blockNumber")]
+        public required BigInteger? BlockNumber { get; set; }
     }
 
-    internal record class ChopsticksXcmInput
+    internal record class ChopsticksXcmInput : ChopsticksInput
     {
-        [JsonPropertyName("fromEndpoint")]
-        public string FromEndpoint { get; set; }
+        
 
         [JsonPropertyName("toEndpoint")]
-        public string ToEndpoint { get; set; }
-
-        [JsonPropertyName("extrinsic")]
-        public string Extrinsic { get; set; }
+        public required string ToEndpoint { get; set; }
 
         [JsonPropertyName("relay")]
-        public string Relay { get; set; }
+        public required string Relay { get; set; }
 
         [JsonPropertyName("fromId")]
-        public uint FromId { get; set; }
+        public required uint FromId { get; set; }
 
         [JsonPropertyName("toId")]
-        public uint ToId { get; set; }
+        public required uint ToId { get; set; }
     }
 
 
@@ -65,8 +63,11 @@ namespace PlutoWallet.Model
 
     public record class ChopsticksXcmEventsOutput
     {
-        [JsonPropertyName("events")]
-        public ChopsticksEventsOutput[] Events { get; set; }
+        [JsonPropertyName("fromEvents")]
+        public ChopsticksEventsOutput FromEvents { get; set; }
+
+        [JsonPropertyName("toEvents")]
+        public ChopsticksEventsOutput ToEvents { get; set; }
     }
 
     public class ChopsticksModel
@@ -74,15 +75,15 @@ namespace PlutoWallet.Model
         //private const string url = "https://express-byrr9.ondigitalocean.app";
         private const string url = "http://localhost:8000";
 
-        public static async Task<ChopsticksEventsOutput?> SimulateCallAsync(string endpoint, byte[] extrinsic, string senderAddress)
+        public static async Task<ChopsticksEventsOutput?> SimulateCallAsync(string endpoint, byte[] extrinsic, BigInteger blockNumber, string senderAddress)
         {
             var httpClient = new HttpClient();
 
             using var jsonContent = JsonContent.Create(new ChopsticksInput
             {
-                Endpoint = endpoint,
+                FromEndpoint = endpoint,
                 Extrinsic = Utils.Bytes2HexString(extrinsic).ToString(),
-                Address = senderAddress,
+                BlockNumber = blockNumber,
             });
 
             jsonContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
@@ -115,7 +116,8 @@ namespace PlutoWallet.Model
                 Extrinsic = Utils.Bytes2HexString(extrinsic).ToString(),
                 Relay = "polkadot",
                 FromId = 0,
-                ToId = 0
+                ToId = 0,
+                BlockNumber = null,
             });
 
             jsonContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");

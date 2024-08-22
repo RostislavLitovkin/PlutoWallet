@@ -85,7 +85,7 @@ namespace PlutoWallet.Model
 
             var pValues = (IType[])pValue;
 
-            for(int i = 0; i < pValues.Length; i++)
+            for (int i = 0; i < pValues.Length; i++)
             {
                 var parameter = pValues[i];
                 var eventTypeField = eventTypeFields[i];
@@ -188,6 +188,8 @@ namespace PlutoWallet.Model
 
         /// <summary>
         /// Gets all extrinsic events in the block
+        /// 
+        /// If extrinsicIndex is null, it will return all events in the block
         /// </summary>
         /// <returns>all events for the given extrinsic</returns>
         public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
@@ -198,7 +200,7 @@ namespace PlutoWallet.Model
             CancellationToken token
         ) where T : BaseEnumType, new()
         {
-            if (extrinsicIndex is null || eventsBytes == null || eventsBytes.Length == 0)
+            if (eventsBytes == null || eventsBytes.Length == 0)
             {
                 return new ExtrinsicDetails
                 {
@@ -211,7 +213,7 @@ namespace PlutoWallet.Model
             var events = new BaseVec<UniversalEventRecord<T>>();
             events.Create(eventsBytes);
 
-            var sortedEvents = events.Value.Where(p => p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex);
+            var sortedEvents = events.Value.Where(p => extrinsicIndex is null || (p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex));
 
             return new ExtrinsicDetails
             {
