@@ -6,8 +6,8 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
-using System.Collections.Generic;
 using System.Numerics;
+using System.Reflection.Metadata;
 
 namespace PlutoWallet.Model
 {
@@ -76,42 +76,55 @@ namespace PlutoWallet.Model
 
             var parametersList = new List<EventParameter>();
 
-            var pValue = parameters.GetProperty("Value");
-
-            if (pValue == null || !(pValue is IType[]))
+            var pValues = eventTypeFields.Length switch
             {
-                return new List<EventParameter>();
-            }
-
-            var pValues = (IType[])pValue;
+                0 => [],
+                1 => [(IType)parameters],
+                _ => (IType[])parameters.GetProperty("Value")
+            };
 
             for (int i = 0; i < pValues.Length; i++)
             {
-                var parameter = pValues[i];
-                var eventTypeField = eventTypeFields[i];
-
-                Type type = parameter.GetType();
-
-                if (type.Name == "AccountId32")
+                try
                 {
-                    var accountIdEncoded = ((IType)parameter.GetProperty("Value")).Encode();
-                    string address = Utils.GetAddressFrom(accountIdEncoded);
-                    parametersList.Add(new EventParameter
-                    {
-                        Name = eventTypeField.Name,
-                        Value = address,
-                        EncodedValue = parameter.Encode(),
-                    });
+                    var parameter = pValues[i];
+                    var eventTypeField = eventTypeFields[i];
 
+                    Type type = parameter.GetType();
+
+                    var eventParameter = type.Name switch
+                    {
+                        "AccountId32" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.GetAddressFrom(((IType)parameter.GetProperty("Value")).Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        "Arr32U8" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.Bytes2HexString(parameter.Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        "H256" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.Bytes2HexString(((IType)parameter.GetProperty("Value")).Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        _ => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = parameter.ToString(),
+                            EncodedValue = parameter.Encode(),
+                        }
+                    };
+
+                    parametersList.Add(eventParameter);
                 }
-                else
+                catch (Exception e)
                 {
-                    parametersList.Add(new EventParameter
-                    {
-                        Name = eventTypeField.Name,
-                        Value = parameter.ToString(),
-                        EncodedValue = parameter.Encode(),
-                    });
+                    Console.WriteLine(e);
                 }
             }
 
@@ -213,7 +226,7 @@ namespace PlutoWallet.Model
             var events = new BaseVec<UniversalEventRecord<T>>();
             events.Create(eventsBytes);
 
-            var sortedEvents = events.Value.Where(p => extrinsicIndex is null || (p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex));
+            var sortedEvents = events.Value.Where(p => extrinsicIndex is null || (p.Phase.Value == PolkadotAssetHub.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex));
 
             return new ExtrinsicDetails
             {
@@ -272,7 +285,7 @@ namespace PlutoWallet.Model
         /// <summary>
         /// >> phase
         /// </summary>
-        private Substrate.NetApi.Generated.Model.frame_system.EnumPhase _phase;
+        private PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase _phase;
 
         /// <summary>
         /// >> event
@@ -282,9 +295,9 @@ namespace PlutoWallet.Model
         /// <summary>
         /// >> topics
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> _topics;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256> _topics;
 
-        public Substrate.NetApi.Generated.Model.frame_system.EnumPhase Phase
+        public PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase Phase
         {
             get
             {
@@ -308,7 +321,7 @@ namespace PlutoWallet.Model
             }
         }
 
-        public BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> Topics
+        public BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256> Topics
         {
             get
             {
@@ -337,13 +350,16 @@ namespace PlutoWallet.Model
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Phase = new Substrate.NetApi.Generated.Model.frame_system.EnumPhase();
+            Phase = new PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase();
             Phase.Decode(byteArray, ref p);
             Event = new T();
             Event.Decode(byteArray, ref p);
-            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256>();
+            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256>();
             Topics.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            global::System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

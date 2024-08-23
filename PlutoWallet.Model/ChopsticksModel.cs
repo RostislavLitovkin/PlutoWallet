@@ -3,9 +3,8 @@ using Substrate.NetApi;
 using System.Text.Json.Serialization;
 using System.Net.Http.Json;
 using System.Net.Http.Headers;
-using Substrate.NetApi.Model.Types;
 using System.Numerics;
-using Substrate.NetApi.Model.Types.Base;
+using Substrate.NetApi.Model.Types;
 
 namespace PlutoWallet.Model
 {

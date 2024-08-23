@@ -11,6 +11,7 @@ using Substrate.NetApi.Model.Types.Primitive;
 using Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet;
 
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+using AssetMetadata = PlutoWallet.Types.AssetMetadata;
 
 namespace PlutoWallet.Model
 {
@@ -27,6 +28,7 @@ namespace PlutoWallet.Model
             return AssetsDict.Values
                      .Where(asset => asset.Symbol.Equals(symbol, StringComparison.Ordinal));
         }
+
 
         public static async Task GetBalanceAsync(SubstrateClientExt client, string substrateAddress, CancellationToken token = default)
         {
@@ -498,7 +500,7 @@ namespace PlutoWallet.Model
                     AccountData accountData = new AccountData();
                     accountData.Create(storageTokensChanges[i][1]);
 
-                    AssetMetadata assetMetadata = new AssetMetadata();
+                    var assetMetadata = new Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata();
                     assetMetadata.Create(storageAssetRegistryChanges[i][1]);
 
                     BigInteger assetId = Model.HashModel.GetBigIntegerFromTwox_64Concat(storageKeys[i]);
@@ -526,7 +528,7 @@ namespace PlutoWallet.Model
     {
         public BigInteger AssetId { get; set; }
         public AccountData AccountData { get; set; }
-        public AssetMetadata AssetMetadata { get; set; }
+        public Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata AssetMetadata { get; set; }
     }
 
     public class HydrationTokenData

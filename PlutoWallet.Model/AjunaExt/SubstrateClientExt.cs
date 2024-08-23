@@ -118,7 +118,7 @@ namespace PlutoWallet.Model.AjunaExt
             Hash startEra = await SubstrateClient.Chain.GetFinalizedHeadAsync(token);
             Era era = Era.Create(lifeTime, (await SubstrateClient.Chain.GetHeaderAsync(startEra, token)).Number.Value);
 
-            TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra);
+            TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra, this.Endpoint.AddressVersion);
 
             if (!signed) {
                 return uncheckedExtrinsic;

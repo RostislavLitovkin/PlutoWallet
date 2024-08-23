@@ -166,7 +166,7 @@ namespace PlutoWallet.Model
                     {
                         var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: events.ExtrinsicIndex, events.Events, blockNumber: 0, CancellationToken.None);
 
-                        var currencyChanges = TransactionAnalyzerModel.AnalyzeEvents(extrinsicDetails.Events, client.Endpoint);
+                        var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
 
                         var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
 

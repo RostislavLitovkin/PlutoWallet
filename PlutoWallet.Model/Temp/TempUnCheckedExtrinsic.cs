@@ -47,11 +47,12 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     //
     //   startEra:
     //     The start era.
-    public TempUnCheckedExtrinsic(bool signed, Account account, Method method, Era era, CompactInteger nonce, ChargeType charge, Hash genesis, Hash startEra)
+    public TempUnCheckedExtrinsic(bool signed, Account account, Method method, Era era, CompactInteger nonce, ChargeType charge, Hash genesis, Hash startEra, uint addressVersion)
         : base(signed, account, nonce, method, era, charge)
     {
         Genesis = genesis;
         StartEra = startEra;
+        AddressVersion = addressVersion;
     }
 
     //
@@ -78,6 +79,31 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
         base.Signature = signature;
     }
 
+    public uint AddressVersion;
+
+    /// <summary>
+    /// https://polkadot.js.org/docs/api/FAQ/#i-cannot-send-transactions-sending-yields-decoding-failures
+    /// </summary>
+    public byte[] AccountEncode()
+    {
+        List<byte> list = new List<byte>();
+        switch (AddressVersion)
+        {
+            case 0u:
+                return Account.Bytes;
+            case 1u:
+                list.Add(byte.MaxValue);
+                list.AddRange(Account.Bytes);
+                return list.ToArray();
+            case 2u:
+                list.Add(0);
+                list.AddRange(Account.Bytes);
+                return list.ToArray();
+            default:
+                throw new NotImplementedException("Unknown address version please refer to PlutoAccountBase");
+        }
+    }
+
     //
     // Summary:
     //     Encode this instance, returns the encoded bytes.
@@ -93,7 +119,7 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
 
         List<byte> list = new List<byte>();
         list.Add((byte)(4u | (base.Signed ? 128u : 0u)));
-        list.AddRange(base.Account.Encode());
+        list.AddRange(AccountEncode());
         list.Add(base.Account.KeyTypeByte);
         if (base.Signature != null)
         {

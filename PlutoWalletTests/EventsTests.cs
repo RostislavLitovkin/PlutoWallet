@@ -81,7 +81,7 @@ namespace PlutoWalletTests
                 Console.WriteLine();
             }
 
-            var currencyChanges = TransactionAnalyzerModel.AnalyzeEvents(extrinsicDetails.Events, endpoint);
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
         }
 
         [Test]

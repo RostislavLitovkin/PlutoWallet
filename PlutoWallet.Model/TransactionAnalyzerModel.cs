@@ -1,8 +1,10 @@
 ﻿
 using PlutoWallet.Constants;
+using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
+using System.Net;
 using System.Numerics;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
 
@@ -14,7 +16,7 @@ namespace PlutoWallet.Model
         /// Analyze the events and return the currency changes for each address
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, Dictionary<AssetKey, Asset>> AnalyzeEvents(IEnumerable<ExtrinsicEvent> events, Endpoint endpoint)
+        public static async Task<Dictionary<string, Dictionary<AssetKey, Asset>>> AnalyzeEventsAsync(SubstrateClientExt client, IEnumerable<ExtrinsicEvent> events, Endpoint endpoint, CancellationToken token)
         {
             var result = new Dictionary<string, Dictionary<AssetKey, Asset>>();
 
@@ -22,6 +24,7 @@ namespace PlutoWallet.Model
             {
                 IEnumerable<(string, AssetKey, BigInteger)> evaluated = e switch
                 {
+                    /// Balances
                     ExtrinsicEvent { PalletName: "Balances", EventName: "Transfer" } => [
                         // From negative
                         (e.Parameters[0].Value, (endpoint.Key, AssetPallet.Native, 0), -BigInteger.Parse(e.Parameters[2].Value)),
@@ -33,7 +36,21 @@ namespace PlutoWallet.Model
                     ExtrinsicEvent { PalletName: "Balances", EventName: "Minted" } => [(e.Parameters[0].Value, (endpoint.Key, AssetPallet.Native, 0), BigInteger.Parse(e.Parameters[1].Value))],
                     ExtrinsicEvent { PalletName: "Balances", EventName: "Burned" } => [(e.Parameters[0].Value, (endpoint.Key, AssetPallet.Native, 0), -BigInteger.Parse(e.Parameters[1].Value))],
 
-                    // Handle fees
+                    /// Tokens
+                    ExtrinsicEvent { PalletName: "Tokens", EventName: "Transfer" } => [
+                        // From negative
+                        (e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), -BigInteger.Parse(e.Parameters[3].Value)),
+                        // To positive
+                        (e.Parameters[2].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[3].Value))
+                    ],
+                    ExtrinsicEvent { PalletName: "Tokens", EventName: "Deposited" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
+                    ExtrinsicEvent { PalletName: "Tokens", EventName: "Withdrawn" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), -BigInteger.Parse(e.Parameters[2].Value))],
+
+                    /// Assets
+                    ExtrinsicEvent { PalletName: "Assets", EventName: "Issued" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Assets, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
+                    ExtrinsicEvent { PalletName: "Assets", EventName: "Burned" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Assets, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
+
+                    /// Fees
                     ExtrinsicEvent { PalletName: "TransactionPayment", EventName: "TransactionFeePaid" } => [("fee", (endpoint.Key, AssetPallet.Native, 0), -BigInteger.Parse(e.Parameters[1].Value) - BigInteger.Parse(e.Parameters[2].Value))],
                     ExtrinsicEvent { PalletName: "XcmPallet", EventName: "FeesPaid" } => EvaluateXcmPalletFeesPaid(e, endpoint),
 
@@ -50,31 +67,41 @@ namespace PlutoWallet.Model
 
                     if (!result[address].ContainsKey(key))
                     {
-                        result[address][key] = new Asset
+                        result[address][key] = key.Item2 switch
                         {
-                            Amount = 0,
-                            Pallet = key.Item2,
-                            Symbol = key.Item2 switch
+                            AssetPallet.Native => new Asset
                             {
-                                AssetPallet.Native => endpoint.Unit,
-                                // Fill later
-                                _ => "Unknown"
+                                Amount = 0,
+                                Pallet = key.Item2,
+                                Symbol = endpoint.Unit,
+                                ChainIcon = endpoint.Icon,
+                                DarkChainIcon = endpoint.DarkIcon,
+                                AssetId = key.Item3,
+                                Endpoint = endpoint,
+                                Decimals = endpoint.Decimals
                             },
-                            ChainIcon = endpoint.Icon,
-                            DarkChainIcon = endpoint.DarkIcon,
-                            AssetId = key.Item3,
-                            Endpoint = endpoint,
+                            _ => (await AssetsMetadataModel.GetAssetMetadataAsync(client, key.Item2, key.Item3, token)).ToAsset()
                         };
                     }
 
-                    var decimals = key.Item2 switch
-                    {
-                        AssetPallet.Native => endpoint.Decimals,
-                        // Fill later
-                        _ => 0
-                    };
+                    result[address][key].Amount += (double)amount / Math.Pow(10, result[address][key].Decimals);
+                }
+            }
 
-                    result[address][key].Amount += (double)amount / Math.Pow(10, decimals);
+            /// Remove emptry values
+            foreach (var address in result.Keys)
+            {
+                foreach(var assetKey in result[address].Keys)
+                {
+                    if (result[address][assetKey].Amount == 0)
+                    {
+                        result[address].Remove(assetKey);
+                    }
+                }
+
+                if (result[address].Keys.Count() == 0)
+                {
+                    result.Remove(address);
                 }
             }
 
