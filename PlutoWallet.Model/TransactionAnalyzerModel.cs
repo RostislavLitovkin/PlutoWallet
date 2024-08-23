@@ -16,9 +16,9 @@ namespace PlutoWallet.Model
         /// Analyze the events and return the currency changes for each address
         /// </summary>
         /// <returns></returns>
-        public static async Task<Dictionary<string, Dictionary<AssetKey, Asset>>> AnalyzeEventsAsync(SubstrateClientExt client, IEnumerable<ExtrinsicEvent> events, Endpoint endpoint, CancellationToken token)
+        public static async Task<Dictionary<string, Dictionary<AssetKey, Asset>>> AnalyzeEventsAsync(SubstrateClientExt client, IEnumerable<ExtrinsicEvent> events, Endpoint endpoint, CancellationToken token, Dictionary<string, Dictionary<AssetKey, Asset>>? existingCurrencyChanges = null)
         {
-            var result = new Dictionary<string, Dictionary<AssetKey, Asset>>();
+            var result = existingCurrencyChanges ?? new Dictionary<string, Dictionary<AssetKey, Asset>>();
 
             foreach (var e in events)
             {

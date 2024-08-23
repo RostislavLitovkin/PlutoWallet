@@ -71,8 +71,8 @@ namespace PlutoWallet.Model
 
     public class ChopsticksModel
     {
-        //private const string url = "https://express-byrr9.ondigitalocean.app";
-        private const string url = "http://localhost:8000";
+        private const string url = "https://express-byrr9.ondigitalocean.app";
+        //private const string url = "http://localhost:8000";
 
         public static async Task<ChopsticksEventsOutput?> SimulateCallAsync(string endpoint, byte[] extrinsic, BigInteger blockNumber, string senderAddress)
         {
@@ -104,7 +104,7 @@ namespace PlutoWallet.Model
             }
         }
 
-        public static async Task<ChopsticksXcmEventsOutput?> SimulateXcmCallAsync(string fromEndpoint, string toEndpoint, byte[] extrinsic, string senderAddress)
+        public static async Task<ChopsticksXcmEventsOutput?> SimulateXcmCallAsync(string fromEndpoint, string toEndpoint, byte[] extrinsic)
         {
             var httpClient = new HttpClient();
 

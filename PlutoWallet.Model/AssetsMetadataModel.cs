@@ -75,7 +75,7 @@ namespace PlutoWallet.Model
                 Decimals = meta.Decimals.Value,
             };
 
-            return AssetsMetadataDict[(endpoint.Key, AssetPallet.Native, assetId)];
+            return AssetsMetadataDict[(endpoint.Key, pallet, assetId)];
         }
     }
 }

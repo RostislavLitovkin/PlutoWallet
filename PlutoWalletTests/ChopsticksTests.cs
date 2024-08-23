@@ -141,16 +141,16 @@ namespace PlutoWalletTests
             var xa = await toClient.ConnectAndLoadMetadataAsync();
 
 
-            var transfer = new Substrate.NetApi.Model.Extrinsics.Method(Utils.HexToByteArray("0x89")[0], 1, Utils.HexToByteArray("0x0300010300a10f043205011f00025a620203010200a10f010016b3861912eb2dda98ca3abc80f8b5b01b42c00753222dc5be9373117d2e616f00"));
+            var transfer = new Substrate.NetApi.Model.Extrinsics.Method(Utils.HexToByteArray("0x89")[0], 1, Utils.HexToByteArray("0x0300010300a10f043205011f00fe4e580003010200a10f01006a4e76d530fa715a95388b889ad33c1665062c3dec9bf0aca3a9e4ff45781e4800"));
 
             var account = new ChopsticksMockAccount();
-            account.Create(KeyType.Sr25519, Utils.GetPublicKeyFrom(senderAddress));
+            account.Create(KeyType.Sr25519, Utils.GetPublicKeyFrom(substrateAddress));
 
             var extrinsic = await fromClient.GetTempUnCheckedExtrinsicAsync(transfer, account, 64, CancellationToken.None, signed: true);
 
             var header = await fromClient.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
 
-            var events = await ChopsticksModel.SimulateXcmCallAsync(fromEndpoint.URLs[0], toEndpoint.URLs[0], extrinsic.Encode(), senderAddress);
+            var events = await ChopsticksModel.SimulateXcmCallAsync(fromEndpoint.URLs[0], toEndpoint.URLs[0], extrinsic.Encode());
 
             var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(fromClient, extrinsicIndex: events.FromEvents.ExtrinsicIndex, events.FromEvents.Events, blockNumber: 0, CancellationToken.None);
 

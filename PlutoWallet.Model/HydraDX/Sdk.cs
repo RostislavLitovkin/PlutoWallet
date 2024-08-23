@@ -148,6 +148,16 @@ namespace PlutoWallet.Model.HydraDX
 
         public static double GetSpotPrice(string tokenSymbol)
         {
+            if (tokenSymbol.Equals("USDC", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return 1;
+            }
+
+            if (tokenSymbol.Equals("USDT", StringComparison.CurrentCultureIgnoreCase))
+            {
+                return 1;
+            }
+
             if (!Assets.ContainsKey(tokenSymbol))
             {
                 return 0;

@@ -27,34 +27,35 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
             var walletAddress = Model.KeysModel.GetSubstrateKey();
 
+            Console.WriteLine("Total of " + assetChanges[walletAddress].Values);
             foreach (Asset a in assetChanges[walletAddress].Values)
             {
-                if (a.Amount > 0 || a.Pallet == AssetPallet.Native)
+                Console.WriteLine(a.Symbol);
+
+                double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(a.Symbol);
+                a.UsdValue = a.Amount * spotPrice;
+                tempAssets.Add(new AssetInfoExpanded
                 {
-                    double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(a.Symbol);
-                    a.UsdValue = a.Amount * spotPrice;
-                    tempAssets.Add(new AssetInfoExpanded
+                    Amount = a.Amount switch
                     {
-                        Amount = a.Amount switch
-                        {
-                            > 0 => "+" + String.Format("{0:0.00}", a.Amount),
-                            _ => String.Format("{0:0.00}", a.Amount)
-                        },
-                        Symbol = a.Symbol,
-                        UsdValue = a.UsdValue switch
-                        {
-                            > 0 => "+" + String.Format("{0:0.00}", a.UsdValue) + " USD",
-                            _ => String.Format("{0:0.00}", a.UsdValue) + " USD",
-                        },
-                        UsdColor = a.UsdValue switch
-                        {
-                            > 0 => Colors.Green,
-                            < 0 => Colors.Red,
-                            _ => Colors.Gray,
-                        },
-                        ChainIcon = Application.Current.UserAppTheme != AppTheme.Dark ? a.ChainIcon : a.DarkChainIcon,
-                    });
-                }
+                        > 0 => "+" + String.Format("{0:0.00}", a.Amount),
+                        _ => String.Format("{0:0.00}", a.Amount)
+                    },
+                    Symbol = a.Symbol,
+                    UsdValue = a.UsdValue switch
+                    {
+                        > 0 => "+" + String.Format("{0:0.00}", a.UsdValue) + " USD",
+                        _ => String.Format("{0:0.00}", a.UsdValue) + " USD",
+                    },
+                    UsdColor = a.UsdValue switch
+                    {
+                        > 0 => Colors.Green,
+                        < 0 => Colors.Red,
+                        _ => Colors.Gray,
+                    },
+                    ChainIcon = Application.Current.UserAppTheme != AppTheme.Dark ? a.ChainIcon : a.DarkChainIcon,
+                });
+
             }
 
             Assets = tempAssets;
