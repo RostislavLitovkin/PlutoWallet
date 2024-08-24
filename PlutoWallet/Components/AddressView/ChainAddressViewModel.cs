@@ -22,7 +22,7 @@ namespace PlutoWallet.Components.AddressView
         public ChainAddressViewModel()
         {
             qrAddress = "Loading";
-            address = KeysModel.GetPublicKey();
+            address = "Loading";
             chainAddressName = "";
             isVisible = true;
         }
