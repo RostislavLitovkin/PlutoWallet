@@ -28,15 +28,15 @@
 
                     <Border 
                         WidthRequest="200"
-                            StrokeThickness="0"
-                    BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
-                    Padding="10, 5, 10, 5"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+                        Padding="10, 5, 10, 5"
                         Margin="0, 10, 0, 0">
                         <Border.Shadow>
                             <Shadow Brush="Black"
-                    Offset="0,2" 
-                    Radius="3"
-                    Opacity="0.1" />
+                                    Offset="0,2" 
+                                    Radius="3"
+                                    Opacity="0.1" />
 
                         </Border.Shadow>
                         <Border.StrokeShape>

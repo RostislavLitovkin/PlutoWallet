@@ -242,9 +242,7 @@ namespace PlutoWallet.Model
 
                 assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? selectedEndpoint.Icon : selectedEndpoint.DarkIcon;
                 assetSelectButtonViewModel.Symbol = selectedEndpoint.Unit;
-                assetSelectButtonViewModel.AssetId = 0;
-                assetSelectButtonViewModel.Pallet = AssetPallet.Native;
-                assetSelectButtonViewModel.Endpoint = selectedEndpoint;
+                assetSelectButtonViewModel.SelectedAssetKey = (selectedEndpoint.Key, AssetPallet.Native, 0);
                 assetSelectButtonViewModel.Decimals = selectedEndpoint.Decimals;
             }
 

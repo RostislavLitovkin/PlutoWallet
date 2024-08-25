@@ -5,11 +5,9 @@ using PlutoWallet.Components.MessagePopup;
 using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
-using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi.Model.Types;
-using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+
 namespace PlutoWallet.Model
 {
     public class PlutonicationModel

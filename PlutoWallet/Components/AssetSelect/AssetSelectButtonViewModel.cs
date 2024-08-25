@@ -5,6 +5,8 @@ using System.Numerics;
 using PlutoWallet.Constants;
 using PlutoWallet.Types;
 
+using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+
 namespace PlutoWallet.Components.AssetSelect
 {
 	public partial class AssetSelectButtonViewModel : ObservableObject
@@ -18,7 +20,7 @@ namespace PlutoWallet.Components.AssetSelect
 			get => symbol;
 			set
 			{
-				WidthRequest = value.Length * 15 + 40;
+				WidthRequest = value.Length * 13 + 50;
 
                 SetProperty(ref symbol, value);
 			}
@@ -26,14 +28,8 @@ namespace PlutoWallet.Components.AssetSelect
 
 		[ObservableProperty]
 		private int widthRequest;
-
-		public AssetPallet Pallet { get; set; }
-
-		public BigInteger AssetId { get; set; }
-
-		public Endpoint Endpoint { get; set; }
-
-		public int Decimals { get; set; }
+		public AssetKey SelectedAssetKey { get; set; }
+        public int Decimals { get; set; }
 
         public AssetSelectButtonViewModel()
 		{

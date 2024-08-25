@@ -23,6 +23,7 @@
                     <Label x:Name="titleLabel"
                            VerticalOptions="Center" 
                            HorizontalOptions="StartAndExpand"
+                           FontAttributes="Bold"
                     >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>
@@ -34,7 +35,8 @@
                     <Label x:Name="addressLabel"
                    VerticalOptions="Center" 
                    HorizontalOptions="FillAndExpand"
-                   Grid.Column="1">
+                   Grid.Column="1"
+                           FontAttributes="Bold">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>
 
@@ -43,10 +45,10 @@
                     </Label>
 
                     <Image WidthRequest="20"
-                   Margin="5, 0, 0, 0"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="End"
-                   Grid.Column="2">
+                       Margin="5, 0, 0, 0"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="End"
+                       Grid.Column="2">
 
                         <Image.Source>
                             <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"

@@ -4,6 +4,7 @@ using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 using PlutoWallet.Types;
+using PlutoWallet.Constants;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -53,10 +54,13 @@ public partial class TransferView : ContentView
                 return;
             }
 
-            Method transfer =
-                assetSelectButtonViewModel.Pallet == AssetPallet.Native ?
-                TransferModel.NativeTransfer(clientExt, viewModel.Address, amount) :
-                TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
+            Method transfer = assetSelectButtonViewModel.SelectedAssetKey switch
+            {
+                (EndpointEnum endpointKey, AssetPallet.Native, _) => TransferModel.NativeTransfer(clientExt, viewModel.Address, amount),
+                (EndpointEnum endpointKey, AssetPallet.Assets, BigInteger assetId) => TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetId, amount),
+                _ => throw new Exception("Not implemented")
+            };
+               
 
             if ((await KeysModel.GetAccount()).IsSome(out var account))
             {
@@ -81,13 +85,10 @@ public partial class TransferView : ContentView
         }
     }
 
-    async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    private void OnCancelClicked(object sender, EventArgs e)
     {
-        // Hide this layout
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         viewModel.SetToDefault();
-
-        qrLayout.Children.Clear();
     }
 }
