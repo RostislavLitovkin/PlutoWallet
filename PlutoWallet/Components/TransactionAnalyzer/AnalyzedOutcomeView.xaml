@@ -28,8 +28,9 @@
                             FontSize="25">
                         <Label.FormattedText>
                             <FormattedString>
-                                <Span FontAttributes="Bold" TextColor="White"
-                                        Text="{Binding Loading}" />
+                                <Span FontAttributes="Bold"
+                                      TextColor="White"
+                                      Text="{Binding Loading}" />
                             </FormattedString>
 
                         </Label.FormattedText>

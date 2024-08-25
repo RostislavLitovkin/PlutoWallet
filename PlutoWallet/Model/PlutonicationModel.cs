@@ -118,15 +118,11 @@ namespace PlutoWallet.Model
         }
         public static async Task ReceivePayload(UnCheckedExtrinsic unCheckedExtrinsic, Substrate.NetApi.Model.Rpc.RuntimeVersion runtime)
         {
-            var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
-
-            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
-
-            Method method = unCheckedExtrinsic.Method;
-
             Substrate.NetApi.Model.Extrinsics.Payload payload = unCheckedExtrinsic.GetPayload(runtime);
 
             string genesisHash = Utils.Bytes2HexString(payload.SignedExtension.Genesis).ToLower();
+
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
 
             if (Endpoints.HashToKey.ContainsKey(genesisHash))
             {
@@ -134,120 +130,11 @@ namespace PlutoWallet.Model
 
                 var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(key);
 
-                transactionRequest.EndpointKey = key;
-                transactionRequest.ChainName = client.Endpoint.Name;
-
-                try
-                {
-                    (var pallet, var call) = PalletCallModel.GetPalletAndCallName(client, method.ModuleIndex, method.CallIndex);
-
-                    transactionAnalyzerConfirmationViewModel.PalletCallName = pallet + " " + call;
-
-                    transactionAnalyzerConfirmationViewModel.Endpoint = client.Endpoint;
-
-                    var dAppConnectionViewModel = DependencyService.Get<DAppConnectionViewModel>();
-
-                    transactionAnalyzerConfirmationViewModel.DAppName = dAppConnectionViewModel.Name;
-                    transactionAnalyzerConfirmationViewModel.DAppIcon = dAppConnectionViewModel.Icon;
-
-                    transactionAnalyzerConfirmationViewModel.Payload = payload;
-
-                    var account = new ChopsticksMockAccount();
-                    account.Create(KeyType.Sr25519, KeysModel.GetPublicKeyBytes());
-
-                    var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, account, 64, CancellationToken.None, signed: true);
-
-                    var header = await client.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
-
-
-                    var xcmDestinationEndpointKey = XcmModel.IsMethodXcm(client.Endpoint, extrinsic.Method);
-
-                    Console.WriteLine("XCM destination? " + xcmDestinationEndpointKey);
-
-                    Dictionary<string, Dictionary<AssetKey, Asset>> currencyChanges = new Dictionary<string, Dictionary<AssetKey, Asset>>();
-                    if (xcmDestinationEndpointKey is null)
-                    {
-                        var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], extrinsic.Encode(), header.Number.Value, account.Value);
-
-                        if (!(events is null))
-                        {
-                            var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: events.ExtrinsicIndex, events.Events, blockNumber: 0, CancellationToken.None);
-
-                            currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
-                        }
-                    }
-                    else
-                    {
-                        var xcmResult = await ChopsticksModel.SimulateXcmCallAsync(
-                            client.Endpoint.URLs[0],
-                            Endpoints.GetEndpointDictionary[xcmDestinationEndpointKey ?? EndpointEnum.None].URLs[0],
-                            extrinsic.Encode()
-                        );
-
-                        Console.WriteLine("XCM result received :)");
-
-
-                        var destionationClient = await AjunaClientModel.GetOrAddSubstrateClientAsync(xcmDestinationEndpointKey ?? EndpointEnum.None);
-
-                        if (!(xcmResult is null))
-                        {
-                            var fromExtrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: xcmResult.FromEvents.ExtrinsicIndex, xcmResult.FromEvents.Events, blockNumber: 0, CancellationToken.None);
-
-                            var toExtrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(destionationClient, extrinsicIndex: null, xcmResult.ToEvents.Events, blockNumber: 0, CancellationToken.None);
-
-                            var fromCurrencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, fromExtrinsicDetails.Events, client.Endpoint, CancellationToken.None);
-
-                            currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(destionationClient, toExtrinsicDetails.Events, destionationClient.Endpoint, CancellationToken.None, existingCurrencyChanges: fromCurrencyChanges);
-                        }
-                    };
-
-                    var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
-
-                    analyzedOutcomeViewModel.UpdateAssetChanges(currencyChanges);
-
-                    transactionAnalyzerConfirmationViewModel.EstimatedFee = FeeModel.GetEstimatedFeeString(currencyChanges["fee"].First().Value);
-
-                    transactionAnalyzerConfirmationViewModel.IsVisible = true;
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine(ex);
-
-                    transactionRequest.PalletIndex = "(" + method.ModuleIndex.ToString() + " index)";
-                    transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
-
-                    transactionRequest.Fee = "Fee: unknown";
-
-                    transactionRequest.AjunaMethod = method;
-
-                    transactionRequest.Payload = payload;
-                    transactionRequest.IsVisible = true;
-                }
+                await transactionAnalyzerConfirmationViewModel.LoadAsync(client, unCheckedExtrinsic, runtime);
             }
             else
             {
-                transactionRequest.ChainIcon = "";
-                transactionRequest.ChainName = "Unknown";
-
-                // Unknown
-                transactionRequest.PalletIndex = "(" + method.ModuleIndex.ToString() + " index)";
-                transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
-
-                transactionRequest.Fee = "Fee: unknown";
-
-                transactionRequest.AjunaMethod = method;
-
-                transactionRequest.Payload = payload;
-                transactionRequest.IsVisible = true;
-            }
-
-            if (method.Parameters.Length > 5)
-            {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes).Substring(0, 10) + "..";
-            }
-            else
-            {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes);
+                transactionAnalyzerConfirmationViewModel.LoadUnknown(unCheckedExtrinsic, runtime);
             }
         }
 

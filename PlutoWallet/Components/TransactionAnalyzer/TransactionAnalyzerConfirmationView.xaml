@@ -20,7 +20,8 @@
 
                     <txanalyzer:DAppNetworkView Name="{Binding DAppName}"
                                             Icon="{Binding DAppIcon}"
-                                                 Endpoint="{Binding Endpoint}"/>
+                                                 Endpoint="{Binding Endpoint}"
+                                                IsVisible="{Binding IsDAppViewVisible}"/>
 
                     <txanalyzer:PalletCallView PalletCallName="{Binding PalletCallName}" 
                                             Endpoint="{Binding Endpoint}"/>
