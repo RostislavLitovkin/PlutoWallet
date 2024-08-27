@@ -60,10 +60,10 @@
                         </Grid.ColumnDefinitions>
 
                         <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"
-                        Clicked="OnCancelClicked"/>
+                                                Clicked="OnCancelClicked"/>
 
                         <buttons:PlutoWalletElevatedButton Text="Confirm" Grid.Column="1"
-                        Clicked="OnConfirmClicked"/>
+                                                            Clicked="OnConfirmClicked"/>
 
                     </Grid>
                 </AbsoluteLayout>

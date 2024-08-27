@@ -5,6 +5,8 @@ using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 using PlutoWallet.Types;
 using PlutoWallet.Constants;
+using ZXing.Aztec.Internal;
+using PlutoWallet.Components.TransactionAnalyzer;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -61,22 +63,13 @@ public partial class TransferView : ContentView
                 _ => throw new Exception("Not implemented")
             };
                
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+            await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
 
-            if ((await KeysModel.GetAccount()).IsSome(out var account))
-            {
-                Console.WriteLine(account.Value);
-                Console.WriteLine(account.KeyType);
-
-                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transfer, account, token: CancellationToken.None);
-            }
-            else
-            {
-                // Verification failed, do something about it
-            }
-
-            // Hide this layout
+            /// Hide this layout
 
             viewModel.SetToDefault();
+            
         }
         catch (Exception ex)
         {
@@ -84,6 +77,34 @@ public partial class TransferView : ContentView
             Console.WriteLine(ex);
         }
     }
+
+    public static async Task OnConfirmClicked()
+    {
+        if ((await KeysModel.GetAccount()).IsSome(out var account))
+        {
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(transactionAnalyzerConfirmationViewModel.Endpoint.Key);
+
+            try
+            {
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transactionAnalyzerConfirmationViewModel.Payload.Call, account, token: CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            /// Hide
+
+            transactionAnalyzerConfirmationViewModel.IsVisible = false;
+        }
+        else
+        {
+            // Verification failed, do something about it
+        }
+    }
+
 
     private void OnCancelClicked(object sender, EventArgs e)
     {

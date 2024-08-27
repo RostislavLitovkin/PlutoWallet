@@ -75,8 +75,13 @@ namespace PlutoWallet.Model
                 CancellationToken.None);
         }
 
-        public static string GetEstimatedFeeString(Asset asset)
+        public static string GetEstimatedFeeString(Asset? asset)
         {
+            if (asset == null)
+            {
+                return "Estimated fee: unknown";
+            }
+
             var amount = Math.Abs(asset.Amount);
             var isLessThan = (amount < 0.01) ? "<" : "";
             return $"Estimated fee: {isLessThan}{String.Format("{0:0.00}", amount)} {asset.Symbol}";

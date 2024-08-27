@@ -69,8 +69,6 @@
 
         <staking:StakingRegistrationRequestView />
 
-        <confirmtransaction:ConfirmTransactionView />
-        
         <messagepopup:MessagePopupView />
 
         <navigationbar:NavigationBarView />
@@ -84,5 +82,8 @@
         <changelayoutrequest:ChangeLayoutRequestView />
 
         <txanalyzer:TransactionAnalyzerConfirmationView />
-</AbsoluteLayout>
+
+        <confirmtransaction:ConfirmTransactionView />
+
+    </AbsoluteLayout>
 </ContentPage>

@@ -9,7 +9,6 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
 
-
 namespace PlutoWallet.Components.TransactionAnalyzer
 {
     public partial class TransactionAnalyzerConfirmationViewModel : ObservableObject, IPopup
@@ -33,37 +32,50 @@ namespace PlutoWallet.Components.TransactionAnalyzer
         private string palletCallName;
 
         [ObservableProperty]
-        private Payload payload;
+        private TempPayload payload;
 
         [ObservableProperty]
-        private string estimatedFee = "Loading";
+        private string estimatedFee = "Estimated fee: Loading";
 
         // Estimated time should be calculated based the client
         [ObservableProperty]
         private string estimatedTime = "Estimated time: 6 sec";
 
-        public async Task LoadAsync(SubstrateClientExt client, UnCheckedExtrinsic unCheckedExtrinsic, RuntimeVersion? runtimeVersion = null)
+        [ObservableProperty]
+        private Func<Task> onConfirm;
+
+        public async Task LoadAsync(SubstrateClientExt client, Method method, bool showDAppView, Func<Task> onConfirm, CancellationToken token = default)
         {
+            var account = new ChopsticksMockAccount();
+            account.Create(KeyType.Sr25519, KeysModel.GetPublicKeyBytes());
+
+            #region Temp
+            var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, account, lifeTime: 64, token: token);
+            #endregion
+
+            await LoadAsync(client, extrinsic, showDAppView, onConfirm);
+        }
+        public async Task LoadAsync(SubstrateClientExt client, TempUnCheckedExtrinsic unCheckedExtrinsic, bool showDAppView, Func<Task> onConfirm, RuntimeVersion? runtimeVersion = null)
+        {
+            OnConfirm = onConfirm;
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
 
             analyzedOutcomeViewModel.Loading = "Loading";
 
             Method method = unCheckedExtrinsic.Method;
 
-
-
             #region Basic Info
             Endpoint = client.Endpoint;
             Payload = unCheckedExtrinsic.GetPayload(runtimeVersion ?? client.SubstrateClient.RuntimeVersion);
 
-
             var dAppConnectionViewModel = DependencyService.Get<DAppConnectionViewModel>();
 
-            IsDAppViewVisible = dAppConnectionViewModel.IsVisible;
+            
 
-            if (dAppConnectionViewModel.IsVisible) {
+            if (showDAppView) {
                 DAppName = dAppConnectionViewModel.Name;
                 DAppIcon = dAppConnectionViewModel.Icon;
+                IsDAppViewVisible = dAppConnectionViewModel.IsVisible;
             }
             else
             {
@@ -90,16 +102,16 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                 var account = new ChopsticksMockAccount();
                 account.Create(KeyType.Sr25519, KeysModel.GetPublicKeyBytes());
 
-                var extrinsic = await client.GetTempUnCheckedExtrinsicAsync(method, account, 64, CancellationToken.None, signed: true);
+                unCheckedExtrinsic.AddPayloadSignature(await account.SignAsync(Payload.Encode()));
 
                 var header = await client.SubstrateClient.Chain.GetHeaderAsync(null, CancellationToken.None);
 
-                var xcmDestinationEndpointKey = XcmModel.IsMethodXcm(client.Endpoint, extrinsic.Method);
+                var xcmDestinationEndpointKey = XcmModel.IsMethodXcm(client.Endpoint, unCheckedExtrinsic.Method);
 
                 Dictionary<string, Dictionary<AssetKey, Asset>> currencyChanges = new Dictionary<string, Dictionary<AssetKey, Asset>>();
                 if (xcmDestinationEndpointKey is null)
                 {
-                    var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], extrinsic.Encode(), header.Number.Value, account.Value);
+                    var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], unCheckedExtrinsic.Encode(), header.Number.Value, account.Value);
 
                     if (!(events is null))
                     {
@@ -113,11 +125,10 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                     var xcmResult = await ChopsticksModel.SimulateXcmCallAsync(
                         client.Endpoint.URLs[0],
                         Endpoints.GetEndpointDictionary[xcmDestinationEndpointKey ?? EndpointEnum.None].URLs[0],
-                        extrinsic.Encode()
+                        unCheckedExtrinsic.Encode()
                     );
 
                     Console.WriteLine("XCM result received :)");
-
 
                     var destionationClient = await AjunaClientModel.GetOrAddSubstrateClientAsync(xcmDestinationEndpointKey ?? EndpointEnum.None);
 
@@ -137,7 +148,7 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
                 analyzedOutcomeViewModel.Loading = "";
 
-                EstimatedFee = FeeModel.GetEstimatedFeeString(currencyChanges["fee"].First().Value);
+                EstimatedFee = FeeModel.GetEstimatedFeeString(currencyChanges.ContainsKey("fee") ? currencyChanges["fee"].First().Value : null);
             }
             catch (Exception ex)
             {
@@ -145,20 +156,20 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
                 analyzedOutcomeViewModel.Loading = "Failed";
 
-                EstimatedFee = "Fee: unknown";
+                EstimatedFee = "Estimated fee: unknown";
             }
             #endregion
         }
 
-        public void LoadUnknown(UnCheckedExtrinsic unCheckedExtrinsic, RuntimeVersion runtimeVersion)
+        public void LoadUnknown(TempUnCheckedExtrinsic unCheckedExtrinsic, RuntimeVersion runtimeVersion, Func<Task> onConfirm)
         {
+            OnConfirm = onConfirm;
+
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
 
             analyzedOutcomeViewModel.Loading = "Loading";
 
             Method method = unCheckedExtrinsic.Method;
-
-
 
             #region Basic Info
             Endpoint = new Endpoint

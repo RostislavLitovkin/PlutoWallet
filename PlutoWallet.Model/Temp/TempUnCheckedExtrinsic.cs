@@ -47,12 +47,13 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     //
     //   startEra:
     //     The start era.
-    public TempUnCheckedExtrinsic(bool signed, Account account, Method method, Era era, CompactInteger nonce, ChargeType charge, Hash genesis, Hash startEra, uint addressVersion)
+    public TempUnCheckedExtrinsic(bool signed, Account account, Method method, Era era, CompactInteger nonce, ChargeType charge, Hash genesis, Hash startEra, uint addressVersion, bool checkMetadata)
         : base(signed, account, nonce, method, era, charge)
     {
         Genesis = genesis;
         StartEra = startEra;
         AddressVersion = addressVersion;
+        CheckMetadata = checkMetadata;
     }
 
     //
@@ -80,6 +81,8 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     }
 
     public uint AddressVersion;
+
+    public bool CheckMetadata;
 
     /// <summary>
     /// https://polkadot.js.org/docs/api/FAQ/#i-cannot-send-transactions-sending-yields-decoding-failures
@@ -110,7 +113,7 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     //
     // Exceptions:
     //   T:System.NotSupportedException:
-    public new byte[] Encode(bool includeCheckMetadata = true)
+    public new byte[] Encode()
     {
         if (base.Signed && base.Signature == null)
         {
@@ -129,11 +132,31 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
         list.AddRange(base.Era.Encode());
         list.AddRange(base.Nonce.Encode());
         list.AddRange(base.Charge.Encode());
-        if (includeCheckMetadata)
+        if (CheckMetadata)
         {
             list.AddRange(base.CheckMetadataHash.EncodeExtra());
         }
         list.AddRange(base.Method.Encode());
         return Utils.SizePrefixedByteArray(list);
+    }
+}
+
+public static class TempUnCheckedExtrinsicHelper
+{
+    public static TempUnCheckedExtrinsic ToTempUnCheckedExtrinsic(this UnCheckedExtrinsic original, Payload originalPayload, uint addressVersion, bool checkMetadata)
+    {
+        return new TempUnCheckedExtrinsic
+        (
+            signed: original.Signed,
+            account: original.Account,
+            method: original.Method,
+            era: original.Era,
+            nonce: original.Nonce,
+            charge: original.Charge,
+            genesis: originalPayload.SignedExtension.Genesis,
+            startEra: originalPayload.SignedExtension.StartEra,
+            addressVersion: addressVersion,
+            checkMetadata: checkMetadata
+        );
     }
 }

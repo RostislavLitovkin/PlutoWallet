@@ -29,7 +29,7 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span FontAttributes="Bold"
-                                      TextColor="White"
+                                      TextColor="Black"
                                       Text="{Binding Loading}" />
                             </FormattedString>
 
