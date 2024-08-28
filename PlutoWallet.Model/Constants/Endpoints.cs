@@ -67,6 +67,12 @@ namespace PlutoWallet.Constants
             { "0x262e1b2ad728475fd6fe88e62d34c200abe6fd693931ddad144059b1eb884e5b", EndpointEnum.Bifrost },
         });
 
+        public static readonly ReadOnlyDictionary<string, EndpointEnum> ParachainIdToKey = new ReadOnlyDictionary<string, EndpointEnum>(new Dictionary<string, EndpointEnum>()
+        {
+            { new ParachainId { Chain = Chain.Parachain, Relay = RelayChain.Polkadot, Id = 1000 }.ToString(), EndpointEnum.PolkadotAssetHub },
+            { new ParachainId { Chain = Chain.Parachain, Relay = RelayChain.Polkadot, Id = 2034 }.ToString(), EndpointEnum.Hydration },
+        });
+
         public static readonly ReadOnlyDictionary<EndpointEnum, Endpoint> GetEndpointDictionary = new ReadOnlyDictionary<EndpointEnum, Endpoint>(new Dictionary<EndpointEnum, Endpoint>()
         {
             { EndpointEnum.Polkadot, new Endpoint
@@ -85,6 +91,7 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
                 ParachainId = new ParachainId
                 {
+                    Relay = RelayChain.Polkadot,
                     Chain = Chain.Relay,
                     Id = null,
                 }
@@ -252,6 +259,7 @@ namespace PlutoWallet.Constants
                 SubscanChainName = "assethub-polkadot",
                 ParachainId = new ParachainId
                 {
+                    Relay = RelayChain.Polkadot,
                     Chain = Chain.Parachain,
                     Id = 1000,
                 }
@@ -378,6 +386,7 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 10041,
                 Decimals = 12,
                 ChainType = ChainType.Substrate,
+                AddressVersion = 0u, // Just a guess, but probably right
             } },
             { EndpointEnum.Hydration, new Endpoint
             {
@@ -392,7 +401,13 @@ namespace PlutoWallet.Constants
                 Decimals = 12,
                 ChainType = ChainType.Substrate,
                 CalamarChainName = "hydradx",
-                SupportsNfts = true
+                SupportsNfts = true,
+                AddressVersion = 0u,
+                ParachainId = new ParachainId {
+                    Chain = Chain.Parachain,
+                    Relay = RelayChain.Polkadot,
+                    Id = 2034
+                },
             } },
             /*{
                 "xcavate", new Endpoint
@@ -464,6 +479,7 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
                 ParachainId = new ParachainId
                 {
+                    Relay = RelayChain.Polkadot,
                     Chain = Chain.Parachain,
                     Id = 2034,
                 }
@@ -481,6 +497,7 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
                 ParachainId = new ParachainId
                 {
+                    Relay = RelayChain.Polkadot,
                     Chain = Chain.Parachain,
                     Id = 1000,
                 }
@@ -498,6 +515,7 @@ namespace PlutoWallet.Constants
                 ChainType = ChainType.Substrate,
                 ParachainId = new ParachainId
                 {
+                    Relay = RelayChain.Polkadot,
                     Chain = Chain.Relay,
                     Id = null,
                 }
@@ -512,10 +530,23 @@ namespace PlutoWallet.Constants
         Other,
     }
 
+    public enum RelayChain
+    {
+        Polkadot,
+        Kusama,
+        Other
+    }
+
     public class ParachainId
     {
-        public Chain Chain { get; set; }
-        public uint? Id { get; set; }
+        public required RelayChain Relay { get; set; }
+        public required Chain Chain { get; set; }
+        public required uint? Id { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Chain}-{Relay}-{Id}";
+        }
     }
 
     public enum Chain
@@ -527,23 +558,29 @@ namespace PlutoWallet.Constants
 
     public class Endpoint
     {
-        public string Name { get; set; }
-        public string[] URLs { get; set; }
-        public string Icon { get; set; }
-        public string DarkIcon { get; set; }
+        public required string Name { get; set; }
+        public required string[] URLs { get; set; }
+        public required string Icon { get; set; }
+        public required string DarkIcon { get; set; }
         public string? CalamarChainName { get; set; }
         public string? SubSquareChainName { get; set; }
         public string? SubscanChainName { get; set; }
-        public EndpointEnum Key { get; set; }
+        public required EndpointEnum Key { get; set; }
 
         // Symbol and Unit are interchangeable names.
-        public string Unit { get; set; }
-        public int Decimals { get; set; }
-        public short SS58Prefix { get; set; }
-        public ChainType ChainType { get; set; }
+        public required string Unit { get; set; }
+        public required int Decimals { get; set; }
+        public required short SS58Prefix { get; set; }
+        public required ChainType ChainType { get; set; }
         public bool SupportsNfts { get; set; } = false;
 
         public ParachainId? ParachainId { get; set; }
+
+
+        /// <summary>
+        /// https://polkadot.js.org/docs/api/FAQ/#i-cannot-send-transactions-sending-yields-decoding-failures
+        /// </summary>
+        public uint AddressVersion { get; set; } = 2u;
 
         /*public Endpoint Clone()
         {

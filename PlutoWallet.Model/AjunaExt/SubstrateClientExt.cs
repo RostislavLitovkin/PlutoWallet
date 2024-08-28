@@ -14,6 +14,8 @@ namespace PlutoWallet.Model.AjunaExt
         private static readonly HttpClient _httpClient = new HttpClient();
 
         public ChargeType DefaultCharge;
+
+        public bool CheckMetadata = false;
         public Endpoint Endpoint { get; set; }
         public Metadata CustomMetadata { get; set; }
         public SubstrateClient SubstrateClient { get; set; }
@@ -76,6 +78,13 @@ namespace PlutoWallet.Model.AjunaExt
                     {
                         DefaultCharge = ChargeAssetTxPayment.Default();
                     }
+
+                    if (signedExtension.SignedIdentifier == "CheckMetadataHash")
+                    {
+                        CheckMetadata = true;
+                    }
+
+                    Console.WriteLine(signedExtension.SignedIdentifier);
                 }
 
                 taskCompletionSource.SetResult(SubstrateClient.IsConnected);
@@ -107,10 +116,8 @@ namespace PlutoWallet.Model.AjunaExt
             return extrinsicId;
         }
 
-        public async Task<TempUnCheckedExtrinsic> GetTempUnCheckedExtrinsicAsync(Method method, Account account, uint lifeTime, CancellationToken token)
+        public async Task<TempUnCheckedExtrinsic> GetTempUnCheckedExtrinsicAsync(Method method, Account account, uint lifeTime, CancellationToken token, bool signed = true)
         {
-            bool signed = true;
-
             ///
             /// This part is temporary fix before the next Substrate.Net.Api version, that would fix the code gen and sign metadata checks
             ///
@@ -120,7 +127,11 @@ namespace PlutoWallet.Model.AjunaExt
             Hash startEra = await SubstrateClient.Chain.GetFinalizedHeadAsync(token);
             Era era = Era.Create(lifeTime, (await SubstrateClient.Chain.GetHeaderAsync(startEra, token)).Number.Value);
 
-            TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra);
+            TempUnCheckedExtrinsic uncheckedExtrinsic = new TempUnCheckedExtrinsic(signed, account, method, era, nonce, DefaultCharge, SubstrateClient.GenesisHash, startEra, this.Endpoint.AddressVersion, CheckMetadata);
+
+            if (!signed) {
+                return uncheckedExtrinsic;
+            }
 
             TempPayload payload = uncheckedExtrinsic.GetPayload(SubstrateClient.RuntimeVersion);
             uncheckedExtrinsic.AddPayloadSignature(await account.SignAsync(payload.Encode()));

@@ -5,7 +5,7 @@
              WidthRequest="{Binding WidthRequest}">
     <Border BackgroundColor="{x:StaticResource Primary}">
         <Border.StrokeShape>
-            <RoundRectangle CornerRadius="5" />
+            <RoundRectangle CornerRadius="15" />
 
         </Border.StrokeShape>
         <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -22,6 +22,7 @@
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     HorizontalOptions="Center"
+                   FontAttributes="Bold"
                     />
             <Image HorizontalOptions="Center"
                     WidthRequest="20" HeightRequest="20"

@@ -32,7 +32,7 @@ public partial class EventItemView : ContentView
         {
             var control = (EventItemView)bindable;
 
-            var parametersList = EventsModel.GetParametersList(newValue);
+            /*var parametersList = EventsModel.(newValue);
 
             foreach (var parameter in parametersList)
             {
@@ -46,7 +46,7 @@ public partial class EventItemView : ContentView
             if (!parametersList.Any())
             {
                 control.eventParametersStackLayout.Margin = new Thickness(0, 0, 0, 5);
-            }
+            }*/
         });
 
     public static readonly BindableProperty SafetyProperty = BindableProperty.Create(

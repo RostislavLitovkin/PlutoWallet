@@ -11,16 +11,22 @@
             x:Name="border"
             >
         <Border.StrokeShape>
-            <RoundRectangle CornerRadius="20" />
+            <RoundRectangle CornerRadius="20"
+                            x:Name="roundRectangle"/>
 
         </Border.StrokeShape>
-            <!--BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"-->
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="20"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <!--BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"-->
         <ContentView x:Name="contentView"
                      HorizontalOptions="Center"
                      VerticalOptions="Center"
                      >
-
-            
         </ContentView>
     </Border>
 </ContentView>

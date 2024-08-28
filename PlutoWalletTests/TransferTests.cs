@@ -1,17 +1,8 @@
 ﻿using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
-using Polkadot.NetApi.Generated.Storage;
-using Substrate.NetApi.Generated.Model.pallet_balances.types;
-using Substrate.NetApi;
-using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
-using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Primitive;
-using System.Net;
-using Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress;
-using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 
 namespace PlutoWalletTests
 {

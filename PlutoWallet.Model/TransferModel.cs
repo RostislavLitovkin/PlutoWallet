@@ -14,10 +14,10 @@ using System.Numerics;
 
 namespace PlutoWallet.Model
 {
-	public class TransferModel
-	{
-		public static Method NativeTransfer(SubstrateClientExt client, string address, BigInteger amount)
-		{
+    public class TransferModel
+    {
+        public static Method NativeTransfer(SubstrateClientExt client, string address, BigInteger amount)
+        {
             // Later: Recognize what type of the address it is and convert it into ss58 one
             var accountId = new AccountId32();
             accountId.Create(Utils.GetPublicKeyFrom(address));
@@ -31,7 +31,12 @@ namespace PlutoWallet.Model
             var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Balances", "transfer_keep_alive");
 
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(multiAddress.Encode());
+            byteArray.AddRange(client.Endpoint.AddressVersion switch
+            {
+                0u => accountId.Encode(),
+                // Maybe handle more variants?
+                _ => multiAddress.Encode(),
+            });
             byteArray.AddRange(baseComAmount.Encode());
             return new Method(palletIndex, "Balances", callIndex, "transfer_keep_alive", byteArray.ToArray());
         }

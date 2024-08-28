@@ -33,7 +33,7 @@ namespace PlutoWallet.Components.TransferView
             var mainClient = await Model.AjunaClientModel.GetMainClientAsync();
             if (mainClient is null || !await mainClient.IsConnectedAsync())
 			{
-				Fee = "Fee: Failed.";
+				Fee = "Fee: failed";
 
 				return;
 			}
@@ -42,17 +42,17 @@ namespace PlutoWallet.Components.TransferView
 			{
                 var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
 
-				if (assetSelectButtonViewModel.Pallet == AssetPallet.Native)
+				if (assetSelectButtonViewModel.SelectedAssetKey.Item2 == AssetPallet.Native)
 				{
 					Fee = "Fee: " + await FeeModel.GetNativeTransferFeeStringAsync(mainClient);
 				}
-				else if (assetSelectButtonViewModel.Pallet == AssetPallet.Assets)
+				else if (assetSelectButtonViewModel.SelectedAssetKey.Item2 == AssetPallet.Assets)
 				{
 					Fee = "Fee: " + await FeeModel.GetAssetsTransferFeeStringAsync(mainClient);
                 }
                 else
 				{
-					Fee = "Fee: Unsupported";
+					Fee = "Fee: unsupported";
 				}
 			}
 			catch (Exception ex)

@@ -1,6 +1,4 @@
-﻿using System;
-using PlutoWallet.Model;
-using PlutoWallet.Components.Balance;
+﻿using PlutoWallet.Model;
 using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using PlutoWallet.Types;
@@ -26,7 +24,7 @@ namespace PlutoWallet.Components.AssetSelect
 			isVisible = false;
 		}
 
-		public async Task Appear()
+		public void Appear()
 		{
 			IsVisible = true;
 
@@ -43,13 +41,7 @@ namespace PlutoWallet.Components.AssetSelect
 
 				var a = valuePair.Value;
 
-				bool isSelected = (
-					assetSelectButtonViewModel.AssetId == a.AssetId &&
-                    assetSelectButtonViewModel.Pallet == a.Pallet &&
-					assetSelectButtonViewModel.Symbol == a.Symbol &&
-                    assetSelectButtonViewModel.Decimals == a.Decimals &&
-					assetSelectButtonViewModel.Endpoint.Key == a.Endpoint.Key
-                );
+				bool isSelected = assetSelectButtonViewModel.SelectedAssetKey == (a.Endpoint.Key, a.Pallet, a.AssetId);
 
                 tempAssets.Add(new AssetSelect
 				{

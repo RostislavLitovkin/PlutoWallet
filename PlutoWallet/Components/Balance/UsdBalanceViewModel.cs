@@ -1,20 +1,10 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Numerics;
+﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Components.MessagePopup;
-using Substrate.NetApi;
-using Substrate.NetApi.Model.Types.Primitive;
-using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using Substrate.NetApi.Generated.Model.pallet_assets.types;
-using Newtonsoft.Json.Linq;
 using PlutoWallet.Types;
-using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.Balance
 {
-	public partial class UsdBalanceViewModel : ObservableObject
+    public partial class UsdBalanceViewModel : ObservableObject
 	{
         public bool DoNotReload { get; set; } = false;
 

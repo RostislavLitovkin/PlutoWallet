@@ -1,11 +1,13 @@
 ﻿using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
+using System.Reflection.Metadata;
 
 namespace PlutoWallet.Model
 {
@@ -28,10 +30,10 @@ namespace PlutoWallet.Model
     {
         public string PalletName { get; set; }
         public string EventName { get; set; }
-        public object? Parameters { get; set; }
+        public List<EventParameter> Parameters { get; set; }
         public EventSafety Safety { get; set; }
 
-        public ExtrinsicEvent(string palletName, string eventName, object? parameters)
+        public ExtrinsicEvent(string palletName, string eventName, List<EventParameter> parameters)
         {
             PalletName = palletName;
             EventName = eventName;
@@ -59,13 +61,13 @@ namespace PlutoWallet.Model
 
     public class EventParameter
     {
-        public string Name { get; set; }
-        public string Value { get; set; }
+        public required string Name { get; set; }
+        public required string Value { get; set; }
+        public required byte[] EncodedValue { get; set; }
     }
     public static class EventsModel
     {
-
-        public static List<EventParameter> GetParametersList(object parameters)
+        public static List<EventParameter> GetParametersList(object parameters, TypeField[] eventTypeFields)
         {
             if (parameters == null)
             {
@@ -74,35 +76,55 @@ namespace PlutoWallet.Model
 
             var parametersList = new List<EventParameter>();
 
-            var pValue = parameters.GetProperty("Value");
-
-            if (pValue == null || !(pValue is IType[]))
+            var pValues = eventTypeFields.Length switch
             {
-                return new List<EventParameter>();
-            }
+                0 => [],
+                1 => [(IType)parameters],
+                _ => (IType[])parameters.GetProperty("Value")
+            };
 
-            foreach (var parameter in (IType[])pValue)
+            for (int i = 0; i < pValues.Length; i++)
             {
-                Type type = parameter.GetType();
-
-                if (type.Name == "AccountId32")
+                try
                 {
-                    var accountIdEncoded = ((IType)parameter.GetProperty("Value")).Encode();
-                    string address = Utils.GetAddressFrom(accountIdEncoded);
-                    parametersList.Add(new EventParameter
-                    {
-                        Name = type.Name,
-                        Value = address
-                    });
+                    var parameter = pValues[i];
+                    var eventTypeField = eventTypeFields[i];
 
+                    Type type = parameter.GetType();
+
+                    var eventParameter = type.Name switch
+                    {
+                        "AccountId32" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.GetAddressFrom(((IType)parameter.GetProperty("Value")).Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        "Arr32U8" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.Bytes2HexString(parameter.Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        "H256" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = Utils.Bytes2HexString(((IType)parameter.GetProperty("Value")).Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        _ => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = parameter.ToString(),
+                            EncodedValue = parameter.Encode(),
+                        }
+                    };
+
+                    parametersList.Add(eventParameter);
                 }
-                else
+                catch (Exception e)
                 {
-                    parametersList.Add(new EventParameter
-                    {
-                        Name = type.Name,
-                        Value = parameter.ToString(),
-                    });
+                    Console.WriteLine(e);
                 }
             }
 
@@ -128,47 +150,20 @@ namespace PlutoWallet.Model
         /// <summary>
         /// Gets all extrinsic events in the block
         /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="extrinsicHash"></param>
         /// <returns>all events for the given extrinsic</returns>
         /// <exception cref="ExtrinsicIndexNotFoundException"></exception>
         public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync(
             this SubstrateClientExt substrateClient,
-           EndpointEnum endpointKey,
             Hash blockHash,
             byte[] extrinsicHash,
             CancellationToken token = default
         )
         {
-            return endpointKey switch
-            {
-                EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, blockHash, extrinsicHash, token),
-                _ => await GetExtrinsicDetailsAsync(substrateClient, blockHash, extrinsicHash, token),
-            };
-        }
-
-        /// <summary>
-        /// Gets all extrinsic events in the block
-        /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="unCheckedExtrinsic"></param>
-        /// <returns>all events for the given extrinsic</returns>
-        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
-            this SubstrateClientExt substrateClient,
-            Hash blockHash,
-            byte[] extrinsicHash,
-            CancellationToken token = default
-        ) where T : BaseEnumType, new()
-        {
             string blockHashString = Utils.Bytes2HexString(blockHash);
 
             var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-            var events = await substrateClient.SubstrateClient.GetStorageAsync<BaseVec<UniversalEventRecord<T>>>(eventsParameters, blockHashString, token);
+
+            string eventsBytes = await substrateClient.SubstrateClient.InvokeAsync<string>("state_getStorage", new object[2] { eventsParameters, blockHashString }, token);
 
             BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
 
@@ -183,31 +178,83 @@ namespace PlutoWallet.Model
                 }
             };
 
-            if (extrinsicIndex is null || events is null)
+            return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
+        }
+
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsForClientAsync(
+            this SubstrateClientExt substrateClient,
+            uint? extrinsicIndex,
+            string? eventsBytes,
+            BigInteger blockNumber,
+            CancellationToken token
+        )
+        {
+            return substrateClient.Endpoint.Key switch
+            {
+                EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                _ => await GetExtrinsicDetailsAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+            };
+        }
+
+        /// <summary>
+        /// Gets all extrinsic events in the block
+        /// 
+        /// If extrinsicIndex is null, it will return all events in the block
+        /// </summary>
+        /// <returns>all events for the given extrinsic</returns>
+        public static async Task<ExtrinsicDetails> GetExtrinsicEventsAsync<T>(
+            this SubstrateClientExt substrateClient,
+            uint? extrinsicIndex,
+            string? eventsBytes,
+            BigInteger blockNumber,
+            CancellationToken token
+        ) where T : BaseEnumType, new()
+        {
+            if (eventsBytes == null || eventsBytes.Length == 0)
             {
                 return new ExtrinsicDetails
                 {
-                    BlockNumber = block.Block.Header.Number.Value,
+                    BlockNumber = blockNumber,
                     ExtrinsicIndex = extrinsicIndex,
                     Events = new List<ExtrinsicEvent>()
                 };
             }
 
-            var sortedEvents = events.Value.Where(p => p.Phase.Value == Substrate.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex);
+            var events = new BaseVec<UniversalEventRecord<T>>();
+            events.Create(eventsBytes);
 
+            var sortedEvents = events.Value.Where(p => extrinsicIndex is null || (p.Phase.Value == PolkadotAssetHub.NetApi.Generated.Model.frame_system.Phase.ApplyExtrinsic && ((U32)p.Phase.Value2).Value == extrinsicIndex));
 
             return new ExtrinsicDetails
             {
-                BlockNumber = block.Block.Header.Number.Value,
+                BlockNumber = blockNumber,
                 ExtrinsicIndex = extrinsicIndex,
                 Events = sortedEvents.Select(e =>
                 {
+                    byte palletIndex = Convert.ToByte(e.Event.GetProperty("Value"));
                     string palletName = e.Event.GetValueString();
                     object? eventValue2 = e.Event.GetProperty("Value2");
+                    byte eventIndex = Convert.ToByte(eventValue2.GetProperty("Value"));
                     string eventName = eventValue2.GetValueString();
                     object? parameters = eventValue2.GetProperty("Value2");
 
-                    return new ExtrinsicEvent(palletName, eventName, parameters);
+                    string _palletName = substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Name;
+
+                    TypeField[]? eventTypeFields = null;
+
+                    foreach (var variant in substrateClient.CustomMetadata.NodeMetadata.Types[substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Events.TypeId.ToString()].Variants)
+                    {
+                        if (variant.Index == eventIndex)
+                        {
+                            eventTypeFields = variant.TypeFields;
+                            break;
+                        }
+                    }
+
+                    return new ExtrinsicEvent(palletName, eventName, GetParametersList(parameters, eventTypeFields ?? []));
                 })
             };
         }
@@ -215,37 +262,18 @@ namespace PlutoWallet.Model
         /// <summary>
         /// Gets extrinsic details without events
         /// </summary>
-        /// <param name="substrateClient"></param>
-        /// <param name="blockHash"></param>
-        /// <param name="extrinsicHash"></param>
         /// <returns>all events for the given extrinsic</returns>
         public static async Task<ExtrinsicDetails> GetExtrinsicDetailsAsync(
             this SubstrateClientExt substrateClient,
-            Hash blockHash,
-            byte[] extrinsicHash,
+            uint? extrinsicIndex,
+            string? _eventsBytes,
+            BigInteger blockNumber,
             CancellationToken token = default
         )
         {
-            string blockHashString = Utils.Bytes2HexString(blockHash);
-
-            var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-
-            BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
-
-            uint? extrinsicIndex = null;
-            for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
-            {
-                // Same extrinsic
-                if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
-                {
-                    extrinsicIndex = i;
-                    break;
-                }
-            };
-
             return new ExtrinsicDetails
             {
-                BlockNumber = block.Block.Header.Number.Value,
+                BlockNumber = blockNumber,
                 ExtrinsicIndex = extrinsicIndex,
                 Events = new List<ExtrinsicEvent>()
             };
@@ -257,7 +285,7 @@ namespace PlutoWallet.Model
         /// <summary>
         /// >> phase
         /// </summary>
-        private Substrate.NetApi.Generated.Model.frame_system.EnumPhase _phase;
+        private PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase _phase;
 
         /// <summary>
         /// >> event
@@ -267,9 +295,9 @@ namespace PlutoWallet.Model
         /// <summary>
         /// >> topics
         /// </summary>
-        private Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> _topics;
+        private Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256> _topics;
 
-        public Substrate.NetApi.Generated.Model.frame_system.EnumPhase Phase
+        public PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase Phase
         {
             get
             {
@@ -293,7 +321,7 @@ namespace PlutoWallet.Model
             }
         }
 
-        public BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256> Topics
+        public BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256> Topics
         {
             get
             {
@@ -322,13 +350,16 @@ namespace PlutoWallet.Model
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Phase = new Substrate.NetApi.Generated.Model.frame_system.EnumPhase();
+            Phase = new PolkadotAssetHub.NetApi.Generated.Model.frame_system.EnumPhase();
             Phase.Decode(byteArray, ref p);
             Event = new T();
             Event.Decode(byteArray, ref p);
-            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Generated.Model.primitive_types.H256>();
+            Topics = new Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256>();
             Topics.Decode(byteArray, ref p);
-            TypeSize = p - start;
+            var bytesLength = p - start;
+            TypeSize = bytesLength;
+            Bytes = new byte[bytesLength];
+            global::System.Array.Copy(byteArray, start, Bytes, 0, bytesLength);
         }
     }
 }

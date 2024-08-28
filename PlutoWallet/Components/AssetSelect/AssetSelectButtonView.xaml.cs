@@ -9,10 +9,10 @@ public partial class AssetSelectButtonView : ContentView
         BindingContext = DependencyService.Get<AssetSelectButtonViewModel>();
     }
 
-    private async void OnChangeTokenClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    private void OnChangeTokenClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         var viewModel = DependencyService.Get<AssetSelectViewModel>();
 
-        await viewModel.Appear();
+        viewModel.Appear();
     }
 }

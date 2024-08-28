@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using Plutonication;
+﻿using Plutonication;
 using PlutoWallet.Components.ConnectionRequestView;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Components.MessagePopup;
+using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Components.TransactionRequest;
 using PlutoWallet.Constants;
-using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 
@@ -30,7 +29,7 @@ namespace PlutoWallet.Model
             dAppViewModel.Name = ac.Name;
             dAppViewModel.SetConnectionState(DAppConnectionStateEnum.Waiting);
             dAppViewModel.IsVisible = true;
-        }        
+        }
         public static async Task AcceptConnectionAsync()
         {
             try
@@ -117,67 +116,79 @@ namespace PlutoWallet.Model
         }
         public static async Task ReceivePayload(UnCheckedExtrinsic unCheckedExtrinsic, Substrate.NetApi.Model.Rpc.RuntimeVersion runtime)
         {
-            var transactionRequest = DependencyService.Get<TransactionRequestViewModel>();
-
-            Method method = unCheckedExtrinsic.Method;
-
             Substrate.NetApi.Model.Extrinsics.Payload payload = unCheckedExtrinsic.GetPayload(runtime);
 
             string genesisHash = Utils.Bytes2HexString(payload.SignedExtension.Genesis).ToLower();
+
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
 
             if (Endpoints.HashToKey.ContainsKey(genesisHash))
             {
                 EndpointEnum key = Endpoints.HashToKey[genesisHash];
 
-                Endpoint endpoint = Endpoints.GetEndpointDictionary[key];
-
                 var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(key);
 
-                transactionRequest.EndpointKey = key;
-                transactionRequest.ChainName = endpoint.Name;
+                var signedExtensions = payload.SignedExtension;
 
-                try
-                {
-                    (var pallet, var call) = PalletCallModel.GetPalletAndCallName(client, method.ModuleIndex, method.CallIndex);
+                var tempPayload = new TempPayload(
+                    payload.Call,
+                    new TempSignedExtensions(
+                        specVersion: signedExtensions.SpecVersion,
+                        txVersion: signedExtensions.TxVersion,
+                        genesis: signedExtensions.Genesis,
+                        startEra: signedExtensions.StartEra,
+                        mortality: signedExtensions.Mortality,
+                        nonce: signedExtensions.Nonce,
+                        charge: signedExtensions.Charge
+                    )
+                );
 
-
-                    transactionRequest.PalletIndex = pallet;
-                    transactionRequest.CallIndex = call;
-
-                    Task calculateFee = transactionRequest.CalculateFeeAsync(client, method);
-                }
-                catch
-                {
-                    transactionRequest.PalletIndex = "(" + method.ModuleIndex.ToString() + " index)";
-                    transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
-
-                    transactionRequest.Fee = "Fee: unknown";
-                }
+                await transactionAnalyzerConfirmationViewModel.LoadAsync(client, unCheckedExtrinsic.ToTempUnCheckedExtrinsic(payload, client.Endpoint.AddressVersion, client.CheckMetadata), true, onConfirm: OnConfirmClickedAsync, runtime);
             }
             else
             {
-                transactionRequest.ChainIcon = "";
-                transactionRequest.ChainName = "Unknown";
-
-                // Unknown
-                transactionRequest.PalletIndex = "(" + method.ModuleIndex.ToString() + " index)";
-                transactionRequest.CallIndex = "(" + method.CallIndex.ToString() + " index)";
-
-                transactionRequest.Fee = "Fee: unknown";
+                transactionAnalyzerConfirmationViewModel.LoadUnknown(unCheckedExtrinsic.ToTempUnCheckedExtrinsic(payload, 2u, true), runtime, onConfirm: OnConfirmClickedAsync);
             }
+        }
 
-            transactionRequest.AjunaMethod = method;
-
-            transactionRequest.Payload = payload;
-            transactionRequest.IsVisible = true;
-
-            if (method.Parameters.Length > 5)
+        public static async Task OnConfirmClickedAsync()
+        {
+            try
             {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes).Substring(0, 10) + "..";
+                var viewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+                if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
+                {
+                    Console.WriteLine("Authenticated");
+
+                    byte[] signature = account.Sign(viewModel.Payload.Encode());
+
+                    var signerResult = new SignerResult
+                    {
+                        id = 1,
+                        signature = Utils.Bytes2HexString(
+                            // This 1 means the signature is using Sr25519
+                            new byte[1] { 1 }
+                            .Concat(signature).ToArray()
+                        ).ToLower(),
+                    };
+
+                    Console.WriteLine("Signed");
+
+                    await PlutonicationWalletClient.SendPayloadSignatureAsync(signerResult);
+
+                    Console.WriteLine("Sending");
+
+                }
+
+                // Hide this layout
+                viewModel.IsVisible = false;
             }
-            else
+            catch (Exception ex)
             {
-                transactionRequest.Parameters = "0x" + Convert.ToHexString(method.ParametersBytes);
+                Console.WriteLine(ex);
+
+                // Handle potential errors
             }
         }
 

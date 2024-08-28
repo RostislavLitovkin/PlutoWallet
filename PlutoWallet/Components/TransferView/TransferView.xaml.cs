@@ -4,6 +4,9 @@ using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 using PlutoWallet.Types;
+using PlutoWallet.Constants;
+using ZXing.Aztec.Internal;
+using PlutoWallet.Components.TransactionAnalyzer;
 
 namespace PlutoWallet.Components.TransferView;
 
@@ -53,26 +56,20 @@ public partial class TransferView : ContentView
                 return;
             }
 
-            Method transfer =
-                assetSelectButtonViewModel.Pallet == AssetPallet.Native ?
-                TransferModel.NativeTransfer(clientExt, viewModel.Address, amount) :
-                TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetSelectButtonViewModel.AssetId, amount);
-
-            if ((await KeysModel.GetAccount()).IsSome(out var account))
+            Method transfer = assetSelectButtonViewModel.SelectedAssetKey switch
             {
-                Console.WriteLine(account.Value);
-                Console.WriteLine(account.KeyType);
+                (EndpointEnum endpointKey, AssetPallet.Native, _) => TransferModel.NativeTransfer(clientExt, viewModel.Address, amount),
+                (EndpointEnum endpointKey, AssetPallet.Assets, BigInteger assetId) => TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetId, amount),
+                _ => throw new Exception("Not implemented")
+            };
+               
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+            await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
 
-                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transfer, account, token: CancellationToken.None);
-            }
-            else
-            {
-                // Verification failed, do something about it
-            }
-
-            // Hide this layout
+            /// Hide this layout
 
             viewModel.SetToDefault();
+            
         }
         catch (Exception ex)
         {
@@ -81,13 +78,38 @@ public partial class TransferView : ContentView
         }
     }
 
-    async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    public static async Task OnConfirmClicked()
     {
-        // Hide this layout
+        if ((await KeysModel.GetAccount()).IsSome(out var account))
+        {
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(transactionAnalyzerConfirmationViewModel.Endpoint.Key);
+
+            try
+            {
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transactionAnalyzerConfirmationViewModel.Payload.Call, account, token: CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            /// Hide
+
+            transactionAnalyzerConfirmationViewModel.IsVisible = false;
+        }
+        else
+        {
+            // Verification failed, do something about it
+        }
+    }
+
+
+    private void OnCancelClicked(object sender, EventArgs e)
+    {
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         viewModel.SetToDefault();
-
-        qrLayout.Children.Clear();
     }
 }

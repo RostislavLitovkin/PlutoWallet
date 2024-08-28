@@ -2,12 +2,12 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
-xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.AddressView.AddressQrCodeView"
-             IsVisible="{Binding IsVisible}"
-AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
-AbsoluteLayout.LayoutFlags="All"
-BackgroundColor="#66000000">
+                xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+                             x:Class="PlutoWallet.Components.AddressView.AddressQrCodeView"
+                             IsVisible="{Binding IsVisible}"
+                AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="#66000000">
     <card:Card IsPopup="True">
         <card:Card.View>
             <AbsoluteLayout>
@@ -28,15 +28,15 @@ BackgroundColor="#66000000">
 
                     <Border 
                         WidthRequest="200"
-                            StrokeThickness="0"
-                    BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
-                    Padding="10, 5, 10, 5"
+                        StrokeThickness="0"
+                        BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+                        Padding="10, 5, 10, 5"
                         Margin="0, 10, 0, 0">
                         <Border.Shadow>
                             <Shadow Brush="Black"
-                    Offset="0,2" 
-                    Radius="3"
-                    Opacity="0.1" />
+                                    Offset="0,2" 
+                                    Radius="3"
+                                    Opacity="0.1" />
 
                         </Border.Shadow>
                         <Border.StrokeShape>

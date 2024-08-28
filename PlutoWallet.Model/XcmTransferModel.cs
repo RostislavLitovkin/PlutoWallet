@@ -37,13 +37,13 @@ namespace PlutoWallet.Model
 
             Method reserveTransfer = XcmPalletCalls.LimitedTeleportAssets(
                 // Destination Parachain
-                XcmModel.GetChainLocation(destinationEndpoint.ParachainId),
+                default, //XcmModel.GetChainLocation(destinationEndpoint.ParachainId),
 
                 // Beneficiary
-                XcmModel.GetAccountId32Location(address),
+                default, //XcmModel.GetAccountId32Location(address),
 
                 // Asset and Amount
-                XcmModel.GetNativeAsset(amount),
+                default, //XcmModel.GetNativeAsset(amount),
 
                 // Fee asset
                 (U32)feeAsset,

@@ -28,8 +28,7 @@
                            VerticalOptions="Center"
                            Source="{Binding VerificationIcon}"
                            IsVisible="{Binding VerificationIconIsVisible}"/>
-                    <Label 
-                           Margin="5, 0, 0, 0"
+                    <Label Margin="5, 0, 0, 0"
                             HorizontalOptions="Center"
                            VerticalOptions="Center"
                             VerticalTextAlignment="Center"

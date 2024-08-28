@@ -177,9 +177,7 @@ public partial class AssetSelectorView : ContentView
         var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
         assetSelectButtonViewModel.ChainIcon = Application.Current.UserAppTheme == AppTheme.Light ? Endpoint.Icon : Endpoint.DarkIcon;
         assetSelectButtonViewModel.Symbol = Symbol;
-        assetSelectButtonViewModel.AssetId = AssetId;
-        assetSelectButtonViewModel.Pallet = Pallet;
-        assetSelectButtonViewModel.Endpoint = Endpoint;
+        assetSelectButtonViewModel.SelectedAssetKey = (Endpoint.Key, Pallet, AssetId);
         assetSelectButtonViewModel.Decimals = Decimals;
 
         // Update the fee

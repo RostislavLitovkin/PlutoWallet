@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PlutoWallet.View.BasePage"
              Title="Base page"
+             xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              xmlns:transferview="clr-namespace:PlutoWallet.Components.TransferView"
              xmlns:connectionrequestview="clr-namespace:PlutoWallet.Components.ConnectionRequestView"
@@ -68,8 +69,6 @@
 
         <staking:StakingRegistrationRequestView />
 
-        <confirmtransaction:ConfirmTransactionView />
-        
         <messagepopup:MessagePopupView />
 
         <navigationbar:NavigationBarView />
@@ -81,6 +80,10 @@
         <networkselect:NetworkSelectPopup />
 
         <changelayoutrequest:ChangeLayoutRequestView />
+
+        <txanalyzer:TransactionAnalyzerConfirmationView />
+
+        <confirmtransaction:ConfirmTransactionView />
 
     </AbsoluteLayout>
 </ContentPage>

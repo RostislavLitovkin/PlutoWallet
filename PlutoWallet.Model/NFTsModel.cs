@@ -137,6 +137,13 @@ Hopefully it will fulfill the test functionalities correctly.",
                     {
                         Name = "Mock network",
                         Icon = "plutowalleticon.png",
+                        URLs = [],
+                        Unit = "Pluto",
+                        Decimals = 0,
+                        DarkIcon = "plutowalleticon.png",
+                        Key = EndpointEnum.PolkadotAssetHub,
+                        ChainType = ChainType.Substrate,
+                        SS58Prefix = 42,
                     },
                     Image = "dusan.jpg"
                 });

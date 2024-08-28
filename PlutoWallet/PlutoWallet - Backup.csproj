@@ -1,0 +1,556 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-ios;net8.0-maccatalyst;net8.0-android34.0</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<OutputType>Exe</OutputType>
+		<RootNamespace>PlutoWallet</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>Pluto wallet</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.rostislavlitovkin.plutowallet</ApplicationId>
+		<ApplicationIdGuid>3ba8b589-69cd-429f-866f-94877f789515</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.16</ApplicationDisplayVersion>
+    <PackageVersion>1.16</PackageVersion>
+    <ApplicationVersion>17</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">29.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<AndroidSigningKeyStore />
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	  <BuildIpa>true</BuildIpa>
+	  <IpaPackageName>plutowallet</IpaPackageName>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android|AnyCPU'">
+	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
+	  <AndroidKeyStore>True</AndroidKeyStore>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android|AnyCPU'">
+	  <AndroidSigningKeyStore>/Users/rostislavlitovkin/certificates/Keystore/RostislavLitovkin/RostislavLitovkin.keystore</AndroidSigningKeyStore>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- App Icon -->
+    <MauiIcon Include="Resources\AppIcon\appicon.png" />
+
+		<!-- Splash Screen -->
+    <MauiSplashScreen Include="Resources\Splash\plutowalleticonwhite.png" Color="#000000" />
+
+    <!-- Images -->
+
+		<MauiImage Include="Resources\Images\*svg" />
+		<MauiImage Include="Resources\Images\*png" />
+		<MauiImage Include="Resources\Images\*jpg" />
+		<MauiImage Include="Resources\Images\NetworkIcons\*svg" />
+		<MauiImage Include="Resources\Images\NetworkIcons\*png" />
+		<MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
+		<MauiImage Include="Resources\Images\PredefinedLayouts\*png" />
+		<MauiImage Include="Resources\Images\GalaxyLogicGame\*svg" />
+		<MauiImage Include="Resources\Images\GalaxyLogicGame\*png" />
+		<MauiImage Include="Resources\Images\FatCat\*png" />
+
+		<!-- fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="3.0.0-preview.7" />
+		<PackageReference Include="websocketsharp.core" Version="1.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
+		<PackageReference Include="Markdig" Version="0.37.0" />
+		<PackageReference Include="Uniquery" Version="1.0.1" />
+		<PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
+		<PackageReference Include="AzeroIdResolver" Version="1.0.2" />
+		<PackageReference Include="Substrate.NET.Wallet" Version="1.0.8" />
+		<PackageReference Include="System.Collections" Version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
+		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+		<PackageReference Include="Plutonication" Version="2.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Ajuna.NetApi" />
+	  <None Remove="Ajuna.NetWallet" />
+	  <None Remove="Components\" />
+	  <None Remove="Components\NetworkSelect\" />
+	  <None Remove="Components\AddressView\" />
+	  <None Remove="CommunityToolkit.Maui" />
+	  <None Remove="Resources\Images\cloudblack.svg" />
+	  <None Remove="Resources\Images\cloudwhite.svg" />
+	  <None Remove="Resources\Images\copyblack.svg" />
+	  <None Remove="Resources\Images\copywhite.svg" />
+	  <None Remove="Resources\Images\dappblack.svg" />
+	  <None Remove="Resources\Images\dappwhite.svg" />
+	  <None Remove="Resources\Images\deviceblack.svg" />
+	  <None Remove="Resources\Images\devicewhite.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\kusamaassethub.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\polkadotassethub.svg" />
+	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
+	  <None Remove="Resources\Images\subscan.png" />
+	  <None Remove="SubstrateNetApi" />
+	  <None Remove="Components\TransferView\" />
+	  <None Remove="ZXing.Net.Maui" />
+	  <None Remove="Components\ConnectionRequestView\" />
+	  <None Remove="ZXing.Net.Maui.Controls" />
+	  <None Remove="Components\UniversalScannerView\" />
+	  <None Remove="Components\MessagePopup\" />
+	  <None Remove="Components\TransactionRequest\" />
+	  <None Remove="Components\CalamarView\" />
+	  <None Remove="Resources\Fonts\fontawesome-webfont.ttf" />
+	  <None Remove="Components\ArgumentsView\" />
+	  <None Remove="Components\PublicKeyQRCodeView\" />
+	  <None Remove="Resources\Splash\" />
+	  <None Remove="Resources\AppIcon\" />
+	  <None Remove="Resources\Fonts\Exodar-Outline.ttf" />
+	  <None Remove="Components\DAppConnectionView\" />
+	  <None Remove="Substrate.NET.API" />
+	  <None Remove="Components\Staking\" />
+	  <None Remove="Components\Switch\" />
+	  <None Remove="Components\WebView\" />
+	  <None Remove="Components\Extrinsic\" />
+	  <None Remove="Resources\Images\NetworkIcons\" />
+	  <None Remove="Resources\Images\NetworkIcons\unique.png" />
+	  <None Remove="Resources\Images\NetworkIcons\t0rn.png" />
+	  <None Remove="Resources\Images\NetworkIcons\subsocial.png" />
+	  <None Remove="Resources\Images\NetworkIcons\statemint.png" />
+	  <None Remove="Resources\Images\NetworkIcons\statemine.png" />
+	  <None Remove="Resources\Images\NetworkIcons\quartz.png" />
+	  <None Remove="Resources\Images\NetworkIcons\opal.png" />
+	  <None Remove="Resources\Images\NetworkIcons\moonriver.png" />
+	  <None Remove="Resources\Images\NetworkIcons\moonbase.png" />
+	  <None Remove="Resources\Images\NetworkIcons\moonbeam.png" />
+	  <None Remove="Resources\Images\NetworkIcons\gmordie.png" />
+	  <None Remove="Resources\Images\NetworkIcons\calamari.png" />
+	  <None Remove="Resources\Images\NetworkIcons\elysiumtestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\elysium.png" />
+	  <None Remove="Resources\Images\NetworkIcons\equilibrium.png" />
+	  <None Remove="Resources\Images\NetworkIcons\geartestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\bajun.png" />
+	  <None Remove="Resources\Images\NetworkIcons\astar.png" />
+	  <None Remove="Resources\Images\NetworkIcons\alephzerotestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\litmus.png" />
+	  <None Remove="Resources\Images\NetworkIcons\shibuya.png" />
+	  <None Remove="Resources\Images\menuwhite.svg" />
+	  <None Remove="Resources\Images\menublack.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\kusamawhite.png" />
+	  <None Remove="Resources\Images\NetworkIcons\acala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\amplitude.png" />
+	  <None Remove="Resources\Images\NetworkIcons\bifrost.png" />
+	  <None Remove="Resources\Images\NetworkIcons\crust.png" />
+	  <None Remove="Resources\Images\NetworkIcons\efinity.png" />
+	  <None Remove="Resources\Images\NetworkIcons\gemini2atestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\hydradx.png" />
+	  <None Remove="Resources\Images\NetworkIcons\interlay.png" />
+	  <None Remove="Resources\Images\NetworkIcons\invarchtinkernet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\joystream.png" />
+	  <None Remove="Resources\Images\NetworkIcons\karura.png" />
+	  <None Remove="Resources\Images\NetworkIcons\khala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\kintsugi.png" />
+	  <None Remove="Resources\Images\NetworkIcons\litentry.png" />
+	  <None Remove="Resources\Images\NetworkIcons\peaq.png" />
+	  <None Remove="Resources\Images\NetworkIcons\pendulum.png" />
+	  <None Remove="Resources\Images\NetworkIcons\phala.png" />
+	  <None Remove="Resources\Images\NetworkIcons\polkadot.png" />
+	  <None Remove="Resources\Images\NetworkIcons\reef.png" />
+	  <None Remove="Resources\Images\NetworkIcons\reeftestnet.png" />
+	  <None Remove="Resources\Images\NetworkIcons\robonomics.png" />
+	  <None Remove="Resources\Images\NetworkIcons\rococo.png" />
+	  <None Remove="Resources\Images\NetworkIcons\snow.png" />
+	  <None Remove="Resources\Images\NetworkIcons\vara.png" />
+	  <None Remove="Resources\Images\NetworkIcons\xxnetwork.png" />
+	  <None Remove="Components\NavigationBar\" />
+	  <None Remove="Components\Card\" />
+	  <None Remove="Resources\Images\NetworkIcons\manta.png" />
+	  <None Remove="Resources\Images\NetworkIcons\substrate.png" />
+	  <None Remove="Resources\Images\NetworkIcons\westend.png" />
+	  <None Remove="Resources\Images\NetworkIcons\ajuna.png" />
+	  <None Remove="Resources\Images\NetworkIcons\kusama.png" />
+	  <None Remove="Components\CustomLayouts\" />
+	  <None Remove="Components\PredefinedLayouts\" />
+	  <None Remove="Resources\Images\PredefinedLayouts\" />
+	  <None Remove="Resources\Images\PredefinedLayouts\aaabackground.png" />
+	  <None Remove="Components\AwesomeAjunaAvatars\" />
+	  <None Remove="Components\Nft\" />
+	  <None Remove="Resources\Images\dusan.jpg" />
+	  <None Remove="Resources\Images\NetworkIcons\basilisk.png" />
+	  <None Remove="Resources\Images\NetworkIcons\pba.png" />
+	  <None Remove="Components\Contract\" />
+	  <None Remove="Components\Settings\" />
+	  <None Remove="Resources\Images\fingerprintblack.svg" />
+	  <None Remove="Resources\Images\fingerprintwhite.svg" />
+	  <None Remove="Resources\Images\transferblack.svg" />
+	  <None Remove="Resources\Images\transferwhite.svg" />
+	  <None Remove="Components\ConfirmTransaction\" />
+	  <None Remove="Resources\Images\space.png" />
+	  <None Remove="Components\AzeroId\" />
+	  <None Remove="Resources\Images\azeroid.svg" />
+	  <None Remove="Resources\Images\azeroiddarkbg.png" />
+	  <None Remove="Components\AssetSelect\" />
+	  <None Remove="Resources\Images\dropdownwhite.svg" />
+	  <None Remove="Resources\Images\dropdownblack.svg" />
+	  <None Remove="Components\HydraDX\" />
+	  <None Remove="Resources\Images\hydradxomnipool.png" />
+	  <None Remove="Resources\Fonts\FontOver.ttf" />
+	  <None Remove="Resources\Images\FatCat\" />
+	  <None Remove="Resources\Images\FatCat\fatcat.png" />
+	  <None Remove="Resources\Images\FatCat\tail5.png" />
+	  <None Remove="Resources\Images\FatCat\tail4.png" />
+	  <None Remove="Resources\Images\FatCat\tail3.png" />
+	  <None Remove="Resources\Images\FatCat\tail2.png" />
+	  <None Remove="Resources\Images\FatCat\tail1.png" />
+	  <None Remove="Resources\Images\azeroidtext.png" />
+	  <None Remove="Resources\Images\whitebackground.png" />
+	  <None Remove="Resources\Images\darkbackground.png" />
+	  <None Remove="Resources\Images\darkbackground2.png" />
+	  <None Remove="Resources\Images\rightarrowblack.svg" />
+	  <None Remove="Resources\Images\rightarrowwhite.svg" />
+	  <None Remove="Components\Identity\" />
+	  <None Remove="Resources\Images\unknownwhite.svg" />
+	  <None Remove="Resources\Images\unknownblack.svg" />
+	  <None Remove="Resources\Images\redallert.svg" />
+	  <None Remove="Resources\Images\greentick.svg" />
+	  <None Remove="Components\Vault\" />
+	  <None Remove="Components\Referenda\" />
+	  <None Remove="Resources\Images\subsquarelogo.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\xcavate.png" />
+	  <None Remove="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <None Remove="Components\ChangeLayoutRequest\" />
+	  <None Remove="Resources\Images\calamar.png" />
+	  <None Remove="Resources\Images\logotransparentwhite.svg" />
+	  <None Remove="Resources\Images\logotransparentblack.svg" />
+	  <None Remove="Components\Mnemonics\" />
+	  <None Remove="Components\Buttons\" />
+	  <None Remove="Model\" />
+	  <None Remove="Components\Fee\" />
+	  <None Remove="Components\VTokens\" />
+	  <None Remove="Resources\Images\disconnectedblack.svg" />
+	  <None Remove="Resources\Images\disconnectedwhite.svg" />
+	  <None Remove="Resources\Images\loadingdotswhite.svg" />
+	  <None Remove="Resources\Images\emptycirclewhite.svg" />
+	  <None Remove="Resources\Images\emptycircleblack.svg" />
+	  <None Remove="Resources\Images\checkgreen.svg" />
+	  <None Remove="Resources\Fonts\sourcecode.ttf" />
+	  <None Remove="Components\UpdateView\" />
+	  <None Remove="Components\GalaxyLogicGame\" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\extraplusshiny.png" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
+	  <None Remove="Resources\Images\lockwhite.svg" />
+	  <None Remove="Resources\Images\lockblack.svg" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
+	  <None Remove="Resources\Fonts\samsungone700.ttf" />
+	  <None Remove="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
+	  <None Remove="Components\Xcm\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\dotnet_bot.svg" />
+	  <BundleResource Include="Resources\Fonts\fontawesome-webfont.ttf" />
+	  <BundleResource Include="Resources\Fonts\Exodar-Outline.ttf" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\unique.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\t0rn.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\subsocial.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\statemint.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\statemine.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\quartz.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\opal.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\moonriver.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\moonbase.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\moonbeam.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\gmordie.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\calamari.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\elysiumtestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\elysium.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\equilibrium.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\geartestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\bajun.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\astar.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\alephzerotestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\litmus.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\shibuya.png" />
+	  <BundleResource Include="Resources\Images\menuwhite.svg" />
+	  <BundleResource Include="Resources\Images\menublack.svg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\kusamawhite.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\amplitude.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\bifrost.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\crust.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\efinity.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\gemini2atestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\hydradx.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\interlay.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\invarchtinkernet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\joystream.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\karura.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\khala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\kintsugi.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\litentry.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\peaq.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\pendulum.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\phala.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\polkadot.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\reef.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\reeftestnet.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\robonomics.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\rococo.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\snow.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\vara.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\xxnetwork.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\manta.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\substrate.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\westend.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\ajuna.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\kusama.png" />
+	  <BundleResource Include="Resources\Images\PredefinedLayouts\aaabackground.png" />
+	  <BundleResource Include="Resources\Images\dusan.jpg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\basilisk.png" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\pba.png" />
+	  <BundleResource Include="Resources\Images\fingerprintblack.svg" />
+	  <BundleResource Include="Resources\Images\fingerprintwhite.svg" />
+	  <BundleResource Include="Resources\Images\transferblack.svg" />
+	  <BundleResource Include="Resources\Images\transferwhite.svg" />
+	  <BundleResource Include="Resources\Images\space.png" />
+	  <BundleResource Include="Resources\Images\azeroid.svg" />
+	  <BundleResource Include="Resources\Images\azeroiddarkbg.png" />
+	  <BundleResource Include="Resources\Images\dropdownwhite.svg" />
+	  <BundleResource Include="Resources\Images\dropdownblack.svg" />
+	  <BundleResource Include="Resources\Images\hydradxomnipool.png" />
+	  <BundleResource Include="Resources\Fonts\FontOver.ttf" />
+	  <BundleResource Include="Resources\Images\FatCat\fatcat.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail5.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail4.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail3.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail2.png" />
+	  <BundleResource Include="Resources\Images\FatCat\tail1.png" />
+	  <BundleResource Include="Resources\Images\azeroidtext.png" />
+	  <BundleResource Include="Resources\Images\whitebackground.png" />
+	  <BundleResource Include="Resources\Images\darkbackground.png" />
+	  <BundleResource Include="Resources\Images\darkbackground2.png" />
+	  <BundleResource Include="Resources\Images\rightarrowblack.svg" />
+	  <BundleResource Include="Resources\Images\rightarrowwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownwhite.svg" />
+	  <BundleResource Include="Resources\Images\unknownblack.svg" />
+	  <BundleResource Include="Resources\Images\redallert.svg" />
+	  <BundleResource Include="Resources\Images\greentick.svg" />
+	  <BundleResource Include="Resources\Images\subsquarelogo.svg" />
+	  <BundleResource Include="Resources\Images\NetworkIcons\xcavate.png" />
+	  <BundleResource Include="Resources\Images\PredefinedLayouts\hydradxgods.png" />
+	  <BundleResource Include="Resources\Images\calamar.png" />
+	  <BundleResource Include="Resources\Images\logotransparentwhite.svg" />
+	  <BundleResource Include="Resources\Images\logotransparentblack.svg" />
+	  <BundleResource Include="Resources\Images\disconnectedblack.svg" />
+	  <BundleResource Include="Resources\Images\disconnectedwhite.svg" />
+	  <BundleResource Include="Resources\Images\loadingdotswhite.svg" />
+	  <BundleResource Include="Resources\Images\emptycirclewhite.svg" />
+	  <BundleResource Include="Resources\Images\emptycircleblack.svg" />
+	  <BundleResource Include="Resources\Images\checkgreen.svg" />
+	  <BundleResource Include="Resources\Fonts\sourcecode.ttf" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\extraplusshiny.png" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
+	  <BundleResource Include="Resources\Images\lockwhite.svg" />
+	  <BundleResource Include="Resources\Images\lockblack.svg" />
+	  <BundleResource Include="Resources\Fonts\samsungone700.ttf" />
+	  <BundleResource Include="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="Components\AddressView\AddressQrCodeView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Animations\LoadingView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventParameterView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Events\EventsListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NoNftsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Settings\DeveloperSettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Settings\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Subscan\OpenSubscanButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\MnemonicsPage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="View\EnterMnemonics.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\AddressView\AddressView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\TransferView\TransferView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\ConnectionRequestView\ConnectionRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\MessagePopup\MessagePopupView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\TransactionRequest\TransactionRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CalamarView\CalamarView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\BalanceView\BalanceView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+
+	  <MauiXaml Update="Components\ArgumentsView\ArgumentsView.xaml">
+		<SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\DAppConnectionView\DAppConnectionView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\EzStakingEntryView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\StakingDashboardView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\EzStakingOverviewView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Staking\StakingRegistrationRequestView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Switch\DualSwitch.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Switch\MiniDualSwitch.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\WebView\AdvancedWebView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\ExtrinsicStatusView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Balance\UsdBalanceView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\NetworkSelect\MultiNetworkSelectView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\NetworkSelect\NetworkBubbleView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\AddressView\ChainAddressView.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Components\NetworkSelect\" />
+	  <Folder Include="Components\TransferView\" />
+	  <Folder Include="Components\ConnectionRequestView\" />
+	  <Folder Include="Components\UniversalScannerView\" />
+	  <Folder Include="Components\MessagePopup\" />
+	  <Folder Include="Components\TransactionRequest\" />
+	  <Folder Include="Components\CalamarView\" />
+	  <Folder Include="Components\ArgumentsView\" />
+	  <Folder Include="Components\Staking\" />
+	  <Folder Include="Components\Switch\" />
+	  <Folder Include="Components\WebView\" />
+	  <Folder Include="Components\NavigationBar\" />
+	  <Folder Include="Components\Card\" />
+	  <Folder Include="Components\CustomLayouts\" />
+	  <Folder Include="Resources\Images\PredefinedLayouts\" />
+	  <Folder Include="Components\AwesomeAjunaAvatars\" />
+	  <Folder Include="Components\Contract\" />
+	  <Folder Include="Components\ConfirmTransaction\" />
+	  <Folder Include="Components\AzeroId\" />
+	  <Folder Include="Components\AssetSelect\" />
+	  <Folder Include="Resources\Images\FatCat\" />
+	  <Folder Include="Components\Identity\" />
+	  <Folder Include="Components\Vault\" />
+	  <Folder Include="Components\Referenda\" />
+	  <Folder Include="Components\ChangeLayoutRequest\" />
+	  <Folder Include="Components\Mnemonics\" />
+	  <Folder Include="Components\Buttons\" />
+	  <Folder Include="Model\" />
+	  <Folder Include="Components\Fee\" />
+	  <Folder Include="Components\VTokens\" />
+	  <Folder Include="Components\UpdateView\" />
+	  <Folder Include="Components\GalaxyLogicGame\" />
+	  <Folder Include="Resources\Images\GalaxyLogicGame\" />
+	  <Folder Include="Components\Xcm\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\PlutoWallet.Model\PlutoWallet.Model.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Components\Animations\LoadingView.xaml.cs">
+	    <DependentUpon>LoadingView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\PredefinedLayouts\HydrationOmnipoolLayoutItem.xaml.cs">
+	    <DependentUpon>HydrationOmnipoolLayoutItem.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
+		<CodesignKey>Apple Distribution: Rostislav Litovkin (M38VV8KHX5)</CodesignKey>
+		<CodesignProvision>PlutoWalletDistribution</CodesignProvision>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<TcpPort>58181</TcpPort>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-maccatalyst|AnyCPU'">
+		
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls" Version="8.0.21" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+	</ItemGroup>
+</Project>

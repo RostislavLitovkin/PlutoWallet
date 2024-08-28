@@ -4,6 +4,7 @@
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
              xmlns:identity="clr-namespace:PlutoWallet.Components.Identity"
+             xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
              x:Class="PlutoWallet.Components.TransferView.TransferView"
              IsVisible="{Binding IsVisible}"
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
@@ -19,10 +20,6 @@
                                      x:Name="verticalStackLayout"
                                  Spacing="10">
 
-                    <AbsoluteLayout x:Name="qrLayout">
-
-                    </AbsoluteLayout>
-
                     <identity:IdentityAddressView DestinationAddress="{Binding Address}" />
 
                     <Grid HeightRequest="40"
@@ -35,24 +32,45 @@
 
 
                         <Entry Placeholder="Amount" Text="{Binding Amount}"
-                           Keyboard="Numeric"
-                           HeightRequest="40"
-                           Margin="0, 0, 10, 0"
-                           Grid.Column="0"
-                           IsSpellCheckEnabled="false"
-                            IsTextPredictionEnabled="false"/>
+                               Keyboard="Numeric"
+                               HeightRequest="40"
+                               Margin="0, 0, 10, 0"
+                               Grid.Column="0"
+                               IsSpellCheckEnabled="false"
+                                IsTextPredictionEnabled="false"/>
                         <assetselect:AssetSelectButtonView HeightRequest="40"
-                                                       Grid.Column="1" />
+                                                           Grid.Column="1" />
                     </Grid>
 
                     <Label Text="{Binding Fee}" TextColor="Orange" />
 
                     <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
-                    <Button Text="Sign and transfer"
-                        Clicked="SignAndTransferClicked"/>
-
                 </VerticalStackLayout>
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 1, 1, 80"
+                                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional">
+
+
+                                            <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 50"
+                                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                                  ColumnSpacing="15"
+                                      Margin="0, 0, 0, 10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+
+                                                </Grid.ColumnDefinitions>
+
+                                                <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"
+                                                                         Clicked="OnCancelClicked"
+                                   />
+
+                                                <buttons:PlutoWalletElevatedButton Text="Transfer" Grid.Column="1"
+                                    Clicked="SignAndTransferClicked"/>
+
+                    </Grid>
+                </AbsoluteLayout>
+
             </AbsoluteLayout>
 
         </card:BottomPopupCard.View>

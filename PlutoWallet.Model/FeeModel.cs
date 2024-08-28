@@ -5,6 +5,7 @@ using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Constants;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Model
 {
@@ -72,6 +73,18 @@ namespace PlutoWallet.Model
                 Utils.Bytes2HexString(extrinsic.Encode()),
                 Utils.Bytes2HexString(blockHash.Encode()),
                 CancellationToken.None);
+        }
+
+        public static string GetEstimatedFeeString(Asset? asset)
+        {
+            if (asset == null)
+            {
+                return "Estimated fee: unknown";
+            }
+
+            var amount = Math.Abs(asset.Amount);
+            var isLessThan = (amount < 0.01) ? "<" : "";
+            return $"Estimated fee: {isLessThan}{String.Format("{0:0.00}", amount)} {asset.Symbol}";
         }
     }
 }

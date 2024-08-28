@@ -109,7 +109,7 @@ namespace PlutoWallet.Model
                     Status = ExtrinsicStatusEnum.Submitting,
                     Endpoint = this.Endpoint,
                     Hash = extrinsicHash,
-                    CallName = palletName + "." + callName,
+                    CallName = palletName + " " + callName,
                 });
 
             extrinsicStackViewModel.Update();
@@ -132,7 +132,6 @@ namespace PlutoWallet.Model
                 {
                     var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(
                          this,
-                         this.Endpoint.Key,
                          status.Hash,
                          extrinsicHash.Encode()
                     );
