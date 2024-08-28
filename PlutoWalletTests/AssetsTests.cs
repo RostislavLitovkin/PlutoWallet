@@ -126,11 +126,13 @@ public class PolkadotAssetHubAssetsTests
     }
 
     [Test]
-    public async Task Balance()
+    public async Task NativeBalanceAsync()
     {
         var accountInfo = await AssetsModel.GetNativeBalance(client, substrateAddress, CancellationToken.None);
 
         Console.WriteLine("Free: " + accountInfo.Data.Free.Value);
+
+        Assert.Greater(accountInfo.Data.Free.Value, 0);
     }
 
     [Test]

@@ -31,7 +31,7 @@ namespace PlutoWalletTests
 
             var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(client, blockHash, extrinsicHash);
 
-            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
+            Assert.That(extrinsicDetails.Events.Any());
 
             foreach(var e in extrinsicDetails.Events)
             {
@@ -59,14 +59,52 @@ namespace PlutoWalletTests
 
             await client.ConnectAndLoadMetadataAsync();
 
-
             Hash blockHash = new Hash("0x923ee600b390697dce0e45e08676f0982a03ada57785762bce26aa0cccece051");
 
             byte[] extrinsicHash = Utils.HexToByteArray("0x24a20fec41ee54fe78719179ab92f1450cb17fda74beea7b525fec7646b4d0e9");
 
             var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(client, blockHash, extrinsicHash);
 
-            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
+            Assert.That(extrinsicDetails.Events.Any());
+
+            foreach (var e in extrinsicDetails.Events)
+            {
+                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                Console.WriteLine(e.Parameters.Count() + " parameters found");
+
+                foreach (var parameter in e.Parameters)
+                {
+                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                }
+                Console.WriteLine();
+            }
+
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
+
+        }
+
+        [Test]
+        public async Task GetOmnipoolSellEventsAsync()
+        {
+            var endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
+
+            string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            var client = new SubstrateClientExt(
+                        endpoint,
+                        new Uri(bestWebSecket),
+                        Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+
+            await client.ConnectAndLoadMetadataAsync();
+
+            Hash blockHash = new Hash("0x467fb6268675b96e707df72d382c14da0045ebc553edd9850414560053870b09");
+
+            byte[] extrinsicHash = Utils.HexToByteArray("0xa1c0f5b91ad540f9fa2ca8143f10e6626a0cf5658e46b690c4b71e010ae0c48b");
+
+            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(client, blockHash, extrinsicHash);
+
+            Assert.That(extrinsicDetails.Events.Any());
 
             foreach (var e in extrinsicDetails.Events)
             {
@@ -104,7 +142,8 @@ namespace PlutoWalletTests
 
             var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(opalClient, blockHash, extrinsicHash);
 
-            Console.WriteLine(extrinsicDetails.Events.Count() + " events found");
+            Assert.That(extrinsicDetails.Events.Any());
+
 
             foreach (var e in extrinsicDetails.Events)
             {
