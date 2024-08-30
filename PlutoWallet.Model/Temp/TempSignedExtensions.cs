@@ -48,6 +48,8 @@ namespace Substrate.NetApi.Model.Extrinsics
         /// </summary>
         public TempCheckMetadataHash MetadataHashSignedExt { get; }
 
+        public bool CheckMetadata { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SignedExtensions"/> class.
         /// </summary>
@@ -58,7 +60,7 @@ namespace Substrate.NetApi.Model.Extrinsics
         /// <param name="mortality">The mortality.</param>
         /// <param name="nonce">The nonce.</param>
         /// <param name="charge">The charge transaction payment.</param>
-        public TempSignedExtensions(uint specVersion, uint txVersion, Hash genesis, Hash startEra, Era mortality, CompactInteger nonce, ChargeType charge)
+        public TempSignedExtensions(uint specVersion, uint txVersion, Hash genesis, Hash startEra, Era mortality, CompactInteger nonce, ChargeType charge, bool checkMetadata)
         {
             SpecVersion = specVersion;
             TxVersion = txVersion;
@@ -68,6 +70,7 @@ namespace Substrate.NetApi.Model.Extrinsics
             Nonce = nonce;
             Charge = charge;
             MetadataHashSignedExt = new TempCheckMetadataHash();
+            CheckMetadata = checkMetadata;
         }
 
         /// <summary>
@@ -87,8 +90,11 @@ namespace Substrate.NetApi.Model.Extrinsics
             // ChargeType
             bytes.AddRange(Charge.Encode());
 
-            // CheckMetadataHash
-            bytes.AddRange(MetadataHashSignedExt.EncodeExtra());
+            if (CheckMetadata)
+            {
+                // CheckMetadataHash
+                bytes.AddRange(MetadataHashSignedExt.EncodeExtra());
+            }
 
             return bytes.ToArray();
         }
@@ -113,8 +119,11 @@ namespace Substrate.NetApi.Model.Extrinsics
             // CheckMortality, Additional Blockhash check. Immortal = genesis_hash, Mortal = logic
             bytes.AddRange(StartEra.Bytes);
 
-            // CheckMetadataHash
-            bytes.AddRange(MetadataHashSignedExt.EncodeAdditional());
+            if (CheckMetadata)
+            {
+                // CheckMetadataHash
+                bytes.AddRange(MetadataHashSignedExt.EncodeAdditional());
+            }
 
             return bytes.ToArray();
         }

@@ -92,6 +92,7 @@ public partial class TransferView : ContentView
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Failed at confirm clicked");
                 Console.WriteLine(ex);
             }
 

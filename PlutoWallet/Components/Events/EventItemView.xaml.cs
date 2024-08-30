@@ -26,13 +26,14 @@ public partial class EventItemView : ContentView
         });
 
     public static readonly BindableProperty ParametersProperty = BindableProperty.Create(
-        nameof(Parameters), typeof(object), typeof(EventItemView),
+        nameof(Parameters), typeof(List<EventParameter>), typeof(EventItemView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) =>
         {
             var control = (EventItemView)bindable;
 
-            /*var parametersList = EventsModel.(newValue);
+
+            var parametersList = (List<EventParameter>)(newValue);
 
             foreach (var parameter in parametersList)
             {
@@ -46,7 +47,7 @@ public partial class EventItemView : ContentView
             if (!parametersList.Any())
             {
                 control.eventParametersStackLayout.Margin = new Thickness(0, 0, 0, 5);
-            }*/
+            }
         });
 
     public static readonly BindableProperty SafetyProperty = BindableProperty.Create(
@@ -96,9 +97,9 @@ public partial class EventItemView : ContentView
         set => SetValue(EventNameProperty, value);
     }
 
-    public object Parameters
+    public List<EventParameter> Parameters
     {
-        get => GetValue(ParametersProperty);
+        get => (List<EventParameter>)GetValue(ParametersProperty);
 
         set => SetValue(ParametersProperty, value);
     }

@@ -49,7 +49,8 @@ namespace PlutoWallet.Model
         {
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
-            if (multiNetworkSelectViewModel.NetworkInfoDict.ContainsKey(Endpoint.Key)) {
+            if (multiNetworkSelectViewModel.NetworkInfoDict.ContainsKey(Endpoint.Key))
+            {
                 multiNetworkSelectViewModel.NetworkInfoDict[Endpoint.Key].EndpointConnectionStatus = EndpointConnectionStatus.Loading;
             }
             else
@@ -114,10 +115,13 @@ namespace PlutoWallet.Model
 
             extrinsicStackViewModel.Update();
 
-#pragma warning disable VSTHRD101 // Avoid unsupported async delegates
-            Action<string, ExtrinsicStatus> updateExtrinsicsCallback = async (string id, ExtrinsicStatus status) =>
+            Console.WriteLine("StackView updated");
+
+            Action<string, ExtrinsicStatus> updateExtrinsicsCallback = (string id, ExtrinsicStatus status) =>
             {
-                if (status.ExtrinsicState == ExtrinsicState.Ready)
+                Console.WriteLine("extrinsic state: " + status.ExtrinsicState);
+
+                if (status.ExtrinsicState == ExtrinsicState.Broadcast)
                 {
                     extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Pending;
                     extrinsicStackViewModel.Update();
@@ -130,59 +134,111 @@ namespace PlutoWallet.Model
 
                 else if (status.ExtrinsicState == ExtrinsicState.InBlock)
                 {
-                    var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(
-                         this,
-                         status.Hash,
-                         extrinsicHash.Encode()
-                    );
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents = new ObservableCollection<ExtrinsicEvent>(extrinsicDetails.Events);
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].BlockNumber = extrinsicDetails.BlockNumber;
-                    extrinsicStackViewModel.Extrinsics[extrinsicHashString].ExtrinsicIndex = extrinsicDetails.ExtrinsicIndex;
-
-                    var lastEvent = extrinsicDetails.Events.Last();
-
-                    if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
+                    Task task = Task.Run(async () =>
                     {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockSuccess;
-                    }
-                    else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
-                    {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockFailed;
-                    }
-                    else
-                    {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
-                    }
+                        try
+                        {
+                            var extrinsicDetails = await EventsModel.GetExtrinsicEventsAsync(
+                                 this,
+                                 status.Hash,
+                                 extrinsicHash.Encode()
+                            );
 
-                    extrinsicStackViewModel.Update();
+                            // temp
+
+                            Console.WriteLine("Events found: " + extrinsicDetails.Events.Count());
+
+                            foreach (var e in extrinsicDetails.Events)
+                            {
+                                Console.WriteLine(e.PalletName + " " + e.EventName + " " + e.Safety);
+
+                                foreach (var parameter in e.Parameters)
+                                {
+                                    Console.WriteLine("   +- " + parameter.Name + ": " + parameter.Value);
+                                }
+                                Console.WriteLine();
+                            }
+
+                            // end temp
+
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.SetResult(
+                                new Components.Events.EventsListViewModel
+                                {
+                                    ExtrinsicEvents = new ObservableCollection<ExtrinsicEvent>(extrinsicDetails.Events)
+                                }
+                            );
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].BlockNumber = extrinsicDetails.BlockNumber;
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].ExtrinsicIndex = extrinsicDetails.ExtrinsicIndex;
+
+                            var lastEvent = extrinsicDetails.Events.Last();
+
+                            if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
+                            {
+                                extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockSuccess;
+                            }
+                            else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
+                            {
+                                extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockFailed;
+                            }
+                            else
+                            {
+                                extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
+                            }
+
+                            extrinsicStackViewModel.Update();
+                        } catch (Exception e)
+                        {
+                            Console.WriteLine("failed to find events");
+                            Console.WriteLine(e);
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.InBlockSuccess;
+                        }
+                    });
                 }
 
                 else if (status.ExtrinsicState == ExtrinsicState.Finalized)
                 {
-                    var lastEvent = extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.ExtrinsicEvents.Last();
+                    Task task = Task.Run(async () =>
+                    {
+                        var allEvents = (await extrinsicStackViewModel.Extrinsics[extrinsicHashString].EventsListViewModel.Task).ExtrinsicEvents;
+                        if (allEvents.Count() == 0)
+                        {
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedSuccess;
+                            return;
+                        }
 
-                    if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
-                    {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedSuccess;
-                    }
-                    else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
-                    {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedFailed;
-                    }
-                    else
-                    {
-                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
-                    }
+                        var lastEvent = allEvents.Last();
 
-                    extrinsicStackViewModel.Update();
+                        if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
+                        {
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedSuccess;
+                        }
+                        else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
+                        {
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedFailed;
+                        }
+                        else
+                        {
+                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
+                        }
+
+                        extrinsicStackViewModel.Update();
+                    });
                 }
 
                 else
                     Console.WriteLine(status.ExtrinsicState);
-            };
-#pragma warning restore VSTHRD101 // Avoid unsupported async delegates
 
-            string extrinsicId = await this.SubstrateClient.Author.SubmitAndWatchExtrinsicAsync(callback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
+                if (callback != null)
+                {
+                    callback(id, status);
+                }
+
+                Console.WriteLine("Callback finished");
+            };
+
+            string extrinsicId = await this.SubstrateClient.Author.SubmitAndWatchExtrinsicAsync(updateExtrinsicsCallback, Utils.Bytes2HexString(extrinsic.Encode()).ToLower(), token);
+
+            Console.WriteLine("Extrinsic submitted");
 
             return extrinsicId;
         }

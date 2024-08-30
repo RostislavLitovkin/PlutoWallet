@@ -2,9 +2,6 @@
 using Substrate.NetApi;
 using Plutonication;
 using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Rpc;
-using System.Globalization;
 
 namespace PlutoWallet.Components.TransactionRequest;
 
@@ -47,7 +44,8 @@ public partial class TransactionRequestView : ContentView
                         startEra: signedExtensions.StartEra,
                         mortality: signedExtensions.Mortality,
                         nonce: signedExtensions.Nonce,
-                        charge: signedExtensions.Charge
+                        charge: signedExtensions.Charge,
+                        checkMetadata: true
                     )
                 );
 

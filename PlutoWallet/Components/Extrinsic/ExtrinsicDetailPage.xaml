@@ -35,7 +35,7 @@
         </ScrollView>
 
         <navigationbar:TopNavigationBar Title="Extrinsic detail"
-                                    x:Name="topNavigationBar" />
+                                        x:Name="topNavigationBar" />
 
         <confirmtransaction:ConfirmTransactionView />
 

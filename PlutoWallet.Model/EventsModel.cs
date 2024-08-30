@@ -67,7 +67,7 @@ namespace PlutoWallet.Model
     }
     public static class EventsModel
     {
-        public static List<EventParameter> GetParametersList(object parameters, TypeField[] eventTypeFields)
+        public static List<EventParameter> GetParametersList(object? parameters, TypeField[] eventTypeFields)
         {
             if (parameters == null)
             {
@@ -161,11 +161,17 @@ namespace PlutoWallet.Model
         {
             string blockHashString = Utils.Bytes2HexString(blockHash);
 
+            Console.WriteLine("block hash: " + blockHashString);
+
             var eventsParameters = RequestGenerator.GetStorage("System", "Events", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
 
             string eventsBytes = await substrateClient.SubstrateClient.InvokeAsync<string>("state_getStorage", new object[2] { eventsParameters, blockHashString }, token);
 
+            Console.WriteLine("Events bytes: " + eventsBytes);
+
             BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
+
+            Console.WriteLine("block number: " + block.Block.Header.Number.Value);
 
             uint? extrinsicIndex = null;
             for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
@@ -174,9 +180,12 @@ namespace PlutoWallet.Model
                 if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
                 {
                     extrinsicIndex = i;
+
                     break;
                 }
             };
+
+            Console.WriteLine("Extrinsic index found: " + extrinsicIndex);
 
             return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
         }

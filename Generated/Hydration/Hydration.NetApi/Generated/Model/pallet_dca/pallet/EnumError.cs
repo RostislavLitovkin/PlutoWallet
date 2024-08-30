@@ -53,64 +53,82 @@ namespace Hydration.NetApi.Generated.Model.pallet_dca.pallet
         PriceUnstable = 4,
         
         /// <summary>
+        /// >> Bumped
+        /// Order was randomly rescheduled to next block
+        /// </summary>
+        Bumped = 5,
+        
+        /// <summary>
         /// >> CalculatingPriceError
         /// Error occurred when calculating price
         /// </summary>
-        CalculatingPriceError = 5,
+        CalculatingPriceError = 6,
         
         /// <summary>
         /// >> TotalAmountIsSmallerThanMinBudget
         /// The total amount to be reserved is smaller than min budget
         /// </summary>
-        TotalAmountIsSmallerThanMinBudget = 6,
+        TotalAmountIsSmallerThanMinBudget = 7,
         
         /// <summary>
         /// >> BudgetTooLow
-        /// The budget is too low for executing one DCA
+        /// The budget is too low for executing at least two orders
         /// </summary>
-        BudgetTooLow = 7,
+        BudgetTooLow = 8,
         
         /// <summary>
         /// >> NoFreeBlockFound
         /// There is no free block found to plan DCA execution
         /// </summary>
-        NoFreeBlockFound = 8,
+        NoFreeBlockFound = 9,
         
         /// <summary>
         /// >> ManuallyTerminated
         /// The DCA schedule has been manually terminated
         /// </summary>
-        ManuallyTerminated = 9,
+        ManuallyTerminated = 10,
         
         /// <summary>
         /// >> MaxRetryReached
         /// Max number of retries reached for schedule
         /// </summary>
-        MaxRetryReached = 10,
+        MaxRetryReached = 11,
         
         /// <summary>
         /// >> TradeLimitReached
-        /// Absolutely trade limit reached reached, leading to retry
+        /// Absolutely trade limit reached, leading to retry
         /// </summary>
-        TradeLimitReached = 11,
+        TradeLimitReached = 12,
         
         /// <summary>
         /// >> SlippageLimitReached
         /// Slippage limit calculated from oracle is reached, leading to retry
         /// </summary>
-        SlippageLimitReached = 12,
+        SlippageLimitReached = 13,
         
         /// <summary>
         /// >> NoParentHashFound
         /// No parent hash has been found from relay chain
         /// </summary>
-        NoParentHashFound = 13,
+        NoParentHashFound = 14,
         
         /// <summary>
         /// >> InvalidState
         /// Error that should not really happen only in case of invalid state of the schedule storage entries
         /// </summary>
-        InvalidState = 14,
+        InvalidState = 15,
+        
+        /// <summary>
+        /// >> PeriodTooShort
+        /// Period should be longer than 5 blocks
+        /// </summary>
+        PeriodTooShort = 16,
+        
+        /// <summary>
+        /// >> StabilityThresholdTooHigh
+        /// Stability threshold cannot be higher than `MaxConfigurablePriceDifferenceBetweenBlock`
+        /// </summary>
+        StabilityThresholdTooHigh = 17,
     }
     
     /// <summary>

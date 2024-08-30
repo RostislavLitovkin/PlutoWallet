@@ -164,11 +164,34 @@ namespace Hydration.NetApi.Generated.Storage
         
         /// <summary>
         /// >> ExistentialDepositMultiplier
+        ///  Multiplier used to compute minimal amounts of asset_in and asset_out in an OTC.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U8 ExistentialDepositMultiplier()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U8();
             result.Create("0x05");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> Fee
+        ///  Fee deducted from amount_out.
+        /// </summary>
+        public Hydration.NetApi.Generated.Model.sp_arithmetic.per_things.Permill Fee()
+        {
+            var result = new Hydration.NetApi.Generated.Model.sp_arithmetic.per_things.Permill();
+            result.Create("0xE8030000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> FeeReceiver
+        ///  Fee receiver.
+        /// </summary>
+        public Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32 FeeReceiver()
+        {
+            var result = new Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32();
+            result.Create("0x6D6F646C70792F74727372790000000000000000000000000000000000000000");
             return result;
         }
     }

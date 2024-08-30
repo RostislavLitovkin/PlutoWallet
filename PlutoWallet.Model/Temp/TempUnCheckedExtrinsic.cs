@@ -65,7 +65,7 @@ public class TempUnCheckedExtrinsic : TempExtrinsic
     //     The runtime.
     public TempPayload GetPayload(RuntimeVersion runtime)
     {
-        return new TempPayload(base.Method, new TempSignedExtensions(runtime.SpecVersion, runtime.TransactionVersion, Genesis, StartEra, base.Era, base.Nonce, base.Charge));
+        return new TempPayload(base.Method, new TempSignedExtensions(runtime.SpecVersion, runtime.TransactionVersion, Genesis, StartEra, base.Era, base.Nonce, base.Charge, CheckMetadata));
     }
 
     //

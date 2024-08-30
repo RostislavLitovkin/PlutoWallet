@@ -1,8 +1,11 @@
 ﻿using System;
+using NUnit.Framework;
 using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Model.HydraDX;
 using PlutoWallet.Model.HydrationModel;
+using Substrate.NetApi.Model.Rpc;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace PlutoWalletTests;
 
@@ -103,6 +106,12 @@ public class HydrationTests
             }
         }
     }
+
+    [Test]
+    public static async Task GetBlockByHash()
+    {
+        var hash = new Hash("0x8C98202680EC28CC6B92F81ABF152A8A3528A4D2C7BACA569455D24F74476B46");
+        var block = await client.SubstrateClient.Chain.GetBlockAsync(hash);
+        Assert.That(block.Block.Header.Number.Value == 5883239);
+    }
 }
-
-

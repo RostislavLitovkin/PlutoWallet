@@ -139,7 +139,8 @@ namespace PlutoWallet.Model
                         startEra: signedExtensions.StartEra,
                         mortality: signedExtensions.Mortality,
                         nonce: signedExtensions.Nonce,
-                        charge: signedExtensions.Charge
+                        charge: signedExtensions.Charge,
+                        checkMetadata: client.CheckMetadata
                     )
                 );
 

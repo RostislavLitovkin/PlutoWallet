@@ -11,6 +11,9 @@ namespace PlutoWallet.Components.Extrinsic;
 
 public partial class ExtrinsicStatusView : ContentView
 {
+
+    private bool clicked = false;
+
     private Queue<(float x, float y)> _positions = new Queue<(float, float)>();
 
     public static readonly BindableProperty ExtrinsicIdProperty = BindableProperty.Create(
@@ -90,7 +93,7 @@ public partial class ExtrinsicStatusView : ContentView
        });
 
     public static readonly BindableProperty EventsListViewModelProperty = BindableProperty.Create(
-       nameof(EventsListViewModel), typeof(EventsListViewModel), typeof(ExtrinsicStatusView),
+       nameof(EventsListViewModel), typeof(TaskCompletionSource<EventsListViewModel>), typeof(ExtrinsicStatusView),
        defaultBindingMode: BindingMode.TwoWay,
        propertyChanging: (bindable, oldValue, newValue) => {
        });
@@ -155,9 +158,9 @@ public partial class ExtrinsicStatusView : ContentView
         set => SetValue(ExtrinsicIndexProperty, value);
     }
 
-    public EventsListViewModel EventsListViewModel
+    public TaskCompletionSource<EventsListViewModel> EventsListViewModel
     {
-        get => (EventsListViewModel)GetValue(EventsListViewModelProperty);
+        get => (TaskCompletionSource<EventsListViewModel>)GetValue(EventsListViewModelProperty);
         set => SetValue(EventsListViewModelProperty, value);
     }
 
@@ -228,15 +231,19 @@ public partial class ExtrinsicStatusView : ContentView
 
     private async void OnClicked(object sender, TappedEventArgs e)
     {
-        if (EventsListViewModel == null)
+        if (EventsListViewModel == null && clicked)
         {
             return;
         }
 
+        clicked = true;
+
         await Navigation.PushAsync(new ExtrinsicDetailPage(
-            EventsListViewModel,
+            await EventsListViewModel.Task,
             Endpoint,
             BlockNumber + "-" + ExtrinsicIndex
         ));
+
+        clicked = false;
     }
 }

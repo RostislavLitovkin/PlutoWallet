@@ -13,33 +13,33 @@ using Substrate.NetApi.Model.Types.Metadata.V14;
 using System.Collections.Generic;
 
 
-namespace Hydration.NetApi.Generated.Model.sp_runtime.generic.unchecked_extrinsic
+namespace Hydration.NetApi.Generated.Model.frame_metadata_hash_extension
 {
     
     
     /// <summary>
-    /// >> 776 - Composite[sp_runtime.generic.unchecked_extrinsic.UncheckedExtrinsic]
+    /// >> 774 - Composite[frame_metadata_hash_extension.CheckMetadataHash]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
-    public sealed class UncheckedExtrinsic : BaseType
+    public sealed class CheckMetadataHash : BaseType
     {
         
         /// <summary>
-        /// >> value
+        /// >> mode
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> Value { get; set; }
+        public Hydration.NetApi.Generated.Model.frame_metadata_hash_extension.EnumMode Mode { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
         {
-            return "UncheckedExtrinsic";
+            return "CheckMetadataHash";
         }
         
         /// <inheritdoc/>
         public override byte[] Encode()
         {
             var result = new List<byte>();
-            result.AddRange(Value.Encode());
+            result.AddRange(Mode.Encode());
             return result.ToArray();
         }
         
@@ -47,8 +47,8 @@ namespace Hydration.NetApi.Generated.Model.sp_runtime.generic.unchecked_extrinsi
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>();
-            Value.Decode(byteArray, ref p);
+            Mode = new Hydration.NetApi.Generated.Model.frame_metadata_hash_extension.EnumMode();
+            Mode.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

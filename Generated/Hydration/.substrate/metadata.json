@@ -7385,6 +7385,11 @@
                 "Name": "amount_out",
                 "TypeName": "Balance",
                 "TypeId": 6
+              },
+              {
+                "Name": "fee",
+                "TypeName": "Balance",
+                "TypeId": 6
               }
             ],
             "Index": 1,
@@ -7412,6 +7417,11 @@
               },
               {
                 "Name": "amount_out",
+                "TypeName": "Balance",
+                "TypeId": 6
+              },
+              {
+                "Name": "fee",
                 "TypeName": "Balance",
                 "TypeId": 6
               }
@@ -20207,6 +20217,25 @@
             "Index": 18,
             "Docs": [
               "See [`Pallet::set_metadata`]."
+            ]
+          },
+          {
+            "Name": "force_remove_vote",
+            "TypeFields": [
+              {
+                "Name": "target",
+                "TypeName": "crate::AccountIdLookupOf<T>",
+                "TypeId": 0
+              },
+              {
+                "Name": "index",
+                "TypeName": "crate::types::ReferendumIndex",
+                "TypeId": 4
+              }
+            ],
+            "Index": 19,
+            "Docs": [
+              "See [`Pallet::force_remove_vote`]."
             ]
           }
         ],
@@ -39722,9 +39751,17 @@
             ]
           },
           {
-            "Name": "CalculatingPriceError",
+            "Name": "Bumped",
             "TypeFields": null,
             "Index": 5,
+            "Docs": [
+              "Order was randomly rescheduled to next block"
+            ]
+          },
+          {
+            "Name": "CalculatingPriceError",
+            "TypeFields": null,
+            "Index": 6,
             "Docs": [
               "Error occurred when calculating price"
             ]
@@ -39732,7 +39769,7 @@
           {
             "Name": "TotalAmountIsSmallerThanMinBudget",
             "TypeFields": null,
-            "Index": 6,
+            "Index": 7,
             "Docs": [
               "The total amount to be reserved is smaller than min budget"
             ]
@@ -39740,15 +39777,15 @@
           {
             "Name": "BudgetTooLow",
             "TypeFields": null,
-            "Index": 7,
+            "Index": 8,
             "Docs": [
-              "The budget is too low for executing one DCA"
+              "The budget is too low for executing at least two orders"
             ]
           },
           {
             "Name": "NoFreeBlockFound",
             "TypeFields": null,
-            "Index": 8,
+            "Index": 9,
             "Docs": [
               "There is no free block found to plan DCA execution"
             ]
@@ -39756,7 +39793,7 @@
           {
             "Name": "ManuallyTerminated",
             "TypeFields": null,
-            "Index": 9,
+            "Index": 10,
             "Docs": [
               "The DCA schedule has been manually terminated"
             ]
@@ -39764,7 +39801,7 @@
           {
             "Name": "MaxRetryReached",
             "TypeFields": null,
-            "Index": 10,
+            "Index": 11,
             "Docs": [
               "Max number of retries reached for schedule"
             ]
@@ -39772,15 +39809,15 @@
           {
             "Name": "TradeLimitReached",
             "TypeFields": null,
-            "Index": 11,
+            "Index": 12,
             "Docs": [
-              "Absolutely trade limit reached reached, leading to retry"
+              "Absolutely trade limit reached, leading to retry"
             ]
           },
           {
             "Name": "SlippageLimitReached",
             "TypeFields": null,
-            "Index": 12,
+            "Index": 13,
             "Docs": [
               "Slippage limit calculated from oracle is reached, leading to retry"
             ]
@@ -39788,7 +39825,7 @@
           {
             "Name": "NoParentHashFound",
             "TypeFields": null,
-            "Index": 13,
+            "Index": 14,
             "Docs": [
               "No parent hash has been found from relay chain"
             ]
@@ -39796,9 +39833,25 @@
           {
             "Name": "InvalidState",
             "TypeFields": null,
-            "Index": 14,
+            "Index": 15,
             "Docs": [
               "Error that should not really happen only in case of invalid state of the schedule storage entries"
+            ]
+          },
+          {
+            "Name": "PeriodTooShort",
+            "TypeFields": null,
+            "Index": 16,
+            "Docs": [
+              "Period should be longer than 5 blocks"
+            ]
+          },
+          {
+            "Name": "StabilityThresholdTooHigh",
+            "TypeFields": null,
+            "Index": 17,
+            "Docs": [
+              "Stability threshold cannot be higher than `MaxConfigurablePriceDifferenceBetweenBlock`"
             ]
           }
         ],
@@ -42568,7 +42621,7 @@
         "TypeFields": [
           {
             "TypeName": "sp_runtime::generic::UncheckedExtrinsic<Address, Call, Signature, Extra\n>",
-            "TypeId": 774
+            "TypeId": 776
           }
         ],
         "Path": [
@@ -42605,7 +42658,8 @@
           770,
           771,
           772,
-          773
+          773,
+          774
         ],
         "TypeDef": "Tuple"
       },
@@ -45049,6 +45103,44 @@
       "774": {
         "TypeFields": [
           {
+            "Name": "mode",
+            "TypeName": "Mode",
+            "TypeId": 775
+          }
+        ],
+        "Path": [
+          "frame_metadata_hash_extension",
+          "CheckMetadataHash"
+        ],
+        "TypeParams": [
+          {
+            "Name": "T"
+          }
+        ],
+        "TypeDef": "Composite"
+      },
+      "775": {
+        "Variants": [
+          {
+            "Name": "Disabled",
+            "TypeFields": null,
+            "Index": 0
+          },
+          {
+            "Name": "Enabled",
+            "TypeFields": null,
+            "Index": 1
+          }
+        ],
+        "Path": [
+          "frame_metadata_hash_extension",
+          "Mode"
+        ],
+        "TypeDef": "Variant"
+      },
+      "776": {
+        "TypeFields": [
+          {
             "TypeId": 13
           }
         ],
@@ -45078,7 +45170,7 @@
         ],
         "TypeDef": "Composite"
       },
-      "775": {
+      "777": {
         "Path": [
           "hydradx_runtime",
           "Runtime"
@@ -45397,7 +45489,7 @@
           {
             "Name": "Version",
             "TypeId": 248,
-            "Value": "HGh5ZHJhZHgcaHlkcmFkeAEAAAD0AAAAAAAAADjfastomQdgmwQAAAA345f8fJH15AIAAABA/jrUAfiVmgYAAADSvJiX7tCPFQMAAAD3iyeL5T9FTAIAAACrPAVyKR/riwEAAADdcY1cxTJi1AEAAADqk+Pxbz1pYgIAAAC8nYmQT1uSPwEAAAA3yLsTUKmiqAQAAABYIhH2W7FLiQUAAADmWwDkbO3QqgIAAAALtnpS/NBA/wEAAAD7xXe510fv1gEAAAABAAAAAQ==",
+            "Value": "HGh5ZHJhZHgcaHlkcmFkeAEAAAD9AAAAAAAAADjfastomQdgmwQAAAA345f8fJH15AIAAABA/jrUAfiVmgYAAADSvJiX7tCPFQMAAAD3iyeL5T9FTAIAAACrPAVyKR/riwEAAADdcY1cxTJi1AEAAADqk+Pxbz1pYgIAAAC8nYmQT1uSPwEAAAA3yLsTUKmiqAQAAABYIhH2W7FLiQUAAADmWwDkbO3QqgIAAAALtnpS/NBA/wEAAAD7xXe510fv1gEAAAABAAAAAQ==",
             "Docs": [
               " Get the chain's current version."
             ]
@@ -48677,7 +48769,25 @@
             "Name": "ExistentialDepositMultiplier",
             "TypeId": 2,
             "Value": "BQ==",
-            "Docs": []
+            "Docs": [
+              " Multiplier used to compute minimal amounts of asset_in and asset_out in an OTC."
+            ]
+          },
+          {
+            "Name": "Fee",
+            "TypeId": 90,
+            "Value": "6AMAAA==",
+            "Docs": [
+              " Fee deducted from amount_out."
+            ]
+          },
+          {
+            "Name": "FeeReceiver",
+            "TypeId": 0,
+            "Value": "bW9kbHB5L3Ryc3J5AAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+            "Docs": [
+              " Fee receiver."
+            ]
           }
         ],
         "Errors": {
@@ -50687,6 +50797,14 @@
             ]
           },
           {
+            "Name": "MaxConfigurablePriceDifferenceBetweenBlocks",
+            "TypeId": 90,
+            "Value": "UMMAAA==",
+            "Docs": [
+              "Max configurable price difference allowed between blocks"
+            ]
+          },
+          {
             "Name": "MaxSchedulePerBlock",
             "TypeId": 4,
             "Value": "FAAAAA==",
@@ -50700,6 +50818,22 @@
             "Value": "Aw==",
             "Docs": [
               "The number of max retries in case of trade limit error"
+            ]
+          },
+          {
+            "Name": "MinimalPeriod",
+            "TypeId": 4,
+            "Value": "BQAAAA==",
+            "Docs": [
+              "Minimal period between executions"
+            ]
+          },
+          {
+            "Name": "BumpChance",
+            "TypeId": 533,
+            "Value": "EQ==",
+            "Docs": [
+              "Chance of the random rescheduling"
             ]
           },
           {
@@ -52342,9 +52476,14 @@
           "SignedIdentifier": "ValidateClaim",
           "SignedExtType": 773,
           "AddSignedExtType": 36
+        },
+        {
+          "SignedIdentifier": "CheckMetadataHash",
+          "SignedExtType": 774,
+          "AddSignedExtType": 154
         }
       ]
     },
-    "TypeId": 775
+    "TypeId": 777
   }
 }

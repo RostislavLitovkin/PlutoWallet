@@ -675,6 +675,18 @@ namespace Hydration.NetApi.Generated.Storage
             byteArray.AddRange(maybe_hash.Encode());
             return new Method(19, "Democracy", 18, "set_metadata", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> force_remove_vote
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ForceRemoveVote(Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32 target, Substrate.NetApi.Model.Types.Primitive.U32 index)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(target.Encode());
+            byteArray.AddRange(index.Encode());
+            return new Method(19, "Democracy", 19, "force_remove_vote", byteArray.ToArray());
+        }
     }
     
     /// <summary>
