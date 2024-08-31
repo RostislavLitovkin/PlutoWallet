@@ -6,6 +6,7 @@ using PlutoWallet.Constants;
 using PlutoWallet.Types;
 
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.AssetSelect
 {
@@ -33,6 +34,13 @@ namespace PlutoWallet.Components.AssetSelect
 
         public AssetSelectButtonViewModel()
 		{
+			var key = EndpointsModel.GetSelectedEndpointKeys().First();
+			var endpoint = Endpoints.GetEndpointDictionary[key];
+
+			ChainIcon = endpoint.Icon;
+			Symbol = endpoint.Unit;
+			SelectedAssetKey = (key, AssetPallet.Native, 0);
+			Decimals = endpoint.Decimals;
 		}
 	}
 }
