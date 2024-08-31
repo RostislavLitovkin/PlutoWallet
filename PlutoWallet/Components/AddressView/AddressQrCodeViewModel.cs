@@ -7,8 +7,13 @@ namespace PlutoWallet.Components.AddressView
         [ObservableProperty]
         private string qrAddress;
 
-        [ObservableProperty]
         private string address;
+
+        public string Address
+        {
+            get => address;
+            set => SetProperty(ref address, value.Substring(0, value.Length / 2) + "\n" + value.Substring(value.Length / 2));
+        }
 
         [ObservableProperty]
         private bool isVisible;

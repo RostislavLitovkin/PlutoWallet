@@ -8,6 +8,11 @@
                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                 AbsoluteLayout.LayoutFlags="All"
                 BackgroundColor="#66000000">
+    
+    <ContentView.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </ContentView.GestureRecognizers>
+    
     <card:Card IsPopup="True">
         <card:Card.View>
             <AbsoluteLayout>
@@ -27,7 +32,7 @@
                                              Value="{Binding QrAddress}"/>
 
                     <Border 
-                        WidthRequest="200"
+                        WidthRequest="210"
                         StrokeThickness="0"
                         BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
                         Padding="10, 5, 10, 5"
@@ -50,7 +55,7 @@
 
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="145"/>
+                                <ColumnDefinition Width="155"/>
                                 <ColumnDefinition Width="35" />
                             </Grid.ColumnDefinitions>
 

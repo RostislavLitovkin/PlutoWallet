@@ -38,4 +38,9 @@ public partial class Card : ContentView
 	public Color Color { set { border.BackgroundColor = value; } }
 
 	public LinearGradientBrush LinearGradientBrushColor { set { border.Background = value; } }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+
+    }
 }

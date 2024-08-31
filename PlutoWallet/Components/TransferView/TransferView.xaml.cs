@@ -1,11 +1,9 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.AssetSelect;
-using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 using PlutoWallet.Types;
 using PlutoWallet.Constants;
-using ZXing.Aztec.Internal;
 using PlutoWallet.Components.TransactionAnalyzer;
 
 namespace PlutoWallet.Components.TransferView;
@@ -14,13 +12,11 @@ public partial class TransferView : ContentView
 {
 	public TransferView()
 	{
+        InitializeComponent();
+
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         BindingContext = viewModel;
-
-        InitializeComponent();
-
-        //viewModel.GetFeeAsync();
     }
 
     async void SignAndTransferClicked(System.Object sender, System.EventArgs e)
@@ -63,12 +59,15 @@ public partial class TransferView : ContentView
                 _ => throw new Exception("Not implemented")
             };
                
-            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
-            await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
 
             /// Hide this layout
-
             viewModel.SetToDefault();
+            identityAddressView.SetToDefault();
+
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+            await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
+
             
         }
         catch (Exception ex)
@@ -106,11 +105,11 @@ public partial class TransferView : ContentView
         }
     }
 
-
     private void OnCancelClicked(object sender, EventArgs e)
     {
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         viewModel.SetToDefault();
+        identityAddressView.SetToDefault();
     }
 }

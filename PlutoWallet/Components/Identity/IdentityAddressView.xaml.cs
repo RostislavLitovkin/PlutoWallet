@@ -1,6 +1,8 @@
 ﻿using PlutoWallet.Model;
 using PlutoWallet.Components.UniversalScannerView;
 using AzeroIdResolver;
+using Substrate.NetApi;
+using PlutoWallet.Components.WebView;
 
 namespace PlutoWallet.Components.Identity;
 
@@ -95,7 +97,26 @@ public partial class IdentityAddressView : ContentView
 
             try
             {
+                if (((string)newValue).Length != 48)
+                {
+                    control.identityLabel.Text = "Unknown";
+                    if (Application.Current.RequestedTheme == AppTheme.Light)
+                    {
+                        control.identityJundgementIcon.Source = "unknownblack.png";
+                    }
+                    else
+                    {
+                        control.identityJundgementIcon.Source = "unknownwhite.png";
+                    }
+
+                    control.subscanIcon.IsVisible = false;
+
+                    return;
+                }
+
                 var identity = await Model.IdentityModel.GetIdentityForAddressAsync((PolkadotPeople.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, (string)newValue);
+
+                control.subscanIcon.IsVisible = true;
 
                 if (identity == null)
                 {
@@ -180,6 +201,7 @@ public partial class IdentityAddressView : ContentView
     public IdentityAddressView()
     {
         InitializeComponent();
+
     }
 
     public string DestinationAddress
@@ -210,6 +232,10 @@ public partial class IdentityAddressView : ContentView
         SetValue(AddressProperty, ((Entry)sender).Text);
     }
 
+    public void SetToDefault()
+    {
+        SetValue(AddressProperty, "");
+    }
     void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(async () =>
@@ -241,5 +267,10 @@ public partial class IdentityAddressView : ContentView
 
             }
         });
+    }
+
+    private async void OnSubscanClicked(object sender, TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new WebViewPage($"https://www.subscan.io/account/{Address}"));
     }
 }

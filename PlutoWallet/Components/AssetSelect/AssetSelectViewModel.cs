@@ -41,6 +41,11 @@ namespace PlutoWallet.Components.AssetSelect
 
 				var a = valuePair.Value;
 
+				if (a.Amount == 0)
+                {
+                    continue;
+                }
+
 				bool isSelected = assetSelectButtonViewModel.SelectedAssetKey == (a.Endpoint.Key, a.Pallet, a.AssetId);
 
                 tempAssets.Add(new AssetSelect

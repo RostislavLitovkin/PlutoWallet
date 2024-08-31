@@ -38,6 +38,19 @@ public partial class BottomPopupCard : AbsoluteLayout
 
         }
 
+        try
+        {
+            // This is a great workaround.
+            // Most of the times, you will use this inside of a ContentView that has got a ISetToDefault BindingContext.
+            // If not, then nothing will happen
+            ((ISetToDefault)((ContentView)this.Parent).BindingContext).SetToDefault();
+        }
+        catch
+        {
+
+        }
+
+
         border.TranslationY = 0;
         dragger.TranslationY = 0;
         contentView.TranslationY = 0;
@@ -93,5 +106,10 @@ public partial class BottomPopupCard : AbsoluteLayout
     private async void OnCloseClicked(object sender, EventArgs e)
     {
         await CloseCardAsync();
+    }
+
+    private void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+
     }
 }

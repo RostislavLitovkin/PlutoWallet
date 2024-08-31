@@ -1,12 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Components.Balance;
+using PlutoWallet.Model;
 using PlutoWallet.Types;
 using System.Collections.ObjectModel;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
 
 namespace PlutoWallet.Components.TransactionAnalyzer
 {
-    public partial class AnalyzedOutcomeViewModel : ObservableObject
+    public partial class AnalyzedOutcomeViewModel : ObservableObject, ISetToDefault
     {
 
         [ObservableProperty]
@@ -61,6 +62,11 @@ namespace PlutoWallet.Components.TransactionAnalyzer
             Assets = tempAssets;
         }
 
+        public void SetToDefault()
+        {
+            Loading = "Loading";
+            Assets = new ObservableCollection<AssetInfoExpanded>();
+        }
     }
 
     public class AssetInfoExpanded : AssetInfo

@@ -36,7 +36,9 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="FillAndExpand"
                    Grid.Column="1"
-                           FontAttributes="Bold">
+                            TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+                    FontAttributes="Bold"
+                FontFamily="SourceCode">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>
 

@@ -117,6 +117,7 @@
 	  <None Remove="Resources\Images\plutowalletclearwhite.png" />
 	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
 	  <None Remove="Resources\Images\subscan.png" />
+	  <None Remove="Resources\Images\subscanicon.png" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />

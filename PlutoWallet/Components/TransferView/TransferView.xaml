@@ -16,11 +16,13 @@
             <AbsoluteLayout>
 
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
-                                 AbsoluteLayout.LayoutFlags="WidthProportional"
+                                     AbsoluteLayout.LayoutFlags="WidthProportional"
                                      x:Name="verticalStackLayout"
-                                 Spacing="10">
+                                     Spacing="10">
 
-                    <identity:IdentityAddressView DestinationAddress="{Binding Address}" />
+                    <identity:IdentityAddressView x:Name="identityAddressView"
+                                                  DestinationAddress="{Binding Address}"
+                                                  Address="{Binding AddressInput}"/>
 
                     <Grid HeightRequest="40"
                           WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}">
@@ -48,25 +50,26 @@
 
                 </VerticalStackLayout>
                 <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 1, 1, 80"
-                                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional">
+                                AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional">
 
+                    <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 50"
+                          AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                          ColumnSpacing="15"
+                          Margin="0, 0, 0, 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
 
-                                            <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 50"
-                                  AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                                  ColumnSpacing="15"
-                                      Margin="0, 0, 0, 10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
 
-                                                </Grid.ColumnDefinitions>
+                        <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"
+                                                 Clicked="OnCancelClicked"
+                                                    />
 
-                                                <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"
-                                                                         Clicked="OnCancelClicked"
-                                   />
-
-                                                <buttons:PlutoWalletElevatedButton Text="Transfer" Grid.Column="1"
-                                    Clicked="SignAndTransferClicked"/>
+                        <buttons:PlutoWalletElevatedButton Text="Transfer"
+                                                            Grid.Column="1"
+                                                            Clicked="SignAndTransferClicked"
+                                                           ButtonState="{Binding ConfirmButtonState}"/>
 
                     </Grid>
                 </AbsoluteLayout>

@@ -4,7 +4,11 @@
              x:Class="PlutoWallet.Components.Card.BottomPopupCard"
              AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
             AbsoluteLayout.LayoutFlags="All"
-            BackgroundColor="#66000000">
+            BackgroundColor="#66000000"
+            >
+    <AbsoluteLayout.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </AbsoluteLayout.GestureRecognizers>
 
 
     <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5, 1, 1, .6"
@@ -47,7 +51,7 @@
 
 
             </Border>
-            
+
             <!--<Button AbsoluteLayout.LayoutBounds=".5, 1, 1, 50"
                     AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
                     Text="Confirm"

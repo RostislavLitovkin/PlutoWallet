@@ -11,7 +11,7 @@ using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPal
 
 namespace PlutoWallet.Components.TransactionAnalyzer
 {
-    public partial class TransactionAnalyzerConfirmationViewModel : ObservableObject, IPopup
+    public partial class TransactionAnalyzerConfirmationViewModel : ObservableObject, IPopup, ISetToDefault
     {
         [ObservableProperty]
         private bool isVisible;
@@ -59,8 +59,6 @@ namespace PlutoWallet.Components.TransactionAnalyzer
         {
             OnConfirm = onConfirm;
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
-
-            analyzedOutcomeViewModel.Loading = "Loading";
 
             Method method = unCheckedExtrinsic.Method;
 
@@ -156,7 +154,7 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
                 analyzedOutcomeViewModel.Loading = "Failed";
 
-                EstimatedFee = "Estimated fee: unknown";
+                EstimatedFee = "Estimated fee: Unknown";
             }
             #endregion
         }
@@ -166,8 +164,6 @@ namespace PlutoWallet.Components.TransactionAnalyzer
             OnConfirm = onConfirm;
 
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
-
-            analyzedOutcomeViewModel.Loading = "Loading";
 
             Method method = unCheckedExtrinsic.Method;
 
@@ -212,11 +208,27 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
             analyzedOutcomeViewModel.Loading = "Unknown";
 
-            EstimatedFee = "Fee: unknown";
+            EstimatedFee = "Estimated fee: Unknown";
 
             #endregion
 
             IsVisible = true;
+        }
+
+        public void SetToDefault()
+        {
+            IsVisible = false;
+            DAppName = "";
+            DAppIcon = "";
+            IsDAppViewVisible = false;
+            PalletCallName = "";
+            Payload = null;
+            EstimatedFee = "Estimated fee: Loading";
+            EstimatedTime = "Estimated time: 6 sec";
+            OnConfirm = null;
+
+            var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
+            analyzedOutcomeViewModel.SetToDefault();
         }
     }
 }
