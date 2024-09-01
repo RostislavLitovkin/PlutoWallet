@@ -33,6 +33,8 @@ public partial class IdentityAddressView : ContentView
         // I had to duplicate these lines because of a weird error on Android.
         if (((string)newValue).Contains("."))
         {
+            control.subscanIcon.IsVisible = false;
+
             var newAddress = await TzeroId.GetAddressForName((string)newValue);
 
             Console.WriteLine(newAddress);
@@ -78,23 +80,6 @@ public partial class IdentityAddressView : ContentView
 
         try
         {
-            var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(Constants.EndpointEnum.PolkadotPeople);
-
-            if (!await client.IsConnectedAsync())
-            {
-                control.identityLabel.Text = "Loading";
-                if (Application.Current.RequestedTheme == AppTheme.Light)
-                {
-                    control.identityJundgementIcon.Source = "unknownblack.png";
-                }
-                else
-                {
-                    control.identityJundgementIcon.Source = "unknownwhite.png";
-                }
-
-                return;
-            }
-
             try
             {
                 if (((string)newValue).Length != 48)
@@ -114,9 +99,27 @@ public partial class IdentityAddressView : ContentView
                     return;
                 }
 
-                var identity = await Model.IdentityModel.GetIdentityForAddressAsync((PolkadotPeople.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, (string)newValue);
-
                 control.subscanIcon.IsVisible = true;
+
+
+                var client = await AjunaClientModel.GetOrAddSubstrateClientAsync(Constants.EndpointEnum.PolkadotPeople);
+
+                if (!await client.IsConnectedAsync())
+                {
+                    control.identityLabel.Text = "Loading";
+                    if (Application.Current.RequestedTheme == AppTheme.Light)
+                    {
+                        control.identityJundgementIcon.Source = "unknownblack.png";
+                    }
+                    else
+                    {
+                        control.identityJundgementIcon.Source = "unknownwhite.png";
+                    }
+
+                    return;
+                }
+
+                var identity = await Model.IdentityModel.GetIdentityForAddressAsync((PolkadotPeople.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, (string)newValue);
 
                 if (identity == null)
                 {
@@ -232,10 +235,6 @@ public partial class IdentityAddressView : ContentView
         SetValue(AddressProperty, ((Entry)sender).Text);
     }
 
-    public void SetToDefault()
-    {
-        SetValue(AddressProperty, "");
-    }
     void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
     {
         MainThread.BeginInvokeOnMainThread(async () =>

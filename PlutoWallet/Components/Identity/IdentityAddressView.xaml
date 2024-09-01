@@ -30,8 +30,7 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="40" />
                 </Grid.ColumnDefinitions>
-                <Image 
-                        x:Name="identityJundgementIcon"
+                <Image x:Name="identityJundgementIcon"
                         Source="{AppThemeBinding Light=unknownblack.png, Dark=unknownwhite.png}"
                        Grid.Column="0"
                        Margin="10"/>

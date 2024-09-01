@@ -38,20 +38,33 @@ namespace PlutoWallet.Model
         {
             if (Clients.ContainsKey(endpointKey))
             {
+                var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
+
                 // Client is not connected, reconnect it
                 if (!await (await Clients[endpointKey].Task).IsConnectedAsync())
                 {
+                    Console.WriteLine(endpointKey + " was not connected successfully");
+
                     await (await Clients[endpointKey].Task).ConnectAndLoadMetadataAsync();
+
+                    Console.WriteLine(endpointKey + " now connected?");
+
                 }
 
                 return;
             }
 
+            Console.WriteLine("That " + endpointKey + " was not included");
+
             Clients.Add(endpointKey, new TaskCompletionSource<PlutoWalletSubstrateClient>());
+
+            Console.WriteLine("now included :)");
 
             Endpoint endpoint = EndpointsModel.GetEndpoint(endpointKey);
 
             string bestWebSecket = await WebSocketModel.GetFastestWebSocketAsync(endpoint.URLs);
+
+            Console.WriteLine("Best WebSocket: " + bestWebSecket);
 
             var client = new PlutoWalletSubstrateClient(
                         endpoint,
@@ -59,6 +72,8 @@ namespace PlutoWallet.Model
                         Substrate.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
 
             Clients[endpointKey].SetResult(client);
+
+            Console.WriteLine("Client set");
 
             await client.ConnectAndLoadMetadataAsync();
         }
@@ -112,6 +127,7 @@ namespace PlutoWallet.Model
             #region Connect clients (one by one)
             foreach (var endpointKey in endpointKeys)
             {
+                Console.WriteLine("Trying to connect: " +  endpointKey);
                 await ConnectNewSubstrateClientAsync(endpointKey);
                 Console.WriteLine("Connected to " + endpointKey.ToString());
             }
@@ -195,6 +211,9 @@ namespace PlutoWallet.Model
             Model.AssetsModel.GetUsdBalance();
 
             usdBalanceViewModel.UpdateBalances();
+
+            var assetInputViewModel = DependencyService.Get<AssetInputViewModel>();
+            assetInputViewModel.CalculateUsdValue();
 
             // Other hydration stuff :)
             var omnipoolLiquidityViewModel = DependencyService.Get<OmnipoolLiquidityViewModel>();

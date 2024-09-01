@@ -23,7 +23,6 @@ namespace PlutoWallet.Components.Balance
             usdSum = "Loading";
             reloadIsVisible = false;
         }
-
         public void UpdateBalances()
         {
             var tempAssets = new ObservableCollection<AssetInfo>();

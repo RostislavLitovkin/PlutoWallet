@@ -1,7 +1,4 @@
-﻿using System;
-using PlutoWallet.Components.Balance;
-using CommunityToolkit.Mvvm.ComponentModel;
-using System.Numerics;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Types;
 
@@ -41,7 +38,10 @@ namespace PlutoWallet.Components.AssetSelect
 			Symbol = endpoint.Unit;
 			SelectedAssetKey = (key, AssetPallet.Native, 0);
 			Decimals = endpoint.Decimals;
-		}
+
+            var assetInputViewModel = DependencyService.Get<AssetInputViewModel>();
+            assetInputViewModel.CurrencyChanged(endpoint.Unit);
+        }
 	}
 }
 

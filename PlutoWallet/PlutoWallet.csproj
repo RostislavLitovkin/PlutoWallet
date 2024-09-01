@@ -392,6 +392,12 @@
 	  <MauiXaml Update="Components\Animations\LoadingView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\AssetSelect\AssetInputView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\AssetSelect\UsdButtonView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Buttons\BasicGrayButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -529,7 +535,6 @@
 	  <Folder Include="Components\Contract\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Components\AzeroId\" />
-	  <Folder Include="Components\AssetSelect\" />
 	  <Folder Include="Resources\Images\FatCat\" />
 	  <Folder Include="Components\Identity\" />
 	  <Folder Include="Components\Vault\" />

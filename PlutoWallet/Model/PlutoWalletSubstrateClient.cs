@@ -72,6 +72,8 @@ namespace PlutoWallet.Model
 
             var connected = await base.ConnectAndLoadMetadataAsync();
 
+            Console.WriteLine(Endpoint.Key + " Connected: " + connected);
+
             multiNetworkSelectViewModel.NetworkInfoDict[Endpoint.Key].EndpointConnectionStatus = connected ? EndpointConnectionStatus.Connected : EndpointConnectionStatus.Failed;
 
             multiNetworkSelectViewModel.UpdateNetworkInfos();

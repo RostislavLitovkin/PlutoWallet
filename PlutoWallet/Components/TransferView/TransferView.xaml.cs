@@ -5,13 +5,14 @@ using System.Numerics;
 using PlutoWallet.Types;
 using PlutoWallet.Constants;
 using PlutoWallet.Components.TransactionAnalyzer;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace PlutoWallet.Components.TransferView;
 
 public partial class TransferView : ContentView
 {
-	public TransferView()
-	{
+    public TransferView()
+    {
         InitializeComponent();
 
         var viewModel = DependencyService.Get<TransferViewModel>();
@@ -24,7 +25,7 @@ public partial class TransferView : ContentView
         // Send the actual transaction
 
         var viewModel = DependencyService.Get<TransferViewModel>();
-        
+
         errorLabel.Text = "";
 
         var clientExt = await Model.AjunaClientModel.GetMainClientAsync();
@@ -58,17 +59,16 @@ public partial class TransferView : ContentView
                 (EndpointEnum endpointKey, AssetPallet.Assets, BigInteger assetId) => TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetId, amount),
                 _ => throw new Exception("Not implemented")
             };
-               
+
 
             /// Hide this layout
             viewModel.SetToDefault();
-            identityAddressView.SetToDefault();
 
             var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
 
             await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
 
-            
+
         }
         catch (Exception ex)
         {
@@ -110,6 +110,5 @@ public partial class TransferView : ContentView
         var viewModel = DependencyService.Get<TransferViewModel>();
 
         viewModel.SetToDefault();
-        identityAddressView.SetToDefault();
     }
 }

@@ -180,6 +180,9 @@ public partial class AssetSelectorView : ContentView
         assetSelectButtonViewModel.SelectedAssetKey = (Endpoint.Key, Pallet, AssetId);
         assetSelectButtonViewModel.Decimals = Decimals;
 
+        var assetInputViewModel = DependencyService.Get<AssetInputViewModel>();
+        assetInputViewModel.CurrencyChanged(Symbol);
+
         // Update the fee
         var transferViewModel = DependencyService.Get<TransferViewModel>();
         await transferViewModel.GetFeeAsync();

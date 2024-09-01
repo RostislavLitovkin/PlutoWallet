@@ -18,33 +18,18 @@
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
                                      AbsoluteLayout.LayoutFlags="WidthProportional"
                                      x:Name="verticalStackLayout"
-                                     Spacing="10">
-
+                                     Spacing="20">
                     <identity:IdentityAddressView x:Name="identityAddressView"
                                                   DestinationAddress="{Binding Address}"
                                                   Address="{Binding AddressInput}"/>
 
-                    <Grid HeightRequest="40"
-                          WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
+                    <assetselect:AssetInputView
+                         CardWidth="{Binding Source={x:Reference verticalStackLayout}, Path=Width}"
+                            Amount="{Binding Amount}"/>
 
-                        </Grid.ColumnDefinitions>
-
-
-                        <Entry Placeholder="Amount" Text="{Binding Amount}"
-                               Keyboard="Numeric"
-                               HeightRequest="40"
-                               Margin="0, 0, 10, 0"
-                               Grid.Column="0"
-                               IsSpellCheckEnabled="false"
-                                IsTextPredictionEnabled="false"/>
-                        <assetselect:AssetSelectButtonView HeightRequest="40"
-                                                           Grid.Column="1" />
-                    </Grid>
-
-                    <Label Text="{Binding Fee}" TextColor="Orange" />
+                    <Label Text="{Binding Fee}"
+                           TextColor="#888888"
+                           FontAttributes="Bold"/>
 
                     <Label Text="" x:Name="errorLabel" TextColor="Red" />
 
@@ -59,7 +44,6 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
-
                         </Grid.ColumnDefinitions>
 
                         <buttons:BasicGrayButton Text="Cancel" Grid.Column="0"

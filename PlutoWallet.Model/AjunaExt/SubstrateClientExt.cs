@@ -87,14 +87,28 @@ namespace PlutoWallet.Model.AjunaExt
                     Console.WriteLine(signedExtension.SignedIdentifier);
                 }
 
-                taskCompletionSource.SetResult(SubstrateClient.IsConnected);
+
+                var trial = taskCompletionSource.TrySetResult(SubstrateClient.IsConnected);
+
+                if (!trial)
+                {
+                    taskCompletionSource = new TaskCompletionSource<bool>();
+                    taskCompletionSource.SetResult(SubstrateClient.IsConnected);
+                }
 
                 return SubstrateClient.IsConnected;
             }
             catch(Exception e)
             {
+                Console.WriteLine("SubstrateClientExt error: ");
                 Console.WriteLine(e);
-                taskCompletionSource.SetResult(false);
+                var trial = taskCompletionSource.TrySetResult(false);
+
+                if (!trial)
+                {
+                    taskCompletionSource = new TaskCompletionSource<bool>();
+                    taskCompletionSource.SetResult(false);
+                }
 
                 return false;
             }

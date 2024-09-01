@@ -121,6 +121,8 @@ public partial class App : Application
 
         DependencyService.Register<TransactionAnalyzerConfirmationViewModel>();
 
+        DependencyService.Register<AssetInputViewModel>();
+
         if (Preferences.ContainsKey("publicKey"))
         {
             MainPage = new NavigationPage(new BasePage());
