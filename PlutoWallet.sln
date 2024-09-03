@@ -25,6 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bifrost.NetApi", "Generated
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolkadotPeople.NetApi", "Generated\PolkadotPeople\PolkadotPeople.NetApi\PolkadotPeople.NetApi.csproj", "{1D073760-F41A-4A88-A818-580DCBC0E8EC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlus", "UniqueryPlus\UniqueryPlus.csproj", "{75983543-4FAA-4AB4-A890-0F85131D8564}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniqueryPlusTests", "UniqueryPlusTests\UniqueryPlusTests.csproj", "{A05BC669-CBB6-45A9-89C4-5F576AD338EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D073760-F41A-4A88-A818-580DCBC0E8EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75983543-4FAA-4AB4-A890-0F85131D8564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75983543-4FAA-4AB4-A890-0F85131D8564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75983543-4FAA-4AB4-A890-0F85131D8564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75983543-4FAA-4AB4-A890-0F85131D8564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05BC669-CBB6-45A9-89C4-5F576AD338EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05BC669-CBB6-45A9-89C4-5F576AD338EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05BC669-CBB6-45A9-89C4-5F576AD338EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05BC669-CBB6-45A9-89C4-5F576AD338EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

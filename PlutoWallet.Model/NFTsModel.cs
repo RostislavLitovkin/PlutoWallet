@@ -1,17 +1,14 @@
-﻿using System;
+﻿
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi;
-using Newtonsoft.Json.Linq;
 using Substrate.NetApi.Generated.Model.pallet_nfts.types;
 using Substrate.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json;
-using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
-using Substrate.NetApi.Model.Types.Primitive;
-using Uniquery;
 using System.Numerics;
+using UniqueryPlus.Ipfs;
 
 namespace PlutoWallet.Model
 {
@@ -160,11 +157,11 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-            string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
+            string metadataJson = await IpfsModel.FetchIpfsAsync(ipfsLink, token);
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
-            nft.Image = Model.IpfsModel.ToIpfsLink(nft.Image);
+            nft.Image = IpfsModel.ToIpfsLink(nft.Image);
 
             return nft;
         }
@@ -221,13 +218,13 @@ Hopefully it will fulfill the test functionalities correctly.",
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
+                string metadataJson = await IpfsModel.FetchIpfsAsync(ipfsLink, token);
 
                 Console.WriteLine(metadataJson);
 
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
-                nft.Image = Model.IpfsModel.ToIpfsLink(nft.Image);
+                nft.Image = IpfsModel.ToIpfsLink(nft.Image);
 
                 return nft;
             }
