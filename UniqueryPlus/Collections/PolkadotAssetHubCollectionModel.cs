@@ -8,6 +8,8 @@ using PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types;
 using System.Numerics;
 using UniqueryPlus.Ipfs;
 using UniqueryPlus.Nfts;
+using SubstrateCollectionMetadata = PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace UniqueryPlus.Collections
 {
@@ -48,7 +50,7 @@ namespace UniqueryPlus.Collections
             // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat accountId32
             var keyPrefixLength = 162;
 
-            var keyPrefix = Utils.HexToByteArray(NftsStorage.CollectionAccountParams(new Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>(accountId32, new U32(0))).Substring(0, keyPrefixLength));
+            var keyPrefix = Utils.HexToByteArray(NftsStorage.CollectionAccountParams(new BaseTuple<AccountId32, U32>(accountId32, new U32(0))).Substring(0, keyPrefixLength));
 
             var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
 
@@ -138,7 +140,7 @@ namespace UniqueryPlus.Collections
                     continue;
                 }
 
-                var collectionMetadata = new PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata();
+                var collectionMetadata = new SubstrateCollectionMetadata();
                 collectionMetadata.Create(change[1]);
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(collectionMetadata.Data.Value.Bytes);

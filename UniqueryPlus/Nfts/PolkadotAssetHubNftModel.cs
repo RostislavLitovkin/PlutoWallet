@@ -6,12 +6,12 @@ using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
 using UniqueryPlus.Ipfs;
 using PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types;
+
 namespace UniqueryPlus.Nfts
 {
     public class PolkadotAssetHubNftsPalletNft : INftBase
     {
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
-
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public required string Owner { get; set; }
@@ -24,7 +24,7 @@ namespace UniqueryPlus.Nfts
             // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat U32
             var keyPrefixLength = 106;
 
-            var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new Substrate.NetApi.Model.Types.Base.BaseTuple<U32, U32>(new U32(collectionId), new U32(0))).Substring(0, keyPrefixLength));
+            var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new BaseTuple<U32, U32>(new U32(collectionId), new U32(0))).Substring(0, keyPrefixLength));
 
             var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
 
@@ -110,7 +110,7 @@ namespace UniqueryPlus.Nfts
                     continue;
                 }
 
-                var nftMetadata = new PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.ItemMetadata();
+                var nftMetadata = new ItemMetadata();
                 nftMetadata.Create(change[1]);
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(nftMetadata.Data.Value.Bytes);
