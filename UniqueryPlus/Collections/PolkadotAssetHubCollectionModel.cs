@@ -7,30 +7,34 @@ using PolkadotAssetHub.NetApi.Generated.Storage;
 using PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types;
 using System.Numerics;
 using UniqueryPlus.Ipfs;
+using UniqueryPlus.Nfts;
 
 namespace UniqueryPlus.Collections
 {
-    public class PolkadotAssetHubNftsPalletCollection : PolkadotAssetHubNftsPalletCollectionBase
-    {
 
-    }
-
-    public class PolkadotAssetHubNftsPalletCollectionBase : ICollectionBase
+    public class PolkadotAssetHubNftsPalletCollection : ICollectionBase
     {
+        private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
-
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
         public ICollectionMetadataBase? Metadata { get; set; }
-        public async Task<IEnumerable<object>> GetNftsAsync(int limit, byte[]? lastKey = null)
+
+        public PolkadotAssetHubNftsPalletCollection(SubstrateClientExt client)
+        {
+            this.client = client;
+        }
+        public async Task<IEnumerable<INftBase>> GetNftsAsync(uint limit, byte[]? lastKey = null, CancellationToken token = default)
         {
             if (NftCount == 0)
             {
                 return [];
             }
 
-            throw new NotImplementedException();
+            var result = await PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionIdAsync(client, (uint)CollectionId, limit, lastKey, token);
+
+            return result.Items;
         }
     }
 
@@ -46,10 +50,10 @@ namespace UniqueryPlus.Collections
 
             var keyPrefix = Utils.HexToByteArray(NftsStorage.CollectionAccountParams(new Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>(accountId32, new U32(0))).Substring(0, keyPrefixLength));
 
-            var keysPaged = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
 
             // No more collections found
-            if (keysPaged == null || !keysPaged.Any())
+            if (fullKeys == null || !fullKeys.Any())
             {
                 return new RecursiveReturn<ICollectionBase>
                 {
@@ -59,7 +63,7 @@ namespace UniqueryPlus.Collections
             }
 
             // Filter only the CollectionId keys
-            var collectionIdKeys = keysPaged.Select(p => p.ToString().Substring(keyPrefixLength));
+            var collectionIdKeys = fullKeys.Select(p => p.ToString().Substring(keyPrefixLength));
 
             var collectionIds = collectionIdKeys.Select(Helpers.GetBigIntegerFromBlake2_128Concat);
 
@@ -73,25 +77,25 @@ namespace UniqueryPlus.Collections
                     return details switch
                     {
                         // Should never be null
-                        null => new PolkadotAssetHubNftsPalletCollectionBase
+                        null => new PolkadotAssetHubNftsPalletCollection(client)
                         {
                             CollectionId = collectionId,
                             Owner = owner,
                             NftCount = 0
                         },
-                        _ => new PolkadotAssetHubNftsPalletCollectionBase
+                        _ => new PolkadotAssetHubNftsPalletCollection(client)
                         {
                             CollectionId = collectionId,
                             Owner = owner,
                             NftCount = details.Items.Value
                         }
                     };
-                }).Zip(collectionMetadatas, (PolkadotAssetHubNftsPalletCollectionBase collectionBase, CollectionMetadata? metadata) =>
+                }).Zip(collectionMetadatas, (PolkadotAssetHubNftsPalletCollection collectionBase, CollectionMetadata? metadata) =>
                 {
                     collectionBase.Metadata = metadata;
                     return collectionBase;
                 }),
-                LastKey = Utils.HexToByteArray(keysPaged.Last().ToString())
+                LastKey = Utils.HexToByteArray(fullKeys.Last().ToString())
             };
         }
 
@@ -139,7 +143,7 @@ namespace UniqueryPlus.Collections
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(collectionMetadata.Data.Value.Bytes);
 
-                metadatas.Add(await IpfsModel.GetCollectionMetadataAsync(ipfsLink, token));
+                metadatas.Add(await IpfsModel.GetMetadataAsync<CollectionMetadata>(ipfsLink, token));
             };
 
             return metadatas;

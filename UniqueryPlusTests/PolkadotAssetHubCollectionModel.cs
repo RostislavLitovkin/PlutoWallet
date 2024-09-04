@@ -58,6 +58,17 @@ namespace UniqueryPlusTests
                 Console.WriteLine(collection.Metadata?.Description);
                 Console.WriteLine("Image: " + collection.Metadata?.Image);
             }
+
+            var first3Nfts = await firstCollection.GetNftsAsync(3, null, CancellationToken.None);
+
+            Assert.That(first3Nfts.Count(), Is.EqualTo(3));
+
+            foreach (var nft in first3Nfts)
+            {
+                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
         }
     }
 }

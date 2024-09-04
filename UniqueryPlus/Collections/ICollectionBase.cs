@@ -1,5 +1,6 @@
 ﻿
 using System.Numerics;
+using UniqueryPlus.Nfts;
 
 namespace UniqueryPlus.Collections
 {
@@ -10,6 +11,6 @@ namespace UniqueryPlus.Collections
         public string Owner { get; set; }
         public uint NftCount { get; set; }
         public ICollectionMetadataBase? Metadata { get; set; }
-        public Task<IEnumerable<object>> GetNftsAsync(int limit, byte[]? lastKey);
+        public Task<IEnumerable<INftBase>> GetNftsAsync(uint limit, byte[]? lastKey, CancellationToken token);
     }
 }

@@ -6,6 +6,7 @@ namespace UniqueryPlus
 {
     public static class Helpers
     {
+
         public static U32 GetU32FromBlake2_128Concat(string hash)
         {
             if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))

@@ -1,16 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System.Text.RegularExpressions;
-using UniqueryPlus.Collections;
 
 namespace UniqueryPlus.Ipfs
 {
     public class IpfsModel
     {
-        public static async Task<CollectionMetadata?> GetCollectionMetadataAsync(string ipfsLink, CancellationToken token)
+        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token)
         {
             var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
 
-            return JsonConvert.DeserializeObject<CollectionMetadata>(metadataJson);
+            return JsonConvert.DeserializeObject<T>(metadataJson);
         }
 
         private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
