@@ -38,7 +38,7 @@ namespace Bifrost.NetApi.Generated.Model.lend_market.types
     }
     
     /// <summary>
-    /// >> 420 - Variant[lend_market.types.MarketState]
+    /// >> 441 - Variant[lend_market.types.MarketState]
     /// </summary>
     public sealed class EnumMarketState : BaseEnum<MarketState>
     {

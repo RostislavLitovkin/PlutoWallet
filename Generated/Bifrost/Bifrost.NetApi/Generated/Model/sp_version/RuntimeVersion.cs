@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_version
     
     
     /// <summary>
-    /// >> 520 - Composite[sp_version.RuntimeVersion]
+    /// >> 554 - Composite[sp_version.RuntimeVersion]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeVersion : BaseType
@@ -47,7 +47,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_version
         /// <summary>
         /// >> apis
         /// </summary>
-        public Bifrost.NetApi.Generated.Types.Base.Cow Apis { get; set; }
+        public Bifrost.NetApi.Generated.Types.Base.CowT2 Apis { get; set; }
         /// <summary>
         /// >> transaction_version
         /// </summary>
@@ -92,7 +92,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_version
             SpecVersion.Decode(byteArray, ref p);
             ImplVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             ImplVersion.Decode(byteArray, ref p);
-            Apis = new Bifrost.NetApi.Generated.Types.Base.Cow();
+            Apis = new Bifrost.NetApi.Generated.Types.Base.CowT2();
             Apis.Decode(byteArray, ref p);
             TransactionVersion = new Substrate.NetApi.Model.Types.Primitive.U32();
             TransactionVersion.Decode(byteArray, ref p);

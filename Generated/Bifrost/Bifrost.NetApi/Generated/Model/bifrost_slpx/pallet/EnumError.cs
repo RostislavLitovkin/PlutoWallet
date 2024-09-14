@@ -92,7 +92,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.pallet
     }
     
     /// <summary>
-    /// >> 846 - Variant[bifrost_slpx.pallet.Error]
+    /// >> 901 - Variant[bifrost_slpx.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

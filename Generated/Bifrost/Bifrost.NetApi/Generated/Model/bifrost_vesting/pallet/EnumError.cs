@@ -79,7 +79,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vesting.pallet
     }
     
     /// <summary>
-    /// >> 721 - Variant[bifrost_vesting.pallet.Error]
+    /// >> 758 - Variant[bifrost_vesting.pallet.Error]
     /// Error for the vesting pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

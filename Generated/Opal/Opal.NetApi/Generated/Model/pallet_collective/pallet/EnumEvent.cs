@@ -71,7 +71,21 @@ namespace Opal.NetApi.Generated.Model.pallet_collective.pallet
     /// >> 75 - Variant[pallet_collective.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Proposed);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Voted);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H256>(Event.Approved);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H256>(Event.Disapproved);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Types.Base.EnumResult>>(Event.Executed);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Types.Base.EnumResult>>(Event.MemberExecuted);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Closed);
+        }
     }
 }

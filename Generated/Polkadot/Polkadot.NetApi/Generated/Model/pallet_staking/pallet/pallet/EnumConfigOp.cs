@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet
     /// <summary>
     /// >> 134 - Variant[pallet_staking.pallet.pallet.ConfigOp]
     /// </summary>
-    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, BaseVoid>
+    public sealed class EnumConfigOp : BaseEnumRust<ConfigOp>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumConfigOp()
+        {
+				AddTypeDecoder<BaseVoid>(ConfigOp.Noop);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>(ConfigOp.Set);
+				AddTypeDecoder<BaseVoid>(ConfigOp.Remove);
+        }
     }
 }

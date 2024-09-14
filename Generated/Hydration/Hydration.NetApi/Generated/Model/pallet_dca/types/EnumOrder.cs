@@ -35,7 +35,16 @@ namespace Hydration.NetApi.Generated.Model.pallet_dca.types
     /// <summary>
     /// >> 148 - Variant[pallet_dca.types.Order]
     /// </summary>
-    public sealed class EnumOrder : BaseEnumExt<Order, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>
+    public sealed class EnumOrder : BaseEnumRust<Order>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOrder()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>(Order.Sell);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>(Order.Buy);
+        }
     }
 }

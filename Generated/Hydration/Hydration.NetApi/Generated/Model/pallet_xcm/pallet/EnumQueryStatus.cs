@@ -40,7 +40,17 @@ namespace Hydration.NetApi.Generated.Model.pallet_xcm.pallet
     /// <summary>
     /// >> 692 - Variant[pallet_xcm.pallet.QueryStatus]
     /// </summary>
-    public sealed class EnumQueryStatus : BaseEnumExt<QueryStatus, BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedResponse, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumQueryStatus : BaseEnumRust<QueryStatus>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumQueryStatus()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>>(QueryStatus.Pending);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation, Substrate.NetApi.Model.Types.Primitive.Bool>>(QueryStatus.VersionNotifier);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.xcm.EnumVersionedResponse, Substrate.NetApi.Model.Types.Primitive.U32>>(QueryStatus.Ready);
+        }
     }
 }

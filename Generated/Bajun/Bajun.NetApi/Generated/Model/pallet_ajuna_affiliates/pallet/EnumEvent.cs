@@ -47,7 +47,18 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_affiliates.pallet
     /// >> 199 - Variant[pallet_ajuna_affiliates.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.affiliates.EnumAffiliateMethods, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.affiliates.EnumAffiliateMethods>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.AccountMarkedAsAffiliatable);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.AccountAffiliated);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.affiliates.EnumAffiliateMethods>(Event.RuleAdded);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.affiliates.EnumAffiliateMethods>(Event.RuleCleared);
+        }
     }
 }

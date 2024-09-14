@@ -63,7 +63,20 @@ namespace Hydration.NetApi.Generated.Model.pallet_tips.pallet
     /// >> 344 - Variant[pallet_tips.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Hydration.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.report_awesome);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Call.retract_tip);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.tip_new);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.tip);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Call.close_tip);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Call.slash_tip);
+        }
     }
 }

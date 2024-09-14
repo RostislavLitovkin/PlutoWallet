@@ -68,9 +68,25 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4.junctions
     }
     
     /// <summary>
-    /// >> 115 - Variant[staging_xcm.v4.junctions.Junctions]
+    /// >> 118 - Variant[staging_xcm.v4.junctions.Junctions]
     /// </summary>
-    public sealed class EnumJunctions : BaseEnumExt<Junctions, BaseVoid, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>
+    public sealed class EnumJunctions : BaseEnumRust<Junctions>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJunctions()
+        {
+				AddTypeDecoder<BaseVoid>(Junctions.Here);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction>(Junctions.X1);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction>(Junctions.X2);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction>(Junctions.X3);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction>(Junctions.X4);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction>(Junctions.X5);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction>(Junctions.X6);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction>(Junctions.X7);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>(Junctions.X8);
+        }
     }
 }

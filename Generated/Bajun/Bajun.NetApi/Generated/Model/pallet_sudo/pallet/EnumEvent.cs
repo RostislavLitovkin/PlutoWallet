@@ -51,7 +51,18 @@ namespace Bajun.NetApi.Generated.Model.pallet_sudo.pallet
     /// >> 139 - Variant[pallet_sudo.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bajun.NetApi.Generated.Types.Base.EnumResult, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseVoid, Bajun.NetApi.Generated.Types.Base.EnumResult>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.EnumResult>(Event.Sudid);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.KeyChanged);
+				AddTypeDecoder<BaseVoid>(Event.KeyRemoved);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.EnumResult>(Event.SudoAsDone);
+        }
     }
 }

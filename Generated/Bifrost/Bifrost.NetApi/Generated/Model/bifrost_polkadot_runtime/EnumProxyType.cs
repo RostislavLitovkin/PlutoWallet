@@ -48,7 +48,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 236 - Variant[bifrost_polkadot_runtime.ProxyType]
+    /// >> 244 - Variant[bifrost_polkadot_runtime.ProxyType]
     /// </summary>
     public sealed class EnumProxyType : BaseEnum<ProxyType>
     {

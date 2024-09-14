@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_message_queue
     
     
     /// <summary>
-    /// >> 678 - Composite[pallet_message_queue.Neighbours]
+    /// >> 714 - Composite[pallet_message_queue.Neighbours]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Neighbours : BaseType

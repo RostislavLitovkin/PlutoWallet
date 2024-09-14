@@ -63,7 +63,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_salp
     }
     
     /// <summary>
-    /// >> 314 - Variant[bifrost_salp.FundStatus]
+    /// >> 337 - Variant[bifrost_salp.FundStatus]
     /// </summary>
     public sealed class EnumFundStatus : BaseEnum<FundStatus>
     {

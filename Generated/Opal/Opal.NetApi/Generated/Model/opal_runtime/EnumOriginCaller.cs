@@ -65,7 +65,22 @@ namespace Opal.NetApi.Generated.Model.opal_runtime
     /// <summary>
     /// >> 207 - Variant[opal_runtime.OriginCaller]
     /// </summary>
-    public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, Opal.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, Opal.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin, Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_gov_origins.pallet.EnumOrigin, BaseVoid, Opal.NetApi.Generated.Model.pallet_ethereum.EnumRawOrigin>
+    public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOriginCaller()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.Council);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.TechnicalCommittee);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_gov_origins.pallet.EnumOrigin>(OriginCaller.Origins);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.PolkadotXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>(OriginCaller.CumulusXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_ethereum.EnumRawOrigin>(OriginCaller.Ethereum);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
+        }
     }
 }

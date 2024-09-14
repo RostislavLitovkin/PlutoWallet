@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.ethereum.transaction
     /// <summary>
     /// >> 342 - Variant[ethereum.transaction.TransactionAction]
     /// </summary>
-    public sealed class EnumTransactionAction : BaseEnumExt<TransactionAction, Opal.NetApi.Generated.Model.primitive_types.H160, BaseVoid>
+    public sealed class EnumTransactionAction : BaseEnumRust<TransactionAction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTransactionAction()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(TransactionAction.Call);
+				AddTypeDecoder<BaseVoid>(TransactionAction.Create);
+        }
     }
 }

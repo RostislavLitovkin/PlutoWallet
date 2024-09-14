@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_stable_asset
     
     
     /// <summary>
-    /// >> 856 - Composite[bifrost_stable_asset.StableAssetPoolInfo]
+    /// >> 911 - Composite[bifrost_stable_asset.StableAssetPoolInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StableAssetPoolInfo : BaseType

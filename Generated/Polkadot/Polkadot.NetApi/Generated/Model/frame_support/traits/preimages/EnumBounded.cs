@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.frame_support.traits.preimages
     /// <summary>
     /// >> 101 - Variant[frame_support.traits.preimages.Bounded]
     /// </summary>
-    public sealed class EnumBounded : BaseEnumExt<Bounded, Polkadot.NetApi.Generated.Model.primitive_types.H256, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13, BaseTuple<Polkadot.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumBounded : BaseEnumRust<Bounded>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBounded()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.primitive_types.H256>(Bounded.Legacy);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13>(Bounded.Inline);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Bounded.Lookup);
+        }
     }
 }

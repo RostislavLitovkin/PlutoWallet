@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_stakin
     
     
     /// <summary>
-    /// >> 339 - Composite[bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger]
+    /// >> 361 - Composite[bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OneToManyLedger : BaseType

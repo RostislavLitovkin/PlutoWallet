@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.staging_xcm.v4.traits
     /// <summary>
     /// >> 59 - Variant[staging_xcm.v4.traits.Outcome]
     /// </summary>
-    public sealed class EnumOutcome : BaseEnumExt<Outcome, Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseTuple<Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Bajun.NetApi.Generated.Model.xcm.v3.traits.EnumError>, Bajun.NetApi.Generated.Model.xcm.v3.traits.EnumError>
+    public sealed class EnumOutcome : BaseEnumRust<Outcome>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOutcome()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(Outcome.Complete);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Bajun.NetApi.Generated.Model.xcm.v3.traits.EnumError>>(Outcome.Incomplete);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v3.traits.EnumError>(Outcome.Error);
+        }
     }
 }

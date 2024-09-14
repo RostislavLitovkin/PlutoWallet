@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.gauge
     
     
     /// <summary>
-    /// >> 814 - Composite[bifrost_farming.gauge.GaugeInfo]
+    /// >> 869 - Composite[bifrost_farming.gauge.GaugeInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class GaugeInfo : BaseType

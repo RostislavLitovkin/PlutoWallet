@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.xcm.v2.multiasset
     /// <summary>
     /// >> 233 - Variant[xcm.v2.multiasset.MultiAssetFilter]
     /// </summary>
-    public sealed class EnumMultiAssetFilter : BaseEnumExt<MultiAssetFilter, Opal.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, Opal.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>
+    public sealed class EnumMultiAssetFilter : BaseEnumRust<MultiAssetFilter>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAssetFilter()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(MultiAssetFilter.Definite);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>(MultiAssetFilter.Wild);
+        }
     }
 }

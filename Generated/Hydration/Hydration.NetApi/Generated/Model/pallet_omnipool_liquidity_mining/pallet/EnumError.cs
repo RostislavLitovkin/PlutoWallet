@@ -64,7 +64,20 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pall
     /// >> 582 - Variant[pallet_omnipool_liquidity_mining.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumInconsistentStateError, BaseVoid, BaseVoid>
+    public sealed class EnumError : BaseEnumRust<Error>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumError()
+        {
+				AddTypeDecoder<BaseVoid>(Error.AssetNotFound);
+				AddTypeDecoder<BaseVoid>(Error.Forbidden);
+				AddTypeDecoder<BaseVoid>(Error.ZeroClaimedRewards);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumInconsistentStateError>(Error.InconsistentState);
+				AddTypeDecoder<BaseVoid>(Error.OracleNotAvailable);
+				AddTypeDecoder<BaseVoid>(Error.PriceAdjustmentNotAvailable);
+        }
     }
 }

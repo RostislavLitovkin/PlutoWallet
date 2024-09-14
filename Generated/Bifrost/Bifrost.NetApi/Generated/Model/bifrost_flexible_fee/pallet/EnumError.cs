@@ -51,10 +51,20 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_flexible_fee.pallet
         /// >> DexFailedToGetAmountInByPath
         /// </summary>
         DexFailedToGetAmountInByPath = 5,
+        
+        /// <summary>
+        /// >> UnweighableMessage
+        /// </summary>
+        UnweighableMessage = 6,
+        
+        /// <summary>
+        /// >> XcmExecutionFailed
+        /// </summary>
+        XcmExecutionFailed = 7,
     }
     
     /// <summary>
-    /// >> 768 - Variant[bifrost_flexible_fee.pallet.Error]
+    /// >> 824 - Variant[bifrost_flexible_fee.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

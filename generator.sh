@@ -38,7 +38,7 @@ echo "$CHAINS" | while read -r chain; do
   WEBSOCKET=$(echo "$chain" | jq -r '.websocket')
   
   # Use Substrate.Net.Toolchain to generate the correct c# represenation of the chain
-  dotnet new substrate --sdk_version 0.6.5 --metadata_websocket $WEBSOCKET --net_api $PROJECTNAME --force --allow-scripts yes --generate_openapi_documentation false
+  dotnet new substrate --sdk_version 0.6.8 --metadata_websocket $WEBSOCKET --net_api $PROJECTNAME --force --allow-scripts yes --generate_openapi_documentation false
 
   # Remove unused folders (Few of them are causing unwanted compile-time errors)
   cd $PROJECTNAME

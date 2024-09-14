@@ -61,10 +61,23 @@ namespace Bifrost.NetApi.Generated.Model.pallet_utility.pallet
     }
     
     /// <summary>
-    /// >> 446 - Variant[pallet_utility.pallet.Event]
+    /// >> 467 - Variant[pallet_utility.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError>, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError, Bifrost.NetApi.Generated.Types.Base.EnumResult>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError>>(Event.BatchInterrupted);
+				AddTypeDecoder<BaseVoid>(Event.BatchCompleted);
+				AddTypeDecoder<BaseVoid>(Event.BatchCompletedWithErrors);
+				AddTypeDecoder<BaseVoid>(Event.ItemCompleted);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError>(Event.ItemFailed);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.EnumResult>(Event.DispatchedAs);
+        }
     }
 }

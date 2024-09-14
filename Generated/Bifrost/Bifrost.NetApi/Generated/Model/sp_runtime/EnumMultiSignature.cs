@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 279 - Variant[sp_runtime.MultiSignature]
+    /// >> 287 - Variant[sp_runtime.MultiSignature]
     /// </summary>
-    public sealed class EnumMultiSignature : BaseEnumExt<MultiSignature, Bifrost.NetApi.Generated.Model.sp_core.ed25519.Signature, Bifrost.NetApi.Generated.Model.sp_core.sr25519.Signature, Bifrost.NetApi.Generated.Model.sp_core.ecdsa.Signature>
+    public sealed class EnumMultiSignature : BaseEnumRust<MultiSignature>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiSignature()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr64U8>(MultiSignature.Ed25519);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr64U8>(MultiSignature.Sr25519);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr65U8>(MultiSignature.Ecdsa);
+        }
     }
 }

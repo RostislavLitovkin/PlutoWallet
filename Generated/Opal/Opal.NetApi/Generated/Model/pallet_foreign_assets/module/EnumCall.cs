@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.pallet_foreign_assets.module
     /// >> 330 - Variant[pallet_foreign_assets.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedAssetId, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10, Opal.NetApi.Generated.Model.pallet_foreign_assets.EnumForeignCollectionMode>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedAssetId, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10, Opal.NetApi.Generated.Model.pallet_foreign_assets.EnumForeignCollectionMode>>(Call.force_register_foreign_asset);
+        }
     }
 }

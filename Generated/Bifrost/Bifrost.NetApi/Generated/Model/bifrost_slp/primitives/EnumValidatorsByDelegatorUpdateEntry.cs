@@ -28,9 +28,17 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives
     }
     
     /// <summary>
-    /// >> 474 - Variant[bifrost_slp.primitives.ValidatorsByDelegatorUpdateEntry]
+    /// >> 507 - Variant[bifrost_slp.primitives.ValidatorsByDelegatorUpdateEntry]
     /// </summary>
-    public sealed class EnumValidatorsByDelegatorUpdateEntry : BaseEnumExt<ValidatorsByDelegatorUpdateEntry, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateValidatorsByDelegatorUpdateEntry>
+    public sealed class EnumValidatorsByDelegatorUpdateEntry : BaseEnumRust<ValidatorsByDelegatorUpdateEntry>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumValidatorsByDelegatorUpdateEntry()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateValidatorsByDelegatorUpdateEntry>(ValidatorsByDelegatorUpdateEntry.Substrate);
+        }
     }
 }

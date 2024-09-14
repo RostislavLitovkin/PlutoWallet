@@ -69,7 +69,21 @@ namespace Opal.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
     /// >> 363 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<Opal.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.Success);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Types.Base.Arr32U8, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.Fail);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.Arr32U8>(Event.BadVersion);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.Arr32U8>(Event.BadFormat);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.Arr32U8>(Event.XcmpMessageSent);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.OverweightEnqueued);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.OverweightServiced);
+        }
     }
 }

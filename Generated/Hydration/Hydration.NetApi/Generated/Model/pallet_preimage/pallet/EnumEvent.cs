@@ -45,7 +45,17 @@ namespace Hydration.NetApi.Generated.Model.pallet_preimage.pallet
     /// >> 39 - Variant[pallet_preimage.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.Noted);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.Requested);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.Cleared);
+        }
     }
 }

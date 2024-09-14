@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.filecoin_primiti
     
     
     /// <summary>
-    /// >> 350 - Composite[bifrost_slp.primitives.filecoin_primitives.FilecoinLedger]
+    /// >> 372 - Composite[bifrost_slp.primitives.filecoin_primitives.FilecoinLedger]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class FilecoinLedger : BaseType

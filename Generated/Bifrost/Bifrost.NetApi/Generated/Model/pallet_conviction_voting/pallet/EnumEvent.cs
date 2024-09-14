@@ -36,10 +36,19 @@ namespace Bifrost.NetApi.Generated.Model.pallet_conviction_voting.pallet
     }
     
     /// <summary>
-    /// >> 54 - Variant[pallet_conviction_voting.pallet.Event]
+    /// >> 57 - Variant[pallet_conviction_voting.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.Delegated);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.Undelegated);
+        }
     }
 }

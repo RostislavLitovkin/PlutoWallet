@@ -24,40 +24,47 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet
         
         /// <summary>
         /// >> create_distribution
-        /// See [`Pallet::create_distribution`].
         /// </summary>
         create_distribution = 0,
         
         /// <summary>
         /// >> edit_distribution
-        /// See [`Pallet::edit_distribution`].
         /// </summary>
         edit_distribution = 1,
         
         /// <summary>
         /// >> set_era_length
-        /// See [`Pallet::set_era_length`].
         /// </summary>
         set_era_length = 2,
         
         /// <summary>
         /// >> execute_distribute
-        /// See [`Pallet::execute_distribute`].
         /// </summary>
         execute_distribute = 3,
         
         /// <summary>
         /// >> delete_distribution
-        /// See [`Pallet::delete_distribution`].
         /// </summary>
         delete_distribution = 4,
     }
     
     /// <summary>
-    /// >> 390 - Variant[bifrost_fee_share.pallet.Call]
+    /// >> 412 - Variant[bifrost_fee_share.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool>>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.create_distribution);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool>>>(Call.edit_distribution);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_era_length);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.execute_distribute);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.delete_distribution);
+        }
     }
 }

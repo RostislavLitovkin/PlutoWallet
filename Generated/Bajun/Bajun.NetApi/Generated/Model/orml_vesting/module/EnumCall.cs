@@ -47,7 +47,18 @@ namespace Bajun.NetApi.Generated.Model.orml_vesting.module
     /// >> 341 - Variant[orml_vesting.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.orml_vesting.VestingSchedule>, BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.orml_vesting.VestingSchedule>>, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.claim);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.orml_vesting.VestingSchedule>>(Call.vested_transfer);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.orml_vesting.VestingSchedule>>>(Call.update_vesting_schedules);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.claim_for);
+        }
     }
 }

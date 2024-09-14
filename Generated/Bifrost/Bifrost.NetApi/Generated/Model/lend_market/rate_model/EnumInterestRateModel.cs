@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.lend_market.rate_model
     }
     
     /// <summary>
-    /// >> 417 - Variant[lend_market.rate_model.InterestRateModel]
+    /// >> 438 - Variant[lend_market.rate_model.InterestRateModel]
     /// </summary>
-    public sealed class EnumInterestRateModel : BaseEnumExt<InterestRateModel, Bifrost.NetApi.Generated.Model.lend_market.rate_model.JumpModel, Bifrost.NetApi.Generated.Model.lend_market.rate_model.CurveModel>
+    public sealed class EnumInterestRateModel : BaseEnumRust<InterestRateModel>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumInterestRateModel()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.lend_market.rate_model.JumpModel>(InterestRateModel.Jump);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.lend_market.rate_model.CurveModel>(InterestRateModel.Curve);
+        }
     }
 }

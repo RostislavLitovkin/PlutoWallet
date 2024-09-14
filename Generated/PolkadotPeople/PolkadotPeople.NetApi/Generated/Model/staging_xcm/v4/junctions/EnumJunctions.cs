@@ -70,7 +70,23 @@ namespace PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junctions
     /// <summary>
     /// >> 44 - Variant[staging_xcm.v4.junctions.Junctions]
     /// </summary>
-    public sealed class EnumJunctions : BaseEnumExt<Junctions, BaseVoid, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>
+    public sealed class EnumJunctions : BaseEnumRust<Junctions>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJunctions()
+        {
+				AddTypeDecoder<BaseVoid>(Junctions.Here);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction>(Junctions.X1);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction>(Junctions.X2);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction>(Junctions.X3);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction>(Junctions.X4);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction>(Junctions.X5);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction>(Junctions.X6);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction>(Junctions.X7);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>(Junctions.X8);
+        }
     }
 }

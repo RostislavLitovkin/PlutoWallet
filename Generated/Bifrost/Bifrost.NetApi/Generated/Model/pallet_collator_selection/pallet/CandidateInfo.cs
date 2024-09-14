@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_collator_selection.pallet
     
     
     /// <summary>
-    /// >> 572 - Composite[pallet_collator_selection.pallet.CandidateInfo]
+    /// >> 607 - Composite[pallet_collator_selection.pallet.CandidateInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidateInfo : BaseType

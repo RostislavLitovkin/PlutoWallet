@@ -40,7 +40,17 @@ namespace PolkadotPeople.NetApi.Generated.Model.xcm.v3
     /// <summary>
     /// >> 79 - Variant[xcm.v3.MaybeErrorCode]
     /// </summary>
-    public sealed class EnumMaybeErrorCode : BaseEnumExt<MaybeErrorCode, BaseVoid, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>
+    public sealed class EnumMaybeErrorCode : BaseEnumRust<MaybeErrorCode>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMaybeErrorCode()
+        {
+				AddTypeDecoder<BaseVoid>(MaybeErrorCode.Success);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>(MaybeErrorCode.Error);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>(MaybeErrorCode.TruncatedError);
+        }
     }
 }

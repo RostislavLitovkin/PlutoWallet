@@ -48,7 +48,17 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     /// >> 115 - Variant[cumulus_pallet_xcm.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Event.InvalidFormat);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Event.UnsupportedVersion);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>(Event.ExecutedDownward);
+        }
     }
 }

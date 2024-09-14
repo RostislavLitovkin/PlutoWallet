@@ -45,7 +45,18 @@ namespace Opal.NetApi.Generated.Model.evm_core.error
     /// <summary>
     /// >> 375 - Variant[evm_core.error.ExitReason]
     /// </summary>
-    public sealed class EnumExitReason : BaseEnumExt<ExitReason, Opal.NetApi.Generated.Model.evm_core.error.EnumExitSucceed, Opal.NetApi.Generated.Model.evm_core.error.EnumExitError, Opal.NetApi.Generated.Model.evm_core.error.EnumExitRevert, Opal.NetApi.Generated.Model.evm_core.error.EnumExitFatal>
+    public sealed class EnumExitReason : BaseEnumRust<ExitReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExitReason()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.evm_core.error.EnumExitSucceed>(ExitReason.Succeed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.evm_core.error.EnumExitError>(ExitReason.Error);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.evm_core.error.EnumExitRevert>(ExitReason.Revert);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.evm_core.error.EnumExitFatal>(ExitReason.Fatal);
+        }
     }
 }

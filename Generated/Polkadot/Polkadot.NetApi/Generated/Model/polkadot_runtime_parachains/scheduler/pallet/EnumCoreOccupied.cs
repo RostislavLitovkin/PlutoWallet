@@ -35,7 +35,16 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.
     /// <summary>
     /// >> 764 - Variant[polkadot_runtime_parachains.scheduler.pallet.CoreOccupied]
     /// </summary>
-    public sealed class EnumCoreOccupied : BaseEnumExt<CoreOccupied, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.pallet.ParasEntry>
+    public sealed class EnumCoreOccupied : BaseEnumRust<CoreOccupied>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCoreOccupied()
+        {
+				AddTypeDecoder<BaseVoid>(CoreOccupied.Free);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.pallet.ParasEntry>(CoreOccupied.Paras);
+        }
     }
 }

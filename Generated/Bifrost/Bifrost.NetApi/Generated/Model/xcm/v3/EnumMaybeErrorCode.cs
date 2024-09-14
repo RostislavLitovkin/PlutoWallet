@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v3
     }
     
     /// <summary>
-    /// >> 187 - Variant[xcm.v3.MaybeErrorCode]
+    /// >> 192 - Variant[xcm.v3.MaybeErrorCode]
     /// </summary>
-    public sealed class EnumMaybeErrorCode : BaseEnumExt<MaybeErrorCode, BaseVoid, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT3>
+    public sealed class EnumMaybeErrorCode : BaseEnumRust<MaybeErrorCode>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMaybeErrorCode()
+        {
+				AddTypeDecoder<BaseVoid>(MaybeErrorCode.Success);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(MaybeErrorCode.Error);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(MaybeErrorCode.TruncatedError);
+        }
     }
 }

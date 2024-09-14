@@ -250,7 +250,59 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     /// <summary>
     /// >> 102 - Variant[polkadot_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, Polkadot.NetApi.Generated.Model.frame_system.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_babe.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_indices.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_session.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_grandpa.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_conviction_voting.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_referenda.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_whitelist.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_bounties.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_bags_list.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_child_bounties.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_fast_unstake.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configuration.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.shared.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initializer.pallet.EnumCall, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.pallet.EnumCall, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.slashing.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.auctions.pallet.EnumCall, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall, Polkadot.NetApi.Generated.Model.pallet_asset_rate.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_beefy.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeCall()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall>(RuntimeCall.Scheduler);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall>(RuntimeCall.Preimage);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_babe.pallet.EnumCall>(RuntimeCall.Babe);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_indices.pallet.EnumCall>(RuntimeCall.Indices);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumCall>(RuntimeCall.Staking);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_grandpa.pallet.EnumCall>(RuntimeCall.Grandpa);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall>(RuntimeCall.Treasury);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_conviction_voting.pallet.EnumCall>(RuntimeCall.ConvictionVoting);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_referenda.pallet.EnumCall>(RuntimeCall.Referenda);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_whitelist.pallet.EnumCall>(RuntimeCall.Whitelist);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.claims.pallet.EnumCall>(RuntimeCall.Claims);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall>(RuntimeCall.Proxy);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall>(RuntimeCall.Multisig);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_bounties.pallet.EnumCall>(RuntimeCall.Bounties);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_child_bounties.pallet.EnumCall>(RuntimeCall.ChildBounties);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.pallet.EnumCall>(RuntimeCall.ElectionProviderMultiPhase);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_bags_list.pallet.EnumCall>(RuntimeCall.VoterList);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumCall>(RuntimeCall.NominationPools);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_fast_unstake.pallet.EnumCall>(RuntimeCall.FastUnstake);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configuration.pallet.EnumCall>(RuntimeCall.Configuration);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.shared.pallet.EnumCall>(RuntimeCall.ParasShared);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.pallet.EnumCall>(RuntimeCall.ParaInclusion);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inherent.pallet.EnumCall>(RuntimeCall.ParaInherent);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pallet.EnumCall>(RuntimeCall.Paras);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initializer.pallet.EnumCall>(RuntimeCall.Initializer);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.pallet.EnumCall>(RuntimeCall.Hrmp);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.pallet.EnumCall>(RuntimeCall.ParasDisputes);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.slashing.pallet.EnumCall>(RuntimeCall.ParasSlashing);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.paras_registrar.pallet.EnumCall>(RuntimeCall.Registrar);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet.EnumCall>(RuntimeCall.Slots);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.auctions.pallet.EnumCall>(RuntimeCall.Auctions);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.crowdloan.pallet.EnumCall>(RuntimeCall.Crowdloan);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall>(RuntimeCall.StateTrieMigration);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.XcmPallet);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall>(RuntimeCall.MessageQueue);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_asset_rate.pallet.EnumCall>(RuntimeCall.AssetRate);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_beefy.pallet.EnumCall>(RuntimeCall.Beefy);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumCall>(RuntimeCall.IdentityMigrator);
+        }
     }
 }

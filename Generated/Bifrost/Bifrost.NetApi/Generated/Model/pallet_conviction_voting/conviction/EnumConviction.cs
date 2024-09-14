@@ -58,7 +58,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_conviction_voting.conviction
     }
     
     /// <summary>
-    /// >> 105 - Variant[pallet_conviction_voting.conviction.Conviction]
+    /// >> 108 - Variant[pallet_conviction_voting.conviction.Conviction]
     /// </summary>
     public sealed class EnumConviction : BaseEnum<Conviction>
     {

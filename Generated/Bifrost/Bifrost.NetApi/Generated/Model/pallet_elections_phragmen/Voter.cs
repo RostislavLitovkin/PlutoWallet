@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_elections_phragmen
     
     
     /// <summary>
-    /// >> 608 - Composite[pallet_elections_phragmen.Voter]
+    /// >> 643 - Composite[pallet_elections_phragmen.Voter]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Voter : BaseType

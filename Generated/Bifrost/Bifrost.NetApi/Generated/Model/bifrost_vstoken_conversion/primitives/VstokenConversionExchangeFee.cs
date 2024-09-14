@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vstoken_conversion.primitives
     
     
     /// <summary>
-    /// >> 367 - Composite[bifrost_vstoken_conversion.primitives.VstokenConversionExchangeFee]
+    /// >> 389 - Composite[bifrost_vstoken_conversion.primitives.VstokenConversionExchangeFee]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class VstokenConversionExchangeFee : BaseType

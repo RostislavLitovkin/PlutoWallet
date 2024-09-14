@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_tournament.config
     /// <summary>
     /// >> 652 - Variant[pallet_ajuna_tournament.config.RewardClaimState]
     /// </summary>
-    public sealed class EnumRewardClaimState : BaseEnumExt<RewardClaimState, BaseVoid, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumRewardClaimState : BaseEnumRust<RewardClaimState>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRewardClaimState()
+        {
+				AddTypeDecoder<BaseVoid>(RewardClaimState.Unclaimed);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RewardClaimState.Claimed);
+        }
     }
 }

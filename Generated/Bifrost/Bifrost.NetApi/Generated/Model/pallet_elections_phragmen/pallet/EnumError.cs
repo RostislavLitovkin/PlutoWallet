@@ -126,7 +126,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_elections_phragmen.pallet
     }
     
     /// <summary>
-    /// >> 609 - Variant[pallet_elections_phragmen.pallet.Error]
+    /// >> 644 - Variant[pallet_elections_phragmen.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

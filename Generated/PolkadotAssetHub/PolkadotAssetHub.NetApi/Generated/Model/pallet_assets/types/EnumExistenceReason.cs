@@ -50,7 +50,19 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types
     /// <summary>
     /// >> 408 - Variant[pallet_assets.types.ExistenceReason]
     /// </summary>
-    public sealed class EnumExistenceReason : BaseEnumExt<ExistenceReason, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumExistenceReason : BaseEnumRust<ExistenceReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExistenceReason()
+        {
+				AddTypeDecoder<BaseVoid>(ExistenceReason.Consumer);
+				AddTypeDecoder<BaseVoid>(ExistenceReason.Sufficient);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(ExistenceReason.DepositHeld);
+				AddTypeDecoder<BaseVoid>(ExistenceReason.DepositRefunded);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(ExistenceReason.DepositFrom);
+        }
     }
 }

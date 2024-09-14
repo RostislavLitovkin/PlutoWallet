@@ -38,7 +38,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_balances.types
     }
     
     /// <summary>
-    /// >> 555 - Variant[pallet_balances.types.Reasons]
+    /// >> 590 - Variant[pallet_balances.types.Reasons]
     /// </summary>
     public sealed class EnumReasons : BaseEnum<Reasons>
     {

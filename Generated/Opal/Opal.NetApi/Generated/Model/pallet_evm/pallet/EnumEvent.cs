@@ -57,7 +57,19 @@ namespace Opal.NetApi.Generated.Model.pallet_evm.pallet
     /// >> 373 - Variant[pallet_evm.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Opal.NetApi.Generated.Model.ethereum.log.Log, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.ethereum.log.Log>(Event.Log);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Event.Created);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Event.CreatedFailed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Event.Executed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Event.ExecutedFailed);
+        }
     }
 }

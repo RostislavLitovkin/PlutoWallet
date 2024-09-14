@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.up_data_structs
     /// <summary>
     /// >> 301 - Variant[up_data_structs.CreateItemData]
     /// </summary>
-    public sealed class EnumCreateItemData : BaseEnumExt<CreateItemData, Opal.NetApi.Generated.Model.up_data_structs.CreateNftData, Opal.NetApi.Generated.Model.up_data_structs.CreateFungibleData, Opal.NetApi.Generated.Model.up_data_structs.CreateReFungibleData>
+    public sealed class EnumCreateItemData : BaseEnumRust<CreateItemData>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCreateItemData()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CreateNftData>(CreateItemData.NFT);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CreateFungibleData>(CreateItemData.Fungible);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CreateReFungibleData>(CreateItemData.ReFungible);
+        }
     }
 }

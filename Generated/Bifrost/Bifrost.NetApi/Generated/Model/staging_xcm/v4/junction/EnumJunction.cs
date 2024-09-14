@@ -73,9 +73,26 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction
     }
     
     /// <summary>
-    /// >> 117 - Variant[staging_xcm.v4.junction.Junction]
+    /// >> 120 - Variant[staging_xcm.v4.junction.Junction]
     /// </summary>
-    public sealed class EnumJunction : BaseEnumExt<Junction, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Bifrost.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Bifrost.NetApi.Generated.Types.Base.Arr20U8>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8>, BaseVoid, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.junction.EnumBodyId, Bifrost.NetApi.Generated.Model.xcm.v3.junction.EnumBodyPart>, Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>
+    public sealed class EnumJunction : BaseEnumRust<Junction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJunction()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Junction.Parachain);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Bifrost.NetApi.Generated.Types.Base.Arr32U8>>(Junction.AccountId32);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>>(Junction.AccountIndex64);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>, Bifrost.NetApi.Generated.Types.Base.Arr20U8>>(Junction.AccountKey20);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(Junction.PalletInstance);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Junction.GeneralIndex);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8>>(Junction.GeneralKey);
+				AddTypeDecoder<BaseVoid>(Junction.OnlyChild);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.junction.EnumBodyId, Bifrost.NetApi.Generated.Model.xcm.v3.junction.EnumBodyPart>>(Junction.Plurality);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.junction.EnumNetworkId>(Junction.GlobalConsensus);
+        }
     }
 }

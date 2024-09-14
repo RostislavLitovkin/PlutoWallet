@@ -146,7 +146,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> feed_values
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method FeedValues(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9 values)
+        public static Method FeedValues(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10 values)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(values.Encode());

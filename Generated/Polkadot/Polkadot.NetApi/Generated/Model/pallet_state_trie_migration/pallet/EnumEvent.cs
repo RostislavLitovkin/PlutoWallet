@@ -52,7 +52,18 @@ namespace Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     /// >> 515 - Variant[pallet_state_trie_migration.pallet.Event]
     /// Inner events of this pallet.
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumMigrationCompute>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumError>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumMigrationCompute>>(Event.Migrated);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Slashed);
+				AddTypeDecoder<BaseVoid>(Event.AutoMigrationFinished);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumError>(Event.Halted);
+        }
     }
 }

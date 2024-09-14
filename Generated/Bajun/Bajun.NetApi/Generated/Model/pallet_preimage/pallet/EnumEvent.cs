@@ -45,7 +45,17 @@ namespace Bajun.NetApi.Generated.Model.pallet_preimage.pallet
     /// >> 45 - Variant[pallet_preimage.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.primitive_types.H256>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.Noted);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.Requested);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.Cleared);
+        }
     }
 }

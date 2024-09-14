@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.boost
     
     
     /// <summary>
-    /// >> 817 - Composite[bifrost_farming.boost.UserBoostInfo]
+    /// >> 872 - Composite[bifrost_farming.boost.UserBoostInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UserBoostInfo : BaseType
@@ -31,7 +31,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.boost
         /// <summary>
         /// >> vote_list
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50 VoteList { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT52 VoteList { get; set; }
         /// <summary>
         /// >> last_vote
         /// </summary>
@@ -59,7 +59,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.boost
             var start = p;
             VoteAmount = new Substrate.NetApi.Model.Types.Primitive.U128();
             VoteAmount.Decode(byteArray, ref p);
-            VoteList = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50();
+            VoteList = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT52();
             VoteList.Decode(byteArray, ref p);
             LastVote = new Substrate.NetApi.Model.Types.Primitive.U32();
             LastVote.Decode(byteArray, ref p);

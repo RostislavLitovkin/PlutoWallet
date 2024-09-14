@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.pallet_democracy.types
     }
     
     /// <summary>
-    /// >> 44 - Variant[pallet_democracy.types.MetadataOwner]
+    /// >> 47 - Variant[pallet_democracy.types.MetadataOwner]
     /// </summary>
-    public sealed class EnumMetadataOwner : BaseEnumExt<MetadataOwner, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumMetadataOwner : BaseEnumRust<MetadataOwner>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMetadataOwner()
+        {
+				AddTypeDecoder<BaseVoid>(MetadataOwner.External);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(MetadataOwner.Proposal);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(MetadataOwner.Referendum);
+        }
     }
 }

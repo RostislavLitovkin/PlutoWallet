@@ -435,7 +435,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.pallet
     }
     
     /// <summary>
-    /// >> 800 - Variant[bifrost_slp.pallet.Error]
+    /// >> 855 - Variant[bifrost_slp.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

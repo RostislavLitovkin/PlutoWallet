@@ -1,6 +1,4 @@
-﻿using System;
-using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+﻿using Substrate.NetApi;
 using Newtonsoft.Json.Linq;
 using static Substrate.NetApi.Utils;
 using PlutoWallet.Model.AjunaExt;
@@ -32,7 +30,7 @@ namespace PlutoWallet.Model.AzeroId
                 /// Actual code logic down here
                 List<byte> rootKeyHex = new List<byte>(Utils.HexToByteArray(rootKey));
 
-                var accountId = new Substrate.NetApi.Generated.Model.sp_core.crypto.AccountId32();
+                var accountId = new Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32();
                 accountId.Create(Utils.GetPublicKeyFrom(address));
 
                 // concat the rootKey and accountId param

@@ -45,7 +45,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_babe.pallet
     /// >> 111 - Variant[pallet_babe.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>, Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.EnumNextConfigDescriptor>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_slots.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation_unsigned);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.EnumNextConfigDescriptor>(Call.plan_config_change);
+        }
     }
 }

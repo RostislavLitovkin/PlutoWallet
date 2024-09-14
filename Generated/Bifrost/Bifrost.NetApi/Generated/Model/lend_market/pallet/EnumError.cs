@@ -195,10 +195,16 @@ namespace Bifrost.NetApi.Generated.Model.lend_market.pallet
         /// Collateral is reserved and cannot be liquidated
         /// </summary>
         CollateralReserved = 28,
+        
+        /// <summary>
+        /// >> MarketBondDoesNotExist
+        /// Market bond does not exist
+        /// </summary>
+        MarketBondDoesNotExist = 29,
     }
     
     /// <summary>
-    /// >> 885 - Variant[lend_market.pallet.Error]
+    /// >> 940 - Variant[lend_market.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

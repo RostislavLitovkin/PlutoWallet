@@ -1160,6 +1160,18 @@ namespace Bajun.NetApi.Generated.Storage
             byteArray.AddRange(avatar_id.Encode());
             return new Method(51, "AwesomeAvatars", 33, "claim_golden_duck_for", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> force_set_affiliatee_state
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ForceSetAffiliateeState(Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32 account, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32> chain)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(account.Encode());
+            byteArray.AddRange(chain.Encode());
+            return new Method(51, "AwesomeAvatars", 34, "force_set_affiliatee_state", byteArray.ToArray());
+        }
     }
     
     /// <summary>

@@ -27,6 +27,10 @@
     {
       "name": "Opal",
       "websocket": "wss://eu-ws-opal.unique.network"
+    },
+    {
+      "name": "InvArch",
+      "websocket": "wss://invarch-rpc.dwellir.com"
     }
   ]
 }

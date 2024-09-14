@@ -51,7 +51,18 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_message_queue.pallet
     /// >> 118 - Variant[pallet_message_queue.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, PolkadotAssetHub.NetApi.Generated.Model.frame_support.traits.messages.EnumProcessMessageError>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, PolkadotAssetHub.NetApi.Generated.Model.frame_support.traits.messages.EnumProcessMessageError>>(Event.ProcessingFailed);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.Processed);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8, PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.OverweightEnqueued);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.PageReaped);
+        }
     }
 }

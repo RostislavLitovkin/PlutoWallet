@@ -33,7 +33,15 @@ namespace Hydration.NetApi.Generated.Model.orml_xtokens.module
     /// >> 227 - Variant[orml_xtokens.module.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Assets, Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Assets, Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location>>(Event.TransferredAssets);
+        }
     }
 }

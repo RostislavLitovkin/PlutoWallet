@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
     }
     
     /// <summary>
-    /// >> 402 - Variant[bifrost_slpx.types.OrderType]
+    /// >> 423 - Variant[bifrost_slpx.types.OrderType]
     /// </summary>
     public sealed class EnumOrderType : BaseEnum<OrderType>
     {

@@ -50,7 +50,19 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_primitives.v6
     /// <summary>
     /// >> 362 - Variant[polkadot_primitives.v6.ValidDisputeStatementKind]
     /// </summary>
-    public sealed class EnumValidDisputeStatementKind : BaseEnumExt<ValidDisputeStatementKind, BaseVoid, Polkadot.NetApi.Generated.Model.primitive_types.H256, Polkadot.NetApi.Generated.Model.primitive_types.H256, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash>>
+    public sealed class EnumValidDisputeStatementKind : BaseEnumRust<ValidDisputeStatementKind>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumValidDisputeStatementKind()
+        {
+				AddTypeDecoder<BaseVoid>(ValidDisputeStatementKind.Explicit);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.primitive_types.H256>(ValidDisputeStatementKind.BackingSeconded);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.primitive_types.H256>(ValidDisputeStatementKind.BackingValid);
+				AddTypeDecoder<BaseVoid>(ValidDisputeStatementKind.ApprovalChecking);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash>>(ValidDisputeStatementKind.ApprovalCheckingMultipleCandidates);
+        }
     }
 }

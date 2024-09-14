@@ -36,7 +36,7 @@ namespace Bifrost.NetApi.Generated.Storage
         public CouncilStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Council", "Proposals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Council", "Proposals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Council", "ProposalOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Bifrost.NetApi.Generated.Model.primitive_types.H256), typeof(Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.EnumRuntimeCall)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Council", "Voting"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -68,10 +68,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Proposals
         ///  The hashes of the active proposals.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20> Proposals(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21> Proposals(string blockhash, CancellationToken token)
         {
             string parameters = CouncilStorage.ProposalsParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21>(parameters, blockhash, token);
             return result;
         }
         
@@ -197,7 +197,7 @@ namespace Bifrost.NetApi.Generated.Storage
         
         /// <summary>
         /// >> PrimeParams
-        ///  The prime member that helps determine the default vote behavior in case of absentations.
+        ///  The prime member that helps determine the default vote behavior in case of abstentions.
         /// </summary>
         public static string PrimeParams()
         {
@@ -215,7 +215,7 @@ namespace Bifrost.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Prime
-        ///  The prime member that helps determine the default vote behavior in case of absentations.
+        ///  The prime member that helps determine the default vote behavior in case of abstentions.
         /// </summary>
         public async Task<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32> Prime(string blockhash, CancellationToken token)
         {

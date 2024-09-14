@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 106 - Variant[xcm.VersionedAssets]
     /// </summary>
-    public sealed class EnumVersionedAssets : BaseEnumExt<VersionedAssets, BaseVoid, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, Bajun.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Bajun.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>
+    public sealed class EnumVersionedAssets : BaseEnumRust<VersionedAssets>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedAssets()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(VersionedAssets.V2);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(VersionedAssets.V3);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>(VersionedAssets.V4);
+        }
     }
 }

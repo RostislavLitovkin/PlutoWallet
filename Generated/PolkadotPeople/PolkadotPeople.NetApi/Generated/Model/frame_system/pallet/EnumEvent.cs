@@ -69,7 +69,21 @@ namespace PolkadotPeople.NetApi.Generated.Model.frame_system.pallet
     /// >> 21 - Variant[frame_system.pallet.Event]
     /// Event for the System pallet.
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PolkadotPeople.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumDispatchError, PolkadotPeople.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>, BaseVoid, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>(Event.ExtrinsicSuccess);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumDispatchError, PolkadotPeople.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>>(Event.ExtrinsicFailed);
+				AddTypeDecoder<BaseVoid>(Event.CodeUpdated);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.NewAccount);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.KilledAccount);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.primitive_types.H256>>(Event.Remarked);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.UpgradeAuthorized);
+        }
     }
 }

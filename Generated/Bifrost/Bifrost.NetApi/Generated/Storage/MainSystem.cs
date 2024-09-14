@@ -39,6 +39,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.frame_system.AccountInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "InherentsApplied"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AllExtrinsicsLen"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -118,6 +119,35 @@ namespace Bifrost.NetApi.Generated.Storage
         {
             string parameters = SystemStorage.ExtrinsicCountParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedParams
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public static string InherentsAppliedParams()
+        {
+            return RequestGenerator.GetStorage("System", "InherentsApplied", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string InherentsAppliedDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> InherentsApplied
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> InherentsApplied(string blockhash, CancellationToken token)
+        {
+            string parameters = SystemStorage.InherentsAppliedParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
             return result;
         }
         
@@ -737,9 +767,9 @@ namespace Bifrost.NetApi.Generated.Storage
         public Bifrost.NetApi.Generated.Model.frame_system.limits.BlockWeights BlockWeights()
         {
             var result = new Bifrost.NetApi.Generated.Model.frame_system.limits.BlockWeights();
-            result.Create("0x025B1F5D00070088526A7402004001C2A0A91D000107D00918A44B0200D000010700E6BD4F57020" +
-                    "0F000010000C2A0A91D000107D0ABACBE680200200101070088526A7402004001010700A2941A1D0" +
-                    "2005000C2A0A91D00000000");
+            result.Create("0x624D186C00070088526A74020040014247871900010730A020A54B0200D000010700E6BD4F57020" +
+                    "0F000010000424787190001073042B5BF680200200101070088526A7402004001010700A2941A1D0" +
+                    "20050004247871900000000");
             return result;
         }
         
@@ -778,12 +808,12 @@ namespace Bifrost.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Version
-        ///  Get the chain's current version.
+        ///  Get the chain's in-code version.
         /// </summary>
         public Bifrost.NetApi.Generated.Model.sp_version.RuntimeVersion Version()
         {
             var result = new Bifrost.NetApi.Generated.Model.sp_version.RuntimeVersion();
-            result.Create(@"0x40626966726F73745F706F6C6B61646F7440626966726F73745F706F6C6B61646F7400000000F82A0000000000004CD2BC9897EED08F1503000000DF6ACB689907609B0400000040FE3AD401F8959A06000000BC9D89904F5B923F0100000037C8BB1350A9A2A80400000037E397FC7C91F5E402000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000EA93E3F16F3D696202000000DD718D5CC53262D401000000F877468F4CA0E8260100000060AED43CB52456F101000000DC655468D8394120010000000D94B80C178630F0010000009BF5DFC64F15A24B01000000B1EF915A752C7A460100000056EFEF6DBB213BAF010000004E0E95874D1A6A3F01000000FBC577B9D747EFD6010000000100000000");
+            result.Create(@"0x40626966726F73745F706F6C6B61646F7440626966726F73745F706F6C6B61646F7400000000E12E00000000000058D2BC9897EED08F1503000000DF6ACB689907609B0500000040FE3AD401F8959A06000000BC9D89904F5B923F01000000582211F65BB14B8905000000E65B00E46CEDD0AA020000000BB67A52FCD040FF0100000037C8BB1350A9A2A80400000037E397FC7C91F5E402000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000EA93E3F16F3D696202000000DD718D5CC53262D401000000F877468F4CA0E8260100000060AED43CB52456F101000000DC655468D8394120010000000D94B80C178630F0010000009BF5DFC64F15A24B01000000B1EF915A752C7A460100000056EFEF6DBB213BAF010000004E0E95874D1A6A3F01000000FBC577B9D747EFD6010000000100000000");
             return result;
         }
         
@@ -848,6 +878,12 @@ namespace Bifrost.NetApi.Generated.Storage
         /// The origin filter prevent the call to be dispatched.
         /// </summary>
         CallFiltered,
+        
+        /// <summary>
+        /// >> MultiBlockMigrationsOngoing
+        /// A multi-block migration is ongoing and prevents the current code from being replaced.
+        /// </summary>
+        MultiBlockMigrationsOngoing,
         
         /// <summary>
         /// >> NothingAuthorized

@@ -24,28 +24,38 @@ namespace Bifrost.NetApi.Generated.Model.pallet_prices.pallet
         
         /// <summary>
         /// >> set_price
-        /// See [`Pallet::set_price`].
+        /// Set emergency price
         /// </summary>
         set_price = 0,
         
         /// <summary>
         /// >> reset_price
-        /// See [`Pallet::reset_price`].
+        /// Reset emergency price
         /// </summary>
         reset_price = 1,
         
         /// <summary>
         /// >> set_foreign_asset
-        /// See [`Pallet::set_foreign_asset`].
+        /// Set foreign vault token mapping
         /// </summary>
         set_foreign_asset = 2,
     }
     
     /// <summary>
-    /// >> 422 - Variant[pallet_prices.pallet.Call]
+    /// >> 443 - Variant[pallet_prices.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Call.set_price);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Call.reset_price);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(Call.set_foreign_asset);
+        }
     }
 }

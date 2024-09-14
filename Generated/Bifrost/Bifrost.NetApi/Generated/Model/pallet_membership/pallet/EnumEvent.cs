@@ -60,7 +60,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_membership.pallet
     }
     
     /// <summary>
-    /// >> 503 - Variant[pallet_membership.pallet.Event]
+    /// >> 538 - Variant[pallet_membership.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnum<Event>

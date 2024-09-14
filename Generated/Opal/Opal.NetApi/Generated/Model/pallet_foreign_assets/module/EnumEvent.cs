@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.pallet_foreign_assets.module
     /// >> 372 - Variant[pallet_foreign_assets.module.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Opal.NetApi.Generated.Model.up_data_structs.CollectionId, Opal.NetApi.Generated.Model.xcm.EnumVersionedAssetId>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.up_data_structs.CollectionId, Opal.NetApi.Generated.Model.xcm.EnumVersionedAssetId>>(Event.ForeignAssetRegistered);
+        }
     }
 }

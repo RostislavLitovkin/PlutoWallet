@@ -96,7 +96,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_democracy.pallet
         
         /// <summary>
         /// >> Seconded
-        /// An account has secconded a proposal
+        /// An account has seconded a proposal
         /// </summary>
         Seconded = 12,
         
@@ -126,10 +126,34 @@ namespace Bifrost.NetApi.Generated.Model.pallet_democracy.pallet
     }
     
     /// <summary>
-    /// >> 40 - Variant[pallet_democracy.pallet.Event]
+    /// >> 43 - Variant[pallet_democracy.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.pallet_democracy.vote.EnumAccountVote>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Proposed);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Tabled);
+				AddTypeDecoder<BaseVoid>(Event.ExternalTabled);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.pallet_democracy.vote_threshold.EnumVoteThreshold>>(Event.Started);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Passed);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.NotPassed);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Cancelled);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.Delegated);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.Undelegated);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Vetoed);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Event.Blacklisted);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.pallet_democracy.vote.EnumAccountVote>>(Event.Voted);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Seconded);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.ProposalCanceled);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>>(Event.MetadataSet);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>>(Event.MetadataCleared);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.pallet_democracy.types.EnumMetadataOwner, Bifrost.NetApi.Generated.Model.primitive_types.H256>>(Event.MetadataTransferred);
+        }
     }
 }

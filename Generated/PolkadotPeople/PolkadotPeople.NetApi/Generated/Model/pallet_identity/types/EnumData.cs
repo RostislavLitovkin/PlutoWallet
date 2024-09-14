@@ -215,7 +215,52 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 326 - Variant[pallet_identity.types.Data]
     /// </summary>
-    public sealed class EnumData : BaseEnumExt<Data, BaseVoid, PolkadotPeople.NetApi.Generated.Types.Base.Arr0U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr1U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr2U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr3U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr4U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr5U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr6U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr7U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr8U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr9U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr10U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr11U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr12U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr13U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr14U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr15U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr16U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr17U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr18U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr19U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr20U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr21U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr22U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr23U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr24U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr25U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr26U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr27U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr28U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr29U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr30U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr31U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>
+    public sealed class EnumData : BaseEnumRust<Data>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumData()
+        {
+				AddTypeDecoder<BaseVoid>(Data.None);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr0U8>(Data.Raw0);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr1U8>(Data.Raw1);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr2U8>(Data.Raw2);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr3U8>(Data.Raw3);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr4U8>(Data.Raw4);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr5U8>(Data.Raw5);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr6U8>(Data.Raw6);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr7U8>(Data.Raw7);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr8U8>(Data.Raw8);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr9U8>(Data.Raw9);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr10U8>(Data.Raw10);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr11U8>(Data.Raw11);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr12U8>(Data.Raw12);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr13U8>(Data.Raw13);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr14U8>(Data.Raw14);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr15U8>(Data.Raw15);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr16U8>(Data.Raw16);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr17U8>(Data.Raw17);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr18U8>(Data.Raw18);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr19U8>(Data.Raw19);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr20U8>(Data.Raw20);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr21U8>(Data.Raw21);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr22U8>(Data.Raw22);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr23U8>(Data.Raw23);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr24U8>(Data.Raw24);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr25U8>(Data.Raw25);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr26U8>(Data.Raw26);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr27U8>(Data.Raw27);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr28U8>(Data.Raw28);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr29U8>(Data.Raw29);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr30U8>(Data.Raw30);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr31U8>(Data.Raw31);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Data.Raw32);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Data.BlakeTwo256);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Data.Sha256);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Data.Keccak256);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>(Data.ShaThree256);
+        }
     }
 }

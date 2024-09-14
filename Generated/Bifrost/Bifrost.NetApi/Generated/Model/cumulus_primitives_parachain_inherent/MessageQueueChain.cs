@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
     
     
     /// <summary>
-    /// >> 546 - Composite[cumulus_primitives_parachain_inherent.MessageQueueChain]
+    /// >> 580 - Composite[cumulus_primitives_parachain_inherent.MessageQueueChain]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MessageQueueChain : BaseType

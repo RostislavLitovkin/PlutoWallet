@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 167 - Variant[xcm.v2.multiasset.WildMultiAsset]
+    /// >> 172 - Variant[xcm.v2.multiasset.WildMultiAsset]
     /// </summary>
-    public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildFungibility>>
+    public sealed class EnumWildMultiAsset : BaseEnumRust<WildMultiAsset>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumWildMultiAsset()
+        {
+				AddTypeDecoder<BaseVoid>(WildMultiAsset.All);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildFungibility>>(WildMultiAsset.AllOf);
+        }
     }
 }

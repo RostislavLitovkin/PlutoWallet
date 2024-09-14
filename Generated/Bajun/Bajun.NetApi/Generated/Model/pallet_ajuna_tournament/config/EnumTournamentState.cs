@@ -45,7 +45,18 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_tournament.config
     /// <summary>
     /// >> 647 - Variant[pallet_ajuna_tournament.config.TournamentState]
     /// </summary>
-    public sealed class EnumTournamentState : BaseEnumExt<TournamentState, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumTournamentState : BaseEnumRust<TournamentState>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTournamentState()
+        {
+				AddTypeDecoder<BaseVoid>(TournamentState.Inactive);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(TournamentState.ActivePeriod);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(TournamentState.ClaimPeriod);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(TournamentState.Finished);
+        }
     }
 }

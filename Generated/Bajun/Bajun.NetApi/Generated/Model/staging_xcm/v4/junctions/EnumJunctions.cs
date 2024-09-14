@@ -70,7 +70,23 @@ namespace Bajun.NetApi.Generated.Model.staging_xcm.v4.junctions
     /// <summary>
     /// >> 62 - Variant[staging_xcm.v4.junctions.Junctions]
     /// </summary>
-    public sealed class EnumJunctions : BaseEnumExt<Junctions, BaseVoid, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction, Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>
+    public sealed class EnumJunctions : BaseEnumRust<Junctions>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJunctions()
+        {
+				AddTypeDecoder<BaseVoid>(Junctions.Here);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr1EnumJunction>(Junctions.X1);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr2EnumJunction>(Junctions.X2);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr3EnumJunction>(Junctions.X3);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr4EnumJunction>(Junctions.X4);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr5EnumJunction>(Junctions.X5);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr6EnumJunction>(Junctions.X6);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr7EnumJunction>(Junctions.X7);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.junction.Arr8EnumJunction>(Junctions.X8);
+        }
     }
 }

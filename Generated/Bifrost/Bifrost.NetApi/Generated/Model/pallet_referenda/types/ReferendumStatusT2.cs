@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_referenda.types
     
     
     /// <summary>
-    /// >> 853 - Composite[pallet_referenda.types.ReferendumStatusT2]
+    /// >> 908 - Composite[pallet_referenda.types.ReferendumStatusT2]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReferendumStatusT2 : BaseType

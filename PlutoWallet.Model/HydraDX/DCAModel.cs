@@ -1,4 +1,4 @@
-﻿using Substrate.NetApi.Generated.Model.sp_core.crypto;
+﻿using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Primitive;
 using static Substrate.NetApi.Model.Meta.Storage;
@@ -52,7 +52,7 @@ namespace PlutoWallet.Model.HydraDX
                 U128 amount = await client.DCAStorage.RemainingAmounts(positionId, null, CancellationToken.None);
 
                 int i = 0;
-                var scheduleOrder = new BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Generated.Model.sp_core.bounded.bounded_vec.BoundedVecT9>();
+                var scheduleOrder = new BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9>();
                 scheduleOrder.Decode(schedule.Order.Value2.Encode(), ref i);
 
                 var fromAsset = await client.AssetRegistryStorage.Assets((U32)scheduleOrder.Value[0], null, CancellationToken.None);

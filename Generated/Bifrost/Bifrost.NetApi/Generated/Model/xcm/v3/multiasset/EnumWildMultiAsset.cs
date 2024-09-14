@@ -43,9 +43,20 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 192 - Variant[xcm.v3.multiasset.WildMultiAsset]
+    /// >> 198 - Variant[xcm.v3.multiasset.WildMultiAsset]
     /// </summary>
-    public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumWildMultiAsset : BaseEnumRust<WildMultiAsset>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumWildMultiAsset()
+        {
+				AddTypeDecoder<BaseVoid>(WildMultiAsset.All);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility>>(WildMultiAsset.AllOf);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(WildMultiAsset.AllCounted);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumAssetId, Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(WildMultiAsset.AllOfCounted);
+        }
     }
 }

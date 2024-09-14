@@ -220,7 +220,53 @@ namespace Opal.NetApi.Generated.Model.opal_runtime
     /// <summary>
     /// >> 84 - Variant[opal_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, Opal.NetApi.Generated.Model.frame_system.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall, Opal.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_session.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_sudo.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.orml_vesting.module.EnumCall, Opal.NetApi.Generated.Model.orml_xtokens.module.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_referenda.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, Opal.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall, Opal.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_inflation.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_unique.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_configuration.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_structure.pallet.EnumCall, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_app_promotion.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_foreign_assets.module.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_ethereum.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm_migration.pallet.EnumCall, Opal.NetApi.Generated.Model.pallet_maintenance.pallet.EnumCall, BaseVoid, Opal.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_test_utils.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall>(RuntimeCall.StateTrieMigration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall>(RuntimeCall.ParachainSystem);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall>(RuntimeCall.ParachainInfo);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall>(RuntimeCall.CollatorSelection);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall>(RuntimeCall.Treasury);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_sudo.pallet.EnumCall>(RuntimeCall.Sudo);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.orml_vesting.module.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.orml_xtokens.module.EnumCall>(RuntimeCall.XTokens);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall>(RuntimeCall.Preimage);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall>(RuntimeCall.Democracy);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.Council);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.TechnicalCommittee);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumCall>(RuntimeCall.CouncilMembership);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumCall>(RuntimeCall.TechnicalCommitteeMembership);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumCall>(RuntimeCall.FellowshipCollective);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_referenda.pallet.EnumCall>(RuntimeCall.FellowshipReferenda);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall>(RuntimeCall.Scheduler);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall>(RuntimeCall.XcmpQueue);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.PolkadotXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall>(RuntimeCall.CumulusXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumCall>(RuntimeCall.DmpQueue);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_inflation.pallet.EnumCall>(RuntimeCall.Inflation);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_unique.pallet.EnumCall>(RuntimeCall.Unique);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_configuration.pallet.EnumCall>(RuntimeCall.Configuration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_structure.pallet.EnumCall>(RuntimeCall.Structure);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_app_promotion.pallet.EnumCall>(RuntimeCall.AppPromotion);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_foreign_assets.module.EnumCall>(RuntimeCall.ForeignAssets);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.pallet.EnumCall>(RuntimeCall.EVM);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_ethereum.pallet.EnumCall>(RuntimeCall.Ethereum);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet.EnumCall>(RuntimeCall.EvmContractHelpers);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm_migration.pallet.EnumCall>(RuntimeCall.EvmMigration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_maintenance.pallet.EnumCall>(RuntimeCall.Maintenance);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_test_utils.pallet.EnumCall>(RuntimeCall.TestUtils);
+        }
     }
 }

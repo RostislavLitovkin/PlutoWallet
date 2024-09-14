@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
     
     
     /// <summary>
-    /// >> 492 - Composite[bifrost_slpx.types.Order]
+    /// >> 525 - Composite[bifrost_slpx.types.Order]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Order : BaseType
@@ -55,7 +55,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
         /// <summary>
         /// >> remark
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 Remark { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 Remark { get; set; }
         /// <summary>
         /// >> target_chain
         /// </summary>
@@ -106,7 +106,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
             CurrencyAmount.Decode(byteArray, ref p);
             OrderType = new Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumOrderType();
             OrderType.Decode(byteArray, ref p);
-            Remark = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
+            Remark = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8();
             Remark.Decode(byteArray, ref p);
             TargetChain = new Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain();
             TargetChain.Decode(byteArray, ref p);

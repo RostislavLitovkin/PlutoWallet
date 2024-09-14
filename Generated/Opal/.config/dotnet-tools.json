@@ -3,7 +3,7 @@
   "isRoot": true,
   "tools": {
     "substrate.dotnet": {
-      "version": "0.6.5",
+      "version": "0.6.8",
       "commands": [
         "substrate"
       ]

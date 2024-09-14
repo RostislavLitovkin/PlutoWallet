@@ -98,9 +98,31 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives.currency
     }
     
     /// <summary>
-    /// >> 292 - Variant[bifrost_primitives.currency.CurrencyId]
+    /// >> 315 - Variant[bifrost_primitives.currency.CurrencyId]
     /// </summary>
-    public sealed class EnumCurrencyId : BaseEnumExt<CurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U8, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U8, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U8>
+    public sealed class EnumCurrencyId : BaseEnumRust<CurrencyId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCurrencyId()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol>(CurrencyId.Native);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol>(CurrencyId.VToken);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol>(CurrencyId.Token);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol>(CurrencyId.Stable);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol>(CurrencyId.VSToken);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(CurrencyId.VSBond);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U8, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumTokenSymbol, Substrate.NetApi.Model.Types.Primitive.U8>>(CurrencyId.LPToken);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(CurrencyId.ForeignAsset);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(CurrencyId.Token2);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(CurrencyId.VToken2);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(CurrencyId.VSToken2);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(CurrencyId.VSBond2);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(CurrencyId.StableLpToken);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(CurrencyId.BLP);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(CurrencyId.Lend);
+        }
     }
 }

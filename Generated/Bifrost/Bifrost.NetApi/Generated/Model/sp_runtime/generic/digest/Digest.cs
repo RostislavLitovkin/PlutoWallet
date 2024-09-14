@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_runtime.generic.digest
     
     
     /// <summary>
-    /// >> 14 - Composite[sp_runtime.generic.digest.Digest]
+    /// >> 15 - Composite[sp_runtime.generic.digest.Digest]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Digest : BaseType

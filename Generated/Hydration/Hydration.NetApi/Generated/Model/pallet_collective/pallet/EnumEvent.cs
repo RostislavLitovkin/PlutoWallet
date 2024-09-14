@@ -71,7 +71,21 @@ namespace Hydration.NetApi.Generated.Model.pallet_collective.pallet
     /// >> 51 - Variant[pallet_collective.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Proposed);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Voted);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.Approved);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.Disapproved);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Types.Base.EnumResult>>(Event.Executed);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Types.Base.EnumResult>>(Event.MemberExecuted);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Closed);
+        }
     }
 }

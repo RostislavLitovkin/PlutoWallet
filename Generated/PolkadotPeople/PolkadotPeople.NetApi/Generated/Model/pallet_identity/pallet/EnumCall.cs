@@ -159,7 +159,36 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.pallet
     /// >> 324 - Variant[pallet_identity.pallet.Call]
     /// Identity pallet declaration.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime.people.IdentityInfo, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>>, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U64>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, PolkadotPeople.NetApi.Generated.Model.primitive_types.H256>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.add_registrar);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime.people.IdentityInfo>(Call.set_identity);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>>>(Call.set_subs);
+				AddTypeDecoder<BaseVoid>(Call.clear_identity);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.request_judgement);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.cancel_request);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.set_fee);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.set_account_id);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U64>>(Call.set_fields);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, PolkadotPeople.NetApi.Generated.Model.primitive_types.H256>>(Call.provide_judgement);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.kill_identity);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.add_sub);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.rename_sub);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_sub);
+				AddTypeDecoder<BaseVoid>(Call.quit_sub);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.add_username_authority);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_username_authority);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>>(Call.set_username_for);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(Call.accept_username);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(Call.remove_expired_approval);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(Call.set_primary_username);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(Call.remove_dangling_username);
+        }
     }
 }

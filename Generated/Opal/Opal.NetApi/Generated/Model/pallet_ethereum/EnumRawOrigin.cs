@@ -30,7 +30,15 @@ namespace Opal.NetApi.Generated.Model.pallet_ethereum
     /// <summary>
     /// >> 214 - Variant[pallet_ethereum.RawOrigin]
     /// </summary>
-    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, Opal.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumRawOrigin : BaseEnumRust<RawOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRawOrigin()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(RawOrigin.EthereumTransaction);
+        }
     }
 }

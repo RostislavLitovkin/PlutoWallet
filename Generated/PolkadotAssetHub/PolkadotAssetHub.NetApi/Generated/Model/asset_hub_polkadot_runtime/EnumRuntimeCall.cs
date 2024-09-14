@@ -135,7 +135,36 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime
     /// <summary>
     /// >> 346 - Variant[asset_hub_polkadot_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, PolkadotAssetHub.NetApi.Generated.Model.frame_system.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_session.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm_bridge_hub_router.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_uniques.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall, PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeCall()
+        {
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall>(RuntimeCall.ParachainSystem);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall>(RuntimeCall.ParachainInfo);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_vesting.pallet.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall>(RuntimeCall.CollatorSelection);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall>(RuntimeCall.XcmpQueue);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.PolkadotXcm);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall>(RuntimeCall.CumulusXcm);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm_bridge_hub_router.pallet.EnumCall>(RuntimeCall.ToKusamaXcmRouter);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall>(RuntimeCall.MessageQueue);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall>(RuntimeCall.Multisig);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall>(RuntimeCall.Proxy);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall>(RuntimeCall.Assets);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_uniques.pallet.EnumCall>(RuntimeCall.Uniques);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.pallet.EnumCall>(RuntimeCall.Nfts);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall>(RuntimeCall.ForeignAssets);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.pallet.EnumCall>(RuntimeCall.PoolAssets);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.pallet.EnumCall>(RuntimeCall.AssetConversion);
+        }
     }
 }

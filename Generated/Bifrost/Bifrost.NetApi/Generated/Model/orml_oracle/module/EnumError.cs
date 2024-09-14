@@ -36,7 +36,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_oracle.module
     }
     
     /// <summary>
-    /// >> 889 - Variant[orml_oracle.module.Error]
+    /// >> 943 - Variant[orml_oracle.module.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.xcm.v3
     /// <summary>
     /// >> 248 - Variant[xcm.v3.MaybeErrorCode]
     /// </summary>
-    public sealed class EnumMaybeErrorCode : BaseEnumExt<MaybeErrorCode, BaseVoid, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>
+    public sealed class EnumMaybeErrorCode : BaseEnumRust<MaybeErrorCode>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMaybeErrorCode()
+        {
+				AddTypeDecoder<BaseVoid>(MaybeErrorCode.Success);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>(MaybeErrorCode.Error);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>(MaybeErrorCode.TruncatedError);
+        }
     }
 }

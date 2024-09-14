@@ -1,6 +1,6 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using PlutoWallet.Components.ConfirmTransaction;

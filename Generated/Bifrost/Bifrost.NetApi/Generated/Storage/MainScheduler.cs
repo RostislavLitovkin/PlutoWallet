@@ -38,7 +38,9 @@ namespace Bifrost.NetApi.Generated.Storage
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Scheduler", "IncompleteSince"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Scheduler", "Agenda"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT33)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Scheduler", "Retries"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Bifrost.NetApi.Generated.Model.pallet_scheduler.RetryConfig)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Scheduler", "Lookup"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Types.Base.Arr32U8), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>)));
         }
@@ -94,10 +96,41 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Agenda
         ///  Items to be executed, indexed by the block number that they should be executed on.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31> Agenda(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT33> Agenda(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = SchedulerStorage.AgendaParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT33>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> RetriesParams
+        ///  Retry configurations for items to be executed, indexed by task address.
+        /// </summary>
+        public static string RetriesParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key)
+        {
+            return RequestGenerator.GetStorage("Scheduler", "Retries", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> RetriesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string RetriesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> Retries
+        ///  Retry configurations for items to be executed, indexed by task address.
+        /// </summary>
+        public async Task<Bifrost.NetApi.Generated.Model.pallet_scheduler.RetryConfig> Retries(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        {
+            string parameters = SchedulerStorage.RetriesParams(key);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.pallet_scheduler.RetryConfig>(parameters, blockhash, token);
             return result;
         }
         
@@ -224,6 +257,54 @@ namespace Bifrost.NetApi.Generated.Storage
             byteArray.AddRange(priority.Encode());
             byteArray.AddRange(call.Encode());
             return new Method(51, "Scheduler", 5, "schedule_named_after", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> set_retry
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method SetRetry(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> task, Substrate.NetApi.Model.Types.Primitive.U8 retries, Substrate.NetApi.Model.Types.Primitive.U32 period)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(task.Encode());
+            byteArray.AddRange(retries.Encode());
+            byteArray.AddRange(period.Encode());
+            return new Method(51, "Scheduler", 6, "set_retry", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> set_retry_named
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method SetRetryNamed(Bifrost.NetApi.Generated.Types.Base.Arr32U8 id, Substrate.NetApi.Model.Types.Primitive.U8 retries, Substrate.NetApi.Model.Types.Primitive.U32 period)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(id.Encode());
+            byteArray.AddRange(retries.Encode());
+            byteArray.AddRange(period.Encode());
+            return new Method(51, "Scheduler", 7, "set_retry_named", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> cancel_retry
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method CancelRetry(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> task)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(task.Encode());
+            return new Method(51, "Scheduler", 8, "cancel_retry", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> cancel_retry_named
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method CancelRetryNamed(Bifrost.NetApi.Generated.Types.Base.Arr32U8 id)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(id.Encode());
+            return new Method(51, "Scheduler", 9, "cancel_retry_named", byteArray.ToArray());
         }
     }
     

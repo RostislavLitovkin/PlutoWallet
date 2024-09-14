@@ -71,7 +71,20 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.p
     /// >> 495 - Variant[pallet_election_provider_multi_phase.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute, Polkadot.NetApi.Generated.Model.sp_npos_elections.ElectionScore>, BaseVoid, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumPhase, Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumPhase, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.SolutionStored);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumElectionCompute, Polkadot.NetApi.Generated.Model.sp_npos_elections.ElectionScore>>(Event.ElectionFinalized);
+				AddTypeDecoder<BaseVoid>(Event.ElectionFailed);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Rewarded);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Slashed);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumPhase, Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.EnumPhase, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.PhaseTransitioned);
+        }
     }
 }

@@ -48,9 +48,21 @@ namespace Bifrost.NetApi.Generated.Model.sp_runtime.generic.digest
     }
     
     /// <summary>
-    /// >> 16 - Variant[sp_runtime.generic.digest.DigestItem]
+    /// >> 17 - Variant[sp_runtime.generic.digest.DigestItem]
     /// </summary>
-    public sealed class EnumDigestItem : BaseEnumExt<DigestItem, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, BaseVoid, BaseVoid, BaseVoid, BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid, BaseVoid>
+    public sealed class EnumDigestItem : BaseEnumRust<DigestItem>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumDigestItem()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(DigestItem.PreRuntime);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(DigestItem.Consensus);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(DigestItem.Seal);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(DigestItem.Other);
+				AddTypeDecoder<BaseVoid>(DigestItem.RuntimeEnvironmentUpdated);
+        }
     }
 }

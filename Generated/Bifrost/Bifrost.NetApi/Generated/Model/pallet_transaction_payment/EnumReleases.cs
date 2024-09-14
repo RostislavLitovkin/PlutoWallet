@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_transaction_payment
     }
     
     /// <summary>
-    /// >> 569 - Variant[pallet_transaction_payment.Releases]
+    /// >> 604 - Variant[pallet_transaction_payment.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

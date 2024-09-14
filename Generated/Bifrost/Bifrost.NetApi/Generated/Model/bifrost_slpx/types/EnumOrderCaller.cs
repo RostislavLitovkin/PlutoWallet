@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
     }
     
     /// <summary>
-    /// >> 493 - Variant[bifrost_slpx.types.OrderCaller]
+    /// >> 526 - Variant[bifrost_slpx.types.OrderCaller]
     /// </summary>
-    public sealed class EnumOrderCaller : BaseEnumExt<OrderCaller, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumOrderCaller : BaseEnumRust<OrderCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOrderCaller()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(OrderCaller.Substrate);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H160>(OrderCaller.Evm);
+        }
     }
 }

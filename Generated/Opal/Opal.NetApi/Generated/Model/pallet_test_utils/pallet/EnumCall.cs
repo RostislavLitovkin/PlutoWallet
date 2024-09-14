@@ -63,7 +63,20 @@ namespace Opal.NetApi.Generated.Model.pallet_test_utils.pallet
     /// >> 359 - Variant[pallet_test_utils.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.enable);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_test_value);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_test_value_and_rollback);
+				AddTypeDecoder<BaseVoid>(Call.inc_test_value);
+				AddTypeDecoder<BaseVoid>(Call.just_take_fee);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall>>(Call.batch_all);
+        }
     }
 }

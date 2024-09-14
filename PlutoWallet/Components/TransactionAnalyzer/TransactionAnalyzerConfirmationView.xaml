@@ -28,9 +28,10 @@
 
                     <txanalyzer:AnalyzedOutcomeView />
 
+                    <txanalyzer:ExtrinsicErrorView IsVisible="{Binding ExtrinsicFailedIsVisible}"/>
+
                     <Label TextColor="#888888"
                            FontAttributes="Bold"
-                        
                            HorizontalTextAlignment="Start"
                            VerticalTextAlignment="Center"
                            Text="{Binding EstimatedFee}"
@@ -63,7 +64,9 @@
                                                 Clicked="OnCancelClicked"/>
 
                         <buttons:PlutoWalletElevatedButton Text="Confirm" Grid.Column="1"
-                                                            Clicked="OnConfirmClicked"/>
+                                                           Clicked="OnConfirmClicked"
+                                                           ButtonState="{Binding ConfirmButtonState}"
+                                                           />
 
                     </Grid>
                 </AbsoluteLayout>

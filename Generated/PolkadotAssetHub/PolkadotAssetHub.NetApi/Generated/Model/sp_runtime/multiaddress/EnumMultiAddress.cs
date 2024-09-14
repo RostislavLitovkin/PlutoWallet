@@ -50,7 +50,19 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress
     /// <summary>
     /// >> 233 - Variant[sp_runtime.multiaddress.MultiAddress]
     /// </summary>
-    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr20U8>
+    public sealed class EnumMultiAddress : BaseEnumRust<MultiAddress>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAddress()
+        {
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>(MultiAddress.Id);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>>(MultiAddress.Index);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(MultiAddress.Raw);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>(MultiAddress.Address32);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Types.Base.Arr20U8>(MultiAddress.Address20);
+        }
     }
 }

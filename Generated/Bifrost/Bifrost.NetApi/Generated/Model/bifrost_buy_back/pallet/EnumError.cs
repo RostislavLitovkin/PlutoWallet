@@ -34,7 +34,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_buy_back.pallet
     }
     
     /// <summary>
-    /// >> 897 - Variant[bifrost_buy_back.pallet.Error]
+    /// >> 951 - Variant[bifrost_buy_back.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -51,7 +51,18 @@ namespace Bajun.NetApi.Generated.Model.pallet_message_queue.pallet
     /// >> 133 - Variant[pallet_message_queue.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Bajun.NetApi.Generated.Model.frame_support.traits.messages.EnumProcessMessageError>, BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Bajun.NetApi.Generated.Types.Base.Arr32U8, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Bajun.NetApi.Generated.Model.frame_support.traits.messages.EnumProcessMessageError>>(Event.ProcessingFailed);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.Processed);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Types.Base.Arr32U8, Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.OverweightEnqueued);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.PageReaped);
+        }
     }
 }

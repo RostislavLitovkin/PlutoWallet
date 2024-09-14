@@ -48,7 +48,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
     }
     
     /// <summary>
-    /// >> 401 - Variant[bifrost_slpx.types.SupportChain]
+    /// >> 422 - Variant[bifrost_slpx.types.SupportChain]
     /// </summary>
     public sealed class EnumSupportChain : BaseEnum<SupportChain>
     {

@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     /// <summary>
     /// >> 277 - Variant[cumulus_pallet_xcm.pallet.Origin]
     /// </summary>
-    public sealed class EnumOrigin : BaseEnumExt<Origin, BaseVoid, Bajun.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
+    public sealed class EnumOrigin : BaseEnumRust<Origin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOrigin()
+        {
+				AddTypeDecoder<BaseVoid>(Origin.Relay);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Origin.SiblingParachain);
+        }
     }
 }

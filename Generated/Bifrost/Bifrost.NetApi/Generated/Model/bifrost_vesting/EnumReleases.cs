@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vesting
     }
     
     /// <summary>
-    /// >> 720 - Variant[bifrost_vesting.Releases]
+    /// >> 757 - Variant[bifrost_vesting.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

@@ -33,7 +33,15 @@ namespace Bajun.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
     /// >> 57 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bajun.NetApi.Generated.Types.Base.Arr32U8>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr32U8>(Event.XcmpMessageSent);
+        }
     }
 }

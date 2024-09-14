@@ -30,7 +30,7 @@ namespace PlutoWalletTests
             var identity = await IdentityModel.GetIdentityForAddressAsync((PolkadotPeople.NetApi.Generated.SubstrateClientExt)client.SubstrateClient, substrateAddress);
 
             Assert.That(identity.DisplayName == "Rosta");
-            Assert.That(identity.FinalJudgement == Judgement.Reasonable);
+            Assert.That(identity.FinalJudgement, Is.EqualTo(Judgement.Reasonable));
 
         }
     }

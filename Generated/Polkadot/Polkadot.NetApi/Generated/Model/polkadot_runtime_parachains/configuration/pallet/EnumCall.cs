@@ -309,7 +309,61 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
     /// >> 320 - Variant[polkadot_runtime_parachains.configuration.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams, Substrate.NetApi.Model.Types.Primitive.U128, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.Bool>, Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_validation_upgrade_cooldown);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_validation_upgrade_delay);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_code_retention_period);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_code_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_pov_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_head_data_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_coretime_cores);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_retries);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_group_rotation_frequency);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_paras_availability_period);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_scheduling_lookahead);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.set_max_validators_per_core);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.set_max_validators);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_dispute_period);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_dispute_post_conclusion_acceptance_period);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_no_show_slots);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_n_delay_tranches);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_zeroth_delay_tranche_width);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_needed_approvals);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_relay_vrf_modulo_samples);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_upward_queue_count);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_upward_queue_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_downward_message_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_upward_message_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_upward_message_num_per_candidate);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_open_request_ttl);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.set_hrmp_sender_deposit);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.set_hrmp_recipient_deposit);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_channel_max_capacity);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_channel_max_total_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_max_parachain_inbound_channels);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_channel_max_message_size);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_max_parachain_outbound_channels);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hrmp_max_message_num_per_candidate);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_pvf_voting_ttl);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_minimum_validation_upgrade_delay);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.Bool>(Call.set_bypass_consistency_check);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams>(Call.set_async_backing_params);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams>(Call.set_executor_params);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.set_on_demand_base_fee);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>(Call.set_on_demand_fee_variability);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_queue_max_size);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>(Call.set_on_demand_target_queue_utilization);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_ttl);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_minimum_backing_votes);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.set_node_feature);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams>(Call.set_approval_voting_params);
+        }
     }
 }

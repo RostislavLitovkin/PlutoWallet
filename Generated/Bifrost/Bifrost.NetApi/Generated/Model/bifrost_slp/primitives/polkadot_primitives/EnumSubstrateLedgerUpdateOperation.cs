@@ -43,7 +43,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primiti
     }
     
     /// <summary>
-    /// >> 471 - Variant[bifrost_slp.primitives.polkadot_primitives.SubstrateLedgerUpdateOperation]
+    /// >> 504 - Variant[bifrost_slp.primitives.polkadot_primitives.SubstrateLedgerUpdateOperation]
     /// </summary>
     public sealed class EnumSubstrateLedgerUpdateOperation : BaseEnum<SubstrateLedgerUpdateOperation>
     {

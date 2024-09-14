@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vesting.vesting_info
     
     
     /// <summary>
-    /// >> 287 - Composite[bifrost_vesting.vesting_info.VestingInfo]
+    /// >> 292 - Composite[bifrost_vesting.vesting_info.VestingInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class VestingInfo : BaseType

@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_tournament.config
     /// <summary>
     /// >> 420 - Variant[pallet_ajuna_tournament.config.GoldenDuckConfig]
     /// </summary>
-    public sealed class EnumGoldenDuckConfig : BaseEnumExt<GoldenDuckConfig, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U8>
+    public sealed class EnumGoldenDuckConfig : BaseEnumRust<GoldenDuckConfig>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumGoldenDuckConfig()
+        {
+				AddTypeDecoder<BaseVoid>(GoldenDuckConfig.Disabled);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(GoldenDuckConfig.Enabled);
+        }
     }
 }

@@ -24,64 +24,71 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet
         
         /// <summary>
         /// >> register_native_asset
-        /// See [`Pallet::register_native_asset`].
         /// </summary>
         register_native_asset = 0,
         
         /// <summary>
         /// >> update_native_asset
-        /// See [`Pallet::update_native_asset`].
         /// </summary>
         update_native_asset = 1,
         
         /// <summary>
         /// >> register_token_metadata
-        /// See [`Pallet::register_token_metadata`].
         /// </summary>
         register_token_metadata = 2,
         
         /// <summary>
         /// >> register_vtoken_metadata
-        /// See [`Pallet::register_vtoken_metadata`].
         /// </summary>
         register_vtoken_metadata = 3,
         
         /// <summary>
         /// >> register_vstoken_metadata
-        /// See [`Pallet::register_vstoken_metadata`].
         /// </summary>
         register_vstoken_metadata = 4,
         
         /// <summary>
         /// >> register_vsbond_metadata
-        /// See [`Pallet::register_vsbond_metadata`].
         /// </summary>
         register_vsbond_metadata = 5,
         
         /// <summary>
         /// >> register_location
-        /// See [`Pallet::register_location`].
         /// </summary>
         register_location = 6,
         
         /// <summary>
         /// >> force_set_location
-        /// See [`Pallet::force_set_location`].
         /// </summary>
         force_set_location = 7,
         
         /// <summary>
         /// >> update_currency_metadata
-        /// See [`Pallet::update_currency_metadata`].
         /// </summary>
         update_currency_metadata = 8,
     }
     
     /// <summary>
-    /// >> 316 - Variant[bifrost_asset_registry.pallet.Call]
+    /// >> 338 - Variant[bifrost_asset_registry.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U8, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Call.register_native_asset);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Call.update_native_asset);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>(Call.register_token_metadata);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(Call.register_vtoken_metadata);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(Call.register_vstoken_metadata);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.register_vsbond_metadata);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.register_location);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.force_set_location);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.update_currency_metadata);
+        }
     }
 }

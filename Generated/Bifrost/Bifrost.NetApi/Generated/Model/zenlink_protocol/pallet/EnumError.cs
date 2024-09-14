@@ -228,7 +228,7 @@ namespace Bifrost.NetApi.Generated.Model.zenlink_protocol.pallet
     }
     
     /// <summary>
-    /// >> 763 - Variant[zenlink_protocol.pallet.Error]
+    /// >> 819 - Variant[zenlink_protocol.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

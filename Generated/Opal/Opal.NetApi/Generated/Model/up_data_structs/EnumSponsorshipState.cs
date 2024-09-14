@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.up_data_structs
     /// <summary>
     /// >> 660 - Variant[up_data_structs.SponsorshipState]
     /// </summary>
-    public sealed class EnumSponsorshipState : BaseEnumExt<SponsorshipState, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr, Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>
+    public sealed class EnumSponsorshipState : BaseEnumRust<SponsorshipState>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumSponsorshipState()
+        {
+				AddTypeDecoder<BaseVoid>(SponsorshipState.Disabled);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Unconfirmed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Confirmed);
+        }
     }
 }

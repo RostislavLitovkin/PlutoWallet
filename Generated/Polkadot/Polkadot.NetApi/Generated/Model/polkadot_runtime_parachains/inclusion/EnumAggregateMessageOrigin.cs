@@ -30,7 +30,15 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
     /// <summary>
     /// >> 466 - Variant[polkadot_runtime_parachains.inclusion.AggregateMessageOrigin]
     /// </summary>
-    public sealed class EnumAggregateMessageOrigin : BaseEnumExt<AggregateMessageOrigin, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.EnumUmpQueueId>
+    public sealed class EnumAggregateMessageOrigin : BaseEnumRust<AggregateMessageOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAggregateMessageOrigin()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.EnumUmpQueueId>(AggregateMessageOrigin.Ump);
+        }
     }
 }

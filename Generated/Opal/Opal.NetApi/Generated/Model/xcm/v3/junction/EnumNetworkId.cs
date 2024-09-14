@@ -75,7 +75,24 @@ namespace Opal.NetApi.Generated.Model.xcm.v3.junction
     /// <summary>
     /// >> 58 - Variant[xcm.v3.junction.NetworkId]
     /// </summary>
-    public sealed class EnumNetworkId : BaseEnumExt<NetworkId, Opal.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Types.Base.Arr32U8>, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>, BaseVoid, BaseVoid>
+    public sealed class EnumNetworkId : BaseEnumRust<NetworkId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumNetworkId()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.Arr32U8>(NetworkId.ByGenesis);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Types.Base.Arr32U8>>(NetworkId.ByFork);
+				AddTypeDecoder<BaseVoid>(NetworkId.Polkadot);
+				AddTypeDecoder<BaseVoid>(NetworkId.Kusama);
+				AddTypeDecoder<BaseVoid>(NetworkId.Westend);
+				AddTypeDecoder<BaseVoid>(NetworkId.Rococo);
+				AddTypeDecoder<BaseVoid>(NetworkId.Wococo);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>(NetworkId.Ethereum);
+				AddTypeDecoder<BaseVoid>(NetworkId.BitcoinCore);
+				AddTypeDecoder<BaseVoid>(NetworkId.BitcoinCash);
+        }
     }
 }

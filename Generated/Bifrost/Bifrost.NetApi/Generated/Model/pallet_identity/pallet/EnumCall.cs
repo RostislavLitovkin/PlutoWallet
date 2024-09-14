@@ -24,142 +24,307 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.pallet
         
         /// <summary>
         /// >> add_registrar
-        /// See [`Pallet::add_registrar`].
+        /// Add a registrar to the system.
+        /// 
+        /// The dispatch origin for this call must be `T::RegistrarOrigin`.
+        /// 
+        /// - `account`: the account of the registrar.
+        /// 
+        /// Emits `RegistrarAdded` if successful.
         /// </summary>
         add_registrar = 0,
         
         /// <summary>
         /// >> set_identity
-        /// See [`Pallet::set_identity`].
+        /// Set an account's identity information and reserve the appropriate deposit.
+        /// 
+        /// If the account already has identity information, the deposit is taken as part payment
+        /// for the new deposit.
+        /// 
+        /// The dispatch origin for this call must be _Signed_.
+        /// 
+        /// - `info`: The identity information.
+        /// 
+        /// Emits `IdentitySet` if successful.
         /// </summary>
         set_identity = 1,
         
         /// <summary>
         /// >> set_subs
-        /// See [`Pallet::set_subs`].
+        /// Set the sub-accounts of the sender.
+        /// 
+        /// Payment: Any aggregate balance reserved by previous `set_subs` calls will be returned
+        /// and an amount `SubAccountDeposit` will be reserved for each item in `subs`.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// identity.
+        /// 
+        /// - `subs`: The identity's (new) sub-accounts.
         /// </summary>
         set_subs = 2,
         
         /// <summary>
         /// >> clear_identity
-        /// See [`Pallet::clear_identity`].
+        /// Clear an account's identity info and all sub-accounts and return all deposits.
+        /// 
+        /// Payment: All reserved balances on the account are returned.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// identity.
+        /// 
+        /// Emits `IdentityCleared` if successful.
         /// </summary>
         clear_identity = 3,
         
         /// <summary>
         /// >> request_judgement
-        /// See [`Pallet::request_judgement`].
+        /// Request a judgement from a registrar.
+        /// 
+        /// Payment: At most `max_fee` will be reserved for payment to the registrar if judgement
+        /// given.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a
+        /// registered identity.
+        /// 
+        /// - `reg_index`: The index of the registrar whose judgement is requested.
+        /// - `max_fee`: The maximum fee that may be paid. This should just be auto-populated as:
+        /// 
+        /// ```nocompile
+        /// Self::registrars().get(reg_index).unwrap().fee
+        /// ```
+        /// 
+        /// Emits `JudgementRequested` if successful.
         /// </summary>
         request_judgement = 4,
         
         /// <summary>
         /// >> cancel_request
-        /// See [`Pallet::cancel_request`].
+        /// Cancel a previous request.
+        /// 
+        /// Payment: A previously reserved deposit is returned on success.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a
+        /// registered identity.
+        /// 
+        /// - `reg_index`: The index of the registrar whose judgement is no longer requested.
+        /// 
+        /// Emits `JudgementUnrequested` if successful.
         /// </summary>
         cancel_request = 5,
         
         /// <summary>
         /// >> set_fee
-        /// See [`Pallet::set_fee`].
+        /// Set the fee required for a judgement to be requested from a registrar.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must be the account
+        /// of the registrar whose index is `index`.
+        /// 
+        /// - `index`: the index of the registrar whose fee is to be set.
+        /// - `fee`: the new fee.
         /// </summary>
         set_fee = 6,
         
         /// <summary>
         /// >> set_account_id
-        /// See [`Pallet::set_account_id`].
+        /// Change the account associated with a registrar.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must be the account
+        /// of the registrar whose index is `index`.
+        /// 
+        /// - `index`: the index of the registrar whose fee is to be set.
+        /// - `new`: the new account ID.
         /// </summary>
         set_account_id = 7,
         
         /// <summary>
         /// >> set_fields
-        /// See [`Pallet::set_fields`].
+        /// Set the field information for a registrar.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must be the account
+        /// of the registrar whose index is `index`.
+        /// 
+        /// - `index`: the index of the registrar whose fee is to be set.
+        /// - `fields`: the fields that the registrar concerns themselves with.
         /// </summary>
         set_fields = 8,
         
         /// <summary>
         /// >> provide_judgement
-        /// See [`Pallet::provide_judgement`].
+        /// Provide a judgement for an account's identity.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must be the account
+        /// of the registrar whose index is `reg_index`.
+        /// 
+        /// - `reg_index`: the index of the registrar whose judgement is being made.
+        /// - `target`: the account whose identity the judgement is upon. This must be an account
+        ///   with a registered identity.
+        /// - `judgement`: the judgement of the registrar of index `reg_index` about `target`.
+        /// - `identity`: The hash of the [`IdentityInformationProvider`] for that the judgement is
+        ///   provided.
+        /// 
+        /// Note: Judgements do not apply to a username.
+        /// 
+        /// Emits `JudgementGiven` if successful.
         /// </summary>
         provide_judgement = 9,
         
         /// <summary>
         /// >> kill_identity
-        /// See [`Pallet::kill_identity`].
+        /// Remove an account's identity and sub-account information and slash the deposits.
+        /// 
+        /// Payment: Reserved balances from `set_subs` and `set_identity` are slashed and handled by
+        /// `Slash`. Verification request deposits are not returned; they should be cancelled
+        /// manually using `cancel_request`.
+        /// 
+        /// The dispatch origin for this call must match `T::ForceOrigin`.
+        /// 
+        /// - `target`: the account whose identity the judgement is upon. This must be an account
+        ///   with a registered identity.
+        /// 
+        /// Emits `IdentityKilled` if successful.
         /// </summary>
         kill_identity = 10,
         
         /// <summary>
         /// >> add_sub
-        /// See [`Pallet::add_sub`].
+        /// Add the given account to the sender's subs.
+        /// 
+        /// Payment: Balance reserved by a previous `set_subs` call for one sub will be repatriated
+        /// to the sender.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// sub identity of `sub`.
         /// </summary>
         add_sub = 11,
         
         /// <summary>
         /// >> rename_sub
-        /// See [`Pallet::rename_sub`].
+        /// Alter the associated name of the given sub-account.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// sub identity of `sub`.
         /// </summary>
         rename_sub = 12,
         
         /// <summary>
         /// >> remove_sub
-        /// See [`Pallet::remove_sub`].
+        /// Remove the given account from the sender's subs.
+        /// 
+        /// Payment: Balance reserved by a previous `set_subs` call for one sub will be repatriated
+        /// to the sender.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// sub identity of `sub`.
         /// </summary>
         remove_sub = 13,
         
         /// <summary>
         /// >> quit_sub
-        /// See [`Pallet::quit_sub`].
+        /// Remove the sender as a sub-account.
+        /// 
+        /// Payment: Balance reserved by a previous `set_subs` call for one sub will be repatriated
+        /// to the sender (*not* the original depositor).
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and the sender must have a registered
+        /// super-identity.
+        /// 
+        /// NOTE: This should not normally be used, but is provided in the case that the non-
+        /// controller of an account is maliciously registered as a sub-account.
         /// </summary>
         quit_sub = 14,
         
         /// <summary>
         /// >> add_username_authority
-        /// See [`Pallet::add_username_authority`].
+        /// Add an `AccountId` with permission to grant usernames with a given `suffix` appended.
+        /// 
+        /// The authority can grant up to `allocation` usernames. To top up their allocation, they
+        /// should just issue (or request via governance) a new `add_username_authority` call.
         /// </summary>
         add_username_authority = 15,
         
         /// <summary>
         /// >> remove_username_authority
-        /// See [`Pallet::remove_username_authority`].
+        /// Remove `authority` from the username authorities.
         /// </summary>
         remove_username_authority = 16,
         
         /// <summary>
         /// >> set_username_for
-        /// See [`Pallet::set_username_for`].
+        /// Set the username for `who`. Must be called by a username authority.
+        /// 
+        /// The authority must have an `allocation`. Users can either pre-sign their usernames or
+        /// accept them later.
+        /// 
+        /// Usernames must:
+        ///   - Only contain lowercase ASCII characters or digits.
+        ///   - When combined with the suffix of the issuing authority be _less than_ the
+        ///     `MaxUsernameLength`.
         /// </summary>
         set_username_for = 17,
         
         /// <summary>
         /// >> accept_username
-        /// See [`Pallet::accept_username`].
+        /// Accept a given username that an `authority` granted. The call must include the full
+        /// username, as in `username.suffix`.
         /// </summary>
         accept_username = 18,
         
         /// <summary>
         /// >> remove_expired_approval
-        /// See [`Pallet::remove_expired_approval`].
+        /// Remove an expired username approval. The username was approved by an authority but never
+        /// accepted by the user and must now be beyond its expiration. The call must include the
+        /// full username, as in `username.suffix`.
         /// </summary>
         remove_expired_approval = 19,
         
         /// <summary>
         /// >> set_primary_username
-        /// See [`Pallet::set_primary_username`].
+        /// Set a given username as the primary. The username should include the suffix.
         /// </summary>
         set_primary_username = 20,
         
         /// <summary>
         /// >> remove_dangling_username
-        /// See [`Pallet::remove_dangling_username`].
+        /// Remove a username that corresponds to an account with no identity. Exists when a user
+        /// gets a username but then calls `clear_identity`.
         /// </summary>
         remove_dangling_username = 21,
     }
     
     /// <summary>
-    /// >> 240 - Variant[pallet_identity.pallet.Call]
+    /// >> 248 - Variant[pallet_identity.pallet.Call]
     /// Identity pallet declaration.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.legacy.IdentityInfo, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>>, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U64>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, Bifrost.NetApi.Generated.Model.primitive_types.H256>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.add_registrar);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_identity.legacy.IdentityInfo>(Call.set_identity);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>>>(Call.set_subs);
+				AddTypeDecoder<BaseVoid>(Call.clear_identity);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.request_judgement);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.cancel_request);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.set_fee);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.set_account_id);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U64>>(Call.set_fields);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, Bifrost.NetApi.Generated.Model.primitive_types.H256>>(Call.provide_judgement);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.kill_identity);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.add_sub);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.rename_sub);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_sub);
+				AddTypeDecoder<BaseVoid>(Call.quit_sub);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.add_username_authority);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_username_authority);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.sp_runtime.EnumMultiSignature>>>(Call.set_username_for);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(Call.accept_username);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(Call.remove_expired_approval);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(Call.set_primary_username);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(Call.remove_dangling_username);
+        }
     }
 }

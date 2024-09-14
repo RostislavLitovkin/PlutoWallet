@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_weights.weight_v2
     
     
     /// <summary>
-    /// >> 9 - Composite[sp_weights.weight_v2.Weight]
+    /// >> 10 - Composite[sp_weights.weight_v2.Weight]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Weight : BaseType

@@ -79,7 +79,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_cross_in_out.pallet
     }
     
     /// <summary>
-    /// >> 831 - Variant[bifrost_cross_in_out.pallet.Error]
+    /// >> 886 - Variant[bifrost_cross_in_out.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

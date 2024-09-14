@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4.location
     
     
     /// <summary>
-    /// >> 114 - Composite[staging_xcm.v4.location.Location]
+    /// >> 117 - Composite[staging_xcm.v4.location.Location]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Location : BaseType

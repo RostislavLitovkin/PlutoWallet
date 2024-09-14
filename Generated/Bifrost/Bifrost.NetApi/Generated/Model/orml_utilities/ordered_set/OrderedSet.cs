@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_utilities.ordered_set
     
     
     /// <summary>
-    /// >> 887 - Composite[orml_utilities.ordered_set.OrderedSet]
+    /// >> 941 - Composite[orml_utilities.ordered_set.OrderedSet]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OrderedSet : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_utilities.ordered_set
         /// <summary>
         /// >> value
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65 Value { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT67 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_utilities.ordered_set
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65();
+            Value = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT67();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

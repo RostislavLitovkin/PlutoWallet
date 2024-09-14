@@ -24,160 +24,181 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_salp.pallet
         
         /// <summary>
         /// >> set_multisig_confirm_account
-        /// See [`Pallet::set_multisig_confirm_account`].
         /// </summary>
         set_multisig_confirm_account = 0,
         
         /// <summary>
         /// >> fund_success
-        /// See [`Pallet::fund_success`].
         /// </summary>
         fund_success = 1,
         
         /// <summary>
         /// >> fund_fail
-        /// See [`Pallet::fund_fail`].
         /// </summary>
         fund_fail = 2,
         
         /// <summary>
         /// >> continue_fund
-        /// See [`Pallet::continue_fund`].
         /// </summary>
         continue_fund = 3,
         
         /// <summary>
         /// >> fund_retire
-        /// See [`Pallet::fund_retire`].
         /// </summary>
         fund_retire = 4,
         
         /// <summary>
         /// >> fund_end
-        /// See [`Pallet::fund_end`].
         /// </summary>
         fund_end = 5,
         
         /// <summary>
         /// >> create
-        /// See [`Pallet::create`].
+        /// Create a new crowdloaning campaign for a parachain slot deposit for the current auction.
         /// </summary>
         create = 6,
         
         /// <summary>
         /// >> edit
-        /// See [`Pallet::edit`].
+        /// Edit the configuration for an in-progress crowdloan.
+        /// 
+        /// Can only be called by Root origin.
         /// </summary>
         edit = 7,
         
         /// <summary>
         /// >> contribute
-        /// See [`Pallet::contribute`].
+        /// Contribute to a crowd sale. This will transfer some balance over to fund a parachain
+        /// slot. It will be withdrawable in two instances: the parachain becomes retired; or the
+        /// slot is unable to be purchased and the timeout expires.
         /// </summary>
         contribute = 8,
         
         /// <summary>
         /// >> confirm_contribute
-        /// See [`Pallet::confirm_contribute`].
+        /// Confirm contribute
         /// </summary>
         confirm_contribute = 9,
         
         /// <summary>
         /// >> unlock
-        /// See [`Pallet::unlock`].
+        /// Unlock the reserved vsToken/vsBond after fund success
         /// </summary>
         unlock = 10,
         
         /// <summary>
         /// >> unlock_by_vsbond
-        /// See [`Pallet::unlock_by_vsbond`].
         /// </summary>
         unlock_by_vsbond = 11,
         
         /// <summary>
         /// >> unlock_vstoken
-        /// See [`Pallet::unlock_vstoken`].
         /// </summary>
         unlock_vstoken = 12,
         
         /// <summary>
         /// >> batch_unlock
-        /// See [`Pallet::batch_unlock`].
+        /// Unlock the reserved vsToken/vsBond after fund success
         /// </summary>
         batch_unlock = 13,
         
         /// <summary>
         /// >> withdraw
-        /// See [`Pallet::withdraw`].
+        /// Withdraw full balance of the parachain.
+        /// - `index`: The parachain to whose crowdloan the contribution was made.
         /// </summary>
         withdraw = 14,
         
         /// <summary>
         /// >> refund
-        /// See [`Pallet::refund`].
         /// </summary>
         refund = 15,
         
         /// <summary>
         /// >> redeem
-        /// See [`Pallet::redeem`].
         /// </summary>
         redeem = 16,
         
         /// <summary>
         /// >> dissolve_refunded
-        /// See [`Pallet::dissolve_refunded`].
+        /// Remove a fund after the retirement period has ended and all funds have been returned.
         /// </summary>
         dissolve_refunded = 17,
         
         /// <summary>
         /// >> dissolve
-        /// See [`Pallet::dissolve`].
+        /// Remove a fund after the retirement period has ended and all funds have been returned.
         /// </summary>
         dissolve = 18,
         
         /// <summary>
         /// >> buyback
-        /// See [`Pallet::buyback`].
         /// </summary>
         buyback = 19,
         
         /// <summary>
         /// >> confirm_contribution
-        /// See [`Pallet::confirm_contribution`].
         /// </summary>
         confirm_contribution = 20,
         
         /// <summary>
         /// >> buyback_vstoken_by_stable_pool
-        /// See [`Pallet::buyback_vstoken_by_stable_pool`].
         /// </summary>
         buyback_vstoken_by_stable_pool = 21,
         
         /// <summary>
         /// >> reserve
-        /// See [`Pallet::reserve`].
         /// </summary>
         reserve = 22,
         
         /// <summary>
         /// >> batch_handle_reserve
-        /// See [`Pallet::batch_handle_reserve`].
         /// </summary>
         batch_handle_reserve = 23,
         
         /// <summary>
         /// >> cancel_reservation
-        /// See [`Pallet::cancel_reservation`].
         /// </summary>
         cancel_reservation = 24,
     }
     
     /// <summary>
-    /// >> 312 - Variant[bifrost_salp.pallet.Call]
+    /// >> 335 - Variant[bifrost_salp.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bifrost_salp.EnumFundStatus>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Bifrost.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.Bool>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.set_multisig_confirm_account);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.fund_success);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.fund_fail);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.continue_fund);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.fund_retire);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.fund_end);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.create);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bifrost_salp.EnumFundStatus>>>(Call.edit);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.contribute);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.confirm_contribute);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.unlock);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(Call.unlock_by_vsbond);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.unlock_vstoken);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.batch_unlock);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.withdraw);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.refund);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.redeem);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.dissolve_refunded);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.dissolve);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Call.buyback);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Bifrost.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>>(Call.confirm_contribution);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.buyback_vstoken_by_stable_pool);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.reserve);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.batch_handle_reserve);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.cancel_reservation);
+        }
     }
 }

@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 703 - Composite[pallet_identity.types.Registration]
+    /// >> 740 - Composite[pallet_identity.types.Registration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Registration : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> judgements
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT35 Judgements { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37 Judgements { get; set; }
         /// <summary>
         /// >> deposit
         /// </summary>
@@ -57,7 +57,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Judgements = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT35();
+            Judgements = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37();
             Judgements.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);

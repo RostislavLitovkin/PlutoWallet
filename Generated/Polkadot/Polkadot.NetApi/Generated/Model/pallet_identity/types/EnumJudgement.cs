@@ -60,7 +60,21 @@ namespace Polkadot.NetApi.Generated.Model.pallet_identity.types
     /// <summary>
     /// >> 230 - Variant[pallet_identity.types.Judgement]
     /// </summary>
-    public sealed class EnumJudgement : BaseEnumExt<Judgement, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumJudgement : BaseEnumRust<Judgement>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJudgement()
+        {
+				AddTypeDecoder<BaseVoid>(Judgement.Unknown);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Judgement.FeePaid);
+				AddTypeDecoder<BaseVoid>(Judgement.Reasonable);
+				AddTypeDecoder<BaseVoid>(Judgement.KnownGood);
+				AddTypeDecoder<BaseVoid>(Judgement.OutOfDate);
+				AddTypeDecoder<BaseVoid>(Judgement.LowQuality);
+				AddTypeDecoder<BaseVoid>(Judgement.Erroneous);
+        }
     }
 }

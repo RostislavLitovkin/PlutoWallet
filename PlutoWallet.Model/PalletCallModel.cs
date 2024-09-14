@@ -5,7 +5,7 @@ using Substrate.NetApi;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Meta;
 using PlutoWallet.Model.AjunaExt;
-using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
+using Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace PlutoWallet.Model
 {

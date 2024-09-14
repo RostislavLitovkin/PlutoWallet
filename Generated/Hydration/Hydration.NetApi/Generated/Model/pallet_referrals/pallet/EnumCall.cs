@@ -57,7 +57,19 @@ namespace Hydration.NetApi.Generated.Model.pallet_referrals.pallet
     /// >> 382 - Variant[pallet_referrals.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel, Hydration.NetApi.Generated.Model.pallet_referrals.FeeDistribution>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>(Call.register_code);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>(Call.link_code);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.convert);
+				AddTypeDecoder<BaseVoid>(Call.claim_rewards);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel, Hydration.NetApi.Generated.Model.pallet_referrals.FeeDistribution>>(Call.set_reward_percentage);
+        }
     }
 }

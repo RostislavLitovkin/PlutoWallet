@@ -27,13 +27,33 @@ namespace Bifrost.NetApi.Generated.Model.orml_oracle.module
         /// New feed data is submitted.
         /// </summary>
         NewFeedData = 0,
+        
+        /// <summary>
+        /// >> FeedTimestampReachingLimit
+        /// </summary>
+        FeedTimestampReachingLimit = 1,
+        
+        /// <summary>
+        /// >> FeedValueReachingLimit
+        /// </summary>
+        FeedValueReachingLimit = 2,
     }
     
     /// <summary>
-    /// >> 502 - Variant[orml_oracle.module.Event]
+    /// >> 535 - Variant[orml_oracle.module.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>>>(Event.NewFeedData);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.orml_oracle.module.TimestampedValue>, Bifrost.NetApi.Generated.Model.orml_oracle.module.TimestampedValue>>(Event.FeedTimestampReachingLimit);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.orml_oracle.module.TimestampedValue, Bifrost.NetApi.Generated.Model.orml_oracle.module.TimestampedValue>>(Event.FeedValueReachingLimit);
+        }
     }
 }

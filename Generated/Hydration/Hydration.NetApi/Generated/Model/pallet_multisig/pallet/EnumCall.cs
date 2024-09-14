@@ -51,7 +51,18 @@ namespace Hydration.NetApi.Generated.Model.pallet_multisig.pallet
     /// >> 347 - Variant[pallet_multisig.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint>, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall, Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint>, Hydration.NetApi.Generated.Types.Base.Arr32U8, Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint, Hydration.NetApi.Generated.Types.Base.Arr32U8>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall>>(Call.as_multi_threshold_1);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint>, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall, Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.as_multi);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint>, Hydration.NetApi.Generated.Types.Base.Arr32U8, Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.approve_as_multi);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Hydration.NetApi.Generated.Model.pallet_multisig.Timepoint, Hydration.NetApi.Generated.Types.Base.Arr32U8>>(Call.cancel_as_multi);
+        }
     }
 }

@@ -40,7 +40,17 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_primitives_core
     /// <summary>
     /// >> 117 - Variant[cumulus_primitives_core.AggregateMessageOrigin]
     /// </summary>
-    public sealed class EnumAggregateMessageOrigin : BaseEnumExt<AggregateMessageOrigin, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
+    public sealed class EnumAggregateMessageOrigin : BaseEnumRust<AggregateMessageOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAggregateMessageOrigin()
+        {
+				AddTypeDecoder<BaseVoid>(AggregateMessageOrigin.Here);
+				AddTypeDecoder<BaseVoid>(AggregateMessageOrigin.Parent);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(AggregateMessageOrigin.Sibling);
+        }
     }
 }

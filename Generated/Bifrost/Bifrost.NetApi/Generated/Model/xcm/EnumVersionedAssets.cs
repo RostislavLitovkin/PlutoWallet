@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.xcm
     }
     
     /// <summary>
-    /// >> 214 - Variant[xcm.VersionedAssets]
+    /// >> 220 - Variant[xcm.VersionedAssets]
     /// </summary>
-    public sealed class EnumVersionedAssets : BaseEnumExt<VersionedAssets, BaseVoid, Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>
+    public sealed class EnumVersionedAssets : BaseEnumRust<VersionedAssets>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedAssets()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(VersionedAssets.V2);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(VersionedAssets.V3);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>(VersionedAssets.V4);
+        }
     }
 }

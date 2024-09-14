@@ -30,7 +30,15 @@ namespace Bajun.NetApi.Generated.Model.bajun_runtime
     /// <summary>
     /// >> 500 - Variant[bajun_runtime.RuntimeHoldReason]
     /// </summary>
-    public sealed class EnumRuntimeHoldReason : BaseEnumExt<RuntimeHoldReason, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>
+    public sealed class EnumRuntimeHoldReason : BaseEnumRust<RuntimeHoldReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeHoldReason()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>(RuntimeHoldReason.Preimage);
+        }
     }
 }

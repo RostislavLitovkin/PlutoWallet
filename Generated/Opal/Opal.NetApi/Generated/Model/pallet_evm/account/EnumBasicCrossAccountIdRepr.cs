@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.pallet_evm.account
     /// <summary>
     /// >> 273 - Variant[pallet_evm.account.BasicCrossAccountIdRepr]
     /// </summary>
-    public sealed class EnumBasicCrossAccountIdRepr : BaseEnumExt<BasicCrossAccountIdRepr, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumBasicCrossAccountIdRepr : BaseEnumRust<BasicCrossAccountIdRepr>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBasicCrossAccountIdRepr()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(BasicCrossAccountIdRepr.Substrate);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(BasicCrossAccountIdRepr.Ethereum);
+        }
     }
 }

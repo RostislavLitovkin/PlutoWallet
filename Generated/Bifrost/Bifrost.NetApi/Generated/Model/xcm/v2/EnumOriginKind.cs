@@ -43,7 +43,7 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 164 - Variant[xcm.v2.OriginKind]
+    /// >> 169 - Variant[xcm.v2.OriginKind]
     /// </summary>
     public sealed class EnumOriginKind : BaseEnum<OriginKind>
     {

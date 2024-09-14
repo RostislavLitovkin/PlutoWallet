@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.pallet_referenda.types
     }
     
     /// <summary>
-    /// >> 641 - Variant[pallet_referenda.types.Curve]
+    /// >> 676 - Variant[pallet_referenda.types.Curve]
     /// </summary>
-    public sealed class EnumCurve : BaseEnumExt<Curve, BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>
+    public sealed class EnumCurve : BaseEnumRust<Curve>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCurve()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.LinearDecreasing);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.SteppedDecreasing);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>(Curve.Reciprocal);
+        }
     }
 }

@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_migrations
     /// <summary>
     /// >> 332 - Variant[pallet_migrations.MigrationCursor]
     /// </summary>
-    public sealed class EnumMigrationCursor : BaseEnumExt<MigrationCursor, Bajun.NetApi.Generated.Model.pallet_migrations.ActiveCursor, BaseVoid>
+    public sealed class EnumMigrationCursor : BaseEnumRust<MigrationCursor>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMigrationCursor()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_migrations.ActiveCursor>(MigrationCursor.Active);
+				AddTypeDecoder<BaseVoid>(MigrationCursor.Stuck);
+        }
     }
 }

@@ -45,7 +45,17 @@ namespace Opal.NetApi.Generated.Model.pallet_sudo.pallet
     /// >> 42 - Variant[pallet_sudo.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Opal.NetApi.Generated.Types.Base.EnumResult, Substrate.NetApi.Model.Types.Base.BaseOpt<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Opal.NetApi.Generated.Types.Base.EnumResult>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.EnumResult>(Event.Sudid);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.KeyChanged);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.EnumResult>(Event.SudoAsDone);
+        }
     }
 }

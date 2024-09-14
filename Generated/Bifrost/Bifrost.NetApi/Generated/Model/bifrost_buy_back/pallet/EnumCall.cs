@@ -24,28 +24,35 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_buy_back.pallet
         
         /// <summary>
         /// >> set_vtoken
-        /// See [`Pallet::set_vtoken`].
         /// </summary>
         set_vtoken = 0,
         
         /// <summary>
         /// >> charge
-        /// See [`Pallet::charge`].
         /// </summary>
         charge = 1,
         
         /// <summary>
         /// >> remove_vtoken
-        /// See [`Pallet::remove_vtoken`].
         /// </summary>
         remove_vtoken = 2,
     }
     
     /// <summary>
-    /// >> 431 - Variant[bifrost_buy_back.pallet.Call]
+    /// >> 452 - Variant[bifrost_buy_back.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.set_vtoken);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.charge);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Call.remove_vtoken);
+        }
     }
 }

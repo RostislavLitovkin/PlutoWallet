@@ -51,7 +51,18 @@ namespace Polkadot.NetApi.Generated.Model.pallet_whitelist.pallet
     /// >> 179 - Variant[pallet_whitelist.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Polkadot.NetApi.Generated.Model.primitive_types.H256, Polkadot.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Polkadot.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.primitive_types.H256>(Call.whitelist_call);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.primitive_types.H256>(Call.remove_whitelisted_call);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.dispatch_whitelisted_call);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>(Call.dispatch_whitelisted_call_with_preimage);
+        }
     }
 }

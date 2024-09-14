@@ -156,7 +156,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_minting.pallet
     }
     
     /// <summary>
-    /// >> 790 - Variant[bifrost_vtoken_minting.pallet.Error]
+    /// >> 845 - Variant[bifrost_vtoken_minting.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

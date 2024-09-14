@@ -24,22 +24,29 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_clouds_convert.pallet
         
         /// <summary>
         /// >> clouds_to_vebnc
-        /// See [`Pallet::clouds_to_vebnc`].
         /// </summary>
         clouds_to_vebnc = 0,
         
         /// <summary>
         /// >> charge_vbnc
-        /// See [`Pallet::charge_vbnc`].
         /// </summary>
         charge_vbnc = 1,
     }
     
     /// <summary>
-    /// >> 430 - Variant[bifrost_clouds_convert.pallet.Call]
+    /// >> 451 - Variant[bifrost_clouds_convert.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.U128>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.clouds_to_vebnc);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.charge_vbnc);
+        }
     }
 }

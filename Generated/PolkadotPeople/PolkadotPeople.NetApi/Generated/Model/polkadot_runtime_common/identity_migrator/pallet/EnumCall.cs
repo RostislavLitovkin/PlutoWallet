@@ -39,7 +39,16 @@ namespace PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity
     /// >> 366 - Variant[polkadot_runtime_common.identity_migrator.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.reap_identity);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.poke_deposit);
+        }
     }
 }

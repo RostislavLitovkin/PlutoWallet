@@ -45,7 +45,18 @@ namespace Polkadot.NetApi.Generated.Model.pallet_child_bounties
     /// <summary>
     /// >> 705 - Variant[pallet_child_bounties.ChildBountyStatus]
     /// </summary>
-    public sealed class EnumChildBountyStatus : BaseEnumExt<ChildBountyStatus, BaseVoid, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumChildBountyStatus : BaseEnumRust<ChildBountyStatus>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumChildBountyStatus()
+        {
+				AddTypeDecoder<BaseVoid>(ChildBountyStatus.Added);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(ChildBountyStatus.CuratorProposed);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(ChildBountyStatus.Active);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(ChildBountyStatus.PendingPayout);
+        }
     }
 }

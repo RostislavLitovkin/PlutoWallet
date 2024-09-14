@@ -81,7 +81,23 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_collator_selection.pall
     /// >> 248 - Variant[pallet_collator_selection.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.set_invulnerables);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_desired_candidates);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.set_candidacy_bond);
+				AddTypeDecoder<BaseVoid>(Call.register_as_candidate);
+				AddTypeDecoder<BaseVoid>(Call.leave_intent);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.add_invulnerable);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.remove_invulnerable);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.update_bond);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.take_candidate_slot);
+        }
     }
 }

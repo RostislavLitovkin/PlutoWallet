@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.sp_runtime.transaction_validity
     /// <summary>
     /// >> 614 - Variant[sp_runtime.transaction_validity.UnknownTransaction]
     /// </summary>
-    public sealed class EnumUnknownTransaction : BaseEnumExt<UnknownTransaction, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U8>
+    public sealed class EnumUnknownTransaction : BaseEnumRust<UnknownTransaction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumUnknownTransaction()
+        {
+				AddTypeDecoder<BaseVoid>(UnknownTransaction.CannotLookup);
+				AddTypeDecoder<BaseVoid>(UnknownTransaction.NoUnsignedValidator);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(UnknownTransaction.Custom);
+        }
     }
 }

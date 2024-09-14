@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives
     }
     
     /// <summary>
-    /// >> 469 - Variant[bifrost_slp.primitives.LedgerUpdateEntry]
+    /// >> 502 - Variant[bifrost_slp.primitives.LedgerUpdateEntry]
     /// </summary>
-    public sealed class EnumLedgerUpdateEntry : BaseEnumExt<LedgerUpdateEntry, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateLedgerUpdateEntry, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateEntry, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateEntry>
+    public sealed class EnumLedgerUpdateEntry : BaseEnumRust<LedgerUpdateEntry>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumLedgerUpdateEntry()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateLedgerUpdateEntry>(LedgerUpdateEntry.Substrate);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateEntry>(LedgerUpdateEntry.Moonbeam);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateEntry>(LedgerUpdateEntry.ParachainStaking);
+        }
     }
 }

@@ -35,7 +35,16 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 318 - Variant[pallet_nomination_pools.CommissionClaimPermission]
     /// </summary>
-    public sealed class EnumCommissionClaimPermission : BaseEnumExt<CommissionClaimPermission, BaseVoid, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumCommissionClaimPermission : BaseEnumRust<CommissionClaimPermission>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCommissionClaimPermission()
+        {
+				AddTypeDecoder<BaseVoid>(CommissionClaimPermission.Permissionless);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(CommissionClaimPermission.Account);
+        }
     }
 }

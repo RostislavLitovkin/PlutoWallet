@@ -37,15 +37,15 @@ namespace Bifrost.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "WhitelistAccountId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumSupportChain), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT54)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumSupportChain), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "ExecutionFee"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "TransferToFee"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumSupportChain), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "XcmEthereumCallConfiguration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EthereumCallConfiguration)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "CurrencyIdList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "SupportXcmFeeList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "OrderQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "CurrencyIdList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "SupportXcmFeeList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT58)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "OrderQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT59)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slpx", "DelayBlock"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
         }
         
@@ -73,10 +73,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> WhitelistAccountId
         ///  Contract whitelist
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT54> WhitelistAccountId(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumSupportChain key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56> WhitelistAccountId(Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumSupportChain key, string blockhash, CancellationToken token)
         {
             string parameters = SlpxStorage.WhitelistAccountIdParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT54>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56>(parameters, blockhash, token);
             return result;
         }
         
@@ -189,10 +189,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> CurrencyIdList
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55> CurrencyIdList(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57> CurrencyIdList(string blockhash, CancellationToken token)
         {
             string parameters = SlpxStorage.CurrencyIdListParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57>(parameters, blockhash, token);
             return result;
         }
         
@@ -216,10 +216,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> SupportXcmFeeList
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56> SupportXcmFeeList(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT58> SupportXcmFeeList(string blockhash, CancellationToken token)
         {
             string parameters = SlpxStorage.SupportXcmFeeListParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT56>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT58>(parameters, blockhash, token);
             return result;
         }
         
@@ -243,10 +243,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> OrderQueue
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57> OrderQueue(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT59> OrderQueue(string blockhash, CancellationToken token)
         {
             string parameters = SlpxStorage.OrderQueueParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT57>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT59>(parameters, blockhash, token);
             return result;
         }
         
@@ -288,7 +288,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> mint
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Mint(Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 remark)
+        public static Method Mint(Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 remark)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(evm_caller.Encode());
@@ -443,7 +443,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> force_add_order
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceAddOrder(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 slpx_contract_derivative_account, Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 remark, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumOrderType order_type)
+        public static Method ForceAddOrder(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 slpx_contract_derivative_account, Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 remark, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumOrderType order_type)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(slpx_contract_derivative_account.Encode());
@@ -459,7 +459,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> mint_with_channel_id
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method MintWithChannelId(Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 remark, Substrate.NetApi.Model.Types.Primitive.U32 channel_id)
+        public static Method MintWithChannelId(Bifrost.NetApi.Generated.Model.primitive_types.H160 evm_caller, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Bifrost.NetApi.Generated.Model.bifrost_slpx.types.EnumTargetChain target_chain, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 remark, Substrate.NetApi.Model.Types.Primitive.U32 channel_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(evm_caller.Encode());

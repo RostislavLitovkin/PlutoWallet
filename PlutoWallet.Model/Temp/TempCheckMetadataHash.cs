@@ -69,7 +69,8 @@ namespace Substrate.NetApi.Model.Extrinsics
 
             if (modeByte > 1)
             {
-                throw new ArgumentException($"{modeByte} is not a valid representation of CheckMetadata Mode.");
+                p += 32;
+                //throw new ArgumentException($"{modeByte} is not a valid representation of CheckMetadata Mode.");
             }
 
             _mode = modeByte == 0 ? Mode.Disabled : Mode.Enabled;

@@ -45,12 +45,30 @@ namespace Bifrost.NetApi.Generated.Model.frame_support.traits.messages
         /// >> Yield
         /// </summary>
         Yield = 4,
+        
+        /// <summary>
+        /// >> StackLimitReached
+        /// </summary>
+        StackLimitReached = 5,
     }
     
     /// <summary>
-    /// >> 445 - Variant[frame_support.traits.messages.ProcessMessageError]
+    /// >> 466 - Variant[frame_support.traits.messages.ProcessMessageError]
     /// </summary>
-    public sealed class EnumProcessMessageError : BaseEnumExt<ProcessMessageError, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseVoid>
+    public sealed class EnumProcessMessageError : BaseEnumRust<ProcessMessageError>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumProcessMessageError()
+        {
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.BadFormat);
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.Corrupt);
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.Unsupported);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(ProcessMessageError.Overweight);
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.Yield);
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.StackLimitReached);
+        }
     }
 }

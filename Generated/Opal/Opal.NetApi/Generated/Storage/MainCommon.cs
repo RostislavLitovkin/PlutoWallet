@@ -315,6 +315,7 @@ namespace Opal.NetApi.Generated.Storage
         {
             return "0x00";
         }
+       
     }
     
     /// <summary>

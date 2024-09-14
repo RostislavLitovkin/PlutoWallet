@@ -73,7 +73,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet
     }
     
     /// <summary>
-    /// >> 552 - Variant[cumulus_pallet_parachain_system.pallet.Error]
+    /// >> 586 - Variant[cumulus_pallet_parachain_system.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

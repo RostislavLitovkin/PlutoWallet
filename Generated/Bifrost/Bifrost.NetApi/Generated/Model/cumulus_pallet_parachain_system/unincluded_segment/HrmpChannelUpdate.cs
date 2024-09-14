@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_pallet_parachain_system.uninclu
     
     
     /// <summary>
-    /// >> 531 - Composite[cumulus_pallet_parachain_system.unincluded_segment.HrmpChannelUpdate]
+    /// >> 565 - Composite[cumulus_pallet_parachain_system.unincluded_segment.HrmpChannelUpdate]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HrmpChannelUpdate : BaseType

@@ -47,7 +47,18 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_common.paras_registra
     /// >> 511 - Variant[polkadot_runtime_common.paras_registrar.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.Registered);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Event.Deregistered);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.Reserved);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>>(Event.Swapped);
+        }
     }
 }

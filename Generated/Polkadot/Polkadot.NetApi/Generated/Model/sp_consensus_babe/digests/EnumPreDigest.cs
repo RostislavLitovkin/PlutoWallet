@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests
     /// <summary>
     /// >> 560 - Variant[sp_consensus_babe.digests.PreDigest]
     /// </summary>
-    public sealed class EnumPreDigest : BaseEnumExt<PreDigest, BaseVoid, Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.PrimaryPreDigest, Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryPlainPreDigest, Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryVRFPreDigest>
+    public sealed class EnumPreDigest : BaseEnumRust<PreDigest>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumPreDigest()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.PrimaryPreDigest>(PreDigest.Primary);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryPlainPreDigest>(PreDigest.SecondaryPlain);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests.SecondaryVRFPreDigest>(PreDigest.SecondaryVRF);
+        }
     }
 }

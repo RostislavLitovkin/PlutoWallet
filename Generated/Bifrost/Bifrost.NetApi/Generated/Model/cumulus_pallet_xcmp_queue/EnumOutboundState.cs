@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     }
     
     /// <summary>
-    /// >> 651 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
+    /// >> 686 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
     /// </summary>
     public sealed class EnumOutboundState : BaseEnum<OutboundState>
     {

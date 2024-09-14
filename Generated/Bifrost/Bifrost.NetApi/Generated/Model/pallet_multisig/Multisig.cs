@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_multisig
     
     
     /// <summary>
-    /// >> 699 - Composite[pallet_multisig.Multisig]
+    /// >> 736 - Composite[pallet_multisig.Multisig]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Multisig : BaseType
@@ -39,7 +39,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_multisig
         /// <summary>
         /// >> approvals
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34 Approvals { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36 Approvals { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -68,7 +68,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_multisig
             Deposit.Decode(byteArray, ref p);
             Depositor = new Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Approvals = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34();
+            Approvals = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36();
             Approvals.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet
     /// >> 264 - Variant[cumulus_pallet_dmp_queue.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.service_overweight);
+        }
     }
 }

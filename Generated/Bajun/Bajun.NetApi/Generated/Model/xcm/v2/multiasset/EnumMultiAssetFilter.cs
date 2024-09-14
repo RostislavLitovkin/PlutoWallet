@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.xcm.v2.multiasset
     /// <summary>
     /// >> 358 - Variant[xcm.v2.multiasset.MultiAssetFilter]
     /// </summary>
-    public sealed class EnumMultiAssetFilter : BaseEnumExt<MultiAssetFilter, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>
+    public sealed class EnumMultiAssetFilter : BaseEnumRust<MultiAssetFilter>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAssetFilter()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(MultiAssetFilter.Definite);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>(MultiAssetFilter.Wild);
+        }
     }
 }

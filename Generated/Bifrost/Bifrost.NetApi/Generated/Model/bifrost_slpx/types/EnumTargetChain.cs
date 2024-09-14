@@ -48,9 +48,21 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slpx.types
     }
     
     /// <summary>
-    /// >> 400 - Variant[bifrost_slpx.types.TargetChain]
+    /// >> 421 - Variant[bifrost_slpx.types.TargetChain]
     /// </summary>
-    public sealed class EnumTargetChain : BaseEnumExt<TargetChain, Bifrost.NetApi.Generated.Model.primitive_types.H160, Bifrost.NetApi.Generated.Model.primitive_types.H160, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumTargetChain : BaseEnumRust<TargetChain>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTargetChain()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H160>(TargetChain.Astar);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H160>(TargetChain.Moonbeam);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(TargetChain.Hydradx);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(TargetChain.Interlay);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(TargetChain.Manta);
+        }
     }
 }

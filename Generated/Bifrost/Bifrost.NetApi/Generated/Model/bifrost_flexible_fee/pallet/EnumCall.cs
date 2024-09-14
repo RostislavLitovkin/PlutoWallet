@@ -24,22 +24,31 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_flexible_fee.pallet
         
         /// <summary>
         /// >> set_user_default_fee_currency
-        /// See [`Pallet::set_user_default_fee_currency`].
+        /// Set user default fee currency
         /// </summary>
         set_user_default_fee_currency = 0,
         
         /// <summary>
         /// >> set_universal_fee_currency_order_list
-        /// See [`Pallet::set_universal_fee_currency_order_list`].
+        /// Set universal fee currency order list
         /// </summary>
         set_universal_fee_currency_order_list = 1,
     }
     
     /// <summary>
-    /// >> 308 - Variant[bifrost_flexible_fee.pallet.Call]
+    /// >> 331 - Variant[bifrost_flexible_fee.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(Call.set_user_default_fee_currency);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9>(Call.set_universal_fee_currency_order_list);
+        }
     }
 }

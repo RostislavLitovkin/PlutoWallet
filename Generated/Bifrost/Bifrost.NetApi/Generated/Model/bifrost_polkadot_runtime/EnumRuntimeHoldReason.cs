@@ -28,9 +28,17 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 562 - Variant[bifrost_polkadot_runtime.RuntimeHoldReason]
+    /// >> 597 - Variant[bifrost_polkadot_runtime.RuntimeHoldReason]
     /// </summary>
-    public sealed class EnumRuntimeHoldReason : BaseEnumExt<RuntimeHoldReason, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>
+    public sealed class EnumRuntimeHoldReason : BaseEnumRust<RuntimeHoldReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeHoldReason()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>(RuntimeHoldReason.Preimage);
+        }
     }
 }

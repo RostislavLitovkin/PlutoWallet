@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives
     }
     
     /// <summary>
-    /// >> 758 - Variant[zenlink_protocol.primitives.PairStatus]
+    /// >> 814 - Variant[zenlink_protocol.primitives.PairStatus]
     /// </summary>
-    public sealed class EnumPairStatus : BaseEnumExt<PairStatus, Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives.PairMetadata, Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives.BootstrapParameter, BaseVoid>
+    public sealed class EnumPairStatus : BaseEnumRust<PairStatus>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumPairStatus()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives.PairMetadata>(PairStatus.Trading);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives.BootstrapParameter>(PairStatus.Bootstrap);
+				AddTypeDecoder<BaseVoid>(PairStatus.Disable);
+        }
     }
 }

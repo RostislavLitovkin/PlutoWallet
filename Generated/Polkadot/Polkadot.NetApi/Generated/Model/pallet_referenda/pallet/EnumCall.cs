@@ -81,7 +81,23 @@ namespace Polkadot.NetApi.Generated.Model.pallet_referenda.pallet
     /// >> 169 - Variant[pallet_referenda.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller, Polkadot.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded, Polkadot.NetApi.Generated.Model.frame_support.traits.schedule.EnumDispatchTime>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.primitive_types.H256>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller, Polkadot.NetApi.Generated.Model.frame_support.traits.preimages.EnumBounded, Polkadot.NetApi.Generated.Model.frame_support.traits.schedule.EnumDispatchTime>>(Call.submit);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.place_decision_deposit);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.refund_decision_deposit);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.cancel);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.kill);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.nudge_referendum);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U16>(Call.one_fewer_deciding);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.refund_submission_deposit);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.primitive_types.H256>>>(Call.set_metadata);
+        }
     }
 }

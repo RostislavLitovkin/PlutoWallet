@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives
     
     
     /// <summary>
-    /// >> 760 - Composite[zenlink_protocol.primitives.BootstrapParameter]
+    /// >> 816 - Composite[zenlink_protocol.primitives.BootstrapParameter]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BootstrapParameter : BaseType

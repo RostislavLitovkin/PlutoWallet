@@ -40,7 +40,17 @@ namespace Hydration.NetApi.Generated.Model.frame_support.traits.preimages
     /// <summary>
     /// >> 335 - Variant[frame_support.traits.preimages.Bounded]
     /// </summary>
-    public sealed class EnumBounded : BaseEnumExt<Bounded, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumBounded : BaseEnumRust<Bounded>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBounded()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Bounded.Legacy);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>(Bounded.Inline);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Bounded.Lookup);
+        }
     }
 }

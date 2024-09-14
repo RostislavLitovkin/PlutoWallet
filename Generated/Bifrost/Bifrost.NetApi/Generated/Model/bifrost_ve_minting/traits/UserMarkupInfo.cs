@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_ve_minting.traits
     
     
     /// <summary>
-    /// >> 835 - Composite[bifrost_ve_minting.traits.UserMarkupInfo]
+    /// >> 890 - Composite[bifrost_ve_minting.traits.UserMarkupInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UserMarkupInfo : BaseType

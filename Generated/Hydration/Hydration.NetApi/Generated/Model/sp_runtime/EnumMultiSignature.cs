@@ -40,7 +40,17 @@ namespace Hydration.NetApi.Generated.Model.sp_runtime
     /// <summary>
     /// >> 328 - Variant[sp_runtime.MultiSignature]
     /// </summary>
-    public sealed class EnumMultiSignature : BaseEnumExt<MultiSignature, Hydration.NetApi.Generated.Model.sp_core.ed25519.Signature, Hydration.NetApi.Generated.Model.sp_core.sr25519.Signature, Hydration.NetApi.Generated.Model.sp_core.ecdsa.Signature>
+    public sealed class EnumMultiSignature : BaseEnumRust<MultiSignature>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiSignature()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.ed25519.Signature>(MultiSignature.Ed25519);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.sr25519.Signature>(MultiSignature.Sr25519);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.ecdsa.Signature>(MultiSignature.Ecdsa);
+        }
     }
 }

@@ -36,10 +36,19 @@ namespace Bifrost.NetApi.Generated.Model.pallet_prices.pallet
     }
     
     /// <summary>
-    /// >> 501 - Variant[pallet_prices.pallet.Event]
+    /// >> 534 - Variant[pallet_prices.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Event.SetPrice);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Event.ResetPrice);
+        }
     }
 }

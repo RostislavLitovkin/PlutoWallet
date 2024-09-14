@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.gauge
     }
     
     /// <summary>
-    /// >> 813 - Variant[bifrost_farming.gauge.GaugeState]
+    /// >> 868 - Variant[bifrost_farming.gauge.GaugeState]
     /// </summary>
     public sealed class EnumGaugeState : BaseEnum<GaugeState>
     {

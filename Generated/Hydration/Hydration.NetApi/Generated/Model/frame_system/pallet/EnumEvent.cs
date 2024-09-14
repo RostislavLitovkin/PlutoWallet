@@ -69,7 +69,21 @@ namespace Hydration.NetApi.Generated.Model.frame_system.pallet
     /// >> 21 - Variant[frame_system.pallet.Event]
     /// Event for the System pallet.
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Hydration.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo, BaseTuple<Hydration.NetApi.Generated.Model.sp_runtime.EnumDispatchError, Hydration.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>, BaseVoid, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>(Event.ExtrinsicSuccess);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_runtime.EnumDispatchError, Hydration.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>>(Event.ExtrinsicFailed);
+				AddTypeDecoder<BaseVoid>(Event.CodeUpdated);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.NewAccount);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.KilledAccount);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256>>(Event.Remarked);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.UpgradeAuthorized);
+        }
     }
 }

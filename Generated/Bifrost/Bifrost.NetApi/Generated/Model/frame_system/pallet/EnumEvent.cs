@@ -66,10 +66,24 @@ namespace Bifrost.NetApi.Generated.Model.frame_system.pallet
     }
     
     /// <summary>
-    /// >> 21 - Variant[frame_system.pallet.Event]
+    /// >> 22 - Variant[frame_system.pallet.Event]
     /// Event for the System pallet.
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bifrost.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError, Bifrost.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>, BaseVoid, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>(Event.ExtrinsicSuccess);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.EnumDispatchError, Bifrost.NetApi.Generated.Model.frame_support.dispatch.DispatchInfo>>(Event.ExtrinsicFailed);
+				AddTypeDecoder<BaseVoid>(Event.CodeUpdated);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.NewAccount);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.KilledAccount);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256>>(Event.Remarked);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.UpgradeAuthorized);
+        }
     }
 }

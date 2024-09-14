@@ -210,7 +210,51 @@ namespace Opal.NetApi.Generated.Model.opal_runtime
     /// <summary>
     /// >> 20 - Variant[opal_runtime.RuntimeEvent]
     /// </summary>
-    public sealed class EnumRuntimeEvent : BaseEnumExt<RuntimeEvent, Opal.NetApi.Generated.Model.frame_system.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_session.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_sudo.pallet.EnumEvent, BaseVoid, Opal.NetApi.Generated.Model.orml_vesting.module.EnumEvent, Opal.NetApi.Generated.Model.orml_xtokens.module.EnumEvent, BaseVoid, Opal.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent, Opal.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent, Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent, Opal.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_configuration.pallet.EnumEvent, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_common.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_structure.pallet.EnumEvent, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_app_promotion.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_foreign_assets.module.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_ethereum.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet.EnumEvent, BaseVoid, Opal.NetApi.Generated.Model.pallet_evm_migration.pallet.EnumEvent, Opal.NetApi.Generated.Model.pallet_maintenance.pallet.EnumEvent, BaseVoid, Opal.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_test_utils.pallet.EnumEvent>
+    public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.frame_system.pallet.EnumEvent>(RuntimeEvent.System);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumEvent>(RuntimeEvent.StateTrieMigration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent>(RuntimeEvent.ParachainSystem);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent>(RuntimeEvent.CollatorSelection);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_session.pallet.EnumEvent>(RuntimeEvent.Session);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent>(RuntimeEvent.Balances);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent>(RuntimeEvent.TransactionPayment);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent>(RuntimeEvent.Treasury);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_sudo.pallet.EnumEvent>(RuntimeEvent.Sudo);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.orml_vesting.module.EnumEvent>(RuntimeEvent.Vesting);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.orml_xtokens.module.EnumEvent>(RuntimeEvent.XTokens);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent>(RuntimeEvent.Preimage);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent>(RuntimeEvent.Democracy);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.Council);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.TechnicalCommittee);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent>(RuntimeEvent.CouncilMembership);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent>(RuntimeEvent.TechnicalCommitteeMembership);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumEvent>(RuntimeEvent.FellowshipCollective);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent>(RuntimeEvent.FellowshipReferenda);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent>(RuntimeEvent.Scheduler);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent>(RuntimeEvent.XcmpQueue);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent>(RuntimeEvent.PolkadotXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent>(RuntimeEvent.CumulusXcm);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumEvent>(RuntimeEvent.DmpQueue);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_configuration.pallet.EnumEvent>(RuntimeEvent.Configuration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_common.pallet.EnumEvent>(RuntimeEvent.Common);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_structure.pallet.EnumEvent>(RuntimeEvent.Structure);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_app_promotion.pallet.EnumEvent>(RuntimeEvent.AppPromotion);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_foreign_assets.module.EnumEvent>(RuntimeEvent.ForeignAssets);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.pallet.EnumEvent>(RuntimeEvent.EVM);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_ethereum.pallet.EnumEvent>(RuntimeEvent.Ethereum);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet.EnumEvent>(RuntimeEvent.EvmContractHelpers);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm_migration.pallet.EnumEvent>(RuntimeEvent.EvmMigration);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_maintenance.pallet.EnumEvent>(RuntimeEvent.Maintenance);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent>(RuntimeEvent.Utility);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_test_utils.pallet.EnumEvent>(RuntimeEvent.TestUtils);
+        }
     }
 }

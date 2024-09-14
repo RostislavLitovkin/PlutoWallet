@@ -45,7 +45,18 @@ namespace Hydration.NetApi.Generated.Model.hydradx_traits.router
     /// <summary>
     /// >> 151 - Variant[hydradx_traits.router.PoolType]
     /// </summary>
-    public sealed class EnumPoolType : BaseEnumExt<PoolType, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid>
+    public sealed class EnumPoolType : BaseEnumRust<PoolType>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumPoolType()
+        {
+				AddTypeDecoder<BaseVoid>(PoolType.XYK);
+				AddTypeDecoder<BaseVoid>(PoolType.LBP);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(PoolType.Stableswap);
+				AddTypeDecoder<BaseVoid>(PoolType.Omnipool);
+        }
     }
 }

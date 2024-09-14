@@ -40,7 +40,17 @@ namespace Hydration.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 199 - Variant[xcm.VersionedAssets]
     /// </summary>
-    public sealed class EnumVersionedAssets : BaseEnumExt<VersionedAssets, BaseVoid, Hydration.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, Hydration.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>
+    public sealed class EnumVersionedAssets : BaseEnumRust<VersionedAssets>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedAssets()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(VersionedAssets.V2);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(VersionedAssets.V3);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>(VersionedAssets.V4);
+        }
     }
 }

@@ -40,7 +40,16 @@ namespace PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity
     /// >> 130 - Variant[polkadot_runtime_common.identity_migrator.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.IdentityReaped);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.DepositUpdated);
+        }
     }
 }

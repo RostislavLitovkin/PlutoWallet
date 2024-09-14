@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.pallet_nfts.types
     /// <summary>
     /// >> 430 - Variant[pallet_nfts.types.MintType]
     /// </summary>
-    public sealed class EnumMintType : BaseEnumExt<MintType, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumMintType : BaseEnumRust<MintType>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMintType()
+        {
+				AddTypeDecoder<BaseVoid>(MintType.Issuer);
+				AddTypeDecoder<BaseVoid>(MintType.Public);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(MintType.HolderOf);
+        }
     }
 }

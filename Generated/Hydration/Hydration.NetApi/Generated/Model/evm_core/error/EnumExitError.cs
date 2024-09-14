@@ -105,7 +105,30 @@ namespace Hydration.NetApi.Generated.Model.evm_core.error
     /// <summary>
     /// >> 136 - Variant[evm_core.error.ExitError]
     /// </summary>
-    public sealed class EnumExitError : BaseEnumExt<ExitError, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Types.Base.CowT1, BaseVoid, Hydration.NetApi.Generated.Model.evm_core.opcode.Opcode>
+    public sealed class EnumExitError : BaseEnumRust<ExitError>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExitError()
+        {
+				AddTypeDecoder<BaseVoid>(ExitError.StackUnderflow);
+				AddTypeDecoder<BaseVoid>(ExitError.StackOverflow);
+				AddTypeDecoder<BaseVoid>(ExitError.InvalidJump);
+				AddTypeDecoder<BaseVoid>(ExitError.InvalidRange);
+				AddTypeDecoder<BaseVoid>(ExitError.DesignatedInvalid);
+				AddTypeDecoder<BaseVoid>(ExitError.CallTooDeep);
+				AddTypeDecoder<BaseVoid>(ExitError.CreateCollision);
+				AddTypeDecoder<BaseVoid>(ExitError.CreateContractLimit);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.evm_core.opcode.Opcode>(ExitError.InvalidCode);
+				AddTypeDecoder<BaseVoid>(ExitError.OutOfOffset);
+				AddTypeDecoder<BaseVoid>(ExitError.OutOfGas);
+				AddTypeDecoder<BaseVoid>(ExitError.OutOfFund);
+				AddTypeDecoder<BaseVoid>(ExitError.PCUnderflow);
+				AddTypeDecoder<BaseVoid>(ExitError.CreateEmpty);
+				AddTypeDecoder<Hydration.NetApi.Generated.Types.Base.CowT1>(ExitError.Other);
+				AddTypeDecoder<BaseVoid>(ExitError.MaxNonce);
+        }
     }
 }

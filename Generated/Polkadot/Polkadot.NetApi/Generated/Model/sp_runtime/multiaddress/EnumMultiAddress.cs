@@ -50,7 +50,19 @@ namespace Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress
     /// <summary>
     /// >> 122 - Variant[sp_runtime.multiaddress.MultiAddress]
     /// </summary>
-    public sealed class EnumMultiAddress : BaseEnumExt<MultiAddress, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Polkadot.NetApi.Generated.Types.Base.Arr32U8, Polkadot.NetApi.Generated.Types.Base.Arr20U8>
+    public sealed class EnumMultiAddress : BaseEnumRust<MultiAddress>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAddress()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(MultiAddress.Id);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Base.BaseTuple>>(MultiAddress.Index);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(MultiAddress.Raw);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Types.Base.Arr32U8>(MultiAddress.Address32);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Types.Base.Arr20U8>(MultiAddress.Address20);
+        }
     }
 }

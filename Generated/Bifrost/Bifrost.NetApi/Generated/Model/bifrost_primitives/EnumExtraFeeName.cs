@@ -45,10 +45,15 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives
         /// >> NoExtraFee
         /// </summary>
         NoExtraFee = 4,
+        
+        /// <summary>
+        /// >> EthereumTransfer
+        /// </summary>
+        EthereumTransfer = 5,
     }
     
     /// <summary>
-    /// >> 461 - Variant[bifrost_primitives.ExtraFeeName]
+    /// >> 495 - Variant[bifrost_primitives.ExtraFeeName]
     /// </summary>
     public sealed class EnumExtraFeeName : BaseEnum<ExtraFeeName>
     {

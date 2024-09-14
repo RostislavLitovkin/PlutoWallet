@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.sp_runtime.transaction_validity
     /// <summary>
     /// >> 612 - Variant[sp_runtime.transaction_validity.TransactionValidityError]
     /// </summary>
-    public sealed class EnumTransactionValidityError : BaseEnumExt<TransactionValidityError, Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumInvalidTransaction, Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumUnknownTransaction>
+    public sealed class EnumTransactionValidityError : BaseEnumRust<TransactionValidityError>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTransactionValidityError()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumInvalidTransaction>(TransactionValidityError.Invalid);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumUnknownTransaction>(TransactionValidityError.Unknown);
+        }
     }
 }

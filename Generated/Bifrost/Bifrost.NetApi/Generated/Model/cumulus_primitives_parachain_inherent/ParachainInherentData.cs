@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
     
     
     /// <summary>
-    /// >> 69 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
+    /// >> 72 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParachainInherentData : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         /// <summary>
         /// >> validation_data
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.polkadot_primitives.v6.PersistedValidationData ValidationData { get; set; }
+        public Bifrost.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData ValidationData { get; set; }
         /// <summary>
         /// >> relay_chain_state
         /// </summary>
@@ -62,7 +62,7 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ValidationData = new Bifrost.NetApi.Generated.Model.polkadot_primitives.v6.PersistedValidationData();
+            ValidationData = new Bifrost.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData();
             ValidationData.Decode(byteArray, ref p);
             RelayChainState = new Bifrost.NetApi.Generated.Model.sp_trie.storage_proof.StorageProof();
             RelayChainState.Decode(byteArray, ref p);

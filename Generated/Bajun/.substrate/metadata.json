@@ -26216,6 +26216,22 @@
               }
             ],
             "Index": 33
+          },
+          {
+            "Name": "force_set_affiliatee_state",
+            "TypeFields": [
+              {
+                "Name": "account",
+                "TypeName": "AccountIdFor<T>",
+                "TypeId": 0
+              },
+              {
+                "Name": "chain",
+                "TypeName": "Vec<AccountIdFor<T>>",
+                "TypeId": 55
+              }
+            ],
+            "Index": 34
           }
         ],
         "Path": [
@@ -38043,7 +38059,8 @@
           672,
           674,
           675,
-          676
+          676,
+          677
         ],
         "TypeDef": "Tuple"
       },
@@ -40487,6 +40504,44 @@
         "TypeDef": "Composite"
       },
       "677": {
+        "TypeFields": [
+          {
+            "Name": "mode",
+            "TypeName": "Mode",
+            "TypeId": 678
+          }
+        ],
+        "Path": [
+          "frame_metadata_hash_extension",
+          "CheckMetadataHash"
+        ],
+        "TypeParams": [
+          {
+            "Name": "T"
+          }
+        ],
+        "TypeDef": "Composite"
+      },
+      "678": {
+        "Variants": [
+          {
+            "Name": "Disabled",
+            "TypeFields": null,
+            "Index": 0
+          },
+          {
+            "Name": "Enabled",
+            "TypeFields": null,
+            "Index": 1
+          }
+        ],
+        "Path": [
+          "frame_metadata_hash_extension",
+          "Mode"
+        ],
+        "TypeDef": "Variant"
+      },
+      "679": {
         "Path": [
           "bajun_runtime",
           "Runtime"
@@ -40818,7 +40873,7 @@
           {
             "Name": "Version",
             "TypeId": 220,
-            "Value": "FGJhanVuFGJhanVuAQAAAL4CAAAAAAAAMN1xjVzFMmLUAQAAANe92KJyyg1lAQAAAN9qy2iZB2CbBQAAADfjl/x8kfXkAgAAAED+OtQB+JWaBgAAANK8mJfu0I8VAwAAAPeLJ4vlP0VMAgAAAKs8BXIpH+uLAQAAALydiZBPW5I/AQAAADfIuxNQqaKoBAAAAOqT4/FvPWliAgAAAPvFd7nXR+/WAQAAAAEAAAAB",
+            "Value": "FGJhanVuFGJhanVuAQAAAMICAAAAAAAAMN1xjVzFMmLUAQAAANe92KJyyg1lAQAAAN9qy2iZB2CbBQAAADfjl/x8kfXkAgAAAED+OtQB+JWaBgAAANK8mJfu0I8VAwAAAPeLJ4vlP0VMAgAAAKs8BXIpH+uLAQAAALydiZBPW5I/AQAAADfIuxNQqaKoBAAAAOqT4/FvPWliAgAAAPvFd7nXR+/WAQAAAAEAAAAB",
             "Docs": [
               " Get the chain's in-code version."
             ]
@@ -45736,9 +45791,14 @@
           "SignedIdentifier": "ChargeTransactionPayment",
           "SignedExtType": 676,
           "AddSignedExtType": 36
+        },
+        {
+          "SignedIdentifier": "CheckMetadataHash",
+          "SignedExtType": 677,
+          "AddSignedExtType": 32
         }
       ]
     },
-    "TypeId": 677
+    "TypeId": 679
   }
 }

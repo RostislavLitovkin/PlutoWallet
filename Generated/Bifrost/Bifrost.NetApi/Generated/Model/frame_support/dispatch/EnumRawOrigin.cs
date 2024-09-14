@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.frame_support.dispatch
     }
     
     /// <summary>
-    /// >> 109 - Variant[frame_support.dispatch.RawOrigin]
+    /// >> 112 - Variant[frame_support.dispatch.RawOrigin]
     /// </summary>
-    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, BaseVoid, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumRawOrigin : BaseEnumRust<RawOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRawOrigin()
+        {
+				AddTypeDecoder<BaseVoid>(RawOrigin.Root);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RawOrigin.Signed);
+				AddTypeDecoder<BaseVoid>(RawOrigin.None);
+        }
     }
 }

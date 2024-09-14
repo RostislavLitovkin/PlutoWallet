@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.DAppConnectionView;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
@@ -33,6 +34,12 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
         [ObservableProperty]
         private TempPayload payload;
+
+        [ObservableProperty]
+        private bool extrinsicFailedIsVisible = false;
+
+        [ObservableProperty]
+        private ButtonStateEnum confirmButtonState = ButtonStateEnum.Enabled;
 
         [ObservableProperty]
         private string estimatedFee = "Estimated fee: Loading";
@@ -114,6 +121,14 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                     if (!(events is null))
                     {
                         var extrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(client, extrinsicIndex: events.ExtrinsicIndex, events.Events, blockNumber: 0, CancellationToken.None);
+
+                        var extrinsicResult = TransactionAnalyzerModel.GetExtrinsicResult(extrinsicDetails.Events);
+                        
+                        if (extrinsicResult == ExtrinsicResult.Failed)
+                        {
+                            ExtrinsicFailedIsVisible = true;
+                            ConfirmButtonState = ButtonStateEnum.Warning;
+                        }
 
                         currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
                     }

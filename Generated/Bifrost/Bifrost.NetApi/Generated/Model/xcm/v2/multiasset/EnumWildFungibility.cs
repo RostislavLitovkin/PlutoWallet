@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 168 - Variant[xcm.v2.multiasset.WildFungibility]
+    /// >> 173 - Variant[xcm.v2.multiasset.WildFungibility]
     /// </summary>
     public sealed class EnumWildFungibility : BaseEnum<WildFungibility>
     {

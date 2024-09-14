@@ -45,7 +45,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_fast_unstake.pallet
     /// >> 319 - Variant[pallet_fast_unstake.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.register_fast_unstake);
+				AddTypeDecoder<BaseVoid>(Call.deregister);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.control);
+        }
     }
 }

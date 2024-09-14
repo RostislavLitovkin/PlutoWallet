@@ -33,7 +33,7 @@ namespace Bifrost.NetApi.Generated.Model.frame_support.dispatch
     }
     
     /// <summary>
-    /// >> 24 - Variant[frame_support.dispatch.Pays]
+    /// >> 25 - Variant[frame_support.dispatch.Pays]
     /// </summary>
     public sealed class EnumPays : BaseEnum<Pays>
     {

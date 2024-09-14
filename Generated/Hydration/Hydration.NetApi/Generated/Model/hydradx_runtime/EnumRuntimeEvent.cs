@@ -315,7 +315,72 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime
     /// <summary>
     /// >> 20 - Variant[hydradx_runtime.RuntimeEvent]
     /// </summary>
-    public sealed class EnumRuntimeEvent : BaseEnumExt<RuntimeEvent, BaseVoid, Hydration.NetApi.Generated.Model.frame_system.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_tips.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_uniques.pallet.EnumEvent, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_claims.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collator_rewards.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_omnipool.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_duster.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_otc.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_circuit_breaker.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_dca.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_route_executor.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_dynamic_fees.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_staking.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_stableswap.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_bonds.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_lbp.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_xyk.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_referrals.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.orml_tokens.module.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_currencies.module.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.orml_vesting.module.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_evm.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_ethereum.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_xyk_liquidity_mining.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.orml_xcm.module.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.orml_xtokens.module.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.orml_unknown_tokens.module.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent, BaseVoid, Hydration.NetApi.Generated.Model.pallet_session.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_relaychain_info.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_ema_oracle.pallet.EnumEvent, Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pallet.EnumEvent>
+    public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeEvent()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.frame_system.pallet.EnumEvent>(RuntimeEvent.System);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent>(RuntimeEvent.Balances);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent>(RuntimeEvent.TransactionPayment);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pallet.EnumEvent>(RuntimeEvent.MultiTransactionPayment);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent>(RuntimeEvent.Treasury);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent>(RuntimeEvent.Utility);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent>(RuntimeEvent.Preimage);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent>(RuntimeEvent.Democracy);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumEvent>(RuntimeEvent.Elections);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.Council);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.TechnicalCommittee);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_tips.pallet.EnumEvent>(RuntimeEvent.Tips);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent>(RuntimeEvent.Proxy);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent>(RuntimeEvent.Multisig);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_uniques.pallet.EnumEvent>(RuntimeEvent.Uniques);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumEvent>(RuntimeEvent.StateTrieMigration);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumEvent>(RuntimeEvent.AssetRegistry);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_claims.pallet.EnumEvent>(RuntimeEvent.Claims);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collator_rewards.pallet.EnumEvent>(RuntimeEvent.CollatorRewards);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_omnipool.pallet.EnumEvent>(RuntimeEvent.Omnipool);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet.EnumEvent>(RuntimeEvent.TransactionPause);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_duster.pallet.EnumEvent>(RuntimeEvent.Duster);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumEvent>(RuntimeEvent.OmnipoolWarehouseLM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumEvent>(RuntimeEvent.OmnipoolLiquidityMining);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_otc.pallet.EnumEvent>(RuntimeEvent.OTC);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_circuit_breaker.pallet.EnumEvent>(RuntimeEvent.CircuitBreaker);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_route_executor.pallet.EnumEvent>(RuntimeEvent.Router);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_dynamic_fees.pallet.EnumEvent>(RuntimeEvent.DynamicFees);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_staking.pallet.EnumEvent>(RuntimeEvent.Staking);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_stableswap.pallet.EnumEvent>(RuntimeEvent.Stableswap);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_bonds.pallet.EnumEvent>(RuntimeEvent.Bonds);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet.EnumEvent>(RuntimeEvent.OtcSettlements);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_lbp.pallet.EnumEvent>(RuntimeEvent.LBP);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xyk.pallet.EnumEvent>(RuntimeEvent.XYK);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_referrals.pallet.EnumEvent>(RuntimeEvent.Referrals);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_tokens.module.EnumEvent>(RuntimeEvent.Tokens);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_currencies.module.EnumEvent>(RuntimeEvent.Currencies);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_vesting.module.EnumEvent>(RuntimeEvent.Vesting);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_evm.pallet.EnumEvent>(RuntimeEvent.EVM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_ethereum.pallet.EnumEvent>(RuntimeEvent.Ethereum);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet.EnumEvent>(RuntimeEvent.EVMAccounts);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xyk_liquidity_mining.pallet.EnumEvent>(RuntimeEvent.XYKLiquidityMining);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumEvent>(RuntimeEvent.XYKWarehouseLM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_relaychain_info.pallet.EnumEvent>(RuntimeEvent.RelayChainInfo);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_dca.pallet.EnumEvent>(RuntimeEvent.DCA);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent>(RuntimeEvent.Scheduler);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent>(RuntimeEvent.ParachainSystem);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent>(RuntimeEvent.PolkadotXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent>(RuntimeEvent.CumulusXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent>(RuntimeEvent.XcmpQueue);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent>(RuntimeEvent.MessageQueue);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_xcm.module.EnumEvent>(RuntimeEvent.OrmlXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_xtokens.module.EnumEvent>(RuntimeEvent.XTokens);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_unknown_tokens.module.EnumEvent>(RuntimeEvent.UnknownTokens);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent>(RuntimeEvent.CollatorSelection);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_session.pallet.EnumEvent>(RuntimeEvent.Session);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_ema_oracle.pallet.EnumEvent>(RuntimeEvent.EmaOracle);
+        }
     }
 }

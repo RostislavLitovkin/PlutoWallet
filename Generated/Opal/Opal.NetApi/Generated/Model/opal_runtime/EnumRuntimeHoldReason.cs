@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.opal_runtime
     /// <summary>
     /// >> 451 - Variant[opal_runtime.RuntimeHoldReason]
     /// </summary>
-    public sealed class EnumRuntimeHoldReason : BaseEnumExt<RuntimeHoldReason, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumHoldReason, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>
+    public sealed class EnumRuntimeHoldReason : BaseEnumRust<RuntimeHoldReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeHoldReason()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumHoldReason>(RuntimeHoldReason.CollatorSelection);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_preimage.pallet.EnumHoldReason>(RuntimeHoldReason.Preimage);
+        }
     }
 }

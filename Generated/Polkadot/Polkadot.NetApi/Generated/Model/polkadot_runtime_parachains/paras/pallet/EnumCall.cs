@@ -81,7 +81,23 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pall
     /// >> 365 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCodeHash, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.PvfCheckStatement, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Signature>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode>>(Call.force_set_current_code);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>>(Call.force_set_current_head);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_schedule_code_upgrade);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData>>(Call.force_note_new_head);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Call.force_queue_action);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode>(Call.add_trusted_validation_code);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCodeHash>(Call.poke_unused_validation_code);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.PvfCheckStatement, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Signature>>(Call.include_pvf_check_statement);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_set_most_recent_context);
+        }
     }
 }

@@ -95,7 +95,28 @@ namespace Bajun.NetApi.Generated.Model.sp_runtime
     /// <summary>
     /// >> 26 - Variant[sp_runtime.DispatchError]
     /// </summary>
-    public sealed class EnumDispatchError : BaseEnumExt<DispatchError, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.sp_runtime.ModuleError, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.sp_runtime.EnumTokenError, Bajun.NetApi.Generated.Model.sp_arithmetic.EnumArithmeticError, Bajun.NetApi.Generated.Model.sp_runtime.EnumTransactionalError, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumDispatchError : BaseEnumRust<DispatchError>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumDispatchError()
+        {
+				AddTypeDecoder<BaseVoid>(DispatchError.Other);
+				AddTypeDecoder<BaseVoid>(DispatchError.CannotLookup);
+				AddTypeDecoder<BaseVoid>(DispatchError.BadOrigin);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.ModuleError>(DispatchError.Module);
+				AddTypeDecoder<BaseVoid>(DispatchError.ConsumerRemaining);
+				AddTypeDecoder<BaseVoid>(DispatchError.NoProviders);
+				AddTypeDecoder<BaseVoid>(DispatchError.TooManyConsumers);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.EnumTokenError>(DispatchError.Token);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_arithmetic.EnumArithmeticError>(DispatchError.Arithmetic);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.EnumTransactionalError>(DispatchError.Transactional);
+				AddTypeDecoder<BaseVoid>(DispatchError.Exhausted);
+				AddTypeDecoder<BaseVoid>(DispatchError.Corruption);
+				AddTypeDecoder<BaseVoid>(DispatchError.Unavailable);
+				AddTypeDecoder<BaseVoid>(DispatchError.RootNotAllowed);
+        }
     }
 }

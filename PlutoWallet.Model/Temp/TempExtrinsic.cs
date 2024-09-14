@@ -81,6 +81,7 @@ public class TempExtrinsic
     //   chargeType:
     internal TempExtrinsic(Memory<byte> memory, ChargeType chargeType)
     {
+        Console.WriteLine("Trying to decode extrinsic");
         int p = 0;
         CompactInteger.Decode(memory.ToArray(), ref p);
         int num = 1;

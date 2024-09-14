@@ -4,8 +4,7 @@ using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi;
 using Newtonsoft.Json.Linq;
-using Substrate.NetApi.Generated.Model.pallet_nfts.types;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json;
 using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
@@ -156,7 +155,7 @@ Hopefully it will fulfill the test functionalities correctly.",
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
 
-            ItemMetadata result = await client.GetStorageAsync<ItemMetadata>(parameters, token);
+            var result = await client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.ItemMetadata>(parameters, token);
 
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
@@ -217,7 +216,7 @@ Hopefully it will fulfill the test functionalities correctly.",
             {
                 var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Uniques", "InstanceMetadataOf")) + collectionItemId;
 
-                var result = await client.GetStorageAsync<Substrate.NetApi.Generated.Model.pallet_uniques.types.ItemMetadata>(parameters, CancellationToken.None);
+                var result = await client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_uniques.types.ItemMetadata>(parameters, CancellationToken.None);
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 

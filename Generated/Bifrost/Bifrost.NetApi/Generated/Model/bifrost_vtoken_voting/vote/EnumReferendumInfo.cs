@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote
     }
     
     /// <summary>
-    /// >> 412 - Variant[bifrost_vtoken_voting.vote.ReferendumInfo]
+    /// >> 433 - Variant[bifrost_vtoken_voting.vote.ReferendumInfo]
     /// </summary>
-    public sealed class EnumReferendumInfo : BaseEnumExt<ReferendumInfo, Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote.ReferendumStatus, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumReferendumInfo : BaseEnumRust<ReferendumInfo>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumReferendumInfo()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote.ReferendumStatus>(ReferendumInfo.Ongoing);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(ReferendumInfo.Completed);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(ReferendumInfo.Killed);
+        }
     }
 }

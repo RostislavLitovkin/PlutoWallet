@@ -52,15 +52,35 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
         CumulusXcm = 42,
         
         /// <summary>
+        /// >> Ethereum
+        /// </summary>
+        Ethereum = 65,
+        
+        /// <summary>
         /// >> Void
         /// </summary>
-        Void = 6,
+        Void = 7,
     }
     
     /// <summary>
-    /// >> 108 - Variant[bifrost_polkadot_runtime.OriginCaller]
+    /// >> 111 - Variant[bifrost_polkadot_runtime.OriginCaller]
     /// </summary>
-    public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, Bifrost.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, Bifrost.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.governance.origins.custom_origins.EnumOrigin, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin, Bifrost.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>
+    public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOriginCaller()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.Council);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.TechnicalCommittee);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.governance.origins.custom_origins.EnumOrigin>(OriginCaller.Origins);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.PolkadotXcm);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>(OriginCaller.CumulusXcm);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_ethereum.EnumRawOrigin>(OriginCaller.Ethereum);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
+        }
     }
 }

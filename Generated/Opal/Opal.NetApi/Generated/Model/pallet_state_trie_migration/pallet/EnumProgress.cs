@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     /// <summary>
     /// >> 93 - Variant[pallet_state_trie_migration.pallet.Progress]
     /// </summary>
-    public sealed class EnumProgress : BaseEnumExt<Progress, BaseVoid, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1, BaseVoid>
+    public sealed class EnumProgress : BaseEnumRust<Progress>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumProgress()
+        {
+				AddTypeDecoder<BaseVoid>(Progress.ToStart);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1>(Progress.LastKey);
+				AddTypeDecoder<BaseVoid>(Progress.Complete);
+        }
     }
 }

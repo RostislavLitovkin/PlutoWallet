@@ -24,16 +24,26 @@ namespace Bifrost.NetApi.Generated.Model.orml_oracle.module
         
         /// <summary>
         /// >> feed_values
-        /// See [`Pallet::feed_values`].
+        /// Feed the external value.
+        /// 
+        /// Require authorized operator.
         /// </summary>
         feed_values = 0,
     }
     
     /// <summary>
-    /// >> 423 - Variant[orml_oracle.module.Call]
+    /// >> 444 - Variant[orml_oracle.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10>(Call.feed_values);
+        }
     }
 }

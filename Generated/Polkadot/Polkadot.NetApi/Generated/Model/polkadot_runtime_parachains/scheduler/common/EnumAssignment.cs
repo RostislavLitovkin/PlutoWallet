@@ -35,7 +35,16 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.
     /// <summary>
     /// >> 766 - Variant[polkadot_runtime_parachains.scheduler.common.Assignment]
     /// </summary>
-    public sealed class EnumAssignment : BaseEnumExt<Assignment, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex>, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
+    public sealed class EnumAssignment : BaseEnumRust<Assignment>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssignment()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex>>(Assignment.Pool);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Assignment.Bulk);
+        }
     }
 }

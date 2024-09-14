@@ -213,9 +213,54 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
     }
     
     /// <summary>
-    /// >> 244 - Variant[pallet_identity.types.Data]
+    /// >> 252 - Variant[pallet_identity.types.Data]
     /// </summary>
-    public sealed class EnumData : BaseEnumExt<Data, BaseVoid, Bifrost.NetApi.Generated.Types.Base.Arr0U8, Bifrost.NetApi.Generated.Types.Base.Arr1U8, Bifrost.NetApi.Generated.Types.Base.Arr2U8, Bifrost.NetApi.Generated.Types.Base.Arr3U8, Bifrost.NetApi.Generated.Types.Base.Arr4U8, Bifrost.NetApi.Generated.Types.Base.Arr5U8, Bifrost.NetApi.Generated.Types.Base.Arr6U8, Bifrost.NetApi.Generated.Types.Base.Arr7U8, Bifrost.NetApi.Generated.Types.Base.Arr8U8, Bifrost.NetApi.Generated.Types.Base.Arr9U8, Bifrost.NetApi.Generated.Types.Base.Arr10U8, Bifrost.NetApi.Generated.Types.Base.Arr11U8, Bifrost.NetApi.Generated.Types.Base.Arr12U8, Bifrost.NetApi.Generated.Types.Base.Arr13U8, Bifrost.NetApi.Generated.Types.Base.Arr14U8, Bifrost.NetApi.Generated.Types.Base.Arr15U8, Bifrost.NetApi.Generated.Types.Base.Arr16U8, Bifrost.NetApi.Generated.Types.Base.Arr17U8, Bifrost.NetApi.Generated.Types.Base.Arr18U8, Bifrost.NetApi.Generated.Types.Base.Arr19U8, Bifrost.NetApi.Generated.Types.Base.Arr20U8, Bifrost.NetApi.Generated.Types.Base.Arr21U8, Bifrost.NetApi.Generated.Types.Base.Arr22U8, Bifrost.NetApi.Generated.Types.Base.Arr23U8, Bifrost.NetApi.Generated.Types.Base.Arr24U8, Bifrost.NetApi.Generated.Types.Base.Arr25U8, Bifrost.NetApi.Generated.Types.Base.Arr26U8, Bifrost.NetApi.Generated.Types.Base.Arr27U8, Bifrost.NetApi.Generated.Types.Base.Arr28U8, Bifrost.NetApi.Generated.Types.Base.Arr29U8, Bifrost.NetApi.Generated.Types.Base.Arr30U8, Bifrost.NetApi.Generated.Types.Base.Arr31U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8>
+    public sealed class EnumData : BaseEnumRust<Data>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumData()
+        {
+				AddTypeDecoder<BaseVoid>(Data.None);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr0U8>(Data.Raw0);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr1U8>(Data.Raw1);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr2U8>(Data.Raw2);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr3U8>(Data.Raw3);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr4U8>(Data.Raw4);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr5U8>(Data.Raw5);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr6U8>(Data.Raw6);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr7U8>(Data.Raw7);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr8U8>(Data.Raw8);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr9U8>(Data.Raw9);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr10U8>(Data.Raw10);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr11U8>(Data.Raw11);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr12U8>(Data.Raw12);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr13U8>(Data.Raw13);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr14U8>(Data.Raw14);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr15U8>(Data.Raw15);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr16U8>(Data.Raw16);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr17U8>(Data.Raw17);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr18U8>(Data.Raw18);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr19U8>(Data.Raw19);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr20U8>(Data.Raw20);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr21U8>(Data.Raw21);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr22U8>(Data.Raw22);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr23U8>(Data.Raw23);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr24U8>(Data.Raw24);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr25U8>(Data.Raw25);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr26U8>(Data.Raw26);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr27U8>(Data.Raw27);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr28U8>(Data.Raw28);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr29U8>(Data.Raw29);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr30U8>(Data.Raw30);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr31U8>(Data.Raw31);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Data.Raw32);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Data.BlakeTwo256);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Data.Sha256);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Data.Keccak256);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Data.ShaThree256);
+        }
     }
 }

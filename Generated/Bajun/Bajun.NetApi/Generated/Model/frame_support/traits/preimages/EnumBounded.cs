@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.frame_support.traits.preimages
     /// <summary>
     /// >> 403 - Variant[frame_support.traits.preimages.Bounded]
     /// </summary>
-    public sealed class EnumBounded : BaseEnumExt<Bounded, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20, BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumBounded : BaseEnumRust<Bounded>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBounded()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Bounded.Legacy);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>(Bounded.Inline);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Bounded.Lookup);
+        }
     }
 }

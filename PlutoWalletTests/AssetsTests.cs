@@ -149,12 +149,4 @@ public class PolkadotAssetHubAssetsTests
             Console.WriteLine(ex);
         }
     }
-
-    [Test]
-    public async Task Tokens()
-    {
-        var tokens = await AssetsModel.GetTokensBalance(client, substrateAddress, CancellationToken.None);
-
-        Console.WriteLine("Tokens: " + tokens.Count());
-    }
 }

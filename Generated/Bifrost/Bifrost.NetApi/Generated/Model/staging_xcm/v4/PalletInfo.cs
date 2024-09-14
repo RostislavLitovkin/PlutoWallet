@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4
     
     
     /// <summary>
-    /// >> 206 - Composite[staging_xcm.v4.PalletInfo]
+    /// >> 212 - Composite[staging_xcm.v4.PalletInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PalletInfo : BaseType
@@ -31,11 +31,11 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4
         /// <summary>
         /// >> name
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 Name { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 Name { get; set; }
         /// <summary>
         /// >> module_name
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5 ModuleName { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 ModuleName { get; set; }
         /// <summary>
         /// >> major
         /// </summary>
@@ -74,9 +74,9 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4
             var start = p;
             Index = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Index.Decode(byteArray, ref p);
-            Name = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5();
+            Name = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
             Name.Decode(byteArray, ref p);
-            ModuleName = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5();
+            ModuleName = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
             ModuleName.Decode(byteArray, ref p);
             Major = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Major.Decode(byteArray, ref p);

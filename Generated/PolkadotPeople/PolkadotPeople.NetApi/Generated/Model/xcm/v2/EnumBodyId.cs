@@ -75,7 +75,24 @@ namespace PolkadotPeople.NetApi.Generated.Model.xcm.v2
     /// <summary>
     /// >> 99 - Variant[xcm.v2.BodyId]
     /// </summary>
-    public sealed class EnumBodyId : BaseEnumExt<BodyId, BaseVoid, PolkadotPeople.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT1, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumBodyId : BaseEnumRust<BodyId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBodyId()
+        {
+				AddTypeDecoder<BaseVoid>(BodyId.Unit);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT1>(BodyId.Named);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(BodyId.Index);
+				AddTypeDecoder<BaseVoid>(BodyId.Executive);
+				AddTypeDecoder<BaseVoid>(BodyId.Technical);
+				AddTypeDecoder<BaseVoid>(BodyId.Legislative);
+				AddTypeDecoder<BaseVoid>(BodyId.Judicial);
+				AddTypeDecoder<BaseVoid>(BodyId.Defense);
+				AddTypeDecoder<BaseVoid>(BodyId.Administration);
+				AddTypeDecoder<BaseVoid>(BodyId.Treasury);
+        }
     }
 }

@@ -34,10 +34,19 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_clouds_convert.pallet
     }
     
     /// <summary>
-    /// >> 506 - Variant[bifrost_clouds_convert.pallet.Event]
+    /// >> 541 - Variant[bifrost_clouds_convert.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.U128>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.CloudsConverted);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.VbncCharged);
+        }
     }
 }
