@@ -11,8 +11,6 @@ namespace UniqueryPlus.Collections
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubCollectionModel.GetCollectionsNftsPalletOwnedByAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 _ => throw new NotImplementedException()
             };
-
-            // Get collections owned by the owner
         }
     }
 }
