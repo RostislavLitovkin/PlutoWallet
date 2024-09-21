@@ -12,11 +12,14 @@ using SubstrateCollectionMetadata = PolkadotAssetHub.NetApi.Generated.Model.pall
 using Substrate.NetApi.Model.Types.Base;
 using UniqueryPlus;
 using UniqueryPlus.External;
+using Microsoft.Extensions.DependencyInjection;
+using Speck;
+using StrawberryShake;
 
 namespace UniqueryPlus.Collections
 {
 
-    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig
+    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig, ICollectionStats, ICollectionCreatedAt
     {
         private SubstrateClientExt client;
         public uint? NftMaxSuply { get; set; }
@@ -24,6 +27,10 @@ namespace UniqueryPlus.Collections
         public BigInteger? MintStartBlock { get; set; }
         public BigInteger? MintEndBlock { get; set; }
         public BigInteger? MintPrice { get; set; }
+        public required BigInteger HighestSale { get; set; }
+        public required BigInteger FloorPrice { get; set; }
+        public required BigInteger Volume { get; set; }
+        public required DateTimeOffset CreatedAt { get; set; }
         public PolkadotAssetHubNftsPalletCollectionFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
@@ -71,6 +78,12 @@ namespace UniqueryPlus.Collections
         {
             var mintConfig = await PolkadotAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, default);
 
+            var speckClient = Indexers.GetSpeckClient();
+
+            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString());
+            
+            collectionStats.EnsureNoErrors();
+
             return new PolkadotAssetHubNftsPalletCollectionFull(client)
             {
                 CollectionId = CollectionId,
@@ -82,6 +95,10 @@ namespace UniqueryPlus.Collections
                 MintStartBlock = mintConfig.MintStartBlock,
                 MintEndBlock = mintConfig.MintEndBlock,
                 NftMaxSuply = mintConfig.NftMaxSuply,
+                FloorPrice = BigInteger.Parse(collectionStats.Data?.CollectionEntityById?.Floor ?? "0"),
+                HighestSale = BigInteger.Parse(collectionStats.Data?.CollectionEntityById?.HighestSale ?? "0"),
+                Volume = BigInteger.Parse(collectionStats.Data?.CollectionEntityById?.Volume ?? "0"),
+                CreatedAt = collectionStats.Data?.CollectionEntityById?.CreatedAt ?? default
             };
         }
     }
@@ -113,6 +130,20 @@ namespace UniqueryPlus.Collections
             // Filter only the CollectionId keys
             var collectionIdKeys = fullKeys.Select(p => p.ToString().Substring(keyPrefixLength));
 
+            return await GetCollectionsNftsPalletByIdKeysAsync(client, collectionIdKeys, fullKeys.Last().ToString(), token);
+        }
+
+        internal static async Task<ICollectionBase> GetCollectionNftsPalletByCollectionIdAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
+        {
+            var collectionIdKey = NftsStorage.CollectionParams(new U32(collectionId)).Substring(Constants.BASE_STORAGE_KEY_LENGTH);
+
+            var result = await GetCollectionsNftsPalletByIdKeysAsync(client, [collectionIdKey], "", token);
+
+            return result.Items.First();
+        }
+
+        internal static async Task<RecursiveReturn<ICollectionBase>> GetCollectionsNftsPalletByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> collectionIdKeys, string lastKey, CancellationToken token)
+        {
             var collectionIds = collectionIdKeys.Select(Helpers.GetBigIntegerFromBlake2_128Concat);
 
             var collectionDetails = await GetCollectionCollectionNftsPalletByCollectionIdKeysAsync(client, collectionIdKeys, token);
@@ -128,13 +159,13 @@ namespace UniqueryPlus.Collections
                         null => new PolkadotAssetHubNftsPalletCollection(client)
                         {
                             CollectionId = collectionId,
-                            Owner = owner,
+                            Owner = "Unknown",
                             NftCount = 0
                         },
                         _ => new PolkadotAssetHubNftsPalletCollection(client)
                         {
                             CollectionId = collectionId,
-                            Owner = owner,
+                            Owner = Utils.GetAddressFrom(details.Owner.Encode()),
                             NftCount = details.Items.Value
                         }
                     };
@@ -143,7 +174,7 @@ namespace UniqueryPlus.Collections
                     collectionBase.Metadata = metadata;
                     return collectionBase;
                 }),
-                LastKey = Utils.HexToByteArray(fullKeys.Last().ToString())
+                LastKey = Utils.HexToByteArray(lastKey)
             };
         }
 

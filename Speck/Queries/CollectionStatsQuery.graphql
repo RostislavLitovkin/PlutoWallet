@@ -1,0 +1,9 @@
+query GetCollectionStats ($id: String!) {
+  collectionEntityById(id: $id) {
+    highestSale
+    floor
+    volume
+    royalty
+    createdAt
+  }
+}

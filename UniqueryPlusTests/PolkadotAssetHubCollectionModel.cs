@@ -39,7 +39,7 @@ namespace UniqueryPlusTests
         }
 
         [Test]
-        public async Task TestGetCollectionsByOwned()
+        public async Task TestGetCollectionsByOwnedAsync()
         {
             var collections = await CollectionModel.GetCollectionsOwnedByAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, address, 10, null, CancellationToken.None);
 
@@ -54,9 +54,9 @@ namespace UniqueryPlusTests
 
             foreach(var collection in collections.Items)
             {
-                Console.WriteLine(collection.Metadata?.Name);
+                Assert.That(collection.Metadata?.Name, Is.EqualTo("Double Pendulum"));
                 Console.WriteLine(collection.Metadata?.Description);
-                Console.WriteLine("Image: " + collection.Metadata?.Image);
+                Assert.That(collection.Metadata?.Image, Is.EqualTo("ipfs://bafkreiev3vnvnqcyygjqwalwajgnqfzl5ywwud7wy3yhtpxnql5joyxnte"));
             }
 
 
@@ -115,6 +115,41 @@ namespace UniqueryPlusTests
             Assert.That(mintConfig.MintType.Type, Is.EqualTo(MintTypeEnum.Public));
             Assert.That(mintConfig.MintPrice, Is.EqualTo((BigInteger)2000000000));
 
+            #endregion
+        }
+
+        [Test]
+        public async Task TestGetCollectionByCollectionIdAsync()
+        {
+            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 82, CancellationToken.None);
+
+            Assert.That(collection.Metadata?.Name, Is.EqualTo("Alchemy"));
+            Console.WriteLine(collection.Metadata?.Description);
+            Assert.That(collection.Metadata?.Image, Is.EqualTo("ipfs://bafkreifb6mmup67vdnbz76gmck27salfjpgt57xalspgcxpsm3fplekb7i"));
+
+            #region GetFullCollection
+
+            var fullCollection = await collection.GetFullAsync();
+
+            Assert.That(fullCollection is ICollectionMintConfig);
+
+            var mintConfig = fullCollection as ICollectionMintConfig;
+
+            Assert.That(mintConfig.NftMaxSuply, Is.EqualTo(256));
+            Assert.That(mintConfig.MintStartBlock, Is.Null);
+            Assert.That(mintConfig.MintEndBlock, Is.Null);
+            Assert.That(mintConfig.MintType.Type, Is.EqualTo(MintTypeEnum.Public));
+            Assert.That(mintConfig.MintPrice, Is.EqualTo(BigInteger.Parse("3000000000")));
+
+            Assert.That(fullCollection is ICollectionCreatedAt);
+            var createdAt = fullCollection as ICollectionCreatedAt;
+            Assert.That(createdAt.CreatedAt, Is.EqualTo(new DateTimeOffset(2024, 1, 22, 14, 33, 0, default)));
+
+            Assert.That(fullCollection is ICollectionStats);
+            var collectionStats = fullCollection as ICollectionStats;
+            Assert.That(collectionStats.HighestSale, Is.EqualTo(BigInteger.Parse("330000000000")));
+            Assert.That(collectionStats.FloorPrice, Is.EqualTo(BigInteger.Parse("4990000000")));
+            Assert.That(collectionStats.Volume, Is.EqualTo(BigInteger.Parse("2404598099999")));
             #endregion
         }
     }

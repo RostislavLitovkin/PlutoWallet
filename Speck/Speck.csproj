@@ -7,8 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
-    <ProjectReference Include="..\Speck\Speck.csproj" />
+    <GraphQL Remove="CollectionStatsQuery.graphql" />
+    <GraphQL Remove="Query\CollectionStatsQuery.graphql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StrawberryShake.Server" Version="14.0.0-rc.2" />
   </ItemGroup>
 
 </Project>

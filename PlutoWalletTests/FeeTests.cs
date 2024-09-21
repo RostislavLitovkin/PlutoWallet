@@ -33,7 +33,7 @@ namespace PlutoWalletTests
         {
             var fee = await FeeModel.GetNativeTransferFeeAsync(client);
 
-            Assert.Greater(fee, 0);
+            Assert.Greater(fee.Amount, 0);
         }
     }
 }
