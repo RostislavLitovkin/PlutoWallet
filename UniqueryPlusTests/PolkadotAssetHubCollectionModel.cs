@@ -11,7 +11,7 @@ namespace UniqueryPlusTests
 {
     internal class PolkadotAssetHubCollectionModelTests
     {
-        private const string address = "126eGrTyNjEE8b2tCpaaJw7FmjjCHvc3VEDoudPDCAMz55Kz";
+        private const string address = "5DAM8XCuWwxkh42NFBXaAnH6v7jYbd3uQjVKkLPre5LTtmTL";
 
 #pragma warning disable NUnit1032 // An IDisposable field/property should be Disposed in a TearDown method
         private SubstrateClientExt client;
@@ -73,6 +73,34 @@ namespace UniqueryPlusTests
             }
             #endregion
 
+            #region GetFirst3Nfts owned by
+            var ownedBy = "5CaUEtkTHmVM9aQ6XwiPkKcGscaKKxo5Zy2bCp2sRSXCevRf";
+
+            var first3NftsOwnedBy = await firstCollection.GetNftsOwnedByAsync(ownedBy, 3, null, CancellationToken.None);
+
+            Assert.That(first3NftsOwnedBy.Count(), Is.EqualTo(3));
+
+            foreach (var nft in first3NftsOwnedBy)
+            {
+                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Assert.That(nft.Owner, Is.EqualTo(ownedBy));
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
+
+            var otherFirst3NftsOwnedBy = await firstCollection.GetNftsOwnedByAsync(address, 3, null, CancellationToken.None);
+
+            Assert.That(otherFirst3NftsOwnedBy.Count(), Is.EqualTo(3));
+
+            foreach (var nft in otherFirst3NftsOwnedBy)
+            {
+                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Assert.That(nft.Owner, Is.EqualTo(address));
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
+            #endregion
+
             #region GetFullCollection
 
             var fullCollection = await firstCollection.GetFullAsync();
@@ -88,7 +116,6 @@ namespace UniqueryPlusTests
             Assert.That(mintConfig.MintPrice, Is.EqualTo((BigInteger)2000000000));
 
             #endregion
-
         }
     }
 }

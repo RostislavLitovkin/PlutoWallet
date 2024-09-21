@@ -50,7 +50,19 @@ namespace UniqueryPlus.Collections
                 return [];
             }
 
-            var result = await PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionIdAsync(client, (uint)CollectionId, limit, lastKey, token);
+            var result = await PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token);
+
+            return result.Items;
+        }
+
+        public async Task<IEnumerable<INftBase>> GetNftsOwnedByAsync(string owner, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            if (NftCount == 0)
+            {
+                return [];
+            }
+
+            var result = await PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionOwnedByAsync(client, (uint)CollectionId, owner, limit, lastKey, token);
 
             return result.Items;
         }

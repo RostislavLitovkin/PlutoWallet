@@ -20,7 +20,7 @@ namespace UniqueryPlus.Nfts
     }
     internal class PolkadotAssetHubNftModel
     {
-        internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionIdAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
+        internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat U32
             var keyPrefixLength = 106;
@@ -71,6 +71,37 @@ namespace UniqueryPlus.Nfts
 
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(keyPrefixLength));
+
+            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+        }
+
+        internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionOwnedByAsync(SubstrateClientExt client, uint collectionId, string owner, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            var accountId32 = new AccountId32();
+            accountId32.Create(Utils.GetPublicKeyFrom(owner));
+
+            // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat accountId32 + Blake2_128Concat collectionId
+            var keyPrefixLength = 202;
+
+            var keyPrefix = Utils.HexToByteArray(NftsStorage.AccountParams(new BaseTuple<AccountId32, U32, U32>(accountId32, new U32(collectionId), new U32(0))).Substring(0, keyPrefixLength));
+
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+
+            // No more nfts found
+            if (fullKeys == null || !fullKeys.Any())
+            {
+                return new RecursiveReturn<INftBase>
+                {
+                    Items = [],
+                    LastKey = lastKey,
+                };
+            }
+
+            // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat accountId32
+            var baseStoragePrefixLength = 162;
+
+            // Filter only the nft Id keys
+            var idKeys = fullKeys.Select(p => p.ToString().Substring(baseStoragePrefixLength));
 
             return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }
