@@ -6,7 +6,6 @@ namespace UniqueryPlus
 {
     public static class Helpers
     {
-
         public static U32 GetU32FromBlake2_128Concat(string hash)
         {
             if (hash.Substring(0, 2).Equals("0x") || hash.Substring(0, 2).Equals("0X"))
@@ -138,6 +137,20 @@ namespace UniqueryPlus
             }
 
             throw new Exception("Hash is in bad format");
+        }
+
+        public static BigInteger? GetValueOrNull(this Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> value)
+        {
+            if (value.OptionFlag)
+                return value.Value;
+            return null;
+        }
+
+        public static uint? GetValueOrNull(this Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> value)
+        {
+            if (value.OptionFlag)
+                return value.Value;
+            return null;
         }
     }
 }

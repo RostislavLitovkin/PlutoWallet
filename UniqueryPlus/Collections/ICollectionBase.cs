@@ -12,5 +12,6 @@ namespace UniqueryPlus.Collections
         public uint NftCount { get; set; }
         public ICollectionMetadataBase? Metadata { get; set; }
         public Task<IEnumerable<INftBase>> GetNftsAsync(uint limit, byte[]? lastKey, CancellationToken token);
+        public Task<ICollectionBase> GetFullAsync();
     }
 }

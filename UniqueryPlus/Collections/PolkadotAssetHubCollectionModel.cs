@@ -10,11 +10,27 @@ using UniqueryPlus.Ipfs;
 using UniqueryPlus.Nfts;
 using SubstrateCollectionMetadata = PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata;
 using Substrate.NetApi.Model.Types.Base;
+using UniqueryPlus;
+using UniqueryPlus.External;
 
 namespace UniqueryPlus.Collections
 {
 
-    public class PolkadotAssetHubNftsPalletCollection : ICollectionBase
+    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig
+    {
+        private SubstrateClientExt client;
+        public uint? NftMaxSuply { get; set; }
+        public required MintType MintType { get; set; }
+        public BigInteger? MintStartBlock { get; set; }
+        public BigInteger? MintEndBlock { get; set; }
+        public BigInteger? MintPrice { get; set; }
+        public PolkadotAssetHubNftsPalletCollectionFull(SubstrateClientExt client) : base(client)
+        {
+            this.client = client;
+        }
+    }
+
+    public class PolkadotAssetHubNftsPalletCollection : ICollectionBase, IKodaLink
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
@@ -22,7 +38,7 @@ namespace UniqueryPlus.Collections
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
         public ICollectionMetadataBase? Metadata { get; set; }
-
+        public string KodaLink => $"https://koda.art/ahp/collection/{CollectionId}";
         public PolkadotAssetHubNftsPalletCollection(SubstrateClientExt client)
         {
             this.client = client;
@@ -37,6 +53,24 @@ namespace UniqueryPlus.Collections
             var result = await PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionIdAsync(client, (uint)CollectionId, limit, lastKey, token);
 
             return result.Items;
+        }
+
+        public async Task<ICollectionBase> GetFullAsync()
+        {
+            var mintConfig = await PolkadotAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, default);
+
+            return new PolkadotAssetHubNftsPalletCollectionFull(client)
+            {
+                CollectionId = CollectionId,
+                Owner = Owner,
+                NftCount = NftCount,
+                Metadata = Metadata,
+                MintType = mintConfig.MintType,
+                MintPrice = mintConfig.MintPrice,
+                MintStartBlock = mintConfig.MintStartBlock,
+                MintEndBlock = mintConfig.MintEndBlock,
+                NftMaxSuply = mintConfig.NftMaxSuply,
+            };
         }
     }
 
@@ -149,6 +183,35 @@ namespace UniqueryPlus.Collections
             };
 
             return metadatas;
+        }
+
+        internal static async Task<CollectionMintConfig> GetCollectionMintConfigNftsPalletAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
+        {
+            var collectionMintConfig = await client.NftsStorage.CollectionConfigOf(new U32(collectionId), null, token);
+
+            return new CollectionMintConfig
+            {
+                MintType = collectionMintConfig.MintSettings.MintType.Value switch
+                {
+                    PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.Public => new MintType
+                    {
+                        Type = MintTypeEnum.Public,
+                    },
+                    PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.Issuer => new MintType
+                    {
+                        Type = MintTypeEnum.Issuer,
+                    },
+                    PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.HolderOf => new MintType
+                    {
+                        Type = MintTypeEnum.HolderOfCollection,
+                        CollectionId = (U32)collectionMintConfig.MintSettings.MintType.Value2
+                    }
+                },
+                MintPrice = collectionMintConfig.MintSettings.Price.GetValueOrNull(),
+                MintStartBlock = collectionMintConfig.MintSettings.StartBlock.GetValueOrNull(),
+                MintEndBlock = collectionMintConfig.MintSettings.EndBlock.GetValueOrNull(),
+                NftMaxSuply = collectionMintConfig.MaxSupply.GetValueOrNull(),
+            };
         }
     }
 }

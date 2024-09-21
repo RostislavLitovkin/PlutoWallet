@@ -59,6 +59,8 @@ namespace UniqueryPlusTests
                 Console.WriteLine("Image: " + collection.Metadata?.Image);
             }
 
+
+            #region GetFirst3Nfts
             var first3Nfts = await firstCollection.GetNftsAsync(3, null, CancellationToken.None);
 
             Assert.That(first3Nfts.Count(), Is.EqualTo(3));
@@ -69,6 +71,24 @@ namespace UniqueryPlusTests
                 Assert.That(nft.Metadata?.Description, Is.Not.Null);
                 Console.WriteLine("Image: " + nft.Metadata?.Image);
             }
+            #endregion
+
+            #region GetFullCollection
+
+            var fullCollection = await firstCollection.GetFullAsync();
+
+            Assert.That(fullCollection is ICollectionMintConfig);
+
+            var mintConfig = fullCollection as ICollectionMintConfig;
+
+            Assert.That(mintConfig.NftMaxSuply, Is.Null);
+            Assert.That(mintConfig.MintStartBlock, Is.Null);
+            Assert.That(mintConfig.MintEndBlock, Is.Null);
+            Assert.That(mintConfig.MintType.Type, Is.EqualTo(MintTypeEnum.Public));
+            Assert.That(mintConfig.MintPrice, Is.EqualTo((BigInteger)2000000000));
+
+            #endregion
+
         }
     }
 }
