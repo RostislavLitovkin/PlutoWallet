@@ -4,9 +4,9 @@
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.PredefinedLayouts.HydrationOmnipoolLayoutItem"
             HeightRequest="60">
-    <card:Card Color="#031538"
+    <card:ClickableCard Color="#031538"
                CardPadding="0">
-        <card:Card.View>
+        <card:ClickableCard.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All"
                             Margin="10">
@@ -44,7 +44,7 @@
                 </AbsoluteLayout>
                 
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>
 

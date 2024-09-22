@@ -1,37 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<card:ClickableCard xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PlutoWallet.Components.Card.Card"
-             ZIndex="10">
-    <Border
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-            StrokeThickness="0"
-            Padding="10, 0, 10, 0"
-            x:Name="border"
-            >
-        <Border.StrokeShape>
-            <RoundRectangle CornerRadius="20"
-                            x:Name="roundRectangle"/>
+                    xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Card.Card">
+    <card:ClickableCard.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
 
-        </Border.StrokeShape>
-        <Border.Shadow>
-            <Shadow Brush="Black"
-                    Offset="0,2" 
-                    Radius="20"
-                    Opacity="0.1" />
+    </card:ClickableCard.GestureRecognizers>
 
-        </Border.Shadow>
-        <Border.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-        </Border.GestureRecognizers>
-        <!--BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"-->
-        <ContentView x:Name="contentView"
-                     HorizontalOptions="Center"
-                     VerticalOptions="Center"
-                     >
-        </ContentView>
-    </Border>
-</ContentView>
+</card:ClickableCard>
 
