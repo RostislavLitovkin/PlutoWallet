@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UniqueryPlus.Collections
 {
-    internal class CollectionMintConfig : ICollectionMintConfig
+    public class CollectionMintConfig : ICollectionMintConfig
     {
         public uint? NftMaxSuply { get; set; }
         public required MintType MintType { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Substrate.NetApi;
+using Substrate.NetApi.Model.Extrinsics;
 
 namespace UniqueryPlus.Collections
 {
@@ -20,7 +21,15 @@ namespace UniqueryPlus.Collections
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
                 _ => throw new NotImplementedException()
             };
+        }
 
+        public static Method CreateCollection(NftTypeEnum type, string adminAddress, CollectionMintConfig config)
+        {
+            return type switch
+            {
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
+                _ => throw new NotImplementedException(),
+            };
         }
     }
 }

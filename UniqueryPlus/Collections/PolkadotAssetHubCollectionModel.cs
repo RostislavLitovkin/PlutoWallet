@@ -232,6 +232,15 @@ namespace UniqueryPlus.Collections
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(collectionMetadata.Data.Value.Bytes);
 
+                Console.WriteLine("ipfsLink: " + ipfsLink);
+                Console.WriteLine(ipfsLink is null);
+
+                if (ipfsLink is null)
+                {
+                    metadatas.Add(null);
+                    continue;
+                }
+
                 metadatas.Add(await IpfsModel.GetMetadataAsync<CollectionMetadata>(ipfsLink, token));
             };
 
@@ -265,6 +274,48 @@ namespace UniqueryPlus.Collections
                 MintEndBlock = collectionMintConfig.MintSettings.EndBlock.GetValueOrNull(),
                 NftMaxSuply = collectionMintConfig.MaxSupply.GetValueOrNull(),
             };
+        }
+        internal static Method CreateCollectionNftsPallet(string adminAddress, CollectionMintConfig collectionConfig)
+        {
+            var accountId = new AccountId32();
+            accountId.Create(Utils.GetPublicKeyFrom(adminAddress));
+
+            var multiAddress = new EnumMultiAddress();
+            multiAddress.Create(MultiAddress.Id, accountId);
+
+
+            var mintType = new PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.EnumMintType();
+            switch (collectionConfig.MintType.Type)
+            {
+                case MintTypeEnum.HolderOfCollection:
+                    if (collectionConfig.MintType.CollectionId is null) throw new Exception("CollectionId can not be null when MintType is HolderOfCollection");
+                    mintType.Create(PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.HolderOf, new U32((uint)collectionConfig.MintType.CollectionId));
+                    break;
+                case MintTypeEnum.Issuer:   
+                    mintType.Create(PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.Issuer, new BaseVoid());
+                    break;
+                case MintTypeEnum.Public:
+                    mintType.Create(PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.MintType.Public, new BaseVoid());
+                    break;
+            }
+
+            var config = new CollectionConfig
+            {
+                Settings = new BitFlagsT1 { Value = new U64(0) },
+
+                MaxSupply = collectionConfig.NftMaxSuply is null ? new BaseOpt<U32>() : new BaseOpt<U32>(new U32((uint)collectionConfig.NftMaxSuply)),
+
+                MintSettings = new MintSettings
+                {
+                    StartBlock = collectionConfig.MintStartBlock is null ? new BaseOpt<U32>() : new BaseOpt<U32>(new U32((uint)collectionConfig.MintStartBlock)),
+                    EndBlock = collectionConfig.MintEndBlock is null ? new BaseOpt<U32>() : new BaseOpt<U32>(new U32((uint)collectionConfig.MintEndBlock)),
+                    MintType = mintType,
+                    Price = collectionConfig.MintPrice is null ? new BaseOpt<U128>() : new BaseOpt<U128>(new U128((ulong)collectionConfig.MintPrice)),
+                    DefaultItemSettings = new BitFlagsT2 { Value = new U64(0) }
+                }
+            };
+
+            return NftsCalls.Create(multiAddress, config);
         }
     }
 }

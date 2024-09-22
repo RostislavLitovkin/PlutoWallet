@@ -28,7 +28,7 @@ namespace PlutoWalletTests
         public async Task NativeTransferAsync()
         {
             Endpoint endpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Local8000];
-            Endpoint realEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.Hydration];
+            Endpoint realEndpoint = PlutoWallet.Constants.Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub];
 
 
             var client = new SubstrateClientExt(
