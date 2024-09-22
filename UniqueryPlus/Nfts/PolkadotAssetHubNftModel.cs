@@ -7,16 +7,77 @@ using System.Numerics;
 using UniqueryPlus.Ipfs;
 using PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types;
 using PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto;
+using UniqueryPlus.Collections;
+using UniqueryPlus.External;
+using Substrate.NetApi.Model.Extrinsics;
+using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public class PolkadotAssetHubNftsPalletNft : INftBase
+    public class PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable
     {
+        private SubstrateClientExt client;
+
+        public required BigInteger? Price { get; set; }
+
+        public PolkadotAssetHubNftsPalletNftFull(SubstrateClientExt client) : base(client)
+        {
+            this.client = client;
+        }
+
+        public Method Sell(BigInteger price)
+        {
+            var whitelisted_buyer = new BaseOpt<EnumMultiAddress>();
+            return NftsCalls.SetPrice(new U32((uint)CollectionId), new U32((uint)Id), new BaseOpt<U128>(new U128(price)), whitelisted_buyer);
+        }
+        public Method Buy()
+        {
+            return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
+        }
+    }
+    public class PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    {
+        private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public required string Owner { get; set; }
         public INftMetadataBase? Metadata { get; set; }
+        public string KodaLink => $"https://koda.art/ahp/gallery/{CollectionId}-{Id}";
+        public PolkadotAssetHubNftsPalletNft(SubstrateClientExt client)
+        {
+            this.client = client;
+        }
+        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
+        {
+            return await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
+        }
+        public Method Transfer(string recipientAddress)
+        {
+            var accountId = new AccountId32();
+            accountId.Create(Utils.GetPublicKeyFrom(recipientAddress));
+
+            var multiAddress = new EnumMultiAddress();
+            multiAddress.Create(MultiAddress.Id, accountId);
+
+            return NftsCalls.Transfer(new U32((uint)CollectionId), new U32((uint)Id), multiAddress);
+        }
+
+        public Method Burn()
+        {
+            return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
+        }
+        public async Task<INftBase> GetFullAsync(CancellationToken token)
+        {
+            return new PolkadotAssetHubNftsPalletNftFull(client)
+            {
+                Owner = Owner,
+                CollectionId = CollectionId,
+                Id = Id,
+                Metadata = Metadata,
+                Price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token)
+            };
+        }
     }
     internal class PolkadotAssetHubNftModel
     {
@@ -119,13 +180,13 @@ namespace UniqueryPlus.Nfts
                 Items = ids.Zip(nftDetails, ((BigInteger, BigInteger) ids, ItemDetails? details) => details switch
                 {
                     // Should never be null
-                    null => new PolkadotAssetHubNftsPalletNft
+                    null => new PolkadotAssetHubNftsPalletNft(client)
                     {
                         CollectionId = ids.Item1,
                         Owner = "Unknown",
                         Id = ids.Item2,
                     },
-                    _ => new PolkadotAssetHubNftsPalletNft
+                    _ => new PolkadotAssetHubNftsPalletNft(client)
                     {
                         CollectionId = ids.Item1,
                         Owner = Utils.GetAddressFrom(details.Owner.Encode()),
@@ -151,7 +212,8 @@ namespace UniqueryPlus.Nfts
 
             var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftDetailsKeys.ToList(), string.Empty, token);
 
-            return storageChangeSets.First().Changes.Select(change => {
+            return storageChangeSets.First().Changes.Select(change =>
+            {
                 if (change[1] == null)
                 {
                     return null;
@@ -193,6 +255,23 @@ namespace UniqueryPlus.Nfts
             };
 
             return metadatas;
+        }
+
+        internal static async Task<BigInteger?> GetNftPriceNftsPalletAsync(SubstrateClientExt client, uint collectionId, uint id, CancellationToken token)
+        {
+            var price = await client.NftsStorage.ItemPriceOf(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id)), null, token);
+
+            if (price is null)
+            {
+                return null;
+            }
+
+            if (((BaseOpt<AccountId32>)price.Value[1]).OptionFlag)
+            {
+                return null;
+            }
+
+            return (U128)price.Value[0];
         }
     }
 }

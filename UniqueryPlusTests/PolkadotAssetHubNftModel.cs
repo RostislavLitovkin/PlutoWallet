@@ -3,6 +3,8 @@ using Substrate.NetApi.Model.Types.Primitive;
 using UniqueryPlus;
 using PolkadotAssetHub.NetApi.Generated;
 using UniqueryPlus.Nfts;
+using UniqueryPlus.Collections;
+using System.Numerics;
 
 
 namespace UniqueryPlusTests
@@ -60,6 +62,44 @@ namespace UniqueryPlusTests
                 Assert.That(nft.Metadata?.Description, Is.Not.Null);
                 Console.WriteLine("Image: " + nft.Metadata?.Image);
             }
+
+            var fullNft = await first3Nfts.Items.Last().GetFullAsync(CancellationToken.None);
+
+            Assert.That(fullNft is INftSellable);
+
+            var sellable = (INftSellable)fullNft;
+
+            Assert.That(sellable.Price, Is.Null);
+        }
+
+        [Test]
+        public async Task TestGetNftsFullAsync()
+        {
+            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 82, CancellationToken.None);
+
+            var address = "1RthzsxsAZzSYPdLQGYGPF2F1rmXZHTdWGhhiJG8uZ6sEPf";
+            var first3Nfts = await collection.GetNftsOwnedByAsync(address, 5, null, CancellationToken.None);
+
+            Assert.That(first3Nfts.Count(), Is.EqualTo(3));
+
+            foreach (var nft in first3Nfts)
+            {
+                Assert.That(nft.Metadata?.Name, Is.EqualTo("Alchemy"));
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Console.WriteLine("Nft id: " + nft.Id);
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
+
+
+            var fullNft = await first3Nfts.Last().GetFullAsync(CancellationToken.None);
+
+            Assert.That(fullNft.Id, Is.EqualTo((BigInteger)255));
+
+            Assert.That(fullNft is INftSellable);
+
+            var sellable = (INftSellable)fullNft;
+
+            Assert.That(sellable.Price, Is.EqualTo(BigInteger.Parse("21000000000")));
         }
     }
 }

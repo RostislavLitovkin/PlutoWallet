@@ -10,16 +10,16 @@ using UniqueryPlus.Ipfs;
 using UniqueryPlus.Nfts;
 using SubstrateCollectionMetadata = PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types.CollectionMetadata;
 using Substrate.NetApi.Model.Types.Base;
-using UniqueryPlus;
 using UniqueryPlus.External;
-using Microsoft.Extensions.DependencyInjection;
-using Speck;
 using StrawberryShake;
+using Substrate.NetApi.Model.Extrinsics;
+using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
+
 
 namespace UniqueryPlus.Collections
 {
 
-    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig, ICollectionStats, ICollectionCreatedAt
+    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
     {
         private SubstrateClientExt client;
         public uint? NftMaxSuply { get; set; }
@@ -34,6 +34,16 @@ namespace UniqueryPlus.Collections
         public PolkadotAssetHubNftsPalletCollectionFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
+        }
+        public Method Transfer(string recipientAddress)
+        {
+            var accountId = new AccountId32();
+            accountId.Create(Utils.GetPublicKeyFrom(recipientAddress));
+
+            var multiAddress = new EnumMultiAddress();
+            multiAddress.Create(MultiAddress.Id, accountId);
+
+            return NftsCalls.TransferOwnership(new U32((uint)CollectionId), multiAddress);
         }
     }
 
