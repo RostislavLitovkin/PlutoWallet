@@ -30,6 +30,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlusTests", "UniqueryPlusTests\UniqueryPlusTests.csproj", "{A05BC669-CBB6-45A9-89C4-5F576AD338EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Speck", "Speck\Speck.csproj", "{7C940438-01C9-4840-9324-669B43CE5DBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InvArch.NetApi", "Generated\InvArch\InvArch.NetApi\InvArch.NetApi.csproj", "{735BD175-1909-434B-82CC-DEF051299C1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +92,10 @@ Global
 		{7C940438-01C9-4840-9324-669B43CE5DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C940438-01C9-4840-9324-669B43CE5DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C940438-01C9-4840-9324-669B43CE5DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735BD175-1909-434B-82CC-DEF051299C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735BD175-1909-434B-82CC-DEF051299C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735BD175-1909-434B-82CC-DEF051299C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735BD175-1909-434B-82CC-DEF051299C1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -104,6 +109,7 @@ Global
 		{38220B08-5054-4EAF-BD0D-56B2F00DC86E} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{1D073760-F41A-4A88-A818-580DCBC0E8EC} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{7C940438-01C9-4840-9324-669B43CE5DBA} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
+		{735BD175-1909-434B-82CC-DEF051299C1B} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

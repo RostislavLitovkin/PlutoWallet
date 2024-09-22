@@ -54,7 +54,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_system_staking.pallet
     }
     
     /// <summary>
-    /// >> 825 - Variant[bifrost_system_staking.pallet.Error]
+    /// >> 880 - Variant[bifrost_system_staking.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

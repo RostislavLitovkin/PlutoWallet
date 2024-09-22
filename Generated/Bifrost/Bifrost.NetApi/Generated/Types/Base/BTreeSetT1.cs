@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Types.Base
     
     
     /// <summary>
-    /// >> 73 - Composite[BTreeSetT1]
+    /// >> 76 - Composite[BTreeSetT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BTreeSetT1 : BaseType

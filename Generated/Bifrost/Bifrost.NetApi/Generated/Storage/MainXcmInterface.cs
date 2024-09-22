@@ -139,6 +139,19 @@ namespace Bifrost.NetApi.Generated.Storage
             byteArray.AddRange(dest.Encode());
             return new Method(117, "XcmInterface", 1, "transfer_statemine_assets", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> transfer_ethereum_assets
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method TransferEthereumAssets(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId currency_id, Substrate.NetApi.Model.Types.Primitive.U128 amount, Bifrost.NetApi.Generated.Model.primitive_types.H160 to)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(currency_id.Encode());
+            byteArray.AddRange(amount.Encode());
+            byteArray.AddRange(to.Encode());
+            return new Method(117, "XcmInterface", 2, "transfer_ethereum_assets", byteArray.ToArray());
+        }
     }
     
     /// <summary>

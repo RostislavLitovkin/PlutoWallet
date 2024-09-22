@@ -55,7 +55,20 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm.v3
     /// <summary>
     /// >> 282 - Variant[xcm.v3.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15, PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>
+    public sealed class EnumResponse : BaseEnumRust<Response>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResponse()
+        {
+				AddTypeDecoder<BaseVoid>(Response.Null);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Response.Assets);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.traits.EnumError>>>(Response.ExecutionResult);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Response.Version);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15>(Response.PalletsInfo);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>(Response.DispatchResult);
+        }
     }
 }

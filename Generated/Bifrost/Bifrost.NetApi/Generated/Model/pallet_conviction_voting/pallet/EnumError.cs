@@ -55,7 +55,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_conviction_voting.pallet
         /// <summary>
         /// >> AlreadyVoting
         /// The account currently has votes attached to it and the operation cannot succeed until
-        /// these are removed, either through `unvote` or `reap_vote`.
+        /// these are removed through `remove_vote`.
         /// </summary>
         AlreadyVoting = 5,
         
@@ -97,7 +97,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_conviction_voting.pallet
     }
     
     /// <summary>
-    /// >> 626 - Variant[pallet_conviction_voting.pallet.Error]
+    /// >> 661 - Variant[pallet_conviction_voting.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

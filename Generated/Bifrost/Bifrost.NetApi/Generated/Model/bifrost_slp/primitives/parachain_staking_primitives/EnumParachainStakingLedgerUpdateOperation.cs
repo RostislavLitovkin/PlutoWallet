@@ -63,7 +63,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_stakin
     }
     
     /// <summary>
-    /// >> 473 - Variant[bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateOperation]
+    /// >> 506 - Variant[bifrost_slp.primitives.parachain_staking_primitives.ParachainStakingLedgerUpdateOperation]
     /// </summary>
     public sealed class EnumParachainStakingLedgerUpdateOperation : BaseEnum<ParachainStakingLedgerUpdateOperation>
     {

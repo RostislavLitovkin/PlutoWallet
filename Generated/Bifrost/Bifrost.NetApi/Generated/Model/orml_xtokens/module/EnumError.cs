@@ -147,7 +147,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_xtokens.module
     }
     
     /// <summary>
-    /// >> 737 - Variant[orml_xtokens.module.Error]
+    /// >> 795 - Variant[orml_xtokens.module.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

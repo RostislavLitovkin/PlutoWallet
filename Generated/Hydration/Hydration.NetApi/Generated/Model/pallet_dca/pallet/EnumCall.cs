@@ -39,7 +39,16 @@ namespace Hydration.NetApi.Generated.Model.pallet_dca.pallet
     /// >> 405 - Variant[pallet_dca.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Hydration.NetApi.Generated.Model.pallet_dca.types.Schedule, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.pallet_dca.types.Schedule, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.schedule);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.terminate);
+        }
     }
 }

@@ -60,7 +60,21 @@ namespace Bajun.NetApi.Generated.Model.xcm.v2.multiasset
     /// <summary>
     /// >> 119 - Variant[xcm.v2.multiasset.AssetInstance]
     /// </summary>
-    public sealed class EnumAssetInstance : BaseEnumExt<AssetInstance, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Bajun.NetApi.Generated.Types.Base.Arr4U8, Bajun.NetApi.Generated.Types.Base.Arr8U8, Bajun.NetApi.Generated.Types.Base.Arr16U8, Bajun.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>
+    public sealed class EnumAssetInstance : BaseEnumRust<AssetInstance>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetInstance()
+        {
+				AddTypeDecoder<BaseVoid>(AssetInstance.Undefined);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(AssetInstance.Index);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr4U8>(AssetInstance.Array4);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr8U8>(AssetInstance.Array8);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr16U8>(AssetInstance.Array16);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr32U8>(AssetInstance.Array32);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(AssetInstance.Blob);
+        }
     }
 }

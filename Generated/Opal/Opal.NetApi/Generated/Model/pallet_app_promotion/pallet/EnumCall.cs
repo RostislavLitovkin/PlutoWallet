@@ -87,7 +87,24 @@ namespace Opal.NetApi.Generated.Model.pallet_app_promotion.pallet
     /// >> 328 - Variant[pallet_app_promotion.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr, Substrate.NetApi.Model.Types.Primitive.U128, BaseVoid, Opal.NetApi.Generated.Model.up_data_structs.CollectionId, Opal.NetApi.Generated.Model.up_data_structs.CollectionId, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(Call.set_admin_address);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.stake);
+				AddTypeDecoder<BaseVoid>(Call.unstake_all);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.unstake_partial);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CollectionId>(Call.sponsor_collection);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CollectionId>(Call.stop_sponsoring_collection);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Call.sponsor_contract);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Call.stop_sponsoring_contract);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>>(Call.payout_stakers);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_unstake);
+        }
     }
 }

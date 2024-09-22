@@ -33,7 +33,15 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.s
     /// >> 371 - Variant[polkadot_runtime_parachains.disputes.slashing.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.DisputeProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.DisputeProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_dispute_lost_unsigned);
+        }
     }
 }

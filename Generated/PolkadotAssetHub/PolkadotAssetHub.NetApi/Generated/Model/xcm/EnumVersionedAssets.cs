@@ -40,7 +40,17 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 96 - Variant[xcm.VersionedAssets]
     /// </summary>
-    public sealed class EnumVersionedAssets : BaseEnumExt<VersionedAssets, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, BaseVoid, PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>
+    public sealed class EnumVersionedAssets : BaseEnumRust<VersionedAssets>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedAssets()
+        {
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(VersionedAssets.V2);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(VersionedAssets.V3);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>(VersionedAssets.V4);
+        }
     }
 }

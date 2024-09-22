@@ -58,7 +58,19 @@ namespace Hydration.NetApi.Generated.Model.pallet_proxy.pallet
     /// >> 53 - Variant[pallet_proxy.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Hydration.NetApi.Generated.Types.Base.EnumResult, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Types.Base.EnumResult>(Event.ProxyExecuted);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.PureCreated);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.primitive_types.H256>>(Event.Announced);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.ProxyAdded);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.hydradx_runtime.system.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.ProxyRemoved);
+        }
     }
 }

@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.pallet_elections_phragmen
     }
     
     /// <summary>
-    /// >> 99 - Variant[pallet_elections_phragmen.Renouncing]
+    /// >> 102 - Variant[pallet_elections_phragmen.Renouncing]
     /// </summary>
-    public sealed class EnumRenouncing : BaseEnumExt<Renouncing, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumRenouncing : BaseEnumRust<Renouncing>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRenouncing()
+        {
+				AddTypeDecoder<BaseVoid>(Renouncing.Member);
+				AddTypeDecoder<BaseVoid>(Renouncing.RunnerUp);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Renouncing.Candidate);
+        }
     }
 }

@@ -133,7 +133,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.governance.ori
     }
     
     /// <summary>
-    /// >> 112 - Variant[bifrost_polkadot_runtime.governance.origins.custom_origins.Origin]
+    /// >> 115 - Variant[bifrost_polkadot_runtime.governance.origins.custom_origins.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnum<Origin>
     {

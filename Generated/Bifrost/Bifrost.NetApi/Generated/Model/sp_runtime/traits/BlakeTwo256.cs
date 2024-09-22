@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_runtime.traits
     
     
     /// <summary>
-    /// >> 432 - Composite[sp_runtime.traits.BlakeTwo256]
+    /// >> 453 - Composite[sp_runtime.traits.BlakeTwo256]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BlakeTwo256 : BaseType

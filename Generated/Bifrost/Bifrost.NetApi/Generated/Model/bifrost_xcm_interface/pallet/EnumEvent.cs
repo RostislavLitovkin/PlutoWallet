@@ -31,13 +31,28 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_xcm_interface.pallet
         /// >> TransferredStatemineMultiAsset
         /// </summary>
         TransferredStatemineMultiAsset = 1,
+        
+        /// <summary>
+        /// >> TransferredEthereumAssets
+        /// </summary>
+        TransferredEthereumAssets = 2,
     }
     
     /// <summary>
-    /// >> 478 - Variant[bifrost_xcm_interface.pallet.Event]
+    /// >> 511 - Variant[bifrost_xcm_interface.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumXcmOperationType, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumXcmOperationType, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.XcmDestWeightAndFeeUpdated);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.TransferredStatemineMultiAsset);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.TransferredEthereumAssets);
+        }
     }
 }

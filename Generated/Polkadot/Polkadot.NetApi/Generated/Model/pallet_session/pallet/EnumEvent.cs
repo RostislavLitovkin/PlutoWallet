@@ -34,7 +34,15 @@ namespace Polkadot.NetApi.Generated.Model.pallet_session.pallet
     /// >> 49 - Variant[pallet_session.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.NewSession);
+        }
     }
 }

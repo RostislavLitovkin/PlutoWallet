@@ -1,20 +1,11 @@
-﻿using PlutoWallet.Model;
-using System;
-using System.Linq;
+﻿using AzeroIdResolver;
+using PlutoWallet.Model;
+using Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
-using Substrate.NetApi.Model.Meta;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
-using Newtonsoft.Json;
-using PlutoWallet.Model.AjunaExt;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
-using Substrate.NetApi.Generated.Model.sp_runtime.multiaddress;
-using PlutoWallet.Types;
-using Substrate.NetApi.Model.Rpc;
-using PlutoWallet.Components.Extrinsic;
-using Substrate.NetApi.Generated.Model.sp_weights.weight_v2;
-using Newtonsoft.Json.Linq;
+using Polkadot.NetApi.Generated.Model.sp_weights.weight_v2;
 
 namespace PlutoWallet.Components.Contract;
 
@@ -77,7 +68,7 @@ public partial class ContractView : ContentView
             refTimeParam.Create(new CompactInteger(refTime));
             var proofSizeParam = new BaseCom<U64>();
             proofSizeParam.Create(new CompactInteger(proofSize));
-            var gasLimit = new Substrate.NetApi.Generated.Model.sp_weights.weight_v2.Weight();
+            var gasLimit = new Weight();
             gasLimit.RefTime = refTimeParam;
             gasLimit.ProofSize = proofSizeParam;
 

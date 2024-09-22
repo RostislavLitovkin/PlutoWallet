@@ -53,9 +53,22 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives
     }
     
     /// <summary>
-    /// >> 781 - Variant[bifrost_primitives.RedeemType]
+    /// >> 836 - Variant[bifrost_primitives.RedeemType]
     /// </summary>
-    public sealed class EnumRedeemType : BaseEnumExt<RedeemType, BaseVoid, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H160, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumRedeemType : BaseEnumRust<RedeemType>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRedeemType()
+        {
+				AddTypeDecoder<BaseVoid>(RedeemType.Native);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RedeemType.Astar);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H160>(RedeemType.Moonbeam);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RedeemType.Hydradx);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RedeemType.Interlay);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RedeemType.Manta);
+        }
     }
 }

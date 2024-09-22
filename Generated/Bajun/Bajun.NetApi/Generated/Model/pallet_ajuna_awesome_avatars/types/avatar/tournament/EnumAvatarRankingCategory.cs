@@ -60,7 +60,21 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.avatar
     /// <summary>
     /// >> 422 - Variant[pallet_ajuna_awesome_avatars.types.avatar.tournament.AvatarRankingCategory]
     /// </summary>
-    public sealed class EnumAvatarRankingCategory : BaseEnumExt<AvatarRankingCategory, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.avatar.force.EnumForce, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.avatar.force.EnumForce, Bajun.NetApi.Generated.Types.Base.NonZeroU32>
+    public sealed class EnumAvatarRankingCategory : BaseEnumRust<AvatarRankingCategory>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAvatarRankingCategory()
+        {
+				AddTypeDecoder<BaseVoid>(AvatarRankingCategory.MinSoulPoints);
+				AddTypeDecoder<BaseVoid>(AvatarRankingCategory.MaxSoulPoints);
+				AddTypeDecoder<BaseVoid>(AvatarRankingCategory.DnaAscending);
+				AddTypeDecoder<BaseVoid>(AvatarRankingCategory.DnaDescending);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.avatar.force.EnumForce>(AvatarRankingCategory.MinSoulPointsWithForce);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.avatar.force.EnumForce>(AvatarRankingCategory.MaxSoulPointsWithForce);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.NonZeroU32>(AvatarRankingCategory.MintedAtModulo);
+        }
     }
 }

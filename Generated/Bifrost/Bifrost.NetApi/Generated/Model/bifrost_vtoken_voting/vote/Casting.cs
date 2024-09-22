@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote
     
     
     /// <summary>
-    /// >> 860 - Composite[bifrost_vtoken_voting.vote.Casting]
+    /// >> 915 - Composite[bifrost_vtoken_voting.vote.Casting]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Casting : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote
         /// <summary>
         /// >> votes
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT60 Votes { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT62 Votes { get; set; }
         /// <summary>
         /// >> delegations
         /// </summary>
@@ -57,7 +57,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Votes = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT60();
+            Votes = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT62();
             Votes.Decode(byteArray, ref p);
             Delegations = new Bifrost.NetApi.Generated.Model.pallet_conviction_voting.types.Delegations();
             Delegations.Decode(byteArray, ref p);

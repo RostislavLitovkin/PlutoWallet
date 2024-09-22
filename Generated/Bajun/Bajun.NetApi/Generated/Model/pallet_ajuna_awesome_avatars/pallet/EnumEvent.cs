@@ -171,7 +171,38 @@ namespace Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.pallet
     /// >> 151 - Variant[pallet_ajuna_awesome_avatars.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.Season>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.SeasonMeta>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.SeasonSchedule>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.TradeFilters>>, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.config.GlobalConfig, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.primitive_types.H256>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U8>>, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.primitive_types.H256>, Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Primitive.U16, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U128>, Bajun.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.config.UnlockConfigs>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.OrganizerSet);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.ServiceAccountSet);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.CollectionIdSet);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.TreasurerSet);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.TreasuryClaimed);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.Season>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.SeasonMeta>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.SeasonSchedule>, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.season.TradeFilters>>>(Event.UpdatedSeason);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.config.GlobalConfig>(Event.UpdatedGlobalConfig);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.primitive_types.H256>>(Event.AvatarsMinted);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U8>>>(Event.AvatarsForged);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.primitive_types.H256>>(Event.AvatarTransferred);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U16>(Event.SeasonStarted);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U16>(Event.SeasonFinished);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.FreeMintsTransferred);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.FreeMintsSet);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.AvatarPriceSet);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.AvatarPriceUnset);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.primitive_types.H256, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.AvatarTraded);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.AvatarLocked);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.AvatarUnlocked);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.StorageTierUpgraded);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.PreparedAvatar);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.primitive_types.H256>(Event.UnpreparedAvatar);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10>(Event.PreparedIpfsUrl);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.types.config.UnlockConfigs>>(Event.UpdatedUnlockConfigs);
+        }
     }
 }

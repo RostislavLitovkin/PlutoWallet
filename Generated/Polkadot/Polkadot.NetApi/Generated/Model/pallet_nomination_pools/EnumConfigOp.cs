@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools
     /// <summary>
     /// >> 312 - Variant[pallet_nomination_pools.ConfigOp]
     /// </summary>
-    public sealed class EnumConfigOp : BaseEnumExt<ConfigOp, BaseVoid, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumConfigOp : BaseEnumRust<ConfigOp>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumConfigOp()
+        {
+				AddTypeDecoder<BaseVoid>(ConfigOp.Noop);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(ConfigOp.Set);
+				AddTypeDecoder<BaseVoid>(ConfigOp.Remove);
+        }
     }
 }

@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.xcm.v3.traits
     /// <summary>
     /// >> 365 - Variant[xcm.v3.traits.Outcome]
     /// </summary>
-    public sealed class EnumOutcome : BaseEnumExt<Outcome, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseTuple<Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>
+    public sealed class EnumOutcome : BaseEnumRust<Outcome>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOutcome()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(Outcome.Complete);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>>(Outcome.Incomplete);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>(Outcome.Error);
+        }
     }
 }

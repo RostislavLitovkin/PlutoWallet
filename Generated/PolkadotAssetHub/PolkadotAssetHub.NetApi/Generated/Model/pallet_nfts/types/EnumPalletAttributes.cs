@@ -35,7 +35,16 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types
     /// <summary>
     /// >> 144 - Variant[pallet_nfts.types.PalletAttributes]
     /// </summary>
-    public sealed class EnumPalletAttributes : BaseEnumExt<PalletAttributes, Substrate.NetApi.Model.Types.Primitive.U32, BaseVoid>
+    public sealed class EnumPalletAttributes : BaseEnumRust<PalletAttributes>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumPalletAttributes()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(PalletAttributes.UsedToClaim);
+				AddTypeDecoder<BaseVoid>(PalletAttributes.TransferDisabled);
+        }
     }
 }

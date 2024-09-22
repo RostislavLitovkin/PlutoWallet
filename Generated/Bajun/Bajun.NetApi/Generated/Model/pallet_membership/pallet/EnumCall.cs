@@ -88,7 +88,21 @@ namespace Bajun.NetApi.Generated.Model.pallet_membership.pallet
     /// >> 401 - Variant[pallet_membership.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.add_member);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_member);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.swap_member);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.reset_members);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.change_key);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.set_prime);
+				AddTypeDecoder<BaseVoid>(Call.clear_prime);
+        }
     }
 }

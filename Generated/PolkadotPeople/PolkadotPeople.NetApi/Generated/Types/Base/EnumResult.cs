@@ -35,7 +35,16 @@ namespace PolkadotPeople.NetApi.Generated.Types.Base
     /// <summary>
     /// >> 121 - Variant[Result]
     /// </summary>
-    public sealed class EnumResult : BaseEnumExt<Result, Substrate.NetApi.Model.Types.Base.BaseTuple, PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumDispatchError>
+    public sealed class EnumResult : BaseEnumRust<Result>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResult()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseTuple>(Result.Ok);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.sp_runtime.EnumDispatchError>(Result.Err);
+        }
     }
 }

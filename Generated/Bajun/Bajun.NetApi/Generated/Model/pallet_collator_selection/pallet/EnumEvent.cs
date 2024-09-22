@@ -88,7 +88,24 @@ namespace Bajun.NetApi.Generated.Model.pallet_collator_selection.pallet
     /// >> 54 - Variant[pallet_collator_selection.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.NewInvulnerables);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.InvulnerableAdded);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.InvulnerableRemoved);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.NewDesiredCandidates);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.NewCandidacyBond);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.CandidateAdded);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.CandidateBondUpdated);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.CandidateRemoved);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.CandidateReplaced);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.InvalidInvulnerableSkipped);
+        }
     }
 }

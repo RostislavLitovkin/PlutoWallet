@@ -225,7 +225,54 @@ namespace Hydration.NetApi.Generated.Model.xcm.v3.traits
     /// <summary>
     /// >> 158 - Variant[xcm.v3.traits.Error]
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U64, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumError : BaseEnumRust<Error>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumError()
+        {
+				AddTypeDecoder<BaseVoid>(Error.Overflow);
+				AddTypeDecoder<BaseVoid>(Error.Unimplemented);
+				AddTypeDecoder<BaseVoid>(Error.UntrustedReserveLocation);
+				AddTypeDecoder<BaseVoid>(Error.UntrustedTeleportLocation);
+				AddTypeDecoder<BaseVoid>(Error.LocationFull);
+				AddTypeDecoder<BaseVoid>(Error.LocationNotInvertible);
+				AddTypeDecoder<BaseVoid>(Error.BadOrigin);
+				AddTypeDecoder<BaseVoid>(Error.InvalidLocation);
+				AddTypeDecoder<BaseVoid>(Error.AssetNotFound);
+				AddTypeDecoder<BaseVoid>(Error.FailedToTransactAsset);
+				AddTypeDecoder<BaseVoid>(Error.NotWithdrawable);
+				AddTypeDecoder<BaseVoid>(Error.LocationCannotHold);
+				AddTypeDecoder<BaseVoid>(Error.ExceedsMaxMessageSize);
+				AddTypeDecoder<BaseVoid>(Error.DestinationUnsupported);
+				AddTypeDecoder<BaseVoid>(Error.Transport);
+				AddTypeDecoder<BaseVoid>(Error.Unroutable);
+				AddTypeDecoder<BaseVoid>(Error.UnknownClaim);
+				AddTypeDecoder<BaseVoid>(Error.FailedToDecode);
+				AddTypeDecoder<BaseVoid>(Error.MaxWeightInvalid);
+				AddTypeDecoder<BaseVoid>(Error.NotHoldingFees);
+				AddTypeDecoder<BaseVoid>(Error.TooExpensive);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U64>(Error.Trap);
+				AddTypeDecoder<BaseVoid>(Error.ExpectationFalse);
+				AddTypeDecoder<BaseVoid>(Error.PalletNotFound);
+				AddTypeDecoder<BaseVoid>(Error.NameMismatch);
+				AddTypeDecoder<BaseVoid>(Error.VersionIncompatible);
+				AddTypeDecoder<BaseVoid>(Error.HoldingWouldOverflow);
+				AddTypeDecoder<BaseVoid>(Error.ExportError);
+				AddTypeDecoder<BaseVoid>(Error.ReanchorFailed);
+				AddTypeDecoder<BaseVoid>(Error.NoDeal);
+				AddTypeDecoder<BaseVoid>(Error.FeesNotMet);
+				AddTypeDecoder<BaseVoid>(Error.LockError);
+				AddTypeDecoder<BaseVoid>(Error.NoPermission);
+				AddTypeDecoder<BaseVoid>(Error.Unanchored);
+				AddTypeDecoder<BaseVoid>(Error.NotDepositable);
+				AddTypeDecoder<BaseVoid>(Error.UnhandledXcmVersion);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(Error.WeightLimitReached);
+				AddTypeDecoder<BaseVoid>(Error.Barrier);
+				AddTypeDecoder<BaseVoid>(Error.WeightNotComputable);
+				AddTypeDecoder<BaseVoid>(Error.ExceedsStackLimit);
+        }
     }
 }

@@ -24,28 +24,46 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_currencies.module
         
         /// <summary>
         /// >> transfer
-        /// See [`Pallet::transfer`].
+        /// Transfer some balance to another account under `currency_id`.
+        /// 
+        /// The dispatch origin for this call must be `Signed` by the
+        /// transactor.
         /// </summary>
         transfer = 0,
         
         /// <summary>
         /// >> transfer_native_currency
-        /// See [`Pallet::transfer_native_currency`].
+        /// Transfer some native currency to another account.
+        /// 
+        /// The dispatch origin for this call must be `Signed` by the
+        /// transactor.
         /// </summary>
         transfer_native_currency = 1,
         
         /// <summary>
         /// >> update_balance
-        /// See [`Pallet::update_balance`].
+        /// update amount of account `who` under `currency_id`.
+        /// 
+        /// The dispatch origin of this call must be _Root_.
         /// </summary>
         update_balance = 2,
     }
     
     /// <summary>
-    /// >> 298 - Variant[bifrost_currencies.module.Call]
+    /// >> 321 - Variant[bifrost_currencies.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.I128>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.transfer);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.transfer_native_currency);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.I128>>(Call.update_balance);
+        }
     }
 }

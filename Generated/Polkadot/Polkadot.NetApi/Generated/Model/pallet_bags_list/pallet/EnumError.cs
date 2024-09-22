@@ -33,7 +33,15 @@ namespace Polkadot.NetApi.Generated.Model.pallet_bags_list.pallet
     /// >> 720 - Variant[pallet_bags_list.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, Polkadot.NetApi.Generated.Model.pallet_bags_list.list.EnumListError>
+    public sealed class EnumError : BaseEnumRust<Error>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumError()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_bags_list.list.EnumListError>(Error.List);
+        }
     }
 }

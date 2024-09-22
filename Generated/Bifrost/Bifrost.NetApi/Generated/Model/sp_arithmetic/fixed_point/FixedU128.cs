@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point
     
     
     /// <summary>
-    /// >> 397 - Composite[sp_arithmetic.fixed_point.FixedU128]
+    /// >> 419 - Composite[sp_arithmetic.fixed_point.FixedU128]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class FixedU128 : BaseType

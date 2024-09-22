@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_democracy.vote
     /// <summary>
     /// >> 587 - Variant[pallet_democracy.vote.Voting]
     /// </summary>
-    public sealed class EnumVoting : BaseEnumExt<Voting, BaseTuple<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT49, Bajun.NetApi.Generated.Model.pallet_democracy.types.Delegations, Bajun.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.pallet_democracy.conviction.EnumConviction, Bajun.NetApi.Generated.Model.pallet_democracy.types.Delegations, Bajun.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>
+    public sealed class EnumVoting : BaseEnumRust<Voting>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVoting()
+        {
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT49, Bajun.NetApi.Generated.Model.pallet_democracy.types.Delegations, Bajun.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>(Voting.Direct);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bajun.NetApi.Generated.Model.pallet_democracy.conviction.EnumConviction, Bajun.NetApi.Generated.Model.pallet_democracy.types.Delegations, Bajun.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>(Voting.Delegating);
+        }
     }
 }

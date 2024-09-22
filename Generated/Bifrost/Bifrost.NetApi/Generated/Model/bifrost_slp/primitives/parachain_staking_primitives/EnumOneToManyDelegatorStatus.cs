@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_stakin
     }
     
     /// <summary>
-    /// >> 349 - Variant[bifrost_slp.primitives.parachain_staking_primitives.OneToManyDelegatorStatus]
+    /// >> 371 - Variant[bifrost_slp.primitives.parachain_staking_primitives.OneToManyDelegatorStatus]
     /// </summary>
-    public sealed class EnumOneToManyDelegatorStatus : BaseEnumExt<OneToManyDelegatorStatus, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>
+    public sealed class EnumOneToManyDelegatorStatus : BaseEnumRust<OneToManyDelegatorStatus>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOneToManyDelegatorStatus()
+        {
+				AddTypeDecoder<BaseVoid>(OneToManyDelegatorStatus.Active);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>(OneToManyDelegatorStatus.Leaving);
+        }
     }
 }

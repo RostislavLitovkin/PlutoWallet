@@ -84,6 +84,8 @@ namespace Bifrost.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("LendMarket", "RewardAccured"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("LendMarket", "MarketBond"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("LendMarket", "StorageVersion"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.lend_market.EnumVersions)));
         }
         
@@ -786,6 +788,35 @@ namespace Bifrost.NetApi.Generated.Storage
         }
         
         /// <summary>
+        /// >> MarketBondParams
+        /// </summary>
+        public static string MarketBondParams(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key)
+        {
+            return RequestGenerator.GetStorage("LendMarket", "MarketBond", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> MarketBondDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string MarketBondDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> MarketBond
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>> MarketBond(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
+        {
+            string parameters = LendMarketStorage.MarketBondParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
         /// >> StorageVersionParams
         ///  Storage version of the pallet.
         /// </summary>
@@ -1089,6 +1120,18 @@ namespace Bifrost.NetApi.Generated.Storage
             byteArray.AddRange(collaterals.Encode());
             return new Method(131, "LendMarket", 21, "update_liquidation_free_collateral", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> add_market_bond
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AddMarketBond(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId asset_id, Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId> market_bond)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(asset_id.Encode());
+            byteArray.AddRange(market_bond.Encode());
+            return new Method(131, "LendMarket", 22, "add_market_bond", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -1309,5 +1352,11 @@ namespace Bifrost.NetApi.Generated.Storage
         /// Collateral is reserved and cannot be liquidated
         /// </summary>
         CollateralReserved,
+        
+        /// <summary>
+        /// >> MarketBondDoesNotExist
+        /// Market bond does not exist
+        /// </summary>
+        MarketBondDoesNotExist,
     }
 }

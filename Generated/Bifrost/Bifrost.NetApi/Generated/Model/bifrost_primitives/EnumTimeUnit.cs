@@ -48,9 +48,21 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives
     }
     
     /// <summary>
-    /// >> 322 - Variant[bifrost_primitives.TimeUnit]
+    /// >> 344 - Variant[bifrost_primitives.TimeUnit]
     /// </summary>
-    public sealed class EnumTimeUnit : BaseEnumExt<TimeUnit, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumTimeUnit : BaseEnumRust<TimeUnit>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTimeUnit()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(TimeUnit.Era);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(TimeUnit.SlashingSpan);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(TimeUnit.Round);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(TimeUnit.Kblock);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(TimeUnit.Hour);
+        }
     }
 }

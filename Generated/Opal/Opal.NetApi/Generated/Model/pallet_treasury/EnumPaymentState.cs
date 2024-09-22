@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.pallet_treasury
     /// <summary>
     /// >> 463 - Variant[pallet_treasury.PaymentState]
     /// </summary>
-    public sealed class EnumPaymentState : BaseEnumExt<PaymentState, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseTuple, BaseVoid>
+    public sealed class EnumPaymentState : BaseEnumRust<PaymentState>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumPaymentState()
+        {
+				AddTypeDecoder<BaseVoid>(PaymentState.Pending);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseTuple>(PaymentState.Attempted);
+				AddTypeDecoder<BaseVoid>(PaymentState.Failed);
+        }
     }
 }

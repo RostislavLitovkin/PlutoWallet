@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.lend_market.rate_model
     
     
     /// <summary>
-    /// >> 419 - Composite[lend_market.rate_model.CurveModel]
+    /// >> 440 - Composite[lend_market.rate_model.CurveModel]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CurveModel : BaseType

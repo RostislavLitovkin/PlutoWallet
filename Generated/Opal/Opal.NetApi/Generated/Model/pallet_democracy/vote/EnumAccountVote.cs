@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.pallet_democracy.vote
     /// <summary>
     /// >> 70 - Variant[pallet_democracy.vote.AccountVote]
     /// </summary>
-    public sealed class EnumAccountVote : BaseEnumExt<AccountVote, BaseTuple<Opal.NetApi.Generated.Model.pallet_democracy.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumAccountVote : BaseEnumRust<AccountVote>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAccountVote()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.pallet_democracy.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Standard);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Split);
+        }
     }
 }

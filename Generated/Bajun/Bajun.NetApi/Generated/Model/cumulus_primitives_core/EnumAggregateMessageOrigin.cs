@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.cumulus_primitives_core
     /// <summary>
     /// >> 134 - Variant[cumulus_primitives_core.AggregateMessageOrigin]
     /// </summary>
-    public sealed class EnumAggregateMessageOrigin : BaseEnumExt<AggregateMessageOrigin, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
+    public sealed class EnumAggregateMessageOrigin : BaseEnumRust<AggregateMessageOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAggregateMessageOrigin()
+        {
+				AddTypeDecoder<BaseVoid>(AggregateMessageOrigin.Here);
+				AddTypeDecoder<BaseVoid>(AggregateMessageOrigin.Parent);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(AggregateMessageOrigin.Sibling);
+        }
     }
 }

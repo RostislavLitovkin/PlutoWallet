@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primiti
     
     
     /// <summary>
-    /// >> 338 - Composite[bifrost_slp.primitives.polkadot_primitives.UnlockChunk]
+    /// >> 360 - Composite[bifrost_slp.primitives.polkadot_primitives.UnlockChunk]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UnlockChunk : BaseType

@@ -40,7 +40,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Proposals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.pallet_treasury.Proposal)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Deactivated"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "SpendCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Spends"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.pallet_treasury.SpendStatus)));
@@ -157,10 +157,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Approvals
         ///  Proposal indices that have been approved but not yet awarded.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40> Approvals(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42> Approvals(string blockhash, CancellationToken token)
         {
             string parameters = TreasuryStorage.ApprovalsParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42>(parameters, blockhash, token);
             return result;
         }
         

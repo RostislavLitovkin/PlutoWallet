@@ -45,7 +45,18 @@ namespace Opal.NetApi.Generated.Model.evm_core.error
     /// <summary>
     /// >> 382 - Variant[evm_core.error.ExitFatal]
     /// </summary>
-    public sealed class EnumExitFatal : BaseEnumExt<ExitFatal, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.evm_core.error.EnumExitError, Opal.NetApi.Generated.Types.Base.CowT1>
+    public sealed class EnumExitFatal : BaseEnumRust<ExitFatal>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExitFatal()
+        {
+				AddTypeDecoder<BaseVoid>(ExitFatal.NotSupported);
+				AddTypeDecoder<BaseVoid>(ExitFatal.UnhandledInterrupt);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.evm_core.error.EnumExitError>(ExitFatal.CallErrorAsFatal);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.CowT1>(ExitFatal.Other);
+        }
     }
 }

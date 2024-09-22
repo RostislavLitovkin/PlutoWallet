@@ -48,7 +48,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_farming.rewards
     }
     
     /// <summary>
-    /// >> 807 - Variant[bifrost_farming.rewards.PoolState]
+    /// >> 862 - Variant[bifrost_farming.rewards.PoolState]
     /// </summary>
     public sealed class EnumPoolState : BaseEnum<PoolState>
     {

@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.pallet_preimage
     }
     
     /// <summary>
-    /// >> 730 - Variant[pallet_preimage.RequestStatus]
+    /// >> 767 - Variant[pallet_preimage.RequestStatus]
     /// </summary>
-    public sealed class EnumRequestStatus : BaseEnumExt<RequestStatus, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.frame_support.traits.tokens.fungible.HoldConsideration>, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.frame_support.traits.tokens.fungible.HoldConsideration>>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumRequestStatus : BaseEnumRust<RequestStatus>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRequestStatus()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.frame_support.traits.tokens.fungible.HoldConsideration>, Substrate.NetApi.Model.Types.Primitive.U32>>(RequestStatus.Unrequested);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.frame_support.traits.tokens.fungible.HoldConsideration>>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(RequestStatus.Requested);
+        }
     }
 }

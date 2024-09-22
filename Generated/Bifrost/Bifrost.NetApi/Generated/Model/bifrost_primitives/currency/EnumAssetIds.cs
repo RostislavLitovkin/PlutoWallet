@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives.currency
     }
     
     /// <summary>
-    /// >> 465 - Variant[bifrost_primitives.currency.AssetIds]
+    /// >> 498 - Variant[bifrost_primitives.currency.AssetIds]
     /// </summary>
-    public sealed class EnumAssetIds : BaseEnumExt<AssetIds, Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>
+    public sealed class EnumAssetIds : BaseEnumRust<AssetIds>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetIds()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(AssetIds.ForeignAssetId);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(AssetIds.NativeAssetId);
+        }
     }
 }

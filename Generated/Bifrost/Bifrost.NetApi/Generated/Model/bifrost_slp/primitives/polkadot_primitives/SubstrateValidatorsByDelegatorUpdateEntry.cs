@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primiti
     
     
     /// <summary>
-    /// >> 475 - Composite[bifrost_slp.primitives.polkadot_primitives.SubstrateValidatorsByDelegatorUpdateEntry]
+    /// >> 508 - Composite[bifrost_slp.primitives.polkadot_primitives.SubstrateValidatorsByDelegatorUpdateEntry]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SubstrateValidatorsByDelegatorUpdateEntry : BaseType

@@ -45,7 +45,17 @@ namespace Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet
     /// >> 383 - Variant[pallet_evm_contract_helpers.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Opal.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.ContractSponsorSet);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.ContractSponsorshipConfirmed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Event.ContractSponsorRemoved);
+        }
     }
 }

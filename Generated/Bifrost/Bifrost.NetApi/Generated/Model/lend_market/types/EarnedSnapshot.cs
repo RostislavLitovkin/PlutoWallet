@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.lend_market.types
     
     
     /// <summary>
-    /// >> 882 - Composite[lend_market.types.EarnedSnapshot]
+    /// >> 937 - Composite[lend_market.types.EarnedSnapshot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EarnedSnapshot : BaseType

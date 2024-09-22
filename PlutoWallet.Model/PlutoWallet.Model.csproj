@@ -8,7 +8,7 @@
 
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-	  <PackageReference Include="Substrate.NET.API" Version="0.9.22-rc" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.24-rc6" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
 	  <PackageReference Include="Markdig" Version="0.37.0" />

@@ -49,7 +49,17 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.p
     /// >> 508 - Variant[polkadot_runtime_parachains.disputes.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeLocation>>(Event.DisputeInitiated);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.EnumDisputeResult>>(Event.DisputeConcluded);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Revert);
+        }
     }
 }

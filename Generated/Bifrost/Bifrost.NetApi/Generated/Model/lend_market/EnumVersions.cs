@@ -28,7 +28,7 @@ namespace Bifrost.NetApi.Generated.Model.lend_market
     }
     
     /// <summary>
-    /// >> 884 - Variant[lend_market.Versions]
+    /// >> 939 - Variant[lend_market.Versions]
     /// </summary>
     public sealed class EnumVersions : BaseEnum<Versions>
     {

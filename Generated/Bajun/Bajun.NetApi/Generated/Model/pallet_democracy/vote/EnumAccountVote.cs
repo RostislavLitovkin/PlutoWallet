@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_democracy.vote
     /// <summary>
     /// >> 148 - Variant[pallet_democracy.vote.AccountVote]
     /// </summary>
-    public sealed class EnumAccountVote : BaseEnumExt<AccountVote, BaseTuple<Bajun.NetApi.Generated.Model.pallet_democracy.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumAccountVote : BaseEnumRust<AccountVote>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAccountVote()
+        {
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.pallet_democracy.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Standard);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Split);
+        }
     }
 }

@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.pallet_foreign_assets
     /// <summary>
     /// >> 332 - Variant[pallet_foreign_assets.ForeignCollectionMode]
     /// </summary>
-    public sealed class EnumForeignCollectionMode : BaseEnumExt<ForeignCollectionMode, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U8>
+    public sealed class EnumForeignCollectionMode : BaseEnumRust<ForeignCollectionMode>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumForeignCollectionMode()
+        {
+				AddTypeDecoder<BaseVoid>(ForeignCollectionMode.NFT);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(ForeignCollectionMode.Fungible);
+        }
     }
 }

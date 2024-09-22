@@ -45,7 +45,17 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet
     /// >> 145 - Variant[pallet_liquidity_mining.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.GlobalFarmAccRPZUpdated);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.YieldFarmAccRPVSUpdated);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.AllRewardsDistributed);
+        }
     }
 }

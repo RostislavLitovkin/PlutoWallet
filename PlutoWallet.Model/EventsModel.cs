@@ -1,5 +1,6 @@
 ﻿using PlutoWallet.Constants;
 using PlutoWallet.Model.AjunaExt;
+using PlutoWallet.Model.Temp;
 using PlutoWallet.Types;
 using Substrate.NetApi;
 using Substrate.NetApi.Model.Rpc;
@@ -8,6 +9,7 @@ using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
 using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace PlutoWallet.Model
 {
@@ -169,25 +171,56 @@ namespace PlutoWallet.Model
 
             Console.WriteLine("Events bytes: " + eventsBytes);
 
-            BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
+            Console.WriteLine("check metadata: " + substrateClient.CheckMetadata);
 
-            Console.WriteLine("block number: " + block.Block.Header.Number.Value);
-
-            uint? extrinsicIndex = null;
-            for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
+            if (substrateClient.CheckMetadata)
             {
-                // Same extrinsic
-                if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
+                BlockData block = await substrateClient.SubstrateClient.Chain.GetBlockAsync(blockHash, CancellationToken.None);
+
+                var sblock = await substrateClient.SubstrateClient.InvokeAsync<object>("chain_getBlock", new object[1] { (string)blockHash.Value }, token);
+                Console.WriteLine(sblock);
+
+                Console.WriteLine("block number: " + block.Block.Header.Number.Value);
+
+                uint? extrinsicIndex = null;
+                for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
                 {
-                    extrinsicIndex = i;
+                    // Same extrinsic
+                    if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
+                    {
+                        extrinsicIndex = i;
 
-                    break;
-                }
-            };
+                        break;
+                    }
+                };
 
-            Console.WriteLine("Extrinsic index found: " + extrinsicIndex);
+                Console.WriteLine("Extrinsic index found: " + extrinsicIndex);
 
-            return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
+                return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
+
+            }
+            else
+            {
+                var block = await substrateClient.SubstrateClient.InvokeAsync<TempOldBlockData>("chain_getBlock", new object[1] { (string)blockHash.Value }, token);
+
+                Console.WriteLine("block number: " + block.Block.Header.Number.Value);
+
+                uint? extrinsicIndex = null;
+                for (uint i = 0; i < block.Block.Extrinsics.Count(); i++)
+                {
+                    // Same extrinsic
+                    if (Utils.Bytes2HexString(HashExtension.Blake2(block.Block.Extrinsics[i].Encode(), 256)).Equals(Utils.Bytes2HexString(extrinsicHash)))
+                    {
+                        extrinsicIndex = i;
+
+                        break;
+                    }
+                };
+
+                Console.WriteLine("Extrinsic index found: " + extrinsicIndex);
+
+                return await GetExtrinsicEventsForClientAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber: block.Block.Header.Number.Value, token);
+            }
         }
 
         public static async Task<ExtrinsicDetails> GetExtrinsicEventsForClientAsync(
@@ -220,7 +253,7 @@ namespace PlutoWallet.Model
             string? eventsBytes,
             BigInteger blockNumber,
             CancellationToken token
-        ) where T : BaseEnumType, new()
+        ) where T : BaseType, new()
         {
             if (eventsBytes == null || eventsBytes.Length == 0)
             {
@@ -295,7 +328,7 @@ namespace PlutoWallet.Model
         }
     }
 
-    public sealed class UniversalEventRecord<T> : BaseType where T : BaseEnumType, new()
+    public sealed class UniversalEventRecord<T> : BaseType where T : BaseType, new()
     {
         /// <summary>
         /// >> phase

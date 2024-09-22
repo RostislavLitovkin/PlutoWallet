@@ -32,7 +32,15 @@ namespace Hydration.NetApi.Generated.Model.pallet_claims.pallet
     /// >> 84 - Variant[pallet_claims.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_claims.traits.EthereumAddress, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_claims.traits.EthereumAddress, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Claim);
+        }
     }
 }

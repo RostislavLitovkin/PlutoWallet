@@ -39,10 +39,10 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "Validators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "CurrentIndex"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "QueuedChanged"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "QueuedKeys"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys>>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "QueuedKeys"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys>>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "DisabledValidators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "NextKeys"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Session", "KeyOwner"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.KeyTypeId, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>), typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32)));
         }
@@ -160,10 +160,10 @@ namespace Bifrost.NetApi.Generated.Storage
         ///  The queued keys for the next session. When the next session begins, these keys
         ///  will be used to determine the validator's session keys.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys>>> QueuedKeys(string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys>>> QueuedKeys(string blockhash, CancellationToken token)
         {
             string parameters = SessionStorage.QueuedKeysParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys>>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys>>>(parameters, blockhash, token);
             return result;
         }
         
@@ -228,10 +228,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> NextKeys
         ///  The next session keys for a validator.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys> NextKeys(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys> NextKeys(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = SessionStorage.NextKeysParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys>(parameters, blockhash, token);
             return result;
         }
         
@@ -277,7 +277,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> set_keys
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetKeys(Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.SessionKeys keys, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> proof)
+        public static Method SetKeys(Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.opaque.SessionKeys keys, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> proof)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(keys.Encode());

@@ -63,7 +63,20 @@ namespace Hydration.NetApi.Generated.Model.pallet_referrals.pallet
     /// >> 118 - Variant[pallet_referrals.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Hydration.NetApi.Generated.Model.pallet_referrals.AssetAmount, Hydration.NetApi.Generated.Model.pallet_referrals.AssetAmount>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel, Hydration.NetApi.Generated.Model.pallet_referrals.FeeDistribution>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.CodeRegistered);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.CodeLinked);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.pallet_referrals.AssetAmount, Hydration.NetApi.Generated.Model.pallet_referrals.AssetAmount>>(Event.Converted);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Claimed);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel, Hydration.NetApi.Generated.Model.pallet_referrals.FeeDistribution>>(Event.AssetRewardsUpdated);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_referrals.EnumLevel>>(Event.LevelUp);
+        }
     }
 }

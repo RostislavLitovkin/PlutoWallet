@@ -52,7 +52,18 @@ namespace Opal.NetApi.Generated.Model.pallet_ranked_collective.pallet
     /// >> 78 - Variant[pallet_ranked_collective.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.pallet_ranked_collective.EnumVoteRecord, Opal.NetApi.Generated.Model.pallet_ranked_collective.Tally>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.MemberAdded);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.RankChanged);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.MemberRemoved);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.pallet_ranked_collective.EnumVoteRecord, Opal.NetApi.Generated.Model.pallet_ranked_collective.Tally>>(Event.Voted);
+        }
     }
 }

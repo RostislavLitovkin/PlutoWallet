@@ -40,7 +40,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Referenda", "ReferendumInfoFor"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.pallet_referenda.types.EnumReferendumInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Referenda", "TrackQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U16), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT26)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U16), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Referenda", "DecidingCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U16), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Referenda", "MetadataOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -137,10 +137,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  This should be empty if `DecidingCount` is less than `TrackInfo::max_deciding`.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT26> TrackQueue(Substrate.NetApi.Model.Types.Primitive.U16 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27> TrackQueue(Substrate.NetApi.Model.Types.Primitive.U16 key, string blockhash, CancellationToken token)
         {
             string parameters = ReferendaStorage.TrackQueueParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT26>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27>(parameters, blockhash, token);
             return result;
         }
         
@@ -389,8 +389,8 @@ namespace Bifrost.NetApi.Generated.Storage
             result.Create("0x20000010726F6F74010000000000C52EBCA2B100000000000000000058020000C0890100201C000" +
                     "0201C00000290D73E0D000000005743DE13000000005443DE13000000000000CA9A3B00000000006" +
                     "5CD1D01004877686974656C69737465645F63616C6C6572640000000080E03779C31100000000000" +
-                    "00000004B000000C0890100320000003200000002EC972510000000007B573C170000000042392F1" +
-                    "20000000002742A270000000000EC2951000000000099370A010000000002004066656C6C6F77736" +
+                    "000000019000000C0890100190000001900000002EC972510000000007B573C170000000042392F1" +
+                    "200000000024616000000000000672E000000000000BA1631010000000002004066656C6C6F77736" +
                     "869705F61646D696E0A0000000040F09BBCE10800000000000000000058020000C08901008403000" +
                     "03200000000C94330240065CD1D00CA9A3B025D6F780000000000E82EED00000000008C6889FFFFF" +
                     "FFFFF0300507265666572656E64756D5F63616E63656C6C6572E80300000080E03779C3110000000" +
@@ -493,5 +493,11 @@ namespace Bifrost.NetApi.Generated.Storage
         /// The preimage does not exist.
         /// </summary>
         PreimageNotExist,
+        
+        /// <summary>
+        /// >> PreimageStoredWithDifferentLength
+        /// The preimage is stored with a different length than the one provided.
+        /// </summary>
+        PreimageStoredWithDifferentLength,
     }
 }

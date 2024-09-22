@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset
     
     
     /// <summary>
-    /// >> 201 - Composite[staging_xcm.v4.asset.AssetId]
+    /// >> 207 - Composite[staging_xcm.v4.asset.AssetId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AssetId : BaseType

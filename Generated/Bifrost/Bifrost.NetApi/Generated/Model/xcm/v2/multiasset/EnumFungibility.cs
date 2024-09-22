@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 156 - Variant[xcm.v2.multiasset.Fungibility]
+    /// >> 161 - Variant[xcm.v2.multiasset.Fungibility]
     /// </summary>
-    public sealed class EnumFungibility : BaseEnumExt<Fungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetInstance>
+    public sealed class EnumFungibility : BaseEnumRust<Fungibility>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumFungibility()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Fungibility.Fungible);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetInstance>(Fungibility.NonFungible);
+        }
     }
 }

@@ -55,7 +55,20 @@ namespace Opal.NetApi.Generated.Model.xcm.v3
     /// <summary>
     /// >> 240 - Variant[xcm.v3.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, Opal.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5, Opal.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>
+    public sealed class EnumResponse : BaseEnumRust<Response>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResponse()
+        {
+				AddTypeDecoder<BaseVoid>(Response.Null);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Response.Assets);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.traits.EnumError>>>(Response.ExecutionResult);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Response.Version);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>(Response.PalletsInfo);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>(Response.DispatchResult);
+        }
     }
 }

@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Types.Base
     }
     
     /// <summary>
-    /// >> 436 - Variant[Result]
+    /// >> 457 - Variant[Result]
     /// </summary>
-    public sealed class EnumResult : BaseEnumExt<Result, Bifrost.NetApi.Generated.Model.frame_support.dispatch.PostDispatchInfo, Bifrost.NetApi.Generated.Model.sp_runtime.DispatchErrorWithPostInfo>
+    public sealed class EnumResult : BaseEnumRust<Result>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResult()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.frame_support.dispatch.PostDispatchInfo>(Result.Ok);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_runtime.DispatchErrorWithPostInfo>(Result.Err);
+        }
     }
 }

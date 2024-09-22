@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 559 - Variant[xcm.VersionedResponse]
     /// </summary>
-    public sealed class EnumVersionedResponse : BaseEnumExt<VersionedResponse, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.xcm.v2.EnumResponse, Opal.NetApi.Generated.Model.xcm.v3.EnumResponse>
+    public sealed class EnumVersionedResponse : BaseEnumRust<VersionedResponse>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedResponse()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v2.EnumResponse>(VersionedResponse.V2);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v3.EnumResponse>(VersionedResponse.V3);
+        }
     }
 }

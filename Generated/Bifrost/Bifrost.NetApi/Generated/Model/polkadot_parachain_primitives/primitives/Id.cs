@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.polkadot_parachain_primitives.primitive
     
     
     /// <summary>
-    /// >> 77 - Composite[polkadot_parachain_primitives.primitives.Id]
+    /// >> 80 - Composite[polkadot_parachain_primitives.primitives.Id]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Id : BaseType

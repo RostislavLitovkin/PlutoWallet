@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Types.Base
     /// <summary>
     /// >> 611 - Variant[Result]
     /// </summary>
-    public sealed class EnumResult : BaseEnumExt<Result, Opal.NetApi.Generated.Types.Base.EnumResult, Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumTransactionValidityError>
+    public sealed class EnumResult : BaseEnumRust<Result>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResult()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.EnumResult>(Result.Ok);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.transaction_validity.EnumTransactionValidityError>(Result.Err);
+        }
     }
 }

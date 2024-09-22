@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_ve_minting.incentive
     
     
     /// <summary>
-    /// >> 489 - Composite[bifrost_ve_minting.incentive.IncentiveConfig]
+    /// >> 522 - Composite[bifrost_ve_minting.incentive.IncentiveConfig]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class IncentiveConfig : BaseType

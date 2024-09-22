@@ -50,7 +50,19 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     /// <summary>
     /// >> 170 - Variant[polkadot_runtime.OriginCaller]
     /// </summary>
-    public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, Polkadot.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime.governance.origins.pallet_custom_origins.EnumOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.origin.pallet.EnumOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>
+    public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOriginCaller()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime.governance.origins.pallet_custom_origins.EnumOrigin>(OriginCaller.Origins);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.origin.pallet.EnumOrigin>(OriginCaller.ParachainsOrigin);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.XcmPallet);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
+        }
     }
 }

@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.xcm.v3.multiasset
     /// <summary>
     /// >> 123 - Variant[xcm.v3.multiasset.AssetId]
     /// </summary>
-    public sealed class EnumAssetId : BaseEnumExt<AssetId, Bajun.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, Bajun.NetApi.Generated.Types.Base.Arr32U8>
+    public sealed class EnumAssetId : BaseEnumRust<AssetId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetId()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(AssetId.Concrete);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr32U8>(AssetId.Abstract);
+        }
     }
 }

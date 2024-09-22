@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.up_data_structs
     /// <summary>
     /// >> 279 - Variant[up_data_structs.SponsoringRateLimit]
     /// </summary>
-    public sealed class EnumSponsoringRateLimit : BaseEnumExt<SponsoringRateLimit, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumSponsoringRateLimit : BaseEnumRust<SponsoringRateLimit>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumSponsoringRateLimit()
+        {
+				AddTypeDecoder<BaseVoid>(SponsoringRateLimit.SponsoringDisabled);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(SponsoringRateLimit.Blocks);
+        }
     }
 }

@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_stakin
     }
     
     /// <summary>
-    /// >> 344 - Variant[bifrost_slp.primitives.parachain_staking_primitives.OneToManyDelegationAction]
+    /// >> 366 - Variant[bifrost_slp.primitives.parachain_staking_primitives.OneToManyDelegationAction]
     /// </summary>
-    public sealed class EnumOneToManyDelegationAction : BaseEnumExt<OneToManyDelegationAction, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>
+    public sealed class EnumOneToManyDelegationAction : BaseEnumRust<OneToManyDelegationAction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOneToManyDelegationAction()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(OneToManyDelegationAction.Revoke);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(OneToManyDelegationAction.Decrease);
+        }
     }
 }

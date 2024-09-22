@@ -69,7 +69,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_channel_commission.pallet
     }
     
     /// <summary>
-    /// >> 895 - Variant[bifrost_channel_commission.pallet.Error]
+    /// >> 949 - Variant[bifrost_channel_commission.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

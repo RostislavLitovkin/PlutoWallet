@@ -64,7 +64,20 @@ namespace Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet
     /// >> 68 - Variant[pallet_asset_registry.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Hydration.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Hydration.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.Bool>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.ExistentialDepositPaid);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Hydration.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.Registered);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Hydration.NetApi.Generated.Model.pallet_asset_registry.types.EnumAssetType, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.Updated);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.hydradx_runtime.xcm.AssetLocation>>(Event.LocationSet);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.AssetBanned);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.AssetUnbanned);
+        }
     }
 }

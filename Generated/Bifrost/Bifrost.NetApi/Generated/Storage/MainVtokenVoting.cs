@@ -42,7 +42,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "VotingFor"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote.EnumVoting)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "ClassLocksFor"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT61)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "PendingReferendumInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U64), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "PendingRemoveDelegatorVote"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -52,17 +52,17 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "UndecidingTimeout"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "Delegators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT62)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "VoteCapRatio"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "DelegatorVotes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "PendingDelegatorVotes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "ReferendumTimeout"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT66)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VtokenVoting", "VoteDelegatorFor"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
@@ -162,10 +162,10 @@ namespace Bifrost.NetApi.Generated.Storage
         ///  require. The actual amount locked on behalf of this pallet should always be the maximum of
         ///  this list.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT61> ClassLocksFor(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63> ClassLocksFor(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = VtokenVotingStorage.ClassLocksForParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT61>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63>(parameters, blockhash, token);
             return result;
         }
         
@@ -326,10 +326,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> Delegators
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT62> Delegators(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64> Delegators(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
         {
             string parameters = VtokenVotingStorage.DelegatorsParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT62>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64>(parameters, blockhash, token);
             return result;
         }
         
@@ -384,10 +384,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> DelegatorVotes
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63> DelegatorVotes(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65> DelegatorVotes(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = VtokenVotingStorage.DelegatorVotesParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65>(parameters, blockhash, token);
             return result;
         }
         
@@ -413,10 +413,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> PendingDelegatorVotes
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63> PendingDelegatorVotes(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65> PendingDelegatorVotes(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = VtokenVotingStorage.PendingDelegatorVotesParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT63>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT65>(parameters, blockhash, token);
             return result;
         }
         
@@ -442,10 +442,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> ReferendumTimeout
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64> ReferendumTimeout(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT66> ReferendumTimeout(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = VtokenVotingStorage.ReferendumTimeoutParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT64>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT66>(parameters, blockhash, token);
             return result;
         }
         
@@ -515,10 +515,11 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> remove_delegator_vote
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RemoveDelegatorVote(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId vtoken, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> poll_index, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U16> derivative_index)
+        public static Method RemoveDelegatorVote(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId vtoken, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U16> @class, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> poll_index, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U16> derivative_index)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(vtoken.Encode());
+            byteArray.AddRange(@class.Encode());
             byteArray.AddRange(poll_index.Encode());
             byteArray.AddRange(derivative_index.Encode());
             return new Method(130, "VtokenVoting", 2, "remove_delegator_vote", byteArray.ToArray());

@@ -57,7 +57,19 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pall
     /// >> 271 - Variant[cumulus_pallet_xcmp_queue.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.suspend_xcm_execution);
+				AddTypeDecoder<BaseVoid>(Call.resume_xcm_execution);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.update_suspend_threshold);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.update_drop_threshold);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.update_resume_threshold);
+        }
     }
 }

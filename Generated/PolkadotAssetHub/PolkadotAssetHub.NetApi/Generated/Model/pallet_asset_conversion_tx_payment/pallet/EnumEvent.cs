@@ -40,7 +40,16 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion_tx_pay
     /// >> 36 - Variant[pallet_asset_conversion_tx_payment.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>, Substrate.NetApi.Model.Types.Primitive.U128>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Event.AssetTxFeePaid);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.AssetRefundFailed);
+        }
     }
 }

@@ -55,7 +55,20 @@ namespace Bajun.NetApi.Generated.Model.bajun_runtime
     /// <summary>
     /// >> 274 - Variant[bajun_runtime.OriginCaller]
     /// </summary>
-    public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, Bajun.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin, Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, BaseVoid, Bajun.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>
+    public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOriginCaller()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.PolkadotXcm);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>(OriginCaller.CumulusXcm);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.Council);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.TechnicalCommittee);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
+        }
     }
 }

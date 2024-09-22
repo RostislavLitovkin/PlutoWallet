@@ -39,7 +39,16 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_session.pallet
     /// >> 257 - Variant[pallet_session.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.SessionKeys, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.SessionKeys, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(Call.set_keys);
+				AddTypeDecoder<BaseVoid>(Call.purge_keys);
+        }
     }
 }

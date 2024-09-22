@@ -39,10 +39,20 @@ namespace Bifrost.NetApi.Generated.Model.pallet_whitelist.pallet
     }
     
     /// <summary>
-    /// >> 435 - Variant[pallet_whitelist.pallet.Event]
+    /// >> 456 - Variant[pallet_whitelist.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Event.CallWhitelisted);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Event.WhitelistedCallRemoved);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>>(Event.WhitelistedCallDispatched);
+        }
     }
 }

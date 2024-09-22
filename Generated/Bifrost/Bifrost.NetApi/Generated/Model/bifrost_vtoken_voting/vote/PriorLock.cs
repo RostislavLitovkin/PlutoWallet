@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.vote
     
     
     /// <summary>
-    /// >> 864 - Composite[bifrost_vtoken_voting.vote.PriorLock]
+    /// >> 919 - Composite[bifrost_vtoken_voting.vote.PriorLock]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PriorLock : BaseType

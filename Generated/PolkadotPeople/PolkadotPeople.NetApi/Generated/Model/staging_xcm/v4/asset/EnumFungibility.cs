@@ -35,7 +35,16 @@ namespace PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset
     /// <summary>
     /// >> 68 - Variant[staging_xcm.v4.asset.Fungibility]
     /// </summary>
-    public sealed class EnumFungibility : BaseEnumExt<Fungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumAssetInstance>
+    public sealed class EnumFungibility : BaseEnumRust<Fungibility>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumFungibility()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Fungibility.Fungible);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumAssetInstance>(Fungibility.NonFungible);
+        }
     }
 }

@@ -37,6 +37,11 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
         ParachainSystem = 5,
         
         /// <summary>
+        /// >> TxPause
+        /// </summary>
+        TxPause = 7,
+        
+        /// <summary>
         /// >> Balances
         /// </summary>
         Balances = 10,
@@ -162,6 +167,21 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
         Preimage = 64,
         
         /// <summary>
+        /// >> Ethereum
+        /// </summary>
+        Ethereum = 65,
+        
+        /// <summary>
+        /// >> EVM
+        /// </summary>
+        EVM = 66,
+        
+        /// <summary>
+        /// >> EVMAccounts
+        /// </summary>
+        EVMAccounts = 69,
+        
+        /// <summary>
         /// >> XTokens
         /// </summary>
         XTokens = 70,
@@ -200,11 +220,6 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
         /// >> Salp
         /// </summary>
         Salp = 105,
-        
-        /// <summary>
-        /// >> CallSwitchgear
-        /// </summary>
-        CallSwitchgear = 112,
         
         /// <summary>
         /// >> AssetRegistry
@@ -328,9 +343,80 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 20 - Variant[bifrost_polkadot_runtime.RuntimeEvent]
+    /// >> 21 - Variant[bifrost_polkadot_runtime.RuntimeEvent]
     /// </summary>
-    public sealed class EnumRuntimeEvent : BaseEnumExt<RuntimeEvent, Bifrost.NetApi.Generated.Model.frame_system.pallet.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_indices.pallet.EnumEvent, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_session.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_conviction_voting.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_whitelist.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_vesting.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.orml_xtokens.module.EnumEvent, Bifrost.NetApi.Generated.Model.orml_tokens.module.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.orml_unknown_tokens.module.EnumEvent, Bifrost.NetApi.Generated.Model.orml_xcm.module.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.zenlink_protocol.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.merkle_distributor.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_flexible_fee.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_salp.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_call_switchgear.pallet.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_vtoken_minting.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_slp.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_xcm_interface.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_vstoken_conversion.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_farming.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_system_staking.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_system_maker.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_cross_in_out.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_ve_minting.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_slpx.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_stable_asset.pallet.EnumEvent, BaseVoid, Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.lend_market.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_prices.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.orml_oracle.module.EnumEvent, Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.leverage_staking.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_channel_commission.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_clouds_convert.pallet.EnumEvent, Bifrost.NetApi.Generated.Model.bifrost_buy_back.pallet.EnumEvent>
+    public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeEvent()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.frame_system.pallet.EnumEvent>(RuntimeEvent.System);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_indices.pallet.EnumEvent>(RuntimeEvent.Indices);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent>(RuntimeEvent.ParachainSystem);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_tx_pause.pallet.EnumEvent>(RuntimeEvent.TxPause);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent>(RuntimeEvent.Balances);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent>(RuntimeEvent.TransactionPayment);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent>(RuntimeEvent.CollatorSelection);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_session.pallet.EnumEvent>(RuntimeEvent.Session);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_democracy.pallet.EnumEvent>(RuntimeEvent.Democracy);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.Council);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_collective.pallet.EnumEvent>(RuntimeEvent.TechnicalCommittee);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumEvent>(RuntimeEvent.PhragmenElection);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent>(RuntimeEvent.CouncilMembership);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent>(RuntimeEvent.TechnicalMembership);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_conviction_voting.pallet.EnumEvent>(RuntimeEvent.ConvictionVoting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent>(RuntimeEvent.Referenda);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_whitelist.pallet.EnumEvent>(RuntimeEvent.Whitelist);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent>(RuntimeEvent.XcmpQueue);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent>(RuntimeEvent.PolkadotXcm);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent>(RuntimeEvent.CumulusXcm);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent>(RuntimeEvent.MessageQueue);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent>(RuntimeEvent.Utility);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_scheduler.pallet.EnumEvent>(RuntimeEvent.Scheduler);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent>(RuntimeEvent.Proxy);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent>(RuntimeEvent.Multisig);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_vesting.pallet.EnumEvent>(RuntimeEvent.Vesting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent>(RuntimeEvent.Treasury);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_preimage.pallet.EnumEvent>(RuntimeEvent.Preimage);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_ethereum.pallet.EnumEvent>(RuntimeEvent.Ethereum);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_evm.pallet.EnumEvent>(RuntimeEvent.EVM);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_evm_accounts.pallet.EnumEvent>(RuntimeEvent.EVMAccounts);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.orml_xtokens.module.EnumEvent>(RuntimeEvent.XTokens);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.orml_tokens.module.EnumEvent>(RuntimeEvent.Tokens);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.orml_unknown_tokens.module.EnumEvent>(RuntimeEvent.UnknownTokens);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.orml_xcm.module.EnumEvent>(RuntimeEvent.OrmlXcm);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.zenlink_protocol.pallet.EnumEvent>(RuntimeEvent.ZenlinkProtocol);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.merkle_distributor.pallet.EnumEvent>(RuntimeEvent.MerkleDistributor);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_flexible_fee.pallet.EnumEvent>(RuntimeEvent.FlexibleFee);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_salp.pallet.EnumEvent>(RuntimeEvent.Salp);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.EnumEvent>(RuntimeEvent.AssetRegistry);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_vtoken_minting.pallet.EnumEvent>(RuntimeEvent.VtokenMinting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.pallet.EnumEvent>(RuntimeEvent.Slp);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_xcm_interface.pallet.EnumEvent>(RuntimeEvent.XcmInterface);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_vstoken_conversion.pallet.EnumEvent>(RuntimeEvent.TokenConversion);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_farming.pallet.EnumEvent>(RuntimeEvent.Farming);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_system_staking.pallet.EnumEvent>(RuntimeEvent.SystemStaking);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_system_maker.pallet.EnumEvent>(RuntimeEvent.SystemMaker);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.EnumEvent>(RuntimeEvent.FeeShare);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_cross_in_out.pallet.EnumEvent>(RuntimeEvent.CrossInOut);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_ve_minting.pallet.EnumEvent>(RuntimeEvent.VeMinting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slpx.pallet.EnumEvent>(RuntimeEvent.Slpx);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_ranked_collective.pallet.EnumEvent>(RuntimeEvent.FellowshipCollective);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_referenda.pallet.EnumEvent>(RuntimeEvent.FellowshipReferenda);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_stable_asset.pallet.EnumEvent>(RuntimeEvent.StableAsset);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_vtoken_voting.pallet.EnumEvent>(RuntimeEvent.VtokenVoting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.lend_market.pallet.EnumEvent>(RuntimeEvent.LendMarket);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_prices.pallet.EnumEvent>(RuntimeEvent.Prices);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.orml_oracle.module.EnumEvent>(RuntimeEvent.Oracle);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_membership.pallet.EnumEvent>(RuntimeEvent.OracleMembership);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.leverage_staking.pallet.EnumEvent>(RuntimeEvent.LeverageStaking);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_channel_commission.pallet.EnumEvent>(RuntimeEvent.ChannelCommission);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_clouds_convert.pallet.EnumEvent>(RuntimeEvent.CloudsConvert);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_buy_back.pallet.EnumEvent>(RuntimeEvent.BuyBack);
+        }
     }
 }

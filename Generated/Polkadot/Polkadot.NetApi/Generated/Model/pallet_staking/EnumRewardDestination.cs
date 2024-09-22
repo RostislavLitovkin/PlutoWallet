@@ -50,7 +50,19 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
     /// <summary>
     /// >> 42 - Variant[pallet_staking.RewardDestination]
     /// </summary>
-    public sealed class EnumRewardDestination : BaseEnumExt<RewardDestination, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid>
+    public sealed class EnumRewardDestination : BaseEnumRust<RewardDestination>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRewardDestination()
+        {
+				AddTypeDecoder<BaseVoid>(RewardDestination.Staked);
+				AddTypeDecoder<BaseVoid>(RewardDestination.Stash);
+				AddTypeDecoder<BaseVoid>(RewardDestination.Controller);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(RewardDestination.Account);
+				AddTypeDecoder<BaseVoid>(RewardDestination.None);
+        }
     }
 }

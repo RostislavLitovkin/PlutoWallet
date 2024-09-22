@@ -35,7 +35,16 @@ namespace Hydration.NetApi.Generated.Model.ethereum.transaction
     /// <summary>
     /// >> 394 - Variant[ethereum.transaction.TransactionAction]
     /// </summary>
-    public sealed class EnumTransactionAction : BaseEnumExt<TransactionAction, Hydration.NetApi.Generated.Model.primitive_types.H160, BaseVoid>
+    public sealed class EnumTransactionAction : BaseEnumRust<TransactionAction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumTransactionAction()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(TransactionAction.Call);
+				AddTypeDecoder<BaseVoid>(TransactionAction.Create);
+        }
     }
 }

@@ -68,10 +68,24 @@ namespace Bifrost.NetApi.Generated.Model.pallet_collective.pallet
     }
     
     /// <summary>
-    /// >> 48 - Variant[pallet_collective.pallet.Event]
+    /// >> 51 - Variant[pallet_collective.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Proposed);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Voted);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Event.Approved);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Event.Disapproved);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>>(Event.Executed);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Types.Base.EnumResult>>(Event.MemberExecuted);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.Closed);
+        }
     }
 }

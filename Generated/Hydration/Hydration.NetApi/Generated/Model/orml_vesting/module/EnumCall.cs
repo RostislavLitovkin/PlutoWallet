@@ -51,7 +51,18 @@ namespace Hydration.NetApi.Generated.Model.orml_vesting.module
     /// >> 385 - Variant[orml_vesting.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.orml_vesting.VestingSchedule>, BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.orml_vesting.VestingSchedule>>, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.claim);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.orml_vesting.VestingSchedule>>(Call.vested_transfer);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.orml_vesting.VestingSchedule>>>(Call.update_vesting_schedules);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.claim_for);
+        }
     }
 }

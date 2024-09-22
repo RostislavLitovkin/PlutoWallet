@@ -37,18 +37,18 @@ namespace Bifrost.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "IdentityOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SuperOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SubsOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "UsernameAuthorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.pallet_identity.types.AuthorityProperties)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "AccountOfUsername"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7), typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8), typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "PendingUsernames"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>)));
         }
         
         /// <summary>
@@ -81,10 +81,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>> IdentityOf(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>>> IdentityOf(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.IdentityOfParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7>>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>>>(parameters, blockhash, token);
             return result;
         }
         
@@ -153,10 +153,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36>> SubsOf(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38>> SubsOf(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.SubsOfParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38>>(parameters, blockhash, token);
             return result;
         }
         
@@ -188,10 +188,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  The index into this can be cast to `RegistrarIndex` to get a valid value.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37> Registrars(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39> Registrars(string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.RegistrarsParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39>(parameters, blockhash, token);
             return result;
         }
         
@@ -234,7 +234,7 @@ namespace Bifrost.NetApi.Generated.Storage
         ///  Multiple usernames may map to the same `AccountId`, but `IdentityOf` will only map to one
         ///  primary username.
         /// </summary>
-        public static string AccountOfUsernameParams(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 key)
+        public static string AccountOfUsernameParams(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 key)
         {
             return RequestGenerator.GetStorage("Identity", "AccountOfUsername", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -258,7 +258,7 @@ namespace Bifrost.NetApi.Generated.Storage
         ///  Multiple usernames may map to the same `AccountId`, but `IdentityOf` will only map to one
         ///  primary username.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32> AccountOfUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32> AccountOfUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.AccountOfUsernameParams(key);
             var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>(parameters, blockhash, token);
@@ -274,7 +274,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  First tuple item is the account and second is the acceptance deadline.
         /// </summary>
-        public static string PendingUsernamesParams(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 key)
+        public static string PendingUsernamesParams(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 key)
         {
             return RequestGenerator.GetStorage("Identity", "PendingUsernames", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -299,7 +299,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// 
         ///  First tuple item is the account and second is the acceptance deadline.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>> PendingUsernames(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>> PendingUsernames(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.PendingUsernamesParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(parameters, blockhash, token);
@@ -526,7 +526,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> accept_username
         /// Identity pallet declaration.
         /// </summary>
-        public static Method AcceptUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 username)
+        public static Method AcceptUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 username)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(username.Encode());
@@ -537,7 +537,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> remove_expired_approval
         /// Identity pallet declaration.
         /// </summary>
-        public static Method RemoveExpiredApproval(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 username)
+        public static Method RemoveExpiredApproval(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 username)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(username.Encode());
@@ -548,7 +548,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> set_primary_username
         /// Identity pallet declaration.
         /// </summary>
-        public static Method SetPrimaryUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 username)
+        public static Method SetPrimaryUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 username)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(username.Encode());
@@ -559,7 +559,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> remove_dangling_username
         /// Identity pallet declaration.
         /// </summary>
-        public static Method RemoveDanglingUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 username)
+        public static Method RemoveDanglingUsername(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 username)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(username.Encode());
@@ -621,7 +621,7 @@ namespace Bifrost.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxRegistrars
-        ///  Maxmimum number of registrars allowed in the system. Needed to bound the complexity
+        ///  Maximum number of registrars allowed in the system. Needed to bound the complexity
         ///  of, e.g., updating judgements.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxRegistrars()

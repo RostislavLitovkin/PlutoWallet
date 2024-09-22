@@ -63,7 +63,20 @@ namespace Polkadot.NetApi.Generated.Model.pallet_utility.pallet
     /// >> 190 - Variant[pallet_utility.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller, Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall, Polkadot.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>>(Call.batch);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U16, Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>>(Call.as_derivative);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>>(Call.batch_all);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumOriginCaller, Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>>(Call.dispatch_as);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall>>(Call.force_batch);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall, Polkadot.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.with_weight);
+        }
     }
 }

@@ -51,7 +51,18 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.pallet
     /// >> 125 - Variant[pallet_multisig.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8, PolkadotAssetHub.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>>(Event.NewMultisig);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>>(Event.MultisigApproval);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8, PolkadotAssetHub.NetApi.Generated.Types.Base.EnumResult>>(Event.MultisigExecuted);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8>>(Event.MultisigCancelled);
+        }
     }
 }

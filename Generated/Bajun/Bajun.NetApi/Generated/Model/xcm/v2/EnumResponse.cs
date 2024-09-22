@@ -45,7 +45,18 @@ namespace Bajun.NetApi.Generated.Model.xcm.v2
     /// <summary>
     /// >> 353 - Variant[xcm.v2.Response]
     /// </summary>
-    public sealed class EnumResponse : BaseEnumExt<Response, BaseVoid, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.v2.traits.EnumError>>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumResponse : BaseEnumRust<Response>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumResponse()
+        {
+				AddTypeDecoder<BaseVoid>(Response.Null);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(Response.Assets);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.v2.traits.EnumError>>>(Response.ExecutionResult);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Response.Version);
+        }
     }
 }

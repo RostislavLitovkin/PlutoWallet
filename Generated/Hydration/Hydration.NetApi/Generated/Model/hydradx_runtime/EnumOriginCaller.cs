@@ -60,7 +60,21 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime
     /// <summary>
     /// >> 472 - Variant[hydradx_runtime.OriginCaller]
     /// </summary>
-    public sealed class EnumOriginCaller : BaseEnumExt<OriginCaller, BaseVoid, Hydration.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_ethereum.EnumRawOrigin, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>
+    public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOriginCaller()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.Council);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.EnumRawOrigin>(OriginCaller.TechnicalCommittee);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_ethereum.EnumRawOrigin>(OriginCaller.Ethereum);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.PolkadotXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>(OriginCaller.CumulusXcm);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
+        }
     }
 }

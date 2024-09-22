@@ -49,7 +49,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet
     }
     
     /// <summary>
-    /// >> 827 - Variant[bifrost_fee_share.pallet.Error]
+    /// >> 882 - Variant[bifrost_fee_share.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

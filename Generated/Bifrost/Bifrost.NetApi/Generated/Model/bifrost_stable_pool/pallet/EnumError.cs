@@ -49,7 +49,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_stable_pool.pallet
     }
     
     /// <summary>
-    /// >> 858 - Variant[bifrost_stable_pool.pallet.Error]
+    /// >> 913 - Variant[bifrost_stable_pool.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.xcm.v2.multiasset
     /// <summary>
     /// >> 359 - Variant[xcm.v2.multiasset.WildMultiAsset]
     /// </summary>
-    public sealed class EnumWildMultiAsset : BaseEnumExt<WildMultiAsset, BaseVoid, BaseTuple<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildFungibility>>
+    public sealed class EnumWildMultiAsset : BaseEnumRust<WildMultiAsset>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumWildMultiAsset()
+        {
+				AddTypeDecoder<BaseVoid>(WildMultiAsset.All);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumAssetId, Bajun.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildFungibility>>(WildMultiAsset.AllOf);
+        }
     }
 }

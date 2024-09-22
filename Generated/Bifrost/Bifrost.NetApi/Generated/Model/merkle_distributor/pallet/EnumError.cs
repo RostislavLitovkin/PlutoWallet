@@ -78,7 +78,7 @@ namespace Bifrost.NetApi.Generated.Model.merkle_distributor.pallet
     }
     
     /// <summary>
-    /// >> 767 - Variant[merkle_distributor.pallet.Error]
+    /// >> 823 - Variant[merkle_distributor.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

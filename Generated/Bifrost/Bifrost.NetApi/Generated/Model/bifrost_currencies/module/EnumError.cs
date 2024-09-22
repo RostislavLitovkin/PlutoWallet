@@ -42,7 +42,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_currencies.module
     }
     
     /// <summary>
-    /// >> 747 - Variant[bifrost_currencies.module.Error]
+    /// >> 805 - Variant[bifrost_currencies.module.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

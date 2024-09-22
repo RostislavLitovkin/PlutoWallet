@@ -30,7 +30,15 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
     /// <summary>
     /// >> 467 - Variant[polkadot_runtime_parachains.inclusion.UmpQueueId]
     /// </summary>
-    public sealed class EnumUmpQueueId : BaseEnumExt<UmpQueueId, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>
+    public sealed class EnumUmpQueueId : BaseEnumRust<UmpQueueId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumUmpQueueId()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(UmpQueueId.Para);
+        }
     }
 }

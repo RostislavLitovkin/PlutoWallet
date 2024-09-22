@@ -68,9 +68,25 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2.multilocation
     }
     
     /// <summary>
-    /// >> 137 - Variant[xcm.v2.multilocation.Junctions]
+    /// >> 142 - Variant[xcm.v2.multilocation.Junctions]
     /// </summary>
-    public sealed class EnumJunctions : BaseEnumExt<Junctions, BaseVoid, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>, BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>
+    public sealed class EnumJunctions : BaseEnumRust<Junctions>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumJunctions()
+        {
+				AddTypeDecoder<BaseVoid>(Junctions.Here);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>(Junctions.X1);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X2);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X3);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X4);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X5);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X6);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X7);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction, Bifrost.NetApi.Generated.Model.xcm.v2.junction.EnumJunction>>(Junctions.X8);
+        }
     }
 }

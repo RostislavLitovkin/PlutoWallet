@@ -43,9 +43,20 @@ namespace Bifrost.NetApi.Generated.Model.pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 665 - Variant[pallet_xcm.pallet.VersionMigrationStage]
+    /// >> 702 - Variant[pallet_xcm.pallet.VersionMigrationStage]
     /// </summary>
-    public sealed class EnumVersionMigrationStage : BaseEnumExt<VersionMigrationStage, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid>
+    public sealed class EnumVersionMigrationStage : BaseEnumRust<VersionMigrationStage>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionMigrationStage()
+        {
+				AddTypeDecoder<BaseVoid>(VersionMigrationStage.MigrateSupportedVersion);
+				AddTypeDecoder<BaseVoid>(VersionMigrationStage.MigrateVersionNotifiers);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(VersionMigrationStage.NotifyCurrentTargets);
+				AddTypeDecoder<BaseVoid>(VersionMigrationStage.MigrateAndNotifyOldTargets);
+        }
     }
 }

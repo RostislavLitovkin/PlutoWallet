@@ -185,7 +185,46 @@ namespace Bajun.NetApi.Generated.Model.bajun_runtime
     /// <summary>
     /// >> 271 - Variant[bajun_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, Bajun.NetApi.Generated.Model.frame_system.pallet.EnumCall, Bajun.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, Bajun.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_migrations.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, Bajun.NetApi.Generated.Model.orml_vesting.module.EnumCall, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_session.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall, BaseVoid, Bajun.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall, Bajun.NetApi.Generated.Model.orml_xtokens.module.EnumCall, Bajun.NetApi.Generated.Model.orml_xcm.module.EnumCall, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_sudo.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_membership.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_membership.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_nfts.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.pallet_assets.pallet.EnumCall, Bajun.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeCall()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall>(RuntimeCall.ParachainSystem);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall>(RuntimeCall.ParachainInfo);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall>(RuntimeCall.Multisig);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall>(RuntimeCall.Proxy);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall>(RuntimeCall.Scheduler);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall>(RuntimeCall.Preimage);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_migrations.pallet.EnumCall>(RuntimeCall.Migrations);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.orml_vesting.module.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall>(RuntimeCall.CollatorSelection);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall>(RuntimeCall.XcmpQueue);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.PolkadotXcm);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall>(RuntimeCall.CumulusXcm);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall>(RuntimeCall.MessageQueue);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.orml_xtokens.module.EnumCall>(RuntimeCall.XTokens);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.orml_xcm.module.EnumCall>(RuntimeCall.OrmlXcm);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_sudo.pallet.EnumCall>(RuntimeCall.Sudo);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall>(RuntimeCall.Treasury);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.Council);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_membership.pallet.EnumCall>(RuntimeCall.CouncilMembership);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.TechnicalCommittee);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_membership.pallet.EnumCall>(RuntimeCall.TechnicalCommitteeMembership);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall>(RuntimeCall.Democracy);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_ajuna_awesome_avatars.pallet.EnumCall>(RuntimeCall.AwesomeAvatars);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_nfts.pallet.EnumCall>(RuntimeCall.Nft);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_assets.pallet.EnumCall>(RuntimeCall.Assets);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumCall>(RuntimeCall.AssetRegistry);
+        }
     }
 }

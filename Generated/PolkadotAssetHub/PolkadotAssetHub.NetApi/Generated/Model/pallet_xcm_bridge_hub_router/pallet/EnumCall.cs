@@ -33,7 +33,15 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm_bridge_hub_router.p
     /// >> 335 - Variant[pallet_xcm_bridge_hub_router.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.report_bridge_status);
+        }
     }
 }

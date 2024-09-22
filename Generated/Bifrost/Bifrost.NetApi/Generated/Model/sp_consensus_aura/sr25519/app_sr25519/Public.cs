@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519
     
     
     /// <summary>
-    /// >> 89 - Composite[sp_consensus_aura.sr25519.app_sr25519.Public]
+    /// >> 93 - Composite[sp_consensus_aura.sr25519.app_sr25519.Public]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Public : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519
         /// <summary>
         /// >> value
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.sp_core.sr25519.Public Value { get; set; }
+        public Bifrost.NetApi.Generated.Types.Base.Arr32U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Bifrost.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Bifrost.NetApi.Generated.Model.sp_core.sr25519.Public();
+            Value = new Bifrost.NetApi.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

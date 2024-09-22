@@ -35,7 +35,16 @@ namespace Hydration.NetApi.Generated.Model.pallet_xcm.pallet
     /// <summary>
     /// >> 477 - Variant[pallet_xcm.pallet.Origin]
     /// </summary>
-    public sealed class EnumOrigin : BaseEnumExt<Origin, Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location, Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location>
+    public sealed class EnumOrigin : BaseEnumRust<Origin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOrigin()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location>(Origin.Xcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.staging_xcm.v4.location.Location>(Origin.Response);
+        }
     }
 }

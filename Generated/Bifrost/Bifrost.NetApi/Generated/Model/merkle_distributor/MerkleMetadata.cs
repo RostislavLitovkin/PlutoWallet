@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.merkle_distributor
     
     
     /// <summary>
-    /// >> 764 - Composite[merkle_distributor.MerkleMetadata]
+    /// >> 820 - Composite[merkle_distributor.MerkleMetadata]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MerkleMetadata : BaseType
@@ -31,7 +31,7 @@ namespace Bifrost.NetApi.Generated.Model.merkle_distributor
         /// <summary>
         /// >> description
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT44 Description { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT46 Description { get; set; }
         /// <summary>
         /// >> distribute_currency
         /// </summary>
@@ -74,7 +74,7 @@ namespace Bifrost.NetApi.Generated.Model.merkle_distributor
             var start = p;
             MerkleRoot = new Bifrost.NetApi.Generated.Model.primitive_types.H256();
             MerkleRoot.Decode(byteArray, ref p);
-            Description = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT44();
+            Description = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT46();
             Description.Decode(byteArray, ref p);
             DistributeCurrency = new Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
             DistributeCurrency.Decode(byteArray, ref p);

@@ -54,10 +54,23 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet
     }
     
     /// <summary>
-    /// >> 483 - Variant[bifrost_fee_share.pallet.Event]
+    /// >> 516 - Variant[bifrost_fee_share.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info, Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info>(Event.Created);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info>(Event.Edited);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.EraLengthSet);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Executed);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Deleted);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Bifrost.NetApi.Generated.Model.bifrost_fee_share.pallet.Info, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.ExecuteFailed);
+        }
     }
 }

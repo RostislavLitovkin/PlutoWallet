@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.pallet_structure.pallet
     /// >> 370 - Variant[pallet_structure.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Opal.NetApi.Generated.Types.Base.EnumResult>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.EnumResult>(Event.Executed);
+        }
     }
 }

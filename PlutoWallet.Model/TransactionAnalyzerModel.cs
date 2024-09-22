@@ -10,8 +10,21 @@ using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPal
 
 namespace PlutoWallet.Model
 {
+    public enum ExtrinsicResult
+    {
+        Unknown,
+        Success,
+        Failed,
+    }
     public class TransactionAnalyzerModel
     {
+        public static ExtrinsicResult GetExtrinsicResult(IEnumerable<ExtrinsicEvent> events) => events.Last() switch
+        {
+            ExtrinsicEvent { PalletName: "System", EventName: "ExtrinsicSuccess" } => ExtrinsicResult.Success,
+            ExtrinsicEvent { PalletName: "System", EventName: "ExtrinsicFailed" } => ExtrinsicResult.Failed,
+            _ => ExtrinsicResult.Unknown,
+        };
+
         /// <summary>
         /// Analyze the events and return the currency changes for each address
         /// </summary>
@@ -91,7 +104,7 @@ namespace PlutoWallet.Model
             /// Remove emptry values
             foreach (var address in result.Keys)
             {
-                foreach(var assetKey in result[address].Keys)
+                foreach (var assetKey in result[address].Keys)
                 {
                     if (result[address][assetKey].Amount == 0)
                     {

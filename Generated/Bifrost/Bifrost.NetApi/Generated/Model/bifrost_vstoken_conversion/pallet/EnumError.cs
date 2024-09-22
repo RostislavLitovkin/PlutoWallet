@@ -39,7 +39,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vstoken_conversion.pallet
     }
     
     /// <summary>
-    /// >> 803 - Variant[bifrost_vstoken_conversion.pallet.Error]
+    /// >> 858 - Variant[bifrost_vstoken_conversion.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

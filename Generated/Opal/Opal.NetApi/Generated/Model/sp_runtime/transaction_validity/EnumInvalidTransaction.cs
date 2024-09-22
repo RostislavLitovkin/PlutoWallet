@@ -80,7 +80,25 @@ namespace Opal.NetApi.Generated.Model.sp_runtime.transaction_validity
     /// <summary>
     /// >> 613 - Variant[sp_runtime.transaction_validity.InvalidTransaction]
     /// </summary>
-    public sealed class EnumInvalidTransaction : BaseEnumExt<InvalidTransaction, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U8, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumInvalidTransaction : BaseEnumRust<InvalidTransaction>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumInvalidTransaction()
+        {
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.Call);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.Payment);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.Future);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.Stale);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.BadProof);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.AncientBirthBlock);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.ExhaustsResources);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U8>(InvalidTransaction.Custom);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.BadMandatory);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.MandatoryValidation);
+				AddTypeDecoder<BaseVoid>(InvalidTransaction.BadSigner);
+        }
     }
 }

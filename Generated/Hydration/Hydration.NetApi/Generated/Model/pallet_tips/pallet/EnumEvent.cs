@@ -57,7 +57,19 @@ namespace Hydration.NetApi.Generated.Model.pallet_tips.pallet
     /// >> 52 - Variant[pallet_tips.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Hydration.NetApi.Generated.Model.primitive_types.H256, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.NewTip);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.TipClosing);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.TipClosed);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H256>(Event.TipRetracted);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.TipSlashed);
+        }
     }
 }

@@ -100,7 +100,29 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
     /// <summary>
     /// >> 20 - Variant[people_polkadot_runtime.RuntimeEvent]
     /// </summary>
-    public sealed class EnumRuntimeEvent : BaseEnumExt<RuntimeEvent, PolkadotPeople.NetApi.Generated.Model.frame_system.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.pallet_session.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent, BaseVoid, PolkadotPeople.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent, PolkadotPeople.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumEvent>
+    public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeEvent()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.frame_system.pallet.EnumEvent>(RuntimeEvent.System);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumEvent>(RuntimeEvent.ParachainSystem);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_balances.pallet.EnumEvent>(RuntimeEvent.Balances);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent>(RuntimeEvent.TransactionPayment);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent>(RuntimeEvent.CollatorSelection);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_session.pallet.EnumEvent>(RuntimeEvent.Session);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent>(RuntimeEvent.XcmpQueue);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent>(RuntimeEvent.PolkadotXcm);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent>(RuntimeEvent.CumulusXcm);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent>(RuntimeEvent.MessageQueue);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_utility.pallet.EnumEvent>(RuntimeEvent.Utility);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent>(RuntimeEvent.Multisig);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent>(RuntimeEvent.Proxy);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumEvent>(RuntimeEvent.IdentityMigrator);
+        }
     }
 }

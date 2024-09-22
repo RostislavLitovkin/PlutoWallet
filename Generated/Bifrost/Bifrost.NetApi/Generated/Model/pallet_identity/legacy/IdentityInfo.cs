@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.legacy
     
     
     /// <summary>
-    /// >> 241 - Composite[pallet_identity.legacy.IdentityInfo]
+    /// >> 249 - Composite[pallet_identity.legacy.IdentityInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class IdentityInfo : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.legacy
         /// <summary>
         /// >> additional
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 Additional { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 Additional { get; set; }
         /// <summary>
         /// >> display
         /// </summary>
@@ -87,7 +87,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.legacy
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Additional = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6();
+            Additional = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
             Additional.Decode(byteArray, ref p);
             Display = new Bifrost.NetApi.Generated.Model.pallet_identity.types.EnumData();
             Display.Decode(byteArray, ref p);

@@ -45,7 +45,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_grandpa.pallet
     /// >> 50 - Variant[pallet_grandpa.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_grandpa.app.Public, Substrate.NetApi.Model.Types.Primitive.U64>>, BaseVoid, BaseVoid>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_grandpa.app.Public, Substrate.NetApi.Model.Types.Primitive.U64>>>(Event.NewAuthorities);
+				AddTypeDecoder<BaseVoid>(Event.Paused);
+				AddTypeDecoder<BaseVoid>(Event.Resumed);
+        }
     }
 }

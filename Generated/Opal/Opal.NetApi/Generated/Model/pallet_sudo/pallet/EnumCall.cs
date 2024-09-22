@@ -51,7 +51,18 @@ namespace Opal.NetApi.Generated.Model.pallet_sudo.pallet
     /// >> 122 - Variant[pallet_sudo.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall, BaseTuple<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall>(Call.sudo);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.sudo_unchecked_weight);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.set_key);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall>>(Call.sudo_as);
+        }
     }
 }

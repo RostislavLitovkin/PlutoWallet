@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 136 - Variant[xcm.VersionedMultiAsset]
     /// </summary>
-    public sealed class EnumVersionedMultiAsset : BaseEnumExt<VersionedMultiAsset, BaseVoid, Opal.NetApi.Generated.Model.xcm.v2.multiasset.MultiAsset, BaseVoid, Opal.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset>
+    public sealed class EnumVersionedMultiAsset : BaseEnumRust<VersionedMultiAsset>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedMultiAsset()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v2.multiasset.MultiAsset>(VersionedMultiAsset.V2);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset>(VersionedMultiAsset.V3);
+        }
     }
 }

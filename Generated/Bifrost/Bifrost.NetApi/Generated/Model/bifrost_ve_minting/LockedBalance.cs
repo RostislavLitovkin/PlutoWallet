@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_ve_minting
     
     
     /// <summary>
-    /// >> 832 - Composite[bifrost_ve_minting.LockedBalance]
+    /// >> 887 - Composite[bifrost_ve_minting.LockedBalance]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class LockedBalance : BaseType

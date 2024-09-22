@@ -45,10 +45,20 @@ namespace Bifrost.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 443 - Variant[cumulus_pallet_xcm.pallet.Event]
+    /// >> 464 - Variant[cumulus_pallet_xcm.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Event.InvalidFormat);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(Event.UnsupportedVersion);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Types.Base.Arr32U8, Bifrost.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>(Event.ExecutedDownward);
+        }
     }
 }

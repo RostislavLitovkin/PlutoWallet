@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.pallet_evm_contract_helpers.pallet
     /// >> 349 - Variant[pallet_evm_contract_helpers.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.primitive_types.H160>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.primitive_types.H160>>(Call.migrate_from_self_sponsoring);
+        }
     }
 }

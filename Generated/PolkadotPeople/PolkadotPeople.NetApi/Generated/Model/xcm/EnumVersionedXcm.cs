@@ -40,7 +40,17 @@ namespace PolkadotPeople.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 295 - Variant[xcm.VersionedXcm]
     /// </summary>
-    public sealed class EnumVersionedXcm : BaseEnumExt<VersionedXcm, BaseVoid, BaseVoid, PolkadotPeople.NetApi.Generated.Model.xcm.v2.XcmT2, PolkadotPeople.NetApi.Generated.Model.xcm.v3.XcmT2, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.XcmT2>
+    public sealed class EnumVersionedXcm : BaseEnumRust<VersionedXcm>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedXcm()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.xcm.v2.XcmT2>(VersionedXcm.V2);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.xcm.v3.XcmT2>(VersionedXcm.V3);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.XcmT2>(VersionedXcm.V4);
+        }
     }
 }

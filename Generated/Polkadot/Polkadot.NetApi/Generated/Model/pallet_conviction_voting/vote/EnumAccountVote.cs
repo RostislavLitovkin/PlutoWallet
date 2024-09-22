@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote
     /// <summary>
     /// >> 165 - Variant[pallet_conviction_voting.vote.AccountVote]
     /// </summary>
-    public sealed class EnumAccountVote : BaseEnumExt<AccountVote, BaseTuple<Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>
+    public sealed class EnumAccountVote : BaseEnumRust<AccountVote>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAccountVote()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote.Vote, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Standard);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.Split);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(AccountVote.SplitAbstain);
+        }
     }
 }

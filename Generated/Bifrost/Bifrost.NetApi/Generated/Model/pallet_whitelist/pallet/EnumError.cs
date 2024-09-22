@@ -54,7 +54,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_whitelist.pallet
     }
     
     /// <summary>
-    /// >> 645 - Variant[pallet_whitelist.pallet.Error]
+    /// >> 680 - Variant[pallet_whitelist.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

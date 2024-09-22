@@ -55,6 +55,11 @@ namespace Bifrost.NetApi.Generated
         public ParachainInfoStorage ParachainInfoStorage;
         
         /// <summary>
+        /// TxPauseStorage storage calls.
+        /// </summary>
+        public TxPauseStorage TxPauseStorage;
+        
+        /// <summary>
         /// BalancesStorage storage calls.
         /// </summary>
         public BalancesStorage BalancesStorage;
@@ -200,6 +205,31 @@ namespace Bifrost.NetApi.Generated
         public PreimageStorage PreimageStorage;
         
         /// <summary>
+        /// EthereumStorage storage calls.
+        /// </summary>
+        public EthereumStorage EthereumStorage;
+        
+        /// <summary>
+        /// EVMStorage storage calls.
+        /// </summary>
+        public EVMStorage EVMStorage;
+        
+        /// <summary>
+        /// EVMChainIdStorage storage calls.
+        /// </summary>
+        public EVMChainIdStorage EVMChainIdStorage;
+        
+        /// <summary>
+        /// DynamicFeeStorage storage calls.
+        /// </summary>
+        public DynamicFeeStorage DynamicFeeStorage;
+        
+        /// <summary>
+        /// EVMAccountsStorage storage calls.
+        /// </summary>
+        public EVMAccountsStorage EVMAccountsStorage;
+        
+        /// <summary>
         /// XTokensStorage storage calls.
         /// </summary>
         public XTokensStorage XTokensStorage;
@@ -243,11 +273,6 @@ namespace Bifrost.NetApi.Generated
         /// SalpStorage storage calls.
         /// </summary>
         public SalpStorage SalpStorage;
-        
-        /// <summary>
-        /// CallSwitchgearStorage storage calls.
-        /// </summary>
-        public CallSwitchgearStorage CallSwitchgearStorage;
         
         /// <summary>
         /// AssetRegistryStorage storage calls.
@@ -383,6 +408,7 @@ namespace Bifrost.NetApi.Generated
             this.IndicesStorage = new IndicesStorage(this);
             this.ParachainSystemStorage = new ParachainSystemStorage(this);
             this.ParachainInfoStorage = new ParachainInfoStorage(this);
+            this.TxPauseStorage = new TxPauseStorage(this);
             this.BalancesStorage = new BalancesStorage(this);
             this.TransactionPaymentStorage = new TransactionPaymentStorage(this);
             this.AuthorshipStorage = new AuthorshipStorage(this);
@@ -412,6 +438,11 @@ namespace Bifrost.NetApi.Generated
             this.VestingStorage = new VestingStorage(this);
             this.TreasuryStorage = new TreasuryStorage(this);
             this.PreimageStorage = new PreimageStorage(this);
+            this.EthereumStorage = new EthereumStorage(this);
+            this.EVMStorage = new EVMStorage(this);
+            this.EVMChainIdStorage = new EVMChainIdStorage(this);
+            this.DynamicFeeStorage = new DynamicFeeStorage(this);
+            this.EVMAccountsStorage = new EVMAccountsStorage(this);
             this.XTokensStorage = new XTokensStorage(this);
             this.TokensStorage = new TokensStorage(this);
             this.CurrenciesStorage = new CurrenciesStorage(this);
@@ -421,7 +452,6 @@ namespace Bifrost.NetApi.Generated
             this.MerkleDistributorStorage = new MerkleDistributorStorage(this);
             this.FlexibleFeeStorage = new FlexibleFeeStorage(this);
             this.SalpStorage = new SalpStorage(this);
-            this.CallSwitchgearStorage = new CallSwitchgearStorage(this);
             this.AssetRegistryStorage = new AssetRegistryStorage(this);
             this.VtokenMintingStorage = new VtokenMintingStorage(this);
             this.SlpStorage = new SlpStorage(this);

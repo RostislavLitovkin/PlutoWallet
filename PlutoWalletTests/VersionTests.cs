@@ -11,6 +11,7 @@ namespace PlutoWalletTests
             var plutoWalletVersion = await VersionModel.GetPlutoWalletLatestVersionAsync();
 
             Assert.That(plutoWalletVersion is not null);
+            Assert.That(plutoWalletVersion.Version, Is.GreaterThanOrEqualTo(10));
         }
 
     }

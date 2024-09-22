@@ -72,7 +72,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_preimage.pallet
     }
     
     /// <summary>
-    /// >> 736 - Variant[pallet_preimage.pallet.Error]
+    /// >> 773 - Variant[pallet_preimage.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

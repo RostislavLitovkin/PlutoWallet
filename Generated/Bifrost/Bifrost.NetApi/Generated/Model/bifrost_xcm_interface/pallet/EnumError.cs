@@ -59,7 +59,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_xcm_interface.pallet
     }
     
     /// <summary>
-    /// >> 802 - Variant[bifrost_xcm_interface.pallet.Error]
+    /// >> 857 - Variant[bifrost_xcm_interface.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

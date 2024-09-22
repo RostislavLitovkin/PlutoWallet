@@ -35,7 +35,16 @@ namespace Hydration.NetApi.Generated.Model.pallet_democracy.vote
     /// <summary>
     /// >> 514 - Variant[pallet_democracy.vote.Voting]
     /// </summary>
-    public sealed class EnumVoting : BaseEnumExt<Voting, BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27, Hydration.NetApi.Generated.Model.pallet_democracy.types.Delegations, Hydration.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_democracy.conviction.EnumConviction, Hydration.NetApi.Generated.Model.pallet_democracy.types.Delegations, Hydration.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>
+    public sealed class EnumVoting : BaseEnumRust<Voting>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVoting()
+        {
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27, Hydration.NetApi.Generated.Model.pallet_democracy.types.Delegations, Hydration.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>(Voting.Direct);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.pallet_democracy.conviction.EnumConviction, Hydration.NetApi.Generated.Model.pallet_democracy.types.Delegations, Hydration.NetApi.Generated.Model.pallet_democracy.vote.PriorLock>>(Voting.Delegating);
+        }
     }
 }

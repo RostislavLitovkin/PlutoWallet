@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.pallet_conviction_voting.vote
     }
     
     /// <summary>
-    /// >> 615 - Variant[pallet_conviction_voting.vote.Voting]
+    /// >> 650 - Variant[pallet_conviction_voting.vote.Voting]
     /// </summary>
-    public sealed class EnumVoting : BaseEnumExt<Voting, Bifrost.NetApi.Generated.Model.pallet_conviction_voting.vote.Casting, Bifrost.NetApi.Generated.Model.pallet_conviction_voting.vote.Delegating>
+    public sealed class EnumVoting : BaseEnumRust<Voting>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVoting()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_conviction_voting.vote.Casting>(Voting.Casting);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.pallet_conviction_voting.vote.Delegating>(Voting.Delegating);
+        }
     }
 }

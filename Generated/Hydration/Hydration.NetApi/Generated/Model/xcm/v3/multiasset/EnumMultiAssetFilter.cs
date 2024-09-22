@@ -35,7 +35,16 @@ namespace Hydration.NetApi.Generated.Model.xcm.v3.multiasset
     /// <summary>
     /// >> 446 - Variant[xcm.v3.multiasset.MultiAssetFilter]
     /// </summary>
-    public sealed class EnumMultiAssetFilter : BaseEnumExt<MultiAssetFilter, Hydration.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Hydration.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildMultiAsset>
+    public sealed class EnumMultiAssetFilter : BaseEnumRust<MultiAssetFilter>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAssetFilter()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(MultiAssetFilter.Definite);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.xcm.v3.multiasset.EnumWildMultiAsset>(MultiAssetFilter.Wild);
+        }
     }
 }

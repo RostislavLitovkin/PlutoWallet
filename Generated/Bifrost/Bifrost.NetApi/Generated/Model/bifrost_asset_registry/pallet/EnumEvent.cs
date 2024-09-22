@@ -54,10 +54,22 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet
     }
     
     /// <summary>
-    /// >> 464 - Variant[bifrost_asset_registry.pallet.Event]
+    /// >> 497 - Variant[bifrost_asset_registry.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Event.AssetRegistered);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumAssetIds, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Event.AssetUpdated);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Event.CurrencyIdRegistered);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.LocationSet);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_asset_registry.pallet.AssetMetadata>>(Event.CurrencyIdUpdated);
+        }
     }
 }

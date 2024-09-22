@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_buy_back.pallet
     
     
     /// <summary>
-    /// >> 508 - Composite[bifrost_buy_back.pallet.Info]
+    /// >> 543 - Composite[bifrost_buy_back.pallet.Info]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Info : BaseType

@@ -33,7 +33,15 @@ namespace Opal.NetApi.Generated.Model.pallet_ethereum.pallet
     /// >> 374 - Variant[pallet_ethereum.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Model.evm_core.error.EnumExitReason, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H160, Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Model.evm_core.error.EnumExitReason, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(Event.Executed);
+        }
     }
 }

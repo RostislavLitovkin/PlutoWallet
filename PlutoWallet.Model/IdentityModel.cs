@@ -29,29 +29,29 @@ namespace PlutoWallet.Model
 
 				var registration = ((PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Registration)identity.Value[0]);
 
-                foreach (var thing in registration.Judgements.Value.Value)
+                foreach (Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement> thing in registration.Judgements.Value.Value)
 				{
-					switch (thing.Value[1].ToString())
+					switch (((PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement)thing.Value[1]).Value)
 					{
-						case "0":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.Unknown:
 							finalJudgement = Judgement.Unknown;
 							break;
-						case "1":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.FeePaid:
 							// fee paid
 							break;
-						case "2":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.Reasonable:
 							finalJudgement = Judgement.Reasonable;
 							break;
-						case "3":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.KnownGood:
 							finalJudgement = Judgement.KnownGood;
 							break;
-						case "4":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.OutOfDate:
 							finalJudgement = Judgement.OutOfDate;
 							break;
-						case "5":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.LowQuality:
 							finalJudgement = Judgement.LowQuality;
 							break;
-						case "6":
+						case PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.Judgement.Erroneous:
 							finalJudgement = Judgement.Erroneous;
 							break;
 						default:

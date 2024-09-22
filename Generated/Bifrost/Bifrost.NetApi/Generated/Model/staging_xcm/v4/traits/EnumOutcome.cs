@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.staging_xcm.v4.traits
     }
     
     /// <summary>
-    /// >> 442 - Variant[staging_xcm.v4.traits.Outcome]
+    /// >> 463 - Variant[staging_xcm.v4.traits.Outcome]
     /// </summary>
-    public sealed class EnumOutcome : BaseEnumExt<Outcome, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, BaseTuple<Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Bifrost.NetApi.Generated.Model.xcm.v3.traits.EnumError>, Bifrost.NetApi.Generated.Model.xcm.v3.traits.EnumError>
+    public sealed class EnumOutcome : BaseEnumRust<Outcome>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumOutcome()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(Outcome.Complete);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Bifrost.NetApi.Generated.Model.xcm.v3.traits.EnumError>>(Outcome.Incomplete);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.xcm.v3.traits.EnumError>(Outcome.Error);
+        }
     }
 }

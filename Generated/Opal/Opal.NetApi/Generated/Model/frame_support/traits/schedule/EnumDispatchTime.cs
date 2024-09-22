@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.frame_support.traits.schedule
     /// <summary>
     /// >> 217 - Variant[frame_support.traits.schedule.DispatchTime]
     /// </summary>
-    public sealed class EnumDispatchTime : BaseEnumExt<DispatchTime, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumDispatchTime : BaseEnumRust<DispatchTime>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumDispatchTime()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(DispatchTime.At);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(DispatchTime.After);
+        }
     }
 }

@@ -69,7 +69,21 @@ namespace Opal.NetApi.Generated.Model.pallet_collator_selection.pallet
     /// >> 110 - Variant[pallet_collator_selection.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.add_invulnerable);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.remove_invulnerable);
+				AddTypeDecoder<BaseVoid>(Call.get_license);
+				AddTypeDecoder<BaseVoid>(Call.onboard);
+				AddTypeDecoder<BaseVoid>(Call.offboard);
+				AddTypeDecoder<BaseVoid>(Call.release_license);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.force_release_license);
+        }
     }
 }

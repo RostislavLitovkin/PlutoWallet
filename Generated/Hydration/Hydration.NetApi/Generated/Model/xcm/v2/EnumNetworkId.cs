@@ -45,7 +45,18 @@ namespace Hydration.NetApi.Generated.Model.xcm.v2
     /// <summary>
     /// >> 207 - Variant[xcm.v2.NetworkId]
     /// </summary>
-    public sealed class EnumNetworkId : BaseEnumExt<NetworkId, BaseVoid, Hydration.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT1, BaseVoid, BaseVoid>
+    public sealed class EnumNetworkId : BaseEnumRust<NetworkId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumNetworkId()
+        {
+				AddTypeDecoder<BaseVoid>(NetworkId.Any);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT1>(NetworkId.Named);
+				AddTypeDecoder<BaseVoid>(NetworkId.Polkadot);
+				AddTypeDecoder<BaseVoid>(NetworkId.Kusama);
+        }
     }
 }

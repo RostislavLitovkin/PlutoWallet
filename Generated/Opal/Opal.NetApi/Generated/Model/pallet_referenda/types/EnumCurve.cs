@@ -40,7 +40,17 @@ namespace Opal.NetApi.Generated.Model.pallet_referenda.types
     /// <summary>
     /// >> 532 - Variant[pallet_referenda.types.Curve]
     /// </summary>
-    public sealed class EnumCurve : BaseEnumExt<Curve, BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>
+    public sealed class EnumCurve : BaseEnumRust<Curve>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCurve()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.LinearDecreasing);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Opal.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.SteppedDecreasing);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Opal.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>(Curve.Reciprocal);
+        }
     }
 }

@@ -36,10 +36,19 @@ namespace Bifrost.NetApi.Generated.Model.orml_unknown_tokens.module
     }
     
     /// <summary>
-    /// >> 456 - Variant[orml_unknown_tokens.module.Event]
+    /// >> 489 - Variant[orml_unknown_tokens.module.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location>, BaseTuple<Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location>>(Event.Deposited);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.staging_xcm.v4.asset.Asset, Bifrost.NetApi.Generated.Model.staging_xcm.v4.location.Location>>(Event.Withdrawn);
+        }
     }
 }

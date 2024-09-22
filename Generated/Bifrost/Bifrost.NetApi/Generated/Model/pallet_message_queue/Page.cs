@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_message_queue
     
     
     /// <summary>
-    /// >> 680 - Composite[pallet_message_queue.Page]
+    /// >> 716 - Composite[pallet_message_queue.Page]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Page : BaseType
@@ -47,7 +47,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_message_queue
         /// <summary>
         /// >> heap
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30 Heap { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32 Heap { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -82,7 +82,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_message_queue
             First.Decode(byteArray, ref p);
             Last = new Substrate.NetApi.Model.Types.Primitive.U32();
             Last.Decode(byteArray, ref p);
-            Heap = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30();
+            Heap = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32();
             Heap.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

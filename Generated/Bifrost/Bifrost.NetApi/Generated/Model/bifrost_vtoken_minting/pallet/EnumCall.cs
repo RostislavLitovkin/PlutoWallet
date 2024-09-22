@@ -24,118 +24,125 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_vtoken_minting.pallet
         
         /// <summary>
         /// >> mint
-        /// See [`Pallet::mint`].
         /// </summary>
         mint = 0,
         
         /// <summary>
         /// >> redeem
-        /// See [`Pallet::redeem`].
         /// </summary>
         redeem = 1,
         
         /// <summary>
         /// >> rebond
-        /// See [`Pallet::rebond`].
         /// </summary>
         rebond = 2,
         
         /// <summary>
         /// >> rebond_by_unlock_id
-        /// See [`Pallet::rebond_by_unlock_id`].
         /// </summary>
         rebond_by_unlock_id = 3,
         
         /// <summary>
         /// >> set_unlock_duration
-        /// See [`Pallet::set_unlock_duration`].
         /// </summary>
         set_unlock_duration = 4,
         
         /// <summary>
         /// >> set_minimum_mint
-        /// See [`Pallet::set_minimum_mint`].
         /// </summary>
         set_minimum_mint = 5,
         
         /// <summary>
         /// >> set_minimum_redeem
-        /// See [`Pallet::set_minimum_redeem`].
         /// </summary>
         set_minimum_redeem = 6,
         
         /// <summary>
         /// >> add_support_rebond_token
-        /// See [`Pallet::add_support_rebond_token`].
         /// </summary>
         add_support_rebond_token = 7,
         
         /// <summary>
         /// >> remove_support_rebond_token
-        /// See [`Pallet::remove_support_rebond_token`].
         /// </summary>
         remove_support_rebond_token = 8,
         
         /// <summary>
         /// >> set_fees
-        /// See [`Pallet::set_fees`].
         /// </summary>
         set_fees = 9,
         
         /// <summary>
         /// >> set_hook_iteration_limit
-        /// See [`Pallet::set_hook_iteration_limit`].
         /// </summary>
         set_hook_iteration_limit = 10,
         
         /// <summary>
         /// >> set_unlocking_total
-        /// See [`Pallet::set_unlocking_total`].
         /// </summary>
         set_unlocking_total = 11,
         
         /// <summary>
         /// >> set_min_time_unit
-        /// See [`Pallet::set_min_time_unit`].
         /// </summary>
         set_min_time_unit = 12,
         
         /// <summary>
         /// >> recreate_currency_ongoing_time_unit
-        /// See [`Pallet::recreate_currency_ongoing_time_unit`].
         /// </summary>
         recreate_currency_ongoing_time_unit = 13,
         
         /// <summary>
         /// >> mint_with_lock
-        /// See [`Pallet::mint_with_lock`].
         /// </summary>
         mint_with_lock = 14,
         
         /// <summary>
         /// >> unlock_incentive_minted_vtoken
-        /// See [`Pallet::unlock_incentive_minted_vtoken`].
         /// </summary>
         unlock_incentive_minted_vtoken = 15,
         
         /// <summary>
         /// >> set_incentive_coef
-        /// See [`Pallet::set_incentive_coef`].
         /// </summary>
         set_incentive_coef = 16,
         
         /// <summary>
         /// >> set_vtoken_incentive_lock_blocks
-        /// See [`Pallet::set_vtoken_incentive_lock_blocks`].
         /// </summary>
         set_vtoken_incentive_lock_blocks = 17,
     }
     
     /// <summary>
-    /// >> 321 - Variant[bifrost_vtoken_minting.pallet.Call]
+    /// >> 343 - Variant[bifrost_vtoken_minting.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.mint);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.redeem);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.rebond);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.rebond_by_unlock_id);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>>(Call.set_unlock_duration);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.set_minimum_mint);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.set_minimum_redeem);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Call.add_support_rebond_token);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Call.remove_support_rebond_token);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill, Bifrost.NetApi.Generated.Model.sp_arithmetic.per_things.Permill>>(Call.set_fees);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_hook_iteration_limit);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.set_unlocking_total);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>>(Call.set_min_time_unit);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumTimeUnit>>(Call.recreate_currency_ongoing_time_unit);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.mint_with_lock);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId>(Call.unlock_incentive_minted_vtoken);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.set_incentive_coef);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.set_vtoken_incentive_lock_blocks);
+        }
     }
 }

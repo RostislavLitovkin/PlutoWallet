@@ -227,7 +227,46 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
     /// >> 738 - Variant[pallet_nomination_pools.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumDefensiveError, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumError : BaseEnumRust<Error>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumError()
+        {
+				AddTypeDecoder<BaseVoid>(Error.PoolNotFound);
+				AddTypeDecoder<BaseVoid>(Error.PoolMemberNotFound);
+				AddTypeDecoder<BaseVoid>(Error.RewardPoolNotFound);
+				AddTypeDecoder<BaseVoid>(Error.SubPoolsNotFound);
+				AddTypeDecoder<BaseVoid>(Error.AccountBelongsToOtherPool);
+				AddTypeDecoder<BaseVoid>(Error.FullyUnbonding);
+				AddTypeDecoder<BaseVoid>(Error.MaxUnbondingLimit);
+				AddTypeDecoder<BaseVoid>(Error.CannotWithdrawAny);
+				AddTypeDecoder<BaseVoid>(Error.MinimumBondNotMet);
+				AddTypeDecoder<BaseVoid>(Error.OverflowRisk);
+				AddTypeDecoder<BaseVoid>(Error.NotDestroying);
+				AddTypeDecoder<BaseVoid>(Error.NotNominator);
+				AddTypeDecoder<BaseVoid>(Error.NotKickerOrDestroying);
+				AddTypeDecoder<BaseVoid>(Error.NotOpen);
+				AddTypeDecoder<BaseVoid>(Error.MaxPools);
+				AddTypeDecoder<BaseVoid>(Error.MaxPoolMembers);
+				AddTypeDecoder<BaseVoid>(Error.CanNotChangeState);
+				AddTypeDecoder<BaseVoid>(Error.DoesNotHavePermission);
+				AddTypeDecoder<BaseVoid>(Error.MetadataExceedsMaxLen);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet.EnumDefensiveError>(Error.Defensive);
+				AddTypeDecoder<BaseVoid>(Error.PartialUnbondNotAllowedPermissionlessly);
+				AddTypeDecoder<BaseVoid>(Error.MaxCommissionRestricted);
+				AddTypeDecoder<BaseVoid>(Error.CommissionExceedsMaximum);
+				AddTypeDecoder<BaseVoid>(Error.CommissionExceedsGlobalMaximum);
+				AddTypeDecoder<BaseVoid>(Error.CommissionChangeThrottled);
+				AddTypeDecoder<BaseVoid>(Error.CommissionChangeRateNotAllowed);
+				AddTypeDecoder<BaseVoid>(Error.NoPendingCommission);
+				AddTypeDecoder<BaseVoid>(Error.NoCommissionCurrentSet);
+				AddTypeDecoder<BaseVoid>(Error.PoolIdInUse);
+				AddTypeDecoder<BaseVoid>(Error.InvalidPoolId);
+				AddTypeDecoder<BaseVoid>(Error.BondExtraRestricted);
+				AddTypeDecoder<BaseVoid>(Error.NothingToAdjust);
+        }
     }
 }

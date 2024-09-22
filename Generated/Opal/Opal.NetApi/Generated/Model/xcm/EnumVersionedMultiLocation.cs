@@ -35,7 +35,16 @@ namespace Opal.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 127 - Variant[xcm.VersionedMultiLocation]
     /// </summary>
-    public sealed class EnumVersionedMultiLocation : BaseEnumExt<VersionedMultiLocation, BaseVoid, Opal.NetApi.Generated.Model.xcm.v2.multilocation.MultiLocation, BaseVoid, Opal.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>
+    public sealed class EnumVersionedMultiLocation : BaseEnumRust<VersionedMultiLocation>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedMultiLocation()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.v2.multilocation.MultiLocation>(VersionedMultiLocation.V2);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(VersionedMultiLocation.V3);
+        }
     }
 }

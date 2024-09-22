@@ -58,9 +58,23 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 157 - Variant[xcm.v2.multiasset.AssetInstance]
+    /// >> 162 - Variant[xcm.v2.multiasset.AssetInstance]
     /// </summary>
-    public sealed class EnumAssetInstance : BaseEnumExt<AssetInstance, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Bifrost.NetApi.Generated.Types.Base.Arr4U8, Bifrost.NetApi.Generated.Types.Base.Arr8U8, Bifrost.NetApi.Generated.Types.Base.Arr16U8, Bifrost.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>
+    public sealed class EnumAssetInstance : BaseEnumRust<AssetInstance>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetInstance()
+        {
+				AddTypeDecoder<BaseVoid>(AssetInstance.Undefined);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(AssetInstance.Index);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr4U8>(AssetInstance.Array4);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr8U8>(AssetInstance.Array8);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr16U8>(AssetInstance.Array16);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(AssetInstance.Array32);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(AssetInstance.Blob);
+        }
     }
 }

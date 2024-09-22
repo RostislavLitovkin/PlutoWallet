@@ -51,7 +51,18 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet
     /// >> 401 - Variant[pallet_evm_accounts.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseVoid, Hydration.NetApi.Generated.Model.primitive_types.H160, Hydration.NetApi.Generated.Model.primitive_types.H160, BaseVoid>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseVoid>(Call.bind_evm_address);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.add_contract_deployer);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.remove_contract_deployer);
+				AddTypeDecoder<BaseVoid>(Call.renounce_contract_deployer);
+        }
     }
 }

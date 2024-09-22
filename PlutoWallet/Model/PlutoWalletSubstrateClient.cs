@@ -208,20 +208,11 @@ namespace PlutoWallet.Model
                             return;
                         }
 
-                        var lastEvent = allEvents.Last();
-
-                        if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicSuccess")
-                        {
-                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedSuccess;
-                        }
-                        else if (lastEvent.PalletName == "System" && lastEvent.EventName == "ExtrinsicFailed")
-                        {
-                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.FinalizedFailed;
-                        }
-                        else
-                        {
-                            extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = ExtrinsicStatusEnum.Unknown;
-                        }
+                        extrinsicStackViewModel.Extrinsics[extrinsicHashString].Status = TransactionAnalyzerModel.GetExtrinsicResult(allEvents) switch {
+                            ExtrinsicResult.Success => ExtrinsicStatusEnum.FinalizedSuccess,
+                            ExtrinsicResult.Failed => ExtrinsicStatusEnum.FinalizedFailed,
+                            ExtrinsicResult.Unknown => ExtrinsicStatusEnum.Unknown,
+                        };
 
                         extrinsicStackViewModel.Update();
                     });

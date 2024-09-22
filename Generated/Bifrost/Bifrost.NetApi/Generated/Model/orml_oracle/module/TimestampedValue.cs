@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.orml_oracle.module
     
     
     /// <summary>
-    /// >> 886 - Composite[orml_oracle.module.TimestampedValue]
+    /// >> 537 - Composite[orml_oracle.module.TimestampedValue]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class TimestampedValue : BaseType

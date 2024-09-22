@@ -75,7 +75,24 @@ namespace Opal.NetApi.Generated.Model.xcm.v3.junction
     /// <summary>
     /// >> 60 - Variant[xcm.v3.junction.BodyId]
     /// </summary>
-    public sealed class EnumBodyId : BaseEnumExt<BodyId, BaseVoid, Opal.NetApi.Generated.Types.Base.Arr4U8, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid>
+    public sealed class EnumBodyId : BaseEnumRust<BodyId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBodyId()
+        {
+				AddTypeDecoder<BaseVoid>(BodyId.Unit);
+				AddTypeDecoder<Opal.NetApi.Generated.Types.Base.Arr4U8>(BodyId.Moniker);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(BodyId.Index);
+				AddTypeDecoder<BaseVoid>(BodyId.Executive);
+				AddTypeDecoder<BaseVoid>(BodyId.Technical);
+				AddTypeDecoder<BaseVoid>(BodyId.Legislative);
+				AddTypeDecoder<BaseVoid>(BodyId.Judicial);
+				AddTypeDecoder<BaseVoid>(BodyId.Defense);
+				AddTypeDecoder<BaseVoid>(BodyId.Administration);
+				AddTypeDecoder<BaseVoid>(BodyId.Treasury);
+        }
     }
 }

@@ -35,7 +35,16 @@ namespace PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset
     /// <summary>
     /// >> 85 - Variant[staging_xcm.v4.asset.AssetFilter]
     /// </summary>
-    public sealed class EnumAssetFilter : BaseEnumExt<AssetFilter, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.Assets, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildAsset>
+    public sealed class EnumAssetFilter : BaseEnumRust<AssetFilter>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetFilter()
+        {
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.Assets>(AssetFilter.Definite);
+				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildAsset>(AssetFilter.Wild);
+        }
     }
 }

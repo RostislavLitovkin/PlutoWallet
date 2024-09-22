@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 375 - Variant[xcm.VersionedXcm]
     /// </summary>
-    public sealed class EnumVersionedXcm : BaseEnumExt<VersionedXcm, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.xcm.v2.XcmT2, Bajun.NetApi.Generated.Model.xcm.v3.XcmT2, Bajun.NetApi.Generated.Model.staging_xcm.v4.XcmT2>
+    public sealed class EnumVersionedXcm : BaseEnumRust<VersionedXcm>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedXcm()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.XcmT2>(VersionedXcm.V2);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v3.XcmT2>(VersionedXcm.V3);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.XcmT2>(VersionedXcm.V4);
+        }
     }
 }

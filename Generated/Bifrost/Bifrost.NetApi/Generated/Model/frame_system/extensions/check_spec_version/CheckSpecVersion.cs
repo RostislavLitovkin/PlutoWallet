@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.frame_system.extensions.check_spec_vers
     
     
     /// <summary>
-    /// >> 901 - Composite[frame_system.extensions.check_spec_version.CheckSpecVersion]
+    /// >> 955 - Composite[frame_system.extensions.check_spec_version.CheckSpecVersion]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckSpecVersion : BaseType

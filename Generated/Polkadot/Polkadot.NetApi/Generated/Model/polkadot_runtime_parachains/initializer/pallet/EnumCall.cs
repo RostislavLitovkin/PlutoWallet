@@ -33,7 +33,15 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initialize
     /// >> 367 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.force_approve);
+        }
     }
 }

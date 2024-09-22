@@ -40,7 +40,16 @@ namespace Polkadot.NetApi.Generated.Model.pallet_vesting.pallet
     /// >> 488 - Variant[pallet_vesting.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.VestingUpdated);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.VestingCompleted);
+        }
     }
 }

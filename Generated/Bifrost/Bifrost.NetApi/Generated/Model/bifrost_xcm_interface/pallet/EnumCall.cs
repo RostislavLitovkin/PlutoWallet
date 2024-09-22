@@ -24,22 +24,39 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_xcm_interface.pallet
         
         /// <summary>
         /// >> update_xcm_dest_weight_and_fee
-        /// See [`Pallet::update_xcm_dest_weight_and_fee`].
+        /// Sets the xcm_dest_weight and fee for XCM operation of XcmInterface.
+        /// 
+        /// Parameters:
+        /// - `updates`: vec of tuple: (XcmOperationType, WeightChange, FeeChange).
         /// </summary>
         update_xcm_dest_weight_and_fee = 0,
         
         /// <summary>
         /// >> transfer_statemine_assets
-        /// See [`Pallet::transfer_statemine_assets`].
         /// </summary>
         transfer_statemine_assets = 1,
+        
+        /// <summary>
+        /// >> transfer_ethereum_assets
+        /// </summary>
+        transfer_ethereum_assets = 2,
     }
     
     /// <summary>
-    /// >> 362 - Variant[bifrost_xcm_interface.pallet.Call]
+    /// >> 384 - Variant[bifrost_xcm_interface.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumXcmOperationType, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.bifrost_primitives.EnumXcmOperationType, Bifrost.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.update_xcm_dest_weight_and_fee);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32>>>(Call.transfer_statemine_assets);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bifrost.NetApi.Generated.Model.primitive_types.H160>>(Call.transfer_ethereum_assets);
+        }
     }
 }

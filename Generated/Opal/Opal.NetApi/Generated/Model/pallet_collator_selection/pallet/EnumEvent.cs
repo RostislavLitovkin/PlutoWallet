@@ -57,7 +57,20 @@ namespace Opal.NetApi.Generated.Model.pallet_collator_selection.pallet
     /// >> 35 - Variant[pallet_collator_selection.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.InvulnerableAdded);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.InvulnerableRemoved);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.LicenseObtained);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.LicenseReleased);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.CandidateAdded);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.CandidateRemoved);
+        }
     }
 }

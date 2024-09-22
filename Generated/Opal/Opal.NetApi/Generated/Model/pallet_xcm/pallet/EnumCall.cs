@@ -93,7 +93,25 @@ namespace Opal.NetApi.Generated.Model.pallet_xcm.pallet
     /// >> 222 - Variant[pallet_xcm.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedXcm>, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedXcm, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, BaseTuple<Opal.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, Substrate.NetApi.Model.Types.Primitive.Bool>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedXcm>>(Call.send);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.teleport_assets);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.reserve_transfer_assets);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedXcm, Opal.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.execute);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_xcm_version);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_default_xcm_version);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation>(Call.force_subscribe_version_notify);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation>(Call.force_unsubscribe_version_notify);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_reserve_transfer_assets);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, Opal.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_teleport_assets);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.Bool>(Call.force_suspension);
+        }
     }
 }

@@ -34,7 +34,7 @@ namespace Bifrost.NetApi.Generated.Model.leverage_staking.pallet
     }
     
     /// <summary>
-    /// >> 892 - Variant[leverage_staking.pallet.Error]
+    /// >> 946 - Variant[leverage_staking.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

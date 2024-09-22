@@ -67,7 +67,18 @@ namespace Bajun.NetApi.Generated.Model.pallet_migrations.pallet
     /// >> 330 - Variant[pallet_migrations.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_migrations.EnumMigrationCursor>, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseVoid, Bajun.NetApi.Generated.Model.pallet_migrations.EnumHistoricCleanupSelector>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.pallet_migrations.EnumMigrationCursor>>(Call.force_set_cursor);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.force_set_active_cursor);
+				AddTypeDecoder<BaseVoid>(Call.force_onboard_mbms);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.pallet_migrations.EnumHistoricCleanupSelector>(Call.clear_historic);
+        }
     }
 }

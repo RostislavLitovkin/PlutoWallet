@@ -130,10 +130,20 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives
         /// >> SupplementaryFee
         /// </summary>
         SupplementaryFee = 21,
+        
+        /// <summary>
+        /// >> EthereumTransfer
+        /// </summary>
+        EthereumTransfer = 22,
+        
+        /// <summary>
+        /// >> TeleportAssets
+        /// </summary>
+        TeleportAssets = 23,
     }
     
     /// <summary>
-    /// >> 365 - Variant[bifrost_primitives.XcmOperationType]
+    /// >> 387 - Variant[bifrost_primitives.XcmOperationType]
     /// </summary>
     public sealed class EnumXcmOperationType : BaseEnum<XcmOperationType>
     {

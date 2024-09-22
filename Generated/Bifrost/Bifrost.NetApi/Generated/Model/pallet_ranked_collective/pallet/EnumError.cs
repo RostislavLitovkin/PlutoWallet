@@ -84,7 +84,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_ranked_collective.pallet
     }
     
     /// <summary>
-    /// >> 851 - Variant[pallet_ranked_collective.pallet.Error]
+    /// >> 906 - Variant[pallet_ranked_collective.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

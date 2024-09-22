@@ -207,7 +207,44 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet
     /// >> 127 - Variant[pallet_staking.pallet.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Polkadot.NetApi.Generated.Model.pallet_staking.EnumRewardDestination>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.pallet_staking.ValidatorPrefs, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, BaseVoid, Polkadot.NetApi.Generated.Model.pallet_staking.EnumRewardDestination, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, BaseTuple<Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp>, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1, BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Polkadot.NetApi.Generated.Model.pallet_staking.EnumRewardDestination>>(Call.bond);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Call.bond_extra);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Call.unbond);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.withdraw_unbonded);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_staking.ValidatorPrefs>(Call.validate);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.nominate);
+				AddTypeDecoder<BaseVoid>(Call.chill);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.pallet_staking.EnumRewardDestination>(Call.set_payee);
+				AddTypeDecoder<BaseVoid>(Call.set_controller);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.set_validator_count);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.increase_validator_count);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent>(Call.scale_validator_count);
+				AddTypeDecoder<BaseVoid>(Call.force_no_eras);
+				AddTypeDecoder<BaseVoid>(Call.force_new_era);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.set_invulnerables);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_unstake);
+				AddTypeDecoder<BaseVoid>(Call.force_new_era_always);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>>>(Call.cancel_deferred_slash);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.payout_stakers);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>(Call.rebond);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.reap_stash);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.kick);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp>>(Call.set_staking_configs);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.chill_other);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.force_apply_min_commission);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>(Call.set_min_commission);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.payout_stakers_by_page);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.update_payee);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1>(Call.deprecate_controller_batch);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2>>>(Call.restore_ledger);
+        }
     }
 }

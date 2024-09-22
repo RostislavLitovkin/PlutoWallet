@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.frame_support.traits.tokens.fungible
     
     
     /// <summary>
-    /// >> 731 - Composite[frame_support.traits.tokens.fungible.HoldConsideration]
+    /// >> 768 - Composite[frame_support.traits.tokens.fungible.HoldConsideration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HoldConsideration : BaseType

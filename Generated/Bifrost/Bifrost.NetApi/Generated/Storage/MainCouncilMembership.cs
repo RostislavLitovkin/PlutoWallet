@@ -36,7 +36,7 @@ namespace Bifrost.NetApi.Generated.Storage
         public CouncilMembershipStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("CouncilMembership", "Members"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("CouncilMembership", "Members"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("CouncilMembership", "Prime"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32)));
         }
         
@@ -62,10 +62,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Members
         ///  The current membership, stored as an ordered Vec.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22> Members(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23> Members(string blockhash, CancellationToken token)
         {
             string parameters = CouncilMembershipStorage.MembersParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23>(parameters, blockhash, token);
             return result;
         }
         

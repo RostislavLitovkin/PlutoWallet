@@ -63,7 +63,20 @@ namespace Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     /// >> 89 - Variant[pallet_state_trie_migration.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Base.BaseOpt<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits>, BaseTuple<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationTask>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits, BaseTuple<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits>>(Call.control_auto_migration);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits, Substrate.NetApi.Model.Types.Primitive.U32, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationTask>>(Call.continue_migrate);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.migrate_custom_top);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.migrate_custom_child);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.MigrationLimits>(Call.set_signed_max_limits);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress, Opal.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumProgress>>(Call.force_set_progress);
+        }
     }
 }

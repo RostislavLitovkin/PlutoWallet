@@ -35,7 +35,16 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset
     /// <summary>
     /// >> 308 - Variant[xcm.v2.multiasset.MultiAssetFilter]
     /// </summary>
-    public sealed class EnumMultiAssetFilter : BaseEnumExt<MultiAssetFilter, PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets, PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>
+    public sealed class EnumMultiAssetFilter : BaseEnumRust<MultiAssetFilter>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumMultiAssetFilter()
+        {
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.MultiAssets>(MultiAssetFilter.Definite);
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.xcm.v2.multiasset.EnumWildMultiAsset>(MultiAssetFilter.Wild);
+        }
     }
 }

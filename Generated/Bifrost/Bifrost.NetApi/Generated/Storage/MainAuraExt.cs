@@ -36,7 +36,7 @@ namespace Bifrost.NetApi.Generated.Storage
         public AuraExtStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "SlotInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.sp_consensus_slots.Slot, Substrate.NetApi.Model.Types.Primitive.U32>)));
         }
         
@@ -70,10 +70,10 @@ namespace Bifrost.NetApi.Generated.Storage
         ///  but we require the old authorities to verify the seal when validating a PoV. This will
         ///  always be updated to the latest AuRa authorities in `on_finalize`.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16> Authorities(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17> Authorities(string blockhash, CancellationToken token)
         {
             string parameters = AuraExtStorage.AuthoritiesParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>(parameters, blockhash, token);
             return result;
         }
         

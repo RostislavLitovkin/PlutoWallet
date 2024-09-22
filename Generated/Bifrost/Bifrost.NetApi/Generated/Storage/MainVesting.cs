@@ -40,7 +40,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Vesting", "Cliff"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Vesting", "Vesting"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Vesting", "StorageVersion"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bifrost_vesting.EnumReleases)));
         }
         
@@ -128,10 +128,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Vesting
         ///  Information regarding the vesting of a given account.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39> Vesting(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41> Vesting(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = VestingStorage.VestingParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41>(parameters, blockhash, token);
             return result;
         }
         

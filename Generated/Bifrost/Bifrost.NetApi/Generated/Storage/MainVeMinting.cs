@@ -69,7 +69,7 @@ namespace Bifrost.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_ve_minting.traits.MarkupCoefficientInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VeMinting", "Position"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("VeMinting", "UserPositions"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55)));
         }
         
         /// <summary>
@@ -581,10 +581,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// <summary>
         /// >> UserPositions
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53> UserPositions(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55> UserPositions(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = VeMintingStorage.UserPositionsParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT55>(parameters, blockhash, token);
             return result;
         }
     }

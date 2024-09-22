@@ -33,7 +33,15 @@ namespace Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet
     /// >> 378 - Variant[pallet_otc_settlements.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.hydradx_traits.router.Trade>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.hydradx_traits.router.Trade>>>(Call.settle_otc_order);
+        }
     }
 }

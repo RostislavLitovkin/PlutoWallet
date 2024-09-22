@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 829 - Variant[xcm.VersionedResponse]
     /// </summary>
-    public sealed class EnumVersionedResponse : BaseEnumExt<VersionedResponse, BaseVoid, BaseVoid, Polkadot.NetApi.Generated.Model.xcm.v2.EnumResponse, Polkadot.NetApi.Generated.Model.xcm.v3.EnumResponse, Polkadot.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>
+    public sealed class EnumVersionedResponse : BaseEnumRust<VersionedResponse>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedResponse()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.xcm.v2.EnumResponse>(VersionedResponse.V2);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.xcm.v3.EnumResponse>(VersionedResponse.V3);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>(VersionedResponse.V4);
+        }
     }
 }

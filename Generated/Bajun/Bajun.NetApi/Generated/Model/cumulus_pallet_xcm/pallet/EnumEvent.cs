@@ -48,7 +48,17 @@ namespace Bajun.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     /// >> 132 - Variant[cumulus_pallet_xcm.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, Bajun.NetApi.Generated.Types.Base.Arr32U8, Bajun.NetApi.Generated.Types.Base.Arr32U8, BaseTuple<Bajun.NetApi.Generated.Types.Base.Arr32U8, Bajun.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr32U8>(Event.InvalidFormat);
+				AddTypeDecoder<Bajun.NetApi.Generated.Types.Base.Arr32U8>(Event.UnsupportedVersion);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Types.Base.Arr32U8, Bajun.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>(Event.ExecutedDownward);
+        }
     }
 }

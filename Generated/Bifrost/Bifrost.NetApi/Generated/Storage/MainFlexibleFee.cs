@@ -36,7 +36,7 @@ namespace Bifrost.NetApi.Generated.Storage
         public FlexibleFeeStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("FlexibleFee", "UniversalFeeCurrencyOrderList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("FlexibleFee", "UniversalFeeCurrencyOrderList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("FlexibleFee", "UserDefaultFeeCurrency"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId)));
         }
@@ -63,10 +63,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> UniversalFeeCurrencyOrderList
         ///  Universal fee currency order list for all users
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8> UniversalFeeCurrencyOrderList(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9> UniversalFeeCurrencyOrderList(string blockhash, CancellationToken token)
         {
             string parameters = FlexibleFeeStorage.UniversalFeeCurrencyOrderListParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9>(parameters, blockhash, token);
             return result;
         }
         
@@ -125,7 +125,7 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> set_universal_fee_currency_order_list
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetUniversalFeeCurrencyOrderList(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 default_list)
+        public static Method SetUniversalFeeCurrencyOrderList(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9 default_list)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(default_list.Encode());
@@ -156,6 +156,47 @@ namespace Bifrost.NetApi.Generated.Storage
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x32000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> MinAssetHubExecutionFee
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 MinAssetHubExecutionFee()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U128();
+            result.Create("0x00D0ED902E0000000000000000000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> MinRelaychainExecutionFee
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U128 MinRelaychainExecutionFee()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U128();
+            result.Create("0x00D0ED902E0000000000000000000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> RelaychainCurrencyId
+        ///  The currency id of the RelayChain
+        /// </summary>
+        public Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId RelaychainCurrencyId()
+        {
+            var result = new Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId();
+            result.Create("0x0800");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> PalletId
+        /// </summary>
+        public Bifrost.NetApi.Generated.Model.frame_support.PalletId PalletId()
+        {
+            var result = new Bifrost.NetApi.Generated.Model.frame_support.PalletId();
+            result.Create("0x62662F666C657869");
             return result;
         }
     }
@@ -195,5 +236,15 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> DexFailedToGetAmountInByPath
         /// </summary>
         DexFailedToGetAmountInByPath,
+        
+        /// <summary>
+        /// >> UnweighableMessage
+        /// </summary>
+        UnweighableMessage,
+        
+        /// <summary>
+        /// >> XcmExecutionFailed
+        /// </summary>
+        XcmExecutionFailed,
     }
 }

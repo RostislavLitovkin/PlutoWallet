@@ -78,7 +78,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_primitives.currency
     }
     
     /// <summary>
-    /// >> 293 - Variant[bifrost_primitives.currency.TokenSymbol]
+    /// >> 316 - Variant[bifrost_primitives.currency.TokenSymbol]
     /// </summary>
     public sealed class EnumTokenSymbol : BaseEnum<TokenSymbol>
     {

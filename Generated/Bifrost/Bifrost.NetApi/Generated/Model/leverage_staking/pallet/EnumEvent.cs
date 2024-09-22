@@ -29,10 +29,18 @@ namespace Bifrost.NetApi.Generated.Model.leverage_staking.pallet
     }
     
     /// <summary>
-    /// >> 504 - Variant[leverage_staking.pallet.Event]
+    /// >> 539 - Variant[leverage_staking.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.sp_core.crypto.AccountId32, Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Bifrost.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Event.FlashLoanDeposited);
+        }
     }
 }

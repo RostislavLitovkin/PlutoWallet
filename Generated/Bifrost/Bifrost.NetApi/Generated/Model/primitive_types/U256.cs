@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.primitive_types
     
     
     /// <summary>
-    /// >> 754 - Composite[primitive_types.U256]
+    /// >> 299 - Composite[primitive_types.U256]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class U256 : BaseType

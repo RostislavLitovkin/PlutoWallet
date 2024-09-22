@@ -30,7 +30,15 @@ namespace Hydration.NetApi.Generated.Model.pallet_ethereum
     /// <summary>
     /// >> 476 - Variant[pallet_ethereum.RawOrigin]
     /// </summary>
-    public sealed class EnumRawOrigin : BaseEnumExt<RawOrigin, Hydration.NetApi.Generated.Model.primitive_types.H160>
+    public sealed class EnumRawOrigin : BaseEnumRust<RawOrigin>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRawOrigin()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(RawOrigin.EthereumTransaction);
+        }
     }
 }

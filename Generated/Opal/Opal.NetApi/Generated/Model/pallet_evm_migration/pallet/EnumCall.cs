@@ -63,7 +63,20 @@ namespace Opal.NetApi.Generated.Model.pallet_evm_migration.pallet
     /// >> 351 - Variant[pallet_evm_migration.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Opal.NetApi.Generated.Model.primitive_types.H160, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Model.primitive_types.H256>>>, BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.ethereum.log.Log>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>, BaseVoid>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.primitive_types.H160>(Call.begin);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H256, Opal.NetApi.Generated.Model.primitive_types.H256>>>>(Call.set_data);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(Call.finish);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.ethereum.log.Log>>(Call.insert_eth_logs);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(Call.insert_events);
+				AddTypeDecoder<BaseVoid>(Call.remove_rmrk_data);
+        }
     }
 }

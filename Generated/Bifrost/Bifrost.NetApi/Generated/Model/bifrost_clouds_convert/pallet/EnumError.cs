@@ -44,7 +44,7 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_clouds_convert.pallet
     }
     
     /// <summary>
-    /// >> 896 - Variant[bifrost_clouds_convert.pallet.Error]
+    /// >> 950 - Variant[bifrost_clouds_convert.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

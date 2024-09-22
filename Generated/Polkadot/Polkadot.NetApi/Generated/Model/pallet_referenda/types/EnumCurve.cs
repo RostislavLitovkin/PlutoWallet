@@ -40,7 +40,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_referenda.types
     /// <summary>
     /// >> 661 - Variant[pallet_referenda.types.Curve]
     /// </summary>
-    public sealed class EnumCurve : BaseEnumExt<Curve, BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>, BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>
+    public sealed class EnumCurve : BaseEnumRust<Curve>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCurve()
+        {
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.LinearDecreasing);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill, Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>>(Curve.SteppedDecreasing);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64, Polkadot.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedI64>>(Curve.Reciprocal);
+        }
     }
 }

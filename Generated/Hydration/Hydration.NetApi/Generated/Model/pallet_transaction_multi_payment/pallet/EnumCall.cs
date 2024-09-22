@@ -57,7 +57,19 @@ namespace Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pall
     /// >> 274 - Variant[pallet_transaction_multi_payment.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H160, Hydration.NetApi.Generated.Model.primitive_types.H160, Hydration.NetApi.Generated.Model.primitive_types.U256, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U64, Hydration.NetApi.Generated.Model.primitive_types.U256, Substrate.NetApi.Model.Types.Primitive.U8, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_currency);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Call.add_currency);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.remove_currency);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Call.reset_payment_currency);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.primitive_types.H160, Hydration.NetApi.Generated.Model.primitive_types.H160, Hydration.NetApi.Generated.Model.primitive_types.U256, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U64, Hydration.NetApi.Generated.Model.primitive_types.U256, Substrate.NetApi.Model.Types.Primitive.U8, Hydration.NetApi.Generated.Model.primitive_types.H256, Hydration.NetApi.Generated.Model.primitive_types.H256>>(Call.dispatch_permit);
+        }
     }
 }

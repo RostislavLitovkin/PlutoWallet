@@ -39,7 +39,16 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_message_queue.pallet
     /// >> 342 - Variant[pallet_message_queue.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.reap_page);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.cumulus_primitives_core.EnumAggregateMessageOrigin, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.execute_overweight);
+        }
     }
 }

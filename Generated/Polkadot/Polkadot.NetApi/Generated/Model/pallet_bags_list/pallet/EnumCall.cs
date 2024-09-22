@@ -45,7 +45,17 @@ namespace Polkadot.NetApi.Generated.Model.pallet_bags_list.pallet
     /// >> 305 - Variant[pallet_bags_list.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.rebag);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.put_in_front_of);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.put_in_front_of_other);
+        }
     }
 }

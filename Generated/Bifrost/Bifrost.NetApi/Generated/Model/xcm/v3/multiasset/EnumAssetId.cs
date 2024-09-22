@@ -33,9 +33,18 @@ namespace Bifrost.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 176 - Variant[xcm.v3.multiasset.AssetId]
+    /// >> 181 - Variant[xcm.v3.multiasset.AssetId]
     /// </summary>
-    public sealed class EnumAssetId : BaseEnumExt<AssetId, Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, Bifrost.NetApi.Generated.Types.Base.Arr32U8>
+    public sealed class EnumAssetId : BaseEnumRust<AssetId>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumAssetId()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(AssetId.Concrete);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Types.Base.Arr32U8>(AssetId.Abstract);
+        }
     }
 }

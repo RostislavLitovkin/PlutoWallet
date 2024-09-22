@@ -60,7 +60,21 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params
     /// <summary>
     /// >> 324 - Variant[polkadot_primitives.v6.executor_params.ExecutorParam]
     /// </summary>
-    public sealed class EnumExecutorParam : BaseEnumExt<ExecutorParam, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U64, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.EnumPvfPrepKind, Substrate.NetApi.Model.Types.Primitive.U64>, BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.EnumPvfExecKind, Substrate.NetApi.Model.Types.Primitive.U64>, BaseVoid>
+    public sealed class EnumExecutorParam : BaseEnumRust<ExecutorParam>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExecutorParam()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(ExecutorParam.MaxMemoryPages);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(ExecutorParam.StackLogicalMax);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(ExecutorParam.StackNativeMax);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U64>(ExecutorParam.PrecheckingMaxMemory);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.EnumPvfPrepKind, Substrate.NetApi.Model.Types.Primitive.U64>>(ExecutorParam.PvfPrepTimeout);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.EnumPvfExecKind, Substrate.NetApi.Model.Types.Primitive.U64>>(ExecutorParam.PvfExecTimeout);
+				AddTypeDecoder<BaseVoid>(ExecutorParam.WasmExtBulkMemory);
+        }
     }
 }

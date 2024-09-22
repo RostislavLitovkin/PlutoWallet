@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.zenlink_protocol.primitives
     
     
     /// <summary>
-    /// >> 303 - Composite[zenlink_protocol.primitives.AssetId]
+    /// >> 326 - Composite[zenlink_protocol.primitives.AssetId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AssetId : BaseType

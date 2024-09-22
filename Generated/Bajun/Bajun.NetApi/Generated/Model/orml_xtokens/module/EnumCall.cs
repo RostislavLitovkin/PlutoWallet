@@ -153,7 +153,20 @@ namespace Bajun.NetApi.Generated.Model.orml_xtokens.module
     /// >> 390 - Variant[orml_xtokens.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>, Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>, BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_multiasset);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_with_fee);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedAsset, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_multiasset_with_fee);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.xcm_config.EnumCurrencyId, Substrate.NetApi.Model.Types.Primitive.U128>>, Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_multicurrencies);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32, Bajun.NetApi.Generated.Model.xcm.EnumVersionedLocation, Bajun.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_multiassets);
+        }
     }
 }

@@ -45,7 +45,18 @@ namespace Hydration.NetApi.Generated.Model.evm_core.error
     /// <summary>
     /// >> 134 - Variant[evm_core.error.ExitReason]
     /// </summary>
-    public sealed class EnumExitReason : BaseEnumExt<ExitReason, Hydration.NetApi.Generated.Model.evm_core.error.EnumExitSucceed, Hydration.NetApi.Generated.Model.evm_core.error.EnumExitError, Hydration.NetApi.Generated.Model.evm_core.error.EnumExitRevert, Hydration.NetApi.Generated.Model.evm_core.error.EnumExitFatal>
+    public sealed class EnumExitReason : BaseEnumRust<ExitReason>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumExitReason()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.evm_core.error.EnumExitSucceed>(ExitReason.Succeed);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.evm_core.error.EnumExitError>(ExitReason.Error);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.evm_core.error.EnumExitRevert>(ExitReason.Revert);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.evm_core.error.EnumExitFatal>(ExitReason.Fatal);
+        }
     }
 }

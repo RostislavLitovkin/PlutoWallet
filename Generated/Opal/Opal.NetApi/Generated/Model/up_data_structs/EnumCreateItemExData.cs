@@ -45,7 +45,18 @@ namespace Opal.NetApi.Generated.Model.up_data_structs
     /// <summary>
     /// >> 308 - Variant[up_data_structs.CreateItemExData]
     /// </summary>
-    public sealed class EnumCreateItemExData : BaseEnumExt<CreateItemExData, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15, Opal.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMapT1, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16, Opal.NetApi.Generated.Model.up_data_structs.CreateRefungibleExMultipleOwners>
+    public sealed class EnumCreateItemExData : BaseEnumRust<CreateItemExData>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCreateItemExData()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15>(CreateItemExData.NFT);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_btree_map.BoundedBTreeMapT1>(CreateItemExData.Fungible);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>(CreateItemExData.RefungibleMultipleItems);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.up_data_structs.CreateRefungibleExMultipleOwners>(CreateItemExData.RefungibleMultipleOwners);
+        }
     }
 }

@@ -45,7 +45,18 @@ namespace PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset
     /// <summary>
     /// >> 86 - Variant[staging_xcm.v4.asset.WildAsset]
     /// </summary>
-    public sealed class EnumWildAsset : BaseEnumExt<WildAsset, BaseVoid, BaseTuple<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.AssetId, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildFungibility>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.AssetId, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>
+    public sealed class EnumWildAsset : BaseEnumRust<WildAsset>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumWildAsset()
+        {
+				AddTypeDecoder<BaseVoid>(WildAsset.All);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.AssetId, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildFungibility>>(WildAsset.AllOf);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(WildAsset.AllCounted);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.AssetId, PolkadotPeople.NetApi.Generated.Model.staging_xcm.v4.asset.EnumWildFungibility, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(WildAsset.AllOfCounted);
+        }
     }
 }

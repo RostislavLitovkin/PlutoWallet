@@ -3,7 +3,7 @@ using System;
 using System.Numerics;
 using PlutoWallet.Model.AjunaExt;
 using Substrate.NetApi;
-using Substrate.NetApi.Generated.Model.sp_core.crypto;
+using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using PlutoWallet.Types;
 using PlutoWallet.Constants;
 using Bifrost.NetApi.Generated.Model.orml_tokens;
@@ -307,74 +307,6 @@ namespace PlutoWallet.Model
         /// This is a helper function for querying Tokens balance
         /// </summary>
         /// <returns></returns>
-        public async static Task<List<TokenData>> GetTokensBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
-        {
-            var account32 = new AccountId32();
-            account32.Create(Utils.GetPublicKeyFrom(substrateAddress));
-
-            var tokensKeyBytes = RequestGenerator.GetStorageKeyBytesHash("Tokens", "Accounts");
-            var assetRegistryKeyBytes = RequestGenerator.GetStorageKeyBytesHash("AssetRegistry", "AssetMetadataMap");
-
-            byte[] prefix = tokensKeyBytes.Concat(HashExtension.Hash(Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat, account32.Encode())).ToArray();
-            byte[] startKey = null;
-
-            List<string[]> storageTokensChanges = new List<string[]>();
-            List<string[]> storageAssetRegistryChanges = new List<string[]>();
-            List<string> storageKeys = new List<string>();
-
-            int prefixLength = Utils.Bytes2HexString(prefix).Length;
-
-            while (true)
-            {
-                var keysPaged = await client.State.GetKeysPagedAsync(prefix, 1000, startKey, string.Empty, token);
-
-                if (keysPaged == null || !keysPaged.Any())
-                {
-                    break;
-                }
-                else
-                {
-                    var tt = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(p.ToString())).ToList(), string.Empty, token);
-                    storageTokensChanges.AddRange(new List<string[]>(tt.ElementAt(0).Changes));
-
-                    var tar = await client.State.GetQueryStorageAtAsync(keysPaged.Select(p => Utils.HexToByteArray(Utils.Bytes2HexString(assetRegistryKeyBytes) + p.ToString().Substring(prefixLength))).ToList(), string.Empty, token);
-                    storageAssetRegistryChanges.AddRange(new List<string[]>(tar.ElementAt(0).Changes));
-
-                    storageKeys.AddRange(keysPaged.Select(p => p.ToString().Substring(prefixLength)).ToList());
-
-                    startKey = Utils.HexToByteArray(tt.ElementAt(0).Changes.Last()[0]);
-                }
-            }
-
-            var resultList = new List<TokenData>();
-
-            if (storageTokensChanges != null)
-            {
-                for (int i = 0; i < storageTokensChanges.Count(); i++)
-                {
-                    Hydration.NetApi.Generated.Model.orml_tokens.AccountData accountData = new Hydration.NetApi.Generated.Model.orml_tokens.AccountData();
-                    accountData.Create(storageTokensChanges[i][1]);
-
-                    var assetMetadata = new Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata();
-                    assetMetadata.Create(storageAssetRegistryChanges[i][1]);
-
-                    BigInteger assetId = Model.HashModel.GetBigIntegerFromTwox_64Concat(storageKeys[i]);
-
-                    resultList.Add(new TokenData
-                    {
-                        AssetId = assetId,
-                        AccountData = accountData,
-                        AssetMetadata = assetMetadata,
-                    });
-                }
-            }
-            return resultList;
-        }
-
-        /// <summary>
-        /// This is a helper function for querying Tokens balance
-        /// </summary>
-        /// <returns></returns>
         public async static Task<List<HydrationTokenData>> GetHydrationTokensBalance(SubstrateClient client, string substrateAddress, CancellationToken token)
         {
             var account32 = new AccountId32();
@@ -516,14 +448,6 @@ namespace PlutoWallet.Model
             return resultList;
         }
     }
-
-    public class TokenData
-    {
-        public BigInteger AssetId { get; set; }
-        public Hydration.NetApi.Generated.Model.orml_tokens.AccountData AccountData { get; set; }
-        public Substrate.NetApi.Generated.Model.pallet_asset_registry.types.AssetMetadata AssetMetadata { get; set; }
-    }
-
     public class BifrostTokenData
     {
         public BigInteger AssetId { get; set; }

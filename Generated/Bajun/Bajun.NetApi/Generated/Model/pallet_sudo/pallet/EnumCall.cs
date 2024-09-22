@@ -67,7 +67,19 @@ namespace Bajun.NetApi.Generated.Model.pallet_sudo.pallet
     /// >> 396 - Variant[pallet_sudo.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall, BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall, Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight>, Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall>, BaseVoid>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall>(Call.sudo);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall, Bajun.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.sudo_unchecked_weight);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.set_key);
+				AddTypeDecoder<BaseTuple<Bajun.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall>>(Call.sudo_as);
+				AddTypeDecoder<BaseVoid>(Call.remove_key);
+        }
     }
 }

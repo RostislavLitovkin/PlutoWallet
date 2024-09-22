@@ -35,7 +35,16 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v2
     /// <summary>
     /// >> 408 - Variant[xcm.v2.WeightLimit]
     /// </summary>
-    public sealed class EnumWeightLimit : BaseEnumExt<WeightLimit, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>
+    public sealed class EnumWeightLimit : BaseEnumRust<WeightLimit>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumWeightLimit()
+        {
+				AddTypeDecoder<BaseVoid>(WeightLimit.Unlimited);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>(WeightLimit.Limited);
+        }
     }
 }

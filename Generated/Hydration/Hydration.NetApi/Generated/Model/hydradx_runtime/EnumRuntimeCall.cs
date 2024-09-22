@@ -310,7 +310,71 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime
     /// <summary>
     /// >> 287 - Variant[hydradx_runtime.RuntimeCall]
     /// </summary>
-    public sealed class EnumRuntimeCall : BaseEnumExt<RuntimeCall, BaseVoid, Hydration.NetApi.Generated.Model.frame_system.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_balances.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_utility.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_identity.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_tips.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_uniques.pallet.EnumCall, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_claims.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_genesis_history.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_omnipool.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_duster.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_otc.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_circuit_breaker.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_dca.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_route_executor.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_dynamic_fees.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_staking.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_stableswap.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_bonds.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_lbp.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_xyk.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_referrals.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.orml_tokens.module.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_currencies.module.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.orml_vesting.module.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_evm.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_ethereum.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_xyk_liquidity_mining.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.orml_xcm.module.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.orml_xtokens.module.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall, BaseVoid, Hydration.NetApi.Generated.Model.pallet_session.pallet.EnumCall, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Hydration.NetApi.Generated.Model.pallet_relaychain_info.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_ema_oracle.pallet.EnumCall, Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pallet.EnumCall>
+    public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumRuntimeCall()
+        {
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pallet.EnumCall>(RuntimeCall.MultiTransactionPayment);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall>(RuntimeCall.Treasury);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_preimage.pallet.EnumCall>(RuntimeCall.Preimage);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_democracy.pallet.EnumCall>(RuntimeCall.Democracy);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_elections_phragmen.pallet.EnumCall>(RuntimeCall.Elections);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.Council);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collective.pallet.EnumCall>(RuntimeCall.TechnicalCommittee);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_tips.pallet.EnumCall>(RuntimeCall.Tips);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall>(RuntimeCall.Proxy);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall>(RuntimeCall.Multisig);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_uniques.pallet.EnumCall>(RuntimeCall.Uniques);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet.EnumCall>(RuntimeCall.StateTrieMigration);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet.EnumCall>(RuntimeCall.AssetRegistry);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_claims.pallet.EnumCall>(RuntimeCall.Claims);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_genesis_history.pallet.EnumCall>(RuntimeCall.GenesisHistory);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_omnipool.pallet.EnumCall>(RuntimeCall.Omnipool);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet.EnumCall>(RuntimeCall.TransactionPause);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_duster.pallet.EnumCall>(RuntimeCall.Duster);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumCall>(RuntimeCall.OmnipoolWarehouseLM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pallet.EnumCall>(RuntimeCall.OmnipoolLiquidityMining);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_otc.pallet.EnumCall>(RuntimeCall.OTC);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_circuit_breaker.pallet.EnumCall>(RuntimeCall.CircuitBreaker);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_route_executor.pallet.EnumCall>(RuntimeCall.Router);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_dynamic_fees.pallet.EnumCall>(RuntimeCall.DynamicFees);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_staking.pallet.EnumCall>(RuntimeCall.Staking);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_stableswap.pallet.EnumCall>(RuntimeCall.Stableswap);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_bonds.pallet.EnumCall>(RuntimeCall.Bonds);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet.EnumCall>(RuntimeCall.OtcSettlements);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_lbp.pallet.EnumCall>(RuntimeCall.LBP);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xyk.pallet.EnumCall>(RuntimeCall.XYK);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_referrals.pallet.EnumCall>(RuntimeCall.Referrals);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_tokens.module.EnumCall>(RuntimeCall.Tokens);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_currencies.module.EnumCall>(RuntimeCall.Currencies);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_vesting.module.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_evm.pallet.EnumCall>(RuntimeCall.EVM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_ethereum.pallet.EnumCall>(RuntimeCall.Ethereum);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet.EnumCall>(RuntimeCall.EVMAccounts);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xyk_liquidity_mining.pallet.EnumCall>(RuntimeCall.XYKLiquidityMining);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_liquidity_mining.pallet.EnumCall>(RuntimeCall.XYKWarehouseLM);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_relaychain_info.pallet.EnumCall>(RuntimeCall.RelayChainInfo);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_dca.pallet.EnumCall>(RuntimeCall.DCA);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_scheduler.pallet.EnumCall>(RuntimeCall.Scheduler);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall>(RuntimeCall.ParachainSystem);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall>(RuntimeCall.ParachainInfo);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.PolkadotXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall>(RuntimeCall.CumulusXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall>(RuntimeCall.MessageQueue);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_xcm.module.EnumCall>(RuntimeCall.OrmlXcm);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.orml_xtokens.module.EnumCall>(RuntimeCall.XTokens);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall>(RuntimeCall.CollatorSelection);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.pallet_ema_oracle.pallet.EnumCall>(RuntimeCall.EmaOracle);
+        }
     }
 }

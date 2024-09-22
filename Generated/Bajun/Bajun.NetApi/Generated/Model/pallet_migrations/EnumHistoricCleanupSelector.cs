@@ -35,7 +35,16 @@ namespace Bajun.NetApi.Generated.Model.pallet_migrations
     /// <summary>
     /// >> 336 - Variant[pallet_migrations.HistoricCleanupSelector]
     /// </summary>
-    public sealed class EnumHistoricCleanupSelector : BaseEnumExt<HistoricCleanupSelector, Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>>
+    public sealed class EnumHistoricCleanupSelector : BaseEnumRust<HistoricCleanupSelector>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumHistoricCleanupSelector()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Bajun.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>>(HistoricCleanupSelector.Specific);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>>(HistoricCleanupSelector.Wildcard);
+        }
     }
 }

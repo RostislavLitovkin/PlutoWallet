@@ -57,7 +57,19 @@ namespace Polkadot.NetApi.Generated.Model.pallet_indices.pallet
     /// >> 121 - Variant[pallet_indices.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>, Substrate.NetApi.Model.Types.Primitive.U32>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.claim);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.transfer);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.free);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.force_transfer);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.freeze);
+        }
     }
 }

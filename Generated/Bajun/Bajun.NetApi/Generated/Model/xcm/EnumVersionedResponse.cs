@@ -40,7 +40,17 @@ namespace Bajun.NetApi.Generated.Model.xcm
     /// <summary>
     /// >> 539 - Variant[xcm.VersionedResponse]
     /// </summary>
-    public sealed class EnumVersionedResponse : BaseEnumExt<VersionedResponse, BaseVoid, BaseVoid, Bajun.NetApi.Generated.Model.xcm.v2.EnumResponse, Bajun.NetApi.Generated.Model.xcm.v3.EnumResponse, Bajun.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>
+    public sealed class EnumVersionedResponse : BaseEnumRust<VersionedResponse>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumVersionedResponse()
+        {
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v2.EnumResponse>(VersionedResponse.V2);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.xcm.v3.EnumResponse>(VersionedResponse.V3);
+				AddTypeDecoder<Bajun.NetApi.Generated.Model.staging_xcm.v4.EnumResponse>(VersionedResponse.V4);
+        }
     }
 }

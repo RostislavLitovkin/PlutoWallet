@@ -38,9 +38,19 @@ namespace Bifrost.NetApi.Generated.Model.frame_support.traits.preimages
     }
     
     /// <summary>
-    /// >> 57 - Variant[frame_support.traits.preimages.Bounded]
+    /// >> 60 - Variant[frame_support.traits.preimages.Bounded]
     /// </summary>
-    public sealed class EnumBounded : BaseEnumExt<Bounded, Bifrost.NetApi.Generated.Model.primitive_types.H256, Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10, BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumBounded : BaseEnumRust<Bounded>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumBounded()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.primitive_types.H256>(Bounded.Legacy);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11>(Bounded.Inline);
+				AddTypeDecoder<BaseTuple<Bifrost.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.U32>>(Bounded.Lookup);
+        }
     }
 }

@@ -51,12 +51,12 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "DelegatorNextIndex"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Substrate.NetApi.Model.Types.Primitive.U16)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "Validators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "ValidatorBoostList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT49)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "ValidatorsByDelegator"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>), typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "ValidatorsByDelegatorXcmUpdateQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U64), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.EnumValidatorsByDelegatorUpdateEntry, Substrate.NetApi.Model.Types.Primitive.U32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Slp", "DelegatorLedgers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -301,10 +301,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> Validators
         ///  (VWL) Validator in service. A validator is identified in MultiLocation format.
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48> Validators(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50> Validators(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
         {
             string parameters = SlpStorage.ValidatorsParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50>(parameters, blockhash, token);
             return result;
         }
         
@@ -332,10 +332,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> ValidatorBoostList
         ///  (VBL) Validator Boost List -> (validator multilocation, due block number)
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT49> ValidatorBoostList(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51> ValidatorBoostList(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId key, string blockhash, CancellationToken token)
         {
             string parameters = SlpStorage.ValidatorBoostListParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT49>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51>(parameters, blockhash, token);
             return result;
         }
         
@@ -363,10 +363,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> ValidatorsByDelegator
         ///  Validators for each delegator. CurrencyId + Delegator => Vec<Validator>
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48> ValidatorsByDelegator(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> key, string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50> ValidatorsByDelegator(Substrate.NetApi.Model.Types.Base.BaseTuple<Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId, Bifrost.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> key, string blockhash, CancellationToken token)
         {
             string parameters = SlpStorage.ValidatorsByDelegatorParams(key);
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT48>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50>(parameters, blockhash, token);
             return result;
         }
         

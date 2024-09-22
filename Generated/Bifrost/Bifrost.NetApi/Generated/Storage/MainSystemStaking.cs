@@ -39,7 +39,7 @@ namespace Bifrost.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("SystemStaking", "Round"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bifrost_system_staking.types.RoundInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("SystemStaking", "TokenStatus"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Bifrost.NetApi.Generated.Model.bifrost_primitives.currency.EnumCurrencyId), typeof(Bifrost.NetApi.Generated.Model.bifrost_system_staking.types.TokenInfo)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("SystemStaking", "TokenList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("SystemStaking", "TokenList"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53)));
         }
         
         /// <summary>
@@ -124,10 +124,10 @@ namespace Bifrost.NetApi.Generated.Storage
         /// >> TokenList
         ///  All token sets
         /// </summary>
-        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51> TokenList(string blockhash, CancellationToken token)
+        public async Task<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53> TokenList(string blockhash, CancellationToken token)
         {
             string parameters = SystemStakingStorage.TokenListParams();
-            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT51>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT53>(parameters, blockhash, token);
             return result;
         }
     }

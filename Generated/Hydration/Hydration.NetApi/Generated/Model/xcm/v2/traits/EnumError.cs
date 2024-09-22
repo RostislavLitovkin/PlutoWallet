@@ -155,7 +155,40 @@ namespace Hydration.NetApi.Generated.Model.xcm.v2.traits
     /// <summary>
     /// >> 431 - Variant[xcm.v2.traits.Error]
     /// </summary>
-    public sealed class EnumError : BaseEnumExt<Error, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U64, BaseVoid, Substrate.NetApi.Model.Types.Primitive.U64, BaseVoid, BaseVoid>
+    public sealed class EnumError : BaseEnumRust<Error>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumError()
+        {
+				AddTypeDecoder<BaseVoid>(Error.Overflow);
+				AddTypeDecoder<BaseVoid>(Error.Unimplemented);
+				AddTypeDecoder<BaseVoid>(Error.UntrustedReserveLocation);
+				AddTypeDecoder<BaseVoid>(Error.UntrustedTeleportLocation);
+				AddTypeDecoder<BaseVoid>(Error.MultiLocationFull);
+				AddTypeDecoder<BaseVoid>(Error.MultiLocationNotInvertible);
+				AddTypeDecoder<BaseVoid>(Error.BadOrigin);
+				AddTypeDecoder<BaseVoid>(Error.InvalidLocation);
+				AddTypeDecoder<BaseVoid>(Error.AssetNotFound);
+				AddTypeDecoder<BaseVoid>(Error.FailedToTransactAsset);
+				AddTypeDecoder<BaseVoid>(Error.NotWithdrawable);
+				AddTypeDecoder<BaseVoid>(Error.LocationCannotHold);
+				AddTypeDecoder<BaseVoid>(Error.ExceedsMaxMessageSize);
+				AddTypeDecoder<BaseVoid>(Error.DestinationUnsupported);
+				AddTypeDecoder<BaseVoid>(Error.Transport);
+				AddTypeDecoder<BaseVoid>(Error.Unroutable);
+				AddTypeDecoder<BaseVoid>(Error.UnknownClaim);
+				AddTypeDecoder<BaseVoid>(Error.FailedToDecode);
+				AddTypeDecoder<BaseVoid>(Error.MaxWeightInvalid);
+				AddTypeDecoder<BaseVoid>(Error.NotHoldingFees);
+				AddTypeDecoder<BaseVoid>(Error.TooExpensive);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U64>(Error.Trap);
+				AddTypeDecoder<BaseVoid>(Error.UnhandledXcmVersion);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U64>(Error.WeightLimitReached);
+				AddTypeDecoder<BaseVoid>(Error.Barrier);
+				AddTypeDecoder<BaseVoid>(Error.WeightNotComputable);
+        }
     }
 }

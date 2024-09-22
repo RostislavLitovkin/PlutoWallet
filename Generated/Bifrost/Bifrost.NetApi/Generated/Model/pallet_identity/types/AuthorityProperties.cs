@@ -9,7 +9,7 @@
 
 using Substrate.NetApi.Attributes;
 using Substrate.NetApi.Model.Types.Base;
-using Substrate.NetApi.Model.Types.Metadata.V14;
+using Substrate.NetApi.Model.Types.Metadata.Base;
 using System.Collections.Generic;
 
 
@@ -18,7 +18,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 714 - Composite[pallet_identity.types.AuthorityProperties]
+    /// >> 751 - Composite[pallet_identity.types.AuthorityProperties]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AuthorityProperties : BaseType
@@ -27,7 +27,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> suffix
         /// </summary>
-        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38 Suffix { get; set; }
+        public Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40 Suffix { get; set; }
         /// <summary>
         /// >> allocation
         /// </summary>
@@ -52,7 +52,7 @@ namespace Bifrost.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Suffix = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38();
+            Suffix = new Bifrost.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40();
             Suffix.Decode(byteArray, ref p);
             Allocation = new Substrate.NetApi.Model.Types.Primitive.U32();
             Allocation.Decode(byteArray, ref p);

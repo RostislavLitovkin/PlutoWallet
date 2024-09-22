@@ -30,7 +30,15 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests
     /// <summary>
     /// >> 117 - Variant[sp_consensus_babe.digests.NextConfigDescriptor]
     /// </summary>
-    public sealed class EnumNextConfigDescriptor : BaseEnumExt<NextConfigDescriptor, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.U64>, Polkadot.NetApi.Generated.Model.sp_consensus_babe.EnumAllowedSlots>>
+    public sealed class EnumNextConfigDescriptor : BaseEnumRust<NextConfigDescriptor>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumNextConfigDescriptor()
+        {
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, Substrate.NetApi.Model.Types.Primitive.U64>, Polkadot.NetApi.Generated.Model.sp_consensus_babe.EnumAllowedSlots>>(NextConfigDescriptor.V1);
+        }
     }
 }

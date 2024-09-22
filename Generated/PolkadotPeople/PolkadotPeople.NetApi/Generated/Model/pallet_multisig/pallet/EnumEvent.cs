@@ -51,7 +51,18 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_multisig.pallet
     /// >> 123 - Variant[pallet_multisig.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.EnumResult>, BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>>(Event.NewMultisig);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>>(Event.MultisigApproval);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8, PolkadotPeople.NetApi.Generated.Types.Base.EnumResult>>(Event.MultisigExecuted);
+				AddTypeDecoder<BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_multisig.Timepoint, PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8>>(Event.MultisigCancelled);
+        }
     }
 }

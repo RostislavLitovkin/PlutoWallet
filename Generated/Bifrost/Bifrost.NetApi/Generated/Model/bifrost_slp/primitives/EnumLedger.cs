@@ -48,9 +48,21 @@ namespace Bifrost.NetApi.Generated.Model.bifrost_slp.primitives
     }
     
     /// <summary>
-    /// >> 335 - Variant[bifrost_slp.primitives.Ledger]
+    /// >> 357 - Variant[bifrost_slp.primitives.Ledger]
     /// </summary>
-    public sealed class EnumLedger : BaseEnumExt<Ledger, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateLedger, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.filecoin_primitives.FilecoinLedger, Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.phala_primitives.PhalaLedger>
+    public sealed class EnumLedger : BaseEnumRust<Ledger>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumLedger()
+        {
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.polkadot_primitives.SubstrateLedger>(Ledger.Substrate);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger>(Ledger.Moonbeam);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.parachain_staking_primitives.OneToManyLedger>(Ledger.ParachainStaking);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.filecoin_primitives.FilecoinLedger>(Ledger.Filecoin);
+				AddTypeDecoder<Bifrost.NetApi.Generated.Model.bifrost_slp.primitives.phala_primitives.PhalaLedger>(Ledger.Phala);
+        }
     }
 }

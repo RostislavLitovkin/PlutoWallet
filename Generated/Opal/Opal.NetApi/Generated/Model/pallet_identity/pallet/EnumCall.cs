@@ -135,7 +135,32 @@ namespace Opal.NetApi.Generated.Model.pallet_identity.pallet
     /// >> 146 - Variant[pallet_identity.pallet.Call]
     /// Identity pallet declaration.
     /// </summary>
-    public sealed class EnumCall : BaseEnumExt<Call, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.IdentityInfo, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>>, BaseVoid, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, Substrate.NetApi.Model.Types.Primitive.U32, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.pallet_identity.types.BitFlags>, BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, Opal.NetApi.Generated.Model.primitive_types.H256>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>, BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, BaseVoid, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.pallet_identity.types.Registration>>, Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>>>>
+    public sealed class EnumCall : BaseEnumRust<Call>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumCall()
+        {
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.add_registrar);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_identity.types.IdentityInfo>(Call.set_identity);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>>>(Call.set_subs);
+				AddTypeDecoder<BaseVoid>(Call.clear_identity);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.request_judgement);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.cancel_request);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.set_fee);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>>(Call.set_account_id);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.pallet_identity.types.BitFlags>>(Call.set_fields);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumJudgement, Opal.NetApi.Generated.Model.primitive_types.H256>>(Call.provide_judgement);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.kill_identity);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.add_sub);
+				AddTypeDecoder<BaseTuple<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Opal.NetApi.Generated.Model.pallet_identity.types.EnumData>>(Call.rename_sub);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.remove_sub);
+				AddTypeDecoder<BaseVoid>(Call.quit_sub);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Opal.NetApi.Generated.Model.pallet_identity.types.Registration>>>(Call.force_insert_identities);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.force_remove_identities);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, Opal.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>>>>(Call.force_set_subs);
+        }
     }
 }

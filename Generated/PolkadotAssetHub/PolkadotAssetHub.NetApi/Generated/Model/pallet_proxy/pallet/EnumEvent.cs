@@ -58,7 +58,19 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_proxy.pallet
     /// >> 127 - Variant[pallet_proxy.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
-    public sealed class EnumEvent : BaseEnumExt<Event, PolkadotAssetHub.NetApi.Generated.Types.Base.EnumResult, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U16>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>, BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>
+    public sealed class EnumEvent : BaseEnumRust<Event>
     {
+        
+        /// <summary>
+        /// Initializes a new instance of the class.
+        /// </summary>
+        public EnumEvent()
+        {
+				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Types.Base.EnumResult>(Event.ProxyExecuted);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U16>>(Event.PureCreated);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.primitive_types.H256>>(Event.Announced);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.ProxyAdded);
+				AddTypeDecoder<BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumProxyType, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.ProxyRemoved);
+        }
     }
 }
