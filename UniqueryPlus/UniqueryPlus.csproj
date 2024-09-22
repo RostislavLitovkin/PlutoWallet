@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Generated\KusamaAssetHub\KusamaAssetHub.NetApi\KusamaAssetHub.NetApi.csproj" />
     <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
     <ProjectReference Include="..\Speck\Speck.csproj" />
+    <ProjectReference Include="..\Stick\Stick.csproj" />
   </ItemGroup>
 
 </Project>
