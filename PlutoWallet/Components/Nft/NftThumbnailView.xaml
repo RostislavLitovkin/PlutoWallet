@@ -5,8 +5,8 @@
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.Nft.NftThumbnailView"
              >
-    <card:Card CardPadding="0, 0, 10, 0">
-        <card:Card.View>
+    <card:ClickableCard CardPadding="0, 0, 10, 0">
+        <card:ClickableCard.View>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -138,8 +138,8 @@
 
             </Grid>
 
-        </card:Card.View>
+        </card:ClickableCard.View>
 
-    </card:Card>
+    </card:ClickableCard>
 </ContentView>
 

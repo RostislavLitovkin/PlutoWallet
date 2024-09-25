@@ -101,5 +101,20 @@ namespace UniqueryPlusTests
 
             Assert.That(sellable.Price, Is.EqualTo(BigInteger.Parse("21000000000")));
         }
+
+        [Test]
+        public async Task TestGetNftsIAsyncEnumerableAsync()
+        {
+            var nftsEnumerable = NftModel.GetNftsOwnedByAsync([client], address, 3, CancellationToken.None);
+
+            var enumerator = nftsEnumerable.GetAsyncEnumerator();
+
+            await foreach (var nft in nftsEnumerable)
+            {
+                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
+        }
     }
 }

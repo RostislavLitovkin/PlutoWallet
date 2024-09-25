@@ -422,6 +422,9 @@
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\CollectionThumbnailView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NoNftsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -536,7 +539,6 @@
 	  <Folder Include="Components\CustomLayouts\" />
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
-	  <Folder Include="Components\Nft\" />
 	  <Folder Include="Components\Contract\" />
 	  <Folder Include="Components\ConfirmTransaction\" />
 	  <Folder Include="Components\AzeroId\" />

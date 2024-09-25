@@ -9,10 +9,32 @@ using Newtonsoft.Json;
 using static Substrate.NetApi.Model.Meta.Storage;
 using System.Numerics;
 using UniqueryPlus.Ipfs;
+using UniqueryPlus.Collections;
+using UniqueryPlus.External;
+using UniqueryPlus.Nfts;
+using UniqueryPlus;
 
 namespace PlutoWallet.Model
 {
-	public class NFT
+    public class MockNft : INftBase, IKodaLink
+    {
+        public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
+        public required BigInteger CollectionId { get; set; }
+        public required BigInteger Id { get; set; }
+        public required string Owner { get; set; }
+        public INftMetadataBase? Metadata { get; set; }
+        public string KodaLink => $"https://koda.art/ahp/nft/{CollectionId}/{Id}";
+        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
+        {
+            return CollectionModel.GetMockCollection();
+        }
+
+        public async Task<INftBase> GetFullAsync(CancellationToken token)
+        {
+            return this;
+        }
+    }
+    public class NFT
 	{
         public string Name { get; set; }
 		public string Description { get; set; }
@@ -119,34 +141,20 @@ namespace PlutoWallet.Model
             return nfts;
         }
 
-        public static List<NFT> GetMockNFTs(int n = 1)
+        public static INftBase GetMockNft()
         {
-            var nfts = new List<NFT>();
-
-            for (int i = 0; i < n; i++)
+            return new MockNft
             {
-                nfts.Add(new NFT
+                CollectionId = 2000,
+                Id = 1000,
+                Metadata = new NftMetadata
                 {
-                    Name = "Mock nft - version ALPHA",
-                    Description = @"This is a totally mock NFT that does nothing.
-Hopefully it will fulfill the test functionalities correctly.",
-                    Endpoint = new Endpoint
-                    {
-                        Name = "Mock network",
-                        Icon = "plutowalleticon.png",
-                        URLs = [],
-                        Unit = "Pluto",
-                        Decimals = 0,
-                        DarkIcon = "plutowalleticon.png",
-                        Key = EndpointEnum.PolkadotAssetHub,
-                        ChainType = ChainType.Substrate,
-                        SS58Prefix = 42,
-                    },
-                    Image = "dusan.jpg"
-                });
-            }
-
-            return nfts;
+                    Name = "Mock Nft",
+                    Description = "Welcome, this is a mock Nft to test the UI for Nft views even without an internet connection. Yes, it is pretty handy!",
+                    Image = "darkbackground2.png",
+                },
+                Owner = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y"
+            };
         }
 
         public static async Task<NFT> GetNftMetadataAsync(SubstrateClient client, string collectionItemId, CancellationToken token)

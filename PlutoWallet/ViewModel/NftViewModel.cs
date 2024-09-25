@@ -4,6 +4,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Components.Nft;
+using UniqueryPlus.Collections;
+using CommunityToolkit.Maui.Core.Extensions;
 
 namespace PlutoWallet.ViewModel
 {
@@ -11,6 +13,9 @@ namespace PlutoWallet.ViewModel
 	{
         [ObservableProperty]
         private ObservableCollection<NFT> nfts = new ObservableCollection<NFT>() { };
+
+        [ObservableProperty]
+        private ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>() { };
 
         [ObservableProperty]
         private bool noNftsIsVisible = false;
@@ -26,6 +31,26 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
+            #region Get Collections
+            IEnumerable<ICollectionBase> uniqueryPlusCollections = [
+                Model.CollectionModel.GetMockCollection(5000),
+                Model.CollectionModel.GetMockCollection(5),
+                Model.CollectionModel.GetMockCollection(2),
+                Model.CollectionModel.GetMockCollection(1),
+                Model.CollectionModel.GetMockCollection(0),
+            ];
+
+            ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
+            foreach (ICollectionBase collection in uniqueryPlusCollections)
+            {
+                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
+            }
+
+            Collections = collections;
+            #endregion
+
+
+            #region Get Nfts
             var nftLoadingViewModel = DependencyService.Get<NftLoadingViewModel>();
 
             nftLoadingViewModel.IsVisible = true;
@@ -49,6 +74,7 @@ namespace PlutoWallet.ViewModel
             nftLoadingViewModel.IsVisible = false;
 
             NoNftsIsVisible = Nfts.Count() == 0;
+            #endregion
         }
 
         public void UpdateNfts(List<NFT> newNfts)

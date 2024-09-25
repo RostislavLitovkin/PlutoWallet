@@ -10,11 +10,30 @@
         <VerticalStackLayout Padding="0, 65, 0, 200"
                              Spacing="15">
             <VerticalStackLayout
-                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
-                HorizontalOptions="Center"
-                Padding="20, 0, 20, 0"
-                Spacing="15"
-                BindableLayout.ItemsSource="{Binding Nfts}">
+                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
+                                HorizontalOptions="Center"
+                                Padding="20, 0, 20, 0"
+                                Spacing="15"
+                                BindableLayout.ItemsSource="{Binding Collections}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <nft:CollectionThumbnailView
+                                    Endpoint="{Binding Endpoint}"
+                                    Favourite="{Binding Favourite}"
+                                    NftImages="{Binding NftImages}"
+                                    CollectionBase="{Binding CollectionBase}"
+                                    />
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
+                                HorizontalOptions="Center"
+                                Padding="20, 0, 20, 0"
+                                Spacing="15"
+                                BindableLayout.ItemsSource="{Binding Nfts}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <nft:NftThumbnailView Name="{Binding Name}"
@@ -36,7 +55,7 @@
             <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="{Binding NoNftsIsVisible}"/>
 
         </VerticalStackLayout>
-        
+
     </ScrollView>
 </ContentView>
 
