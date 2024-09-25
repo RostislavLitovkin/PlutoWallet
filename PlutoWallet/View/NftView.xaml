@@ -36,13 +36,9 @@
                                 BindableLayout.ItemsSource="{Binding Nfts}">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <nft:NftThumbnailView Name="{Binding Name}"
-                                                Description="{Binding Description}"
-                                                Image="{Binding Image}"
-                                                Endpoint="{Binding Endpoint}"
-                                                CollectionId="{Binding CollectionId}"
-                                                ItemId="{Binding ItemId}"
+                        <nft:NftThumbnailView Endpoint="{Binding Endpoint}"
                                                 Favourite="{Binding Favourite}"
+                                                NftBase="{Binding NftBase}"
                                                 />
 
                     </DataTemplate>

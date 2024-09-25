@@ -16,24 +16,6 @@ using UniqueryPlus;
 
 namespace PlutoWallet.Model
 {
-    public class MockNft : INftBase, IKodaLink
-    {
-        public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
-        public required BigInteger CollectionId { get; set; }
-        public required BigInteger Id { get; set; }
-        public required string Owner { get; set; }
-        public INftMetadataBase? Metadata { get; set; }
-        public string KodaLink => $"https://koda.art/ahp/nft/{CollectionId}/{Id}";
-        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
-        {
-            return CollectionModel.GetMockCollection();
-        }
-
-        public async Task<INftBase> GetFullAsync(CancellationToken token)
-        {
-            return this;
-        }
-    }
     public class NFT
 	{
         public string Name { get; set; }
@@ -139,22 +121,6 @@ namespace PlutoWallet.Model
             client.Dispose();
 
             return nfts;
-        }
-
-        public static INftBase GetMockNft()
-        {
-            return new MockNft
-            {
-                CollectionId = 2000,
-                Id = 1000,
-                Metadata = new NftMetadata
-                {
-                    Name = "Mock Nft",
-                    Description = "Welcome, this is a mock Nft to test the UI for Nft views even without an internet connection. Yes, it is pretty handy!",
-                    Image = "darkbackground2.png",
-                },
-                Owner = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y"
-            };
         }
 
         public static async Task<NFT> GetNftMetadataAsync(SubstrateClient client, string collectionItemId, CancellationToken token)

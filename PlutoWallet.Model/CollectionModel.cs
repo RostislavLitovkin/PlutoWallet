@@ -21,7 +21,7 @@ namespace PlutoWallet.Model
         {
             List<INftBase> nfts = new List<INftBase>();
             for (int i = 0; i < limit; i++){
-                nfts.Add(NFTsModel.GetMockNft());
+                nfts.Add(NftModel.GetMockNft());
             }
 
             return nfts;
@@ -29,13 +29,7 @@ namespace PlutoWallet.Model
 
         public async Task<IEnumerable<INftBase>> GetNftsOwnedByAsync(string owner, uint limit, byte[]? lastKey, CancellationToken token)
         {
-            List<INftBase> nfts = new List<INftBase>();
-            for (int i = 0; i < limit; i++)
-            {
-                nfts.Add(NFTsModel.GetMockNft());
-            }
-
-            return nfts;
+            return await GetNftsAsync(limit, lastKey, token);
         }
 
         public async Task<ICollectionBase> GetFullAsync()

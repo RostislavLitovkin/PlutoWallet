@@ -5,14 +5,14 @@ using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Components.Nft;
 using UniqueryPlus.Collections;
-using CommunityToolkit.Maui.Core.Extensions;
+using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.ViewModel
 {
 	public partial class NftViewModel : ObservableObject
 	{
         [ObservableProperty]
-        private ObservableCollection<NFT> nfts = new ObservableCollection<NFT>() { };
+        private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>() { };
 
         [ObservableProperty]
         private ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>() { };
@@ -31,7 +31,7 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
-            #region Get Collections
+            #region Get Mock Collections
             IEnumerable<ICollectionBase> uniqueryPlusCollections = [
                 Model.CollectionModel.GetMockCollection(5000),
                 Model.CollectionModel.GetMockCollection(5),
@@ -49,8 +49,25 @@ namespace PlutoWallet.ViewModel
             Collections = collections;
             #endregion
 
+            #region Get Mock Nfts
+            IEnumerable<INftBase> uniqueryPlusNfts = [
+                Model.NftModel.GetMockNft(),
+                Model.NftModel.GetMockNft()
+                ];
+
+            ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
+            foreach (INftBase nft in uniqueryPlusNfts)
+            {
+                nfts.Add(Model.NftModel.ToNftWrapper(nft));
+            }
+
+            Nfts = nfts;
+
+            #endregion
+
 
             #region Get Nfts
+            /*
             var nftLoadingViewModel = DependencyService.Get<NftLoadingViewModel>();
 
             nftLoadingViewModel.IsVisible = true;
@@ -74,11 +91,13 @@ namespace PlutoWallet.ViewModel
             nftLoadingViewModel.IsVisible = false;
 
             NoNftsIsVisible = Nfts.Count() == 0;
+            */
             #endregion
         }
 
         public void UpdateNfts(List<NFT> newNfts)
         {
+            /*
             foreach (NFT newNft in newNfts)
             {
                 bool isContained = false;
@@ -95,7 +114,7 @@ namespace PlutoWallet.ViewModel
                 {
                     Nfts.Add(newNft);
                 }
-            }
+            }*/
         }
 
     }
