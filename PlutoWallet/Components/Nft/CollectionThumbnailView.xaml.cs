@@ -18,6 +18,7 @@ public partial class CollectionThumbnailView : ContentView
             control.nameLabelText.Text = collectionBase.Metadata?.Name ?? "Unknown";
             control.image.Source = collectionBase.Metadata?.Image; // Add default image if null
             control.nftCountLabel.Text = collectionBase.NftCount > 999 ? "999+ items" : collectionBase.NftCount > 1 ? $"{collectionBase.NftCount} items" : "1 item";
+            control.nftIdView.Id = collectionBase.CollectionId;
         }
         );
 

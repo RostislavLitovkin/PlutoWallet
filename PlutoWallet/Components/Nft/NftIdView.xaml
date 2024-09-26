@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.NftIdView">
+    <HorizontalStackLayout Spacing="0" HeightRequest="20">
+        <!--
+        <Border
+                 Padding="0"
+                 Grid.Column="0"
+                 Grid.Row="0"
+                 Grid.ColumnSpan="2"
+                 StrokeThickness="0"
+                 BackgroundColor="{StaticResource Primary}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20, 0, 20, 0" />
+
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                     Offset="0,2" 
+                     Radius="10"
+                     Opacity="0.1" />
+
+            </Border.Shadow>
+
+            <AbsoluteLayout>
+                <Label x:Name="collectionIdLabel"
+                        Margin="10, 5, 0, 5"
+                       AbsoluteLayout.LayoutBounds="0.5, .5, autosize, autosize"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        FontSize="10"/>
+            </AbsoluteLayout>
+        </Border>
+        <Label VerticalOptions="Center"
+               HorizontalOptions="Center"
+               WidthRequest="20"
+               HeightRequest="20"
+               Text="|"
+               FontAttributes="Bold"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+                TextColor="White"
+               FontSize="10"
+               
+               >
+            <Label.Shadow>
+                <Shadow Brush="Black"
+                         Offset="0,2" 
+                         Radius="10"
+                         Opacity="0.1" />
+
+            </Label.Shadow>
+            <Label.Background>
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="{StaticResource Primary}"
+                          Offset="0.1" />
+                    <GradientStop Color="{StaticResource PrimaryUnimportant}"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+-->
+        <Border
+                 Padding="0"
+                 StrokeThickness="0"
+                 BackgroundColor="{StaticResource Primary}">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="10" />
+
+            </Border.StrokeShape>
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                         Offset="0,2" 
+                         Radius="10"
+                         Opacity="0.1" />
+
+            </Border.Shadow>
+
+            <AbsoluteLayout >
+                <Label
+                    x:Name="idLabel"
+                    AbsoluteLayout.LayoutBounds="0.5, .5, autosize, autosize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    
+                    Margin="10, 5, 10, 5"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    VerticalTextAlignment="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="10"/>
+            </AbsoluteLayout>
+        </Border>
+    </HorizontalStackLayout>
+   
+</ContentView>

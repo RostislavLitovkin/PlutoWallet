@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PlutoWallet.Constants;
+using System;
 using System.Numerics;
 using System.Xml.Linq;
 using UniqueryPlus;
@@ -71,15 +72,22 @@ namespace PlutoWallet.Model
     }
     public class CollectionModel
     {
-        public static ICollectionBase GetMockCollection(uint nftCount = 5)
+        public static ICollectionBase GetMockCollection(
+            string name = "Mock Collection",
+            uint nftCount = 5
+        )
         {
+            Random random = new Random();
+
+            int digits = random.Next(1, 9);
+
             return new MockCollection
             {
-                CollectionId = 2000,
+                CollectionId = random.Next((int)Math.Pow(10, digits)),
                 NftCount = nftCount,
                 Metadata = new CollectionMetadata
                 {
-                    Name = "Mock Collection",
+                    Name = name,
                     Description = "Welcome, this is a mock collection to test the UI for Collection views even without an internet connection. Yes, it is pretty handy!",
                     Image = "darkbackground2.png",
                 },

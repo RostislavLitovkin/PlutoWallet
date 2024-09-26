@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              x:Class="PlutoWallet.Components.Nft.CollectionThumbnailView"
              >
     <card:ClickableCard CardPadding="0, 0, 0, 0">
@@ -48,7 +49,7 @@
                     <AbsoluteLayout>
 
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                           x:Name="image" Aspect="AspectFill" />
+                                x:Name="image" Aspect="AspectFill" />
                     </AbsoluteLayout>
                 </Border>
 
@@ -57,27 +58,38 @@
                                 Grid.Row="1"
                                 Grid.ColumnSpan="2"
                                 Margin="140, 0, 0, 0">
-                    <StackLayout Orientation="Vertical"
-                                 Padding="5, 5, 0, 0"
-                                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                    <Grid 
+                                 Padding="5, 0, 0, 0"
+                                 AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
+                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
                                  >
-                        <Label Margin="0, 0, 0, 5"
-                               FontSize="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="5, 2.5, 5, 5"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="1">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span FontAttributes="Bold"
                                           x:Name="nameLabelText" />
 
                                 </FormattedString>
-
                             </Label.FormattedText>
 
                         </Label>
-                    </StackLayout>
+
+                        <nft:NftIdView 
+                            Grid.Column="0"
+                            x:Name="nftIdView" />
+                    </Grid>
 
                     <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
                                     AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                                    BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+                                    BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                          Margin="0, 0, 0, 5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="30" />
@@ -86,7 +98,6 @@
                         </Grid.ColumnDefinitions>
 
                         <networkselect:NetworkBubbleView Scale="0.5"
-                                                         
                                                          x:Name="networkBubble"
                                                          ShowName="False"
                                                          Grid.Column="0"

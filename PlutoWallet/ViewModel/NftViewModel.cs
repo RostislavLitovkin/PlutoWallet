@@ -33,11 +33,14 @@ namespace PlutoWallet.ViewModel
         {
             #region Get Mock Collections
             IEnumerable<ICollectionBase> uniqueryPlusCollections = [
-                Model.CollectionModel.GetMockCollection(5000),
-                Model.CollectionModel.GetMockCollection(5),
-                Model.CollectionModel.GetMockCollection(2),
-                Model.CollectionModel.GetMockCollection(1),
-                Model.CollectionModel.GetMockCollection(0),
+                Model.CollectionModel.GetMockCollection(nftCount: 5000),
+                Model.CollectionModel.GetMockCollection(
+                    name: "This is a very long name to test how the UI handles potential overflows",
+                    nftCount: 5
+                ),
+                Model.CollectionModel.GetMockCollection(nftCount: 2),
+                Model.CollectionModel.GetMockCollection(nftCount: 1),
+                Model.CollectionModel.GetMockCollection(nftCount: 0),
             ];
 
             ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
@@ -52,7 +55,10 @@ namespace PlutoWallet.ViewModel
             #region Get Mock Nfts
             IEnumerable<INftBase> uniqueryPlusNfts = [
                 Model.NftModel.GetMockNft(),
-                Model.NftModel.GetMockNft()
+                Model.NftModel.GetMockNft(
+                    name: "This is a very long name to test how the UI handles potential overflows",
+                    imageSource: "https://image.w.kodadot.xyz/ipfs/bafybeieo6ghm3gi6n4bqvxhebh2u2celbyp43bf375mzgetua32zujsnoy/?hash=0x2546f88800c47bfe067ff64f0e20d8f0fcfaafbc0e1e5f3df9abd6bf26c009cf"
+                )
                 ];
 
             ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();

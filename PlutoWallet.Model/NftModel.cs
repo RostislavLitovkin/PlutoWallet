@@ -53,17 +53,24 @@ namespace PlutoWallet.Model
     }
     public class NftModel
     {
-        public static INftBase GetMockNft()
+        public static INftBase GetMockNft(
+            string name = "Mock Nft",
+            string imageSource = "darkbackground2.png"
+        )
         {
+            Random random = new Random();
+
+            int digits = random.Next(1, 9);
+
             return new MockNft
             {
-                CollectionId = 2000,
-                Id = 1000,
+                CollectionId = random.Next((int)Math.Pow(10, digits)),
+                Id = random.Next((int)Math.Pow(10, digits)),
                 Metadata = new NftMetadata
                 {
-                    Name = "Mock Nft",
+                    Name = name,
                     Description = "Welcome, this is a mock Nft to test the UI for Nft views even without an internet connection. Yes, it is pretty handy! I need to make the description a little bit longer to test the edge cases with having a text to go out of bounds of the visible View.",
-                    Image = "darkbackground2.png",
+                    Image = imageSource,
                 },
                 Owner = "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y"
             };
