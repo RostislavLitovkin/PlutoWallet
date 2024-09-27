@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using PlutoWallet.Model.AjunaExt;
 using UniqueryPlus.Collections;
 using UniqueryPlus;
+using CollectionModel = UniqueryPlus.Collections.CollectionModel;
 
 namespace PlutoWalletTests
 {
