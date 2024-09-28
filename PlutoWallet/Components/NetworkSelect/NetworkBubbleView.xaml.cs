@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using PlutoWallet.Constants;
+﻿using PlutoWallet.Constants;
 using PlutoWallet.Model;
 
 namespace PlutoWallet.Components.NetworkSelect;
@@ -42,6 +41,11 @@ public partial class NetworkBubbleView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NetworkBubbleView)bindable;
+
+            if ((EndpointEnum)newValue == EndpointEnum.None)
+            {
+                return;
+            }
 
             Endpoint endpoint = EndpointsModel.GetEndpoint((EndpointEnum)newValue);
 

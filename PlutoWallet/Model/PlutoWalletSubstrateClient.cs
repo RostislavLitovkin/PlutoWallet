@@ -47,14 +47,19 @@ namespace PlutoWallet.Model
 
         public override async Task<bool> ConnectAndLoadMetadataAsync()
         {
+            Console.WriteLine($"ConnectAndLoadMetadataAsync({Endpoint.Key})");
+
             var multiNetworkSelectViewModel = DependencyService.Get<MultiNetworkSelectViewModel>();
 
             if (multiNetworkSelectViewModel.NetworkInfoDict.ContainsKey(Endpoint.Key))
             {
+                Console.WriteLine("Contained");
+
                 multiNetworkSelectViewModel.NetworkInfoDict[Endpoint.Key].EndpointConnectionStatus = EndpointConnectionStatus.Loading;
             }
             else
             {
+                Console.WriteLine("Else");
                 multiNetworkSelectViewModel.NetworkInfoDict.Add(Endpoint.Key, new NetworkSelectInfo
                 {
                     EndpointKey = Endpoint.Key,
@@ -69,6 +74,7 @@ namespace PlutoWallet.Model
             }
 
             multiNetworkSelectViewModel.UpdateNetworkInfos();
+
 
             var connected = await base.ConnectAndLoadMetadataAsync();
 
