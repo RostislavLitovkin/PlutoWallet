@@ -91,22 +91,34 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void UpdateNetworkInfos()
         {
-            var networkInfos = new ObservableCollection<NetworkSelectInfo>();
-            foreach (var info in NetworkInfoDict.Values)
+            try
             {
-                networkInfos.Add(new NetworkSelectInfo
+                var networkInfos = new ObservableCollection<NetworkSelectInfo>();
+                foreach (var info in NetworkInfoDict.Values)
                 {
-                    ShowName = info.ShowName,
-                    Name = info.Name,
-                    Icon = info.Icon,
-                    EndpointKey = info.EndpointKey,
-                    DarkIcon = info.DarkIcon,
-                    EndpointConnectionStatus = info.EndpointConnectionStatus,
-                    IsSelected = info.IsSelected,
-                });
+                    Console.WriteLine(info.Name);
+
+                    networkInfos.Add(new NetworkSelectInfo
+                    {
+                        ShowName = info.ShowName,
+                        Name = info.Name,
+                        Icon = info.Icon,
+                        EndpointKey = info.EndpointKey,
+                        DarkIcon = info.DarkIcon,
+                        EndpointConnectionStatus = info.EndpointConnectionStatus,
+                        IsSelected = info.IsSelected,
+                    });
+                }
+
+                NetworkInfos = networkInfos;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
             }
 
-            NetworkInfos = networkInfos;
+            Console.WriteLine("Updated network infos");
+
         }
     }
 }

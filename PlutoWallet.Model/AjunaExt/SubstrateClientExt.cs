@@ -63,9 +63,14 @@ namespace PlutoWallet.Model.AjunaExt
         {
             try
             {
+                Console.WriteLine("Connect base");
+
                 await SubstrateClient.ConnectAsync();
 
+                Console.WriteLine(SubstrateClient.MetaData is null);
                 CustomMetadata = JsonConvert.DeserializeObject<Metadata>(SubstrateClient.MetaData.Serialize());
+
+                Console.WriteLine("Serialized");
 
                 foreach (SignedExtension signedExtension in CustomMetadata.NodeMetadata.Extrinsic.SignedExtensions)
                 {
@@ -95,6 +100,8 @@ namespace PlutoWallet.Model.AjunaExt
                     taskCompletionSource = new TaskCompletionSource<bool>();
                     taskCompletionSource.SetResult(SubstrateClient.IsConnected);
                 }
+
+                Console.WriteLine($"Actually connected: {Endpoint.Key} - {SubstrateClient.IsConnected}");
 
                 return SubstrateClient.IsConnected;
             }

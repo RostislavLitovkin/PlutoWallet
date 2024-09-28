@@ -73,7 +73,7 @@ namespace PlutoWallet.Model
 
             Clients[endpointKey].SetResult(client);
 
-            Console.WriteLine("Client set");
+            Console.WriteLine("Client set: " + endpointKey);
 
             await client.ConnectAndLoadMetadataAsync();
         }
