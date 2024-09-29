@@ -137,13 +137,13 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                 {
                     var xcmResult = await ChopsticksModel.SimulateXcmCallAsync(
                         client.Endpoint.URLs[0],
-                        Endpoints.GetEndpointDictionary[xcmDestinationEndpointKey ?? EndpointEnum.None].URLs[0],
+                        Endpoints.GetEndpointDictionary[(EndpointEnum)xcmDestinationEndpointKey].URLs[0],
                         unCheckedExtrinsic.Encode()
                     );
 
                     Console.WriteLine("XCM result received :)");
 
-                    var destionationClient = await AjunaClientModel.GetOrAddSubstrateClientAsync(xcmDestinationEndpointKey ?? EndpointEnum.None);
+                    var destionationClient = await AjunaClientModel.GetOrAddSubstrateClientAsync((EndpointEnum)xcmDestinationEndpointKey);
 
                     if (!(xcmResult is null))
                     {

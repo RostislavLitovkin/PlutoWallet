@@ -91,6 +91,7 @@ namespace PlutoWallet.Components.NetworkSelect
 
         public void UpdateNetworkInfos()
         {
+
             var networkInfos = new ObservableCollection<NetworkSelectInfo>();
             foreach (var info in NetworkInfoDict.Values)
             {
@@ -107,6 +108,8 @@ namespace PlutoWallet.Components.NetworkSelect
             }
 
             NetworkInfos = networkInfos;
+
+            Console.WriteLine("Updated network infos");
         }
     }
 }
