@@ -105,16 +105,28 @@ namespace UniqueryPlusTests
         [Test]
         public async Task TestGetNftsIAsyncEnumerableAsync()
         {
-            var nftsEnumerable = NftModel.GetNftsOwnedByAsync([client], address, 3, CancellationToken.None);
+            var nftsEnumerable = NftModel.GetNftsOwnedByAsync([client], address, 3);
 
             var enumerator = nftsEnumerable.GetAsyncEnumerator();
 
+            for (uint i = 0; i < 3; i++)
+            {
+                Assert.That(await enumerator.MoveNextAsync());
+                var nft = enumerator.Current;
+                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                Console.WriteLine("Image: " + nft.Metadata?.Image);
+            }
+
+            /// Equivalent for this
+            /*
             await foreach (var nft in nftsEnumerable)
             {
                 Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
                 Assert.That(nft.Metadata?.Description, Is.Not.Null);
                 Console.WriteLine("Image: " + nft.Metadata?.Image);
             }
+            */
         }
     }
 }

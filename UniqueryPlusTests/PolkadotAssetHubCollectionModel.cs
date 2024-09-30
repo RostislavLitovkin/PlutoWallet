@@ -152,5 +152,15 @@ namespace UniqueryPlusTests
             Assert.That(collectionStats.Volume, Is.EqualTo(BigInteger.Parse("2404598099999")));
             #endregion
         }
+
+        [Test]
+        public async Task TestGetNumberOfCollectionsAsync()
+        {
+            var numberOfCollections = await CollectionModel.GetNumberOfCollectionsAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, CancellationToken.None);
+
+            Assert.That(numberOfCollections, Is.GreaterThan(200));
+
+            Console.WriteLine(numberOfCollections);
+        }
     }
 }

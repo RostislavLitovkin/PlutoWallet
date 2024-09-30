@@ -5,6 +5,7 @@ namespace UniqueryPlus.Collections
 {
     public static class CollectionModel
     {
+
         public static async Task<RecursiveReturn<ICollectionBase>> GetCollectionsOwnedByAsync(this SubstrateClient client, NftTypeEnum type, string owner, uint limit, byte[]? lastKey, CancellationToken token)
         {
             return type switch
@@ -32,6 +33,15 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
+                _ => throw new NotImplementedException(),
+            };
+        }
+
+        public static async Task<uint> GetNumberOfCollectionsAsync(this SubstrateClient client, NftTypeEnum type, CancellationToken token)
+        {
+            return type switch {
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubCollectionModel.GetNumberOfCollectionsAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, token),
+                NftTypeEnum.KusamaAssetHub_NftsPallet => await KusamaAssetHubCollectionModel.GetNumberOfCollectionsAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, token),
                 _ => throw new NotImplementedException(),
             };
         }

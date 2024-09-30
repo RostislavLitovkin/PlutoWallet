@@ -15,9 +15,10 @@ namespace UniqueryPlus.Nfts
             };
         }
 
-        public static async IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(IEnumerable<SubstrateClient> clients, string owner, uint limit = 25, CancellationToken token = default)
+        public static async IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(IEnumerable<SubstrateClient> clients, string owner, uint limit = 25)
         {
-            foreach(var client in clients)
+            CancellationToken token = default;
+            foreach (var client in clients)
             {
                 foreach(var nftType in GetNftTypeForClient(client))
                 {

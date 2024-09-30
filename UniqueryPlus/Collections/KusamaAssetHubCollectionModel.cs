@@ -317,5 +317,9 @@ namespace UniqueryPlus.Collections
 
             return NftsCalls.Create(multiAddress, config);
         }
+        internal static async Task<uint> GetNumberOfCollectionsAsync(SubstrateClientExt client, CancellationToken token)
+        {
+            return await client.NftsStorage.NextCollectionId(null, token);
+        }
     }
 }
