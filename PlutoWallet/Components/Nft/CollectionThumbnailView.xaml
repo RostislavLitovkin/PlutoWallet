@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             x:Class="PlutoWallet.Components.Nft.CollectionThumbnailView"
+             >
+    <card:ClickableCard CardPadding="0, 0, 0, 0">
+        <card:ClickableCard.View>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
+                </Grid.RowDefinitions>
+
+                <AbsoluteLayout x:Name="correctWidthLayout"
+                                HeightRequest="{Binding Source={x:Reference correctWidthLayout}, Path=Width}"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                >
+                    
+                </AbsoluteLayout>
+                <Border Margin="5"
+                        Padding="0"
+                        HeightRequest="{Binding Source={x:Reference correctWidthLayout}, Path=Width}"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        StrokeThickness="0"
+                        BackgroundColor="Black">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2" 
+                                Radius="10"
+                                Opacity="0.1" />
+
+                    </Border.Shadow>
+
+                    <AbsoluteLayout>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                x:Name="image" Aspect="AspectFill" />
+                    </AbsoluteLayout>
+                </Border>
+
+                <AbsoluteLayout HeightRequest="60"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="140, 0, 0, 0">
+                    <Grid 
+                                 Padding="5, 0, 0, 0"
+                                 AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
+                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                 >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="5, 2.5, 5, 5"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="1">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold"
+                                          x:Name="nameLabelText" />
+
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                        </Label>
+
+                        <nft:NftIdView 
+                            Grid.Column="0"
+                            x:Name="nftIdView" />
+                    </Grid>
+
+                    <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                                    BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                          Margin="0, 0, 0, 5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <networkselect:NetworkBubbleView Scale="0.5"
+                                                         x:Name="networkBubble"
+                                                         ShowName="False"
+                                                         Grid.Column="0"
+                                                         VerticalOptions="Center" 
+                                                         HorizontalOptions="Center"/>
+
+                        <Image WidthRequest="20"
+                               HeightRequest="20"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit"
+                               IsVisible="false"
+                               x:Name="filledFavouriteIcon"
+                               Grid.Column="1">
+
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                                 Glyph="&#xf004;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="50" />
+                            </Image.Source>
+                        </Image>
+
+                        <Image WidthRequest="20"
+                               HeightRequest="20"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit"
+                               x:Name="favouriteIcon"
+                               Grid.Column="1">
+
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                                 Glyph="&#xf08a;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="50" />
+                            </Image.Source>
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFavouriteClicked" />
+
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" Text="More" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMoreClicked" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                    </Grid>
+                </AbsoluteLayout>
+
+                <AbsoluteLayout Grid.Column="0"
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Grid.RowSpan="2">
+                    <Border Margin="10"
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="40, 1, 100, 100"
+                            AbsoluteLayout.LayoutFlags="YProportional"
+                            StrokeThickness="2"
+                            Stroke="{AppThemeBinding Light=White, Dark=Black}"
+                            BackgroundColor="Black"
+                            x:Name="nft3Border">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2" 
+                                    Radius="10"
+                                    Opacity="0.1" />
+
+                        </Border.Shadow>
+
+                        <AbsoluteLayout>
+
+                            <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                    x:Name="nft3Image" Aspect="AspectFill" />
+
+
+                        </AbsoluteLayout>
+                    </Border>
+                    
+                    <Border Margin="10"
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="20, 1, 100, 100"
+                            AbsoluteLayout.LayoutFlags="YProportional"
+                            StrokeThickness="2"
+                            Stroke="{AppThemeBinding Light=White, Dark=Black}"
+                            BackgroundColor="Black"
+                            x:Name="nft2Border">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2" 
+                                    Radius="10"
+                                    Opacity="0.1" />
+
+                        </Border.Shadow>
+
+                        <AbsoluteLayout>
+
+                            <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                    x:Name="nft2Image" Aspect="AspectFill" />
+                        </AbsoluteLayout>
+                    </Border>
+
+                    <Border Margin="10"
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="0, 1, 100, 100"
+                            AbsoluteLayout.LayoutFlags="YProportional"
+                            StrokeThickness="2"
+                            Stroke="{AppThemeBinding Light=White, Dark=Black}"
+                            BackgroundColor="Black"
+                            x:Name="nft1Border">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2" 
+                                    Radius="10"
+                                    Opacity="0.1" />
+
+                        </Border.Shadow>
+
+                        <AbsoluteLayout>
+
+                            <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                    x:Name="nft1Image" Aspect="AspectFill" />
+                        </AbsoluteLayout>
+                    </Border>
+
+                    <Border Margin="10"
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="0, 1, autosize, autosize"
+                            AbsoluteLayout.LayoutFlags="YProportional"
+                            StrokeThickness="2"
+                            Stroke="{AppThemeBinding Light=White, Dark=Black}"
+                            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                            x:Name="nftCountBorder">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="0, 10, 10, 0" />
+
+                        </Border.StrokeShape>
+
+                        <AbsoluteLayout>
+                            <Label HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   FontSize="10"
+                                   Margin="5, 0, 5, 0"
+                                   x:Name="nftCountLabel"/>
+                        </AbsoluteLayout>
+                    </Border>
+
+                    <Border Margin="10"
+                            Padding="0"
+                            AbsoluteLayout.LayoutBounds="0, 1, 100, 100"
+                            AbsoluteLayout.LayoutFlags="YProportional"
+                            StrokeThickness="0"
+                            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                            x:Name="emptyBorder"
+                            IsVisible="False">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+
+                        </Border.StrokeShape>
+                        <Border.Shadow>
+                            <Shadow Brush="Black"
+                                    Offset="0,2" 
+                                    Radius="10"
+                                    Opacity="0.1" />
+
+                        </Border.Shadow>
+
+                        <AbsoluteLayout>
+
+                            <Label AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                                   FontAttributes="Bold"
+                                   HorizontalTextAlignment="Center"
+                                   VerticalTextAlignment="Center"
+                                   Text="Empty"/>
+                            
+                        </AbsoluteLayout>
+                    </Border>
+                </AbsoluteLayout>
+            </Grid>
+
+        </card:ClickableCard.View>
+
+    </card:ClickableCard>
+</ContentView>
+
+

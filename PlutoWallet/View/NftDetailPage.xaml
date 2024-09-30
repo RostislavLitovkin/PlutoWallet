@@ -7,36 +7,28 @@
              Title="NftDetailPage"
              BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-        
+
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
                Opacity="{AppThemeBinding Light=0.96}"
                Aspect="AspectFill"/>
 
         <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                
-            <VerticalStackLayout>
-                <Image Source="{Binding Image}" Aspect="AspectFill"
-                           HeightRequest="{Binding Source={x:Reference image}, Path=Width}"
-                           x:Name="image" Margin="0, 45, 0, 0"/>
-
-                <VerticalStackLayout
+            <VerticalStackLayout Margin="0, 45, 0, 0"
                                         Spacing="15"
                                         Padding="20, 15, 20, 200">
-                    <nft:NftTitleView Name="{Binding Name}"
+                <nft:NftImageView ImageSource="{Binding Image}" />
+
+                <nft:NftTitleView Name="{Binding Name}"
                                       Endpoint="{Binding Endpoint}"
                                       KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
                                       AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
-                    <nft:NftDescriptionView Description="{Binding Description}" />
-
-                </VerticalStackLayout>
+                <nft:NftDescriptionView Description="{Binding Description}" />
 
             </VerticalStackLayout>
-                    
-
         </ScrollView>
-        
+
         <navigationbar:TopNavigationBar Title="{Binding Name}" />
     </AbsoluteLayout>
 </ContentPage>

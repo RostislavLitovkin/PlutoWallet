@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Substrate.NetApi;
 using PlutoWallet.Constants;
 using Uniquery;
+using UniqueryPlus.Ipfs;
 
 namespace PlutoWallet.Model
 {

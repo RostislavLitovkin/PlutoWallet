@@ -31,6 +31,10 @@
     {
       "name": "InvArch",
       "websocket": "wss://invarch-rpc.dwellir.com"
+    },
+    {
+      "name": "KusamaAssetHub",
+      "websocket": "wss://sys.dotters.network/statemine"
     }
   ]
 }

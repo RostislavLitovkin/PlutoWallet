@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Constants;
 using Substrate.NetApi.Model.Extrinsics;
@@ -6,15 +6,17 @@ using Substrate.NetApi;
 using Newtonsoft.Json.Linq;
 using Polkadot.NetApi.Generated.Model.sp_core.crypto;
 using Newtonsoft.Json;
-using Substrate.NetApi.Model.Rpc;
 using static Substrate.NetApi.Model.Meta.Storage;
-using Substrate.NetApi.Model.Types.Primitive;
-using Uniquery;
 using System.Numerics;
+using UniqueryPlus.Ipfs;
+using UniqueryPlus.Collections;
+using UniqueryPlus.External;
+using UniqueryPlus.Nfts;
+using UniqueryPlus;
 
 namespace PlutoWallet.Model
 {
-	public class NFT
+    public class NFT
 	{
         public string Name { get; set; }
 		public string Description { get; set; }
@@ -121,36 +123,6 @@ namespace PlutoWallet.Model
             return nfts;
         }
 
-        public static List<NFT> GetMockNFTs(int n = 1)
-        {
-            var nfts = new List<NFT>();
-
-            for (int i = 0; i < n; i++)
-            {
-                nfts.Add(new NFT
-                {
-                    Name = "Mock nft - version ALPHA",
-                    Description = @"This is a totally mock NFT that does nothing.
-Hopefully it will fulfill the test functionalities correctly.",
-                    Endpoint = new Endpoint
-                    {
-                        Name = "Mock network",
-                        Icon = "plutowalleticon.png",
-                        URLs = [],
-                        Unit = "Pluto",
-                        Decimals = 0,
-                        DarkIcon = "plutowalleticon.png",
-                        Key = EndpointEnum.PolkadotAssetHub,
-                        ChainType = ChainType.Substrate,
-                        SS58Prefix = 42,
-                    },
-                    Image = "dusan.jpg"
-                });
-            }
-
-            return nfts;
-        }
-
         public static async Task<NFT> GetNftMetadataAsync(SubstrateClient client, string collectionItemId, CancellationToken token)
         {
             var parameters = Utils.Bytes2HexString(RequestGenerator.GetStorageKeyBytesHash("Nfts", "ItemMetadataOf")) + collectionItemId;
@@ -159,11 +131,11 @@ Hopefully it will fulfill the test functionalities correctly.",
 
             string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-            string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
+            string metadataJson = await IpfsModel.FetchIpfsAsync(ipfsLink, token);
 
             NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
-            nft.Image = Model.IpfsModel.ToIpfsLink(nft.Image);
+            nft.Image = IpfsModel.ToIpfsLink(nft.Image);
 
             return nft;
         }
@@ -220,13 +192,13 @@ Hopefully it will fulfill the test functionalities correctly.",
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(result.Data.Value.Bytes);
 
-                string metadataJson = await Model.IpfsModel.FetchIpfsAsync(ipfsLink, token);
+                string metadataJson = await IpfsModel.FetchIpfsAsync(ipfsLink, token);
 
                 Console.WriteLine(metadataJson);
 
                 NFT nft = JsonConvert.DeserializeObject<NFT>(metadataJson);
 
-                nft.Image = Model.IpfsModel.ToIpfsLink(nft.Image);
+                nft.Image = IpfsModel.ToIpfsLink(nft.Image);
 
                 return nft;
             }

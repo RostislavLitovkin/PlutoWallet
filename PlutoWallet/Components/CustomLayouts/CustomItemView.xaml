@@ -8,8 +8,8 @@
              AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
              AbsoluteLayout.LayoutFlags="All"
              BackgroundColor="#66000000">
-    <card:Card IsPopup="True" IsTransparent="True" CardPadding="0">
-        <card:Card.View>
+    <card:ClickableCard IsPopup="True" IsTransparent="True" CardPadding="0">
+        <card:ClickableCard.View>
             <AbsoluteLayout>
                 <Grid AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                                     AbsoluteLayout.LayoutFlags="All">
@@ -61,7 +61,7 @@
 
                 </AbsoluteLayout>
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>
 

@@ -1,14 +1,20 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace PlutoWallet.Model
+namespace UniqueryPlus.Ipfs
 {
-	public class IpfsModel
-	{
-        private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
+    public class IpfsModel
+    {
+        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token)
+        {
+            var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
 
+            return JsonConvert.DeserializeObject<T>(metadataJson);
+        }
+
+        private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
         public static string ToIpfsLink(string ipfsLink)
-		{
+        {
             if (ipfsLink.Contains("ipfs//"))
             {
                 return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
@@ -24,7 +30,8 @@ namespace PlutoWallet.Model
                 return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
             }
 
-            if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://")) {
+            if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://"))
+            {
 
                 return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
@@ -32,10 +39,10 @@ namespace PlutoWallet.Model
             return IPFS_ENDPOINT + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
-		public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)
-		{
+        public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)
+        {
             HttpClient httpClient = new HttpClient();
-			return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
+            return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
         }
 
         public static string RemoveNonHexadecimalCharacters(string input)
@@ -49,7 +56,7 @@ namespace PlutoWallet.Model
             {
                 string[] inputSplit = input.Split("/", 2);
 
-                return regex.Replace(inputSplit[0], "")  + "/" + inputSplit[1];
+                return regex.Replace(inputSplit[0], "") + "/" + inputSplit[1];
             }
             else
             {
@@ -58,4 +65,3 @@ namespace PlutoWallet.Model
         }
     }
 }
-

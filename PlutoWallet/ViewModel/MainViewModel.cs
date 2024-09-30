@@ -1,6 +1,5 @@
 
 using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Model;
 
 namespace PlutoWallet.ViewModel
 {

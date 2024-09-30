@@ -60,5 +60,6 @@
     <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
     <ProjectReference Include="..\Generated\PolkadotPeople\PolkadotPeople.NetApi\PolkadotPeople.NetApi.csproj" />
     <ProjectReference Include="..\Generated\Polkadot\Polkadot.NetApi\Polkadot.NetApi.csproj" />
+    <ProjectReference Include="..\UniqueryPlus\UniqueryPlus.csproj" />
   </ItemGroup>
 </Project>

@@ -5,8 +5,8 @@
              xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.Nft.NftThumbnailView"
              >
-    <card:Card CardPadding="0, 0, 10, 0">
-        <card:Card.View>
+    <card:ClickableCard CardPadding="0, 0, 0, 0">
+        <card:ClickableCard.View>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -18,7 +18,8 @@
                         HeightRequest="{Binding Source={x:Reference border}, Path=Width}"
                         x:Name="border"
                         Grid.Column="0"
-                        StrokeThickness="0">
+                        StrokeThickness="0"
+                        BackgroundColor="Black">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="20" />
 
@@ -34,16 +35,17 @@
                     <AbsoluteLayout>
 
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                           x:Name="image" Aspect="AspectFill" />
+                               x:Name="image" Aspect="AspectFill" />
                     </AbsoluteLayout>
                 </Border>
 
-                <AbsoluteLayout MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Width}"
+                <AbsoluteLayout MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Height}"
                                 Grid.Column="1">
                     <StackLayout Orientation="Vertical"
                                   Padding="10"
                                  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                        <Label Margin="0, 0, 0, 5">
+                        <Label Margin="0, 0, 0, 5"
+                               FontSize="16">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span FontAttributes="Bold"
@@ -55,13 +57,16 @@
 
                         </Label>
 
-                        <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}" >
+                        <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               Padding="0, 0, 0, 50"
+                               MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Height}"
+                               >
                         </Label>
                     </StackLayout>
 
                     <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
-                                    AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                                    BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+                            AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="30" />
@@ -138,8 +143,8 @@
 
             </Grid>
 
-        </card:Card.View>
+        </card:ClickableCard.View>
 
-    </card:Card>
+    </card:ClickableCard>
 </ContentView>
 
