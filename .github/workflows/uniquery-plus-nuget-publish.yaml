@@ -1,4 +1,4 @@
-name: CI
+name: UniqueryPlus NuGet publish
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'PlutoWallet.sln'
+      SOLUTION: 'UniqueryPlus.sln'
 
     runs-on: ubuntu-latest
 
