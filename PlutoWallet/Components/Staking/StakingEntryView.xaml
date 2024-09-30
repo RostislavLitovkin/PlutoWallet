@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:switch="clr-namespace:PlutoWallet.Components.Switch"
+             xmlns:webview="clr-namespace:PlutoWallet.Components.WebView"
+             x:Class="PlutoWallet.Components.Staking.StakingEntryView"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             HeightRequest="60">
+    <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+            
+        <AbsoluteLayout HorizontalOptions="CenterAndExpand" HeightRequest="60"
+                        x:Name="easyStaking">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                    AbsoluteLayout.LayoutFlags="SizeProportional"
+                                    Spacing="0">
+                <HorizontalStackLayout>
+                    <Label 
+                        Text="GLG stakers"
+                        FontAttributes="Bold"
+                        FontSize="24"/>
+                    <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
+                            VerticalOptions="Center"
+                            Margin="5, 0, 0, 0"
+                            HeightRequest="15" WidthRequest="15"/>
+                </HorizontalStackLayout>
+                <Label 
+                    Text="Commission: 10%" TextColor="#888" />
+            </VerticalStackLayout>
+            
+            <Button AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    Text="Stake"
+                    Clicked="OnStakeClicked"/>
+        </AbsoluteLayout>
+        <VerticalStackLayout.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnInfoClicked" />
+
+        </VerticalStackLayout.GestureRecognizers>
+    </VerticalStackLayout>
+</ContentView>
+

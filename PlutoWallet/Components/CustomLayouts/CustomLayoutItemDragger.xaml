@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.CustomLayouts.CustomLayoutItemDragger"
+             HeightRequest="60">
+        <card:ClickableCard>
+            <card:ClickableCard.View>
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Margin="0, 10, 0, 10">
+                    <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                         AbsoluteLayout.LayoutFlags="SizeProportional">
+                        <HorizontalStackLayout>
+                            <Label 
+                                FontAttributes="Bold"
+                                HorizontalOptions="Center"
+                                VerticalTextAlignment="End">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontAttributes="Bold" x:Name="nameLabelText" />
+
+                                    </FormattedString>
+
+                                </Label.FormattedText>
+
+                            </Label>
+                            <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
+                                       VerticalOptions="Center"
+                                       Margin="5, 0, 0, 0"
+                                       HeightRequest="15" WidthRequest="15"/>
+                        </HorizontalStackLayout>
+                
+                        <Label
+                            x:Name="statusLabel"
+                            HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+
+                    <Image Source="{AppThemeBinding Light=menublack.png, Dark=menuwhite.png}"
+                           Aspect="AspectFit"
+                           AbsoluteLayout.LayoutBounds="1, 0.5, 50, 30" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                        <AbsoluteLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnClicked" />
+
+                        </AbsoluteLayout.GestureRecognizers>
+
+                    </AbsoluteLayout>
+                </AbsoluteLayout>
+            </card:ClickableCard.View>
+        </card:ClickableCard>
+</ContentView>
+

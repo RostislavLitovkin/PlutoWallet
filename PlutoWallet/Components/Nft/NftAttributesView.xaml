@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Nft.NftAttributesView"
+             IsVisible="true">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+
+                    </Grid.RowDefinitions>
+
+                    <Label
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Start"
+                           Grid.Row="0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold"
+                                        Text="Attributes"
+                                        TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label x:Name="attributesLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                           Grid.Row="1"/>
+
+                </Grid>
+
+            </AbsoluteLayout>
+            
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

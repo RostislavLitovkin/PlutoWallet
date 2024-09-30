@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Balance.UsdBalanceView"
+             HeightRequest="{Binding HeightRequest}">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout">
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Balance"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        />
+                    <Label HeightRequest="50"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding UsdSum}" />
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                </VerticalStackLayout>
+
+                <Image Margin="10, 0, 10, 0"
+                   AbsoluteLayout.LayoutBounds="1, 65, AutoSize, 30"
+                   AbsoluteLayout.LayoutFlags="XProportional"
+                   IsVisible="{Binding ReloadIsVisible}"
+                    >
+                    <Image.Source>
+                        <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                        Glyph="&#xf021;"
+                                        FontFamily="FontAwesome"
+                                        Size="20" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReloadClicked" />
+
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <VerticalStackLayout Margin="0, 100, 0, 10"
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Assets}"
+                                     Spacing="5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <balance:AssetAmountView Amount="{Binding Amount}"
+                                                    Symbol="{Binding Symbol}"
+                                                    UsdValue="{Binding UsdValue}"
+                                                    ChainIcon="{Binding ChainIcon}" />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+
+                </VerticalStackLayout>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

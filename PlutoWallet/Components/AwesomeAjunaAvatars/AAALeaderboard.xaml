@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.AwesomeAjunaAvatars.AAALeaderboard"
+            xmlns:webview="clr-namespace:PlutoWallet.Components.WebView"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             HeightRequest="650">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Leaderboard"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+                    <webview:AdvancedWebView Address="https://aaa.ajuna.io/leaderboard/avatars"
+                                             x:Name="webView"/>
+                </VerticalStackLayout>
+                <Label Text="Open"
+                        AbsoluteLayout.LayoutBounds="0, 0, AutoSize, 30"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Padding="10, 0, 10, 0"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOpenClicked" />
+
+                    </Label.GestureRecognizers>
+
+                </Label>
+
+                <Image WidthRequest="20" Margin="10, 0, 10, 0"
+                           VerticalOptions="Center" 
+                           HorizontalOptions="Start"
+                           AbsoluteLayout.LayoutBounds="1, 0, AutoSize, 30"
+                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                           >
+                    <Image.Source>
+                        <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource DarkThemeWhite}}"
+                                        Glyph="&#xf021;"
+                                        FontFamily="FontAwesome"
+                                        Size="20" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnReloadClicked" />
+
+                    </Image.GestureRecognizers>
+                </Image>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

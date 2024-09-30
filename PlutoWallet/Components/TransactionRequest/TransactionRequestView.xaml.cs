@@ -1,48 +1,70 @@
-﻿using Plutonication;
+﻿
+using Substrate.NetApi;
+using Plutonication;
+using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Components.TransactionRequest;
 
 public partial class TransactionRequestView : ContentView
 {
-	public TransactionRequestView()
-	{
-		InitializeComponent();
+    public TransactionRequestView()
+    {
+        InitializeComponent();
 
         BindingContext = DependencyService.Get<TransactionRequestViewModel>();
     }
-    async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+
+    private async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Refused);
+        // Maybe send a refuse message 
 
         // Hide this layout
         var viewModel = DependencyService.Get<TransactionRequestViewModel>();
         viewModel.IsVisible = false;
     }
 
-    async void OnSubmitClicked(System.Object sender, System.EventArgs e)
+    private async void OnSubmitClicked(System.Object sender, System.EventArgs e)
     {
-
         try
         {
-
             var viewModel = DependencyService.Get<TransactionRequestViewModel>();
+            Substrate.NetApi.Model.Extrinsics.Payload payload = viewModel.Payload;
 
-            var client = new Model.AjunaExt.AjunaClientExt(
-                    new Uri(Preferences.Get("selectedNetwork", "wss://rpc.polkadot.io")),
-                    Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default());
+            if ((await Model.KeysModel.GetAccount()).IsSome(out var account))
+            {
+                #region Temp
+                var signedExtensions = payload.SignedExtension;
 
-            await client.ConnectAsync();
+                var tempPayload = new TempPayload(
+                    payload.Call,
+                    new TempSignedExtensions(
+                        specVersion: signedExtensions.SpecVersion,
+                        txVersion: signedExtensions.TxVersion,
+                        genesis: signedExtensions.Genesis,
+                        startEra: signedExtensions.StartEra,
+                        mortality: signedExtensions.Mortality,
+                        nonce: signedExtensions.Nonce,
+                        charge: signedExtensions.Charge,
+                        checkMetadata: true
+                    )
+                );
 
-            await client.Author.SubmitExtrinsicAsync(
-                viewModel.AjunaMethod,
-                Model.KeysModel.GetAccount(),
-                Ajuna.NetApi.Model.Extrinsics.ChargeTransactionPayment.Default(),
-                64
-             );
+                #endregion
 
-            
-            // Tell the dApp that the transaction was successfull
-            await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Success);
+                byte[] signature = account.Sign(tempPayload.Encode());
+
+                var signerResult = new SignerResult
+                {
+                    id = 1,
+                    signature = Utils.Bytes2HexString(
+                        // This 1 means the signature is using Sr25519
+                        new byte[1] { 1 }
+                        .Concat(signature).ToArray()
+                    ).ToLower(),
+                };
+
+                await PlutonicationWalletClient.SendPayloadSignatureAsync(signerResult);
+            }
 
             // Hide this layout
             viewModel.IsVisible = false;
@@ -50,13 +72,13 @@ public partial class TransactionRequestView : ContentView
         catch (Exception ex)
         {
             errorLabel.Text = ex.Message;
+            errorLabel.IsVisible = true;
         }
-
     }
 
-    async void OnRejectClicked(System.Object sender, System.EventArgs e)
+    private async void OnRejectClicked(System.Object sender, System.EventArgs e)
     {
-        await Model.PlutonicationModel.EventManager.SendMessageAsync(MessageCode.Refused);
+        // Maybe send a refuse message 
 
         // Hide this layout
         var viewModel = DependencyService.Get<TransactionRequestViewModel>();

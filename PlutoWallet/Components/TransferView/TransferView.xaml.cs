@@ -1,15 +1,23 @@
 ﻿using PlutoWallet.Model;
-using PlutoWallet.Components.ScannerView;
+using PlutoWallet.Components.AssetSelect;
+using Substrate.NetApi.Model.Extrinsics;
+using System.Numerics;
+using PlutoWallet.Types;
+using PlutoWallet.Constants;
+using PlutoWallet.Components.TransactionAnalyzer;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 
 namespace PlutoWallet.Components.TransferView;
 
 public partial class TransferView : ContentView
 {
-	public TransferView()
-	{
-		InitializeComponent();
+    public TransferView()
+    {
+        InitializeComponent();
 
-        BindingContext = DependencyService.Get<TransferViewModel>();
+        var viewModel = DependencyService.Get<TransferViewModel>();
+
+        BindingContext = viewModel;
     }
 
     async void SignAndTransferClicked(System.Object sender, System.EventArgs e)
@@ -18,59 +26,89 @@ public partial class TransferView : ContentView
 
         var viewModel = DependencyService.Get<TransferViewModel>();
 
+        errorLabel.Text = "";
+
+        var clientExt = await Model.AjunaClientModel.GetMainClientAsync();
+
+        var client = clientExt.SubstrateClient;
+
         try
         {
+            var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
+
+            decimal tempAmount;
+            BigInteger amount;
+            if (decimal.TryParse(viewModel.Amount, out tempAmount))
+            {
+                // Double to int conversion
+                // Complete later
+
+                amount = (BigInteger)(tempAmount * (decimal)Math.Pow(10, assetSelectButtonViewModel.Decimals));
+
+                Console.WriteLine(assetSelectButtonViewModel.Decimals);
+            }
+            else
+            {
+                errorLabel.Text = "Invalid amount value";
+                return;
+            }
+
+            Method transfer = assetSelectButtonViewModel.SelectedAssetKey switch
+            {
+                (EndpointEnum endpointKey, AssetPallet.Native, _) => TransferModel.NativeTransfer(clientExt, viewModel.Address, amount),
+                (EndpointEnum endpointKey, AssetPallet.Assets, BigInteger assetId) => TransferModel.AssetsTransfer(clientExt, viewModel.Address, assetId, amount),
+                _ => throw new Exception("Not implemented")
+            };
 
 
-            await TransferModel.BalancesTransferAsync(viewModel.Address, viewModel.Amount);
+            /// Hide this layout
+            viewModel.SetToDefault();
 
-            // Hide this layout
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
 
-            viewModel.IsVisible = false;
+            await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false, onConfirm: OnConfirmClicked);
+
+
         }
         catch (Exception ex)
         {
             errorLabel.Text = ex.Message;
+            Console.WriteLine(ex);
         }
-
-        
     }
 
-    async void OnBackClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    public static async Task OnConfirmClicked()
     {
-        // Hide this layout
+        if ((await KeysModel.GetAccount()).IsSome(out var account))
+        {
+            var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(transactionAnalyzerConfirmationViewModel.Endpoint.Key);
+
+            try
+            {
+                string extrinsicId = await clientExt.SubmitExtrinsicAsync(transactionAnalyzerConfirmationViewModel.Payload.Call, account, token: CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Failed at confirm clicked");
+                Console.WriteLine(ex);
+            }
+
+            /// Hide
+
+            transactionAnalyzerConfirmationViewModel.IsVisible = false;
+        }
+        else
+        {
+            // Verification failed, do something about it
+        }
+    }
+
+    private void OnCancelClicked(object sender, EventArgs e)
+    {
         var viewModel = DependencyService.Get<TransferViewModel>();
 
-        viewModel.IsVisible = false;
-
-        qrLayout.Children.Clear();
+        viewModel.SetToDefault();
     }
-
-    void OnShowQRClicked(System.Object sender, System.EventArgs e)
-    {
-        var scanner = new ScannerView.ScannerView
-        {
-            OnScannedMethod = OnScanned
-        };
-
-        qrLayout.Children.Add(scanner);
-    }
-
-    async void OnScanned(System.Object sender, ZXing.Net.Maui.BarcodeDetectionEventArgs e)
-    {
-        
-        var viewModel = DependencyService.Get<TransferViewModel>();
-
-        try
-        {
-            viewModel.Address = e.Results[e.Results.Length - 1].Value;
-
-            qrLayout.Children.Clear();
-        }
-        catch (Exception ex)
-        {
-
-        }
-    }
-
 }

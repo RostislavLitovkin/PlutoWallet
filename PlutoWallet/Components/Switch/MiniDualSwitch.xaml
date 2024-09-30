@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Switch.MiniDualSwitch"
+             HeightRequest="20">
+    <Border BackgroundColor="#88888888"
+           Padding="0"
+           StrokeThickness="0"
+           >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="10" />
+
+        </Border.StrokeShape>
+        <AbsoluteLayout>
+            <Label x:Name="firstOption"
+                   AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+
+            </Label>
+
+            <Label x:Name="secondOption"
+                   AbsoluteLayout.LayoutBounds="1, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+
+            </Label>
+            <Border BackgroundColor="{StaticResource Primary}"
+                   AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   StrokeThickness="0"
+                   x:Name="selectedOptionFrame"
+                   Padding="0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+
+                </Border.StrokeShape>
+                <Label x:Name="selectedOptionLabel"
+                        AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                       AbsoluteLayout.LayoutFlags="All"
+                      TextColor="White"
+                      HorizontalTextAlignment="Center"
+                      VerticalTextAlignment="Center"/>
+            </Border>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnClicked" />
+
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+
+    </Border>
+
+    
+    
+</ContentView>
+

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect" xmlns:xcm="clr-namespace:PlutoWallet.Components.Xcm"
+             x:Class="PlutoWallet.Components.Xcm.XcmNetworkSelectView"
+             HeightRequest="60">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <xcm:XcmNetworkSelectButton Grid.Column="0"
+                                    Name="{Binding OriginName}"
+                                    Icon="{Binding OriginIcon}">
+            <xcm:XcmNetworkSelectButton.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnOriginClicked" />
+
+            </xcm:XcmNetworkSelectButton.GestureRecognizers>
+
+        </xcm:XcmNetworkSelectButton>
+
+        <xcm:XcmNetworkSelectButton
+                                    Grid.Column="2"
+                                    Name="{Binding DestinationName}"
+                                    Icon="{Binding DestinationIcon}">
+            <xcm:XcmNetworkSelectButton.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnDestinationClicked" />
+
+            </xcm:XcmNetworkSelectButton.GestureRecognizers>
+        </xcm:XcmNetworkSelectButton>
+    </Grid>
+</ContentView>
+

@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             x:Class="PlutoWallet.Components.Nft.NftThumbnailView"
+             >
+    <card:ClickableCard CardPadding="0, 0, 0, 0">
+        <card:ClickableCard.View>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+
+                </Grid.ColumnDefinitions>
+                <Border Margin="5"
+                        Padding="0"
+                        HeightRequest="{Binding Source={x:Reference border}, Path=Width}"
+                        x:Name="border"
+                        Grid.Column="0"
+                        StrokeThickness="0"
+                        BackgroundColor="Black">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20" />
+
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="Black"
+                                Offset="0,2" 
+                                Radius="3"
+                                Opacity="0.1" />
+
+                    </Border.Shadow>
+
+                    <AbsoluteLayout>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                               x:Name="image" Aspect="AspectFill" />
+                    </AbsoluteLayout>
+                </Border>
+
+                <AbsoluteLayout MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Height}"
+                                Grid.Column="1">
+                    <StackLayout Orientation="Vertical"
+                                  Padding="10"
+                                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                        <Label Margin="0, 0, 0, 5"
+                               FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold"
+                                          x:Name="nameLabelText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+
+                        <Label TextType="Html" x:Name="descriptionLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                               Padding="0, 0, 0, 50"
+                               MaximumHeightRequest="{Binding Source={x:Reference border}, Path=Height}"
+                               >
+                        </Label>
+                    </StackLayout>
+
+                    <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
+                            AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="*" />
+
+                        </Grid.ColumnDefinitions>
+
+                        <networkselect:NetworkBubbleView Scale="0.5"
+                                                         
+                                                         x:Name="networkBubble"
+                                                         ShowName="False"
+                                                         Grid.Column="0"
+                                                         VerticalOptions="Center" 
+                                                         HorizontalOptions="Center"/>
+
+                        <Image WidthRequest="20"
+                               HeightRequest="20"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit"
+                               IsVisible="false"
+                               x:Name="filledFavouriteIcon"
+                               Grid.Column="1">
+                
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                                 Glyph="&#xf004;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="50" />
+                            </Image.Source>
+                        </Image>
+
+                        <Image WidthRequest="20"
+                               HeightRequest="20"
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"
+                               Aspect="AspectFit"
+                               x:Name="favouriteIcon"
+                               Grid.Column="1">
+                
+                            <Image.Source>
+                                <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                                                 Glyph="&#xf08a;"
+                                                 FontFamily="FontAwesome"
+                                                 Size="50" />
+                            </Image.Source>
+
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnFavouriteClicked" />
+
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               Grid.Column="2">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" Text="More" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnMoreClicked" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+                    </Grid>
+                </AbsoluteLayout>
+
+            </Grid>
+
+        </card:ClickableCard.View>
+
+    </card:ClickableCard>
+</ContentView>
+

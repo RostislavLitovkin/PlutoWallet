@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Identity.IdentityAddressView"
+             HeightRequest="90"
+             x:Name="view">
+    <Border StrokeThickness="0"
+            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+            x:Name="border"
+            Padding="0, 0, 0, 0">
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="20"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+        <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Padding="10, 0, 10, 0">
+
+            <Grid AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
+                    AbsoluteLayout.LayoutFlags="WidthProportional">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="identityJundgementIcon"
+                        Source="{AppThemeBinding Light=unknownblack.png, Dark=unknownwhite.png}"
+                       Grid.Column="0"
+                       Margin="10"/>
+                <Label VerticalTextAlignment="Center"
+                        x:Name="identityLabel"
+                        TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                        Text="Unknown"
+                       Grid.Column="1"/>
+                <Image 
+                        x:Name="subscanIcon"
+                        Source="subscanicon.png"
+                       Grid.Column="2"
+                       Margin="10">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSubscanClicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+
+
+            <Entry Placeholder="Address / AZERO.ID"
+                    AbsoluteLayout.LayoutBounds="0, 40, 1, 40"
+                    AbsoluteLayout.LayoutFlags="WidthProportional"
+                    Margin="0, 0, 45, 0"
+                    x:Name="addressEntry"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    PropertyChanged="OnEntryPropertyChanged"
+                    IsSpellCheckEnabled="false"
+                    IsTextPredictionEnabled="false"/>
+
+            <!--QR code button-->
+            <Image
+                AbsoluteLayout.LayoutBounds="1, 40, 40, 40"
+                AbsoluteLayout.LayoutFlags="XProportional"
+                x:Name="qrcode"
+                Source="{AppThemeBinding Light=qrcodeblack.png, Dark=qrcodewhite.png}"
+                Margin="5, 5, 5, 5"
+                >
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnShowQRClicked" />
+
+                </Image.GestureRecognizers>
+            </Image>
+        </AbsoluteLayout>
+    </Border>
+</ContentView>
+

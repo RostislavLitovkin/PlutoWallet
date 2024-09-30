@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:predefinedlayouts="clr-namespace:PlutoWallet.Components.PredefinedLayouts"
+             x:Class="PlutoWallet.Components.PredefinedLayouts.GenericPredefinedLayoutItem"
+            HeightRequest="60">
+    <ContentView.BindingContext>
+        <predefinedlayouts:GenericPredefinedLayoutItemViewModel />
+
+    </ContentView.BindingContext>
+    <card:ClickableCard>
+        <card:ClickableCard.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <HorizontalStackLayout>
+                        <Label 
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameLabelText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Image Source="{AppThemeBinding Light=infoblack.png, Dark=infowhite.png}" 
+                                   VerticalOptions="Center"
+                                   Margin="5, 0, 0, 0"
+                                   HeightRequest="15" WidthRequest="15"/>
+                    </HorizontalStackLayout>
+                
+                </VerticalStackLayout>
+
+                <Image x:Name="backgroundImage"
+                       AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 60"
+                       AbsoluteLayout.LayoutFlags="PositionProportional"/>
+
+                <StackLayout AbsoluteLayout.LayoutBounds="1, 0.5, AutoSize, 1"
+                             AbsoluteLayout.LayoutFlags="PositionProportional, HeightProportional"
+                             x:Name="endpointIcons"
+                             Orientation="Horizontal"
+                             BindableLayout.ItemsSource="{Binding EndpointIcons}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Icon}"
+                                   HeightRequest="50" WidthRequest="50"
+                                   Margin="0, 0, 0, 0"
+                                   Opacity="0.5"/>
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                   
+                </StackLayout>
+
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All">
+
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnClicked" />
+
+                    </AbsoluteLayout.GestureRecognizers>
+                </AbsoluteLayout>
+            </AbsoluteLayout>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
+</ContentView>
+

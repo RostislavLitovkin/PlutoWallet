@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             x:Class="PlutoWallet.Components.NetworkSelect.MultiNetworkSelectView"
+             AbsoluteLayout.LayoutBounds="0.5, 0, 1, 46"
+             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+             x:Name="contentView">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0, AutoSize, 46"
+                    AbsoluteLayout.LayoutFlags="XProportional"
+                    Padding="60, 0, 60, 0"
+                    >
+        <AbsoluteLayout
+            AbsoluteLayout.LayoutBounds="0, 0, 1, 46"
+            AbsoluteLayout.LayoutFlags="WidthProportional"
+            x:Name="frame">
+            <Frame CornerRadius="23"
+                   Padding="3"
+                   AbsoluteLayout.LayoutBounds="0.5, 0, 1, AutoSize"
+                   AbsoluteLayout.LayoutFlags="XProportional, WidthProportional"
+                   BackgroundColor="#88888888"
+                   BorderColor="#88888888">
+                
+                <AbsoluteLayout >
+                    <ScrollView Orientation="Horizontal"
+                            AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
+                            AbsoluteLayout.LayoutFlags="WidthProportional"
+                            Margin="0, 0, 22, 0"
+                            HorizontalScrollBarVisibility="Never"
+                            VerticalScrollBarVisibility="Never">
+                        <HorizontalStackLayout Spacing="2">
+                            <HorizontalStackLayout Spacing="2"
+                                               BindableLayout.ItemsSource="{Binding NetworkInfos}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <networkselect:NetworkBubbleView Tapped="OnNetworkClicked"
+                                                             EndpointKey="{Binding EndpointKey}"
+                                                             ShowName="{Binding ShowName}"
+                                                             Name="{Binding Name}"
+                                                             Icon="{Binding Icon}"
+                                                             EndpointConnectionStatus="{Binding EndpointConnectionStatus}">
+
+                                        </networkselect:NetworkBubbleView>
+
+                                    </DataTemplate>
+
+                                </BindableLayout.ItemTemplate>
+
+                            </HorizontalStackLayout>
+
+                            <AbsoluteLayout HeightRequest="40"
+                                     WidthRequest="20"
+                                     Opacity="0" />
+                        </HorizontalStackLayout>
+                    </ScrollView>
+
+                    <networkselect:NetworkBubbleView Tapped="OnOtherNetworksClicked"
+                                                        Icon="menuwhite.png"
+                                                        AbsoluteLayout.LayoutBounds="1, 0, 40, 40"
+                                                    AbsoluteLayout.LayoutFlags="XProportional">
+                        <networkselect:NetworkBubbleView.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOtherNetworksClicked" />
+
+                        </networkselect:NetworkBubbleView.GestureRecognizers>
+
+                    </networkselect:NetworkBubbleView>
+                </AbsoluteLayout>
+
+            
+            
+            </Frame>
+        </AbsoluteLayout>
+        
+
+    </AbsoluteLayout>
+</ContentView>
+

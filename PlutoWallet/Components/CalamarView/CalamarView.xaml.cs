@@ -2,47 +2,22 @@
 
 public partial class CalamarView : ContentView
 {
-    private string calamarWebAddress;
-
-    public static readonly BindableProperty AddressProperty = BindableProperty.Create(
-        nameof(Address), typeof(string), typeof(CalamarView),
-        defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
-            var control = (CalamarView)bindable;
-            control.calamarWebView.Source = "https://f4c3cf83.calamar.pages.dev/polkadot/account/" + (string)newValue;
-            control.CalamarWebAddress = "https://f4c3cf83.calamar.pages.dev/polkadot/account/" + (string)newValue;
-        });
-
     public CalamarView()
 	{
 		InitializeComponent();
-	}
 
-    public string Address
-    {
-        get => (string)GetValue(AddressProperty);
-
-        set => SetValue(AddressProperty, value);
-    }
-
-    public string CalamarWebAddress
-    {
-        get => calamarWebAddress;
-
-        set
-        {
-            calamarWebAddress = value;
-        }
+        BindingContext = DependencyService.Get<CalamarViewModel>();
     }
 
     void OnReloadClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        calamarWebView.Source = calamarWebAddress;
-        //calamarWebView.Reload();
+        var viewModel = DependencyService.Get<CalamarViewModel>();
+        viewModel.WebAddress = viewModel.WebAddress;
     }
 
     async void OnOpenClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-        await Launcher.OpenAsync(calamarWebAddress);
+        var viewModel = DependencyService.Get<CalamarViewModel>();
+        await Launcher.OpenAsync(viewModel.WebAddress);
     }
 }

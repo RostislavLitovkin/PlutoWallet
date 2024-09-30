@@ -7,6 +7,9 @@
     <Color x:Key="GentlePink">#ffebef</Color>
 
     <Color x:Key="Primary">#1d70a2</Color>
+    <Color x:Key="PrimaryUnimportant">#5b88a4</Color>
+    <Color x:Key="PrimaryGray">#e9e9e9</Color>
+    <Color x:Key="DangerousRed">#eb4747</Color>
     <Color x:Key="Secondary">#DFD8F7</Color>
     <Color x:Key="Tertiary">#65def1</Color>
     <Color x:Key="White">White</Color>

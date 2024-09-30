@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Staking.StakingRegistrationRequestView"
+             IsVisible="{Binding IsVisible}"
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             Padding="20"
+             BackgroundColor="#66000000">
+    
+    <card:Card IsPopup="True">
+    <card:Card.View>
+        <AbsoluteLayout>
+
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, AutoSize"
+                                 AbsoluteLayout.LayoutFlags="WidthProportional"
+                                 Spacing="10">
+
+                <Label
+                    FontAttributes="Bold"
+                    Text="Staking registration"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    Margin="20, 0, 20, 0" />
+
+                <Label
+                    Text="Name: GLG Stakers"
+                    HorizontalOptions="StartAndExpand" />
+
+                <Label
+                    Text="Pool id: #1001"
+                    HorizontalOptions="StartAndExpand" />
+
+                <Label
+                    Text="Members: 1076"
+                    HorizontalOptions="StartAndExpand"/>
+
+                <Label
+                    Text="Points: 164,241,927,877,494"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Bonded: 1982.08 DOT"
+                    HorizontalOptions="StartAndExpand" />
+
+                <Label
+                    Text="Last recorded reward counter: 712,52 DOT"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Last recorded total payouts: 100,00 DOT"
+                    HorizontalOptions="StartAndExpand" />
+                <Label
+                    Text="Total rewards claimed: 848,17 DOT"
+                    HorizontalOptions="StartAndExpand" />
+
+                <Label Text="Fee: 0.0001 DOT" TextColor="Orange" />
+
+                <Label Text="" x:Name="errorLabel" TextColor="Red" />
+
+                <Button Text="Sing and submit"
+                        Clicked="OnSubmitClicked" />
+
+                <Button Text="Reject" BackgroundColor="DarkRed"
+                        Clicked="OnRejectClicked" />
+
+            </VerticalStackLayout>
+
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                   Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                </AbsoluteLayout.GestureRecognizers>
+
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
+    </card:Card.View>
+    </card:Card>
+</ContentView>
+

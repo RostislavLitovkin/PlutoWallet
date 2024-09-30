@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             x:Class="PlutoWallet.Components.NetworkSelect.NetworkSelectPopup"
+            AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             IsVisible="{Binding IsVisible}">
+    <card:BottomPopupCard Title="Select Networks">
+        <card:BottomPopupCard.View>
+
+            <ScrollView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Orientation="Vertical">
+
+                <VerticalStackLayout 
+                                       BindableLayout.ItemsSource="{Binding Networks}"
+                                       Padding="0, 0, 0, 20"
+                                       Spacing="10">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <networkselect:NetworkSelectorView Name="{Binding Name}"
+                                                                   WsAddress="{Binding Url}"
+                                                                   Icon="{Binding Icon}"
+                                                                   Key="{Binding EndpointKey}"
+                                                                   IsSelected="{Binding IsSelected}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </card:BottomPopupCard.View>
+
+    </card:BottomPopupCard>
+</ContentView>
+

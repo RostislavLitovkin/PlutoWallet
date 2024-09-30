@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Xcm.XcmNetworkSelectButton"
+             HeightRequest="60">
+    <Border StrokeThickness="0"
+            BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark={StaticResource Black}}"
+            Padding="10, 0, 10, 0"
+            x:Name="border">
+        <Border.Shadow>
+            <Shadow Brush="Black"
+                    Offset="0,2" 
+                    Radius="3"
+                    Opacity="0.1" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
+         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Image x:Name="chainIcon"
+                HeightRequest="40" WidthRequest="40"
+                Margin="10, 0, 10, 0"
+                Grid.Column="0"
+                />
+            <Label
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   Grid.Column="1"
+                   Margin="10, 0, 0, 0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span x:Name="nameLabel" FontAttributes="Bold" />
+
+                    </FormattedString>
+
+                </Label.FormattedText>
+
+            </Label>
+            
+
+            <Label x:Name="wsAddressLabel"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center"
+                   TextColor="#888888"
+                   Grid.Column="3"
+                   Text="" />
+        </Grid>
+    </Border>
+</ContentView>
+

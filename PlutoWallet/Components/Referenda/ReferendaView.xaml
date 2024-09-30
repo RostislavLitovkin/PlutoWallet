@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:referenda="clr-namespace:PlutoWallet.Components.Referenda"
+             x:Class="PlutoWallet.Components.Referenda.ReferendaView">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout"
+                             MinimumHeightRequest="110"
+                             >
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Referenda"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+
+                    <Label HeightRequest="50"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding Loading}" />
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout Margin="0, 40, 0, 10"
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Referenda}"
+                                     Spacing="5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <referenda:ReferendumInfoView Title="{Binding Title}"
+                                                          AyesPercentage="{Binding AyesPercentage}"
+                                                          NaysPercentage="{Binding NaysPercentage}"
+                                                          Vote="{Binding Vote}"
+                                                          ReferendumIndex="{Binding ReferendumIndex}"
+                                                          Endpoint="{Binding Endpoint}"
+                                                          SubSquareLink="{Binding SubSquareLink}" />
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+
+
+                </VerticalStackLayout>
+
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.NavigationBar.NavigationBarView"
+             AbsoluteLayout.LayoutBounds="0.5, 1, 1, 60"
+             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+             >
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All">
+        <Grid BackgroundColor="#88888888"
+              AbsoluteLayout.LayoutBounds="0.5, 1, 1, 45"
+              AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="90" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+                <Label.FormattedText>
+                  <FormattedString>
+                     <Span Text="Home"
+                           FontAttributes="{Binding HomeFontAttributes}"/>
+                  </FormattedString>
+               </Label.FormattedText>
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnHomeClicked" />
+
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Grid.Column="2"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+
+                <Label.FormattedText>
+                  <FormattedString>
+                     <Span Text="NFTs"
+                           FontAttributes="{Binding NftsFontAttributes}"/>
+                  </FormattedString>
+               </Label.FormattedText>
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNFTsClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+        </Grid>
+
+        <Frame CornerRadius="30"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 60, 60"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Padding="15"
+            BackgroundColor="{StaticResource Primary}"
+            BorderColor="{StaticResource Primary}"
+            x:Name="frame">
+            <Image Source="transferwhite.png" />
+
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnTransferClicked" />
+
+            </Frame.GestureRecognizers>
+
+        </Frame>
+
+    </AbsoluteLayout>
+</ContentView>
+
+

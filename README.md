@@ -1,5 +1,3 @@
-To see the most recent working version, go to the [devel branch](https://github.com/RostislavLitovkin/PlutoWallet/tree/devel).
-
 # Download
 
 Android apk: https://rostislavlitovkin.pythonanywhere.com/downloadplutowallet
@@ -194,3 +192,28 @@ Allows the wallet to communicate with any dApps and sign their respective transa
 
 
 - `/Properties` nothing important
+
+# Generator
+
+description..
+
+### install dependencies (WSL)
+
+```
+sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0
+
+dotnet new -i Substrate.DotNet.Template
+
+sudo apt-get install jq
+```
+
+### Run
+```
+./generator.sh
+```
+
+### Single chain generation
+enter the name property, like PolkadotPeople, Hydration...
+```
+./generator.sh PolkadotPeople
+```

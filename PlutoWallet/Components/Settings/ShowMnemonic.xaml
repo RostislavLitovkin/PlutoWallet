@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:settings="clr-namespace:PlutoWallet.Components.Settings"
+             x:Class="PlutoWallet.Components.Settings.ShowMnemonic"
+            HeightRequest="120">
+    <ContentView.BindingContext>
+        <settings:ShowMnemonicViewModel />
+
+    </ContentView.BindingContext>
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <VerticalStackLayout>
+                        <Label 
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold"
+                                          Text="{Binding Title}"/>
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <Label x:Name="mnemonicLabel">
+
+
+                        </Label>
+                    </VerticalStackLayout>
+                
+                </VerticalStackLayout>
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ShowMnemonicClicked" />
+
+                </AbsoluteLayout.GestureRecognizers>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

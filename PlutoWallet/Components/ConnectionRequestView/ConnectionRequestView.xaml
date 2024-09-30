@@ -1,34 +1,123 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:animations="clr-namespace:PlutoWallet.Components.Animations"
              x:Class="PlutoWallet.Components.ConnectionRequestView.ConnectionRequestView"
-             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-             AbsoluteLayout.LayoutFlags="PositionProportional"
-             IsVisible="{Binding IsVisible}">
-    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20">
-        <AbsoluteLayout>
-            <VerticalStackLayout>
-                <Image x:Name="icon"
-                       Source="{Binding Icon}"
-                       WidthRequest="100"
-                       HeightRequest="100" />
-                <Label 
-                    x:Name="dAppNameLabel"
-                    Text="{Binding Name}"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center" />
-                <Label 
-                    Text="Would you like to connect to this dApp?"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center" />
-                <Button Text="Accept"
-                        Clicked="AcceptClicked" />
-                <Button Text="Reject" BackgroundColor="DarkRed" TextColor="White"
-                        Clicked="RejectClicked"/>
-            </VerticalStackLayout>
-        </AbsoluteLayout>
-    </Frame>
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             BackgroundColor="#66000000"
+             IsVisible="{Binding IsVisible}"
+             >
+    <card:Card IsPopup="True">
+        <card:Card.View>
+            <AbsoluteLayout
+                            WidthRequest="{Binding Source={x:Reference verticalStackLayout}, Path=Width}">
+                <VerticalStackLayout Spacing="10"
+                                     x:Name="verticalStackLayout"
+                                     IsVisible="{Binding RequestViewIsVisible}"
+                                     >
+                    <Frame CornerRadius="30"
+                           WidthRequest="100"
+                            HeightRequest="100"
+                            BorderColor="#00000000">
+                        <Image x:Name="icon"
+                               Source="{Binding Icon}"
+                               WidthRequest="100"
+                               HeightRequest="100" />
+                    </Frame>
+                    
+                    <Label 
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold" Text="{Binding Name}" />
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+                    <Label
+                        x:Name="thisLabel"
+                        Text="Would you like to connect to this dApp?"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+                    <Button Text="Accept"
+                            Clicked="AcceptClicked" />
+                    <Button Text="Reject" BackgroundColor="DarkRed" TextColor="White"
+                            Clicked="RejectClicked"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout Spacing="10"
+                                     x:Name="connectionStatusLayout"
+                                     IsVisible="{Binding ConnectionStatusIsVisible}"
+                                     HorizontalOptions="Center"
+                                     >
+                    <AbsoluteLayout WidthRequest="220"
+                                 HeightRequest="40">
+
+                        <Image AbsoluteLayout.LayoutBounds="0, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=deviceblack.png, Dark=devicewhite.png}"
+                               />
+                        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=cloudblack.png, Dark=cloudwhite.png}"
+                               />
+                        
+                        <Image AbsoluteLayout.LayoutBounds="1, 0.5, 40, 40"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="{AppThemeBinding Light=dappblack.png, Dark=dappwhite.png}"
+                               />
+
+                        
+
+                        <animations:LoadingView AbsoluteLayout.LayoutBounds=".25, 0.5, 40, 10"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                Playing="{Binding Connecting}"/>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.27, 0.5, 20, 20"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="checkgreen.png"
+                               IsVisible="{Binding Connected}"
+                               />
+
+                        <animations:LoadingView AbsoluteLayout.LayoutBounds=".75, 0.5, 40, 10"
+                                                AbsoluteLayout.LayoutFlags="PositionProportional"
+                                                Playing="{Binding Confirming}"/>
+
+                        <Image AbsoluteLayout.LayoutBounds="0.72, 0.5, 20, 20"
+                               AbsoluteLayout.LayoutFlags="PositionProportional"
+                               Source="checkgreen.png"
+                               IsVisible="{Binding Confirmed}"
+                               />
+                    </AbsoluteLayout>
+
+                    <Label
+                        WidthRequest="{Binding Source={x:Reference thisLabel}, Path=Width}"
+                        Text="{Binding ConnectionStatusText}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Start"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        MinimumHeightRequest="40"
+                        />
+
+                    <Label
+                        WidthRequest="{Binding Source={x:Reference thisLabel}, Path=Width}"
+                        Text="Keep PlutoWallet open!"
+                        TextColor="Red"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+
+                    <Button Text="Dismiss"
+                            Clicked="DismissClicked" />
+                </VerticalStackLayout>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
 </ContentView>
 

@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+	  <PackageReference Include="Substrate.NET.API" Version="0.9.24-rc6" />
+	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+	  <PackageReference Include="Markdig" Version="0.37.0" />
+	  <PackageReference Include="Uniquery" Version="1.0.1" />
+	  <PackageReference Include="Plugin.Fingerprint" Version="3.0.0-beta.1" />
+	  <PackageReference Include="AzeroIdResolver" Version="1.0.2" />
+	  <PackageReference Include="Substrate.NET.Wallet" Version="1.0.8" />
+    <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+		<PackageReference Include="System.Collections" Version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+		<PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+		<PackageReference Include="Microsoft.Win32.Primitives" Version="4.3.0" />
+		<PackageReference Include="System.Net.Primitives" Version="4.3.1" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+	</ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AjunaExt\" />
+    <None Remove="AzeroId\" />
+    <None Remove="HydraDX\" />
+    <None Remove="Kodadot\" />
+    <None Remove="SubSquare\" />
+    <None Remove="Constants\" />
+    <None Remove="Types\" />
+    <None Remove="Bifrost\" />
+    <None Remove="Types\Hydration\" />
+    <None Remove="Types\Bifrost\" />
+    <None Remove="Types\Polkadot\" />
+    <None Remove="Types\PolkadotAssetHub\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AjunaExt\" />
+    <Folder Include="AzeroId\" />
+    <Folder Include="HydraDX\" />
+    <Folder Include="Kodadot\" />
+    <Folder Include="SubSquare\" />
+    <Folder Include="Types\" />
+    <Folder Include="Bifrost\" />
+    <Folder Include="Types\Hydration\" />
+    <Folder Include="Types\Bifrost\" />
+    <Folder Include="Types\Polkadot\" />
+    <Folder Include="Types\PolkadotAssetHub\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Generated\Bajun\Bajun.NetApi\Bajun.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Bifrost\Bifrost.NetApi\Bifrost.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Hydration\Hydration.NetApi\Hydration.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Opal\Opal.NetApi\Opal.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\PolkadotPeople\PolkadotPeople.NetApi\PolkadotPeople.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Polkadot\Polkadot.NetApi\Polkadot.NetApi.csproj" />
+    <ProjectReference Include="..\UniqueryPlus\UniqueryPlus.csproj" />
+  </ItemGroup>
+</Project>

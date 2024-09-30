@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Xcm.XcmTransferView"
+             HeightRequest="90">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Cross Consensus Messaging"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"/>
+                    
+                </VerticalStackLayout>
+
+                <Label AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                       AbsoluteLayout.LayoutFlags="All"
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontAttributes="Bold"
+                                  Text="XCM Transfer" />
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
+                <AbsoluteLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClicked" />
+
+                </AbsoluteLayout.GestureRecognizers>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

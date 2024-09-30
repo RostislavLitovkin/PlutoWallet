@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Identity.IdentityView"
+            HeightRequest="90">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout">
+
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                    <Label
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Identity"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        />
+                    
+                </VerticalStackLayout>
+                    
+                <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                        AbsoluteLayout.LayoutFlags="PositionProportional">
+                    <Image HeightRequest="20"
+                           WidthRequest="20"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Source="{Binding VerificationIcon}"
+                           IsVisible="{Binding VerificationIconIsVisible}"/>
+                    <Label Margin="5, 0, 0, 0"
+                            HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontSize="25">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span FontAttributes="Bold"
+                                      Text="{Binding Name}" />
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+
+                </HorizontalStackLayout>
+                
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

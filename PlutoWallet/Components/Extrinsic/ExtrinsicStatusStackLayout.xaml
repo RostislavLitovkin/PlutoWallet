@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extrinsic="clr-namespace:PlutoWallet.Components.Extrinsic"
+             x:Class="PlutoWallet.Components.Extrinsic.ExtrinsicStatusStackLayout"
+             IsVisible="{Binding IsVisible}"
+             HeightRequest="{Binding HeightRequest}" >
+    <VerticalStackLayout BindableLayout.ItemsSource="{Binding ExtrinsicInfos}"
+                         Spacing="15">
+        <BindableLayout.ItemTemplate>
+            <DataTemplate>
+                <extrinsic:ExtrinsicStatusView ExtrinsicId="{Binding ExtrinsicId}"
+                                               Status="{Binding Status}"
+                                               Hash="{Binding Hash}"
+                                               Endpoint="{Binding Endpoint}"
+                                               CallName="{Binding CallName}"
+                                               EventsListViewModel="{Binding EventsListViewModel}"
+                                               BlockNumber="{Binding BlockNumber}"
+                                               ExtrinsicIndex="{Binding ExtrinsicIndex}" />
+
+            </DataTemplate>
+
+        </BindableLayout.ItemTemplate>
+    </VerticalStackLayout>
+</ContentView>
+

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.Settings.GenericButton"
+             HeightRequest="60">
+    <card:ClickableCard>
+        <card:ClickableCard.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <HorizontalStackLayout>
+                        <Label 
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameLabelText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                    </HorizontalStackLayout>
+                
+                </VerticalStackLayout>
+            </AbsoluteLayout>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
+</ContentView>
+

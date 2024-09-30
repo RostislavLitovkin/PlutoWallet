@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Switch.DualSwitch"
+             HeightRequest="30">
+    <Frame BackgroundColor="#888"
+           BorderColor="#888"
+           CornerRadius="15"
+           Padding="0"
+           >
+        <AbsoluteLayout>
+            <Label x:Name="firstOption"
+                   AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   TextColor="Black">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnFirstOptionClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+
+            <Label x:Name="secondOption"
+                   AbsoluteLayout.LayoutBounds="1, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSecondOptionClicked" />
+
+                </Label.GestureRecognizers>
+
+            </Label>
+            <Frame BackgroundColor="{StaticResource Primary}"
+                   BorderColor="{StaticResource Primary}"
+                   AbsoluteLayout.LayoutBounds="0, 0, .5, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   CornerRadius="15"
+                   x:Name="selectedOptionFrame"
+                   Padding="0">
+
+                <Label x:Name="selectedOptionLabel"
+                        AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                       AbsoluteLayout.LayoutFlags="All"
+                      TextColor="White"
+                      HorizontalTextAlignment="Center"
+                      VerticalTextAlignment="Center"/>
+            </Frame>
+        </AbsoluteLayout>
+
+    </Frame>
+
+    
+</ContentView>
+

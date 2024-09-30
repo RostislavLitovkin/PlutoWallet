@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="PlutoWallet.Components.UniversalScannerView.UniversalScannerPage"
+             Title="UniversalScannerPage"
+             BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
+
+        <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="stackLayout"
+                             >
+
+            <zxing:CameraBarcodeReaderView WidthRequest="{Binding Source={x:Reference stackLayout}, Path=Width}"
+                                            HeightRequest="{Binding Source={x:Reference stackLayout}, Path=Height}"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"
+                                              x:Name="scanner"
+                                              IsDetecting="True"
+                                              Margin="0, 30, 0, 30"
+                                              BarcodesDetected="OnDetected"/>
+
+        </VerticalStackLayout>
+        
+        <navigationbar:TopNavigationBar Title="QR Scanner" />
+    </AbsoluteLayout>
+</ContentPage>

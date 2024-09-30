@@ -9,6 +9,7 @@ public partial class MessagePopupView : ContentView
         BindingContext = DependencyService.Get<MessagePopupViewModel>();
     }
 
+
     async void OnBackTapped(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         // Hide this layout

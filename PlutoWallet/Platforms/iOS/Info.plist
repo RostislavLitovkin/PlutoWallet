@@ -35,5 +35,7 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Biometric verification is required to further secure this crypto wallet.</string>
 </dict>
 </plist>

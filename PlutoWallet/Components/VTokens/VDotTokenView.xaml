@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.VTokens.VDotTokenView"
+             HeightRequest="90">
+    <Border
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            StrokeThickness="0"
+            x:Name="border"
+            >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="Turquoise"
+                              Offset="0.2" />
+                <GradientStop Color="RoyalBlue"
+                              Offset=".4" />
+                <GradientStop Color="Purple"
+                              Offset=".6" />
+                <GradientStop Color="Red"
+                              Offset=".8" />
+                <GradientStop Color="Yellow"
+                              Offset="1.0" />
+            </LinearGradientBrush>
+
+        </Border.Background>
+
+        <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                             x:Name="absoluteLayout">
+            <Border
+                    BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+                    StrokeThickness="0"
+                    Margin="3"
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+
+                </Border.StrokeShape>
+            </Border>
+
+
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <Label
+                    HeightRequest="30"
+                    VerticalTextAlignment="Center"
+                    Text="vDOT staking"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    />
+                    
+            </VerticalStackLayout>
+                    
+            <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                                    AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Label 
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        FontSize="25">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontAttributes="Bold"
+                                    Text="{Binding Conversion}" />
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
+
+            </HorizontalStackLayout>
+
+            <Label AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    FontSize="10"
+                    Margin="10"
+                    TextColor="#888888">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding From}" />
+
+                        </FormattedString>
+
+                    </Label.FormattedText>
+
+                </Label>
+                
+        </AbsoluteLayout>
+    </Border>
+</ContentView>
+

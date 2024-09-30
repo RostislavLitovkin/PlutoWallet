@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             x:Class="PlutoWallet.Components.Nft.NftTitleView"
+             HeightRequest="90">
+   <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Margin="0, 10, 0, 10">
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                                     AbsoluteLayout.LayoutFlags="SizeProportional"
+                                     Spacing="7.5">
+                    <HorizontalStackLayout Spacing="10">
+                        <Label HorizontalOptions="Start"
+                               VerticalOptions="End"
+                                VerticalTextAlignment="End"
+                                HorizontalTextAlignment="Center"
+                                FontSize="18"
+                                HeightRequest="20"
+                                Margin="10, 2.5, 0, 0"
+                                >
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontAttributes="Bold" x:Name="nameText" />
+
+                                </FormattedString>
+
+                            </Label.FormattedText>
+
+                        </Label>
+                        <nft:NftIdView Id="{Binding ItemId}"
+                                       CollectionId="{Binding CollectionId}" />
+                    </HorizontalStackLayout>
+
+                    
+
+                    <HorizontalStackLayout Spacing="10">
+                        <networkselect:NetworkBubbleView
+                                                    x:Name="networkBubble"
+                                                    ShowName="True"
+                                                    HorizontalOptions="Start"/>
+
+                        <Label Text="Claim Physical Drop"
+                               x:Name="kodadotUnlockableButton"
+                               IsVisible="false"
+                               TextColor="{x:StaticResource Primary}"
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Start">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ClaimPhysicalDropClicked" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                        <Label x:Name="reservedUntilLabel"
+                               TextColor="#888888"
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Start"
+                               IsVisible="false">
+
+                        </Label>
+
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>
+

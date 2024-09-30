@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             x:Class="PlutoWallet.View.NftView">
+    <ScrollView
+            Orientation="Vertical"
+            x:Name="scroll"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+        <VerticalStackLayout Padding="0, 65, 0, 200"
+                             Spacing="15">
+            <VerticalStackLayout
+                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
+                                HorizontalOptions="Center"
+                                Padding="20, 0, 20, 0"
+                                Spacing="15"
+                                BindableLayout.ItemsSource="{Binding Collections}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <nft:CollectionThumbnailView
+                                    Endpoint="{Binding Endpoint}"
+                                    Favourite="{Binding Favourite}"
+                                    NftImages="{Binding NftImages}"
+                                    CollectionBase="{Binding CollectionBase}"
+                                    />
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
+                                HorizontalOptions="Center"
+                                Padding="20, 0, 20, 0"
+                                Spacing="15"
+                                BindableLayout.ItemsSource="{Binding Nfts}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <nft:NftThumbnailView Endpoint="{Binding Endpoint}"
+                                                Favourite="{Binding Favourite}"
+                                                NftBase="{Binding NftBase}"
+                                                />
+
+                    </DataTemplate>
+
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+            <nft:NftLoadingView Margin="20, 0, 20, 0" />
+
+            <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="{Binding NoNftsIsVisible}"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentView>
+

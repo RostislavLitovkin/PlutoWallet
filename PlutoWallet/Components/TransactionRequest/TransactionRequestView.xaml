@@ -1,56 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card" xmlns:networkselect="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.TransactionRequest.TransactionRequestView"
              IsVisible="{Binding IsVisible}"
-             AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-             AbsoluteLayout.LayoutFlags="PositionProportional">
+             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             BackgroundColor="#66000000">
 
-    <Frame BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           BorderColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
-           CornerRadius="20">
-        <AbsoluteLayout>
+    <card:Card IsPopup="True">
+        <card:Card.View>
+            <AbsoluteLayout>
 
-            <VerticalStackLayout>
-                <Label
-                    FontAttributes="Bold"
-                    Text="Transaction request"
-                    HorizontalOptions="Center"
-                    Margin="20, 0, 20, 0"/>
-
-                <Label
-                    Text="{Binding PalletIndex}"
-                    HorizontalOptions="Center" />
-
-                <Label
-                    Text="{Binding CallIndex}"
-                    HorizontalOptions="Center" />
-
-                <Label
-                    Text="{Binding Parameters}"
-                    HorizontalOptions="Center" />
-
-                <Label Text="" x:Name="errorLabel" TextColor="Red" />
-
-                <Button Text="Sing and submit"
+                <VerticalStackLayout Spacing="10">
+                    <Label
+                        FontAttributes="Bold"
+                        Text="Transaction request"
                         HorizontalOptions="Center"
-                        Clicked="OnSubmitClicked" />
+                        Margin="20, 0, 20, 0"/>
 
-                <Button Text="Reject" BackgroundColor="DarkRed"
-                        HorizontalOptions="Center"
-                        Clicked="OnRejectClicked" />
-            </VerticalStackLayout>
+                    <networkselect:NetworkBubbleView Icon="{Binding ChainIcon}"
+                                                     Name="{Binding ChainName}"
+                                                     EndpointKey="{Binding EndpointKey}"
+                                                     ShowName="True"/>
 
-            <Label AbsoluteLayout.LayoutBounds="0, 0, 40, 40"
-                   Text="&lt;" FontAttributes="Bold">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                    <Label
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Pallet: " />
+                                <Span FontAttributes="Bold" Text="{Binding PalletIndex}"/>
 
-                </Label.GestureRecognizers>
+                            </FormattedString>
 
-            </Label>
-        </AbsoluteLayout>
-    </Frame>
+                        </Label.FormattedText>
+
+                    </Label>
+
+                    <Label
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Call: " />
+                                <Span FontAttributes="Bold" Text="{Binding CallIndex}"/>
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+
+                    <Label
+                        IsVisible="false"
+                        HorizontalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Parameters: " />
+                                <Span FontAttributes="Bold" Text="{Binding Parameters}"/>
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+
+                    <Label Text="" x:Name="errorLabel" TextColor="Red" IsVisible="false" />
+
+                    <Label TextColor="Orange"
+                           Text="{Binding Fee}" />
+
+                    <Button Text="Sign and submit"
+                            Clicked="OnSubmitClicked" />
+
+                    <Button Text="Reject" BackgroundColor="DarkRed"
+                            Clicked="OnRejectClicked" />
+                </VerticalStackLayout>
+
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 40, 40">
+                    <Image AbsoluteLayout.LayoutBounds="0, 0, 20, 20"
+                       Source="{AppThemeBinding Light=arrowbackblack.png, Dark=backwhite.png }" />
+
+                    <AbsoluteLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackClicked" />
+
+                    </AbsoluteLayout.GestureRecognizers>
+
+                </AbsoluteLayout>
+            </AbsoluteLayout>
+        </card:Card.View>
+        </card:Card>
 
 </ContentView>
 

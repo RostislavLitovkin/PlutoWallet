@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.AssetSelect.AssetSelectButtonView"
+             WidthRequest="{Binding WidthRequest}">
+    <Border BackgroundColor="{x:StaticResource Primary}"
+            Stroke="{x:StaticResource Primary}">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+        <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                                AbsoluteLayout.LayoutFlags="All"
+                                Spacing="5"
+                                Padding="5"
+                                HorizontalOptions="Center">
+            <Image HorizontalOptions="Center"
+                WidthRequest="15" HeightRequest="15"
+                Margin="0, 2, 0, 0"
+                Source="dropdownwhite.png" />
+            <Label Text="{Binding Symbol}"
+                    TextColor="White"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                    />
+            <Image HorizontalOptions="Center"
+                    WidthRequest="20" HeightRequest="20"
+                    Source="{Binding ChainIcon}" />
+
+        </HorizontalStackLayout>
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnChangeTokenClicked" />
+
+        </Border.GestureRecognizers>
+    </Border>
+</ContentView>
+

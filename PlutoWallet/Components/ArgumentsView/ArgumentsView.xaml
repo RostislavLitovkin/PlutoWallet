@@ -12,7 +12,7 @@
            >
         <VerticalStackLayout>
             <CollectionView HeightRequest="300"
-                          ItemsSource="{Binding Args}" >
+                            ItemsSource="{Binding Args}" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid Padding="10, 5, 10, 5">

@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Maui;
-using PlutoWallet.Components.NetworkSelect;
+using Microsoft.Maui.Handlers;
 using ZXing.Net.Maui.Controls;
 
 namespace PlutoWallet;
@@ -18,6 +18,11 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 fonts.AddFont("fontawesome-webfont.ttf", "FontAwesome");
+                fonts.AddFont("Exodar-Outline.ttf", "Exodar");
+                fonts.AddFont("FontOver.ttf", "FontOver");
+                fonts.AddFont("sourcecode.ttf", "SourceCode");
+                fonts.AddFont("samsungone700.ttf", "SamsungOne");
+
             });
 
         //builder.Services.AddSingleton<Model.PlutonicationModel>();

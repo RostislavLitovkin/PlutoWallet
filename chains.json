@@ -1,0 +1,40 @@
+{
+  "chains": [
+    {
+      "name": "Polkadot",
+      "websocket": "wss://polkadot.api.onfinality.io/public-ws"
+    },
+    {
+      "name": "PolkadotAssetHub",
+      "websocket": "wss://polkadot-asset-hub-rpc.polkadot.io"
+    },
+    {
+      "name": "PolkadotPeople",
+      "websocket": "wss://polkadot-people-rpc.polkadot.io"
+    },
+    {
+      "name": "Bifrost",
+      "websocket": "wss://bifrost-polkadot.api.onfinality.io/public-ws"
+    },
+    {
+      "name": "Hydration",
+      "websocket": "wss://rpc.hydradx.cloud"
+    },
+    {
+      "name": "Bajun",
+      "websocket": "wss://bajun.public.curie.radiumblock.co/ws"
+    },
+    {
+      "name": "Opal",
+      "websocket": "wss://eu-ws-opal.unique.network"
+    },
+    {
+      "name": "InvArch",
+      "websocket": "wss://invarch-rpc.dwellir.com"
+    },
+    {
+      "name": "KusamaAssetHub",
+      "websocket": "wss://sys.dotters.network/statemine"
+    }
+  ]
+}

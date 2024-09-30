@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AbsoluteLayout xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Card.BottomPopupCard"
+             AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+            AbsoluteLayout.LayoutFlags="All"
+            BackgroundColor="#66000000"
+            >
+    <AbsoluteLayout.GestureRecognizers>
+        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+    </AbsoluteLayout.GestureRecognizers>
+
+
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds=".5, 1, 1, .6"
+                AbsoluteLayout.LayoutFlags="All">
+        <Border AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark=#0a0a0a}"
+                StrokeThickness="0"
+                Padding="0, 0, 0, 0"
+                x:Name="border"
+                >
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="20, 20, 0, 0" />
+            </Border.StrokeShape>
+
+        </Border>
+
+        <ContentView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Margin="10, 65, 10, 0"
+                         x:Name="contentView">
+
+
+        </ContentView>
+
+        <AbsoluteLayout 
+                        Padding="0, 10, 0, 10"
+                        AbsoluteLayout.LayoutBounds="0.5, 0, 1, 65"
+                        AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+            <Border BackgroundColor="#888888"
+                        AbsoluteLayout.LayoutBounds=".5, 0, 100, 5"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        x:Name="dragger"
+                        ZIndex="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="2.5"/>
+
+                </Border.StrokeShape>
+
+
+            </Border>
+
+            <!--<Button AbsoluteLayout.LayoutBounds=".5, 1, 1, 50"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                    Text="Confirm"
+                    Margin="10, 10, 10, 0"
+                    x:Name="closeButton"
+                    Clicked="OnCloseClicked"/>-->
+
+            <Label
+                AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
+                AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                FontAttributes="Bold"
+                Text=""
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                Margin="20, 0, 20, 0"
+                x:Name="titleLabel"  />
+
+            <AbsoluteLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
+
+    </AbsoluteLayout>
+
+
+</AbsoluteLayout>
+

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             x:Class="PlutoWallet.Components.AssetSelect.AssetSelectView"
+             AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+             AbsoluteLayout.LayoutFlags="All"
+             IsVisible="{Binding IsVisible}">
+    <card:BottomPopupCard Title="Select Asset">
+        <card:BottomPopupCard.View>
+
+            
+                <ScrollView AbsoluteLayout.LayoutBounds=".5, .5, 1, 1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       Orientation="Vertical">
+
+                    <VerticalStackLayout 
+                                       BindableLayout.ItemsSource="{Binding Assets}"
+                                       Padding="0, 0, 0, 20"
+                                       Spacing="10">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <assetselect:AssetSelectorView Amount="{Binding Amount}"
+                                                           UsdValue="{Binding UsdValue}"
+                                                           ChainIcons="{Binding ChainIcons}"
+                                                           Symbol="{Binding Symbol}"
+                                                           IsSelected="{Binding IsSelected}"
+                                                           Endpoint="{Binding Endpoint}"
+                                                           Pallet="{Binding Pallet}"
+                                                           AssetId="{Binding AssetId}"
+                                                           Decimals="{Binding Decimals}" />
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+                </ScrollView>
+                
+
+        </card:BottomPopupCard.View>
+
+    </card:BottomPopupCard>
+    
+</ContentView>
+    
