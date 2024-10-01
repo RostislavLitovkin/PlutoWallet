@@ -31,6 +31,14 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
+            var limit = 10u;
+            foreach (var client in AjunaClientModel.Clients)
+            {
+
+            }
+
+            var clients = AjunaClientModel.Clients.Values.Where(_client => true).Select(async client => await client.Task).Select(t => t.Result.SubstrateClient);
+
             #region Get Mock Collections
             IEnumerable<ICollectionBase> uniqueryPlusCollections = [
                 Model.CollectionModel.GetMockCollection(nftCount: 5000),
@@ -48,9 +56,11 @@ namespace PlutoWallet.ViewModel
             {
                 collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
             }
+            #endregion
+            //var uniqueryCollectionEnumerable = await UniqueryPlus.Collections.CollectionModel.(KeysModel.GetSubstrateKey());
+
 
             Collections = collections;
-            #endregion
 
             #region Get Mock Nfts
             IEnumerable<INftBase> uniqueryPlusNfts = [
@@ -67,10 +77,27 @@ namespace PlutoWallet.ViewModel
                 nfts.Add(Model.NftModel.ToNftWrapper(nft));
             }
 
-            Nfts = nfts;
-
             #endregion
+            try
+            {
+                var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
 
+                var uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator();
+
+                for (uint i = 0; i < limit; i++)
+                {
+                    if (await uniqueryNftEnumerator.MoveNextAsync())
+                    {
+                        nfts.Add(Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current));
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("");
+                Console.WriteLine(ex);
+            }
+            Nfts = nfts;
 
             #region Get Nfts
             /*

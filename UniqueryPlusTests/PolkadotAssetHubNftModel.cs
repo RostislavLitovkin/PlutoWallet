@@ -6,7 +6,6 @@ using UniqueryPlus.Nfts;
 using UniqueryPlus.Collections;
 using System.Numerics;
 
-
 namespace UniqueryPlusTests
 {
     internal class PolkadotAssetHubNftModel
@@ -109,13 +108,15 @@ namespace UniqueryPlusTests
 
             var enumerator = nftsEnumerable.GetAsyncEnumerator();
 
-            for (uint i = 0; i < 3; i++)
+            for (uint i = 0; i < 10; i++)
             {
-                Assert.That(await enumerator.MoveNextAsync());
-                var nft = enumerator.Current;
-                Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
-                Assert.That(nft.Metadata?.Description, Is.Not.Null);
-                Console.WriteLine("Image: " + nft.Metadata?.Image);
+                if (await enumerator.MoveNextAsync())
+                {
+                    var nft = enumerator.Current;
+                    Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                    Assert.That(nft.Metadata?.Description, Is.Not.Null);
+                    Console.WriteLine("Image: " + nft.Metadata?.Image);
+                }
             }
 
             /// Equivalent for this

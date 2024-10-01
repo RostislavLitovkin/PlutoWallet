@@ -1,5 +1,6 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Metadata.Base;
+using System.Runtime.CompilerServices;
 
 namespace UniqueryPlus.Nfts
 {
@@ -15,9 +16,14 @@ namespace UniqueryPlus.Nfts
             };
         }
 
-        public static async IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(IEnumerable<SubstrateClient> clients, string owner, uint limit = 25)
+        public static async IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(
+            IEnumerable<SubstrateClient> clients,
+            string owner,
+            uint limit = 25,
+            [EnumeratorCancellation] CancellationToken token = default
+        )
         {
-            CancellationToken token = default;
+            
             foreach (var client in clients)
             {
                 foreach(var nftType in GetNftTypeForClient(client))
@@ -51,7 +57,7 @@ namespace UniqueryPlus.Nfts
             {
                 PolkadotAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.PolkadotAssetHub_NftsPallet],
                 KusamaAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.KusamaAssetHub_NftsPallet],
-                _ => throw new NotImplementedException()
+                _ => []
             };
         }
     }
