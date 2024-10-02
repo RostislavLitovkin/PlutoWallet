@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">¨
+  <metadata>
+    <id></id>
+    <Version>0.1.2</Version>
+    <Authors>Rostislav Litovkin</Authors>
+    <description></description>
+  </metadata>
+
+  <references>
+    <reference file="../Speck/bin/Release/net8.0/Speck.dll" />
+    <reference file="../Stick/bin/Release/net8.0/Stick.dll" />
+    <reference file="../Generated/PolkadotAssetHub/PolkadotAssetHub.NetApi/bin/Release/net6.0/PolkadotAssetHub.NetApi.dll" />
+    <reference file="../Generated/KusamaAssetHub/KusamaAssetHub.NetApi/bin/Release/net6.0/KusamaAssetHub.NetApi.dll" />
+  </references>
+</package>
