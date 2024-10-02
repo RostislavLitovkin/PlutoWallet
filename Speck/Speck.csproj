@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <GraphQL Remove="CollectionStatsQuery.graphql" />
-    <GraphQL Remove="Query\CollectionStatsQuery.graphql" />
+    <GraphQL Remove="NftsForSaleQuery.graphql" />
   </ItemGroup>
 
   <ItemGroup>

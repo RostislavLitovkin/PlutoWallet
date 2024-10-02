@@ -1,5 +1,6 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Metadata.Base;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace UniqueryPlus.Nfts
@@ -16,49 +17,16 @@ namespace UniqueryPlus.Nfts
             };
         }
 
-        public static async IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(
+        public static IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(
             IEnumerable<SubstrateClient> clients,
             string owner,
-            uint limit = 25,
-            [EnumeratorCancellation] CancellationToken token = default
+            uint limit = 25
         )
         {
-            
-            foreach (var client in clients)
-            {
-                foreach(var nftType in GetNftTypeForClient(client))
-                {
-                    var isNotEmpty = true;
-                    byte[]? lastKey = null;
-
-                    while (isNotEmpty)
-                    {
-                        var nfts = await client.GetNftsOwnedByAsync(nftType, owner, limit, lastKey, token);
-
-                        if (nfts.Items.Count() == 0)
-                        {
-                            isNotEmpty = false;
-                        }
-
-                        foreach(var item in nfts.Items)
-                        {
-                            yield return item;
-                        }
-
-                        lastKey = nfts.LastKey;
-                    }
-                }
-            }
-        }
-
-        private static IEnumerable<NftTypeEnum> GetNftTypeForClient(SubstrateClient client)
-        {
-            return client switch
-            {
-                PolkadotAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.PolkadotAssetHub_NftsPallet],
-                KusamaAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.KusamaAssetHub_NftsPallet],
-                _ => []
-            };
+            return RecursionHelper.ToIAsyncEnumerableAsync(
+                clients,
+                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetNftsOwnedByAsync(clients.First(), type, owner, limit, lastKey, token)
+            );
         }
     }
 }

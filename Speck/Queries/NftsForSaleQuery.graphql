@@ -1,0 +1,36 @@
+query GetCollectionsForSale($offset: Int!, $limit: Int!) {
+  collectionEntities(where: {floor_gt: "0"}, limit: $limit, offset: $offset) {
+    floor
+    burned
+    createdAt
+    currentOwner
+    highestSale
+    id
+    issuer
+    max
+    meta {
+      name
+      image
+      description
+      attributes {
+        display
+        trait
+        value
+      }
+      animationUrl
+      type
+    }
+    updatedAt
+    supply
+    version
+    volume
+    royalty
+    nftCount
+  }
+}
+
+query GetTotalCountOfCollectionsForSale {
+  collectionEntitiesConnection(orderBy: baseUri_ASC, where: {floor_gt: "0"}) {
+    totalCount
+  }
+}

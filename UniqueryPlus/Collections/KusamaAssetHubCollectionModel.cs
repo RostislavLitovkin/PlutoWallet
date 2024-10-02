@@ -267,7 +267,8 @@ namespace UniqueryPlus.Collections
                     {
                         Type = MintTypeEnum.HolderOfCollection,
                         CollectionId = (U32)collectionMintConfig.MintSettings.MintType.Value2
-                    }
+                    },
+                    _ => throw new NotImplementedException()
                 },
                 MintPrice = collectionMintConfig.MintSettings.Price.GetValueOrNull(),
                 MintStartBlock = collectionMintConfig.MintSettings.StartBlock.GetValueOrNull(),

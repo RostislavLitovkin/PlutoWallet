@@ -6,6 +6,7 @@ using PolkadotAssetHub.NetApi.Generated;
 using UniqueryPlus.Collections;
 using UniqueryPlus;
 using System.Numerics;
+using UniqueryPlus.Nfts;
 
 namespace UniqueryPlusTests
 {
@@ -154,13 +155,56 @@ namespace UniqueryPlusTests
         }
 
         [Test]
-        public async Task TestGetNumberOfCollectionsAsync()
+        public async Task TestGetTotalCountOfCollectionsAsync()
         {
-            var numberOfCollections = await CollectionModel.GetNumberOfCollectionsAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, CancellationToken.None);
+            var numberOfCollections = await CollectionModel.GetTotalCountOfCollectionsAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, CancellationToken.None);
 
             Assert.That(numberOfCollections, Is.GreaterThan(200));
 
             Console.WriteLine(numberOfCollections);
+        }
+
+        [Test]
+        public async Task TestTotalCountOfCollectionsForSaleAsync()
+        {
+            var numberOfCollections = await CollectionModel.GetTotalCountOfCollectionsForSaleAsync(NftTypeEnum.PolkadotAssetHub_NftsPallet, CancellationToken.None);
+
+            Assert.That(numberOfCollections, Is.GreaterThan(100));
+
+            Console.WriteLine(numberOfCollections);
+        }
+
+        [Test]
+        public async Task TestCollectionsForSaleAsync()
+        {
+            var collectionsEnumerable = CollectionModel.GetCollectionsForSaleAsync([client], 3);
+
+            var enumerator = collectionsEnumerable.GetAsyncEnumerator();
+
+            for (uint i = 0; i < 10; i++)
+            {
+                if (await enumerator.MoveNextAsync())
+                {
+                    var collection = enumerator.Current;
+                    Console.WriteLine($"{collection.CollectionId} - {collection.Metadata?.Name} owned by {collection.Owner}");
+                    Console.WriteLine("Image: " + collection.Metadata?.Image);
+                }
+            }
+        }
+
+        [Test]
+        public async Task TestRandomCollectionsForSaleAsync()
+        {
+            var randomCollections1 = await CollectionModel.GetRandomCollectionsForSaleAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 3);
+
+            var randomCollections2 = await CollectionModel.GetRandomCollectionsForSaleAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 3);
+
+            foreach (var collection in randomCollections1)
+            {
+                Console.WriteLine($"{collection.CollectionId} - {collection.Metadata?.Name} owned by {collection.Owner}");
+            }
+
+            Assert.That(randomCollections1.First().Metadata?.Name, Is.Not.EqualTo(randomCollections2.First().Metadata?.Name));
         }
     }
 }

@@ -267,7 +267,8 @@ namespace UniqueryPlus.Collections
                     {
                         Type = MintTypeEnum.HolderOfCollection,
                         CollectionId = (U32)collectionMintConfig.MintSettings.MintType.Value2
-                    }
+                    },
+                    _ => throw new NotImplementedException()
                 },
                 MintPrice = collectionMintConfig.MintSettings.Price.GetValueOrNull(),
                 MintStartBlock = collectionMintConfig.MintSettings.StartBlock.GetValueOrNull(),
@@ -318,9 +319,56 @@ namespace UniqueryPlus.Collections
             return NftsCalls.Create(multiAddress, config);
         }
 
-        internal static async Task<uint> GetNumberOfCollectionsAsync(SubstrateClientExt client, CancellationToken token)
+        internal static async Task<uint> GetTotalCountOfCollectionsAsync(SubstrateClientExt client, CancellationToken token)
         {
             return await client.NftsStorage.NextCollectionId(null, token);
         }
+
+        internal static async Task<uint> GetTotalCountOfCollectionsForSaleAsync(CancellationToken token)
+        {
+            var speckClient = Indexers.GetSpeckClient();
+
+
+            var result = await speckClient.GetTotalCountOfCollectionsForSale.ExecuteAsync();
+
+            result.EnsureNoErrors();
+
+            if (result.Data is null)
+            {
+                return 0u;
+            }
+
+            return (uint)result.Data.CollectionEntitiesConnection.TotalCount;
+        }
+
+        internal static async Task<IEnumerable<ICollectionBase>> GetCollectionsForSaleAsync(SubstrateClientExt client, int limit = 25, int offset = 0, CancellationToken token = default)
+        {
+            var speckClient = Indexers.GetSpeckClient();
+
+            var result = await speckClient.GetCollectionsForSale.ExecuteAsync(offset, limit);
+
+            result.EnsureNoErrors();
+
+            if (result.Data is null)
+            {
+                return [];
+            }
+
+            return result.Data.CollectionEntities.Select(collectionEntity =>
+            {
+                return new PolkadotAssetHubNftsPalletCollection(client)
+                {
+                    CollectionId = uint.Parse(collectionEntity.Id),
+                    Owner = collectionEntity.CurrentOwner,
+                    NftCount = (uint)collectionEntity.NftCount,
+                    Metadata = new CollectionMetadata
+                    {
+                        Name = collectionEntity.Meta?.Name ?? "Unknown",
+                        Description = collectionEntity.Meta?.Description ?? "",
+                        Image = collectionEntity.Meta?.Image ?? ""
+                    }
+                };
+            });
+        }   
     }
 }
