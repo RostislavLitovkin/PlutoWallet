@@ -6,7 +6,6 @@ using PolkadotAssetHub.NetApi.Generated;
 using UniqueryPlus.Collections;
 using UniqueryPlus;
 using System.Numerics;
-using UniqueryPlus.Nfts;
 
 namespace UniqueryPlusTests
 {

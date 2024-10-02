@@ -20,6 +20,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+
+    - name: Restore dependencies
+      run: nuget restore $SOLUTION
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
@@ -27,12 +33,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
-
-    - name: Build
-      run: dotnet build $SOLUTION --configuration Release --no-restore
       
+    - name: Pack
+      run: nuget pack -Prop Configuration=Release -IncludeReferencedProjects -OutputFileNamesWithoutVersion
+
     - name: Publish Nuget
-      uses: brandedoutcast/publish-nuget@v2.5.2  
+      uses: rohith/publish-nuget@v2
       with:
        PROJECT_FILE_PATH: ./UniqueryPlus/UniqueryPlus.csproj
        NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
