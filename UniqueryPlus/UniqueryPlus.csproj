@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1.1</Version>
+    <Version>0.1.3</Version>
     <Authors>Rostislav Litovkin</Authors>
     <Product>UniqueryPlus</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -16,10 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Generated\KusamaAssetHub\KusamaAssetHub.NetApi\KusamaAssetHub.NetApi.csproj" />
-    <ProjectReference Include="..\Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj" />
-    <ProjectReference Include="..\Speck\Speck.csproj" />
-    <ProjectReference Include="..\Stick\Stick.csproj" />
+    <PackageReference Include="KusamaAssetHub.NetApi" Version="0.1.3" />
+    <PackageReference Include="PolkadotAssetHub.NetApi" Version="0.1.3" />
+    <PackageReference Include="UniqueryPlus.Speck" Version="0.1.3" />
+    <PackageReference Include="UniqueryPlus.Stick" Version="0.1.3" />
   </ItemGroup>
-
 </Project>

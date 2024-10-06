@@ -9,8 +9,7 @@ on:
     - master
     
 jobs:
-  build:
-
+  publish-uniquery-plus:
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'UniqueryPlus.sln'
@@ -33,12 +32,12 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
-      
-    - name: Pack
-      run: nuget pack -Prop Configuration=Release -IncludeReferencedProjects -OutputFileNamesWithoutVersion
 
-    - name: Publish Nuget
-      uses: rohith/publish-nuget@v2
+    - name: Build
+      run: dotnet build $SOLUTION --configuration Release --no-restore
+    
+    - name: Publish UniqueryPlus
+      uses: brandedoutcast/publish-nuget@v2.5.2
       with:
        PROJECT_FILE_PATH: ./UniqueryPlus/UniqueryPlus.csproj
        NUGET_KEY: ${{secrets.NUGET_API_KEY}} 

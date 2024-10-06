@@ -4,12 +4,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Authors>Rostislav Litovkin</Authors>
+    <Product>UniqueryPlus.Stick</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.3</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <GraphQL Remove="CollectionStatsQuery.graphql" />
-    <GraphQL Remove="NftsForSaleQuery.graphql" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="StrawberryShake.Server" Version="14.0.0-rc.2" />

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Speck;
+using UniqueryPlus.Speck;
 
 namespace UniqueryPlusTests
 {
