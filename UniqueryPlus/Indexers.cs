@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Speck;
-using Stick;
+using UniqueryPlus.Speck;
+using UniqueryPlus.Stick;
 
 namespace UniqueryPlus
 {

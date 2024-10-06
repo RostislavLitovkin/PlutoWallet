@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlusTests", "Unique
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Generated", "Generated", "{A4681CD2-F701-4BD8-8A07-9F5C25531D68}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Speck", "Speck\Speck.csproj", "{84490EAA-4403-4654-8A85-5FA031157B5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlus.Speck", "Speck\UniqueryPlus.Speck.csproj", "{84490EAA-4403-4654-8A85-5FA031157B5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stick", "Stick\Stick.csproj", "{38066A4E-645F-4D33-BF9A-34239F8DA9BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlus.Stick", "Stick\UniqueryPlus.Stick.csproj", "{38066A4E-645F-4D33-BF9A-34239F8DA9BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolkadotAssetHub.NetApi", "Generated\PolkadotAssetHub\PolkadotAssetHub.NetApi\PolkadotAssetHub.NetApi.csproj", "{20DA4C53-74D1-4A6A-B6F2-45FDDA71A146}"
 EndProject
