@@ -52,6 +52,7 @@ namespace UniqueryPlus.Nfts
         {
             return await KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
         }
+        public bool IsTransferable { get; set; } = true;
         public Method Transfer(string recipientAddress)
         {
             var accountId = new AccountId32();
@@ -62,7 +63,7 @@ namespace UniqueryPlus.Nfts
 
             return NftsCalls.Transfer(new U32((uint)CollectionId), new U32((uint)Id), multiAddress);
         }
-
+        public bool IsBurnable { get; set; } = true;
         public Method Burn()
         {
             return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));

@@ -49,7 +49,7 @@ namespace UniqueryPlusTests
         }
 
         [Test]
-        public async Task TestGetNftsByOwned()
+        public async Task TestGetNftsByOwnedAsync()
         {
             var first3Nfts = await NftModel.GetNftsOwnedByAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, address, 3, null, CancellationToken.None);
 

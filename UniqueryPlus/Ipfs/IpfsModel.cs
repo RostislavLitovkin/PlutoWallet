@@ -11,23 +11,21 @@ namespace UniqueryPlus.Ipfs
 
             return JsonConvert.DeserializeObject<T>(metadataJson);
         }
-
-        private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
-        public static string ToIpfsLink(string ipfsLink)
+        public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.KODA_IPFS_ENDPOINT)
         {
             if (ipfsLink.Contains("ipfs//"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
             }
 
             if (ipfsLink.Contains("ipfs/"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs/".Length + ipfsLink.IndexOf("ipfs/"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs/".Length + ipfsLink.IndexOf("ipfs/"));
             }
 
             if (ipfsLink.Contains("ipfs://"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
             }
 
             if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://"))
@@ -36,7 +34,7 @@ namespace UniqueryPlus.Ipfs
                 return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
 
-            return IPFS_ENDPOINT + RemoveNonHexadecimalCharacters(ipfsLink);
+            return ipfsEndpoint + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
         public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)

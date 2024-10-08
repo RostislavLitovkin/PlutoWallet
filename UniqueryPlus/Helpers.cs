@@ -152,5 +152,13 @@ namespace UniqueryPlus
                 return value.Value;
             return null;
         }
+
+        public static byte[] RemoveCompactIntegerPrefix(byte[] bytes)
+        {
+            int p = 0;
+            CompactInteger.Decode(bytes, ref p);
+
+            return bytes[p..];
+        }
     }
 }
