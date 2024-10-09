@@ -14,7 +14,7 @@ using KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public class KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable
+    public record KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable
     {
         private SubstrateClientExt client;
 
@@ -35,7 +35,7 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
         }
     }
-    public class KusamaAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    public record KusamaAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.KusamaAssetHub_NftsPallet;

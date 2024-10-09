@@ -14,7 +14,7 @@ using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public class PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable
+    public record PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable
     {
         private SubstrateClientExt client;
 
@@ -35,7 +35,7 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
         }
     }
-    public class PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    public record PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;

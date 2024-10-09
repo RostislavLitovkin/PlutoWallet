@@ -18,7 +18,7 @@ using Newtonsoft.Json.Linq;
 
 namespace UniqueryPlus.Nfts
 {
-    public class UniqueNftFull : UniqueNft
+    public record UniqueNftFull : UniqueNft
     {
         private SubstrateClientExt client;
 
@@ -44,7 +44,7 @@ namespace UniqueryPlus.Nfts
 
         }
     }
-    public class UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable
+    public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.Unique;

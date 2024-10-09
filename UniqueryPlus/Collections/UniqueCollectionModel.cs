@@ -13,7 +13,7 @@ using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 
 namespace UniqueryPlus.Collections
 {
-    public class UniqueCollectionFull : UniqueCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
+    public record UniqueCollectionFull : UniqueCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
     {
         private SubstrateClientExt client;
         public required BigInteger HighestSale { get; set; }
@@ -36,7 +36,7 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    public class UniqueCollection : ICollectionBase, IUniqueMarketplaceLink, ICollectionMintConfig
+    public record UniqueCollection : ICollectionBase, IUniqueMarketplaceLink, ICollectionMintConfig
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.KusamaAssetHub_NftsPallet;
