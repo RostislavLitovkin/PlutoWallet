@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using UniqueryPlus.Speck;
 using UniqueryPlus.Stick;
+using UniqueryPlus.UniqueSubquery;
 
 namespace UniqueryPlus
 {
@@ -30,6 +31,19 @@ namespace UniqueryPlus
             IServiceProvider services = serviceCollection.BuildServiceProvider();
 
             return services.GetRequiredService<IStick>();
+        }
+
+        public static IUniqueSubquery GetUniqueSubqueryClient()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection
+                .AddUniqueSubquery()
+                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://api-unique.uniquescan.io/v1/graphql"));
+
+            IServiceProvider services = serviceCollection.BuildServiceProvider();
+
+            return services.GetRequiredService<IUniqueSubquery>();
         }
     }
 }

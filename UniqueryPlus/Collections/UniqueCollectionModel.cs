@@ -10,6 +10,7 @@ using Unique.NetApi.Generated.Model.up_data_structs;
 using UniqueryPlus.Ipfs;
 using Unique.NetApi.Generated.Model.sp_core.crypto;
 using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
+using Newtonsoft.Json;
 
 namespace UniqueryPlus.Collections
 {
@@ -159,7 +160,7 @@ namespace UniqueryPlus.Collections
                                 },
                                 CollectionId = null
                             },
-                            NftMaxSuply = details.Limits.TokenLimit.OptionFlag ? details.Limits.TokenLimit.Value : null,
+                            NftMaxSuply = details.Limits.TokenLimit.OptionFlag ? (uint)details.Limits.TokenLimit.Value : null,
                             MintPrice = null,
                             MintEndBlock = null,
                             MintStartBlock = null
@@ -208,7 +209,6 @@ namespace UniqueryPlus.Collections
                 return collectionDetails;
             });
         }
-
         internal static async Task<IEnumerable<CollectionMetadata?>> GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(SubstrateClientExt client, IEnumerable<string> collectionIdKeys, CancellationToken token)
         {
             CollectionId uniqueCollectionId = new CollectionId();
@@ -232,13 +232,13 @@ namespace UniqueryPlus.Collections
                 var collectionProperties = new PropertiesT1();
                 collectionProperties.Create(change[1]);
 
-
                 var ipfsCollectionProperty = collectionProperties.Map.Value.Value.Value.Value.Where(collectionProperty => new string[] { "baseURI", "coverPicture.ipfsCid", "collectionInfo" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)collectionProperty.Value[0]).Value.Encode())))).First();
 
                 var ipfsLink = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)ipfsCollectionProperty.Value[0]).Value.Encode())) switch
                 {
                     "coverPicture.ipfsCid" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
                     "baseURI" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
+                    "collectionInfo" => JsonConvert.DeserializeObject<UniqueCollectionMetadataV2>(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())))?.CoverImage.Url,
                     // Add option for Metadata V2
                     _ => null
                 };
@@ -261,12 +261,34 @@ namespace UniqueryPlus.Collections
             return metadatas;
         }
 
+        internal static async Task<int> GetTotalCountOfNftsInCollectionOnChainAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
+        {
+            var fullKeys = await UniqueNftModel.GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token);
+
+            return fullKeys.Count();
+        }
+
         internal static async Task<IEnumerable<uint>> GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(SubstrateClientExt client, IEnumerable<BigInteger> collectionIds, CancellationToken token)
         {
             List<uint> nftCounts = new List<uint>();
+            var uniqueSubqueryClient = Indexers.GetUniqueSubqueryClient();
+
             foreach (BigInteger collectionId in collectionIds)
             {
-                nftCounts.Add((uint)await UniqueNftModel.GetTotalCountOfNftsInCollectionAsync(client, (uint)collectionId, token));
+                var result = await uniqueSubqueryClient.GetNftsInCollection.ExecuteAsync((double)collectionId, 0, 0);
+
+                if (
+                    result is null ||
+                    result.Errors.Count > 0 ||
+                    result.Data is null
+                )
+                {
+                    // Fallback to on-chain count (Very slow and inefficient)
+                    nftCounts.Add((uint)await GetTotalCountOfNftsInCollectionOnChainAsync(client, (uint)collectionId, token));
+                    continue;
+                }
+
+                nftCounts.Add((uint)result.Data.Tokens.Count);
             }
 
             return nftCounts;

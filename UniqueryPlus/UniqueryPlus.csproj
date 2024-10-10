@@ -24,5 +24,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Generated\Unique\Unique.NetApi\Unique.NetApi.csproj" />
+    <ProjectReference Include="..\UniqueryPlus.UniqueSubquery\UniqueryPlus.UniqueSubquery.csproj" />
   </ItemGroup>
 </Project>

@@ -94,5 +94,22 @@ namespace UniqueryPlusTests
             #endregion
         }
 
+        [Test]
+        [TestCase(725u, "Lolo7406", "Test ", "https://ipfs.unique.network/ipfs/QmdTcA8BZ46miup22PpSLZuy3VhgkYjXLZc9CANWLkViG1", 2u, "5DPvknj5rVqKzdCM7F5JQedejSWaNfDmc9Yq6rfQQ2W8UjoL")]
+        [TestCase(763u, "Cute Animal Fashionverse", "Cute Animal Fashionverse", "https://ipfs.unique.network/ipfs/QmSKBCArJN36f1f3Z5RerUoaG8ezoXghjJzxaPFJqh2M7u", 6u, "5FsmmJTntP48C4LxhL4NgmHmpsWdHRkYuzbMLimd66mwZ7cL")]
+        [TestCase(470u, "Curso DeFi en Polkadot v1 2024", "Certificado de participación en el curso DeFi en Polkadot, dictado el primer trimestre del 2024, con una duración de 10 sesiones teóricas y prácticas. Se estudiaron los protocolos DeFi en el ecosistema Polkadot.", "https://ipfs.unique.network/ipfs/QmStAiwAGN5ZKDefmuL2gXNxffDn3hwi3wEEJPd2FdK1hh", 77u, "5FHMbBzwFaXRygShrLLGVcT4siWwYAekfDibYKJkfQ58h9Tc")]
+        public async Task TestGetCollectionByCollectionIdAsync(uint collectionId, string name, string description, string ipfsImage, uint nftCount, string owner)
+        {
+            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.Unique, collectionId, CancellationToken.None);
+
+            Assert.That(collection, Is.Not.Null);
+
+            Assert.That(collection.Metadata?.Name, Is.EqualTo(name));
+            Assert.That(collection.Metadata?.Description, Is.EqualTo(description));
+            Assert.That(collection.Metadata?.Image, Is.EqualTo(ipfsImage));
+            Assert.That(collection.CollectionId, Is.EqualTo((BigInteger)collectionId));
+            Assert.That(collection.NftCount, Is.EqualTo(nftCount));
+            Assert.That(collection.Owner, Is.EqualTo(owner));
+        }
     }
 }

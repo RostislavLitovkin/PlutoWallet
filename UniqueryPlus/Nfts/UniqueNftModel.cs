@@ -104,7 +104,7 @@ namespace UniqueryPlus.Nfts
     internal class UniqueNftModel
     {
 
-        private static async Task<JArray> GetNftsInCollectionFullKeysAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
+        internal static async Task<JArray> GetNftsInCollectionFullKeysAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage + Twox64Concat(u32)
             var keyPrefixLength = 90;
@@ -119,12 +119,6 @@ namespace UniqueryPlus.Nfts
 
             return await client.State.GetKeysPagedAsync(keyPrefix, 1000, null, string.Empty, token);
 
-        }
-        internal static async Task<int> GetTotalCountOfNftsInCollectionAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
-        {
-            var fullKeys = await GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token);
-
-            return fullKeys.Count();
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
