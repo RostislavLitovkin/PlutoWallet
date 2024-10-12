@@ -14,11 +14,12 @@ using KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public record KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable
+    public record KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable, INftBuyable
     {
         private SubstrateClientExt client;
 
         public required BigInteger? Price { get; set; }
+        public required bool IsForSale { get; set; }
 
         public KusamaAssetHubNftsPalletNftFull(SubstrateClientExt client) : base(client)
         {
@@ -70,13 +71,16 @@ namespace UniqueryPlus.Nfts
         }
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
+            var price = await KusamaAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
+
             return new KusamaAssetHubNftsPalletNftFull(client)
             {
                 Owner = Owner,
                 CollectionId = CollectionId,
                 Id = Id,
                 Metadata = Metadata,
-                Price = await KusamaAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token)
+                Price = price,
+                IsForSale = price.HasValue,
             };
         }
     }

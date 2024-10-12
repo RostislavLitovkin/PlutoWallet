@@ -6,7 +6,6 @@ using System.Numerics;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using Unique.NetApi.Generated;
-using Unique.NetApi.Generated.Model.sp_runtime.multiaddress;
 using Unique.NetApi.Generated.Model.sp_core.crypto;
 using Unique.NetApi.Generated.Storage;
 using Unique.NetApi.Generated.Model.pallet_evm.account;
@@ -15,34 +14,37 @@ using UniqueryPlus.Ipfs;
 using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Unique.NetApi.Generated.Model.pallet_nonfungible;
 using Newtonsoft.Json.Linq;
+using Nethereum.Web3;
+using UniqueryPlus.EVM;
+using Nethereum.Contracts;
 
 namespace UniqueryPlus.Nfts
 {
-    public record UniqueNftFull : UniqueNft
+    public record UniqueNftFull : UniqueNft, INftEVMSellable, INftEVMBuyableWithReceiver
     {
         private SubstrateClientExt client;
 
         public required BigInteger? Price { get; set; }
+        public required bool IsForSale { get; set; }
 
         public UniqueNftFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
         }
 
-        public Method Sell(BigInteger price)
-        {
-            var whitelisted_buyer = new BaseOpt<EnumMultiAddress>();
-            //return UniqueCalls.
-            //return NftsCalls.SetPrice(new U32((uint)CollectionId), new U32((uint)Id), new BaseOpt<U128>(new U128(price)), whitelisted_buyer);
-            throw new NotImplementedException();
+        public Method Sell(BigInteger price, string sender) => EVM.Helpers.GetUniqueEVMCallMethod(
+            sender,
+            UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS,
+            UniqueNftModel.GetSellEVMFunctionEncoded((uint)CollectionId, (uint)Id, price, sender),
+            0
+        );
 
-        }
-        public Method Buy()
-        {
-            //return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
-            throw new NotImplementedException();
-
-        }
+        public Method Buy(string receiverAddress, string sender) => EVM.Helpers.GetUniqueEVMCallMethod(
+            sender,
+            UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS,
+            UniqueNftModel.GetBuyEVMFunctionEncoded((uint)CollectionId, (uint)Id, receiverAddress),
+            Price
+        );
     }
     public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable
     {
@@ -57,15 +59,8 @@ namespace UniqueryPlus.Nfts
         {
             this.client = client;
         }
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token) => await UniqueCollectionModel.GetCollectionByCollectionIdAsync(client, (uint)CollectionId, token);
 
-        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
-
-        {
-            throw new NotImplementedException();
-            //return await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
-        }
         public required bool IsTransferable { get; set; }
         public Method Transfer(string recipientAddress)
         {
@@ -94,14 +89,23 @@ namespace UniqueryPlus.Nfts
 
             return UniqueCalls.BurnItem(collectionId, id, new U128(0));
         }
-#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        public async Task<INftBase> GetFullAsync(CancellationToken token)
-#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+        public async Task<INftBase> GetFullAsync(CancellationToken _token)
         {
-            return this;
+            var price = await UniqueNftModel.GetNftPriceAsync((uint)CollectionId, (uint)Id);
+            return new UniqueNftFull(client)
+            {
+                Owner = Owner,
+                CollectionId = CollectionId,
+                Id = Id,
+                Metadata = Metadata,
+                IsTransferable = IsTransferable,
+                IsBurnable = IsBurnable,
+                Price = price,
+                IsForSale = price.HasValue,
+            };
         }
     }
-    internal class UniqueNftModel
+    public class UniqueNftModel
     {
 
         internal static async Task<JArray> GetNftsInCollectionFullKeysAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
@@ -138,7 +142,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the CollectionId and NftId keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsOwnedByAsync(SubstrateClientExt client, string owner, uint limit, byte[]? lastKey, CancellationToken token)
@@ -184,7 +188,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString()).Where(p => p.Length == substrateKeyPrefixLength && p.Substring(124, 64) == encodedAccountId).Select(p => p.Substring(Constants.BASE_STORAGE_KEY_LENGTH, 24) + p.Substring(188, 24));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsInCollectionOwnedByAsync(SubstrateClientExt client, uint collectionId, string owner, uint limit, byte[]? lastKey, CancellationToken token)
@@ -226,10 +230,10 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString()).Select(p => p.Substring(Constants.BASE_STORAGE_KEY_LENGTH, 24) + p.Substring(substrateKeyPrefixLength, 24));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }
 
-        internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, string lastKey, CancellationToken token)
+        internal static async Task<RecursiveReturn<INftBase>> GetNftsByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, string lastKey, CancellationToken token)
         {
             if (idKeys.Count() == 0)
             {
@@ -399,6 +403,50 @@ namespace UniqueryPlus.Nfts
             };
 
             return metadatas;
+        }
+
+        public static async Task<BigInteger?> GetNftPriceAsync(uint collectionId, uint tokenId)
+        {
+            var web3 = new Web3(Constants.UNIQUE_EVM_RPC);
+            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS);
+
+            var getOrderFunction = new GetOrderFunction();
+            getOrderFunction.CollectionId = collectionId;
+            getOrderFunction.TokenId = tokenId;
+            var getOrderOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetOrderFunction, GetOrderOutputDTO>(getOrderFunction);
+
+            return getOrderOutputDTO.ReturnValue1.Price == 0 ? null : getOrderOutputDTO.ReturnValue1.Price;
+        }
+
+        public static byte[] GetBuyEVMFunctionEncoded(uint collectionId, uint id, string receiverAddress)
+        {
+            var web3 = new Web3(Constants.UNIQUE_EVM_RPC);
+            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS);
+
+            var buyFunction = new BuyFunction();
+            buyFunction.CollectionId = collectionId;
+            buyFunction.TokenId = id;
+            buyFunction.Amount = 1;
+
+            buyFunction.Buyer = EVM.Helpers.ToCrossAddress(receiverAddress);
+
+            return buyFunction.GetCallData();
+        }
+
+        public static byte[] GetSellEVMFunctionEncoded(uint collectionId, uint id, BigInteger price, string sellerAddress)
+        {
+            var web3 = new Web3(Constants.UNIQUE_EVM_RPC);
+            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS);
+
+            var putFunction = new PutFunction();
+            putFunction.CollectionId = collectionId;
+            putFunction.TokenId = id;
+            putFunction.Price = price;
+            putFunction.Currency = 0;
+            putFunction.Amount = 1;
+            putFunction.Seller = EVM.Helpers.ToCrossAddress(sellerAddress);
+
+            return putFunction.GetCallData();
         }
     }
 }

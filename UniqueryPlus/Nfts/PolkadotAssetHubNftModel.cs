@@ -14,11 +14,12 @@ using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public record PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable
+    public record PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable, INftBuyable
     {
         private SubstrateClientExt client;
 
         public required BigInteger? Price { get; set; }
+        public required bool IsForSale { get; set; }
 
         public PolkadotAssetHubNftsPalletNftFull(SubstrateClientExt client) : base(client)
         {
@@ -72,13 +73,16 @@ namespace UniqueryPlus.Nfts
         }
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
+            var price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
+
             return new PolkadotAssetHubNftsPalletNftFull(client)
             {
                 Owner = Owner,
                 CollectionId = CollectionId,
                 Id = Id,
                 Metadata = Metadata,
-                Price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token)
+                Price = price,
+                IsForSale = price.HasValue,
             };
         }
     }

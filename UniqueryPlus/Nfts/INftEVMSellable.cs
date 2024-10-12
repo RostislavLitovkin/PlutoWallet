@@ -3,9 +3,9 @@ using System.Numerics;
 
 namespace UniqueryPlus.Nfts
 {
-    public interface INftSellable
+    public interface INftEVMSellable
     {
         public BigInteger? Price { get; set; }
-        public Method Sell(BigInteger price);
+        public Method Sell(BigInteger price, string sender);
     }
 }
