@@ -11,3 +11,7 @@ directive @enumValue(value: String!) on ENUM_VALUE
 directive @rename(name: String!) on INPUT_FIELD_DEFINITION | INPUT_OBJECT | ENUM | ENUM_VALUE
 
 extend schema @key(fields: "id")
+
+extend scalar Any
+  @serializationType(name: "global::System.Object")
+  @runtimeType(name: "global::System.Text.Json.JsonElement")

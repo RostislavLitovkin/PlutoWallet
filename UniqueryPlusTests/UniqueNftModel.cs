@@ -27,9 +27,10 @@ namespace UniqueryPlusTests
 
 
         [Test]
-        public async Task TestGetNftsByOwnedAsync()
+        [Ignore("This test is very slow")]
+        public async Task TestGetNftsByOwnedOnChainAsync()
         {
-            var first3Nfts = await NftModel.GetNftsOwnedByAsync(client, NftTypeEnum.Unique, address, 3, null, CancellationToken.None);
+            var first3Nfts = await NftModel.GetNftsOwnedByOnChainAsync(client, NftTypeEnum.Unique, address, 3, null, CancellationToken.None);
 
             Assert.That(first3Nfts.Items.Count(), Is.EqualTo(3));
 
@@ -48,5 +49,26 @@ namespace UniqueryPlusTests
 
             Assert.That(sellable.Price, Is.Null);
         }
+
+        [Test]
+        [TestCase("5DkMtAbCBBBkycT5Gowo2ddkkmf7nVV1TW62fVZeSDLqRtEc")]
+        [TestCase(address)]
+        public async Task TestGetNftsByOwnedAsync(string address)
+        {
+            var nftsEnumerable = NftModel.GetNftsOwnedByAsync([client], address, 3);
+
+            var enumerator = nftsEnumerable.GetAsyncEnumerator();
+
+            for (uint i = 0; i < 10; i++)
+            {
+                if (await enumerator.MoveNextAsync())
+                {
+                    var nft = enumerator.Current;
+                    Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
+                    Console.WriteLine("Image: " + nft.Metadata?.Image);
+                }
+            }
+        }
+
     }
 }

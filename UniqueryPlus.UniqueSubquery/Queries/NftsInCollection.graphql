@@ -8,6 +8,10 @@ query GetNftsInCollection($collectionId: Float!, $limit: Int!, $offset: Int!) {
     count
     timestamp
     data {
+      collection {
+        owner_can_destroy,
+        owner_can_transfer
+      }
       animation_details
       animation_url
       attributes
@@ -42,7 +46,6 @@ query GetNftsInCollection($collectionId: Float!, $limit: Int!, $offset: Int!) {
       owner_normalized
       parent_id
       properties
-      royalties
       schema_v2
       token_id
       token_name

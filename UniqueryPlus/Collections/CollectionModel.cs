@@ -24,7 +24,8 @@ namespace UniqueryPlus.Collections
         {
             return RecursionHelper.ToIAsyncEnumerableAsync(
                 clients,
-                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetCollectionsOwnedByAsync(clients.First(), type, owner, limit, lastKey, token)
+                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetCollectionsOwnedByAsync(clients.First(), type, owner, limit, lastKey, token),
+                limit
             );
         }
 

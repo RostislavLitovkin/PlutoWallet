@@ -17,6 +17,7 @@ using Newtonsoft.Json.Linq;
 using Nethereum.Web3;
 using UniqueryPlus.EVM;
 using Nethereum.Contracts;
+using Newtonsoft.Json;
 
 namespace UniqueryPlus.Nfts
 {
@@ -145,7 +146,7 @@ namespace UniqueryPlus.Nfts
             return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }
 
-        internal static async Task<RecursiveReturn<INftBase>> GetNftsOwnedByAsync(SubstrateClientExt client, string owner, uint limit, byte[]? lastKey, CancellationToken token)
+        internal static async Task<RecursiveReturn<INftBase>> GetNftsOwnedByOnChainAsync(SubstrateClientExt client, string owner, uint limit, byte[]? lastKey, CancellationToken token)
         {
             var accountId32 = new AccountId32();
             accountId32.Create(Utils.GetPublicKeyFrom(owner));
@@ -189,6 +190,37 @@ namespace UniqueryPlus.Nfts
             var idKeys = fullKeys.Select(p => p.ToString()).Where(p => p.Length == substrateKeyPrefixLength && p.Substring(124, 64) == encodedAccountId).Select(p => p.Substring(Constants.BASE_STORAGE_KEY_LENGTH, 24) + p.Substring(188, 24));
 
             return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+        }
+
+        internal static async Task<IEnumerable<INftBase>> GetNftsOwnedByAsync(SubstrateClientExt client, string owner, int limit, int offset, CancellationToken token)
+        {
+            var uniqueSubqueryClient = Indexers.GetUniqueSubqueryClient();
+
+            var result = await uniqueSubqueryClient.GetNftsOwnedBy.ExecuteAsync(owner, limit, offset);
+
+            if (
+                result is null ||
+                result.Errors.Count > 0 ||
+                result.Data is null
+            )
+            {
+                throw new Exception("Indexer failed us :)");
+            }
+
+            return result.Data.Tokens.Data?.Select(token => new UniqueNft(client)
+            {
+                CollectionId = token.Collection_id,
+                Id = token.Token_id,
+                Owner = token.Owner_normalized,
+                IsBurnable = token.Collection?.Owner_can_destroy ?? true,
+                IsTransferable = token.Collection?.Owner_can_transfer ?? true,
+                Metadata = new NftMetadata
+                {
+                    Name = token.Name,
+                    Description = token.Description,
+                    Image = token.Image
+                },
+            }) ?? [];
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsInCollectionOwnedByAsync(SubstrateClientExt client, uint collectionId, string owner, uint limit, byte[]? lastKey, CancellationToken token)

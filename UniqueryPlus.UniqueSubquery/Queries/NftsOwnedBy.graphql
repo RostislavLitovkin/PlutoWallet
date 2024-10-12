@@ -8,10 +8,14 @@ query GetNftsOwnedBy($ownerNormalized: String, $limit: Int, $offset: Int) {
     count
     timestamp
     data {
+      collection {
+        owner_can_destroy,
+        owner_can_transfer
+        
+      }
       animation_details
       animation_url
       attributes
-      attributes_v1
       background_color
       bundle_created
       burned
@@ -32,18 +36,14 @@ query GetNftsOwnedBy($ownerNormalized: String, $limit: Int, $offset: Int) {
       external_url
       image
       image_details
-      image_v1
       is_sold
       locale
-      media
       name
       nested
       owner
       owner_normalized
       parent_id
       properties
-      royalties
-      schema_v2
       token_id
       token_name
       token_prefix
