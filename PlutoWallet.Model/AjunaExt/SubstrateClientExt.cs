@@ -172,6 +172,8 @@ namespace PlutoWallet.Model.AjunaExt
                 EndpointEnum.Opal => new Opal.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
                 EndpointEnum.Bajun => new Bajun.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
                 EndpointEnum.PolkadotPeople => new PolkadotPeople.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.KusamaAssetHub => new KusamaAssetHub.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
+                EndpointEnum.Unique => new Unique.NetApi.Generated.SubstrateClientExt(websocket, ChargeTransactionPayment.Default()),
 
                 _ => new SubstrateClient(websocket, ChargeTransactionPayment.Default()),
             };

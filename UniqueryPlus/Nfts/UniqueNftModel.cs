@@ -17,7 +17,6 @@ using Newtonsoft.Json.Linq;
 using Nethereum.Web3;
 using UniqueryPlus.EVM;
 using Nethereum.Contracts;
-using Newtonsoft.Json;
 
 namespace UniqueryPlus.Nfts
 {

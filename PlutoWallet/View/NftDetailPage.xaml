@@ -20,9 +20,9 @@
                 <nft:NftImageView ImageSource="{Binding Image}" />
 
                 <nft:NftTitleView Name="{Binding Name}"
-                                      Endpoint="{Binding Endpoint}"
-                                      KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
-                                      AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
+                                  Endpoint="{Binding Endpoint}"
+                                  KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
+                                  AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
 

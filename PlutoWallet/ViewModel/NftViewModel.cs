@@ -31,11 +31,7 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
-            var limit = 10u;
-            foreach (var client in AjunaClientModel.Clients)
-            {
-
-            }
+            var limit = 25u;
 
             var clients = AjunaClientModel.Clients.Values.Where(_client => true).Select(async client => await client.Task).Select(t => t.Result.SubstrateClient);
 
@@ -54,7 +50,7 @@ namespace PlutoWallet.ViewModel
             ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
             foreach (ICollectionBase collection in uniqueryPlusCollections)
             {
-                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
+                //collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
             }
             #endregion
             //var uniqueryCollectionEnumerable = await UniqueryPlus.Collections.CollectionModel.(KeysModel.GetSubstrateKey());
@@ -74,10 +70,12 @@ namespace PlutoWallet.ViewModel
             ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
             foreach (INftBase nft in uniqueryPlusNfts)
             {
-                nfts.Add(Model.NftModel.ToNftWrapper(nft));
+                //nfts.Add(Model.NftModel.ToNftWrapper(nft));
             }
 
             #endregion
+
+
             try
             {
                 var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
@@ -94,7 +92,7 @@ namespace PlutoWallet.ViewModel
             }
             catch(Exception ex)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Nfts failed here :((");
                 Console.WriteLine(ex);
             }
             Nfts = nfts;

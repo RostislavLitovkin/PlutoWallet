@@ -5,11 +5,19 @@ namespace UniqueryPlus.Ipfs
 {
     public class IpfsModel
     {
-        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token)
+        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token) where T : IMetadataImage
         {
             var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
 
-            return JsonConvert.DeserializeObject<T>(metadataJson);
+            var metadata = JsonConvert.DeserializeObject<T>(metadataJson);
+
+            if (metadata is null)
+            {
+                return metadata;
+            }
+
+            metadata.Image = metadata.Image is null ? "" : ToIpfsLink(metadata.Image);
+            return metadata;
         }
         public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.KODA_IPFS_ENDPOINT)
         {

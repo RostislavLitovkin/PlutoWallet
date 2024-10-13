@@ -32,7 +32,7 @@ namespace UniqueryPlus.Nfts
             return RecursionHelper.ToIAsyncEnumerableAsync(
                 clients,
                 async (SubstrateClient client, NftTypeEnum type, int limit, int offset, CancellationToken token) => await GetNftsOwnedByAsync(client, type, owner, limit, offset, token),
-                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetNftsOwnedByOnChainAsync(clients.First(), type, owner, limit, lastKey, token),
+                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetNftsOwnedByOnChainAsync(client, type, owner, limit, lastKey, token),
                 (int)limit
             );
         }

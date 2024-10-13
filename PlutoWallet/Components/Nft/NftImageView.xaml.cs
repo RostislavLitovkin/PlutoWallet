@@ -1,7 +1,6 @@
-using PlutoWallet.Model;
-using System.Numerics;
-
 namespace PlutoWallet.Components.Nft;
+
+#pragma warning disable CA1416 // Validate platform compatibility
 
 public partial class NftImageView : ContentView
 {
@@ -24,10 +23,12 @@ public partial class NftImageView : ContentView
     }
     private async void OnDownloadClicked(object sender, TappedEventArgs e)
     {
-        await FileModel.SaveImageAsync(ImageSource, "nft.png");
+        await Browser.Default.OpenAsync(new Uri(ImageSource), BrowserLaunchMode.SystemPreferred);
+        //await FileModel.SaveImageAsync(ImageSource, "nft.png");
     }
     private async void OnExpandClicked(object sender, TappedEventArgs e)
     {
         await Navigation.PushAsync(new NftImageFullScreenPage(ImageSource));
     }
 }
+#pragma warning restore CA1416 // Validate platform compatibility

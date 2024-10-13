@@ -35,7 +35,9 @@
                     <AbsoluteLayout>
 
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                               x:Name="image" Aspect="AspectFill" />
+                               x:Name="image" Aspect="AspectFill"
+                               HeightRequest="200"
+                               WidthRequest="200"/>
                     </AbsoluteLayout>
                 </Border>
 
@@ -65,8 +67,9 @@
                     </StackLayout>
 
                     <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
-                            AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                            BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
+                          AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                          TranslationY="5"
+                          BackgroundColor="{AppThemeBinding Light=White, Dark=Black}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="30" />

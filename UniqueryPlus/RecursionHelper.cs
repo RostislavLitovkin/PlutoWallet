@@ -84,7 +84,6 @@ namespace UniqueryPlus
             {
                 foreach (var nftType in GetNftTypeForClient(client))
                 {
-                    Console.WriteLine(nftType);
                     int offset = 0;
                     byte[]? lastKey = null;
 
