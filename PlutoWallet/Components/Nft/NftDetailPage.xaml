@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
+             xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
              x:Class="PlutoWallet.Components.Nft.NftDetailPage"
              Title="NftDetailPage"
             BackgroundColor="Black">
@@ -25,6 +27,10 @@
                               AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
+
+                <unique:OpenUniqueButton />
+
+                <koda:OpenKodaButton />
 
                 <nft:CollectionThumbnailView 
                                 Endpoint="{Binding Endpoint}"

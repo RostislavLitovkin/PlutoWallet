@@ -112,6 +112,8 @@
 	  <None Remove="Resources\Images\devicewhite.svg" />
 	  <None Remove="Resources\Images\expandblack.svg" />
 	  <None Remove="Resources\Images\expandwhite.svg" />
+	  <None Remove="Resources\Images\kodablack.svg" />
+	  <None Remove="Resources\Images\kodawhite.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamaassethub.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\polkadotassethub.svg" />
@@ -119,6 +121,8 @@
 	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
 	  <None Remove="Resources\Images\subscan.png" />
 	  <None Remove="Resources\Images\subscanicon.png" />
+	  <None Remove="Resources\Images\uniqueblack.svg" />
+	  <None Remove="Resources\Images\uniquewhite.svg" />
 	  <None Remove="SubstrateNetApi" />
 	  <None Remove="Components\TransferView\" />
 	  <None Remove="ZXing.Net.Maui" />
@@ -423,6 +427,9 @@
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Koda\OpenKodaButton.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\CollectionThumbnailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -463,6 +470,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\TransactionAnalyzer\TransactionAnalyzerConfirmationView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Unique\OpenUniqueButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\MnemonicsPage.xaml">

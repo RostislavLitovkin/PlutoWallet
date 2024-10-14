@@ -70,7 +70,7 @@ namespace PlutoWallet.ViewModel
             ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
             foreach (INftBase nft in uniqueryPlusNfts)
             {
-                //nfts.Add(Model.NftModel.ToNftWrapper(nft));
+                nfts.Add(Model.NftModel.ToNftWrapper(nft));
             }
 
             #endregion
