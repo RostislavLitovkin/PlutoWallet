@@ -120,5 +120,13 @@ public partial class NftThumbnailView : ContentView
 
         // load these details after
         viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.NftBase.CollectionId);
+
+        CancellationToken token = CancellationToken.None;
+
+        var collection = await Model.CollectionModel.ToCollectionWrapperAsync(await this.NftBase.GetCollectionAsync(token), CancellationToken.None);
+
+        viewModel.CollectionBase = collection.CollectionBase;
+        viewModel.CollectionFavourite = false; //NftsStorageModel.IsCollectionFavourite(collection);
+        viewModel.CollectionNftImages = collection.NftImages;
     }
 }

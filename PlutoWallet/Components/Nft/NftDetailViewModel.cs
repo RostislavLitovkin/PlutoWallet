@@ -1,20 +1,21 @@
-﻿using System;
-using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Constants;
+using PlutoWallet.Model;
 using System.Numerics;
+using UniqueryPlus.Collections;
+using UniqueryPlus.Nfts;
 
-namespace PlutoWallet.ViewModel
+namespace PlutoWallet.Components.Nft
 {
     public partial class NftDetailViewModel : ObservableObject
     {
-        public NFT Nft { set
+        public INftBase Nft
+        {
+            set
             {
-                Name = value.Name;
-                Description = value.Description;
-                Image = value.Image;
-                Endpoint = value.Endpoint;
-                Attributes = value.Attributes;
+                Name = value.Metadata.Name;
+                Description = value.Metadata.Description;
+                Image = value.Metadata.Image;
             }
         }
 
@@ -48,9 +49,16 @@ namespace PlutoWallet.ViewModel
         [ObservableProperty]
         private string azeroIdReservedUntil;
 
-        public NftDetailViewModel()
-		{
-		}
-	}
-}
+        [ObservableProperty]
+        private string[] collectionNftImages;
 
+        [ObservableProperty]
+        private bool collectionFavourite;
+
+        [ObservableProperty]
+        private ICollectionBase collectionBase;
+        public NftDetailViewModel()
+        {
+        }
+    }
+}

@@ -426,6 +426,9 @@
 	  <MauiXaml Update="Components\Nft\CollectionThumbnailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NftDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NftIdView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

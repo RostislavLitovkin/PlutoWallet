@@ -50,7 +50,7 @@ namespace PlutoWallet.ViewModel
             ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
             foreach (ICollectionBase collection in uniqueryPlusCollections)
             {
-                //collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
+                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
             }
             #endregion
             //var uniqueryCollectionEnumerable = await UniqueryPlus.Collections.CollectionModel.(KeysModel.GetSubstrateKey());

@@ -11,6 +11,7 @@ using UniqueryPlus.Ipfs;
 using Unique.NetApi.Generated.Model.sp_core.crypto;
 using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
+using Substrate.NetApi.Model.Types.Base;
 
 namespace UniqueryPlus.Collections
 {
@@ -108,11 +109,21 @@ namespace UniqueryPlus.Collections
             var collectionDetails = await GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token);
             var collectionMetadatas = await GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(client, collectionIdKeys, token);
             var nftCounts = await GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(client, collectionIds, token);
-
+            
             return new RecursiveReturn<ICollectionBase>
             {
                 Items = collectionIds.Zip(collectionDetails, (BigInteger collectionId, Collection? details) =>
                 {
+                    /// Code the check the Sponsorship AccountId
+                    /*
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+                    if (details?.Sponsorship?.Value == SponsorshipState.Unconfirmed)
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+                        Console.WriteLine("Sponsorship: " + ((AccountId)details?.Sponsorship?.Value2).Value);
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CS8600 // Converting null literal or possible null value to non-nullable type.
+                    */
+
                     return details switch
                     {
                         // Should never be null
@@ -232,30 +243,40 @@ namespace UniqueryPlus.Collections
                 var collectionProperties = new PropertiesT1();
                 collectionProperties.Create(change[1]);
 
-                var ipfsCollectionProperty = collectionProperties.Map.Value.Value.Value.Value.Where(collectionProperty => new string[] { "baseURI", "coverPicture.ipfsCid", "collectionInfo" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)collectionProperty.Value[0]).Value.Encode())))).First();
-
-                var ipfsLink = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)ipfsCollectionProperty.Value[0]).Value.Encode())) switch
+                try
                 {
-                    "coverPicture.ipfsCid" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
-                    "baseURI" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
-                    "collectionInfo" => JsonConvert.DeserializeObject<UniqueCollectionMetadataV2>(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())))?.CoverImage.Url,
-                    // Add option for Metadata V2
-                    _ => null
-                };
+                    var ipfsCollectionProperty = collectionProperties.Map.Value.Value.Value.Value.Where(collectionProperty => new string[] { "baseURI", "coverPicture.ipfsCid", "collectionInfo", "coverPicture.url" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)collectionProperty.Value[0]).Value.Encode())))).First();
 
-                Console.WriteLine("ipfsLink: " + ipfsLink);
-                Console.WriteLine(ipfsLink is null);
+                    var ipfsLink = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)ipfsCollectionProperty.Value[0]).Value.Encode())) switch
+                    {
+                        "coverPicture.ipfsCid" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
+                        "baseURI" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
+                        "coverPicture.url" => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())),
+                        "collectionInfo" => JsonConvert.DeserializeObject<UniqueCollectionMetadataV2>(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsCollectionProperty.Value[1]).Value.Encode())))?.CoverImage.Url,
+                        _ => null
+                    };
 
-                if (ipfsLink is null)
-                {
-                    metadatas.Add(null);
-                    continue;
+                    Console.WriteLine("ipfsLink: " + ipfsLink);
+                    Console.WriteLine(ipfsLink is null);
+
+                    if (ipfsLink is null)
+                    {
+                        metadatas.Add(null);
+                        continue;
+                    }
+
+                    metadatas.Add(new CollectionMetadata
+                    {
+                        Image = IpfsModel.ToIpfsLink(ipfsLink.Replace("\"", ""), ipfsEndpoint: Constants.UNIQUE_IPFS_ENDPOINT),
+                    });
                 }
-
-                metadatas.Add(new CollectionMetadata
+                catch (Exception ex)
                 {
-                    Image = IpfsModel.ToIpfsLink(ipfsLink.Replace("\"", ""), ipfsEndpoint: Constants.UNIQUE_IPFS_ENDPOINT),
-                });
+                    Console.WriteLine("Unexpected UniqueryPlus exception: " + ex.ToString());
+                    metadatas.Add(new CollectionMetadata
+                    {
+                    });
+                }
             };
 
             return metadatas;

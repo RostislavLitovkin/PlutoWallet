@@ -50,6 +50,7 @@ namespace UniqueryPlusTests
             Assert.That(sellable.Price, Is.Null);
         }
 
+        /// Careful about this bug: https://github.com/SubstrateGaming/Substrate.NET.Toolchain/issues/85
         [Test]
         [TestCase("5DkMtAbCBBBkycT5Gowo2ddkkmf7nVV1TW62fVZeSDLqRtEc")]
         [TestCase(address)]
@@ -66,6 +67,14 @@ namespace UniqueryPlusTests
                     var nft = enumerator.Current;
                     Console.WriteLine($"{nft.Id} - {nft.Metadata?.Name} owned by {nft.Owner}");
                     Console.WriteLine("Image: " + nft.Metadata?.Image);
+
+                    var collection = await ((UniqueNft)nft).GetCollectionAsync(CancellationToken.None);
+
+                    Assert.That(collection.CollectionId, Is.EqualTo(nft.CollectionId));
+                    Console.WriteLine("Collection id: " + collection.CollectionId);
+                    Console.WriteLine("Collection cover image: " + collection.Metadata?.Image);
+
+
                 }
             }
         }

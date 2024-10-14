@@ -16,9 +16,9 @@ namespace PlutoWallet.Model.Kodadot
         public static async Task<Option<string>> FetchKeywiseAsync(Endpoint endpoint, BigInteger collectionId)
         {
             
-            switch (endpoint.Name)
+            switch (endpoint.Key)
             {
-                case ("Statemine"):
+                case EndpointEnum.KusamaAssetHub:
                     return await FetchKeywiseAsync("ahk", collectionId);
             }
 

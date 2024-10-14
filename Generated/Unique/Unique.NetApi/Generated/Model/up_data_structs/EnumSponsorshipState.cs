@@ -49,8 +49,8 @@ namespace Unique.NetApi.Generated.Model.up_data_structs
         public EnumSponsorshipState()
         {
 				AddTypeDecoder<BaseVoid>(SponsorshipState.Disabled);
-				AddTypeDecoder<Unique.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Unconfirmed);
-				AddTypeDecoder<Unique.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Confirmed);
+				AddTypeDecoder<AccountId>(SponsorshipState.Unconfirmed);
+				AddTypeDecoder<AccountId>(SponsorshipState.Confirmed);
         }
     }
 }
