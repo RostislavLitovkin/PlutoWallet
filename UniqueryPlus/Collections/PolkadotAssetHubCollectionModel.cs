@@ -364,7 +364,7 @@ namespace UniqueryPlus.Collections
                     {
                         Name = collectionEntity.Meta?.Name ?? "Unknown",
                         Description = collectionEntity.Meta?.Description ?? "",
-                        Image = collectionEntity.Meta?.Image ?? ""
+                        Image = IpfsModel.ToIpfsLink(collectionEntity.Meta?.Image ?? "")
                     }
                 };
             });

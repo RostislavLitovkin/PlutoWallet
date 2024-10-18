@@ -56,9 +56,8 @@ namespace UniqueryPlusTests
             {
                 Assert.That(collection.Metadata?.Name, Is.EqualTo("Double Pendulum"));
                 Console.WriteLine(collection.Metadata?.Description);
-                Assert.That(collection.Metadata?.Image, Is.EqualTo("ipfs://bafkreiev3vnvnqcyygjqwalwajgnqfzl5ywwud7wy3yhtpxnql5joyxnte"));
+                Assert.That(collection.Metadata?.Image, Is.EqualTo($"{UniqueryPlus.Constants.KODA_IPFS_ENDPOINT}bafkreiev3vnvnqcyygjqwalwajgnqfzl5ywwud7wy3yhtpxnql5joyxnte"));
             }
-
 
             #region GetFirst3Nfts
             var first3Nfts = await firstCollection.GetNftsAsync(3, null, CancellationToken.None);
@@ -125,7 +124,7 @@ namespace UniqueryPlusTests
 
             Assert.That(collection.Metadata?.Name, Is.EqualTo("Alchemy"));
             Console.WriteLine(collection.Metadata?.Description);
-            Assert.That(collection.Metadata?.Image, Is.EqualTo("ipfs://bafkreifb6mmup67vdnbz76gmck27salfjpgt57xalspgcxpsm3fplekb7i"));
+            Assert.That(collection.Metadata?.Image, Is.EqualTo($"{UniqueryPlus.Constants.KODA_IPFS_ENDPOINT}bafkreifb6mmup67vdnbz76gmck27salfjpgt57xalspgcxpsm3fplekb7i"));
 
             #region GetFullCollection
 
