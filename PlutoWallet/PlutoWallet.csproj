@@ -400,6 +400,9 @@
 	  <MauiXaml Update="Components\AssetSelect\AssetInputView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\AssetSelect\NativeAssetInputView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\AssetSelect\UsdButtonView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -443,6 +446,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NftImageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NftOwnerView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NftSellView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NftTransferView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NoNftsView.xaml">
@@ -587,6 +599,9 @@
 	<ItemGroup>
 	  <Compile Update="Components\Animations\LoadingView.xaml.cs">
 	    <DependentUpon>LoadingView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\AssetSelect\NativeAssetInputView.xaml.cs">
+	    <DependentUpon>NativeAssetInputView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Components\PredefinedLayouts\HydrationOmnipoolLayoutItem.xaml.cs">
 	    <DependentUpon>HydrationOmnipoolLayoutItem.xaml</DependentUpon>

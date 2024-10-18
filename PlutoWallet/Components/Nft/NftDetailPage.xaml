@@ -5,6 +5,8 @@
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
              xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
+             xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
+             xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
              x:Class="PlutoWallet.Components.Nft.NftDetailPage"
              Title="NftDetailPage"
             BackgroundColor="Black">
@@ -21,27 +23,77 @@
                                     Padding="20, 15, 20, 200">
                 <nft:NftImageView ImageSource="{Binding Image}" />
 
+                <Grid
+                       ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <buttons:ElevatedButton Text="Sell" Grid.Column="0"
+                                            Clicked="OnSellClicked"
+                                            IsEnabled="{Binding IsSellable}"
+                                            />
+
+                    <buttons:ElevatedButton Text="Transfer" Grid.Column="1"
+                                            Clicked="OnTransferClicked"
+                                            IsEnabled="{Binding IsTransferable}"
+                                            />
+                </Grid>
+
                 <nft:NftTitleView 
                               Endpoint="{Binding Endpoint}"
                               KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
                               AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
+                <nft:NftOwnerView Address="{Binding OwnerAddress}"/>
+
                 <nft:NftDescriptionView Description="{Binding Description}" />
 
-                <unique:OpenUniqueButton />
+                <unique:OpenUniqueButton IsVisible="{Binding UniqueIsVisible}">
+                    <unique:OpenUniqueButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnUniqueClicked"/>
+                    </unique:OpenUniqueButton.GestureRecognizers>
+                </unique:OpenUniqueButton>
 
-                <koda:OpenKodaButton />
+                <koda:OpenKodaButton IsVisible="{Binding KodaIsVisible}">
+                    <koda:OpenKodaButton.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnKodaClicked"/>
+                    </koda:OpenKodaButton.GestureRecognizers>
+                </koda:OpenKodaButton>
 
                 <nft:CollectionThumbnailView 
                                 Endpoint="{Binding Endpoint}"
                                 Favourite="{Binding CollectionFavourite}"
                                 NftImages="{Binding CollectionNftImages}"
                                 CollectionBase="{Binding CollectionBase}" />
-                
+
+                <Grid ColumnSpacing="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <buttons:BasicGrayButton Text="Modify" Grid.Column="0"
+                                            Clicked="OnModifyClicked"
+                                             IsEnabled="{Binding IsModifiable}"/>
+
+                    <buttons:ElevatedButton BackgroundColor="DarkRed" Text="Burn" Grid.Column="1"
+                                            Clicked="OnBurnClicked"
+                                            IsEnabled="{Binding IsBurnable}"/>
+
+                </Grid>
 
             </VerticalStackLayout>
         </ScrollView>
 
         <navigationbar:TopNavigationBar Title="{Binding Name}" />
+
+        <nft:NftTransferView />
+
+        <nft:NftSellView />
+
+        <txanalyzer:TransactionAnalyzerConfirmationView />
     </AbsoluteLayout>
 </ContentPage>

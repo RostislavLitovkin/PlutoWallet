@@ -9,14 +9,18 @@ namespace PlutoWallet.Components.Nft
 {
     public partial class NftDetailViewModel : ObservableObject
     {
-        public INftBase Nft
+        private INftBase nftBase;
+
+        public INftBase NftBase
         {
             set
             {
                 Name = value.Metadata.Name;
                 Description = value.Metadata.Description;
                 Image = value.Metadata.Image;
+                nftBase = value;
             }
+            get => nftBase;
         }
 
         [ObservableProperty]
@@ -27,6 +31,9 @@ namespace PlutoWallet.Components.Nft
 
         [ObservableProperty]
         private string image;
+
+        [ObservableProperty]
+        private string ownerAddress;
 
         [ObservableProperty]
         private Endpoint endpoint;
@@ -57,6 +64,24 @@ namespace PlutoWallet.Components.Nft
 
         [ObservableProperty]
         private ICollectionBase collectionBase;
+
+        [ObservableProperty]
+        private bool uniqueIsVisible;
+
+        [ObservableProperty]
+        private bool kodaIsVisible;
+
+        [ObservableProperty]
+        private bool isTransferable = false;
+
+        [ObservableProperty]
+        private bool isSellable = false;
+
+        [ObservableProperty]
+        private bool isModifiable = false;
+
+        [ObservableProperty]
+        private bool isBurnable = false;
         public NftDetailViewModel()
         {
         }

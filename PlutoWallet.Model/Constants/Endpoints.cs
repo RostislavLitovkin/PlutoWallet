@@ -230,7 +230,7 @@ namespace PlutoWallet.Constants
             {
                 Name = "Kusama Asset Hub",
                 Key = EndpointEnum.KusamaAssetHub,
-                URLs =  new string[4] { "wss://statemine-rpc.dwellir.com", "wss://rpc-asset-hub-kusama.luckyfriday.io", "wss://ksm-rpc.stakeworld.io/assethub", "wss://statemine-rpc-tn.dwellir.com" },
+                URLs =  new string[4] { "wss://asset-hub-kusama-rpc.dwellir.com", "wss://rpc-asset-hub-kusama.luckyfriday.io", "wss://ksm-rpc.stakeworld.io/assethub", "wss://statemine-rpc-tn.dwellir.com" },
                 Icon = "kusamaassethub.png",
                 DarkIcon = "kusamaassethub.png",
                 Unit = "KSM",
@@ -244,7 +244,7 @@ namespace PlutoWallet.Constants
             { EndpointEnum.PolkadotAssetHub, new Endpoint {
                 Name = "Polkadot Asset Hub",
                 Key = EndpointEnum.PolkadotAssetHub,
-                URLs =  new string[4] { "wss://statemint-rpc.dwellir.com", "wss://statemint-rpc-tn.dwellir.com", "wss://statemint.api.onfinality.io/public-ws", "wss://dot-rpc.stakeworld.io/assethub" },
+                URLs =  new string[4] { "wss://asset-hub-polkadot-rpc.dwellir.com", "wss://statemint-rpc-tn.dwellir.com", "wss://statemint.api.onfinality.io/public-ws", "wss://dot-rpc.stakeworld.io/assethub" },
                 Icon = "polkadotassethub.png",
                 DarkIcon = "polkadotassethub.png",
                 Unit = "DOT",

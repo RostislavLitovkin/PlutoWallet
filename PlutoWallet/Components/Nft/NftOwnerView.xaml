@@ -1,30 +1,31 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
-             x:Class="PlutoWallet.Components.AddressView.AddressView"
+             x:Class="PlutoWallet.Components.Nft.NftOwnerView"
              HeightRequest="40">
 
     <card:Card IsThin="True"
-               AbsoluteLayout.LayoutBounds="0, .5, 1, 40"
-               AbsoluteLayout.LayoutFlags="YProportional, WidthProportional">
+           AbsoluteLayout.LayoutBounds="0, .5, 1, 40"
+           AbsoluteLayout.LayoutFlags="YProportional, WidthProportional">
         <card:Card.View>
 
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                            x:Name="absoluteLayout">
+                        x:Name="absoluteLayout">
                 <Grid AbsoluteLayout.LayoutBounds="0, .5, 1, 40"
-                      AbsoluteLayout.LayoutFlags="YProportional, WidthProportional">
+                  AbsoluteLayout.LayoutFlags="YProportional, WidthProportional">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="40" />
                     </Grid.ColumnDefinitions>
 
                     <Label x:Name="titleLabel"
-                           VerticalOptions="Center" 
-                           HorizontalOptions="StartAndExpand"
-                           FontAttributes="Bold"
-                    >
+                       VerticalOptions="Center" 
+                       HorizontalOptions="StartAndExpand"
+                       FontAttributes="Bold"
+                           Text="Owner"
+                >
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>
 
@@ -35,10 +36,11 @@
                     <Label x:Name="addressLabel"
                            VerticalOptions="Center" 
                            HorizontalOptions="FillAndExpand"
+                           Margin="10, 0, 0, 0"
                            Grid.Column="1"
-                            TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
-                            FontAttributes="Bold"
-                            FontFamily="SourceCode">
+                           TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+                           FontAttributes="Bold"
+                           FontFamily="SourceCode">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>
 
@@ -47,20 +49,14 @@
                     </Label>
 
                     <Image WidthRequest="20"
-                       Margin="5, 0, 0, 0"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="End"
-                       Grid.Column="2">
-
-                        <Image.Source>
-                            <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                                     Glyph="&#xf029;"
-                                     FontFamily="FontAwesome"
-                                     Size="20" />
-                        </Image.Source>
+                           Margin="5, 0, 0, 0"
+                           VerticalOptions="Center" 
+                           HorizontalOptions="End"
+                           Grid.Column="2"
+                           Source="subscanicon.png">
 
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnQRTapped" />
+                            <TapGestureRecognizer Tapped="OnSubscanClicked" />
 
                         </Image.GestureRecognizers>
                     </Image>
@@ -72,4 +68,3 @@
     </card:Card>
 
 </ContentView>
-

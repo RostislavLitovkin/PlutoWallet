@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.1.3</Version>
+    <Version>0.1.4</Version>
     <Authors>Rostislav Litovkin</Authors>
     <Product>UniqueryPlus</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -16,15 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="KusamaAssetHub.NetApi" Version="0.1.3" />
+    <PackageReference Include="KusamaAssetHub.NetApi" Version="0.1.4" />
     <PackageReference Include="Nethereum.Web3" Version="4.26.0" />
-    <PackageReference Include="PolkadotAssetHub.NetApi" Version="0.1.3" />
-    <PackageReference Include="UniqueryPlus.Speck" Version="0.1.3" />
-    <PackageReference Include="UniqueryPlus.Stick" Version="0.1.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Generated\Unique\Unique.NetApi\Unique.NetApi.csproj" />
-    <ProjectReference Include="..\UniqueryPlus.UniqueSubquery\UniqueryPlus.UniqueSubquery.csproj" />
+    <PackageReference Include="PolkadotAssetHub.NetApi" Version="0.1.4" />
+    <PackageReference Include="Unique.NetApi" Version="0.1.4"/>
+    <PackageReference Include="UniqueryPlus.Speck" Version="0.1.4" />
+    <PackageReference Include="UniqueryPlus.Stick" Version="0.1.4" />
+    <PackageReference Include="UniqueryPlus.UniqueSubquery" Version="0.1.4"/>
   </ItemGroup>
 </Project>
