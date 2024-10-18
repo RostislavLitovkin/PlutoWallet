@@ -15,9 +15,10 @@
                                 Padding="5"
                                 HorizontalOptions="Center">
             <Image HorizontalOptions="Center"
-                WidthRequest="15" HeightRequest="15"
-                Margin="0, 2, 0, 0"
-                Source="dropdownwhite.png" />
+                   WidthRequest="15" HeightRequest="15"
+                    Margin="0, 2, 0, 0"
+                    Source="dropdownwhite.png"
+                   />
             <Label Text="{Binding Symbol}"
                     TextColor="White"
                     HorizontalTextAlignment="Center"
@@ -32,7 +33,6 @@
         </HorizontalStackLayout>
         <Border.GestureRecognizers>
             <TapGestureRecognizer Tapped="OnChangeTokenClicked" />
-
         </Border.GestureRecognizers>
     </Border>
 </ContentView>

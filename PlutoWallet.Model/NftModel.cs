@@ -85,6 +85,7 @@ namespace PlutoWallet.Model
                 {
                     NftTypeEnum.PolkadotAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub],
                     NftTypeEnum.KusamaAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.KusamaAssetHub],
+                    NftTypeEnum.Unique => Endpoints.GetEndpointDictionary[EndpointEnum.Unique],
                     _ => throw new NotImplementedException(),
                 }
             };

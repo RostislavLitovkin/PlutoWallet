@@ -147,9 +147,15 @@ namespace UniqueryPlusTests
 
             Assert.That(fullCollection is ICollectionStats);
             var collectionStats = fullCollection as ICollectionStats;
+
+            // As this is testing the package on real data, the actual value can change, thus breaking this test. Some other values close to it will be correct :)
             Assert.That(collectionStats.HighestSale, Is.EqualTo(BigInteger.Parse("330000000000")));
-            Assert.That(collectionStats.FloorPrice, Is.EqualTo(BigInteger.Parse("4990000000")));
-            Assert.That(collectionStats.Volume, Is.EqualTo(BigInteger.Parse("2404598099999")));
+
+            // As this is testing the package on real data, the actual value can change, thus breaking this test. Some other values close to it will be correct :)
+            Assert.That(collectionStats.FloorPrice, Is.EqualTo(BigInteger.Parse("5000000000")));
+
+            // As this is testing the package on real data, the actual value can change, thus breaking this test. Some other values close to it will be correct :)
+            Assert.That(collectionStats.Volume, Is.EqualTo(BigInteger.Parse("2409588099999")));
             #endregion
         }
 

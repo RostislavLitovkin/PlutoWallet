@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Authors>Rostislav Litovkin</Authors>
+    <Product>UniqueryPlus.UniqueSubquery</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1.4</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StrawberryShake.Server" Version="14.0.0-rc.2" />
+  </ItemGroup>
+
+</Project>

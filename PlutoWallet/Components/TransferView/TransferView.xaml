@@ -51,8 +51,8 @@
                                                     />
 
                         <buttons:PlutoWalletElevatedButton Text="Transfer"
-                                                            Grid.Column="1"
-                                                            Clicked="SignAndTransferClicked"
+                                                           Grid.Column="1"
+                                                           Clicked="SignAndTransferClicked"
                                                            ButtonState="{Binding ConfirmButtonState}"/>
 
                     </Grid>

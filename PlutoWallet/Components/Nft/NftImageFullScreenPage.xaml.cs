@@ -9,9 +9,6 @@ public partial class NftImageFullScreenPage : ContentPage
 
         InitializeComponent();
 
-        Console.WriteLine("Image source received: ");
-        Console.WriteLine(imageSource);
-
         image.Source = imageSource;
     }
 }

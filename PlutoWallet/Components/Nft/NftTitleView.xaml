@@ -15,35 +15,35 @@
                                      AbsoluteLayout.LayoutFlags="SizeProportional"
                                      Spacing="7.5">
                     <HorizontalStackLayout Spacing="10">
-                        <Label HorizontalOptions="Start"
-                               VerticalOptions="End"
-                                VerticalTextAlignment="End"
-                                HorizontalTextAlignment="Center"
-                                FontSize="18"
-                                HeightRequest="20"
-                                Margin="10, 2.5, 0, 0"
-                                >
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span FontAttributes="Bold" x:Name="nameText" />
+                        <ScrollView Orientation="Horizontal" 
+                                    Margin="5, 2.5, 0, 0"
+                                    HeightRequest="20"
+                                    MaximumWidthRequest="230">
+                            <Label HorizontalOptions="Start"
+                                   VerticalOptions="End"
+                                    VerticalTextAlignment="End"
+                                    HorizontalTextAlignment="Center"
+                                    FontSize="18">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontAttributes="Bold" Text="{Binding Name}" />
 
-                                </FormattedString>
+                                    </FormattedString>
 
-                            </Label.FormattedText>
+                                </Label.FormattedText>
+                            </Label>
+                        </ScrollView>
 
-                        </Label>
                         <nft:NftIdView Id="{Binding ItemId}"
                                        CollectionId="{Binding CollectionId}" />
                     </HorizontalStackLayout>
-
-                    
 
                     <HorizontalStackLayout Spacing="10">
                         <networkselect:NetworkBubbleView
                                                     x:Name="networkBubble"
                                                     ShowName="True"
                                                     HorizontalOptions="Start"/>
-
+                        
                         <Label Text="Claim Physical Drop"
                                x:Name="kodadotUnlockableButton"
                                IsVisible="false"

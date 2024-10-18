@@ -8,8 +8,6 @@ using Substrate.NetApi.Model.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
-using System.Reflection.Metadata;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace PlutoWallet.Model
 {
@@ -235,6 +233,8 @@ namespace PlutoWallet.Model
             {
                 EndpointEnum.Polkadot => await GetExtrinsicEventsAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
                 EndpointEnum.PolkadotAssetHub => await GetExtrinsicEventsAsync<PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.KusamaAssetHub => await GetExtrinsicEventsAsync<KusamaAssetHub.NetApi.Generated.Model.asset_hub_kusama_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
+                EndpointEnum.Unique => await GetExtrinsicEventsAsync<Unique.NetApi.Generated.Model.unique_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
                 EndpointEnum.Opal => await GetExtrinsicEventsAsync<Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
                 EndpointEnum.Hydration => await GetExtrinsicEventsAsync<Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeEvent>(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),
                 _ => await GetExtrinsicDetailsAsync(substrateClient, extrinsicIndex, eventsBytes, blockNumber, token),

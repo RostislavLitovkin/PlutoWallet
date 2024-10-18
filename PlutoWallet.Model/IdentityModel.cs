@@ -75,10 +75,10 @@ namespace PlutoWallet.Model
 
 	public class OnChainIdentity
 	{
-		public string DisplayName { get; set; }
+		public required string DisplayName { get; set; }
 		public Judgement FinalJudgement { get; set; }
-		public string LegalName { get; set; }
-		public Endpoint Endpoint { get; set; }
+		//public required string LegalName { get; set; }
+		//public Endpoint Endpoint { get; set; }
 	}
 
 	public enum Judgement

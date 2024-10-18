@@ -30,7 +30,7 @@
                             IsTextPredictionEnabled="false"
                            PropertyChanged="AmountEntryChanged"/>
                     <assetselect:AssetSelectButtonView HeightRequest="40"
-                                                           Grid.Column="1" />
+                                                       Grid.Column="1" />
                 </Grid>
             </card:Card.View>
         </card:Card>
@@ -50,7 +50,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Entry Placeholder="{Binding UsdAmountPlaceholder}"
-                               Text="{Binding UsdAmount}"
+                           Text="{Binding UsdAmount}"
                            IsEnabled="{Binding UsdAmountEnabled}"
                                Keyboard="Numeric"
                                HeightRequest="40"

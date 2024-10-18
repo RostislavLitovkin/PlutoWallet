@@ -1,11 +1,9 @@
 ﻿using Markdig;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using PlutoWallet.ViewModel;
-using PlutoWallet.View;
-using System.Numerics;
 using static PlutoWallet.Model.NftsStorageModel;
 using UniqueryPlus.Nfts;
+using UniqueryPlus.External;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -102,6 +100,8 @@ public partial class NftThumbnailView : ContentView
     {
         var viewModel = new NftDetailViewModel();
 
+        viewModel.NftBase = this.NftBase;
+
         viewModel.Name = this.NftBase.Metadata.Name;
         viewModel.Description = this.NftBase.Metadata.Description;
         viewModel.Image = this.NftBase.Metadata.Image;
@@ -110,6 +110,16 @@ public partial class NftThumbnailView : ContentView
         viewModel.CollectionId = this.NftBase.CollectionId;
         viewModel.ItemId = this.NftBase.Id;
         viewModel.Favourite = this.Favourite;
+        viewModel.OwnerAddress = this.NftBase.Owner;
+
+        viewModel.KodaIsVisible = this.NftBase is IKodaLink;
+        viewModel.UniqueIsVisible = this.NftBase is IUniqueMarketplaceLink;
+
+        viewModel.IsTransferable = this.NftBase is INftTransferable && ((INftTransferable)this.NftBase).IsTransferable;
+        viewModel.IsSellable = this.NftBase is INftSellable; //&& ((INftSellable)this.NftBase);
+        viewModel.IsModifiable = false; // Maybe later
+        viewModel.IsBurnable = this.NftBase is INftBurnable && ((INftBurnable)this.NftBase).IsBurnable;
+
 
         if (this.Endpoint.Name == "Aleph Zero Testnet")
         {
@@ -120,5 +130,13 @@ public partial class NftThumbnailView : ContentView
 
         // load these details after
         viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.NftBase.CollectionId);
+
+        CancellationToken token = CancellationToken.None;
+
+        var collection = await Model.CollectionModel.ToCollectionWrapperAsync(await this.NftBase.GetCollectionAsync(token), CancellationToken.None);
+
+        viewModel.CollectionBase = collection.CollectionBase;
+        viewModel.CollectionFavourite = false; //NftsStorageModel.IsCollectionFavourite(collection);
+        viewModel.CollectionNftImages = collection.NftImages;
     }
 }

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Unique.OpenUniqueButton"
+             HeightRequest="60">
+    <Border
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        StrokeThickness="0"
+        x:Name="border"
+        BackgroundColor="#00BFFF"
+    >
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="20" />
+
+        </Border.StrokeShape>
+
+        <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                 x:Name="absoluteLayout">
+            <Border
+        BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}"
+        StrokeThickness="0"
+        Margin="3"
+        AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+        AbsoluteLayout.LayoutFlags="All"
+        >
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+
+                </Border.StrokeShape>
+            </Border>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                AbsoluteLayout.LayoutFlags="All">
+                <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 40"
+                 AbsoluteLayout.LayoutFlags="PositionProportional"
+                 Aspect="AspectFit"
+                 Source="{AppThemeBinding Light=uniqueblack.png, Dark=uniquewhite.png}"
+                 />
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+    </Border>
+</ContentView>
