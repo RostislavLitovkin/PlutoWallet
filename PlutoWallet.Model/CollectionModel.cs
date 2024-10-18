@@ -102,6 +102,7 @@ namespace PlutoWallet.Model
                 Endpoint = collection.Type switch {
                     NftTypeEnum.PolkadotAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub],
                     NftTypeEnum.KusamaAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.KusamaAssetHub],
+                    NftTypeEnum.Unique => Endpoints.GetEndpointDictionary[EndpointEnum.Unique],
                     _ => throw new NotImplementedException(),
                 },
                 NftImages = (await collection.GetNftsAsync(Math.Min(3, collection.NftCount), null, token)).Select(nft => nft.Metadata?.Image ?? "").ToArray(),

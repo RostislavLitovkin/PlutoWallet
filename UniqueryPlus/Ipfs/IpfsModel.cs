@@ -5,29 +5,35 @@ namespace UniqueryPlus.Ipfs
 {
     public class IpfsModel
     {
-        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token)
+        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token) where T : IMetadataImage
         {
             var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
 
-            return JsonConvert.DeserializeObject<T>(metadataJson);
-        }
+            var metadata = JsonConvert.DeserializeObject<T>(metadataJson);
 
-        private const string IPFS_ENDPOINT = "https://image.w.kodadot.xyz/ipfs/";
-        public static string ToIpfsLink(string ipfsLink)
+            if (metadata is null)
+            {
+                return metadata;
+            }
+
+            metadata.Image = metadata.Image is null ? "" : ToIpfsLink(metadata.Image);
+            return metadata;
+        }
+        public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.KODA_IPFS_ENDPOINT)
         {
             if (ipfsLink.Contains("ipfs//"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
             }
 
             if (ipfsLink.Contains("ipfs/"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs/".Length + ipfsLink.IndexOf("ipfs/"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs/".Length + ipfsLink.IndexOf("ipfs/"));
             }
 
             if (ipfsLink.Contains("ipfs://"))
             {
-                return IPFS_ENDPOINT + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
+                return ipfsEndpoint + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
             }
 
             if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://"))
@@ -36,7 +42,7 @@ namespace UniqueryPlus.Ipfs
                 return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
 
-            return IPFS_ENDPOINT + RemoveNonHexadecimalCharacters(ipfsLink);
+            return ipfsEndpoint + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
         public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)

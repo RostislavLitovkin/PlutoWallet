@@ -16,9 +16,13 @@ namespace UniqueryPlus.Collections
     }
     public enum MintTypeEnum
     {
+        None,
+        Unknown,
         Public,
         Issuer,
-        HolderOfCollection
+        HolderOfCollection,
+        Whitelist,
+        CannotMint,
     }
 
     /// <summary>

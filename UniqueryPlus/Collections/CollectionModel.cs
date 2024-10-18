@@ -24,7 +24,8 @@ namespace UniqueryPlus.Collections
         {
             return RecursionHelper.ToIAsyncEnumerableAsync(
                 clients,
-                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetCollectionsOwnedByAsync(clients.First(), type, owner, limit, lastKey, token)
+                async (SubstrateClient client, NftTypeEnum type, byte[]? lastKey, CancellationToken token) => await GetCollectionsOwnedByAsync(clients.First(), type, owner, limit, lastKey, token),
+                limit
             );
         }
 
@@ -34,7 +35,7 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => await KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
-
+                NftTypeEnum.Unique => await UniqueCollectionModel.GetCollectionByCollectionIdAsync((Unique.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
                 _ => throw new NotImplementedException()
             };
         }

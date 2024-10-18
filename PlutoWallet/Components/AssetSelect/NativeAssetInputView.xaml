@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.AssetSelect.NativeAssetInputView"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+         xmlns:assetselect="clr-namespace:PlutoWallet.Components.AssetSelect"
+         >
+    <VerticalStackLayout Spacing="20">
+        <card:Card HeightRequest="40"
+               IsThin="True"
+               CardPadding="10, 0, 0, 0">
+            <card:Card.View>
+                <Grid HeightRequest="40"
+                      ColumnSpacing="10"
+                      x:Name="amountGrid"
+                      >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Placeholder="Amount"
+                        Text="{Binding Amount}"
+                        Keyboard="Numeric"
+                        HeightRequest="40"
+                        FontAttributes="Bold"
+                        Grid.Column="0"
+                        IsSpellCheckEnabled="false"
+                        IsTextPredictionEnabled="false"
+                       PropertyChanged="AmountEntryChanged"/>
+                    <Border BackgroundColor="{x:StaticResource Primary}"
+                            Stroke="{x:StaticResource Primary}"
+                            x:Name="currencyBorder">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+
+                        </Border.StrokeShape>
+                        <HorizontalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Spacing="5"
+                            Padding="5"
+                            HorizontalOptions="Center">
+                            <Label x:Name="unitLabel"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="Center"
+                                   FontAttributes="Bold"
+                                    />
+                            <Image HorizontalOptions="Center"
+                                    WidthRequest="20" HeightRequest="20"
+                                    x:Name="chainIcon" />
+
+                        </HorizontalStackLayout>
+                    </Border>
+                </Grid>
+            </card:Card.View>
+        </card:Card>
+
+        <card:Card HeightRequest="40"
+               IsThin="True"
+               CardPadding="10, 0, 0, 0"
+               >
+            <card:Card.View>
+                <Grid HeightRequest="40"
+                      ColumnSpacing="10"
+                      x:Name="usdGrid">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Placeholder="{Binding UsdAmountPlaceholder}"
+                           Text="{Binding UsdAmount}"
+                           IsEnabled="{Binding UsdAmountEnabled}"
+                           Keyboard="Numeric"
+                           HeightRequest="40"
+                           FontAttributes="Bold"
+                           Grid.Column="0"
+                           IsSpellCheckEnabled="false"
+                           IsTextPredictionEnabled="false"
+                           PropertyChanged="UsdAmountEntryChanged"
+                       />
+                    <assetselect:UsdButtonView HeightRequest="40"
+                                               x:Name="usdButton"
+                                           Grid.Column="1" />
+                </Grid>
+            </card:Card.View>
+        </card:Card>
+    </VerticalStackLayout>
+</ContentView>

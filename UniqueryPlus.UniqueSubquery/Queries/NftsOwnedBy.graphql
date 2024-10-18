@@ -1,0 +1,62 @@
+query GetNftsOwnedBy($ownerNormalized: String, $limit: Int, $offset: Int) {
+  tokens(
+    where: { owner_normalized: { _eq: $ownerNormalized } }
+    order_by: { collection_id: desc, token_id: asc }
+    offset: $offset
+    limit: $limit
+  ) {
+    count
+    timestamp
+    data {
+      collection {
+        owner_can_destroy,
+        owner_can_transfer
+        
+      }
+      animation_details
+      animation_url
+      attributes
+      background_color
+      bundle_created
+      burned
+      children_count
+      collection_cover
+      collection_description
+      collection_id
+      collection_name
+      collection_owner
+      collection_owner_normalized
+      created_at_block_hash
+      created_at_block_number
+      created_by
+      customizing
+      customizing_overrides
+      date_of_creation
+      description
+      external_url
+      image
+      image_details
+      is_sold
+      locale
+      name
+      nested
+      owner
+      owner_normalized
+      parent_id
+      properties
+      token_id
+      token_name
+      token_prefix
+      tokens_amount
+      tokens_children
+      tokens_owner
+      tokens_parent
+      total_pieces
+      transfers_count
+      type
+      updated_at_block_hash
+      updated_at_block_number
+      youtube_url
+    }
+  }
+}

@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolkadotAssetHub.NetApi", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KusamaAssetHub.NetApi", "Generated\KusamaAssetHub\KusamaAssetHub.NetApi\KusamaAssetHub.NetApi.csproj", "{1613FD05-821A-4542-BE05-DA59DEEE13EC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unique.NetApi", "Generated\Unique\Unique.NetApi\Unique.NetApi.csproj", "{52E4DCD2-B080-449C-ABE4-241169CCE101}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniqueryPlus.UniqueSubquery", "UniqueryPlus.UniqueSubquery\UniqueryPlus.UniqueSubquery.csproj", "{62637C03-9303-4A31-A79C-F2426C3B0FAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{1613FD05-821A-4542-BE05-DA59DEEE13EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1613FD05-821A-4542-BE05-DA59DEEE13EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1613FD05-821A-4542-BE05-DA59DEEE13EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E4DCD2-B080-449C-ABE4-241169CCE101}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E4DCD2-B080-449C-ABE4-241169CCE101}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E4DCD2-B080-449C-ABE4-241169CCE101}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E4DCD2-B080-449C-ABE4-241169CCE101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62637C03-9303-4A31-A79C-F2426C3B0FAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62637C03-9303-4A31-A79C-F2426C3B0FAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62637C03-9303-4A31-A79C-F2426C3B0FAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62637C03-9303-4A31-A79C-F2426C3B0FAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +68,8 @@ Global
 		{38066A4E-645F-4D33-BF9A-34239F8DA9BA} = {A4681CD2-F701-4BD8-8A07-9F5C25531D68}
 		{20DA4C53-74D1-4A6A-B6F2-45FDDA71A146} = {A4681CD2-F701-4BD8-8A07-9F5C25531D68}
 		{1613FD05-821A-4542-BE05-DA59DEEE13EC} = {A4681CD2-F701-4BD8-8A07-9F5C25531D68}
+		{52E4DCD2-B080-449C-ABE4-241169CCE101} = {A4681CD2-F701-4BD8-8A07-9F5C25531D68}
+		{62637C03-9303-4A31-A79C-F2426C3B0FAE} = {A4681CD2-F701-4BD8-8A07-9F5C25531D68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9FFBD05E-0ADB-4D69-A13C-F915AF22D9E9}

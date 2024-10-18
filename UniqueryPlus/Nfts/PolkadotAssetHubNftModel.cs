@@ -14,11 +14,12 @@ using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public class PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable
+    public record PolkadotAssetHubNftsPalletNftFull : PolkadotAssetHubNftsPalletNft, INftSellable, INftBuyable
     {
         private SubstrateClientExt client;
 
         public required BigInteger? Price { get; set; }
+        public required bool IsForSale { get; set; }
 
         public PolkadotAssetHubNftsPalletNftFull(SubstrateClientExt client) : base(client)
         {
@@ -35,7 +36,7 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
         }
     }
-    public class PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    public record PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
@@ -52,6 +53,8 @@ namespace UniqueryPlus.Nfts
         {
             return await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
         }
+        public bool IsTransferable { get; set; } = true;
+
         public Method Transfer(string recipientAddress)
         {
             var accountId = new AccountId32();
@@ -63,19 +66,23 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.Transfer(new U32((uint)CollectionId), new U32((uint)Id), multiAddress);
         }
 
+        public bool IsBurnable { get; set; } = true;
         public Method Burn()
         {
             return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
         }
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
+            var price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
+
             return new PolkadotAssetHubNftsPalletNftFull(client)
             {
                 Owner = Owner,
                 CollectionId = CollectionId,
                 Id = Id,
                 Metadata = Metadata,
-                Price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token)
+                Price = price,
+                IsForSale = price.HasValue,
             };
         }
     }

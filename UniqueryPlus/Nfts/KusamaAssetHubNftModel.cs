@@ -14,11 +14,12 @@ using KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Nfts
 {
-    public class KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable
+    public record KusamaAssetHubNftsPalletNftFull : KusamaAssetHubNftsPalletNft, INftSellable, INftBuyable
     {
         private SubstrateClientExt client;
 
         public required BigInteger? Price { get; set; }
+        public required bool IsForSale { get; set; }
 
         public KusamaAssetHubNftsPalletNftFull(SubstrateClientExt client) : base(client)
         {
@@ -35,7 +36,7 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
         }
     }
-    public class KusamaAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    public record KusamaAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.KusamaAssetHub_NftsPallet;
@@ -52,6 +53,7 @@ namespace UniqueryPlus.Nfts
         {
             return await KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
         }
+        public bool IsTransferable { get; set; } = true;
         public Method Transfer(string recipientAddress)
         {
             var accountId = new AccountId32();
@@ -62,20 +64,23 @@ namespace UniqueryPlus.Nfts
 
             return NftsCalls.Transfer(new U32((uint)CollectionId), new U32((uint)Id), multiAddress);
         }
-
+        public bool IsBurnable { get; set; } = true;
         public Method Burn()
         {
             return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
         }
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
+            var price = await KusamaAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
+
             return new KusamaAssetHubNftsPalletNftFull(client)
             {
                 Owner = Owner,
                 CollectionId = CollectionId,
                 Id = Id,
                 Metadata = Metadata,
-                Price = await KusamaAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token)
+                Price = price,
+                IsForSale = price.HasValue,
             };
         }
     }

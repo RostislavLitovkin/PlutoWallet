@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui.Alerts;
-
+﻿
 namespace PlutoWallet.Components.AddressView;
 
 public partial class AddressView : ContentView

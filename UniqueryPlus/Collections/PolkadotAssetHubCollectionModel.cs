@@ -18,8 +18,7 @@ using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
 
 namespace UniqueryPlus.Collections
 {
-
-    public class PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
+    public record PolkadotAssetHubNftsPalletCollectionFull : PolkadotAssetHubNftsPalletCollection, ICollectionMintConfig, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
     {
         private SubstrateClientExt client;
         public uint? NftMaxSuply { get; set; }
@@ -47,7 +46,7 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    public class PolkadotAssetHubNftsPalletCollection : ICollectionBase, IKodaLink
+    public record PolkadotAssetHubNftsPalletCollection : ICollectionBase, IKodaLink
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;

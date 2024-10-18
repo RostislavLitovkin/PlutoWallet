@@ -49,9 +49,9 @@ namespace UniqueryPlusTests
         }
 
         [Test]
-        public async Task TestGetNftsByOwned()
+        public async Task TestGetNftsByOwnedOnChainAsync()
         {
-            var first3Nfts = await NftModel.GetNftsOwnedByAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, address, 3, null, CancellationToken.None);
+            var first3Nfts = await NftModel.GetNftsOwnedByOnChainAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, address, 3, null, CancellationToken.None);
 
             Assert.That(first3Nfts.Items.Count(), Is.EqualTo(3));
 

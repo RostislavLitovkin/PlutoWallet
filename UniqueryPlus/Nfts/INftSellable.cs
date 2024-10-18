@@ -7,6 +7,5 @@ namespace UniqueryPlus.Nfts
     {
         public BigInteger? Price { get; set; }
         public Method Sell(BigInteger price);
-        public Method Buy();
     }
 }

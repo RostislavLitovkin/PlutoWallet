@@ -106,7 +106,7 @@ namespace PlutoWallet.Model
             try
             {
 
-                nfts.AddRange(await Unique.NftListByOwner(substrateAddress, limit, offset, token));
+                //nfts.AddRange(await Unique.NftListByOwner(substrateAddress, limit, offset, token));
             }
             catch
             {

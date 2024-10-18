@@ -31,11 +31,7 @@ namespace PlutoWallet.ViewModel
         */
         public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
         {
-            var limit = 10u;
-            foreach (var client in AjunaClientModel.Clients)
-            {
-
-            }
+            var limit = 25u;
 
             var clients = AjunaClientModel.Clients.Values.Where(_client => true).Select(async client => await client.Task).Select(t => t.Result.SubstrateClient);
 
@@ -78,6 +74,8 @@ namespace PlutoWallet.ViewModel
             }
 
             #endregion
+
+
             try
             {
                 var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
@@ -94,7 +92,7 @@ namespace PlutoWallet.ViewModel
             }
             catch(Exception ex)
             {
-                Console.WriteLine("");
+                Console.WriteLine("Nfts failed here :((");
                 Console.WriteLine(ex);
             }
             Nfts = nfts;

@@ -5,15 +5,6 @@ namespace PlutoWallet.Components.Nft;
 
 public partial class NftTitleView : ContentView
 {
-    public static readonly BindableProperty NameProperty = BindableProperty.Create(
-        nameof(Name), typeof(string), typeof(NftTitleView),
-        defaultBindingMode: BindingMode.TwoWay,
-        propertyChanging: (bindable, oldValue, newValue) => {
-            var control = (NftTitleView)bindable;
-
-            control.nameText.Text = (string)newValue;
-        });
-
     public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
         nameof(Endpoint), typeof(Endpoint), typeof(NftTitleView),
         defaultBindingMode: BindingMode.TwoWay,
@@ -50,13 +41,6 @@ public partial class NftTitleView : ContentView
 	{
 		InitializeComponent();
 	}
-
-    public string Name
-    {
-        get => (string)GetValue(NameProperty);
-
-        set => SetValue(NameProperty, value);
-    }
 
     public Option<string> KodadotUnlockableUrl
     {
