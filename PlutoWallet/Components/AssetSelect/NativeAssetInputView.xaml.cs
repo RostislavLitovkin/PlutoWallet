@@ -70,6 +70,11 @@ public partial class NativeAssetInputView : ContentView
             return;
         }
 
+        if (Endpoint is null)
+        {
+            return;
+        }
+
         var sellViewModel = DependencyService.Get<NftSellViewModel>();
 
         if (sellViewModel.IsVisible)

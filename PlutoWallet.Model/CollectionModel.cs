@@ -33,7 +33,7 @@ namespace PlutoWallet.Model
             return await GetNftsAsync(limit, lastKey, token);
         }
 
-        public async Task<ICollectionBase> GetFullAsync()
+        public async Task<ICollectionBase> GetFullAsync(CancellationToken token)
         {
             return this;
         }

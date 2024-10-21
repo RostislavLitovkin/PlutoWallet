@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             xmlns:table="clr-namespace:PlutoWallet.Components.Table"
+             x:Class="PlutoWallet.Components.Nft.NftTradingStats"
+             HeightRequest="115">
+    <card:Card>
+        <card:Card.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 115"
+                            AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                            >
+                <Label
+                    AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                    VerticalTextAlignment="Center"
+                    Text="Market stats"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    />
+                <Grid AbsoluteLayout.LayoutBounds="0.5, 25, 1, 90"
+                      AbsoluteLayout.LayoutFlags="XProportional,WidthProportional"
+                      ColumnSpacing="5"
+                      Margin="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <table:TableCurrencyCell Grid.Column="0"
+                                             Title="Floor price"
+                                             Value="{Binding FloorPriceText}" />
+                    <table:TableCurrencyCell Grid.Column="1"
+                                              Title="Highest sale"
+                                              Value="{Binding HighestSaleText}" />
+                    <table:TableCurrencyCell Grid.Column="2"
+                                              Title="Volume"
+                                              Value="{Binding VolumeText}" />
+                </Grid>
+            </AbsoluteLayout>
+        </card:Card.View>
+    </card:Card>
+</ContentView>

@@ -7,5 +7,6 @@ namespace PlutoWallet.Components.Buttons
         Enabled,
         Disabled,
         Warning,
+        Invisible,
     }
 }

@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using PlutoWallet.Components.AssetSelect;
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
@@ -60,11 +59,25 @@ namespace PlutoWallet.Components.Nft
             Fee = "Estimated fee: Loading";
 
             var client = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(endpointKey);
-            if (client is null || !await client.IsConnectedAsync() || nftBase is not INftTransferable)
+            if (client is null || !await client.IsConnectedAsync() || nftBase is not INftSellable)
             {
                 Fee = "Estimated fee: Failed";
 
                 return;
+            }
+
+            try
+            {
+                var transfer = ((INftSellable)nftBase).Sell(1);
+                var feeAsset = await FeeModel.GetMethodFeeAsync(client, transfer);
+                Fee = FeeModel.GetEstimatedFeeString(feeAsset);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Nft estimated fee error: ");
+
+                Console.WriteLine(ex);
+                Fee = "Estimated fee: Unsupported";
             }
         }
 
@@ -75,10 +88,8 @@ namespace PlutoWallet.Components.Nft
             Fee = "Estimated fee: Loading";
             ConfirmButtonState = ButtonStateEnum.Disabled;
 
-            var assetInputViewModel = DependencyService.Get<AssetInputViewModel>();
-
-            assetInputViewModel.Amount = "";
-            assetInputViewModel.UsdAmount = "";
+            Amount = "";
+            UsdAmount = "";
         }
 
         public void CalculateUsdValue(string symbol)
@@ -112,11 +123,9 @@ namespace PlutoWallet.Components.Nft
 
         public void CalculateCurrencyAmount()
         {
-            var assetSelectButtonViewModel = DependencyService.Get<AssetSelectButtonViewModel>();
-
             if (decimal.TryParse(UsdAmount, out decimal decimalAmount) && decimalAmount > 0)
             {
-                var price = Sdk.GetSpotPrice(assetSelectButtonViewModel.Symbol);
+                var price = Sdk.GetSpotPrice(Endpoint.Unit);
 
                 if (price != 0)
                 {

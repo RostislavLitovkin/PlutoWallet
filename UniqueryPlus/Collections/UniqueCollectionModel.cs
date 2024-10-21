@@ -81,7 +81,7 @@ namespace UniqueryPlus.Collections
         }
 
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
-        public async Task<ICollectionBase> GetFullAsync()
+        public async Task<ICollectionBase> GetFullAsync(CancellationToken token)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             return this;

@@ -51,7 +51,7 @@ namespace PlutoWallet.Components.TransactionAnalyzer
         [ObservableProperty]
         private Func<Task> onConfirm;
 
-        public async Task LoadAsync(SubstrateClientExt client, Method method, bool showDAppView, Func<Task> onConfirm, CancellationToken token = default)
+        public async Task LoadAsync(SubstrateClientExt client, Method method, bool showDAppView, Func<Task>? onConfirm = null, CancellationToken token = default)
         {
             var account = new ChopsticksMockAccount();
             account.Create(KeyType.Sr25519, KeysModel.GetPublicKeyBytes());
@@ -62,9 +62,9 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
             await LoadAsync(client, extrinsic, showDAppView, onConfirm);
         }
-        public async Task LoadAsync(SubstrateClientExt client, TempUnCheckedExtrinsic unCheckedExtrinsic, bool showDAppView, Func<Task> onConfirm, RuntimeVersion? runtimeVersion = null)
+        public async Task LoadAsync(SubstrateClientExt client, TempUnCheckedExtrinsic unCheckedExtrinsic, bool showDAppView, Func<Task>? onConfirm = null, RuntimeVersion? runtimeVersion = null)
         {
-            OnConfirm = onConfirm;
+            OnConfirm = onConfirm is null ? OnConfirmClickedAsync : onConfirm;
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
 
             Method method = unCheckedExtrinsic.Method;
@@ -174,6 +174,33 @@ namespace PlutoWallet.Components.TransactionAnalyzer
             #endregion
         }
 
+        public static async Task OnConfirmClickedAsync()
+        {
+            if ((await KeysModel.GetAccount()).IsSome(out var account))
+            {
+                var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+                var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(transactionAnalyzerConfirmationViewModel.Endpoint.Key);
+
+                try
+                {
+                    string extrinsicId = await clientExt.SubmitExtrinsicAsync(transactionAnalyzerConfirmationViewModel.Payload.Call, account, token: CancellationToken.None);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Failed at confirm clicked");
+                    Console.WriteLine(ex);
+                }
+
+                /// Hide
+
+                transactionAnalyzerConfirmationViewModel.IsVisible = false;
+            }
+            else
+            {
+                // Verification failed, do something about it
+            }
+        }
         public void LoadUnknown(TempUnCheckedExtrinsic unCheckedExtrinsic, RuntimeVersion runtimeVersion, Func<Task> onConfirm)
         {
             OnConfirm = onConfirm;

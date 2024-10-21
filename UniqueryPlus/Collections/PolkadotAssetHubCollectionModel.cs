@@ -83,13 +83,13 @@ namespace UniqueryPlus.Collections
             return result.Items;
         }
 
-        public async Task<ICollectionBase> GetFullAsync()
+        public async Task<ICollectionBase> GetFullAsync(CancellationToken token)
         {
-            var mintConfig = await PolkadotAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, default);
+            var mintConfig = await PolkadotAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, token);
 
             var speckClient = Indexers.GetSpeckClient();
 
-            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString());
+            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString(), token);
             
             collectionStats.EnsureNoErrors();
 
@@ -364,7 +364,7 @@ namespace UniqueryPlus.Collections
                     {
                         Name = collectionEntity.Meta?.Name ?? "Unknown",
                         Description = collectionEntity.Meta?.Description ?? "",
-                        Image = collectionEntity.Meta?.Image ?? ""
+                        Image = IpfsModel.ToIpfsLink(collectionEntity.Meta?.Image ?? "")
                     }
                 };
             });

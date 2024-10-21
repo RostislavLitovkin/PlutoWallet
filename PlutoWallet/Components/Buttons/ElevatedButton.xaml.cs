@@ -34,6 +34,9 @@ public partial class ElevatedButton : Button
                     control.BackgroundColor = Colors.Red;
                     control.TextColor = Colors.White;
                     break;
+                case ButtonStateEnum.Invisible:
+                    control.IsVisible = false;
+                    break;
             }
         },
         defaultValue: ButtonStateEnum.Enabled);

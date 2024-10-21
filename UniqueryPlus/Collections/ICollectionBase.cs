@@ -13,6 +13,6 @@ namespace UniqueryPlus.Collections
         public ICollectionMetadataBase? Metadata { get; set; }
         public Task<IEnumerable<INftBase>> GetNftsAsync(uint limit, byte[]? lastKey, CancellationToken token);
         public Task<IEnumerable<INftBase>> GetNftsOwnedByAsync(string owner, uint limit, byte[]? lastKey, CancellationToken token);
-        public Task<ICollectionBase> GetFullAsync();
+        public Task<ICollectionBase> GetFullAsync(CancellationToken token);
     }
 }

@@ -7,6 +7,7 @@
              xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
              xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
              xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
              x:Class="PlutoWallet.Components.Nft.NftDetailPage"
              Title="NftDetailPage"
             BackgroundColor="Black">
@@ -23,7 +24,7 @@
                                     Padding="20, 15, 20, 200">
                 <nft:NftImageView ImageSource="{Binding Image}" />
 
-                <Grid
+                <Grid  IsVisible="{Binding IsOwned}"
                        ColumnSpacing="15">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -32,22 +33,28 @@
                     </Grid.ColumnDefinitions>
 
                     <buttons:ElevatedButton Text="Sell" Grid.Column="0"
-                                            Clicked="OnSellClicked"
-                                            IsEnabled="{Binding IsSellable}"
+                                            Command="{Binding SellCommand}"
+                                            ButtonState="{Binding SellButtonState}"
                                             />
 
                     <buttons:ElevatedButton Text="Transfer" Grid.Column="1"
                                             Clicked="OnTransferClicked"
-                                            IsEnabled="{Binding IsTransferable}"
+                                            ButtonState="{Binding TransferButtonState}"
                                             />
                 </Grid>
+
+                <nft:NftBuyView IsVisible="{Binding BuyViewIsVisible}" />
+
+                <nft:NftSoldForView IsVisible="{Binding SoldForViewIsVisible}" />
 
                 <nft:NftTitleView 
                               Endpoint="{Binding Endpoint}"
                               KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
                               AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
-                <nft:NftOwnerView Address="{Binding OwnerAddress}"/>
+                <nft:NftOwnerView />
+
+                <nft:NftTradingStats />
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
 
@@ -77,11 +84,11 @@
 
                     <buttons:BasicGrayButton Text="Modify" Grid.Column="0"
                                             Clicked="OnModifyClicked"
-                                             IsEnabled="{Binding IsModifiable}"/>
+                                             ButtonState="{Binding ModifyButtonState}"/>
 
                     <buttons:ElevatedButton BackgroundColor="DarkRed" Text="Burn" Grid.Column="1"
                                             Clicked="OnBurnClicked"
-                                            IsEnabled="{Binding IsBurnable}"/>
+                                            ButtonState="{Binding BurnButtonState}"/>
 
                 </Grid>
 
@@ -95,5 +102,7 @@
         <nft:NftSellView />
 
         <txanalyzer:TransactionAnalyzerConfirmationView />
+
+        <confirmtransaction:ConfirmTransactionView />
     </AbsoluteLayout>
 </ContentPage>

@@ -20,20 +20,19 @@
                         <ColumnDefinition Width="40" />
                     </Grid.ColumnDefinitions>
 
-                    <Label x:Name="titleLabel"
+                    <Label
                        VerticalOptions="Center" 
                        HorizontalOptions="StartAndExpand"
                        FontAttributes="Bold"
-                           Text="Owner"
-                >
+                       Text="Owner"
+                    >
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapped"/>
+                            <TapGestureRecognizer Command="{Binding CopyAddressCommand}"/>
 
                         </Label.GestureRecognizers>
-
                     </Label>
 
-                    <Label x:Name="addressLabel"
+                    <Label Text="{Binding OwnerAddressText}"
                            VerticalOptions="Center" 
                            HorizontalOptions="FillAndExpand"
                            Margin="10, 0, 0, 0"
@@ -42,7 +41,7 @@
                            FontAttributes="Bold"
                            FontFamily="SourceCode">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapped"/>
+                            <TapGestureRecognizer Command="{Binding CopyAddressCommand}"/>
 
                         </Label.GestureRecognizers>
 
@@ -53,10 +52,11 @@
                            VerticalOptions="Center" 
                            HorizontalOptions="End"
                            Grid.Column="2"
-                           Source="subscanicon.png">
+                           Source="subscanicon.png"
+                           >
 
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnSubscanClicked" />
+                            <TapGestureRecognizer Command="{Binding OpenSubscanOwnerPageCommand}"/>
 
                         </Image.GestureRecognizers>
                     </Image>

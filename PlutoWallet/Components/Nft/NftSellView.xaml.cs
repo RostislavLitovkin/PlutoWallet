@@ -18,7 +18,7 @@ public partial class NftSellView : ContentView
         BindingContext = viewModel;
     }
 
-    async void SignAndTransferClicked(System.Object sender, System.EventArgs e)
+    async void SignAndSellClicked(System.Object sender, System.EventArgs e)
     {
         // Send the actual transaction
 
