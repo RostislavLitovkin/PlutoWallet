@@ -84,13 +84,13 @@ namespace UniqueryPlus.Collections
             return result.Items;
         }
 
-        public async Task<ICollectionBase> GetFullAsync()
+        public async Task<ICollectionBase> GetFullAsync(CancellationToken token)
         {
-            var mintConfig = await KusamaAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, default);
+            var mintConfig = await KusamaAssetHubCollectionModel.GetCollectionMintConfigNftsPalletAsync(client, (uint)CollectionId, token);
 
             var stickClient = Indexers.GetStickClient();
 
-            var collectionStats = await stickClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString());
+            var collectionStats = await stickClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString(), token);
 
             collectionStats.EnsureNoErrors();
 

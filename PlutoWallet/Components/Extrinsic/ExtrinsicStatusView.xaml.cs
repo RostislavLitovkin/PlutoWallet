@@ -1,10 +1,7 @@
 ﻿using PlutoWallet.Constants;
-using PlutoWallet.Components.WebView;
-using Substrate.NetApi;
 using Substrate.NetApi.Model.Types.Base;
 using PlutoWallet.ViewModel;
 using PlutoWallet.Components.Events;
-using CommunityToolkit.Maui.Converters;
 using System.Numerics;
 
 namespace PlutoWallet.Components.Extrinsic;
@@ -78,6 +75,12 @@ public partial class ExtrinsicStatusView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (ExtrinsicStatusView)bindable;
+
+            if (newValue == null)
+            {
+                Console.WriteLine("This Endpoint should not be null");
+                return;
+            }
 
             control.chainIcon.Source = ((Endpoint)newValue).Icon;
         });

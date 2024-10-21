@@ -102,7 +102,7 @@ namespace UniqueryPlusTests
 
             #region GetFullCollection
 
-            var fullCollection = await firstCollection.GetFullAsync();
+            var fullCollection = await firstCollection.GetFullAsync(CancellationToken.None);
 
             Assert.That(fullCollection is ICollectionMintConfig);
 
@@ -113,6 +113,10 @@ namespace UniqueryPlusTests
             Assert.That(mintConfig.MintEndBlock, Is.Null);
             Assert.That(mintConfig.MintType.Type, Is.EqualTo(MintTypeEnum.Public));
             Assert.That(mintConfig.MintPrice, Is.EqualTo((BigInteger)2000000000));
+
+            Assert.That(fullCollection is ICollectionStats);
+            var collectionStats = fullCollection as ICollectionStats;
+            Assert.That(collectionStats.FloorPrice, Is.EqualTo((BigInteger)10_000_000_000));
 
             #endregion
         }
@@ -128,7 +132,7 @@ namespace UniqueryPlusTests
 
             #region GetFullCollection
 
-            var fullCollection = await collection.GetFullAsync();
+            var fullCollection = await collection.GetFullAsync(CancellationToken.None);
 
             Assert.That(fullCollection is ICollectionMintConfig);
 

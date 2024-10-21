@@ -21,17 +21,19 @@
                     </Grid.ColumnDefinitions>
 
                     <Entry Placeholder="Amount"
-                        Text="{Binding Amount}"
-                        Keyboard="Numeric"
-                        HeightRequest="40"
-                        FontAttributes="Bold"
-                        Grid.Column="0"
-                        IsSpellCheckEnabled="false"
-                        IsTextPredictionEnabled="false"
-                       PropertyChanged="AmountEntryChanged"/>
+                            Text="{Binding Amount}"
+                            Keyboard="Numeric"
+                            HeightRequest="40"
+                            FontAttributes="Bold"
+                            Grid.Column="0"
+                            IsSpellCheckEnabled="false"
+                            IsTextPredictionEnabled="false"
+                            PropertyChanged="AmountEntryChanged"/>
                     <Border BackgroundColor="{x:StaticResource Primary}"
                             Stroke="{x:StaticResource Primary}"
-                            x:Name="currencyBorder">
+                            x:Name="currencyBorder"
+                            Grid.Column="1"
+                            HeightRequest="40">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15" />
 
@@ -85,7 +87,7 @@
                        />
                     <assetselect:UsdButtonView HeightRequest="40"
                                                x:Name="usdButton"
-                                           Grid.Column="1" />
+                                               Grid.Column="1" />
                 </Grid>
             </card:Card.View>
         </card:Card>

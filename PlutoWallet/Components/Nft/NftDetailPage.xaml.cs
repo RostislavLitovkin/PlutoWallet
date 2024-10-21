@@ -32,11 +32,6 @@ public partial class NftDetailPage : ContentPage
         await nftTransferViewModel.GetFeeAsync(viewModel.Endpoint.Key, viewModel.NftBase);
     }
 
-    private void OnSellClicked(object sender, EventArgs e)
-    {
-
-    }
-
     private void OnModifyClicked(object sender, EventArgs e)
     {
 
