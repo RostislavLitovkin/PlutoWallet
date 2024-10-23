@@ -20,7 +20,7 @@
                    AbsoluteLayout.LayoutFlags="XProportional, WidthProportional"
                    BackgroundColor="#88888888"
                    BorderColor="#88888888">
-                
+
                 <AbsoluteLayout >
                     <ScrollView Orientation="Horizontal"
                             AbsoluteLayout.LayoutBounds="0, 0, 1, 40"
@@ -28,30 +28,34 @@
                             Margin="0, 0, 22, 0"
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never">
-                        <HorizontalStackLayout Spacing="2">
-                            <HorizontalStackLayout Spacing="2"
-                                               BindableLayout.ItemsSource="{Binding NetworkInfos}">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <networkselect:NetworkBubbleView Tapped="OnNetworkClicked"
-                                                             EndpointKey="{Binding EndpointKey}"
-                                                             ShowName="{Binding ShowName}"
-                                                             Name="{Binding Name}"
-                                                             Icon="{Binding Icon}"
-                                                             EndpointConnectionStatus="{Binding EndpointConnectionStatus}">
+                        <CollectionView ItemsSource="{Binding NetworkInfos}"
+                                        ItemSizingStrategy="MeasureFirstItem">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                                                   ItemSpacing="2" />
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <networkselect:NetworkBubbleView Tapped="OnNetworkClicked"
+                                                            EndpointKey="{Binding EndpointKey}"
+                                                            ShowName="{Binding ShowName}"
+                                                            Name="{Binding Name}"
+                                                            Icon="{Binding Icon}"
+                                                            EndpointConnectionStatus="{Binding EndpointConnectionStatus}">
 
-                                        </networkselect:NetworkBubbleView>
+                            </networkselect:NetworkBubbleView>
 
-                                    </DataTemplate>
+                            </DataTemplate>
 
-                                </BindableLayout.ItemTemplate>
+                            </CollectionView.ItemTemplate>
 
-                            </HorizontalStackLayout>
-
-                            <AbsoluteLayout HeightRequest="40"
+                            <CollectionView.Footer>
+                                <AbsoluteLayout HeightRequest="40"
                                      WidthRequest="20"
                                      Opacity="0" />
-                        </HorizontalStackLayout>
+                            </CollectionView.Footer>
+                            
+                        </CollectionView>
                     </ScrollView>
 
                     <networkselect:NetworkBubbleView Tapped="OnOtherNetworksClicked"
@@ -66,11 +70,11 @@
                     </networkselect:NetworkBubbleView>
                 </AbsoluteLayout>
 
-            
-            
+
+
             </Frame>
         </AbsoluteLayout>
-        
+
 
     </AbsoluteLayout>
 </ContentView>
