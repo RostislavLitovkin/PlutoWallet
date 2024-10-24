@@ -44,7 +44,7 @@ namespace UniqueryPlus.Nfts
         public BigInteger Id { get; set; }
         public required string Owner { get; set; }
         public INftMetadataBase? Metadata { get; set; }
-        public string KodaLink => $"https://koda.art/ahp/gallery/{CollectionId}-{Id}";
+        public string KodaLink => $"https://koda.art/ahk/gallery/{CollectionId}-{Id}";
         public KusamaAssetHubNftsPalletNft(SubstrateClientExt client)
         {
             this.client = client;
