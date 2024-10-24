@@ -29,9 +29,9 @@
                             HorizontalScrollBarVisibility="Never"
                             VerticalScrollBarVisibility="Never">
                         <CollectionView ItemsSource="{Binding NetworkInfos}"
-                                        ItemSizingStrategy="MeasureFirstItem">
+                                        ItemSizingStrategy="MeasureAllItems">
                             <CollectionView.ItemsLayout>
-                                <LinearItemsLayout Orientation="Vertical"
+                                <LinearItemsLayout Orientation="Horizontal"
                                                    ItemSpacing="2" />
                             </CollectionView.ItemsLayout>
                             <CollectionView.ItemTemplate>
