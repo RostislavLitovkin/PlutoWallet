@@ -3,9 +3,9 @@ using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using PlutoWallet.Components.Nft;
 using UniqueryPlus.Collections;
 using UniqueryPlus.Nfts;
+using UniqueryPlus;
 
 namespace PlutoWallet.ViewModel
 {
@@ -72,6 +72,20 @@ namespace PlutoWallet.ViewModel
             {
                 nfts.Add(Model.NftModel.ToNftWrapper(nft));
             }
+
+            var client = new PolkadotAssetHub.NetApi.Generated.SubstrateClientExt(new Uri("wss://dot-rpc.stakeworld.io/assethub"), default);
+
+            await client.ConnectAsync();
+
+            var fcollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 208, CancellationToken.None);
+
+            var first3Nfts = await fcollection.GetNftsAsync(25, null, CancellationToken.None);
+
+            foreach (var nft in first3Nfts)
+            {
+                nfts.Add(Model.NftModel.ToNftWrapper(nft));
+            }
+
 
             #endregion
 

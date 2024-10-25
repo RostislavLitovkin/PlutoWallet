@@ -130,9 +130,6 @@ public partial class NftPictureView : ContentView
     {
         var viewModel = new NftDetailViewModel();
 
-        viewModel.Name = this.Name;
-        viewModel.Description = this.Description;
-        viewModel.Image = this.Image;
         viewModel.Endpoint = this.Endpoint;
         viewModel.Attributes = this.Attributes;
         viewModel.CollectionId = this.CollectionId;

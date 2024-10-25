@@ -22,8 +22,19 @@ public partial class NftThumbnailView : ContentView
 
             control.nameLabelText.Text = nftBase.Metadata?.Name ?? "Unknown";
             control.descriptionLabel.Text = Markdown.ToHtml(nftBase.Metadata?.Description ?? "No description");
-            control.image.Source = nftBase.Metadata?.Image; // Add default image if null
-                                                            // TODO: nftBase.Metadata?.Attributes ?? [];
+            control.image.Source = nftBase.Metadata?.Image[0..4] switch
+            {
+                // Default image
+                null => "darkbackground2.png",
+                "http" => new UriImageSource
+                {
+                    Uri = new Uri(nftBase.Metadata.Image),
+                    CacheValidity = new TimeSpan(1,0,0),
+                },
+                _ => nftBase.Metadata.Image
+            };
+
+            // TODO: nftBase.Metadata?.Attributes ?? [];
         });
 
     public static readonly BindableProperty FavouriteProperty = BindableProperty.Create(
@@ -105,9 +116,6 @@ public partial class NftThumbnailView : ContentView
         {
             var viewModel = new NftDetailViewModel();
 
-            viewModel.Name = this.NftBase.Metadata.Name;
-            viewModel.Description = this.NftBase.Metadata.Description;
-            viewModel.Image = this.NftBase.Metadata.Image;
             viewModel.Endpoint = this.Endpoint;
             viewModel.Attributes = []; // TODO: this.NftBase.Metadata.Attributes;
             viewModel.CollectionId = this.NftBase.CollectionId;

@@ -2,6 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+             xmlns:viewmodel="clr-namespace:PlutoWallet.ViewModel"
+             x:DataType="viewmodel:NftViewModel"
              x:Class="PlutoWallet.View.NftView">
     <ScrollView
             Orientation="Vertical"
@@ -16,7 +19,7 @@
                                 Spacing="15"
                                 BindableLayout.ItemsSource="{Binding Collections}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="model:CollectionWrapper">
                         <nft:CollectionThumbnailView
                                     Endpoint="{Binding Endpoint}"
                                     Favourite="{Binding Favourite}"
@@ -35,10 +38,10 @@
                                 Spacing="15"
                                 BindableLayout.ItemsSource="{Binding Nfts}">
                 <BindableLayout.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="model:NftWrapper">
                         <nft:NftThumbnailView Endpoint="{Binding Endpoint}"
-                                                Favourite="{Binding Favourite}"
-                                                NftBase="{Binding NftBase}"
+                                              Favourite="{Binding Favourite}"
+                                              NftBase="{Binding NftBase}"
                                                 />
 
                     </DataTemplate>

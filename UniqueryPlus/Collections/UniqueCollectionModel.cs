@@ -11,7 +11,6 @@ using UniqueryPlus.Ipfs;
 using Unique.NetApi.Generated.Model.sp_core.crypto;
 using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
-using Substrate.NetApi.Model.Types.Base;
 
 namespace UniqueryPlus.Collections
 {
@@ -26,6 +25,7 @@ namespace UniqueryPlus.Collections
         {
             this.client = client;
         }
+        public bool IsTransferable { get; set; } = true;
         public Method Transfer(string recipientAddress)
         {
             var accountId = new AccountId32();

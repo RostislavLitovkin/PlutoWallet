@@ -29,7 +29,7 @@
                        TextColor="#888888"
                        FontAttributes="Bold"/>
 
-                    <Label Text="" x:Name="errorLabel" TextColor="Red" />
+                    <Label Text="{Binding ErrorMessage}" TextColor="Red" />
 
                 </VerticalStackLayout>
                 <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 1, 1, 80"
@@ -50,7 +50,7 @@
 
                         <buttons:PlutoWalletElevatedButton Text="Sell"
                                                            Grid.Column="1"
-                                                           Clicked="SignAndSellClicked"
+                                                           Command="{Binding SellCommand}"
                                                            ButtonState="{Binding ConfirmButtonState}"/>
 
                     </Grid>

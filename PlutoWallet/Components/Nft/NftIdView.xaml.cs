@@ -11,7 +11,8 @@ public partial class NftIdView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NftIdView)bindable;
 
-            //control.collectionIdLabel.Text = ((BigInteger)newValue).ToString();
+            // Assign only if id has not been assigned yet
+            control.idLabel.Text ??= $"# {(BigInteger)newValue}";
         });
 
     public static readonly BindableProperty IdProperty = BindableProperty.Create(
@@ -33,7 +34,7 @@ public partial class NftIdView : ContentView
 
         set => SetValue(CollectionIdProperty, value);
     }
-    public BigInteger Id
+    public new BigInteger Id
     {
         get => (BigInteger)GetValue(IdProperty);
 

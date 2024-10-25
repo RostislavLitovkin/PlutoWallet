@@ -22,16 +22,6 @@ public partial class NftDetailPage : ContentPage
         BindingContext = viewModel;
     }
 
-    private async void OnTransferClicked(object sender, EventArgs e)
-    {
-        var nftTransferViewModel = DependencyService.Get<NftTransferViewModel>();
-
-        nftTransferViewModel.EndpointKey = viewModel.Endpoint.Key;
-        nftTransferViewModel.NftBase = this.viewModel.NftBase;
-        nftTransferViewModel.IsVisible = true;
-        await nftTransferViewModel.GetFeeAsync(viewModel.Endpoint.Key, viewModel.NftBase);
-    }
-
     private void OnModifyClicked(object sender, EventArgs e)
     {
 

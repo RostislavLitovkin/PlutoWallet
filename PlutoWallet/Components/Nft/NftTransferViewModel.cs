@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.Buttons;
+using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using UniqueryPlus.Nfts;
+using Substrate.NetApi.Model.Extrinsics;
 
 namespace PlutoWallet.Components.Nft
 {
@@ -25,13 +27,43 @@ namespace PlutoWallet.Components.Nft
         private bool isVisible;
 
         [ObservableProperty]
-        private INftBase nftBase;
+        private Func<string, Method> transferFunction;
 
         [ObservableProperty]
         private EndpointEnum endpointKey;
+
+        [ObservableProperty]
+        private string errorMessage;
         public NftTransferViewModel()
         {
             SetToDefault();
+        }
+
+        [RelayCommand]
+        public async Task TransferAsync()
+        {
+            ErrorMessage = "";
+
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(EndpointKey);
+
+            var client = clientExt.SubstrateClient;
+
+            try
+            {
+                Method transfer = TransferFunction.Invoke(Address);
+
+                /// Hide this layout
+                SetToDefault();
+
+                var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+                await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false);
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+                Console.WriteLine(ex);
+            }
         }
 
         public void CheckCorrectInput()
@@ -46,12 +78,19 @@ namespace PlutoWallet.Components.Nft
             }
         }
 
-        public async Task GetFeeAsync(EndpointEnum endpointKey, INftBase nftBase)
+        public async Task GetFeeAsync()
         {
+            if (EndpointKey is EndpointEnum.None || TransferFunction is null)
+            {
+                Fee = "Estimated fee: Failed";
+
+                return;
+            }
+
             Fee = "Estimated fee: Loading";
 
-            var client = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(endpointKey);
-            if (client is null || !await client.IsConnectedAsync() || nftBase is not INftTransferable)
+            var client = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(EndpointKey);
+            if (client is null || !await client.IsConnectedAsync())
             {
                 Fee = "Estimated fee: Failed";
 
@@ -60,7 +99,7 @@ namespace PlutoWallet.Components.Nft
 
             try
             {
-                var transfer = ((INftTransferable)nftBase).Transfer("5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ");
+                var transfer = TransferFunction.Invoke("5DDMVdn5Ty1bn93RwL3AQWsEhNe45eFdx3iVhrTurP9HKrsJ");
                 var feeAsset = await FeeModel.GetMethodFeeAsync(client, transfer);
                 Fee = FeeModel.GetEstimatedFeeString(feeAsset);
             }

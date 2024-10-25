@@ -34,6 +34,7 @@ namespace UniqueryPlus.Collections
         {
             this.client = client;
         }
+        public bool IsTransferable { get; set; } = true;
         public Method Transfer(string recipientAddress)
         {
             var accountId = new AccountId32();

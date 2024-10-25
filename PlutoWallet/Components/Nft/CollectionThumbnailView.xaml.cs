@@ -1,6 +1,8 @@
+using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
-using System.Numerics;
 using UniqueryPlus.Collections;
+using UniqueryPlus.External;
+using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -128,6 +130,46 @@ public partial class CollectionThumbnailView : ContentView
 
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        CancellationToken token = CancellationToken.None;
 
+        try
+        {
+            var viewModel = new CollectionDetailViewModel();
+
+            viewModel.Endpoint = this.Endpoint;
+            viewModel.Attributes = []; // TODO: this.NftBase.Metadata.Attributes;
+            viewModel.CollectionId = this.CollectionBase.CollectionId;
+            viewModel.Favourite = this.Favourite;
+            viewModel.OwnerAddress = this.CollectionBase.Owner;
+
+            UpdateViewModel(viewModel, this.CollectionBase);
+
+            await Navigation.PushAsync(new CollectionDetailPage(viewModel));
+
+            var fullCollection = await this.CollectionBase.GetFullAsync(token);
+           
+            UpdateViewModel(viewModel, fullCollection);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+        }
+    }
+    private void UpdateViewModel(CollectionDetailViewModel viewModel, ICollectionBase collection)
+    {
+        if (collection is ICollectionStats)
+        {
+            viewModel.FloorPrice = ((ICollectionStats)collection).FloorPrice;
+            viewModel.HighestSale = ((ICollectionStats)collection).HighestSale;
+            viewModel.Volume = ((ICollectionStats)collection).Volume;
+        }
+
+        viewModel.KodaIsVisible = collection is IKodaLink;
+        viewModel.UniqueIsVisible = collection is IUniqueMarketplaceLink;
+
+        viewModel.TransferButtonState = collection is ICollectionTransferable && ((ICollectionTransferable)collection).IsTransferable ? ButtonStateEnum.Enabled : ButtonStateEnum.Disabled;
+        viewModel.ModifyButtonState = ButtonStateEnum.Disabled; // Maybe later
+
+        viewModel.CollectionBase = collection;
     }
 }

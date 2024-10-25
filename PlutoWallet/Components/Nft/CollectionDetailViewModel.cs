@@ -2,46 +2,43 @@
 using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.AddressView;
 using PlutoWallet.Components.Buttons;
-using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Components.WebView;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using Substrate.NetApi.Model.Extrinsics;
 using System.Numerics;
 using UniqueryPlus.Collections;
-using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft
 {
-    public partial class NftDetailViewModel : ObservableObject
+    public partial class CollectionDetailViewModel : ObservableObject
     {
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(Name))]
         [NotifyPropertyChangedFor(nameof(Description))]
         [NotifyPropertyChangedFor(nameof(Image))]
-        private INftBase nftBase;
 
-        public string Name => NftBase.Metadata.Name;
+        private ICollectionBase collectionBase;
 
-        public string Description => NftBase.Metadata.Description;
+        public string Name => CollectionBase.Metadata.Name;
 
-        public string Image => NftBase.Metadata.Image;
+        public string Description => CollectionBase.Metadata.Description;
+
+        public string Image => CollectionBase.Metadata.Image;
 
         [RelayCommand]
         public async Task TransferAsync()
         {
-            var nftTransferViewModel = DependencyService.Get<NftTransferViewModel>();
+            var collectionTransferViewModel = DependencyService.Get<NftTransferViewModel>();
 
-            nftTransferViewModel.EndpointKey = Endpoint.Key;
-            nftTransferViewModel.TransferFunction = ((INftTransferable)NftBase).Transfer;
-            nftTransferViewModel.IsVisible = true;
-            await nftTransferViewModel.GetFeeAsync();
+            collectionTransferViewModel.EndpointKey = Endpoint.Key;
+            collectionTransferViewModel.TransferFunction = ((ICollectionTransferable)CollectionBase).Transfer;
+            collectionTransferViewModel.IsVisible = true;
+            await collectionTransferViewModel.GetFeeAsync();
         }
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsOwned))]
         [NotifyPropertyChangedFor(nameof(OwnerAddressText))]
-        [NotifyPropertyChangedFor(nameof(BuyViewIsVisible))]
         private string ownerAddress;
 
         public bool IsOwned => OwnerAddress == KeysModel.GetSubstrateKey();
@@ -61,10 +58,9 @@ namespace PlutoWallet.Components.Nft
 
         [RelayCommand]
         public async Task OpenSubscanOwnerPageAsync() => await Application.Current.MainPage.Navigation.PushAsync(new WebViewPage($"https://www.subscan.io/account/{OwnerAddress}"));
-        
+
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(PriceText))]
         private Endpoint endpoint;
 
         [ObservableProperty]
@@ -74,25 +70,13 @@ namespace PlutoWallet.Components.Nft
         private BigInteger collectionId = new BigInteger(0);
 
         [ObservableProperty]
-        private BigInteger itemId = new BigInteger(0);
-
-        [ObservableProperty]
         private bool favourite;
-
-        [ObservableProperty]
-        private Option<string> kodadotUnlockableUrl;
-
-        [ObservableProperty]
-        private string azeroIdReservedUntil;
 
         [ObservableProperty]
         private string[] collectionNftImages;
 
         [ObservableProperty]
         private bool collectionFavourite;
-
-        [ObservableProperty]
-        private ICollectionBase collectionBase;
 
         [ObservableProperty]
         private bool uniqueIsVisible;
@@ -119,76 +103,19 @@ namespace PlutoWallet.Components.Nft
         public string VolumeText => String.Format("{0:0.00} {1}", (double)Volume / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(BuyViewIsVisible))]
-        [NotifyPropertyChangedFor(nameof(SoldForViewIsVisible))]
-        private bool isForSale = false;
-
-        public bool BuyViewIsVisible => IsForSale && !IsOwned;
-        public bool SoldForViewIsVisible => IsForSale && IsOwned;
-
-
-        [RelayCommand]
-        public async Task BuyAsync()
-        {
-            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(Endpoint.Key);
-
-            var client = clientExt.SubstrateClient;
-
-            try
-            {
-                Method buy = ((INftBuyable)NftBase).Buy();
-
-                var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
-
-                await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, buy, false);
-            }
-            catch (Exception ex)
-            {
-                //errorLabel.Text = ex.Message;
-                Console.WriteLine(ex);
-            }
-        }
-
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(PriceText))]
-        private BigInteger price;
-
-        public string PriceText => String.Format("{0:0.00} {1}", (double)Price / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
-
-        [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsTransferable))]
         private ButtonStateEnum transferButtonState = ButtonStateEnum.Disabled;
 
         public bool IsTransferable => TransferButtonState == ButtonStateEnum.Enabled;
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsSellable))]
-        private ButtonStateEnum sellButtonState = ButtonStateEnum.Disabled;
-
-        public bool IsSellable => SellButtonState == ButtonStateEnum.Enabled;
-
-        [RelayCommand]
-        public async Task SellAsync()
-        {
-            var nftSellViewModel = DependencyService.Get<NftSellViewModel>();
-
-            nftSellViewModel.Endpoint = Endpoint;
-            nftSellViewModel.SellFunction = ((INftSellable)NftBase).Sell;
-            nftSellViewModel.IsVisible = true;
-            await nftSellViewModel.GetFeeAsync(Endpoint.Key, NftBase);
-        }
-
-        [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsModifiable))]
         private ButtonStateEnum modifyButtonState = ButtonStateEnum.Disabled;
         public bool IsModifiable => ModifyButtonState == ButtonStateEnum.Enabled;
 
-        [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(IsBurnable))]
-        private ButtonStateEnum burnButtonState = ButtonStateEnum.Disabled;
-        public bool IsBurnable => BurnButtonState == ButtonStateEnum.Enabled;
-        public NftDetailViewModel()
+        public CollectionDetailViewModel()
         {
+
         }
     }
 }

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.CollectionDetailPage"
+             Title="CollectionDetailPage"
              xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
@@ -8,49 +10,43 @@
              xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
              xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
-             x:Class="PlutoWallet.Components.Nft.NftDetailPage"
-             Title="NftDetailPage"
             BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-           Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
-           Opacity="{AppThemeBinding Light=0.96}"
-           Aspect="AspectFill"/>
+       Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+       Opacity="{AppThemeBinding Light=0.96}"
+       Aspect="AspectFill"/>
 
         <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
             <VerticalStackLayout Margin="0, 45, 0, 0"
-                                    Spacing="15"
-                                    Padding="20, 15, 20, 200">
+                                Spacing="15"
+                                Padding="20, 15, 20, 200">
                 <nft:NftImageView ImageSource="{Binding Image}" />
 
                 <Grid  IsVisible="{Binding IsOwned}"
-                       ColumnSpacing="15">
+                        ColumnSpacing="15">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
 
                     </Grid.ColumnDefinitions>
 
-                    <buttons:ElevatedButton Text="Sell" Grid.Column="0"
-                                            Command="{Binding SellCommand}"
-                                            ButtonState="{Binding SellButtonState}"
-                                            />
+                    <buttons:ElevatedButton Text="Modify" Grid.Column="0"
+                                        Command="{Binding ModifyCommand}"
+                                        ButtonState="{Binding ModifyButtonState}"
+                                        />
 
                     <buttons:ElevatedButton Text="Transfer" Grid.Column="1"
-                                            Command="{Binding TransferCommand}"
-                                            ButtonState="{Binding TransferButtonState}"
-                                            />
+                                        Command="{Binding TransferCommand}"
+                                        ButtonState="{Binding TransferButtonState}"
+                                        />
                 </Grid>
 
-                <nft:NftBuyView IsVisible="{Binding BuyViewIsVisible}" />
-
-                <nft:NftSoldForView IsVisible="{Binding SoldForViewIsVisible}" />
-
                 <nft:NftTitleView 
-                              Endpoint="{Binding Endpoint}"
-                              KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
-                              AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
+                          Endpoint="{Binding Endpoint}"
+                          KodadotUnlockableUrl="{Binding KodadotUnlockableUrl}"
+                          AzeroIdReservedUntil="{Binding AzeroIdReservedUntil}"/>
 
                 <nft:NftOwnerView />
 
@@ -70,28 +66,7 @@
                     </koda:OpenKodaButton.GestureRecognizers>
                 </koda:OpenKodaButton>
 
-                <nft:CollectionThumbnailView 
-                                Endpoint="{Binding Endpoint}"
-                                Favourite="{Binding CollectionFavourite}"
-                                NftImages="{Binding CollectionNftImages}"
-                                CollectionBase="{Binding CollectionBase}" />
-
-                <Grid ColumnSpacing="15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <buttons:BasicGrayButton Text="Modify" Grid.Column="0"
-                                            Clicked="OnModifyClicked"
-                                             ButtonState="{Binding ModifyButtonState}"/>
-
-                    <buttons:ElevatedButton BackgroundColor="DarkRed" Text="Burn" Grid.Column="1"
-                                            Clicked="OnBurnClicked"
-                                            ButtonState="{Binding BurnButtonState}"/>
-
-                </Grid>
-
+                <!-- Show nfts in the collection -->
             </VerticalStackLayout>
         </ScrollView>
 
