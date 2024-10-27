@@ -46,7 +46,7 @@
 
         <!--Settings button-->
         <Image WidthRequest="36" Margin="10, 10, 10, 10"
-                    AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
+               AbsoluteLayout.LayoutBounds="0, 0, AutoSize, AutoSize"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Source="{AppThemeBinding Light=settingsblack.png, Dark=settingswhite.png}"
                >

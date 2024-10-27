@@ -1,6 +1,4 @@
-﻿using System;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Components.Balance;
 using PlutoWallet.Components.NavigationBar;
 using PlutoWallet.Components.NetworkSelect;

@@ -1,8 +1,9 @@
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
+using PlutoWallet.Model;
+using System.Collections.ObjectModel;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
-using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -75,6 +76,11 @@ public partial class CollectionThumbnailView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (CollectionThumbnailView)bindable;
 
+            if (newValue is null)
+            {
+                return;
+            }
+
             control.networkBubble.Name = ((Endpoint)newValue).Name;
             control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
@@ -137,7 +143,6 @@ public partial class CollectionThumbnailView : ContentView
             var viewModel = new CollectionDetailViewModel();
 
             viewModel.Endpoint = this.Endpoint;
-            viewModel.Attributes = []; // TODO: this.NftBase.Metadata.Attributes;
             viewModel.CollectionId = this.CollectionBase.CollectionId;
             viewModel.Favourite = this.Favourite;
             viewModel.OwnerAddress = this.CollectionBase.Owner;
@@ -149,6 +154,8 @@ public partial class CollectionThumbnailView : ContentView
             var fullCollection = await this.CollectionBase.GetFullAsync(token);
            
             UpdateViewModel(viewModel, fullCollection);
+
+            viewModel.Nfts = new ObservableCollection<NftWrapper>((await fullCollection.GetNftsAsync(25, null, token)).Select(Model.NftModel.ToNftWrapper));
         }
         catch (Exception ex)
         {

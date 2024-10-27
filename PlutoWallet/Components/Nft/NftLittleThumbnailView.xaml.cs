@@ -1,27 +1,29 @@
-﻿using Markdig;
+using Markdig;
+using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using static PlutoWallet.Model.NftsStorageModel;
-using UniqueryPlus.Nfts;
-using UniqueryPlus.External;
-using PlutoWallet.Components.Buttons;
+using System.Collections;
 using UniqueryPlus.Collections;
+using UniqueryPlus.External;
+using UniqueryPlus.Nfts;
+using static PlutoWallet.Model.NftsStorageModel;
 
 namespace PlutoWallet.Components.Nft;
 
-public partial class NftThumbnailView : ContentView
+public partial class NftLittleThumbnailView : ContentView
 {
     public static readonly BindableProperty NftBaseProperty = BindableProperty.Create(
-        nameof(NftBase), typeof(INftBase), typeof(NftThumbnailView),
+        nameof(NftBase), typeof(INftBase), typeof(NftLittleThumbnailView),
         defaultBindingMode: BindingMode.OneWay,
         propertyChanging: (bindable, oldValue, newValue) =>
         {
-            var control = (NftThumbnailView)bindable;
+            var control = (NftLittleThumbnailView)bindable;
 
             var nftBase = (INftBase)newValue;
 
+            control.nftIdView.Id = nftBase.Id;
+
             control.nameLabelText.Text = nftBase.Metadata?.Name ?? "Unknown";
-            control.descriptionLabel.Text = Markdown.ToHtml(nftBase.Metadata?.Description ?? "No description");
             control.image.Source = nftBase.Metadata?.Image[0..4] switch
             {
                 // Default image
@@ -29,7 +31,7 @@ public partial class NftThumbnailView : ContentView
                 "http" => new UriImageSource
                 {
                     Uri = new Uri(nftBase.Metadata.Image),
-                    CacheValidity = new TimeSpan(1,0,0),
+                    CacheValidity = new TimeSpan(1, 0, 0),
                 },
                 _ => nftBase.Metadata.Image
             };
@@ -38,27 +40,26 @@ public partial class NftThumbnailView : ContentView
         });
 
     public static readonly BindableProperty FavouriteProperty = BindableProperty.Create(
-        nameof(Favourite), typeof(bool), typeof(NftThumbnailView),
+        nameof(Favourite), typeof(bool), typeof(NftLittleThumbnailView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) =>
         {
-            var control = (NftThumbnailView)bindable;
+            var control = (NftLittleThumbnailView)bindable;
 
             control.filledFavouriteIcon.IsVisible = (bool)newValue;
         });
 
     public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
-        nameof(Endpoint), typeof(Endpoint), typeof(NftThumbnailView),
+        nameof(Endpoint), typeof(Endpoint), typeof(NftLittleThumbnailView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) =>
         {
-            var control = (NftThumbnailView)bindable;
+            var control = (NftLittleThumbnailView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
             control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
-
-    public NftThumbnailView()
+    public NftLittleThumbnailView()
     {
         InitializeComponent();
     }

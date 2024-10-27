@@ -10,13 +10,14 @@
              xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
              xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
             BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-       Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
-       Opacity="{AppThemeBinding Light=0.96}"
-       Aspect="AspectFill"/>
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
 
         <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
             <VerticalStackLayout Margin="0, 45, 0, 0"
@@ -50,9 +51,11 @@
 
                 <nft:NftOwnerView />
 
-                <nft:NftTradingStats />
+                <nft:NftTradingStats IsVisible="{Binding TradingStatsIsVisible}" />
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
+
+                <nft:NftAttributesView IsVisible="{Binding AttributesIsVisible}" />
 
                 <unique:OpenUniqueButton IsVisible="{Binding UniqueIsVisible}">
                     <unique:OpenUniqueButton.GestureRecognizers>
@@ -67,6 +70,22 @@
                 </koda:OpenKodaButton>
 
                 <!-- Show nfts in the collection -->
+
+                <VerticalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="15"
+                    BindableLayout.ItemsSource="{Binding Nfts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:NftWrapper">
+                            <nft:NftLittleThumbnailView Endpoint="{Binding Endpoint}"
+                                  Favourite="{Binding Favourite}"
+                                  NftBase="{Binding NftBase}"
+                                    />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
             </VerticalStackLayout>
         </ScrollView>
 

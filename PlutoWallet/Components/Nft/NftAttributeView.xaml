@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.NftAttributeView"
+             >
+    <Border StrokeThickness="0"
+        BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+        Padding="10, 5, 10, 5"
+        x:Name="border"
+        >
+        <Border.Shadow>
+            <Shadow x:Name="shadow"
+                Brush="Black"
+                Offset="0,2" 
+                Radius="3"
+                Opacity="0.2" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+        <Grid ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="attributeNameLabel"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center" 
+                   FontAttributes="Bold"
+                   Grid.Column="0"/>
+            <Label x:Name="attributeValueLabel"
+                   HorizontalTextAlignment="End"
+                   VerticalTextAlignment="Center"
+                   Margin="0, 0, 0, 0"
+                   Grid.Column="1"/>
+        </Grid>
+    </Border>
+</ContentView>

@@ -20,8 +20,16 @@ public partial class NavigationBarView : ContentView
         viewModel.SetMainView();
     }
 
-    void OnNFTsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
+    async void OnNFTsClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        /*CancellationToken token = CancellationToken.None;
+
+        await Navigation.PushAsync(new NftMainPage());
+
+        var viewModel = DependencyService.Get<NftMainViewModel>();
+
+        await viewModel.GetNFTsAsync(KeysModel.GetSubstrateKey(), token);*/
+
         var viewModel = DependencyService.Get<BasePageViewModel>();
 
         viewModel.SetNftView();

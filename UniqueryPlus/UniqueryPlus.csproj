@@ -17,11 +17,12 @@
 
   <ItemGroup>
     <PackageReference Include="KusamaAssetHub.NetApi" Version="0.1.4" />
+    <PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.0.31709.430" />
     <PackageReference Include="Nethereum.Web3" Version="4.26.0" />
     <PackageReference Include="PolkadotAssetHub.NetApi" Version="0.1.4" />
-    <PackageReference Include="Unique.NetApi" Version="0.1.4"/>
+    <PackageReference Include="Unique.NetApi" Version="0.1.4" />
     <PackageReference Include="UniqueryPlus.Speck" Version="0.1.4" />
     <PackageReference Include="UniqueryPlus.Stick" Version="0.1.4" />
-    <PackageReference Include="UniqueryPlus.UniqueSubquery" Version="0.1.4"/>
+    <PackageReference Include="UniqueryPlus.UniqueSubquery" Version="0.1.4" />
   </ItemGroup>
 </Project>

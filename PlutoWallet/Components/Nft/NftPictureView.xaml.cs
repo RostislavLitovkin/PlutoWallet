@@ -131,7 +131,6 @@ public partial class NftPictureView : ContentView
         var viewModel = new NftDetailViewModel();
 
         viewModel.Endpoint = this.Endpoint;
-        viewModel.Attributes = this.Attributes;
         viewModel.CollectionId = this.CollectionId;
         viewModel.ItemId = this.ItemId;
         viewModel.Favourite = this.Favourite;

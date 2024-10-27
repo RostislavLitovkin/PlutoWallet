@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.NftMainPage"
+             Title="NftMainPage"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
+             xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
+             xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
+             xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+             x:DataType="nft:NftMainViewModel"
+             BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+           Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+           Opacity="{AppThemeBinding Light=0.96}"
+           Aspect="AspectFill"/>
+
+        <ScrollView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <VerticalStackLayout Margin="0, 45, 0, 0"
+                            Spacing="15"
+                            Padding="20, 15, 20, 200">
+
+                <!-- Show nfts in the collection -->
+
+                <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        Spacing="15"
+                        BindableLayout.ItemsSource="{Binding Nfts}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="model:NftWrapper">
+                            <nft:NftThumbnailView Endpoint="{Binding Endpoint}"
+                              Favourite="{Binding Favourite}"
+                              NftBase="{Binding NftBase}"
+                                />
+
+                        </DataTemplate>
+
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <nft:NftTransferView />
+
+        <nft:NftSellView />
+
+        <txanalyzer:TransactionAnalyzerConfirmationView />
+
+        <confirmtransaction:ConfirmTransactionView />
+    </AbsoluteLayout>
+</ContentPage>

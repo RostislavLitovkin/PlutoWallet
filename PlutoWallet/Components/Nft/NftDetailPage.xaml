@@ -10,7 +10,7 @@
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
              x:Class="PlutoWallet.Components.Nft.NftDetailPage"
              Title="NftDetailPage"
-            BackgroundColor="Black">
+             BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
@@ -58,6 +58,8 @@
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
 
+                <nft:NftAttributesView IsVisible="{Binding AttributesIsVisible}" />
+
                 <unique:OpenUniqueButton IsVisible="{Binding UniqueIsVisible}">
                     <unique:OpenUniqueButton.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnUniqueClicked"/>
@@ -76,7 +78,8 @@
                                 NftImages="{Binding CollectionNftImages}"
                                 CollectionBase="{Binding CollectionBase}" />
 
-                <Grid ColumnSpacing="15">
+                <Grid ColumnSpacing="15"
+                      IsVisible="{Binding IsOwned}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />

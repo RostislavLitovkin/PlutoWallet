@@ -127,6 +127,8 @@ public partial class App : Application
 
         DependencyService.Register<NftSellViewModel>();
 
+        DependencyService.Register<NftMainViewModel>();
+
         if (Preferences.ContainsKey("publicKey"))
         {
             MainPage = new NavigationPage(new BasePage());

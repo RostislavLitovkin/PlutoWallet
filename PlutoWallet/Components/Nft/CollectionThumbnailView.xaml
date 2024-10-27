@@ -38,13 +38,6 @@
                         <RoundRectangle CornerRadius="20" />
 
                     </Border.StrokeShape>
-                    <Border.Shadow>
-                        <Shadow Brush="Black"
-                                Offset="0,2" 
-                                Radius="10"
-                                Opacity="0.1" />
-
-                    </Border.Shadow>
 
                     <AbsoluteLayout>
 

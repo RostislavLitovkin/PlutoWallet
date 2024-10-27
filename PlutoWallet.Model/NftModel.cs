@@ -4,9 +4,14 @@ using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using UniqueryPlus;
 using UniqueryPlus.Nfts;
+using PlutoWallet.Types;
 
 namespace PlutoWallet.Model
 {
+    public class NftAssetWrapper : NftWrapper
+    {
+        public required Asset AssetPrice { get; set; }
+    }
     public class MockNft : INftBase, IKodaLink
     {
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;

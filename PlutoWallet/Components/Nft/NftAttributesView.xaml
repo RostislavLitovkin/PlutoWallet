@@ -1,41 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.Nft.NftAttributesView"
-             IsVisible="true">
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+            HeightRequest="{Binding AttributesHeightRequest}">
     <card:Card>
         <card:Card.View>
-            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="*" />
+            <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+             x:Name="absoluteLayout"
+             MinimumHeightRequest="80"
+             >
 
-                    </Grid.RowDefinitions>
+                <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
                     <Label
-                           VerticalTextAlignment="Center"
-                           HorizontalTextAlignment="Start"
-                           Grid.Row="0">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span FontAttributes="Bold"
-                                        Text="Attributes"
-                                        TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                        HeightRequest="30"
+                        VerticalTextAlignment="Center"
+                        Text="Attributes"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"/>
+                </VerticalStackLayout>
 
-                            </FormattedString>
+                <VerticalStackLayout Margin="0, 40, 0, 10"
+                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                     BindableLayout.ItemsSource="{Binding Attributes}"
+                     Spacing="5">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <nft:NftAttributeView Name="{Binding TraitType}"
+                                                  Value="{Binding Value}"/>
 
-                        </Label.FormattedText>
-                    </Label>
+                        </DataTemplate>
 
-                    <Label x:Name="attributesLabel" TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                           Grid.Row="1"/>
+                    </BindableLayout.ItemTemplate>
 
-                </Grid>
 
+                </VerticalStackLayout>
             </AbsoluteLayout>
-            
         </card:Card.View>
     </card:Card>
 </ContentView>

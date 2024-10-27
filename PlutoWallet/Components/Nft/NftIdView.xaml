@@ -87,6 +87,7 @@
                     AbsoluteLayout.LayoutFlags="PositionProportional"
                     
                     Margin="10, 5, 10, 5"
+                    Text="# 0"
                     TextColor="White"
                     FontAttributes="Bold"
                     VerticalTextAlignment="Center"

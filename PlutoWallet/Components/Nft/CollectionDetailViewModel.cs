@@ -5,6 +5,7 @@ using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.WebView;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using System.Collections.ObjectModel;
 using System.Numerics;
 using UniqueryPlus.Collections;
 
@@ -16,14 +17,17 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(Name))]
         [NotifyPropertyChangedFor(nameof(Description))]
         [NotifyPropertyChangedFor(nameof(Image))]
-
+        [NotifyPropertyChangedFor(nameof(Attributes))]
+        [NotifyPropertyChangedFor(nameof(AttributesIsVisible))]
         private ICollectionBase collectionBase;
-
         public string Name => CollectionBase.Metadata.Name;
-
         public string Description => CollectionBase.Metadata.Description;
-
         public string Image => CollectionBase.Metadata.Image;
+        public UniqueryPlus.Attribute[] Attributes => CollectionBase.Metadata.Attributes;
+        public bool AttributesIsVisible => Attributes.Length > 0;
+
+        [ObservableProperty]
+        private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
 
         [RelayCommand]
         public async Task TransferAsync()
@@ -64,9 +68,6 @@ namespace PlutoWallet.Components.Nft
         private Endpoint endpoint;
 
         [ObservableProperty]
-        private object[] attributes;
-
-        [ObservableProperty]
         private BigInteger collectionId = new BigInteger(0);
 
         [ObservableProperty]
@@ -86,21 +87,26 @@ namespace PlutoWallet.Components.Nft
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(FloorPriceText))]
+        [NotifyPropertyChangedFor(nameof(TradingStatsIsVisible))]
         private BigInteger floorPrice;
 
         public string FloorPriceText => String.Format("{0:0.00} {1}", (double)FloorPrice / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(HighestSaleText))]
+        [NotifyPropertyChangedFor(nameof(TradingStatsIsVisible))]
         private BigInteger highestSale;
 
         public string HighestSaleText => String.Format("{0:0.00} {1}", (double)HighestSale / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(VolumeText))]
+        [NotifyPropertyChangedFor(nameof(TradingStatsIsVisible))]
         private BigInteger volume;
 
         public string VolumeText => String.Format("{0:0.00} {1}", (double)Volume / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
+
+        public bool TradingStatsIsVisible => HighestSale > 0 || Volume > 0 || FloorPrice > 0;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsTransferable))]

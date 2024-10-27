@@ -10,12 +10,10 @@
             Orientation="Vertical"
             x:Name="scroll"
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
-        <VerticalStackLayout Padding="0, 65, 0, 200"
+        <VerticalStackLayout Padding="20, 65, 20, 200"
                              Spacing="15">
             <VerticalStackLayout
-                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
                                 HorizontalOptions="Center"
-                                Padding="20, 0, 20, 0"
                                 Spacing="15"
                                 BindableLayout.ItemsSource="{Binding Collections}">
                 <BindableLayout.ItemTemplate>
@@ -32,9 +30,7 @@
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
             <VerticalStackLayout
-                                WidthRequest="{Binding Source={x:Reference scroll}, Path=Width}"
                                 HorizontalOptions="Center"
-                                Padding="20, 0, 20, 0"
                                 Spacing="15"
                                 BindableLayout.ItemsSource="{Binding Nfts}">
                 <BindableLayout.ItemTemplate>
@@ -48,11 +44,6 @@
 
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
-
-            <nft:NftLoadingView Margin="20, 0, 20, 0" />
-
-            <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="{Binding NoNftsIsVisible}"/>
-
         </VerticalStackLayout>
 
     </ScrollView>
