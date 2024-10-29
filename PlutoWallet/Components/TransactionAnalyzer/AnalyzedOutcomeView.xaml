@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              xmlns:balance="clr-namespace:PlutoWallet.Components.Balance"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              x:Class="PlutoWallet.Components.TransactionAnalyzer.AnalyzedOutcomeView"
              HeightRequest="{Binding HeightRequest}">
     <card:Card>
@@ -39,23 +40,47 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Margin="0, 40, 0, 10"
-                         WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-                         BindableLayout.ItemsSource="{Binding Assets}"
-                         Spacing="5">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <balance:AssetAmountView Amount="{Binding Amount}"
-                                                    Symbol="{Binding Symbol}"
-                                                    UsdValue="{Binding UsdValue}"
-                                                    ChainIcon="{Binding ChainIcon}"
-                                                    UsdColor="{Binding UsdColor}" />
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     Spacing="10">
+                    <VerticalStackLayout
+                                            WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Assets}"
+                                     Spacing="10">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <balance:AssetAmountView Amount="{Binding Amount}"
+                                    Symbol="{Binding Symbol}"
+                                    UsdValue="{Binding UsdValue}"
+                                    ChainIcon="{Binding ChainIcon}"
+                                    UsdColor="{Binding UsdColor}"
+                                         />
 
-                        </DataTemplate>
+                            </DataTemplate>
 
-                    </BindableLayout.ItemTemplate>
+                        </BindableLayout.ItemTemplate>
 
 
+                    </VerticalStackLayout>
+                    <VerticalStackLayout 
+                                         WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                         BindableLayout.ItemsSource="{Binding Nfts}"
+                                         Spacing="5">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <nft:NftLittleThumbnailView NftBase="{Binding NftBase}"
+                                                            Favourite="{Binding Favourite}"
+                                                            Endpoint="{Binding Endpoint}"
+                                                            Price="{Binding Price}" 
+                                                            Operation="{Binding Operation}"/>
+
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+
+                    </VerticalStackLayout>
                 </VerticalStackLayout>
+
             </AbsoluteLayout>
         </card:Card.View>
     </card:Card>

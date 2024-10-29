@@ -1,8 +1,7 @@
-using Markdig;
 using PlutoWallet.Components.Buttons;
+using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using System.Collections;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
@@ -59,6 +58,41 @@ public partial class NftLittleThumbnailView : ContentView
             control.networkBubble.Name = ((Endpoint)newValue).Name;
             control.networkBubble.EndpointKey = ((Endpoint)newValue).Key;
         });
+
+    public static readonly BindableProperty PriceProperty = BindableProperty.Create(
+        nameof(Price), typeof(AssetInfoExpanded), typeof(NftLittleThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
+            var control = (NftLittleThumbnailView)bindable;
+
+            if (newValue is null)
+            {
+                return;
+            }
+
+            Grid.SetColumnSpan(control.nftInfoLayout, 1);
+
+            var price = (AssetInfoExpanded)newValue;
+
+            control.usdLabel.Text = price.UsdValue;
+            control.usdLabel.TextColor = price.UsdColor;
+        });
+
+    public static readonly BindableProperty OperationProperty = BindableProperty.Create(
+        nameof(Operation), typeof(NftOperation), typeof(NftLittleThumbnailView),
+        defaultBindingMode: BindingMode.TwoWay,
+        propertyChanging: (bindable, oldValue, newValue) =>
+        {
+            var control = (NftLittleThumbnailView)bindable;
+
+            control.operationLabel.Text = (NftOperation)newValue switch
+            {
+                NftOperation.Received => "Received",
+                NftOperation.Sent => "Sent",
+                _ => "",
+            };
+        });
     public NftLittleThumbnailView()
     {
         InitializeComponent();
@@ -81,6 +115,20 @@ public partial class NftLittleThumbnailView : ContentView
         get => (Endpoint)GetValue(EndpointProperty);
 
         set => SetValue(EndpointProperty, value);
+    }
+
+    public AssetInfoExpanded Price
+    {
+        get => (AssetInfoExpanded)GetValue(PriceProperty);
+
+        set => SetValue(PriceProperty, value);
+    }
+
+    public NftOperation Operation
+    {
+        get => (NftOperation)GetValue(OperationProperty);
+
+        set => SetValue(OperationProperty, value);
     }
 
     private StorageNFT GetStorageNft()

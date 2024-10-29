@@ -9,6 +9,7 @@ using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
 
 namespace PlutoWallet.Components.TransactionAnalyzer
 {
@@ -114,6 +115,8 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                 var xcmDestinationEndpointKey = XcmModel.IsMethodXcm(client.Endpoint, unCheckedExtrinsic.Method);
 
                 Dictionary<string, Dictionary<AssetKey, Asset>> currencyChanges = new Dictionary<string, Dictionary<AssetKey, Asset>>();
+                Dictionary<string, Dictionary<NftKey, NftAssetWrapper>> nftChanges = new Dictionary<string, Dictionary<NftKey, NftAssetWrapper>>();
+
                 if (xcmDestinationEndpointKey is null)
                 {
                     var events = await ChopsticksModel.SimulateCallAsync(client.Endpoint.URLs[0], unCheckedExtrinsic.Encode(), header.Number.Value, account.Value);
@@ -130,7 +133,10 @@ namespace PlutoWallet.Components.TransactionAnalyzer
                             ConfirmButtonState = ButtonStateEnum.Warning;
                         }
 
-                        currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
+                        currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
+
+                        nftChanges = await TransactionAnalyzerModel.AnalyzeNftChangesInEventsAsync(client, extrinsicDetails.Events, client.Endpoint, CancellationToken.None);
+
                     }
                 }
                 else
@@ -151,13 +157,18 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
                         var toExtrinsicDetails = await EventsModel.GetExtrinsicEventsForClientAsync(destionationClient, extrinsicIndex: null, xcmResult.ToEvents.Events, blockNumber: 0, CancellationToken.None);
 
-                        var fromCurrencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, fromExtrinsicDetails.Events, client.Endpoint, CancellationToken.None);
+                        var fromCurrencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, fromExtrinsicDetails.Events, client.Endpoint, CancellationToken.None);
 
-                        currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(destionationClient, toExtrinsicDetails.Events, destionationClient.Endpoint, CancellationToken.None, existingCurrencyChanges: fromCurrencyChanges);
+                        currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(destionationClient, toExtrinsicDetails.Events, destionationClient.Endpoint, CancellationToken.None, existingCurrencyChanges: fromCurrencyChanges);
+
+                        var fromNftChanges = await TransactionAnalyzerModel.AnalyzeNftChangesInEventsAsync(client, fromExtrinsicDetails.Events, client.Endpoint, CancellationToken.None);
+
+                        nftChanges = await TransactionAnalyzerModel.AnalyzeNftChangesInEventsAsync(destionationClient, toExtrinsicDetails.Events, destionationClient.Endpoint, CancellationToken.None, existingNftChanges: fromNftChanges);
                     }
                 };
 
                 analyzedOutcomeViewModel.UpdateAssetChanges(currencyChanges);
+                analyzedOutcomeViewModel.UpdateNftChanges(nftChanges);
 
                 analyzedOutcomeViewModel.Loading = "";
 

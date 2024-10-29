@@ -4,9 +4,10 @@ using PlutoWallet.Model.AjunaExt;
 using PlutoWallet.Types;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
-using System.Net;
 using System.Numerics;
+using UniqueryPlus;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
+using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
 
 namespace PlutoWallet.Model
 {
@@ -16,6 +17,16 @@ namespace PlutoWallet.Model
         Success,
         Failed,
     }
+
+    public enum NftOperation
+    {
+        // Has to be there due to binding
+        None,
+
+        Sent,
+        Received,
+    }
+
     public class TransactionAnalyzerModel
     {
         public static ExtrinsicResult GetExtrinsicResult(IEnumerable<ExtrinsicEvent> events) => events.Last() switch
@@ -29,7 +40,12 @@ namespace PlutoWallet.Model
         /// Analyze the events and return the currency changes for each address
         /// </summary>
         /// <returns></returns>
-        public static async Task<Dictionary<string, Dictionary<AssetKey, Asset>>> AnalyzeEventsAsync(SubstrateClientExt client, IEnumerable<ExtrinsicEvent> events, Endpoint endpoint, CancellationToken token, Dictionary<string, Dictionary<AssetKey, Asset>>? existingCurrencyChanges = null)
+        public static async Task<Dictionary<string, Dictionary<AssetKey, Asset>>> AnalyzeCurrencyChangesInEventsAsync(
+            SubstrateClientExt client,
+            IEnumerable<ExtrinsicEvent> events,
+            Endpoint endpoint,
+            CancellationToken token,
+            Dictionary<string, Dictionary<AssetKey, Asset>>? existingCurrencyChanges = null)
         {
             var result = existingCurrencyChanges ?? new Dictionary<string, Dictionary<AssetKey, Asset>>();
 
@@ -49,7 +65,7 @@ namespace PlutoWallet.Model
                     ExtrinsicEvent { PalletName: "Balances", EventName: "Minted" } => [(e.Parameters[0].Value, (endpoint.Key, AssetPallet.Native, 0), BigInteger.Parse(e.Parameters[1].Value))],
                     ExtrinsicEvent { PalletName: "Balances", EventName: "Burned" } => [(e.Parameters[0].Value, (endpoint.Key, AssetPallet.Native, 0), -BigInteger.Parse(e.Parameters[1].Value))],
 
-                    /// Tokens
+                    // Tokens
                     ExtrinsicEvent { PalletName: "Tokens", EventName: "Transfer" } => [
                         // From negative
                         (e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), -BigInteger.Parse(e.Parameters[3].Value)),
@@ -59,11 +75,11 @@ namespace PlutoWallet.Model
                     ExtrinsicEvent { PalletName: "Tokens", EventName: "Deposited" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
                     ExtrinsicEvent { PalletName: "Tokens", EventName: "Withdrawn" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Tokens, BigInteger.Parse(e.Parameters[0].Value)), -BigInteger.Parse(e.Parameters[2].Value))],
 
-                    /// Assets
+                    // Assets
                     ExtrinsicEvent { PalletName: "Assets", EventName: "Issued" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Assets, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
                     ExtrinsicEvent { PalletName: "Assets", EventName: "Burned" } => [(e.Parameters[1].Value, (endpoint.Key, AssetPallet.Assets, BigInteger.Parse(e.Parameters[0].Value)), BigInteger.Parse(e.Parameters[2].Value))],
 
-                    /// Fees
+                    // Fees
                     ExtrinsicEvent { PalletName: "TransactionPayment", EventName: "TransactionFeePaid" } => [("fee", (endpoint.Key, AssetPallet.Native, 0), -BigInteger.Parse(e.Parameters[1].Value) - BigInteger.Parse(e.Parameters[2].Value))],
                     ExtrinsicEvent { PalletName: "XcmPallet", EventName: "FeesPaid" } => EvaluateXcmPalletFeesPaid(e, endpoint),
 
@@ -119,6 +135,85 @@ namespace PlutoWallet.Model
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Analyze the events and return the currency changes for each address
+        /// </summary>
+        /// <returns></returns>
+        public static async Task<Dictionary<string, Dictionary<NftKey, NftAssetWrapper>>> AnalyzeNftChangesInEventsAsync(
+            SubstrateClientExt client,
+            IEnumerable<ExtrinsicEvent> events,
+            Endpoint endpoint,
+            CancellationToken token,
+            Dictionary<string, Dictionary<NftKey, NftAssetWrapper>>? existingNftChanges = null)
+        {
+            var result = existingNftChanges ?? new Dictionary<string, Dictionary<NftKey, NftAssetWrapper>>();
+
+            var cache = new Dictionary<NftKey, NftAssetWrapper>();
+
+            foreach (var e in events)
+            {
+                IEnumerable<(string, NftKey, NftOperation)> evaluated = e switch
+                {
+                    // Nfts
+                    ExtrinsicEvent { PalletName: "Nfts", EventName: "Transferred" } => [(e.Parameters[2].Value, (GetNftTypeEnumNftsPalletForEndpoint(endpoint.Key), BigInteger.Parse(e.Parameters[0].Value), BigInteger.Parse(e.Parameters[1].Value)), NftOperation.Sent),
+                                                                                        (e.Parameters[3].Value, (GetNftTypeEnumNftsPalletForEndpoint(endpoint.Key), BigInteger.Parse(e.Parameters[0].Value), BigInteger.Parse(e.Parameters[1].Value)), NftOperation.Received)],
+
+                    // Handle more events ...
+                    _ => []
+                };
+
+                foreach (var (address, key, operation) in evaluated)
+                {
+                    if (!result.ContainsKey(address))
+                    {
+                        result[address] = new Dictionary<NftKey, NftAssetWrapper>();
+                    }
+
+                    if (!cache.ContainsKey(key))
+                    {
+                        var nftBase = await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, key.Item1, key.Item2, key.Item3, 1, null, token);
+
+                        if (nftBase is null)
+                        {
+                            continue;
+                        }
+
+                        cache[key] = await Model.NftModel.ToNftNativeAssetWrapperAsync(nftBase, endpoint, token);
+                    }
+
+                    result[address][key] = new NftAssetWrapper
+                    {
+                        NftBase = cache[key].NftBase,
+                        Endpoint = cache[key].Endpoint,
+                        Operation = operation,
+                        AssetPrice = new Asset
+                        {
+                            Amount = (operation == NftOperation.Sent ? -1 : 1) * (cache[key].AssetPrice?.Amount ?? 0),
+                            Pallet = AssetPallet.Native,
+                            Symbol = endpoint.Unit,
+                            ChainIcon = endpoint.Icon,
+                            DarkChainIcon = endpoint.DarkIcon,
+                            AssetId = 0,
+                            Endpoint = endpoint,
+                            Decimals = endpoint.Decimals
+                        },
+                    };
+                }
+            }
+
+            return result;
+        }
+
+        public static NftTypeEnum GetNftTypeEnumNftsPalletForEndpoint(EndpointEnum key)
+        {
+            return key switch
+            {
+                EndpointEnum.PolkadotAssetHub => NftTypeEnum.PolkadotAssetHub_NftsPallet,
+                EndpointEnum.KusamaAssetHub => NftTypeEnum.KusamaAssetHub_NftsPallet,
+                _ => throw new NotImplementedException()
+            };
         }
 
         private static IEnumerable<(string, AssetKey, BigInteger)> EvaluateXcmPalletFeesPaid(ExtrinsicEvent e, Endpoint endpoint)

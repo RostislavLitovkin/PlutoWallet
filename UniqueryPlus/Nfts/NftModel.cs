@@ -1,4 +1,5 @@
 ﻿using Substrate.NetApi;
+using System.Numerics;
 
 namespace UniqueryPlus.Nfts
 {
@@ -11,6 +12,16 @@ namespace UniqueryPlus.Nfts
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubNftModel.GetNftsNftsPalletOwnedByAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => await KusamaAssetHubNftModel.GetNftsNftsPalletOwnedByAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 NftTypeEnum.Unique => await UniqueNftModel.GetNftsOwnedByOnChainAsync((Unique.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
+                _ => throw new NotImplementedException()
+            };
+        }
+
+        public static async Task<INftBase?> GetNftByIdAsync(this SubstrateClient client, NftTypeEnum type, BigInteger collectionId, BigInteger id, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            return type switch
+            {
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => await PolkadotAssetHubNftModel.GetNftNftsPalletByIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, (uint)id, limit, lastKey, token),
+                NftTypeEnum.KusamaAssetHub_NftsPallet => await KusamaAssetHubNftModel.GetNftNftsPalletByIdAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, (uint)id, limit, lastKey, token),
                 _ => throw new NotImplementedException()
             };
         }

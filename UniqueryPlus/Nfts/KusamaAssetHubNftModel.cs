@@ -86,6 +86,23 @@ namespace UniqueryPlus.Nfts
     }
     internal class KusamaAssetHubNftModel
     {
+        internal static async Task<INftBase?> GetNftNftsPalletByIdAsync(SubstrateClientExt client, uint collectionId, uint id, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id))));
+
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+
+            // No more nfts found
+            if (fullKeys == null || !fullKeys.Any())
+            {
+                return null;
+            }
+
+            // Filter only the CollectionId and NftId keys
+            var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
+
+            return (await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token)).Items.First();
+        }
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat U32
@@ -105,10 +122,8 @@ namespace UniqueryPlus.Nfts
                 };
             }
 
-            var baseStoragePrefixLength = 66;
-
             // Filter only the CollectionId and NftId keys
-            var idKeys = fullKeys.Select(p => p.ToString().Substring(baseStoragePrefixLength));
+            var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
 
             return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
         }

@@ -11,6 +11,8 @@ using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using Substrate.NetApi.Model.Extrinsics;
 using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
+using Nethereum.Contracts.Standards.ERC20.TokenList;
+using StrawberryShake;
 
 namespace UniqueryPlus.Nfts
 {
@@ -36,7 +38,7 @@ namespace UniqueryPlus.Nfts
             return NftsCalls.BuyItem(new U32((uint)CollectionId), new U32((uint)Id), new U128(Price ?? 0));
         }
     }
-    public record PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable
+    public record PolkadotAssetHubNftsPalletNft : INftBase, IKodaLink, INftTransferable, INftBurnable, INftMarketPrice
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.PolkadotAssetHub_NftsPallet;
@@ -71,6 +73,22 @@ namespace UniqueryPlus.Nfts
         {
             return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
         }
+
+        public async Task<BigInteger?> GetMarketPriceAsync(CancellationToken token)
+        {
+            var speckClient = Indexers.GetSpeckClient();
+
+            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString(), token);
+
+            //collectionStats.EnsureNoErrors();
+            if (collectionStats is null || collectionStats.Errors.Count > 0)
+            {
+                return null;
+            }
+
+            return collectionStats.Data?.CollectionEntityById?.HighestSale is not null ? BigInteger.Parse(collectionStats.Data.CollectionEntityById.HighestSale ?? "Should not happen") : null;
+        }
+
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
             var price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
@@ -88,6 +106,23 @@ namespace UniqueryPlus.Nfts
     }
     internal class PolkadotAssetHubNftModel
     {
+        internal static async Task<INftBase?> GetNftNftsPalletByIdAsync(SubstrateClientExt client, uint collectionId, uint id, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id))));
+
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+
+            // No more nfts found
+            if (fullKeys == null || !fullKeys.Any())
+            {
+                return null;
+            }
+
+            // Filter only the CollectionId and NftId keys
+            var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
+
+            return (await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token)).Items.First();
+        }
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage + Blake2_128Concat U32

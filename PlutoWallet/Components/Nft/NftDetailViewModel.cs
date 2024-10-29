@@ -30,7 +30,7 @@ namespace PlutoWallet.Components.Nft
         public string Image => NftBase.Metadata.Image;
 
         public UniqueryPlus.Attribute[] Attributes => NftBase.Metadata.Attributes;
-        public bool AttributesIsVisible => Attributes.Length > 0;
+        public bool AttributesIsVisible => Attributes is not null && Attributes.Length > 0;
 
 
         [RelayCommand]

@@ -1,5 +1,6 @@
 ﻿using PlutoWallet.Constants;
 using System.Numerics;
+using Uniquery;
 using UniqueryPlus;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
@@ -96,12 +97,7 @@ namespace PlutoWallet.Model
         {
             return new CollectionWrapper
             {
-                Endpoint = collection.Type switch {
-                    NftTypeEnum.PolkadotAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub],
-                    NftTypeEnum.KusamaAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.KusamaAssetHub],
-                    NftTypeEnum.Unique => Endpoints.GetEndpointDictionary[EndpointEnum.Unique],
-                    _ => throw new NotImplementedException(),
-                },
+                Endpoint = Endpoints.GetEndpointDictionary[NftModel.GetEndpointKey(collection.Type)],
                 NftImages = (await collection.GetNftsAsync(Math.Min(3, collection.NftCount), null, token)).Select(nft => nft.Metadata?.Image ?? "").ToArray(),
                 CollectionBase = collection,
             };

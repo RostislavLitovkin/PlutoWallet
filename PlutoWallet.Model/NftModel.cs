@@ -10,7 +10,8 @@ namespace PlutoWallet.Model
 {
     public class NftAssetWrapper : NftWrapper
     {
-        public required Asset AssetPrice { get; set; }
+        public required Asset? AssetPrice { get; set; }
+        public required NftOperation Operation { get; set; }
     }
     public class MockNft : INftBase, IKodaLink
     {
@@ -86,14 +87,42 @@ namespace PlutoWallet.Model
             return new NftWrapper
             {
                 NftBase = nft,
-                Endpoint = nft.Type switch
-                {
-                    NftTypeEnum.PolkadotAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.PolkadotAssetHub],
-                    NftTypeEnum.KusamaAssetHub_NftsPallet => Endpoints.GetEndpointDictionary[EndpointEnum.KusamaAssetHub],
-                    NftTypeEnum.Unique => Endpoints.GetEndpointDictionary[EndpointEnum.Unique],
-                    _ => throw new NotImplementedException(),
-                }
+                Endpoint = Endpoints.GetEndpointDictionary[GetEndpointKey(nft.Type)]
             };
         }
+
+        public static async Task<NftAssetWrapper> ToNftNativeAssetWrapperAsync(INftBase nft, Endpoint endpoint, CancellationToken token)
+        {
+            var nftWrapper = ToNftWrapper(nft);
+
+            BigInteger? price = nft is INftMarketPrice ?
+                    await ((INftMarketPrice)nft).GetMarketPriceAsync(token) : null;
+
+            return new NftAssetWrapper
+            {
+                NftBase = nft,
+                Endpoint = Endpoints.GetEndpointDictionary[GetEndpointKey(nft.Type)],
+                AssetPrice = (price is not null || price != 0) ? new Asset
+                {
+                    Amount = (double)(price ?? 1) / Math.Pow(10, endpoint.Decimals),
+                    Pallet = AssetPallet.Native,
+                    Symbol = endpoint.Unit,
+                    ChainIcon = endpoint.Icon,
+                    DarkChainIcon = endpoint.DarkIcon,
+                    AssetId = 0,
+                    Endpoint = endpoint,
+                    Decimals = endpoint.Decimals
+                } : null,
+                Operation = NftOperation.None,
+            };
+        }
+
+        public static EndpointEnum GetEndpointKey(NftTypeEnum nftType) => nftType switch
+        {
+            NftTypeEnum.PolkadotAssetHub_NftsPallet => EndpointEnum.PolkadotAssetHub,
+            NftTypeEnum.KusamaAssetHub_NftsPallet => EndpointEnum.KusamaAssetHub,
+            NftTypeEnum.Unique => EndpointEnum.Unique,
+            _ => throw new NotImplementedException(),
+        };
     }
 }

@@ -24,7 +24,7 @@ namespace PlutoWallet.Components.Nft
         public string Description => CollectionBase.Metadata.Description;
         public string Image => CollectionBase.Metadata.Image;
         public UniqueryPlus.Attribute[] Attributes => CollectionBase.Metadata.Attributes;
-        public bool AttributesIsVisible => Attributes.Length > 0;
+        public bool AttributesIsVisible => Attributes is not null && Attributes.Length > 0;
 
         [ObservableProperty]
         private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();

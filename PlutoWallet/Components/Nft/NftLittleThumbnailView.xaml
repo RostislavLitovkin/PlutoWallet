@@ -12,6 +12,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="70" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="120" />
                 </Grid.ColumnDefinitions>
 
                 <Border Margin="5"
@@ -37,7 +38,9 @@
                 </Border>
 
                 <AbsoluteLayout HeightRequest="60"
-                             Grid.Column="1">
+                             Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                x:Name="nftInfoLayout">
                     <Grid 
                               Padding="5, 0, 0, 0"
                               AbsoluteLayout.LayoutBounds="0.5, 0, 1, 30"
@@ -50,11 +53,12 @@
                         <Label Margin="5, 2.5, 5, 5"
                             FontSize="16"
                             VerticalTextAlignment="Center"
+                               LineBreakMode="TailTruncation"
                             Grid.Column="1">
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span FontAttributes="Bold"
-                                       x:Name="nameLabelText" />
+                                          x:Name="nameLabelText" />
 
                                 </FormattedString>
                             </Label.FormattedText>
@@ -140,6 +144,20 @@
 
                         </Label>
                     </Grid>
+                </AbsoluteLayout>
+                <AbsoluteLayout HeightRequest="60"
+                                 Grid.Column="2">
+                    <Label x:Name="operationLabel"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           FontAttributes="Bold"
+                           AbsoluteLayout.LayoutBounds="0,0,110,30"/>
+                    <Label x:Name="usdLabel"
+                           HorizontalTextAlignment="End"
+                           VerticalTextAlignment="Center"
+                           TextColor="#888888"
+                           FontAttributes="Bold"
+                           AbsoluteLayout.LayoutBounds="0,30,110,30"/>
                 </AbsoluteLayout>
             </Grid>
 

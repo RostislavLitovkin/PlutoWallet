@@ -24,6 +24,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1"/>
             </Grid.ColumnDefinitions>
 
             <Label x:Name="attributeNameLabel"
@@ -35,7 +36,8 @@
                    HorizontalTextAlignment="End"
                    VerticalTextAlignment="Center"
                    Margin="0, 0, 0, 0"
-                   Grid.Column="1"/>
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"/>
         </Grid>
     </Border>
 </ContentView>

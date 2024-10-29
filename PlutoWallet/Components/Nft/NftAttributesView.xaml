@@ -23,9 +23,9 @@
                 </VerticalStackLayout>
 
                 <VerticalStackLayout Margin="0, 40, 0, 10"
-                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-                     BindableLayout.ItemsSource="{Binding Attributes}"
-                     Spacing="5">
+                                     WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
+                                     BindableLayout.ItemsSource="{Binding Attributes}"
+                                     Spacing="5">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <nft:NftAttributeView Name="{Binding TraitType}"
