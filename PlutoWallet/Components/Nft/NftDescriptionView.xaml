@@ -4,8 +4,9 @@
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              x:Class="PlutoWallet.Components.Nft.NftDescriptionView"
              HorizontalOptions="CenterAndExpand">
-   <card:Card x:Name="card">
-        <card:Card.View>
+    <card:ClickableCard x:Name="card"
+               CardPadding="0,0,0,0">
+        <card:ClickableCard.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All">
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 20"
@@ -14,43 +15,34 @@
                     <!-- This is empty, needed for android -->
                 </VerticalStackLayout>
 
-
-            <Grid WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
+                <Grid WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
                    >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30" />
-                    <RowDefinition Height="*" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
 
-                </Grid.RowDefinitions>
+                    </Grid.RowDefinitions>
 
-                <Label x:Name="descriptionTitleLabel"
+                    <Label
                        VerticalTextAlignment="Center"
-                       HorizontalTextAlignment="Start"
+                       HorizontalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       Text="Description"
                        Grid.Row="0"
-                       Margin="10, 0, 20, 0"
                        >
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span FontAttributes="Bold"
-                                    Text="Description"
-                                    TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                    </Label>
 
-                        </FormattedString>
-
-                    </Label.FormattedText>
-                </Label>
-
-                <Label TextType="Html" x:Name="descriptionLabel"
-                       WidthRequest="{Binding Source={x:Reference card}, Path=Width}"
-                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
-                       Grid.Row="1"
-                       Padding="10, 0, 20, 0"
+                    <Label TextType="Html"
+                           x:Name="descriptionLabel"
+                            TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                            Grid.Row="1"
+                            Padding="20, 0, 20, 10"
                        />
-                
 
-            </Grid>
-             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+
+                </Grid>
+            </AbsoluteLayout>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>
 

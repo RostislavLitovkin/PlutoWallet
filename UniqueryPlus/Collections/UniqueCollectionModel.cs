@@ -70,8 +70,6 @@ namespace UniqueryPlus.Collections
 
             var result = await UniqueNftModel.GetNftsInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token).ConfigureAwait(false);
 
-            Console.WriteLine(result.Items.Count());
-
             return result.Items;
         }
 

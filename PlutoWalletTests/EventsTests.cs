@@ -80,7 +80,7 @@ namespace PlutoWalletTests
                 Console.WriteLine();
             }
 
-            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
 
         }
 
@@ -119,7 +119,7 @@ namespace PlutoWalletTests
                 Console.WriteLine();
             }
 
-            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
         }
 
         [Test]

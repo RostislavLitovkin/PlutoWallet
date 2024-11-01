@@ -1,12 +1,13 @@
 ﻿namespace UniqueryPlus.Nfts
 {
-    public interface INftNestable<NftType> where NftType : INftBase, INftNestable<NftType>
+    public interface INftBaseNestable : INftBase, INftNestable;
+    public interface INftNestable
     {
-        Task<IEnumerable<NestedNftWrapper<NftType>>> GetNestedNftsAsync(CancellationToken token);
+        Task<IEnumerable<NestedNftWrapper<INftBaseNestable>>> GetNestedNftsAsync(CancellationToken token);
     }
 
-    public record NestedNftWrapper<NftType> where NftType : INftBase, INftNestable<NftType>
-    {
+    public record NestedNftWrapper<NftType> where NftType : INftBase, INftBaseNestable 
+    { 
         public required NftType NftBase { get; init; }
         public required uint Depth { get; init; }
     }

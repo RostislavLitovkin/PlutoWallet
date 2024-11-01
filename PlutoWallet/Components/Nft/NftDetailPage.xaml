@@ -54,21 +54,23 @@
 
                 <nft:NftOwnerView />
 
-                <nft:NftTradingStats />
+                <nft:NftTradingStats IsVisible="{Binding TradingStatsIsVisible}" />
 
                 <nft:NftDescriptionView Description="{Binding Description}" />
 
                 <nft:NftAttributesView IsVisible="{Binding AttributesIsVisible}" />
 
+                <nft:NftNestedNftsView IsVisible="{Binding IsNestable}" />
+                
                 <unique:OpenUniqueButton IsVisible="{Binding UniqueIsVisible}">
                     <unique:OpenUniqueButton.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnUniqueClicked"/>
+                        <TapGestureRecognizer Command="{Binding OpenUniqueCommand}"/>
                     </unique:OpenUniqueButton.GestureRecognizers>
                 </unique:OpenUniqueButton>
 
                 <koda:OpenKodaButton IsVisible="{Binding KodaIsVisible}">
                     <koda:OpenKodaButton.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnKodaClicked"/>
+                        <TapGestureRecognizer Command="{Binding OpenKodaCommand}"/>
                     </koda:OpenKodaButton.GestureRecognizers>
                 </koda:OpenKodaButton>
 
@@ -86,11 +88,11 @@
                     </Grid.ColumnDefinitions>
 
                     <buttons:BasicGrayButton Text="Modify" Grid.Column="0"
-                                            Clicked="OnModifyClicked"
+                                            Command="{Binding ModifyCommand}"
                                              ButtonState="{Binding ModifyButtonState}"/>
 
                     <buttons:ElevatedButton BackgroundColor="DarkRed" Text="Burn" Grid.Column="1"
-                                            Clicked="OnBurnClicked"
+                                            Command="{Binding BurnCommand}"
                                             ButtonState="{Binding BurnButtonState}"/>
 
                 </Grid>

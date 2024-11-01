@@ -56,7 +56,7 @@ namespace PlutoWalletTests
                 Console.WriteLine();
             }
 
-            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
 
             Assert.AreEqual(1, currencyChanges[senderAddress].Values.Count());
             Assert.AreEqual("DOT", currencyChanges[senderAddress].Values.ElementAt(0).Symbol);
@@ -106,7 +106,7 @@ namespace PlutoWalletTests
                 Console.WriteLine();
             }
 
-            var currencyChanges = await TransactionAnalyzerModel.AnalyzeEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
+            var currencyChanges = await TransactionAnalyzerModel.AnalyzeCurrencyChangesInEventsAsync(client, extrinsicDetails.Events, endpoint, CancellationToken.None);
 
             foreach(var currencyChange in currencyChanges[senderAddress].Values)
             {

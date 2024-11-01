@@ -5,8 +5,8 @@
              xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
             HeightRequest="{Binding AttributesHeightRequest}">
-    <card:Card>
-        <card:Card.View>
+    <card:ClickableCard>
+        <card:ClickableCard.View>
             <AbsoluteLayout  AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
              x:Name="absoluteLayout"
              MinimumHeightRequest="80"
@@ -38,7 +38,7 @@
 
                 </VerticalStackLayout>
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>
 

@@ -33,34 +33,32 @@ namespace UniqueryPlusTests
             Assert.That(collection.Metadata?.Description, Is.EqualTo("xx"));
             Assert.That(collection.Metadata?.Image, Is.EqualTo($"{Constants.UNIQUE_IPFS_ENDPOINT}QmfTWMWpi7Qk7E383DVm4SPKzjSKMXRHiCA2Xr9R3kkvTR"));
             Assert.That(collection.CollectionId, Is.EqualTo((BigInteger)50));
-            Assert.That(collection.NftCount, Is.EqualTo(1));
+            Assert.That(collection.NftCount, Is.EqualTo(2));
             Assert.That(collection.Owner, Is.EqualTo(otherAddress));
 
             #region GetNfts
 
-            var nfts = await collection.GetNftsAsync(3, null, CancellationToken.None);
-            Assert.That(nfts.Count(), Is.EqualTo(1));
+            var nfts = await ((UniqueCollection)collection).GetNftsAsync(3, null, CancellationToken.None);
+            Assert.That(nfts.Count(), Is.EqualTo(2));
 
             foreach (var nft in nfts)
             {
                 Assert.That(nft.Metadata?.Name, Is.EqualTo("xx"));
                 Assert.That(nft.Metadata?.Description, Is.EqualTo("xx"));
-                Assert.That(nft.Metadata?.Image, Is.EqualTo($"{Constants.UNIQUE_IPFS_ENDPOINT}Qmce9jbJqrf5BnK2zSY8kiNXKJLhoJz36gDRvCiJTRACcx"));
                 Assert.That(nft.CollectionId, Is.EqualTo((BigInteger)50));
-                Assert.That(nft.Id, Is.EqualTo((BigInteger)2));
                 Assert.That(nft.Owner, Is.EqualTo(otherAddress));
             }
+            Assert.That(nfts.First().Metadata?.Image, Is.EqualTo($"{Constants.UNIQUE_IPFS_ENDPOINT}Qmce9jbJqrf5BnK2zSY8kiNXKJLhoJz36gDRvCiJTRACcx"));
+
 
             nfts = await collection.GetNftsOwnedByAsync(otherAddress, 3, null, CancellationToken.None);
-            Assert.That(nfts.Count(), Is.EqualTo(1));
+            Assert.That(nfts.Count(), Is.EqualTo(2));
 
             foreach (var nft in nfts)
             {
                 Assert.That(nft.Metadata?.Name, Is.EqualTo("xx"));
                 Assert.That(nft.Metadata?.Description, Is.EqualTo("xx"));
-                Assert.That(nft.Metadata?.Image, Is.EqualTo($"{Constants.UNIQUE_IPFS_ENDPOINT}Qmce9jbJqrf5BnK2zSY8kiNXKJLhoJz36gDRvCiJTRACcx"));
                 Assert.That(nft.CollectionId, Is.EqualTo((BigInteger)50));
-                Assert.That(nft.Id, Is.EqualTo((BigInteger)2));
                 Assert.That(nft.Owner, Is.EqualTo(otherAddress));
             }
 

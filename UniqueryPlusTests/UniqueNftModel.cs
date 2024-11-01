@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unique.NetApi.Generated;
+﻿using Unique.NetApi.Generated;
 using UniqueryPlus.Nfts;
 using UniqueryPlus;
+using UniqueryPlus.Collections;
+using System.Numerics;
 
 namespace UniqueryPlusTests
 {
@@ -73,9 +70,31 @@ namespace UniqueryPlusTests
                     Assert.That(collection.CollectionId, Is.EqualTo(nft.CollectionId));
                     Console.WriteLine("Collection id: " + collection.CollectionId);
                     Console.WriteLine("Collection cover image: " + collection.Metadata?.Image);
-
-
                 }
+            }
+        }
+
+        [Test]
+        [TestCase(304u)]
+        public async Task TestGetNestedNftsAsync(uint collectionId)
+        {
+            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.Unique, collectionId, CancellationToken.None);
+
+            Console.WriteLine(collection.Metadata.Name);
+            Console.WriteLine(collection.NftCount);
+
+            Assert.That(collection.CollectionId, Is.EqualTo((BigInteger)collectionId));
+
+            var nfts = await ((UniqueCollection)collection).GetNftsAsync(25, null, CancellationToken.None);
+
+            Console.WriteLine("Nfts count: " + nfts.Count());
+
+            foreach (var nft in nfts)
+            {
+                Console.WriteLine("Name: " + nft.Metadata.Name);
+                Console.WriteLine("Image: " + nft.Metadata.Image);
+                Console.WriteLine("Description: " + nft.Metadata.Description);
+                Console.WriteLine("Id: " + nft.Id);
             }
         }
     }

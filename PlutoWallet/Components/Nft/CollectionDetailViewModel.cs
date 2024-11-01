@@ -20,11 +20,11 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(Attributes))]
         [NotifyPropertyChangedFor(nameof(AttributesIsVisible))]
         private ICollectionBase collectionBase;
-        public string Name => CollectionBase.Metadata.Name;
-        public string Description => CollectionBase.Metadata.Description;
-        public string Image => CollectionBase.Metadata.Image;
-        public UniqueryPlus.Attribute[] Attributes => CollectionBase.Metadata.Attributes;
-        public bool AttributesIsVisible => Attributes is not null && Attributes.Length > 0;
+        public string Name => CollectionBase.Metadata?.Name ?? "Unknown";
+        public string Description => CollectionBase.Metadata?.Description ?? "";
+        public string Image => CollectionBase.Metadata?.Image ?? "";
+        public ObservableCollection<UniqueryPlus.Attribute> Attributes => new ObservableCollection<UniqueryPlus.Attribute>(CollectionBase.Metadata?.Attributes ?? []);
+        public bool AttributesIsVisible => CollectionBase.Metadata.Attributes is not null && CollectionBase.Metadata.Attributes.Length > 0;
 
         [ObservableProperty]
         private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
@@ -50,11 +50,7 @@ namespace PlutoWallet.Components.Nft
         public string OwnerAddressText => IsOwned switch
         {
             true => "You",
-            false => OwnerAddress.Length switch
-            {
-                > 12 => OwnerAddress.Substring(0, 12) + "..",
-                _ => OwnerAddress,
-            }
+            false => OwnerAddress,
         };
 
         [RelayCommand]

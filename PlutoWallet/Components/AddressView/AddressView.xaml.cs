@@ -11,11 +11,7 @@ public partial class AddressView : ContentView
             var control = (AddressView)bindable;
             var address = (string)newValue;
 
-            control.addressLabel.Text = address.Length switch
-            {
-                >12 => address.Substring(0, 12) + "..",
-                _ => address,
-            };
+            control.addressLabel.Text = address;
         });
 
     public static readonly BindableProperty QrAddressProperty = BindableProperty.Create(

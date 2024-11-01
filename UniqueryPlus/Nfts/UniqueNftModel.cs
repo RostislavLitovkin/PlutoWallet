@@ -45,7 +45,7 @@ namespace UniqueryPlus.Nfts
             Price
         );
     }
-    public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable, INftNestable<UniqueNft>
+    public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable, INftNestable, INftBaseNestable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.Unique;
@@ -58,11 +58,11 @@ namespace UniqueryPlus.Nfts
         {
             this.client = client;
         }
-        public async Task<IEnumerable<NestedNftWrapper<UniqueNft>>> GetNestedNftsAsync(CancellationToken token)
+        public async Task<IEnumerable<NestedNftWrapper<INftBaseNestable>>> GetNestedNftsAsync(CancellationToken token)
         {
             var nfts = await UniqueNftModel.GetNestedNftsByIdAsync(client, (uint)CollectionId, (uint)Id, null, token).ConfigureAwait(false);
 
-            return nfts.Items.Select(nftBase => new NestedNftWrapper<UniqueNft>
+            return nfts.Items.Select(nftBase => new NestedNftWrapper<INftBaseNestable>
             {
                 Depth = 1,
                 NftBase = (UniqueNft)nftBase,
@@ -152,14 +152,12 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NonfungibleStorage.TokenPropertiesParams(new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId)).Substring(0, keyPrefixLength));
 
-            return await client.State.GetKeysPagedAsync(keyPrefix, 1000, lastKey, string.Empty, token).ConfigureAwait(false);
+            return await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             var fullKeys = await GetNftsInCollectionFullKeysAsync(client, collectionId, limit, lastKey, token).ConfigureAwait(false);
-
-            Console.WriteLine("Full keys: " + fullKeys.Count());
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -173,8 +171,6 @@ namespace UniqueryPlus.Nfts
 
             // Filter only the CollectionId and NftId keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
-
-            Console.WriteLine("id keys: " + idKeys.Count());
 
             return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
@@ -319,12 +315,6 @@ namespace UniqueryPlus.Nfts
 
             var collectionDatas = await UniqueCollectionModel.GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
 
-            Console.WriteLine("Ids: " + ids.Count());
-            Console.WriteLine("metadatas: " + nftMetadatas.Count());
-            Console.WriteLine("nftDatas: " + nftDatas.Count());
-            Console.WriteLine("Collection ids: " + collectionIdKeys.Count());
-            Console.WriteLine("collections: " + collectionDatas.Count());
-
             return new RecursiveReturn<INftBase>
             {
                 Items = ids.Zip(nftDatas, ((BigInteger, BigInteger) ids, ItemData? data) => data switch
@@ -394,6 +384,9 @@ namespace UniqueryPlus.Nfts
                     }
 
                     nft.Metadata.Image = metadata?.Image;
+                    if (metadata?.Name is not null) nft.Metadata.Name = metadata?.Name;
+                    if (metadata?.Description is not null) nft.Metadata.Description = metadata?.Description;
+
                     return nft;
                 }),
                 LastKey = Utils.HexToByteArray(lastKey)
@@ -518,14 +511,40 @@ namespace UniqueryPlus.Nfts
                 var nftProperties = new PropertiesT2();
                 nftProperties.Create(change[1]);
 
-                var ipfsNftProperty = nftProperties.Map.Value.Value.Value.Value.Where(nftProperty => System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)nftProperty.Value[0]).Value.Encode())) == "i.c").First();
-
-                string ipfsLink = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsNftProperty.Value[1]).Value.Encode()));
-
-                metadatas.Add(new NftMetadata
+                var metadata = new NftMetadata
                 {
-                    Image = IpfsModel.ToIpfsLink(ipfsLink.Replace("\"", ""), ipfsEndpoint: Constants.UNIQUE_IPFS_ENDPOINT),
-                });
+                    
+                };
+
+                var ipfsImageProperties = nftProperties.Map.Value.Value.Value.Value.Where(nftProperty => new string[] { "i.c", "f.i", "i.i" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)nftProperty.Value[0]).Value.Encode()))));
+                if (ipfsImageProperties.Count() != 0)
+                {
+                    var ipfsImageLink = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsImageProperties.First().Value[1]).Value.Encode()));
+
+                    metadata.Image = IpfsModel.ToIpfsLink(ipfsImageLink.Replace("\"", ""), ipfsEndpoint: Constants.UNIQUE_IPFS_ENDPOINT);
+                }
+
+                var ipfsNameProperties = nftProperties.Map.Value.Value.Value.Value.Where(nftProperty => new string[] { "n" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)nftProperty.Value[0]).Value.Encode()))));
+
+                if (ipfsNameProperties.Count() != 0)
+                {
+                    var name = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsNameProperties.First().Value[1]).Value.Encode()));
+
+                    metadata.Name = name.Replace("\"_\":", "").Trim(['\"', '{', '}']);
+                }
+
+
+                var ipfsDescriptionProperties = nftProperties.Map.Value.Value.Value.Value.Where(nftProperty => new string[] { "d" }.Contains(System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT12)nftProperty.Value[0]).Value.Encode()))));
+
+                if (ipfsDescriptionProperties.Count() != 0)
+                {
+                    var description = System.Text.Encoding.UTF8.GetString(Helpers.RemoveCompactIntegerPrefix(((BoundedVecT14)ipfsDescriptionProperties.First().Value[1]).Value.Encode()));
+
+                    metadata.Description = description.Replace("\"_\":", "").Trim(['\"', '{', '}']);
+                }
+
+
+                metadatas.Add(metadata);
             };
 
             return metadatas;

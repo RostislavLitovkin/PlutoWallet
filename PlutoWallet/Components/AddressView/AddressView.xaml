@@ -38,6 +38,7 @@
                            Grid.Column="1"
                             TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
                             FontAttributes="Bold"
+                           LineBreakMode="TailTruncation"
                             FontFamily="SourceCode">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnTapped"/>

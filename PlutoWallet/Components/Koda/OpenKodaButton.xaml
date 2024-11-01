@@ -4,10 +4,10 @@
              x:Class="PlutoWallet.Components.Koda.OpenKodaButton"
              HeightRequest="60">
     <Border
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    StrokeThickness="0"
-    x:Name="border"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        StrokeThickness="0"
+        x:Name="border"
          BackgroundColor="Black"
     >
         <Border.StrokeShape>
@@ -47,9 +47,9 @@
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                 AbsoluteLayout.LayoutFlags="All">
                 <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, 30"
-                 AbsoluteLayout.LayoutFlags="PositionProportional"
-                 Aspect="AspectFit"
-                 Source="{AppThemeBinding Light=kodawhite.png, Dark=kodablack.png}"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Aspect="AspectFit"
+                        Source="{AppThemeBinding Light=kodawhite.png, Dark=kodablack.png}"
                  />
             </AbsoluteLayout>
         </AbsoluteLayout>

@@ -9,8 +9,8 @@ using UniqueryPlus;
 
 namespace PlutoWallet.ViewModel
 {
-	public partial class NftViewModel : ObservableObject
-	{
+    public partial class NftViewModel : ObservableObject
+    {
         [ObservableProperty]
         private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>() { };
 
@@ -21,7 +21,7 @@ namespace PlutoWallet.ViewModel
         private bool noNftsIsVisible = false;
 
         public NftViewModel()
-		{
+        {
 
         }
 
@@ -50,11 +50,10 @@ namespace PlutoWallet.ViewModel
             ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
             foreach (ICollectionBase collection in uniqueryPlusCollections)
             {
-                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
+                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None).ConfigureAwait(false));
             }
             #endregion
             //var uniqueryCollectionEnumerable = await UniqueryPlus.Collections.CollectionModel.(KeysModel.GetSubstrateKey());
-
 
             Collections = collections;
 
@@ -68,43 +67,59 @@ namespace PlutoWallet.ViewModel
                 ];
 
             ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
-            foreach (INftBase nft in uniqueryPlusNfts)
-            {
-                nfts.Add(Model.NftModel.ToNftWrapper(nft));
-            }
-
-            var client = new PolkadotAssetHub.NetApi.Generated.SubstrateClientExt(new Uri("wss://dot-rpc.stakeworld.io/assethub"), default);
-
-            await client.ConnectAsync();
-
-            var fcollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 208, CancellationToken.None);
-
-            var first3Nfts = await fcollection.GetNftsAsync(25, null, CancellationToken.None);
-
-            foreach (var nft in first3Nfts)
-            {
-                nfts.Add(Model.NftModel.ToNftWrapper(nft));
-            }
-
-
-            #endregion
-
 
             try
             {
-                var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
+                foreach (INftBase nft in uniqueryPlusNfts)
+                {
+                    nfts.Add(Model.NftModel.ToNftWrapper(nft));
+                }
+
+                var client = new PolkadotAssetHub.NetApi.Generated.SubstrateClientExt(new Uri("wss://dot-rpc.stakeworld.io/assethub"), default);
+
+                await client.ConnectAsync();
+
+                var fcollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 208, CancellationToken.None).ConfigureAwait(false);
+
+                var first3Nfts = await fcollection.GetNftsAsync(1, null, CancellationToken.None).ConfigureAwait(false);
+
+                foreach (var nft in first3Nfts)
+                {
+                    nfts.Add(Model.NftModel.ToNftWrapper(nft));
+                }
+
+                var uclient = new Unique.NetApi.Generated.SubstrateClientExt(new Uri("wss://eu-ws.unique.network"), default);
+
+                await uclient.ConnectAsync();
+
+                /*var uniqueCollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(uclient, NftTypeEnum.Unique, 304, CancellationToken.None).ConfigureAwait(false);
+
+                var unqiueFirst3Nfts = await uniqueCollection.GetNftsAsync(400, null, CancellationToken.None).ConfigureAwait(false);
+
+                var uniqueNftArray = unqiueFirst3Nfts.ToArray();
+                for (int i = 0; i < 5; i++)
+                {
+                    nfts.Add(Model.NftModel.ToNftWrapper(uniqueNftArray[i]));
+                }*/
+
+
+                nfts.Add(Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(uclient, NftTypeEnum.Unique, 304, 1, token).ConfigureAwait(false)));
+                #endregion
+
+
+                /*var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
 
                 var uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator();
 
                 for (uint i = 0; i < limit; i++)
                 {
-                    if (await uniqueryNftEnumerator.MoveNextAsync())
+                    if (await uniqueryNftEnumerator.MoveNextAsync().ConfigureAwait(false))
                     {
                         nfts.Add(Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current));
                     }
-                }
+                }*/
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Nfts failed here :((");
                 Console.WriteLine(ex);

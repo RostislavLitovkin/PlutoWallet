@@ -4,13 +4,13 @@
              x:Class="PlutoWallet.Components.Nft.NftSoldForView"
              xmlns:card="clr-namespace:PlutoWallet.Components.Card"
              HeightRequest="40">
-    <card:Card IsThin="True"
+    <card:ClickableCard IsThin="True"
                CardPadding="20, 0, 0, 0"
        AbsoluteLayout.LayoutBounds="0, .5, 1, 40"
        AbsoluteLayout.LayoutFlags="YProportional, WidthProportional">
-        <card:Card.View>
+        <card:ClickableCard.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-            x:Name="absoluteLayout">
+                            x:Name="absoluteLayout">
                 <Grid AbsoluteLayout.LayoutBounds="0, .5, 1, 40"
                         AbsoluteLayout.LayoutFlags="YProportional, WidthProportional"
                   x:Name="amountGrid"
@@ -32,19 +32,19 @@
                     </Label>
 
                     <Label VerticalOptions="Center" 
-                   Text="{Binding PriceText}"
-                   HorizontalOptions="FillAndExpand"
-                   Margin="10, 0, 0, 0"
-                   Grid.Column="1"
-                   TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
-                   FontAttributes="Bold"
-                   FontFamily="SourceCode">
+                           Text="{Binding PriceText}"
+                           HorizontalOptions="FillAndExpand"
+                           Margin="10, 0, 0, 0"
+                           Grid.Column="1"
+                           TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+                           FontAttributes="Bold"
+                           FontFamily="SourceCode">
                     </Label>
                     <Border BackgroundColor="{x:StaticResource Primary}"
-                    Stroke="{x:StaticResource Primary}"
-                    x:Name="currencyBorder"
-                    Grid.Column="2"
-                    HeightRequest="40">
+                            Stroke="{x:StaticResource Primary}"
+                            x:Name="currencyBorder"
+                            Grid.Column="2"
+                            HeightRequest="40">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="15" />
 
@@ -55,11 +55,11 @@
                                         Padding="15, 5, 15, 5"
                                         HorizontalOptions="Center">
                             <Label Text="Change price"
-                            TextColor="White"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Center"
-                            FontAttributes="Bold"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="Center"
+                                    FontAttributes="Bold"
                            />
                         </HorizontalStackLayout>
                         <Border.GestureRecognizers>
@@ -68,6 +68,6 @@
                     </Border>
                 </Grid>
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>

@@ -5,8 +5,8 @@
              xmlns:table="clr-namespace:PlutoWallet.Components.Table"
              x:Class="PlutoWallet.Components.Nft.NftTradingStats"
              HeightRequest="115">
-    <card:Card>
-        <card:Card.View>
+    <card:ClickableCard>
+        <card:ClickableCard.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 115"
                             AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
                             >
@@ -39,6 +39,6 @@
                                               Value="{Binding VolumeText}" />
                 </Grid>
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>

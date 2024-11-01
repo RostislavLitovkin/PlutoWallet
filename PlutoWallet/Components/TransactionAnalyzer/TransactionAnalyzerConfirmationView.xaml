@@ -67,7 +67,6 @@
                                                            Clicked="OnConfirmClicked"
                                                            ButtonState="{Binding ConfirmButtonState}"
                                                            />
-
                     </Grid>
                 </AbsoluteLayout>
 

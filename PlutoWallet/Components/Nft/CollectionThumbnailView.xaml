@@ -63,6 +63,7 @@
                         <Label Margin="5, 2.5, 5, 5"
                                FontSize="16"
                                VerticalTextAlignment="Center"
+                               LineBreakMode="TailTruncation"
                                Grid.Column="1">
                             <Label.FormattedText>
                                 <FormattedString>

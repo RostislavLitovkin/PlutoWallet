@@ -69,8 +69,6 @@
                     </koda:OpenKodaButton.GestureRecognizers>
                 </koda:OpenKodaButton>
 
-                <!-- Show nfts in the collection -->
-
                 <VerticalStackLayout
                     HorizontalOptions="Center"
                     Spacing="15"

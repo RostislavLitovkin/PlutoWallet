@@ -7,8 +7,10 @@ using PlutoWallet.Components.WebView;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using Substrate.NetApi.Model.Extrinsics;
+using System.Collections.ObjectModel;
 using System.Numerics;
 using UniqueryPlus.Collections;
+using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft
@@ -23,14 +25,14 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(AttributesIsVisible))]
         private INftBase nftBase;
 
-        public string Name => NftBase.Metadata.Name;
+        public string Name => NftBase.Metadata?.Name ?? "Unknown";
 
-        public string Description => NftBase.Metadata.Description;
+        public string Description => NftBase.Metadata?.Description ?? "";
 
-        public string Image => NftBase.Metadata.Image;
+        public string Image => NftBase.Metadata?.Image ?? "";
 
-        public UniqueryPlus.Attribute[] Attributes => NftBase.Metadata.Attributes;
-        public bool AttributesIsVisible => Attributes is not null && Attributes.Length > 0;
+        public ObservableCollection<UniqueryPlus.Attribute> Attributes => new ObservableCollection<UniqueryPlus.Attribute>(NftBase.Metadata?.Attributes ?? []);
+        public bool AttributesIsVisible => NftBase.Metadata.Attributes is not null && NftBase.Metadata.Attributes.Length > 0;
 
 
         [RelayCommand]
@@ -55,11 +57,7 @@ namespace PlutoWallet.Components.Nft
         public string OwnerAddressText => IsOwned switch
         {
             true => "You",
-            false => OwnerAddress.Length switch
-            {
-                > 12 => OwnerAddress.Substring(0, 12) + "..",
-                _ => OwnerAddress,
-            }
+            false => OwnerAddress,
         };
 
         [RelayCommand]
@@ -67,7 +65,7 @@ namespace PlutoWallet.Components.Nft
 
         [RelayCommand]
         public async Task OpenSubscanOwnerPageAsync() => await Application.Current.MainPage.Navigation.PushAsync(new WebViewPage($"https://www.subscan.io/account/{OwnerAddress}"));
-        
+
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(PriceText))]
@@ -100,8 +98,20 @@ namespace PlutoWallet.Components.Nft
         [ObservableProperty]
         private bool uniqueIsVisible;
 
+        [RelayCommand]
+        private async Task OpenUniqueAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new WebViewPage(((IUniqueMarketplaceLink)NftBase).UniqueMarketplaceLink));
+        }
+
         [ObservableProperty]
         private bool kodaIsVisible;
+
+        [RelayCommand]
+        private async Task OpenKodaAsync()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new WebViewPage(((IKodaLink)NftBase).KodaLink));
+        }
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(FloorPriceText))]
@@ -121,7 +131,6 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(VolumeText))]
         [NotifyPropertyChangedFor(nameof(TradingStatsIsVisible))]
         private BigInteger volume;
-
         public string VolumeText => String.Format("{0:0.00} {1}", (double)Volume / double.Pow(10, Endpoint.Decimals), Endpoint.Unit);
         public bool TradingStatsIsVisible => HighestSale > 0 || Volume > 0 || FloorPrice > 0;
 
@@ -190,10 +199,53 @@ namespace PlutoWallet.Components.Nft
         private ButtonStateEnum modifyButtonState = ButtonStateEnum.Disabled;
         public bool IsModifiable => ModifyButtonState == ButtonStateEnum.Enabled;
 
+        [RelayCommand]
+        private void Modify()
+        {
+            // TODO
+        }
+
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(IsBurnable))]
         private ButtonStateEnum burnButtonState = ButtonStateEnum.Disabled;
         public bool IsBurnable => BurnButtonState == ButtonStateEnum.Enabled;
+
+        [RelayCommand]
+        private async Task BurnAsync()
+        {
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(Endpoint.Key);
+
+            var client = clientExt.SubstrateClient;
+
+            try
+            {
+                Method transfer = ((INftBurnable)NftBase).Burn();
+
+                var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+                await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, transfer, false);
+            }
+            catch (Exception ex)
+            {
+                //errorLabel.Text = ex.Message;
+                Console.WriteLine(ex);
+            }
+        }
+
+        [ObservableProperty]
+        private bool isNestable = false;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NestedNftsLoading))]
+        private ObservableCollection<NftWrapper> nestedNfts = new ObservableCollection<NftWrapper>();
+
+        public string NestedNftsLoading => (IsNestable, NestedNfts.Count()) switch
+        {
+            (false, _) => "Loading",
+            (true, 0) => "No nested NFTs",
+            (true, _) => ""
+        };
+
         public NftDetailViewModel()
         {
         }

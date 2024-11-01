@@ -173,7 +173,7 @@ namespace PlutoWallet.Model
 
                     if (!cache.ContainsKey(key))
                     {
-                        var nftBase = await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, key.Item1, key.Item2, key.Item3, 1, null, token);
+                        var nftBase = await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, key.Item1, key.Item2, key.Item3, token);
 
                         if (nftBase is null)
                         {

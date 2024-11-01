@@ -469,6 +469,9 @@
 	  <MauiXaml Update="Components\Nft\NftMainPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\NftNestedNftsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NftOwnerView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

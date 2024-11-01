@@ -10,7 +10,7 @@ public partial class NftDescriptionView : ContentView
         propertyChanging: (bindable, oldValue, newValue) => {
             var control = (NftDescriptionView)bindable;
 
-            control.descriptionLabel.Text = Markdown.ToHtml((string)newValue);
+            control.descriptionLabel.Text = Markdown.ToHtml((string)newValue).Trim([' ', '\n', '\t']);
         });
 
     public NftDescriptionView()
