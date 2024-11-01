@@ -24,14 +24,13 @@ namespace UniqueryPlus.Nfts
     {
         private SubstrateClientExt client;
 
+        public IEnumerable<INftBase> Nests { get; set; } = new List<INftBase>();
         public required BigInteger? Price { get; set; }
         public required bool IsForSale { get; set; }
-
         public UniqueNftFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
         }
-
         public Method Sell(BigInteger price, string sender) => EVM.Helpers.GetUniqueEVMCallMethod(
             sender,
             UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS,
@@ -46,7 +45,7 @@ namespace UniqueryPlus.Nfts
             Price
         );
     }
-    public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable
+    public record UniqueNft : INftBase, IUniqueMarketplaceLink, INftTransferable, INftBurnable, INftNestable<UniqueNft>
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.Unique;
@@ -59,7 +58,17 @@ namespace UniqueryPlus.Nfts
         {
             this.client = client;
         }
-        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token) => await UniqueCollectionModel.GetCollectionByCollectionIdAsync(client, (uint)CollectionId, token);
+        public async Task<IEnumerable<NestedNftWrapper<UniqueNft>>> GetNestedNftsAsync(CancellationToken token)
+        {
+            var nfts = await UniqueNftModel.GetNestedNftsByIdAsync(client, (uint)CollectionId, (uint)Id, null, token).ConfigureAwait(false);
+
+            return nfts.Items.Select(nftBase => new NestedNftWrapper<UniqueNft>
+            {
+                Depth = 1,
+                NftBase = (UniqueNft)nftBase,
+            });
+        }
+        public Task<ICollectionBase> GetCollectionAsync(CancellationToken token) => UniqueCollectionModel.GetCollectionByCollectionIdAsync(client, (uint)CollectionId, token);
 
         public required bool IsTransferable { get; set; }
         public Method Transfer(string recipientAddress)
@@ -91,7 +100,7 @@ namespace UniqueryPlus.Nfts
         }
         public async Task<INftBase> GetFullAsync(CancellationToken _token)
         {
-            var price = await UniqueNftModel.GetNftPriceAsync((uint)CollectionId, (uint)Id);
+            var price = await UniqueNftModel.GetNftPriceAsync((uint)CollectionId, (uint)Id).ConfigureAwait(false);
             return new UniqueNftFull(client)
             {
                 Owner = Owner,
@@ -107,7 +116,29 @@ namespace UniqueryPlus.Nfts
     }
     public class UniqueNftModel
     {
+        internal static async Task<INftBase?> GetNftByIdAsync(SubstrateClientExt client, uint collectionId, uint id, CancellationToken token)
+        {
+            CollectionId uniqueCollectionId = new CollectionId();
+            uniqueCollectionId.Value = new U32(collectionId);
 
+            TokenId uniqueTokenId = new TokenId();
+            uniqueTokenId.Value = new U32(id);
+
+            var keyPrefix = Utils.HexToByteArray(NonfungibleStorage.TokenPropertiesParams(new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId)));
+
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, 1, null, string.Empty, token).ConfigureAwait(false);
+
+            // No nfts found
+            if (fullKeys == null || !fullKeys.Any())
+            {
+                return null;
+            }
+
+            // Filter only the CollectionId and NftId keys
+            var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
+
+            return (await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false)).Items.First();
+        }
         internal static async Task<JArray> GetNftsInCollectionFullKeysAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage + Twox64Concat(u32)
@@ -121,13 +152,14 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NonfungibleStorage.TokenPropertiesParams(new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId)).Substring(0, keyPrefixLength));
 
-            return await client.State.GetKeysPagedAsync(keyPrefix, 1000, null, string.Empty, token);
-
+            return await client.State.GetKeysPagedAsync(keyPrefix, 1000, lastKey, string.Empty, token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
-            var fullKeys = await GetNftsInCollectionFullKeysAsync(client, collectionId, limit, lastKey, token);
+            var fullKeys = await GetNftsInCollectionFullKeysAsync(client, collectionId, limit, lastKey, token).ConfigureAwait(false);
+
+            Console.WriteLine("Full keys: " + fullKeys.Count());
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -142,7 +174,9 @@ namespace UniqueryPlus.Nfts
             // Filter only the CollectionId and NftId keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
 
-            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            Console.WriteLine("id keys: " + idKeys.Count());
+
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsOwnedByOnChainAsync(SubstrateClientExt client, string owner, uint limit, byte[]? lastKey, CancellationToken token)
@@ -171,7 +205,7 @@ namespace UniqueryPlus.Nfts
 
             while (true)
             {
-                var newKeys = await client.State.GetKeysPagedAsync(keyPrefix, 1000, lastKey, string.Empty, token);
+                var newKeys = await client.State.GetKeysPagedAsync(keyPrefix, 1000, lastKey, string.Empty, token).ConfigureAwait(false);
 
                 if (newKeys == null || !newKeys.Any())
                 {
@@ -188,14 +222,14 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString()).Where(p => p.Length == substrateKeyPrefixLength && p.Substring(124, 64) == encodedAccountId).Select(p => p.Substring(Constants.BASE_STORAGE_KEY_LENGTH, 24) + p.Substring(188, 24));
 
-            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<IEnumerable<INftBase>> GetNftsOwnedByAsync(SubstrateClientExt client, string owner, int limit, int offset, CancellationToken token)
         {
             var uniqueSubqueryClient = Indexers.GetUniqueSubqueryClient();
 
-            var result = await uniqueSubqueryClient.GetNftsOwnedBy.ExecuteAsync(owner, limit, offset);
+            var result = await uniqueSubqueryClient.GetNftsOwnedBy.ExecuteAsync(owner, limit, offset).ConfigureAwait(false);
 
             if (
                 result is null ||
@@ -244,7 +278,7 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NonfungibleStorage.OwnedParams(new BaseTuple<CollectionId, EnumBasicCrossAccountIdRepr, TokenId>(uniqueCollectionId, crossAccountId, uniqueTokenId)).Substring(0, substrateKeyPrefixLength));
 
-            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token).ConfigureAwait(false);
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -261,7 +295,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString()).Select(p => p.Substring(Constants.BASE_STORAGE_KEY_LENGTH, 24) + p.Substring(substrateKeyPrefixLength, 24));
 
-            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, string lastKey, CancellationToken token)
@@ -279,11 +313,17 @@ namespace UniqueryPlus.Nfts
 
             var collectionIdKeys = ids.Select(ids => Utils.Bytes2HexString(HashExtension.Blake2Concat(new U32((uint)ids.Item1).Encode(), 128), Utils.HexStringFormat.Pure));
 
-            var nftDatas = await GetTokenDataByIdKeysAsync(client, idKeys, token);
+            var nftDatas = await GetTokenDataByIdKeysAsync(client, idKeys, token).ConfigureAwait(false);
 
-            var nftMetadatas = await GetNftMetadataByIdKeysAsync(client, idKeys, token);
+            var nftMetadatas = await GetNftMetadataByIdKeysAsync(client, idKeys, token).ConfigureAwait(false);
 
-            var collectionDatas = await UniqueCollectionModel.GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token);
+            var collectionDatas = await UniqueCollectionModel.GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
+
+            Console.WriteLine("Ids: " + ids.Count());
+            Console.WriteLine("metadatas: " + nftMetadatas.Count());
+            Console.WriteLine("nftDatas: " + nftDatas.Count());
+            Console.WriteLine("Collection ids: " + collectionIdKeys.Count());
+            Console.WriteLine("collections: " + collectionDatas.Count());
 
             return new RecursiveReturn<INftBase>
             {
@@ -359,10 +399,65 @@ namespace UniqueryPlus.Nfts
                 LastKey = Utils.HexToByteArray(lastKey)
             };
         }
+        internal static async Task<RecursiveReturn<INftBase>> GetNestedNftsByIdAsync(SubstrateClientExt client, uint collectionId, uint id, byte[]? lastKey, CancellationToken token)
+        {
+            var ids = await GetNestedNftIdsByIdAsync(client, collectionId, id, lastKey, token).ConfigureAwait(false);
+            var idKeys = ids.Items.Select(ids => Utils.Bytes2HexString(HashExtension.Twox64Concat(ids.CollectionId.Encode()), Utils.HexStringFormat.Pure) + Utils.Bytes2HexString(HashExtension.Twox64Concat(ids.Id.Encode()), Utils.HexStringFormat.Pure));
+
+            return await GetNftsByIdKeysAsync(client, idKeys, Utils.Bytes2HexString(ids.LastKey ?? []), token).ConfigureAwait(false);
+        }
+
+        private static async Task<RecursiveReturn<NftIds>> GetNestedNftIdsByIdAsync(SubstrateClientExt client, uint collectionId, uint id, byte[]? lastKey, CancellationToken token)
+        {
+            // 0x + Twox64 pallet + Twox64 storage + Twox64Concat CollectionId + Twox64Concat TokenId
+            var keyPrefixLength = 114;
+
+            CollectionId uniqueCollectionId = new CollectionId();
+            uniqueCollectionId.Value = new U32(collectionId);
+
+            TokenId uniqueTokenId = new TokenId();
+            uniqueTokenId.Value = new U32(id);
+
+            var uniqueIdTuple = new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId);
+
+            var keyPrefix = Utils.HexToByteArray(NonfungibleStorage.TokenChildrenParams(new BaseTuple<CollectionId, TokenId, BaseTuple<CollectionId, TokenId>>(uniqueCollectionId, uniqueTokenId, uniqueIdTuple)).Substring(0, keyPrefixLength));
+
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, 1000, lastKey, string.Empty, token).ConfigureAwait(false);
+
+            // No more nfts found
+            if (fullKeys == null || !fullKeys.Any())
+            {
+                return new RecursiveReturn<NftIds>
+                {
+                    Items = [],
+                    LastKey = lastKey,
+                };
+            }
+
+            return new RecursiveReturn<NftIds>
+            {
+                Items = fullKeys.Select(p => p.ToString().Substring(keyPrefixLength + 16)).Select(p =>
+                {
+                    var collectionIdU32 = new U32();
+                    collectionIdU32.Create(Utils.HexToByteArray(p.Substring(0, 8)));
+
+                    var idU32 = new U32();
+                    idU32.Create(Utils.HexToByteArray(p.Substring(8)));
+
+                    return new NftIds
+                    {
+                        CollectionId = collectionIdU32,
+                        Id = idU32,
+                    };
+                }),
+                LastKey = lastKey,
+            };
+        }
+
         internal static async Task<IEnumerable<ItemData?>> GetTokenDataByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage
-            var keyPrefixLength = 66;
+            var keyPrefixLength = Constants.BASE_STORAGE_KEY_LENGTH;
 
             CollectionId uniqueCollectionId = new CollectionId();
             uniqueCollectionId.Value = new U32(0);
@@ -373,7 +468,7 @@ namespace UniqueryPlus.Nfts
             var keyPrefix = NonfungibleStorage.TokenDataParams(new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId)).Substring(0, keyPrefixLength);
 
             var nftMetadataKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
             var itemDatas = new List<ItemData?>();
 
@@ -408,7 +503,7 @@ namespace UniqueryPlus.Nfts
             var keyPrefix = NonfungibleStorage.TokenPropertiesParams(new BaseTuple<CollectionId, TokenId>(uniqueCollectionId, uniqueTokenId)).Substring(0, keyPrefixLength);
 
             var nftMetadataKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
             var metadatas = new List<NftMetadata?>();
 
@@ -444,7 +539,7 @@ namespace UniqueryPlus.Nfts
             var getOrderFunction = new GetOrderFunction();
             getOrderFunction.CollectionId = collectionId;
             getOrderFunction.TokenId = tokenId;
-            var getOrderOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetOrderFunction, GetOrderOutputDTO>(getOrderFunction);
+            var getOrderOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetOrderFunction, GetOrderOutputDTO>(getOrderFunction).ConfigureAwait(false);
 
             return getOrderOutputDTO.ReturnValue1.Price == 0 ? null : getOrderOutputDTO.ReturnValue1.Price;
         }
@@ -478,6 +573,12 @@ namespace UniqueryPlus.Nfts
             putFunction.Seller = EVM.Helpers.ToCrossAddress(sellerAddress);
 
             return putFunction.GetCallData();
+        }
+
+        private record NftIds
+        {
+            public required U32 CollectionId { get; set; }
+            public required U32 Id { get; set; }
         }
     }
 }

@@ -51,10 +51,8 @@ namespace UniqueryPlus.Nfts
         {
             this.client = client;
         }
-        public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
-        {
-            return await PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
-        }
+        public Task<ICollectionBase> GetCollectionAsync(CancellationToken token) => PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync(client, (uint)CollectionId, token);
+        
         public bool IsTransferable { get; set; } = true;
 
         public Method Transfer(string recipientAddress)
@@ -69,16 +67,13 @@ namespace UniqueryPlus.Nfts
         }
 
         public bool IsBurnable { get; set; } = true;
-        public Method Burn()
-        {
-            return NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
-        }
+        public Method Burn() => NftsCalls.Burn(new U32((uint)CollectionId), new U32((uint)Id));
 
         public async Task<BigInteger?> GetMarketPriceAsync(CancellationToken token)
         {
             var speckClient = Indexers.GetSpeckClient();
 
-            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString(), token);
+            var collectionStats = await speckClient.GetCollectionStats.ExecuteAsync(CollectionId.ToString(), token).ConfigureAwait(false);
 
             //collectionStats.EnsureNoErrors();
             if (collectionStats is null || collectionStats.Errors.Count > 0)
@@ -91,7 +86,7 @@ namespace UniqueryPlus.Nfts
 
         public async Task<INftBase> GetFullAsync(CancellationToken token)
         {
-            var price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token);
+            var price = await PolkadotAssetHubNftModel.GetNftPriceNftsPalletAsync(client, (uint)CollectionId, (uint)Id, token).ConfigureAwait(false);
 
             return new PolkadotAssetHubNftsPalletNftFull(client)
             {
@@ -106,13 +101,13 @@ namespace UniqueryPlus.Nfts
     }
     internal class PolkadotAssetHubNftModel
     {
-        internal static async Task<INftBase?> GetNftNftsPalletByIdAsync(SubstrateClientExt client, uint collectionId, uint id, uint limit, byte[]? lastKey, CancellationToken token)
+        internal static async Task<INftBase?> GetNftNftsPalletByIdAsync(SubstrateClientExt client, uint collectionId, uint id, CancellationToken token)
         {
             var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id))));
 
-            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, 1, null, string.Empty, token).ConfigureAwait(false);
 
-            // No more nfts found
+            // No nfts found
             if (fullKeys == null || !fullKeys.Any())
             {
                 return null;
@@ -121,7 +116,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the CollectionId and NftId keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(Constants.BASE_STORAGE_KEY_LENGTH));
 
-            return (await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token)).Items.First();
+            return (await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false)).Items.First();
         }
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionAsync(SubstrateClientExt client, uint collectionId, uint limit, byte[]? lastKey, CancellationToken token)
         {
@@ -130,7 +125,7 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NftsStorage.ItemParams(new BaseTuple<U32, U32>(new U32(collectionId), new U32(0))).Substring(0, keyPrefixLength));
 
-            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token).ConfigureAwait(false);
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -147,7 +142,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the CollectionId and NftId keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(baseStoragePrefixLength));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletOwnedByAsync(SubstrateClientExt client, string owner, uint limit, byte[]? lastKey, CancellationToken token)
@@ -160,7 +155,7 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NftsStorage.AccountParams(new BaseTuple<AccountId32, U32, U32>(accountId32, new U32(0), new U32(0))).Substring(0, keyPrefixLength));
 
-            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token).ConfigureAwait(false);
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -175,7 +170,7 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(keyPrefixLength));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletInCollectionOwnedByAsync(SubstrateClientExt client, uint collectionId, string owner, uint limit, byte[]? lastKey, CancellationToken token)
@@ -188,7 +183,7 @@ namespace UniqueryPlus.Nfts
 
             var keyPrefix = Utils.HexToByteArray(NftsStorage.AccountParams(new BaseTuple<AccountId32, U32, U32>(accountId32, new U32(collectionId), new U32(0))).Substring(0, keyPrefixLength));
 
-            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token);
+            var fullKeys = await client.State.GetKeysPagedAsync(keyPrefix, limit, lastKey, string.Empty, token).ConfigureAwait(false);
 
             // No more nfts found
             if (fullKeys == null || !fullKeys.Any())
@@ -206,16 +201,16 @@ namespace UniqueryPlus.Nfts
             // Filter only the nft Id keys
             var idKeys = fullKeys.Select(p => p.ToString().Substring(baseStoragePrefixLength));
 
-            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token);
+            return await GetNftsNftsPalletByIdKeysAsync(client, idKeys, fullKeys.Last().ToString(), token).ConfigureAwait(false);
         }
 
         internal static async Task<RecursiveReturn<INftBase>> GetNftsNftsPalletByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, string lastKey, CancellationToken token)
         {
             var ids = idKeys.Select(ids => (Helpers.GetBigIntegerFromBlake2_128Concat(ids.Substring(0, 40)), Helpers.GetBigIntegerFromBlake2_128Concat(ids.Substring(40, 40))));
 
-            var nftDetails = await GetNftDetailsNftsPalletByIdKeysAsync(client, idKeys, token);
+            var nftDetails = await GetNftDetailsNftsPalletByIdKeysAsync(client, idKeys, token).ConfigureAwait(false);
 
-            var nftMetadatas = await GetNftMetadataNftsPalletByIdKeysAsync(client, idKeys, token);
+            var nftMetadatas = await GetNftMetadataNftsPalletByIdKeysAsync(client, idKeys, token).ConfigureAwait(false);
 
             return new RecursiveReturn<INftBase>
             {
@@ -252,7 +247,7 @@ namespace UniqueryPlus.Nfts
 
             var nftDetailsKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
 
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftDetailsKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftDetailsKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
             return storageChangeSets.First().Changes.Select(change =>
             {
@@ -276,7 +271,7 @@ namespace UniqueryPlus.Nfts
             var keyPrefix = NftsStorage.ItemMetadataOfParams(new BaseTuple<U32, U32>(new U32(0), new U32(0))).Substring(0, keyPrefixLength);
 
             var nftMetadataKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
             var metadatas = new List<NftMetadata?>();
 
@@ -293,7 +288,7 @@ namespace UniqueryPlus.Nfts
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(nftMetadata.Data.Value.Bytes);
 
-                metadatas.Add(await IpfsModel.GetMetadataAsync<NftMetadata>(ipfsLink, token));
+                metadatas.Add(await IpfsModel.GetMetadataAsync<NftMetadata>(ipfsLink, token).ConfigureAwait(false));
             };
 
             return metadatas;
@@ -301,7 +296,7 @@ namespace UniqueryPlus.Nfts
 
         internal static async Task<BigInteger?> GetNftPriceNftsPalletAsync(SubstrateClientExt client, uint collectionId, uint id, CancellationToken token)
         {
-            var price = await client.NftsStorage.ItemPriceOf(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id)), null, token);
+            var price = await client.NftsStorage.ItemPriceOf(new BaseTuple<U32, U32>(new U32(collectionId), new U32(id)), null, token).ConfigureAwait(false);
 
             if (price is null)
             {

@@ -11,6 +11,8 @@ using UniqueryPlus.Ipfs;
 using Unique.NetApi.Generated.Model.sp_core.crypto;
 using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
+using Substrate.NetApi.Model.Rpc;
+using System.Collections.Immutable;
 
 namespace UniqueryPlus.Collections
 {
@@ -38,7 +40,7 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    public record UniqueCollection : ICollectionBase, IUniqueMarketplaceLink, ICollectionMintConfig
+    public record UniqueCollection : ICollectionBase, IUniqueMarketplaceLink, ICollectionMintConfig, ICollectionNestable
     {
         private SubstrateClientExt client;
         public NftTypeEnum Type => NftTypeEnum.KusamaAssetHub_NftsPallet;
@@ -52,6 +54,9 @@ namespace UniqueryPlus.Collections
         public BigInteger? MintEndBlock { get; set; }
         public BigInteger? MintPrice { get; set; }
         public string UniqueMarketplaceLink => $"https://unqnft.io/unique/collection/{CollectionId}";
+        public required bool IsNestableByTokenOwner { get; set; }
+        public required bool IsNestableByCollectionOwner { get; set; }
+        public IEnumerable<BigInteger>? RestrictedByCollectionIds { get; set; }
         public UniqueCollection(SubstrateClientExt client)
         {
             this.client = client;
@@ -63,7 +68,9 @@ namespace UniqueryPlus.Collections
                 return [];
             }
 
-            var result = await UniqueNftModel.GetNftsInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token);
+            var result = await UniqueNftModel.GetNftsInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token).ConfigureAwait(false);
+
+            Console.WriteLine(result.Items.Count());
 
             return result.Items;
         }
@@ -75,7 +82,7 @@ namespace UniqueryPlus.Collections
                 return [];
             }
 
-            var result = await UniqueNftModel.GetNftsInCollectionOwnedByAsync(client, (uint)CollectionId, owner, limit, lastKey, token);
+            var result = await UniqueNftModel.GetNftsInCollectionOwnedByAsync(client, (uint)CollectionId, owner, limit, lastKey, token).ConfigureAwait(false);
 
             return result.Items;
         }
@@ -97,7 +104,7 @@ namespace UniqueryPlus.Collections
 
             var collectionIdKey = CommonStorage.CollectionByIdParams(uniqueCollectionId).Substring(Constants.BASE_STORAGE_KEY_LENGTH);
 
-            var result = await GetCollectionsByIdKeysAsync(client, [collectionIdKey], "", token);
+            var result = await GetCollectionsByIdKeysAsync(client, [collectionIdKey], "", token).ConfigureAwait(false);
 
             return result.Items.First();
         }
@@ -106,15 +113,15 @@ namespace UniqueryPlus.Collections
         {
             var collectionIds = collectionIdKeys.Select(Helpers.GetBigIntegerFromBlake2_128Concat);
 
-            var collectionDetails = await GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token);
-            var collectionMetadatas = await GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(client, collectionIdKeys, token);
-            var nftCounts = await GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(client, collectionIds, token);
+            var collectionDetails = await GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
+            var collectionMetadatas = await GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
+            var nftCounts = await GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(client, collectionIds, token).ConfigureAwait(false);
             
             return new RecursiveReturn<ICollectionBase>
             {
                 Items = collectionIds.Zip(collectionDetails, (BigInteger collectionId, Collection? details) =>
                 {
-                    /// Code the check the Sponsorship AccountId
+                    // Code the check the Sponsorship AccountId
                     /*
 #pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
                     if (details?.Sponsorship?.Value == SponsorshipState.Unconfirmed)
@@ -137,7 +144,9 @@ namespace UniqueryPlus.Collections
                                 Type = MintTypeEnum.Unknown,
                                 CollectionId = null
                             },
-                            MintPrice = default
+                            MintPrice = default,
+                            IsNestableByTokenOwner = false,
+                            IsNestableByCollectionOwner = false,
                         },
                         _ => new UniqueCollection(client)
                         {
@@ -174,7 +183,10 @@ namespace UniqueryPlus.Collections
                             NftMaxSuply = details.Limits.TokenLimit.OptionFlag ? (uint)details.Limits.TokenLimit.Value : null,
                             MintPrice = null,
                             MintEndBlock = null,
-                            MintStartBlock = null
+                            MintStartBlock = null,
+                            IsNestableByTokenOwner = details.Permissions.Nesting.OptionFlag ? details.Permissions.Nesting.Value.TokenOwner : false,
+                            IsNestableByCollectionOwner = details.Permissions.Nesting.OptionFlag ? details.Permissions.Nesting.Value.CollectionAdmin : false,
+                            RestrictedByCollectionIds = details.Permissions.Nesting.OptionFlag ? (details.Permissions.Nesting.Value.Restricted.OptionFlag ? details.Permissions.Nesting.Value.Restricted.Value.Value.Value.Value.Value.Select(collectionId => (BigInteger)collectionId.Value.Value) : null) : null,
                         },
                     };
                 }).Zip(nftCounts, (UniqueCollection collectionBase, uint nftCount) =>
@@ -203,12 +215,30 @@ namespace UniqueryPlus.Collections
 
             var keyPrefix = CommonStorage.CollectionByIdParams(uniqueCollectionId).Substring(0, Constants.BASE_STORAGE_KEY_LENGTH);
 
-            var collectionCollectionKeys = collectionIdKeys.Select(collectionIdKey => Utils.HexToByteArray(keyPrefix + collectionIdKey));
+            var collectionKeysArray = collectionIdKeys.ToImmutableArray();
+            var collectionCollectionKeys = collectionIdKeys.Select(collectionIdKey => Utils.HexToByteArray(keyPrefix + collectionIdKey)).ToList();
 
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(collectionCollectionKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(collectionCollectionKeys, string.Empty, token).ConfigureAwait(false);
 
-            return storageChangeSets.First().Changes.Select(change =>
+            Dictionary<string, string[]> collectionStorageSets = new Dictionary<string, string[]>();
+
+            int i = 0;
+            foreach(var storageChangeSet in storageChangeSets.First().Changes)
             {
+                while (collectionStorageSets.ContainsKey(collectionKeysArray[i]))
+                {
+                    i++;
+                }
+                collectionStorageSets.Add(collectionKeysArray[i], storageChangeSet);
+
+                i++;
+            }
+
+
+            return collectionKeysArray.Select(key =>
+            {
+                var change = collectionStorageSets[key];
+
                 if (change[1] == null)
                 {
                     return null;
@@ -228,7 +258,7 @@ namespace UniqueryPlus.Collections
             var keyPrefix = CommonStorage.CollectionPropertiesParams(uniqueCollectionId).Substring(0, Constants.BASE_STORAGE_KEY_LENGTH);
 
             var collectionMetadataKeys = collectionIdKeys.Select(collectionIdKey => Utils.HexToByteArray(keyPrefix + collectionIdKey));
-            var storageChangeSets = await client.State.GetQueryStorageAtAsync(collectionMetadataKeys.ToList(), string.Empty, token);
+            var storageChangeSets = await client.State.GetQueryStorageAtAsync(collectionMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
             var metadatas = new List<CollectionMetadata?>();
 
@@ -284,7 +314,7 @@ namespace UniqueryPlus.Collections
 
         internal static async Task<int> GetTotalCountOfNftsInCollectionOnChainAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
         {
-            var fullKeys = await UniqueNftModel.GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token);
+            var fullKeys = await UniqueNftModel.GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token).ConfigureAwait(false);
 
             return fullKeys.Count();
         }
@@ -296,7 +326,7 @@ namespace UniqueryPlus.Collections
 
             foreach (BigInteger collectionId in collectionIds)
             {
-                var result = await uniqueSubqueryClient.GetNftsInCollection.ExecuteAsync((double)collectionId, 0, 0);
+                var result = await uniqueSubqueryClient.GetNftsInCollection.ExecuteAsync((double)collectionId, 0, 0).ConfigureAwait(false);
 
                 if (
                     result is null ||
@@ -305,7 +335,7 @@ namespace UniqueryPlus.Collections
                 )
                 {
                     // Fallback to on-chain count (Very slow and inefficient)
-                    nftCounts.Add((uint)await GetTotalCountOfNftsInCollectionOnChainAsync(client, (uint)collectionId, token));
+                    nftCounts.Add((uint)await GetTotalCountOfNftsInCollectionOnChainAsync(client, (uint)collectionId, token).ConfigureAwait(false));
                     continue;
                 }
 
