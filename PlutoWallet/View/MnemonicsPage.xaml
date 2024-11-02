@@ -64,6 +64,9 @@
                 <Button Text="Use existing mnemonics" Clicked="GoToEnterMnemonics"
                         />
 
+                <Button Text="What are mnemonics?" Clicked="OnMnemonicsExplanationClicked"
+                        />
+
                 <Button Text="Back to main screen" Clicked="ContinueToMainPageClicked" />
 
             </VerticalStackLayout>
