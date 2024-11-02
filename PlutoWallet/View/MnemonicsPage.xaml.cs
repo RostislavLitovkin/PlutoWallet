@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui.Storage;
 using PlutoWallet.Model;
+using PlutoWallet.Components.Mnemonics;
 using Substrate.NET.Schnorrkel.Keys;
 using Substrate.NET.Wallet.Keyring;
 using Substrate.NetApi;
@@ -67,5 +68,10 @@ public partial class MnemonicsPage : ContentPage
             await Toast.Make($"The file was not saved successfully with error: {fileSaverResult.Exception.Message}").Show(cancellationToken);
         }*/
 
+    }
+
+    private async void OnMnemonicsExplanationClicked(System.Object sender, System.EventArgs e)
+    {
+        await Navigation.PushAsync(new MnemonicsExplanationPage());
     }
 }

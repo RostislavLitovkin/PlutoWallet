@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Mnemonics.MnemonicsExplanationPage"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:card="clr-namespace:PlutoWallet.Components.Card"
+             Title="MnemonicsExplanationPage"
+             BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
+
+        <ScrollView Orientation="Vertical"
+                    x:Name="scrollView"
+                    AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Padding="0, 55, 0, 0">
+            
+            <VerticalStackLayout Spacing="20" Padding="20">
+                <card:Card>
+                    <card:Card.View>
+                        <VerticalStackLayout Padding="20" Spacing="20">
+                            <!-- What are Mnemonics section -->
+                            <Label Text="What are Mnemonics?"
+                                   FontSize="24"
+                                   FontAttributes="Bold"/>
+                            <Label Text="Mnemonics, also known as seed phrases or recovery phrases, are a series of 12 words that represent the private key of your cryptocurrency wallet. These phrases are crucial because they allow you to recover your wallet and access your funds if you lose your device or forget your password."
+                                   TextType="Text"/>
+
+                            <!-- How to Store section -->
+                            <Label Text="How to Store Mnemonics Safely"
+                                   FontSize="24"
+                                   FontAttributes="Bold"
+                                   Margin="0,10,0,0"/>
+                            
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="1. Write it Down on Paper and store it in a secure place where you will not lose it. Potentionally consider creating multiple copies."
+                                       TextType="Text"/>
+                                
+                                <Label Text="2. Do not store your mnemonic phrase in cloud storage, email, or any online service. These platforms are vulnerable to cyber-attacks, which could compromise your mnemonic phrase."
+                                       TextType="Text"/>
+                                
+                                <Label Text="3. Never share your mnemonic phrase with anyone. Possession of the mnemonic phrase means full control over your wallet and its funds."
+                                       TextType="Text"/>
+                                
+                                <Label Text="4. Never enter the mnemonic phrase into any website/application, even if they ask you. Be wary of phishing attempts and scams that may try to trick you into revealing your phrase."
+                                       TextType="Text"/>
+                            </VerticalStackLayout>
+
+                            <Label Text="Source: https://support.polkadot.network/support/solutions/articles/65000110873-glossary"
+                                FontSize="12"
+                                TextColor="Gray"
+                                TextDecorations="Underline"
+                                Margin="0,10,0,0">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenUrlCommand}"
+                                                        CommandParameter="https://support.polkadot.network/support/solutions/articles/65000110873-glossary"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                            
+                        </VerticalStackLayout>
+                    </card:Card.View>
+                </card:Card>
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <navigationbar:TopNavigationBar Title="About Mnemonics"
+                                      x:Name="topNavigationBar" />
+
+        <confirmtransaction:ConfirmTransactionView />
+
+    </AbsoluteLayout>
+</ContentPage>
