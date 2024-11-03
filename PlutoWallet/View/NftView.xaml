@@ -12,6 +12,8 @@
             AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
         <VerticalStackLayout Padding="20, 65, 20, 200"
                              Spacing="15">
+            <Button Text="Show all nfts"
+                    Clicked="ShowAllNftsClicked" />
             <VerticalStackLayout
                                 HorizontalOptions="Center"
                                 Spacing="15"
@@ -29,7 +31,7 @@
 
                 </BindableLayout.ItemTemplate>
             </VerticalStackLayout>
-            <VerticalStackLayout
+            <!--<VerticalStackLayout
                                 HorizontalOptions="Center"
                                 Spacing="15"
                                 BindableLayout.ItemsSource="{Binding Nfts}">
@@ -43,7 +45,7 @@
                     </DataTemplate>
 
                 </BindableLayout.ItemTemplate>
-            </VerticalStackLayout>
+            </VerticalStackLayout>-->
         </VerticalStackLayout>
 
     </ScrollView>

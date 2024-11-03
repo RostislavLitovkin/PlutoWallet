@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.NftListPage"
+         xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+         xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+         xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
+         xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
+         xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
+         xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
+         xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+         xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+         BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+               Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+               Opacity="{AppThemeBinding Light=0.96}"
+               Aspect="AspectFill"/>
+
+        <CollectionView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                        ItemSizingStrategy="MeasureAllItems"
+                        ItemsSource="{Binding Nfts}"
+                        RemainingItemsThreshold="1"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreNftsCommand}">
+            <CollectionView.Header>
+                <AbsoluteLayout HeightRequest="45"
+                                WidthRequest="10">
+
+                </AbsoluteLayout>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <StackLayout HeightRequest="200">
+                    <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="False"/>
+                </StackLayout>
+            </CollectionView.Footer>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" 
+                                   ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <nft:NftThumbnailView Endpoint="{Binding Endpoint}"
+                                          Favourite="{Binding Favourite}"
+                                          NftBase="{Binding NftBase}"
+                                          Margin="20, 0, 20, 0" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <txanalyzer:TransactionAnalyzerConfirmationView />
+
+        <navigationbar:TopNavigationBar Title="Nfts" />
+    </AbsoluteLayout>
+</ContentPage>

@@ -25,7 +25,6 @@ namespace PlutoWallet.ViewModel
 
         }
 
-
         /**
         * Called in the BasePageViewModel
         */
@@ -92,15 +91,15 @@ namespace PlutoWallet.ViewModel
 
                 await uclient.ConnectAsync();
 
-                /*var uniqueCollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(uclient, NftTypeEnum.Unique, 304, CancellationToken.None).ConfigureAwait(false);
+                var uniqueCollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(uclient, NftTypeEnum.Unique, 304, CancellationToken.None).ConfigureAwait(false);
 
                 var unqiueFirst3Nfts = await uniqueCollection.GetNftsAsync(400, null, CancellationToken.None).ConfigureAwait(false);
 
                 var uniqueNftArray = unqiueFirst3Nfts.ToArray();
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 300; i++)
                 {
                     nfts.Add(Model.NftModel.ToNftWrapper(uniqueNftArray[i]));
-                }*/
+                }
 
 
                 nfts.Add(Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(uclient, NftTypeEnum.Unique, 304, 1, token).ConfigureAwait(false)));
