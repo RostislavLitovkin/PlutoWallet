@@ -2,6 +2,7 @@
 using PlutoWallet.Components.UniversalScannerView;
 using AzeroIdResolver;
 using Substrate.NetApi;
+using static Substrate.NetApi.Utils;
 using PlutoWallet.Components.WebView;
 
 namespace PlutoWallet.Components.Identity;
@@ -23,6 +24,11 @@ public partial class IdentityAddressView : ContentView
         nameof(Address), typeof(string), typeof(IdentityAddressView),
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: AddressPropertyChangingAsync);
+
+    public static readonly BindableProperty IsAddressValidProperty = BindableProperty.Create(
+        nameof(IsAddressValid), typeof(bool), typeof(IdentityAddressView),
+        defaultValue: false,
+        defaultBindingMode: BindingMode.OneWay);
 
     private static async void AddressPropertyChangingAsync(object bindable, object oldValue, object newValue)
     {
@@ -204,7 +210,7 @@ public partial class IdentityAddressView : ContentView
     public IdentityAddressView()
     {
         InitializeComponent();
-
+        this.BindingContext = this;
     }
 
     public string DestinationAddress
@@ -220,6 +226,32 @@ public partial class IdentityAddressView : ContentView
         get => (string)GetValue(AddressProperty);
 
         set => SetValue(AddressProperty, value);
+    }
+
+    public bool IsAddressValid
+    {
+        get => (bool)GetValue(IsAddressValidProperty);
+
+        set => SetValue(IsAddressValidProperty, value);
+    }
+
+    private void ValidateAddress(string address)
+    {
+        if (string.IsNullOrWhiteSpace(address))
+        {
+            IsAddressValid = false;
+            return;
+        }
+
+        try
+        {
+            Utils.GetPublicKeyFrom(address, out short _);
+            IsAddressValid = true;
+        }
+        catch
+        {
+            IsAddressValid = false;
+        }
     }
 
     async void OnShowQRClicked(System.Object sender, System.EventArgs e)
@@ -271,5 +303,13 @@ public partial class IdentityAddressView : ContentView
     private async void OnSubscanClicked(object sender, TappedEventArgs e)
     {
         await Navigation.PushAsync(new WebViewPage($"https://www.subscan.io/account/{Address}"));
+    }
+
+    private async void OnSaveAddressClicked(object sender, System.EventArgs e)
+    {
+        if (IsAddressValid)
+        {
+            await Navigation.PushAsync(new SaveAddressPage(Address));
+        }
     }
 }
