@@ -273,6 +273,8 @@
 	  <None Remove="Resources\Images\GalaxyLogicGame\atomicbombshiny.png" />
 	  <None Remove="Resources\Images\lockwhite.svg" />
 	  <None Remove="Resources\Images\lockblack.svg" />
+	  <None Remove="Resources\Images\adduserwhite.svg" />
+	  <None Remove="Resources\Images\adduserblack.svg" />
 	  <None Remove="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <None Remove="Resources\Fonts\samsungone700.ttf" />
 	  <None Remove="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
@@ -387,6 +389,8 @@
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\glgwatch.png" />
 	  <BundleResource Include="Resources\Images\lockwhite.svg" />
 	  <BundleResource Include="Resources\Images\lockblack.svg" />
+	  <BundleResource Include="Resources\Images\adduserwhite.svg" />
+	  <BundleResource Include="Resources\Images\adduserblack.svg" />
 	  <BundleResource Include="Resources\Fonts\samsungone700.ttf" />
 	  <BundleResource Include="Resources\Images\GalaxyLogicGame\galaxylogo.png" />
 	</ItemGroup>

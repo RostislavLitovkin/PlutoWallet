@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.AddressRegistry.SaveAddressPage"
+             Title="Save Address">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="20">
+            <!-- Address Entry -->
+            <VerticalStackLayout Spacing="5">
+                <Label 
+                    Text="Address"
+                    FontSize="14"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                <Border 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+                    Padding="10,0">
+                    <Entry
+                        x:Name="AddressEntry"
+                        Text="{Binding Address}"
+                        TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                        BackgroundColor="Transparent"
+                        IsSpellCheckEnabled="False"
+                        IsTextPredictionEnabled="False"
+                        HeightRequest="50"
+                        LineBreakMode="TailTruncation"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Nickname Entry -->
+            <VerticalStackLayout Spacing="5">
+                <Label 
+                    Text="Nickname"
+                    FontSize="14"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+                <Border 
+                    StrokeThickness="1"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+                    Padding="10,0">
+                    <Entry
+                        x:Name="NicknameEntry"
+                        Text="{Binding Nickname}"
+                        TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                        BackgroundColor="Transparent"
+                        HeightRequest="50"
+                        Placeholder="Enter nickname for this address"/>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- Buttons -->
+            <Grid ColumnSpacing="20" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button 
+                    Text="Reject"
+                    TextColor="White"
+                    BackgroundColor="DarkRed"
+                    Command="{Binding RejectCommand}"
+                    Grid.Column="0"/>
+
+                <Button 
+                    Text="Save"
+                    TextColor="White"
+                    BackgroundColor="Green"
+                    Command="{Binding SaveCommand}"
+                    Grid.Column="1"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

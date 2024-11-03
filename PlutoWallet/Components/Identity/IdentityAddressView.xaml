@@ -61,6 +61,15 @@
                     IsSpellCheckEnabled="false"
                     IsTextPredictionEnabled="false"/>
 
+            <ImageButton 
+                AbsoluteLayout.LayoutBounds="1, 40, 40, 40"
+                AbsoluteLayout.LayoutFlags="XProportional"
+                x:Name="saveAddressButton"
+                Source="{AppThemeBinding Light=adduserblack.svg, Dark=adduserwhite.svg}"
+                Margin="5, 5, 45, 5"
+                IsEnabled="{Binding IsAddressValid}"
+                Clicked="OnSaveAddressClicked"/>
+
             <!--QR code button-->
             <Image
                 AbsoluteLayout.LayoutBounds="1, 40, 40, 40"
