@@ -63,6 +63,29 @@ namespace PlutoWallet.Model
             byteArray.AddRange(baseComAmount.Encode());
             return new Method(palletIndex, "Assets", callIndex, "transfer_keep_alive", byteArray.ToArray());
         }
+
+        public static Method TokensTransfer(SubstrateClientExt client, string address, BigInteger assetId, CompactInteger amount)
+        {
+            var accountId = new AccountId32();
+            accountId.Create(Utils.GetPublicKeyFrom(address));
+
+            // Later: Check that the chain really supports U32 for token ids
+            U32 currencyId = new U32((uint)assetId);
+
+            var baseComAmount = new BaseCom<U128>();
+            baseComAmount.Create(amount);
+
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(accountId.Encode());
+            byteArray.AddRange(currencyId.Encode());
+            byteArray.AddRange(baseComAmount.Encode());
+
+            var (palletIndex, callIndex) = PalletCallModel.GetPalletAndCallIndex(client, "Tokens", "transfer_keep_alive");
+
+            Console.WriteLine("Pallet index: " + palletIndex + "    Call index: " + callIndex);
+
+            return new Method(palletIndex, "Tokens", callIndex, "transfer_keep_alive", byteArray.ToArray());
+        }
     }
 }
 
