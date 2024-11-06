@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.VisualStudio.Threading;
 using PlutoWallet.Model;
 using System.Collections.ObjectModel;
 using UniqueryPlus.Nfts;
@@ -16,23 +17,25 @@ namespace PlutoWallet.Components.Nft
         private const uint limit = 4;
 
         private List<Task<PlutoWalletSubstrateClient>> clientTasks;
-        public NftListOwnedViewModel()
+        public NftListOwnedViewModel(CancellationToken token = default)
         {
             clientTasks = AjunaClientModel.Clients.Values.Where(_client => true).Select(client => client.Task).ToList();
 
-            Task load = LoadMoreNftsAsync();
+            Task load = LoadMoreNftsAsync(token);
+        }
+
+        private void LoadSavedNfts()
+        {
+
         }
 
         [RelayCommand]
-        public async Task LoadMoreNftsAsync()
+        public async Task LoadMoreNftsAsync(CancellationToken token)
         {
             for (uint i = 0; i < limit; i++)
             {
-                Console.WriteLine("Looping over: " + i);
                 if (uniqueryNftEnumerator != null && await uniqueryNftEnumerator.MoveNextAsync().ConfigureAwait(false))
                 {
-                    Console.WriteLine("nftAdded: " + i);
-
                     Nfts.Add(Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current));
                 }
 
@@ -43,14 +46,10 @@ namespace PlutoWallet.Components.Nft
                         return;
                     }
 
-                    Console.WriteLine("Needs to initialize a new enumerator");
-
                     // Inspiration: https://youtu.be/zhCRX3B7qwY?si=RyNtzmzGHrxO17FD&t=2678
-                    var completedClientTask = await Task.WhenAny(clientTasks).ConfigureAwait(false);
+                    var completedClientTask = await Task.WhenAny(clientTasks).WithCancellation(token).ConfigureAwait(false);
 
                     clientTasks.Remove(completedClientTask);
-
-                    Console.WriteLine("Connecting to clients: " + clientTasks.Count() + "    " + (await completedClientTask.ConfigureAwait(false)).Endpoint.Name);
 
                     var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(
                         [(await completedClientTask.ConfigureAwait(false)).SubstrateClient],
@@ -59,7 +58,7 @@ namespace PlutoWallet.Components.Nft
                         limit: limit
                     );
 
-                    uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator();
+                    uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator(token);
 
                     i--;
                 }

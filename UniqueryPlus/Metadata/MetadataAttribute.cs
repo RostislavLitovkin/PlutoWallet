@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 
-namespace UniqueryPlus
+namespace UniqueryPlus.Metadata
 {
-    public record Attribute
+    public record MetadataAttribute
     {
         [JsonProperty("trait_type")]
         public required string TraitType { get; set; }

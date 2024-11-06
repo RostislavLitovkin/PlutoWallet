@@ -11,8 +11,7 @@ using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using Substrate.NetApi.Model.Extrinsics;
 using PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress;
-using Nethereum.Contracts.Standards.ERC20.TokenList;
-using StrawberryShake;
+using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Nfts
 {
@@ -45,7 +44,7 @@ namespace UniqueryPlus.Nfts
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public required string Owner { get; set; }
-        public INftMetadataBase? Metadata { get; set; }
+        public IMetadataBase? Metadata { get; set; }
         public string KodaLink => $"https://koda.art/ahp/gallery/{CollectionId}-{Id}";
         public PolkadotAssetHubNftsPalletNft(SubstrateClientExt client)
         {
@@ -229,7 +228,7 @@ namespace UniqueryPlus.Nfts
                         Owner = Utils.GetAddressFrom(details.Owner.Encode()),
                         Id = ids.Item2,
                     }
-                }).Zip(nftMetadatas, (PolkadotAssetHubNftsPalletNft nft, NftMetadata? metadata) =>
+                }).Zip(nftMetadatas, (PolkadotAssetHubNftsPalletNft nft, MetadataBase? metadata) =>
                 {
                     nft.Metadata = metadata;
                     return nft;
@@ -263,7 +262,7 @@ namespace UniqueryPlus.Nfts
             });
         }
 
-        internal static async Task<IEnumerable<NftMetadata?>> GetNftMetadataNftsPalletByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, CancellationToken token)
+        internal static async Task<IEnumerable<MetadataBase?>> GetNftMetadataNftsPalletByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage
             var keyPrefixLength = 66;
@@ -273,7 +272,7 @@ namespace UniqueryPlus.Nfts
             var nftMetadataKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
             var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
-            var metadatas = new List<NftMetadata?>();
+            var metadatas = new List<MetadataBase?>();
 
             foreach (var change in storageChangeSets.First().Changes)
             {
@@ -288,7 +287,7 @@ namespace UniqueryPlus.Nfts
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(nftMetadata.Data.Value.Bytes);
 
-                metadatas.Add(await IpfsModel.GetMetadataAsync<NftMetadata>(ipfsLink, token).ConfigureAwait(false));
+                metadatas.Add(await IpfsModel.GetMetadataAsync<MetadataBase>(ipfsLink, token).ConfigureAwait(false));
             };
 
             return metadatas;

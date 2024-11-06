@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using UniqueryPlus.Collections;
+using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Nfts
 {
@@ -9,7 +10,7 @@ namespace UniqueryPlus.Nfts
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public string Owner { get; set; }
-        public INftMetadataBase? Metadata { get; set; }
+        public IMetadataBase? Metadata { get; set; }
         public Task<ICollectionBase> GetCollectionAsync(CancellationToken token);
         public Task<INftBase> GetFullAsync(CancellationToken token);
     }

@@ -1,10 +1,41 @@
 ﻿using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Ipfs
 {
-    public class IpfsModel
+    public static class IpfsModel
     {
+        private static HttpClient httpClient = new HttpClient();
+        public static async Task<ImageTypeEnum> GetImageTypeAsync(this string ipfsLink)
+        {
+            var response = await httpClient.GetAsync(ipfsLink, HttpCompletionOption.ResponseHeadersRead);
+
+            foreach (var x in response.Headers)
+            {
+                Console.WriteLine(x.Key + ": ");
+                foreach (string values in x.Value)
+                {
+                    Console.WriteLine("    " + values);
+                }
+            }
+
+            var contentTypeReturned = response.Headers.TryGetValues("Content-Type", out var contentTypes);
+
+            if (!contentTypeReturned)
+            {
+                Console.WriteLine("Type not found");
+                return ImageTypeEnum.Unknown;
+            }
+
+            Console.WriteLine("Type found: " + contentTypes?.First());
+
+            return contentTypes?.First() switch
+            {
+                "image/jpeg" => ImageTypeEnum.Image,
+                _ => ImageTypeEnum.Unknown,
+            };
+        }
         public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token) where T : IMetadataImage
         {
             var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
@@ -45,13 +76,9 @@ namespace UniqueryPlus.Ipfs
             return ipfsEndpoint + RemoveNonHexadecimalCharacters(ipfsLink);
         }
 
-        public static async Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token)
-        {
-            HttpClient httpClient = new HttpClient();
-            return await httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
-        }
-
-        public static string RemoveNonHexadecimalCharacters(string input)
+        public static Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token) => httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
+        
+        private static string RemoveNonHexadecimalCharacters(string input)
         {
             if (string.IsNullOrEmpty(input))
                 return input;

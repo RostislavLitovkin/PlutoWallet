@@ -17,6 +17,7 @@ using Newtonsoft.Json.Linq;
 using Nethereum.Web3;
 using UniqueryPlus.EVM;
 using Nethereum.Contracts;
+using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Nfts
 {
@@ -52,7 +53,7 @@ namespace UniqueryPlus.Nfts
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public required string Owner { get; set; }
-        public INftMetadataBase? Metadata { get; set; }
+        public IMetadataBase? Metadata { get; set; }
         public string UniqueMarketplaceLink => $"https://unqnft.io/unique/token/{CollectionId}/{Id}";
         public UniqueNft(SubstrateClientExt client)
         {
@@ -243,7 +244,7 @@ namespace UniqueryPlus.Nfts
                 Owner = token.Owner_normalized,
                 IsBurnable = token.Collection?.Owner_can_destroy ?? true,
                 IsTransferable = token.Collection?.Owner_can_transfer ?? true,
-                Metadata = new NftMetadata
+                Metadata = new MetadataBase
                 {
                     Name = token.Name,
                     Description = token.Description,
@@ -349,7 +350,7 @@ namespace UniqueryPlus.Nfts
                 {
                     if (collectionData is null)
                     {
-                        nft.Metadata = new NftMetadata
+                        nft.Metadata = new MetadataBase
                         {
                             Name = "Unknown",
                         };
@@ -357,7 +358,7 @@ namespace UniqueryPlus.Nfts
                         return nft;
                     }
 
-                    nft.Metadata = new NftMetadata
+                    nft.Metadata = new MetadataBase
                     {
                         Name = System.Text.Encoding.Unicode.GetString(Helpers.RemoveCompactIntegerPrefix(collectionData.Name.Value.Encode())),
                         Description = System.Text.Encoding.Unicode.GetString(Helpers.RemoveCompactIntegerPrefix(collectionData.Description.Value.Encode()))
@@ -375,7 +376,7 @@ namespace UniqueryPlus.Nfts
                     nft.IsBurnable = collectionData.Limits.OwnerCanDestroy.OptionFlag ? collectionData.Limits.OwnerCanDestroy.Value : true;
 
                     return nft;
-                }).Zip(nftMetadatas, (UniqueNft nft, NftMetadata? metadata) =>
+                }).Zip(nftMetadatas, (UniqueNft nft, MetadataBase? metadata) =>
                 {
                     // Should never be null
                     if (metadata is null || nft.Metadata is null)
@@ -482,7 +483,7 @@ namespace UniqueryPlus.Nfts
             return itemDatas;
         }
 
-        internal static async Task<IEnumerable<NftMetadata?>> GetNftMetadataByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, CancellationToken token)
+        internal static async Task<IEnumerable<MetadataBase?>> GetNftMetadataByIdKeysAsync(SubstrateClientExt client, IEnumerable<string> idKeys, CancellationToken token)
         {
             // 0x + Twox64 pallet + Twox64 storage
             var keyPrefixLength = 66;
@@ -498,7 +499,7 @@ namespace UniqueryPlus.Nfts
             var nftMetadataKeys = idKeys.Select(idKey => Utils.HexToByteArray(keyPrefix + idKey));
             var storageChangeSets = await client.State.GetQueryStorageAtAsync(nftMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
-            var metadatas = new List<NftMetadata?>();
+            var metadatas = new List<MetadataBase?>();
 
             foreach (var change in storageChangeSets.First().Changes)
             {
@@ -511,7 +512,7 @@ namespace UniqueryPlus.Nfts
                 var nftProperties = new PropertiesT2();
                 nftProperties.Create(change[1]);
 
-                var metadata = new NftMetadata
+                var metadata = new MetadataBase
                 {
                     
                 };

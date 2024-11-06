@@ -13,6 +13,7 @@ using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
 using Substrate.NetApi.Model.Rpc;
 using System.Collections.Immutable;
+using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Collections
 {
@@ -47,7 +48,7 @@ namespace UniqueryPlus.Collections
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
-        public ICollectionMetadataBase? Metadata { get; set; }
+        public IMetadataBase? Metadata { get; set; }
         public uint? NftMaxSuply { get; set; }
         public required MintType MintType { get; set; }
         public BigInteger? MintStartBlock { get; set; }
@@ -151,7 +152,7 @@ namespace UniqueryPlus.Collections
                             CollectionId = collectionId,
                             Owner = Utils.GetAddressFrom(details.Owner.Encode()),
                             NftCount = 0, // Unknown at this point
-                            Metadata = new CollectionMetadata
+                            Metadata = new MetadataBase
                             {
                                 Name = System.Text.Encoding.Unicode.GetString(Helpers.RemoveCompactIntegerPrefix(details.Name.Value.Encode())),
                                 Description = System.Text.Encoding.Unicode.GetString(Helpers.RemoveCompactIntegerPrefix(details.Description.Value.Encode()))
@@ -191,7 +192,7 @@ namespace UniqueryPlus.Collections
                 {
                     collectionBase.NftCount = nftCount;
                     return collectionBase;
-                }).Zip(collectionMetadatas, (UniqueCollection collectionBase, CollectionMetadata? metadata) =>
+                }).Zip(collectionMetadatas, (UniqueCollection collectionBase, MetadataBase? metadata) =>
                 {
                     if (metadata is null || collectionBase.Metadata is null)
                     {
@@ -248,7 +249,7 @@ namespace UniqueryPlus.Collections
                 return collectionDetails;
             });
         }
-        internal static async Task<IEnumerable<CollectionMetadata?>> GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(SubstrateClientExt client, IEnumerable<string> collectionIdKeys, CancellationToken token)
+        internal static async Task<IEnumerable<MetadataBase?>> GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(SubstrateClientExt client, IEnumerable<string> collectionIdKeys, CancellationToken token)
         {
             CollectionId uniqueCollectionId = new CollectionId();
             uniqueCollectionId.Value = new U32(0);
@@ -258,7 +259,7 @@ namespace UniqueryPlus.Collections
             var collectionMetadataKeys = collectionIdKeys.Select(collectionIdKey => Utils.HexToByteArray(keyPrefix + collectionIdKey));
             var storageChangeSets = await client.State.GetQueryStorageAtAsync(collectionMetadataKeys.ToList(), string.Empty, token).ConfigureAwait(false);
 
-            var metadatas = new List<CollectionMetadata?>();
+            var metadatas = new List<MetadataBase?>();
 
             foreach (var change in storageChangeSets.First().Changes)
             {
@@ -293,7 +294,7 @@ namespace UniqueryPlus.Collections
                         continue;
                     }
 
-                    metadatas.Add(new CollectionMetadata
+                    metadatas.Add(new MetadataBase
                     {
                         Image = IpfsModel.ToIpfsLink(ipfsLink.Replace("\"", ""), ipfsEndpoint: Constants.UNIQUE_IPFS_ENDPOINT),
                     });
@@ -301,7 +302,7 @@ namespace UniqueryPlus.Collections
                 catch (Exception ex)
                 {
                     Console.WriteLine("Unexpected UniqueryPlus exception: " + ex.ToString());
-                    metadatas.Add(new CollectionMetadata
+                    metadatas.Add(new MetadataBase
                     {
                     });
                 }
