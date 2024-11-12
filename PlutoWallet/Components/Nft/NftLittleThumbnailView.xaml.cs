@@ -2,10 +2,10 @@ using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using PlutoWallet.Model.SQLite;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
-using static PlutoWallet.Model.NftsStorageModel;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -130,33 +130,15 @@ public partial class NftLittleThumbnailView : ContentView
 
         set => SetValue(OperationProperty, value);
     }
-
-    private StorageNFT GetStorageNft()
-    {
-        return new StorageNFT
-        {
-            Name = this.NftBase.Metadata.Name,
-            Description = this.NftBase.Metadata.Description,
-            Image = this.NftBase.Metadata.Image,
-            EndpointKey = this.Endpoint.Key,
-            Attributes = [], // TODO: this.NftBase.Metadata.Attributes,
-            CollectionId = this.NftBase.CollectionId.ToString(),
-            ItemId = this.NftBase.Id.ToString(),
-            Favourite = this.Favourite,
-        };
-    }
-
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Favourite = !Favourite;
-        if (Favourite)
+        Task save = NftDatabase.UpdateItemAsync(new NftWrapper
         {
-            NftsStorageModel.AddFavourite(GetStorageNft());
-        }
-        else
-        {
-            NftsStorageModel.RemoveFavourite(GetStorageNft());
-        }
+            Endpoint = Endpoint,
+            NftBase = NftBase,
+            Favourite = Favourite
+        });
     }
 
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

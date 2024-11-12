@@ -1,12 +1,12 @@
 ﻿using Markdig;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
-using static PlutoWallet.Model.NftsStorageModel;
 using UniqueryPlus.Nfts;
 using UniqueryPlus.External;
 using PlutoWallet.Components.Buttons;
 using UniqueryPlus.Collections;
 using System.Collections.ObjectModel;
+using PlutoWallet.Model.SQLite;
 
 namespace PlutoWallet.Components.Nft;
 
@@ -18,6 +18,11 @@ public partial class NftThumbnailView : ContentView
         propertyChanging: (bindable, oldValue, newValue) =>
         {
             var control = (NftThumbnailView)bindable;
+
+            if (newValue is null)
+            {
+                return;
+            }
 
             var nftBase = (INftBase)newValue;
 
@@ -53,6 +58,10 @@ public partial class NftThumbnailView : ContentView
         defaultBindingMode: BindingMode.TwoWay,
         propertyChanging: (bindable, oldValue, newValue) =>
         {
+            if (newValue is null)
+            {
+                return;
+            }
             var control = (NftThumbnailView)bindable;
 
             control.networkBubble.Name = ((Endpoint)newValue).Name;
@@ -83,32 +92,15 @@ public partial class NftThumbnailView : ContentView
         set => SetValue(EndpointProperty, value);
     }
 
-    private StorageNFT GetStorageNft()
-    {
-        return new StorageNFT
-        {
-            Name = this.NftBase.Metadata.Name,
-            Description = this.NftBase.Metadata.Description,
-            Image = this.NftBase.Metadata.Image,
-            EndpointKey = this.Endpoint.Key,
-            Attributes = [], // TODO: this.NftBase.Metadata.Attributes,
-            CollectionId = this.NftBase.CollectionId.ToString(),
-            ItemId = this.NftBase.Id.ToString(),
-            Favourite = this.Favourite,
-        };
-    }
-
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Favourite = !Favourite;
-        if (Favourite)
+        Task save = NftDatabase.UpdateItemAsync(new NftWrapper
         {
-            NftsStorageModel.AddFavourite(GetStorageNft());
-        }
-        else
-        {
-            NftsStorageModel.RemoveFavourite(GetStorageNft());
-        }
+            Endpoint = Endpoint,
+            NftBase = NftBase,
+            Favourite = Favourite
+        });
     }
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {

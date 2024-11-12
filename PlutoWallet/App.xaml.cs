@@ -28,6 +28,8 @@ using PlutoWallet.Components.VTokens;
 using PlutoWallet.Components.UpdateView;
 using PlutoWallet.Components.Xcm;
 using PlutoWallet.Components.TransactionAnalyzer;
+using Bajun.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519;
+using PlutoWallet.Model.SQLite;
 
 namespace PlutoWallet;
 
@@ -101,7 +103,7 @@ public partial class App : Application
 
         DependencyService.Register<NetworkSelectPopupViewModel>();
 
-        DependencyService.Register<NftGaleryViewModel>();
+        DependencyService.Register<NftGalleryViewModel>();
 
         DependencyService.Register<NavigationBarViewModel>();
 
@@ -142,5 +144,6 @@ public partial class App : Application
             Preferences.Remove("biometricsEnabled");
             MainPage = new NavigationPage(new SetupPasswordPage());
         }
-	}
+
+    }
 }

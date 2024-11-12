@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.Numerics;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
+using UniqueryPlus.Metadata;
 using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft
@@ -31,9 +32,8 @@ namespace PlutoWallet.Components.Nft
 
         public string Image => NftBase.Metadata?.Image ?? "";
 
-        public ObservableCollection<UniqueryPlus.Attribute> Attributes => new ObservableCollection<UniqueryPlus.Attribute>(NftBase.Metadata?.Attributes ?? []);
-        public bool AttributesIsVisible => NftBase.Metadata.Attributes is not null && NftBase.Metadata.Attributes.Length > 0;
-
+        public ObservableCollection<MetadataAttribute> Attributes => new ObservableCollection<MetadataAttribute>(NftBase.Metadata?.Attributes ?? []);
+        public bool AttributesIsVisible => NftBase.Metadata?.Attributes is not null && NftBase.Metadata.Attributes.Length > 0;
 
         [RelayCommand]
         public async Task TransferAsync()

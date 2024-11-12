@@ -8,6 +8,7 @@ using PlutoWallet.Model;
 using System.Collections.ObjectModel;
 using System.Numerics;
 using UniqueryPlus.Collections;
+using UniqueryPlus.Metadata;
 
 namespace PlutoWallet.Components.Nft
 {
@@ -23,7 +24,7 @@ namespace PlutoWallet.Components.Nft
         public string Name => CollectionBase.Metadata?.Name ?? "Unknown";
         public string Description => CollectionBase.Metadata?.Description ?? "";
         public string Image => CollectionBase.Metadata?.Image ?? "";
-        public ObservableCollection<UniqueryPlus.Attribute> Attributes => new ObservableCollection<UniqueryPlus.Attribute>(CollectionBase.Metadata?.Attributes ?? []);
+        public ObservableCollection<MetadataAttribute> Attributes => new ObservableCollection<MetadataAttribute>(CollectionBase.Metadata?.Attributes ?? []);
         public bool AttributesIsVisible => CollectionBase.Metadata.Attributes is not null && CollectionBase.Metadata.Attributes.Length > 0;
 
         [ObservableProperty]

@@ -55,7 +55,7 @@ namespace UniqueryPlus.Collections
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
-        public IMetadataBase? Metadata { get; set; }
+        public MetadataBase? Metadata { get; set; }
         public string KodaLink => $"https://koda.art/ahk/collection/{CollectionId}";
         public PolkadotAssetHubNftsPalletCollection(SubstrateClientExt client)
         {

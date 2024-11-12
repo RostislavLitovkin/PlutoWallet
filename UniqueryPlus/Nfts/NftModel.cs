@@ -36,6 +36,28 @@ namespace UniqueryPlus.Nfts
             };
         }
 
+        public static Task<RecursiveReturn<INftBase>> GetNftsInCollectionOwnedByOnChainAsync(this SubstrateClient client, NftTypeEnum type, BigInteger collectionId, string owner, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            return type switch
+            {
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionOwnedByAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, owner, limit, lastKey, token),
+                NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubNftModel.GetNftsNftsPalletInCollectionOwnedByAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, owner, limit, lastKey, token),
+                NftTypeEnum.Unique => UniqueNftModel.GetNftsInCollectionOwnedByAsync((Unique.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, owner, limit, lastKey, token),
+                _ => throw new NotImplementedException()
+            };
+        }
+
+        public static Task<RecursiveReturn<INftBase>> GetNftsInCollectionOnChainAsync(this SubstrateClient client, NftTypeEnum type, BigInteger collectionId, uint limit, byte[]? lastKey, CancellationToken token)
+        {
+            return type switch
+            {
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubNftModel.GetNftsNftsPalletInCollectionAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, limit, lastKey, token),
+                NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubNftModel.GetNftsNftsPalletInCollectionAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, limit, lastKey, token),
+                NftTypeEnum.Unique => UniqueNftModel.GetNftsInCollectionAsync((Unique.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, limit, lastKey, token),
+                _ => throw new NotImplementedException()
+            };
+        }
+
         public static IAsyncEnumerable<INftBase> GetNftsOwnedByAsync(
             IEnumerable<SubstrateClient> clients,
             string owner,

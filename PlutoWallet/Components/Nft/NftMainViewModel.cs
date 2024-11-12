@@ -1,139 +1,353 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using PlutoWallet.Model;
 using System.Collections.ObjectModel;
-using UniqueryPlus.Collections;
-using UniqueryPlus.Nfts;
 using UniqueryPlus;
+using Microsoft.VisualStudio.Threading;
+using PlutoWallet.Model.SQLite;
+
+using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
+using CollectionKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger);
+using SubstrateClientExt = PlutoWallet.Model.AjunaExt.SubstrateClientExt;
 
 namespace PlutoWallet.Components.Nft
 {
     internal partial class NftMainViewModel : ObservableObject
     {
-        [ObservableProperty]
-        private ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>() { };
+        // There is no ObserableDictionary<_> type
+        private Dictionary<NftKey, NftWrapper> featuredNftsDict = new Dictionary<NftKey, NftWrapper>();
 
         [ObservableProperty]
-        private ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>() { };
+        [NotifyPropertyChangedFor(nameof(NoFeaturedNfts))]
+        [NotifyPropertyChangedFor(nameof(AnyFeaturedNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingFeaturedNfts))]
+        private ObservableCollection<NftWrapper> featuredNfts = new ObservableCollection<NftWrapper>();
+        public bool NoFeaturedNfts => !Loading && FeaturedNfts.Count() == 0;
+        public bool AnyFeaturedNfts => FeaturedNfts.Count() > 0;
+        public bool LoadingFeaturedNfts => Loading && FeaturedNfts.Count() < 2;
 
         [ObservableProperty]
-        private bool noNftsIsVisible = false;
+        private bool featuredNftErrorIsVisible = false;
 
-        /**
-        * Called in the BasePageViewModel
-        */
-        public async Task GetNFTsAsync(string substrateAddress, CancellationToken token)
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoOwnedCollections))]
+        [NotifyPropertyChangedFor(nameof(NoOwnedNfts))]
+        [NotifyPropertyChangedFor(nameof(NoFeaturedNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingOwnedCollections))]
+        [NotifyPropertyChangedFor(nameof(LoadingOwnedNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingFeaturedNfts))]
+        private bool loading = true;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoFavouriteCollections))]
+        [NotifyPropertyChangedFor(nameof(NoFavouriteNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingFavouriteCollections))]
+        [NotifyPropertyChangedFor(nameof(LoadingFavouriteNfts))]
+        private bool databaseLoading = true;
+
+        // There is no ObserableDictionary<_> type
+        private Dictionary<NftKey, NftWrapper> favouriteNftsDict = new Dictionary<NftKey, NftWrapper>();
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoFavouriteNfts))]
+        [NotifyPropertyChangedFor(nameof(AnyFavouriteNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingFavouriteNfts))]
+        private ObservableCollection<NftWrapper> favouriteNfts = new ObservableCollection<NftWrapper>();
+        public bool NoFavouriteNfts => !DatabaseLoading && FavouriteNfts.Count() == 0;
+        public bool AnyFavouriteNfts => FavouriteNfts.Count() > 0;
+        public bool LoadingFavouriteNfts => DatabaseLoading && FavouriteNfts.Count() < 5;
+
+        // There is no ObserableDictionary<_> type
+        private Dictionary<NftKey, NftWrapper> ownedNftsDict = new Dictionary<NftKey, NftWrapper>();
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoOwnedNfts))]
+        [NotifyPropertyChangedFor(nameof(AnyOwnedNfts))]
+        [NotifyPropertyChangedFor(nameof(LoadingOwnedNfts))]
+        private ObservableCollection<NftWrapper> ownedNfts = new ObservableCollection<NftWrapper>();
+        public bool NoOwnedNfts => !Loading && OwnedNfts.Count == 0;
+        public bool AnyOwnedNfts => OwnedNfts.Count() > 0;
+        public bool LoadingOwnedNfts => Loading && OwnedNfts.Count() < 5;
+
+        // There is no ObserableDictionary<_> type
+        private Dictionary<CollectionKey, CollectionWrapper> ownedCollectionsDict = new Dictionary<CollectionKey, CollectionWrapper>();
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoOwnedCollections))]
+        [NotifyPropertyChangedFor(nameof(AnyOwnedCollections))]
+        [NotifyPropertyChangedFor(nameof(LoadingOwnedCollections))]
+        private ObservableCollection<CollectionWrapper> ownedCollections = new ObservableCollection<CollectionWrapper>();
+        public bool NoOwnedCollections => !Loading && OwnedCollections.Count == 0;
+        public bool AnyOwnedCollections => OwnedCollections.Count() > 0;
+        public bool LoadingOwnedCollections => Loading && OwnedCollections.Count() < 5;
+
+        // There is no ObserableDictionary<_> type
+        private Dictionary<CollectionKey, CollectionWrapper> favouriteCollectionsDict = new Dictionary<CollectionKey, CollectionWrapper>();
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(NoFavouriteCollections))]
+        [NotifyPropertyChangedFor(nameof(AnyFavouriteCollections))]
+        [NotifyPropertyChangedFor(nameof(LoadingFavouriteCollections))]
+        private ObservableCollection<CollectionWrapper> favouriteCollections = new ObservableCollection<CollectionWrapper>();
+        public bool NoFavouriteCollections => !DatabaseLoading && FavouriteCollections.Count == 0;
+        public bool AnyFavouriteCollections => FavouriteCollections.Count() > 0;
+        public bool LoadingFavouriteCollections => DatabaseLoading && FavouriteCollections.Count() < 5;
+
+
+        private const uint limit = 100;
+        private const uint displayLimit = 5;
+
+        private List<Task<PlutoWalletSubstrateClient>> clientTasks;
+        public NftMainViewModel()
         {
-            Console.WriteLine("Getting nfts async");
 
-            var limit = 25u;
+        }
 
-            var clients = AjunaClientModel.Clients.Values.Where(_client => true).Select(async client => await client.Task).Select(t => t.Result.SubstrateClient);
-
-            #region Get Mock Collections
-            IEnumerable<ICollectionBase> uniqueryPlusCollections = [
-                Model.CollectionModel.GetMockCollection(nftCount: 5000),
-                Model.CollectionModel.GetMockCollection(
-                    name: "This is a very long name to test how the UI handles potential overflows",
-                    nftCount: 5
-                ),
-                Model.CollectionModel.GetMockCollection(nftCount: 2),
-                Model.CollectionModel.GetMockCollection(nftCount: 1),
-                Model.CollectionModel.GetMockCollection(nftCount: 0),
-            ];
-
-            ObservableCollection<CollectionWrapper> collections = new ObservableCollection<CollectionWrapper>();
-            foreach (ICollectionBase collection in uniqueryPlusCollections)
-            {
-                collections.Add(await Model.CollectionModel.ToCollectionWrapperAsync(collection, CancellationToken.None));
-            }
-            #endregion
-            //var uniqueryCollectionEnumerable = await UniqueryPlus.Collections.CollectionModel.(KeysModel.GetSubstrateKey());
-
-
-            Collections = collections;
-
-            Console.WriteLine("got collections");
-
-            #region Get Mock Nfts
-            IEnumerable<INftBase> uniqueryPlusNfts = [
-                Model.NftModel.GetMockNft(),
-                Model.NftModel.GetMockNft(
-                    name: "This is a very long name to test how the UI handles potential overflows",
-                    imageSource: "https://image.w.kodadot.xyz/ipfs/bafybeieo6ghm3gi6n4bqvxhebh2u2celbyp43bf375mzgetua32zujsnoy/?hash=0x2546f88800c47bfe067ff64f0e20d8f0fcfaafbc0e1e5f3df9abd6bf26c009cf"
-                )
-                ];
-
-            ObservableCollection<NftWrapper> nfts = new ObservableCollection<NftWrapper>();
-            foreach (INftBase nft in uniqueryPlusNfts)
-            {
-                nfts.Add(Model.NftModel.ToNftWrapper(nft));
-            }
-
-            var client = new PolkadotAssetHub.NetApi.Generated.SubstrateClientExt(new Uri("wss://dot-rpc.stakeworld.io/assethub"), default);
-
-            await client.ConnectAsync();
-
-            var fcollection = await UniqueryPlus.Collections.CollectionModel.GetCollectionByCollectionIdAsync(client, NftTypeEnum.PolkadotAssetHub_NftsPallet, 208, CancellationToken.None);
-
-            var first3Nfts = await fcollection.GetNftsAsync(25, null, CancellationToken.None);
-
-            foreach (var nft in first3Nfts)
-            {
-                nfts.Add(Model.NftModel.ToNftWrapper(nft));
-            }
-
-
-            #endregion
-
+        public async Task ConnectClientsAsync(CancellationToken token)
+        {
+            Loading = true;
+            DatabaseLoading = true;
 
             try
             {
-                var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(clients, KeysModel.GetSubstrateKey(), limit: limit);
+                await LoadSavedNftsAsync().ConfigureAwait(false);
+                await LoadSavedCollectionsAsync().ConfigureAwait(false);
 
-                var uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator();
+                DatabaseLoading = false;
 
-                for (uint i = 0; i < limit; i++)
+                clientTasks = AjunaClientModel.Clients.Values.Where(_client => true).Select(client => client.Task).ToList();
+
+                while (clientTasks.Count() > 0)
                 {
-                    if (await uniqueryNftEnumerator.MoveNextAsync())
+                    if (token.IsCancellationRequested)
                     {
-                        nfts.Add(Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current));
+                        return;
                     }
+
+                    // Inspiration: https://youtu.be/zhCRX3B7qwY?si=RyNtzmzGHrxO17FD&t=2678
+                    var completedClientTask = await Task.WhenAny(clientTasks).WithCancellation(token).ConfigureAwait(false);
+
+                    clientTasks.Remove(completedClientTask);
+
+                    var client = await completedClientTask.ConfigureAwait(false);
+                    await GetFeaturedNftsAsync(client, token);
+
+                    await GetOwnedNftsAsync(client, token);
+
+                    await GetOwnedCollectionsAsync(client, token);
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Nfts failed here :((");
+                Console.WriteLine("Nft error: ");
                 Console.WriteLine(ex);
             }
-            Nfts = nfts;
 
-            #region Get Nfts
-            /*
-            var nftLoadingViewModel = DependencyService.Get<NftLoadingViewModel>();
-
-            nftLoadingViewModel.IsVisible = true;
-
-            UpdateNfts(NftsStorageModel.GetFavouriteNFTs());
-
-            foreach (Endpoint endpoint in Endpoints.GetAllEndpoints)
+            Loading = false;
+        }
+        private async Task GetFeaturedNftsAsync(SubstrateClientExt client, CancellationToken token)
+        {
+            try
             {
-                if (endpoint.SupportsNfts)
+                switch (client.SubstrateClient)
                 {
-                    UpdateNfts(await Model.NFTsModel.GetNFTsAsync(substrateAddress, endpoint, token));
+                    case PolkadotAssetHub.NetApi.Generated.SubstrateClientExt:
+
+                        // This would be connected to an API
+
+                        (uint,uint)[] ids = [(208, 1), (258, 4230904976)];
+
+                        foreach (var id in ids)
+                        {
+
+                            var newNft = Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, NftTypeEnum.PolkadotAssetHub_NftsPallet, id.Item1, id.Item2, token).ConfigureAwait(false));
+
+                            if (newNft.Key is not null && !featuredNftsDict.ContainsKey((NftKey)newNft.Key))
+                            {
+                                featuredNftsDict.Add((NftKey)newNft.Key, newNft);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not added");
+                                // Was already loaded
+                            }
+                        }
+
+                        break;
+
+                }
+
+                Console.WriteLine("Bind Featured Nfts: " + FeaturedNfts.Count());
+                FeaturedNfts = new ObservableCollection<NftWrapper>(featuredNftsDict.Values);
+            }
+            catch
+            {
+                FeaturedNftErrorIsVisible = true;
+            }
+        }
+
+        private async Task GetOwnedNftsAsync(SubstrateClientExt client, CancellationToken token)
+        {
+            var uniqueryNftEnumerable = UniqueryPlus.Nfts.NftModel.GetNftsOwnedByAsync(
+                        [client.SubstrateClient],
+                        /*KeysModel.GetSubstrateKey()*/
+                        "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y",
+                        limit: limit
+                    );
+
+            var uniqueryNftEnumerator = uniqueryNftEnumerable.GetAsyncEnumerator(token);
+
+            while (uniqueryNftEnumerator != null && await uniqueryNftEnumerator.MoveNextAsync().ConfigureAwait(false))
+            {
+                var newNft = Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current);
+
+                if (newNft.Key is not null && !ownedNftsDict.ContainsKey((NftKey)newNft.Key))
+                {
+                    ownedNftsDict.Add((NftKey)newNft.Key, newNft);
+                    await NftDatabase.AddItemAsync(newNft).ConfigureAwait(false);
+
+                    if (ownedNftsDict.Count() <= displayLimit)
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            if (OwnedNfts.Count() < displayLimit)
+                                OwnedNfts.Add(newNft);
+                        });
+                    }
+                }
+                else
+                {
+                    // Was already loaded
                 }
             }
 
+        }
 
-            UpdateNfts(await Model.UniqueryModel.GetAllNfts(substrateAddress, token));
+        private async Task GetOwnedCollectionsAsync(SubstrateClientExt client, CancellationToken token)
+        {
+            var uniqueryCollectionEnumerable = UniqueryPlus.Collections.CollectionModel.GetCollectionsOwnedByAsync(
+                        [client.SubstrateClient],
+                        /*KeysModel.GetSubstrateKey()*/
+                        "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y",
+                        limit: limit
+                    );
 
-            // Broken, not a priority rn to fix
-            //UpdateNfts(await Model.AzeroId.AzeroIdNftsModel.GetNamesForAddress(Model.KeysModel.GetSubstrateKey(), token));
+            var uniqueryCollectionEnumerator = uniqueryCollectionEnumerable.GetAsyncEnumerator(token);
 
-            nftLoadingViewModel.IsVisible = false;
+            while (uniqueryCollectionEnumerator != null && await uniqueryCollectionEnumerator.MoveNextAsync().ConfigureAwait(false))
+            {
+                var newCollection = await Model.CollectionModel.ToCollectionWrapperAsync(uniqueryCollectionEnumerator.Current, token).ConfigureAwait(false);
 
-            NoNftsIsVisible = Nfts.Count() == 0;
-            */
-            #endregion
+                if (newCollection.Key is not null && !ownedCollectionsDict.ContainsKey((CollectionKey)newCollection.Key))
+                {
+                    ownedCollectionsDict.Add((CollectionKey)newCollection.Key, newCollection);
+                    await CollectionDatabase.AddItemAsync(newCollection).ConfigureAwait(false);
+
+                    if (ownedCollectionsDict.Count() <= displayLimit)
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            if (OwnedCollections.Count() < displayLimit)
+                                OwnedCollections.Add(newCollection);
+                        });
+                    }
+                }
+                else
+                {
+                    // Was already loaded
+                }
+            }
+
+            OwnedCollections = new ObservableCollection<CollectionWrapper>(ownedCollectionsDict.Values);
+        }
+
+        private async Task LoadSavedNftsAsync()
+        {
+            try
+            {
+                // Favourite Nfts
+                foreach (var savedNft in await NftDatabase.GetFavouriteNftsAsync().ConfigureAwait(false))
+                {
+                    if (savedNft.Key is not null && !favouriteNftsDict.ContainsKey((NftKey)savedNft.Key))
+                    {
+                        favouriteNftsDict.Add((NftKey)savedNft.Key, savedNft);
+
+                        if (favouriteNftsDict.Count() <= displayLimit)
+                        {
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                if (FavouriteNfts.Count() < displayLimit)
+                                    FavouriteNfts.Add(savedNft);
+                            });
+                        }
+                    }
+                }
+
+                // Not favourite, owned Nfts
+                foreach (var savedNft in await NftDatabase.GetNotFavouriteNftsOwnedByAsync(/*KeysModel.GetSubstrateKey()*/ "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y").ConfigureAwait(false))
+                {
+                    if (savedNft.Key is not null && !ownedNftsDict.ContainsKey((NftKey)savedNft.Key))
+                    {
+                        ownedNftsDict.Add((NftKey)savedNft.Key, savedNft);
+
+                        if (ownedNftsDict.Count() <= displayLimit)
+                        {
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                if (OwnedNfts.Count() < displayLimit)
+                                    OwnedNfts.Add(savedNft);
+                            });
+                        }
+                        Console.WriteLine("Loaded saved nft: " + savedNft.NftBase.Type + " " + savedNft.NftBase.CollectionId + " - " + savedNft.NftBase.Id);
+                    }
+                }
+
+                FavouriteNfts = new ObservableCollection<NftWrapper>(favouriteNftsDict.Values);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private async Task LoadSavedCollectionsAsync()
+        {
+            // Favourite Collections
+            foreach (var savedCollection in await CollectionDatabase.GetFavouriteCollectionsAsync().ConfigureAwait(false))
+            {
+                if (savedCollection.Key is not null && !favouriteCollectionsDict.ContainsKey((CollectionKey)savedCollection.Key))
+                {
+                    favouriteCollectionsDict.Add((CollectionKey)savedCollection.Key, savedCollection);
+
+                    if (favouriteCollectionsDict.Count() <= displayLimit)
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            if (FavouriteCollections.Count() < displayLimit)
+                                FavouriteCollections.Add(savedCollection);
+                        });
+                    }
+                }
+            }
+
+            // Not favourite, owned Collections
+            foreach (var savedCollection in await CollectionDatabase.GetNotFavouriteCollectionsOwnedByAsync(/*KeysModel.GetSubstrateKey()*/ "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y").ConfigureAwait(false))
+            {
+                if (savedCollection.Key is not null && !ownedCollectionsDict.ContainsKey((CollectionKey)savedCollection.Key))
+                {
+                    ownedCollectionsDict.Add((CollectionKey)savedCollection.Key, savedCollection);
+
+                    if (ownedCollectionsDict.Count() <= displayLimit)
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            if (OwnedCollections.Count() < displayLimit)
+                                OwnedCollections.Add(savedCollection);
+                        });
+                    }
+                }
+            }
+
+            OwnedCollections = new ObservableCollection<CollectionWrapper>(ownedCollectionsDict.Values);
+
+            FavouriteCollections = new ObservableCollection<CollectionWrapper>(favouriteCollectionsDict.Values);
         }
     }
 }

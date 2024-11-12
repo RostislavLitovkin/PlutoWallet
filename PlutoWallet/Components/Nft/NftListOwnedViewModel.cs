@@ -34,6 +34,11 @@ namespace PlutoWallet.Components.Nft
         {
             for (uint i = 0; i < limit; i++)
             {
+                if (token.IsCancellationRequested)
+                {
+                    break;
+                }
+
                 if (uniqueryNftEnumerator != null && await uniqueryNftEnumerator.MoveNextAsync().ConfigureAwait(false))
                 {
                     Nfts.Add(Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current));

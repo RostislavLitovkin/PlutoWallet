@@ -48,7 +48,7 @@ namespace UniqueryPlus.Collections
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
-        public IMetadataBase? Metadata { get; set; }
+        public MetadataBase? Metadata { get; set; }
         public uint? NftMaxSuply { get; set; }
         public required MintType MintType { get; set; }
         public BigInteger? MintStartBlock { get; set; }

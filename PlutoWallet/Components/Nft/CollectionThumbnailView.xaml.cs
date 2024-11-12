@@ -1,6 +1,7 @@
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using PlutoWallet.Model.SQLite;
 using System.Collections.ObjectModel;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
@@ -97,7 +98,6 @@ public partial class CollectionThumbnailView : ContentView
         set => SetValue(CollectionBaseProperty, value);
     }
 
-
     public bool Favourite
     {
         get => (bool)GetValue(FavouriteProperty);
@@ -119,19 +119,16 @@ public partial class CollectionThumbnailView : ContentView
         set => SetValue(EndpointProperty, value);
     }
 
-    private object GetStorageCollection()
-    {
-        return new
-        {
-            EndpointKey = this.Endpoint.Key,
-            CollectionBase = this.CollectionBase,
-            Favourite = this.Favourite,
-        };
-    }
-
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
-
+        Favourite = !Favourite;
+        Task save = CollectionDatabase.UpdateItemAsync(new CollectionWrapper
+        {
+            NftImages = NftImages,
+            Endpoint = Endpoint,
+            CollectionBase = CollectionBase,
+            Favourite = Favourite
+        });
     }
 
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)

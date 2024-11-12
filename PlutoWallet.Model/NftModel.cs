@@ -5,6 +5,11 @@ using UniqueryPlus.External;
 using UniqueryPlus;
 using UniqueryPlus.Nfts;
 using PlutoWallet.Types;
+using UniqueryPlus.Metadata;
+
+using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
+using SQLite;
+using System.Text.Json;
 
 namespace PlutoWallet.Model
 {
@@ -19,7 +24,7 @@ namespace PlutoWallet.Model
         public required BigInteger CollectionId { get; set; }
         public required BigInteger Id { get; set; }
         public required string Owner { get; set; }
-        public INftMetadataBase? Metadata { get; set; }
+        public MetadataBase? Metadata { get; set; }
         public string KodaLink => $"https://koda.art/ahp/nft/{CollectionId}/{Id}";
         public async Task<ICollectionBase> GetCollectionAsync(CancellationToken token)
         {
@@ -31,30 +36,32 @@ namespace PlutoWallet.Model
             return this;
         }
     }
+
     public class NftWrapper
     {
-        public required INftBase NftBase { get; set; }
-        public required Endpoint Endpoint { get; set; }
+        [PrimaryKey]
+        public NftKey? Key => NftBase is not null ? (NftBase.Type, NftBase.CollectionId, NftBase.Id) : null;
+        public INftBase? NftBase { get; set; }
+        public Endpoint? Endpoint { get; set; }
         public bool Favourite { get; set; } = false;
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            if (!obj.GetType().Equals(typeof(NftWrapper)))
-            {
-                return false;
-            }
+            return obj is NftWrapper objNft &&
+                    objNft.NftBase?.Metadata?.Name == this.NftBase?.Metadata?.Name &&
+                    objNft.NftBase?.Metadata?.Description == this.NftBase?.Metadata?.Description &&
+                    objNft.NftBase?.Metadata?.Image == this.NftBase?.Metadata?.Image &&
+                    objNft.Endpoint?.Key == this.Endpoint?.Key;
+        }
 
-            var objNft = (NftWrapper)obj;
-
-            return (objNft.NftBase.Metadata?.Name == this.NftBase.Metadata?.Name &&
-                objNft.NftBase.Metadata?.Description == this.NftBase.Metadata?.Description &&
-                objNft.NftBase.Metadata?.Image == this.NftBase.Metadata?.Image &&
-                objNft.Endpoint.Key == this.Endpoint.Key);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(NftBase?.Metadata?.Name, NftBase?.Metadata?.Description, NftBase?.Metadata?.Image, Endpoint?.Key);
         }
 
         public override string ToString()
         {
-            return this.NftBase.Metadata?.Name + " - " + this.NftBase.Metadata?.Image;
+            return this.NftBase?.Metadata?.Name + " - " + this.NftBase?.Metadata?.Image;
         }
     }
     public class NftModel
@@ -72,7 +79,7 @@ namespace PlutoWallet.Model
             {
                 CollectionId = random.Next((int)Math.Pow(10, digits)),
                 Id = random.Next((int)Math.Pow(10, digits)),
-                Metadata = new NftMetadata
+                Metadata = new MetadataBase
                 {
                     Name = name,
                     Description = "Welcome, this is a mock Nft to test the UI for Nft views even without an internet connection. Yes, it is pretty handy! I need to make the description a little bit longer to test the edge cases with having a text to go out of bounds of the visible View.",

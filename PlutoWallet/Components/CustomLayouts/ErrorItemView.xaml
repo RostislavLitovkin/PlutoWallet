@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.CustomLayouts.ErrorItemView"
+            xmlns:card="clr-namespace:PlutoWallet.Components.Card">
+    <card:ClickableCard IsTransparent="True"
+                        Color="{x:StaticResource DangerousRed}">
+        <card:ClickableCard.View>
+            <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Margin="0, 10, 0, 10">
+
+                <Label
+                       AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                       AbsoluteLayout.LayoutFlags="All"
+                        
+                        TextColor="White"
+                        FontSize="25"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                    x:Name="label">
+
+                </Label>
+
+                <AbsoluteLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                         AbsoluteLayout.LayoutFlags="SizeProportional">
+                    <AbsoluteLayout.GestureRecognizers>
+
+                    </AbsoluteLayout.GestureRecognizers>
+
+                </AbsoluteLayout>
+
+
+            </AbsoluteLayout>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
+</ContentView>

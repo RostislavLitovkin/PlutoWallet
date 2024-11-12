@@ -358,7 +358,7 @@ namespace PlutoWallet.Model
                 case "RnT":
                     return new ReceiveAndTransferView();
                 case "NftG":
-                    return new NftGaleryView();
+                    return new NftGalleryView();
                 case "FeeA":
                     return new FeeAssetView();
                 case "VDot":
@@ -451,7 +451,7 @@ namespace PlutoWallet.Model
                 case "RnT":
                     return new ReceiveAndTransferView();
                 case "NftG":
-                    return new NftGaleryView();
+                    return new NftGalleryView();
                 case "FeeA":
                     return new FeeAssetView();
                 case "VDot":

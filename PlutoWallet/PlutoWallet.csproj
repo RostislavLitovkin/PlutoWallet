@@ -110,6 +110,8 @@
 	  <None Remove="CommunityToolkit.Maui" />
 	  <None Remove="Resources\Images\cloudblack.svg" />
 	  <None Remove="Resources\Images\cloudwhite.svg" />
+	  <None Remove="Resources\Images\collectionblack.svg" />
+	  <None Remove="Resources\Images\collectionwhite.svg" />
 	  <None Remove="Resources\Images\copyblack.svg" />
 	  <None Remove="Resources\Images\copywhite.svg" />
 	  <None Remove="Resources\Images\dappblack.svg" />
@@ -118,11 +120,15 @@
 	  <None Remove="Resources\Images\devicewhite.svg" />
 	  <None Remove="Resources\Images\expandblack.svg" />
 	  <None Remove="Resources\Images\expandwhite.svg" />
+	  <None Remove="Resources\Images\hotblack.svg" />
+	  <None Remove="Resources\Images\hotwhite.svg" />
 	  <None Remove="Resources\Images\kodablack.svg" />
 	  <None Remove="Resources\Images\kodawhite.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamaassethub.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\polkadotassethub.svg" />
+	  <None Remove="Resources\Images\nftblack.svg" />
+	  <None Remove="Resources\Images\nftwhite.svg" />
 	  <None Remove="Resources\Images\plutowalletclearwhite.png" />
 	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
 	  <None Remove="Resources\Images\subscan.png" />
@@ -424,6 +430,18 @@
 	  <MauiXaml Update="Components\Card\ClickableCard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\CustomLayouts\CategoryHeaderView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CustomLayouts\ErrorItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CustomLayouts\LoadingItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\CustomLayouts\TransparentItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Events\EventItemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -607,7 +625,6 @@
 	  <Folder Include="Components\Switch\" />
 	  <Folder Include="Components\WebView\" />
 	  <Folder Include="Components\NavigationBar\" />
-	  <Folder Include="Components\CustomLayouts\" />
 	  <Folder Include="Resources\Images\PredefinedLayouts\" />
 	  <Folder Include="Components\AwesomeAjunaAvatars\" />
 	  <Folder Include="Components\Contract\" />
@@ -619,7 +636,6 @@
 	  <Folder Include="Components\Referenda\" />
 	  <Folder Include="Components\ChangeLayoutRequest\" />
 	  <Folder Include="Components\Mnemonics\" />
-	  <Folder Include="Model\" />
 	  <Folder Include="Components\Fee\" />
 	  <Folder Include="Components\VTokens\" />
 	  <Folder Include="Components\UpdateView\" />
@@ -638,6 +654,9 @@
 	  </Compile>
 	  <Compile Update="Components\AssetSelect\NativeAssetInputView.xaml.cs">
 	    <DependentUpon>NativeAssetInputView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\Nft\NftGalleryView.xaml.cs">
+	    <DependentUpon>NftGalleryView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Components\PredefinedLayouts\HydrationOmnipoolLayoutItem.xaml.cs">
 	    <DependentUpon>HydrationOmnipoolLayoutItem.xaml</DependentUpon>

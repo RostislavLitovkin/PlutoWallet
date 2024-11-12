@@ -9,6 +9,8 @@
   <ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	  <PackageReference Include="PolkadotAssetHub.NetApi" Version="0.1.3" />
+	  <PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.10" />
 	  <PackageReference Include="Substrate.NET.API" Version="0.9.24-rc6" />
 	  <PackageReference Include="websocketsharp.core" Version="1.0.0" />
 	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />

@@ -71,7 +71,7 @@
 
         <messagepopup:MessagePopupView />
 
-        <navigationbar:NavigationBarView />
+        <navigationbar:NavigationBarView SelectedOption="Home"/>
 
         <transferview:TransferView />
 

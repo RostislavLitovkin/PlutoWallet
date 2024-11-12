@@ -10,7 +10,7 @@ namespace UniqueryPlus.Nfts
         public BigInteger CollectionId { get; set; }
         public BigInteger Id { get; set; }
         public string Owner { get; set; }
-        public IMetadataBase? Metadata { get; set; }
+        public MetadataBase? Metadata { get; set; }
         public Task<ICollectionBase> GetCollectionAsync(CancellationToken token);
         public Task<INftBase> GetFullAsync(CancellationToken token);
     }

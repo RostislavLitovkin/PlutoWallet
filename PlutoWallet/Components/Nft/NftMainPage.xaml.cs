@@ -9,8 +9,10 @@ public partial class NftMainPage : ContentPage
 
         InitializeComponent();
 
-        var viewModel = DependencyService.Get<NftMainViewModel>();
+        var viewModel = new NftMainViewModel();
 
         BindingContext = viewModel;
+
+        viewModel.ConnectClientsAsync(CancellationToken.None);
     }
 }

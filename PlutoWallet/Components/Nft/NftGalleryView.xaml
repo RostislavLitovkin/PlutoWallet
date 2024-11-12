@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft" xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
-             x:Class="PlutoWallet.Components.Nft.NftGaleryView"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
+             x:Class="PlutoWallet.Components.Nft.NftGalleryView"
              Margin="-20, 0, -20, 0"
              >
     <ScrollView Orientation="Horizontal"
@@ -10,18 +11,13 @@
                 VerticalScrollBarVisibility="Never">
         <HorizontalStackLayout Spacing="10"
                                Padding="20, 0, 20, 0">
-            <HorizontalStackLayout BindableLayout.ItemsSource="{Binding Nfts}"
+            <HorizontalStackLayout x:Name="horizontalStackLayout"
                                    Spacing="10">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <nft:NftPictureView HeightRequest="200" WidthRequest="200"
-                                            Image="{Binding Image}"
-                                            Name="{Binding Name}"
-                                            Description="{Binding Description}"
-                                            Attributes="{Binding Attributes}"
+                                            NftBase="{Binding NftBase}"
                                             Endpoint="{Binding Endpoint}"
-                                            CollectionId="{Binding CollectionId}"
-                                            ItemId="{Binding ItemId}"
                                             Favourite="{Binding Favourite}"/>
                     </DataTemplate>
                 
@@ -30,14 +26,26 @@
             </HorizontalStackLayout>
 
             <customlayouts:PlusItemView HeightRequest="200"
-                                        WidthRequest="200">
+                                        WidthRequest="200"
+                                        x:Name="plusButton"
+                                        IsVisible="False">
                 <customlayouts:PlusItemView.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnPlusClicked" />
 
                 </customlayouts:PlusItemView.GestureRecognizers>
 
             </customlayouts:PlusItemView>
-            
+
+            <customlayouts:LoadingItemView HeightRequest="200"
+                                           WidthRequest="200"
+                                           x:Name="loadingItem"
+                                           IsVisible="True"/>
+
+            <customlayouts:ErrorItemView HeightRequest="200"
+                                         WidthRequest="200"
+                                         ErrorText="Bad Internet connection"
+                                         x:Name="errorItem"
+                                         IsVisible="False"/>
         </HorizontalStackLayout>
     </ScrollView>
 </ContentView>

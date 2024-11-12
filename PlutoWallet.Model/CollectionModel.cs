@@ -1,10 +1,12 @@
 ﻿using PlutoWallet.Constants;
+using SQLite;
 using System.Numerics;
-using Uniquery;
 using UniqueryPlus;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
+using UniqueryPlus.Metadata;
 using UniqueryPlus.Nfts;
+using CollectionKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger);
 
 namespace PlutoWallet.Model
 {
@@ -14,7 +16,7 @@ namespace PlutoWallet.Model
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
-        public ICollectionMetadataBase? Metadata { get; set; }
+        public MetadataBase? Metadata { get; set; }
         public string KodaLink => $"https://koda.art/ahp/collection/{CollectionId}";
         public async Task<IEnumerable<INftBase>> GetNftsAsync(uint limit, byte[]? lastKey = null, CancellationToken token = default)
         {
@@ -39,9 +41,11 @@ namespace PlutoWallet.Model
 
     public class CollectionWrapper
     {
-        public required ICollectionBase CollectionBase { get; set; }
-        public required string[] NftImages { get; set; }
-        public required Endpoint Endpoint { get; set; }
+        [PrimaryKey]
+        public CollectionKey? Key => CollectionBase is not null ? (CollectionBase.Type, CollectionBase.CollectionId) : null;
+        public ICollectionBase? CollectionBase { get; set; }
+        public string[] NftImages { get; set; } = [];
+        public Endpoint? Endpoint { get; set; }
         public bool Favourite { get; set; } = false;
         public override bool Equals(object? obj)
         {
@@ -50,22 +54,25 @@ namespace PlutoWallet.Model
                 return false;
             }
 
-            if (!obj.GetType().Equals(typeof(CollectionWrapper)))
+            if (obj is not CollectionWrapper)
             {
                 return false;
             }
 
             var objNft = (CollectionWrapper)obj;
 
-            return (objNft.CollectionBase.Metadata?.Name == this.CollectionBase.Metadata?.Name &&
-                objNft.CollectionBase.Metadata?.Description == this.CollectionBase.Metadata?.Description &&
-                objNft.CollectionBase.Metadata?.Image == this.CollectionBase.Metadata?.Image &&
-                objNft.Endpoint.Key == this.Endpoint.Key);
+            return (objNft.CollectionBase?.Metadata?.Name == this.CollectionBase?.Metadata?.Name &&
+                objNft.CollectionBase?.Metadata?.Description == this.CollectionBase?.Metadata?.Description &&
+                objNft.CollectionBase?.Metadata?.Image == this.CollectionBase?.Metadata?.Image &&
+                objNft.Endpoint?.Key == this.Endpoint?.Key);
         }
-
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(CollectionBase?.Metadata?.Name, CollectionBase?.Metadata?.Description, CollectionBase?.Metadata?.Image, Endpoint?.Key);
+        }
         public override string ToString()
         {
-            return this.CollectionBase.Metadata?.Name + " - " + this.CollectionBase.Metadata?.Image;
+            return this.CollectionBase?.Metadata?.Name + " - " + this.CollectionBase?.Metadata?.Image;
         }
     }
     public class CollectionModel
@@ -83,7 +90,7 @@ namespace PlutoWallet.Model
             {
                 CollectionId = random.Next((int)Math.Pow(10, digits)),
                 NftCount = nftCount,
-                Metadata = new CollectionMetadata
+                Metadata = new MetadataBase
                 {
                     Name = name,
                     Description = "Welcome, this is a mock collection to test the UI for Collection views even without an internet connection. Yes, it is pretty handy!",
