@@ -65,7 +65,7 @@ namespace PlutoWallet.ViewModel
 
             Console.WriteLine("Changed to nfts");
 
-            Content = new NftView();
+            //Content = new NftView();
 
             if (nftsCancellationTokenSource != null)
             {
@@ -77,7 +77,7 @@ namespace PlutoWallet.ViewModel
          
             try
             {
-                await DependencyService.Get<NftViewModel>().GetNFTsAsync(KeysModel.GetSubstrateKey(), nftsCancellationTokenSource.Token);
+                //await DependencyService.Get<NftViewModel>().GetNFTsAsync(KeysModel.GetSubstrateKey(), nftsCancellationTokenSource.Token);
             }
             catch (OperationCanceledException)
             {

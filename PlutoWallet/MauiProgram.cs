@@ -22,7 +22,6 @@ public static class MauiProgram
                 fonts.AddFont("FontOver.ttf", "FontOver");
                 fonts.AddFont("sourcecode.ttf", "SourceCode");
                 fonts.AddFont("samsungone700.ttf", "SamsungOne");
-
             });
 
         //builder.Services.AddSingleton<Model.PlutonicationModel>();

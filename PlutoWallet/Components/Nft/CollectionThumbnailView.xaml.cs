@@ -122,7 +122,7 @@ public partial class CollectionThumbnailView : ContentView
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Favourite = !Favourite;
-        Task save = CollectionDatabase.UpdateItemAsync(new CollectionWrapper
+        Task save = CollectionDatabase.SaveItemAsync(new CollectionWrapper
         {
             NftImages = NftImages,
             Endpoint = Endpoint,

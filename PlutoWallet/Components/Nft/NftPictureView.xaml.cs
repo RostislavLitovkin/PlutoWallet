@@ -73,7 +73,7 @@ public partial class NftPictureView : ContentView
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Favourite = !Favourite;
-        Task save = NftDatabase.UpdateItemAsync(new NftWrapper
+        Task save = NftDatabase.SaveItemAsync(new NftWrapper
         {
             Endpoint = Endpoint,
             NftBase = NftBase,

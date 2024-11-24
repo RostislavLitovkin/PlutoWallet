@@ -1,5 +1,6 @@
 ﻿using Substrate.NetApi;
 using Substrate.NetApi.Model.Extrinsics;
+using System.Numerics;
 
 namespace UniqueryPlus.Collections
 {
@@ -12,6 +13,7 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetCollectionsNftsPalletOwnedByAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetCollectionsNftsPalletOwnedByAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
+                NftTypeEnum.Mythos => MythosCollectionModel.GetCollectionsOwnedByAsync((Mythos.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 _ => throw new NotImplementedException()
             };
         }
@@ -29,13 +31,14 @@ namespace UniqueryPlus.Collections
             );
         }
 
-        public static Task<ICollectionBase> GetCollectionByCollectionIdAsync(this SubstrateClient client, NftTypeEnum type, uint collectionId, CancellationToken token)
+        public static Task<ICollectionBase> GetCollectionByCollectionIdAsync(this SubstrateClient client, NftTypeEnum type, BigInteger collectionId, CancellationToken token)
         {
             return type switch
             {
-                NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
-                NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
-                NftTypeEnum.Unique => UniqueCollectionModel.GetCollectionByCollectionIdAsync((Unique.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
+                NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
+                NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
+                NftTypeEnum.Unique => UniqueCollectionModel.GetCollectionByCollectionIdAsync((Unique.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
+                NftTypeEnum.Mythos => MythosCollectionModel.GetCollectionByCollectionIdAsync((Mythos.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
                 _ => throw new NotImplementedException()
             };
         }
@@ -46,6 +49,7 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
+                NftTypeEnum.Mythos => MythosCollectionModel.CreateCollection(adminAddress, config),
                 _ => throw new NotImplementedException(),
             };
         }

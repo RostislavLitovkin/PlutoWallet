@@ -9,7 +9,7 @@ using AzeroIdResolver;
 
 namespace PlutoWallet.Model.AzeroId
 {
-	public class AzeroIdNftsModel
+	/*public class AzeroIdNftsModel
 	{
         public static async Task<List<NFT>> GetNamesForAddress(string address, CancellationToken token)
         {
@@ -96,7 +96,7 @@ namespace PlutoWallet.Model.AzeroId
         [JsonProperty("metadata")]
         public NFT Metadata { get; set; }
     }
-
+    */
 
 }
 

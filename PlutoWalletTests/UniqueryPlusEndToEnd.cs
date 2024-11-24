@@ -80,7 +80,7 @@ namespace PlutoWalletTests
 
             await Task.Delay(20_000);
 
-            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client.SubstrateClient, NftTypeEnum.PolkadotAssetHub_NftsPallet, newCollectionId, CancellationToken.None);
+            var collection = await CollectionModel.GetCollectionByCollectionIdAsync(client.SubstrateClient, NftTypeEnum.PolkadotAssetHub_NftsPallet, newCollectionId.Value, CancellationToken.None);
 
             Assert.That(collection.Metadata, Is.Null);
         }

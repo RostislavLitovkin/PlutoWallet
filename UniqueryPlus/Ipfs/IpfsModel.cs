@@ -36,21 +36,36 @@ namespace UniqueryPlus.Ipfs
                 _ => ImageTypeEnum.Unknown,
             };
         }
-        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, CancellationToken token) where T : IMetadataImage
+        public static async Task<T?> GetMetadataAsync<T>(string ipfsLink, string ipfsEndpoint, CancellationToken token) where T : IMetadataImage
         {
-            var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink), token);
-
-            var metadata = JsonConvert.DeserializeObject<T>(metadataJson);
-
-            if (metadata is null)
+            try
             {
+                var metadataJson = await FetchIpfsAsync(ToIpfsLink(ipfsLink, ipfsEndpoint), token);
+
+                var metadata = JsonConvert.DeserializeObject<T>(metadataJson);
+
+                if (metadata is null)
+                {
+                    return metadata;
+                }
+
+                metadata.Image = metadata.Image is null ? "" : ToIpfsLink(metadata.Image, ipfsEndpoint);
                 return metadata;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
 
-            metadata.Image = metadata.Image is null ? "" : ToIpfsLink(metadata.Image);
-            return metadata;
+                if (ipfsEndpoint == Constants.DEFAULT_IPFS_ENDPOINT)
+                {
+                    return default(T);
+                }
+
+                // Backup to default endpoint
+                return await GetMetadataAsync<T>(ipfsLink, Constants.DEFAULT_IPFS_ENDPOINT, token);
+            }
         }
-        public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.KODA_IPFS_ENDPOINT)
+        public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.DEFAULT_IPFS_ENDPOINT)
         {
             if (ipfsLink.Contains("ipfs//"))
             {
@@ -77,7 +92,7 @@ namespace UniqueryPlus.Ipfs
         }
 
         public static Task<string> FetchIpfsAsync(string ipfsLink, CancellationToken token) => httpClient.GetStringAsync(ToIpfsLink(ipfsLink), token);
-        
+
         private static string RemoveNonHexadecimalCharacters(string input)
         {
             if (string.IsNullOrEmpty(input))

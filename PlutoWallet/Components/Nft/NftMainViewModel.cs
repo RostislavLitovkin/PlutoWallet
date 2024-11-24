@@ -8,6 +8,9 @@ using PlutoWallet.Model.SQLite;
 using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
 using CollectionKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger);
 using SubstrateClientExt = PlutoWallet.Model.AjunaExt.SubstrateClientExt;
+using UniqueSubstrateClientExt = Unique.NetApi.Generated.SubstrateClientExt;
+using System.Numerics;
+using CommunityToolkit.Mvvm.Input;
 
 namespace PlutoWallet.Components.Nft
 {
@@ -23,7 +26,7 @@ namespace PlutoWallet.Components.Nft
         private ObservableCollection<NftWrapper> featuredNfts = new ObservableCollection<NftWrapper>();
         public bool NoFeaturedNfts => !Loading && FeaturedNfts.Count() == 0;
         public bool AnyFeaturedNfts => FeaturedNfts.Count() > 0;
-        public bool LoadingFeaturedNfts => Loading && FeaturedNfts.Count() < 2;
+        public bool LoadingFeaturedNfts => Loading && FeaturedNfts.Count() < 3;
 
         [ObservableProperty]
         private bool featuredNftErrorIsVisible = false;
@@ -35,7 +38,7 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(LoadingOwnedCollections))]
         [NotifyPropertyChangedFor(nameof(LoadingOwnedNfts))]
         [NotifyPropertyChangedFor(nameof(LoadingFeaturedNfts))]
-        private bool loading = true;
+        private bool loading = false;
 
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(NoFavouriteCollections))]
@@ -102,6 +105,11 @@ namespace PlutoWallet.Components.Nft
 
         public async Task ConnectClientsAsync(CancellationToken token)
         {
+            if (Loading)
+            {
+                return;
+            }
+
             Loading = true;
             DatabaseLoading = true;
 
@@ -152,9 +160,9 @@ namespace PlutoWallet.Components.Nft
 
                         // This would be connected to an API
 
-                        (uint,uint)[] ids = [(208, 1), (258, 4230904976)];
+                        (uint,uint)[] ahpIds = [(208, 1), (258, 4230904976)];
 
-                        foreach (var id in ids)
+                        foreach (var id in ahpIds)
                         {
 
                             var newNft = Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, NftTypeEnum.PolkadotAssetHub_NftsPallet, id.Item1, id.Item2, token).ConfigureAwait(false));
@@ -171,14 +179,54 @@ namespace PlutoWallet.Components.Nft
                         }
 
                         break;
+                    case Mythos.NetApi.Generated.SubstrateClientExt:
+                        (BigInteger, BigInteger)[] mythosIds = [(BigInteger.Parse("86219270927352332455509372315086258213278212512"), new BigInteger(101))];
+
+                        foreach (var id in mythosIds)
+                        {
+                            var newNft = Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, NftTypeEnum.Mythos, id.Item1, id.Item2, token).ConfigureAwait(false));
+
+                            if (newNft.Key is not null && !featuredNftsDict.ContainsKey((NftKey)newNft.Key))
+                            {
+                                featuredNftsDict.Add((NftKey)newNft.Key, newNft);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not added");
+                                // Was already loaded
+                            }
+                        }
+
+                        break;
+                    case UniqueSubstrateClientExt:
+                        (BigInteger, BigInteger)[] uniqueIds = [(new BigInteger(304), new BigInteger(1))];
+
+                        foreach (var id in uniqueIds)
+                        {
+                            var newNft = Model.NftModel.ToNftWrapper(await UniqueryPlus.Nfts.NftModel.GetNftByIdAsync(client.SubstrateClient, NftTypeEnum.Unique, id.Item1, id.Item2, token).ConfigureAwait(false));
+
+                            if (newNft.Key is not null && !featuredNftsDict.ContainsKey((NftKey)newNft.Key))
+                            {
+                                featuredNftsDict.Add((NftKey)newNft.Key, newNft);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not added");
+                                // Was already loaded
+                            }
+                        }
+
+                        break;
 
                 }
 
-                Console.WriteLine("Bind Featured Nfts: " + FeaturedNfts.Count());
                 FeaturedNfts = new ObservableCollection<NftWrapper>(featuredNftsDict.Values);
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine("Featured nfts error:");
+                Console.WriteLine(ex);
+
                 FeaturedNftErrorIsVisible = true;
             }
         }
@@ -198,10 +246,10 @@ namespace PlutoWallet.Components.Nft
             {
                 var newNft = Model.NftModel.ToNftWrapper(uniqueryNftEnumerator.Current);
 
-                if (newNft.Key is not null && !ownedNftsDict.ContainsKey((NftKey)newNft.Key))
+                if (newNft.Key is not null && !ownedNftsDict.ContainsKey((NftKey)newNft.Key) && !favouriteNftsDict.ContainsKey((NftKey)newNft.Key))
                 {
                     ownedNftsDict.Add((NftKey)newNft.Key, newNft);
-                    await NftDatabase.AddItemAsync(newNft).ConfigureAwait(false);
+                    await NftDatabase.SaveItemAsync(newNft).ConfigureAwait(false);
 
                     if (ownedNftsDict.Count() <= displayLimit)
                     {
@@ -217,17 +265,16 @@ namespace PlutoWallet.Components.Nft
                     // Was already loaded
                 }
             }
-
         }
 
         private async Task GetOwnedCollectionsAsync(SubstrateClientExt client, CancellationToken token)
         {
             var uniqueryCollectionEnumerable = UniqueryPlus.Collections.CollectionModel.GetCollectionsOwnedByAsync(
-                        [client.SubstrateClient],
-                        /*KeysModel.GetSubstrateKey()*/
-                        "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y",
-                        limit: limit
-                    );
+                [client.SubstrateClient],
+                /*KeysModel.GetSubstrateKey()*/
+                "5EU6EyEq6RhqYed1gCYyQRVttdy6FC9yAtUUGzPe3gfpFX8y",
+                limit: limit
+            );
 
             var uniqueryCollectionEnumerator = uniqueryCollectionEnumerable.GetAsyncEnumerator(token);
 
@@ -235,10 +282,10 @@ namespace PlutoWallet.Components.Nft
             {
                 var newCollection = await Model.CollectionModel.ToCollectionWrapperAsync(uniqueryCollectionEnumerator.Current, token).ConfigureAwait(false);
 
-                if (newCollection.Key is not null && !ownedCollectionsDict.ContainsKey((CollectionKey)newCollection.Key))
+                if (newCollection.Key is not null && !ownedCollectionsDict.ContainsKey((CollectionKey)newCollection.Key) && !favouriteCollectionsDict.ContainsKey((CollectionKey)newCollection.Key))
                 {
                     ownedCollectionsDict.Add((CollectionKey)newCollection.Key, newCollection);
-                    await CollectionDatabase.AddItemAsync(newCollection).ConfigureAwait(false);
+                    await CollectionDatabase.SaveItemAsync(newCollection).ConfigureAwait(false);
 
                     if (ownedCollectionsDict.Count() <= displayLimit)
                     {
@@ -298,8 +345,6 @@ namespace PlutoWallet.Components.Nft
                         Console.WriteLine("Loaded saved nft: " + savedNft.NftBase.Type + " " + savedNft.NftBase.CollectionId + " - " + savedNft.NftBase.Id);
                     }
                 }
-
-                FavouriteNfts = new ObservableCollection<NftWrapper>(favouriteNftsDict.Values);
             }
             catch(Exception ex)
             {
@@ -344,10 +389,18 @@ namespace PlutoWallet.Components.Nft
                     }
                 }
             }
-
-            OwnedCollections = new ObservableCollection<CollectionWrapper>(ownedCollectionsDict.Values);
-
-            FavouriteCollections = new ObservableCollection<CollectionWrapper>(favouriteCollectionsDict.Values);
         }
+
+        [RelayCommand]
+        public Task ShowAllOwnedNftsAsync() => Application.Current.MainPage.Navigation.PushAsync(new NftListPage(new OwnedNftsListViewModel()));
+
+        [RelayCommand]
+        public Task ShowAllFavouriteNftsAsync() => Application.Current.MainPage.Navigation.PushAsync(new NftListPage(new FavouriteNftsListViewModel()));
+
+        [RelayCommand]
+        public Task ShowAllOwnedCollectionsAsync() => Application.Current.MainPage.Navigation.PushAsync(new CollectionListPage(new OwnedCollectionsListViewModel()));
+
+        [RelayCommand]
+        public Task ShowAllFavouriteCollectionsAsync() => Application.Current.MainPage.Navigation.PushAsync(new CollectionListPage(new FavouriteCollectionsListViewModel()));
     }
 }

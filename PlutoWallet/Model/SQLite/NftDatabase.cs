@@ -114,23 +114,31 @@ namespace PlutoWallet.Model.SQLite
 
             return saved.Select(p => (NftWrapper)p).Where(t => t.NftBase != null && t.NftBase.Owner == address);
         }
-        public static async Task<int> UpdateItemAsync(NftWrapper item)
+
+        public static async Task<IEnumerable<NftWrapper>> GetNftsOwnedByAsync(string address)
         {
             await InitAsync().ConfigureAwait(false);
-            return await Database.UpdateAsync(item.ToNftDatabaseItem()).ConfigureAwait(false);
+
+            var saved = await Database.Table<NftDatabaseItem>().ToListAsync().ConfigureAwait(false);
+
+            return saved.Select(p => (NftWrapper)p).Where(t => t.NftBase != null && t.NftBase.Owner == address);
         }
-        public static async Task<int> AddItemAsync(NftWrapper item)
+
+        public static async Task<int> SaveItemAsync(NftWrapper item)
         {
             var databaseItem = item.ToNftDatabaseItem();
-            Console.WriteLine("Adding: " + databaseItem.Key);
-            try
+
+            await InitAsync().ConfigureAwait(false);
+
+            var exists = (await Database.FindAsync<NftDatabaseItem>(databaseItem.Key).ConfigureAwait(false)) is not null;
+
+            if (exists)
             {
-                await InitAsync().ConfigureAwait(false);
-                return await Database.InsertAsync(databaseItem).ConfigureAwait(false);
+                return await Database.UpdateAsync(databaseItem).ConfigureAwait(false);
             }
-            catch
+            else
             {
-                return -1;
+                return await Database.InsertAsync(databaseItem).ConfigureAwait(false);
             }
         }
         public static async Task<int> DeleteItemAsync(NftWrapper item)

@@ -13,6 +13,6 @@ public partial class NftMainPage : ContentPage
 
         BindingContext = viewModel;
 
-        viewModel.ConnectClientsAsync(CancellationToken.None);
+        Task s = viewModel.ConnectClientsAsync(CancellationToken.None);
     }
 }

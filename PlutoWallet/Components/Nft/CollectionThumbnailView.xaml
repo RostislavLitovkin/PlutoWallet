@@ -42,7 +42,8 @@
                     <AbsoluteLayout>
 
                         <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                                x:Name="image" Aspect="AspectFill" />
+                                x:Name="image" Aspect="AspectFill"
+                               Source="imageloading.png"/>
                     </AbsoluteLayout>
                 </Border>
 
@@ -184,8 +185,8 @@
                         <AbsoluteLayout>
 
                             <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                                    x:Name="nft3Image" Aspect="AspectFill" />
-
+                                    x:Name="nft3Image" Aspect="AspectFill"
+                                   Source="imageloading.png"/>
 
                         </AbsoluteLayout>
                     </Border>
@@ -213,7 +214,8 @@
                         <AbsoluteLayout>
 
                             <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                                    x:Name="nft2Image" Aspect="AspectFill" />
+                                    x:Name="nft2Image" Aspect="AspectFill"
+                                   Source="imageloading.png"/>
                         </AbsoluteLayout>
                     </Border>
 
@@ -240,7 +242,8 @@
                         <AbsoluteLayout>
 
                             <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
-                                    x:Name="nft1Image" Aspect="AspectFill" />
+                                    x:Name="nft1Image" Aspect="AspectFill"
+                                   Source="imageloading.png"/>
                         </AbsoluteLayout>
                     </Border>
 

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Nft.CollectionListPage"
+             Title="CollectionListPage"
+             xmlns:navigationbar="clr-namespace:PlutoWallet.Components.NavigationBar"
+             xmlns:nft="clr-namespace:PlutoWallet.Components.Nft"
+             xmlns:unique="clr-namespace:PlutoWallet.Components.Unique"
+             xmlns:koda="clr-namespace:PlutoWallet.Components.Koda"
+             xmlns:buttons="clr-namespace:PlutoWallet.Components.Buttons"
+             xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
+             xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
+             xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+             xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
+             BackgroundColor="Black">
+    <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
+
+        <Image AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+           Source="{AppThemeBinding Light=whitebackground.png, Dark=darkbackground2.png}"
+           Opacity="{AppThemeBinding Light=0.96}"
+           Aspect="AspectFill"/>
+
+        <CollectionView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemsSource="{Binding Items}"
+                    RemainingItemsThreshold="1"
+                    RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
+            <CollectionView.Header>
+                <AbsoluteLayout HeightRequest="45"
+                            WidthRequest="10">
+
+                </AbsoluteLayout>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <StackLayout HeightRequest="200">
+                    <customlayouts:LoadingItemView HeightRequest="80" 
+                                                   Margin="20, 0, 20, 0"
+                                                    IsVisible="{Binding Loading}"/>
+                    <customlayouts:TransparentItemView Text="No Collections"
+                                                        IsVisible="{Binding NoItems}" 
+                                                        Margin="20, 0, 20, 0"/>
+                </StackLayout>
+            </CollectionView.Footer>
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" 
+                               ItemSpacing="15"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <nft:CollectionThumbnailView Endpoint="{Binding Endpoint}"
+                                      Favourite="{Binding Favourite}"
+                                      CollectionBase="{Binding CollectionBase}"
+                                      Margin="20, 0, 20, 0" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <txanalyzer:TransactionAnalyzerConfirmationView />
+
+        <navigationbar:TopNavigationBar Title="{Binding Title}" />
+    </AbsoluteLayout>
+</ContentPage>

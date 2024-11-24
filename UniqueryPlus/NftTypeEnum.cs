@@ -5,7 +5,8 @@
         PolkadotAssetHub_NftsPallet,
         KusamaAssetHub_NftsPallet,
 
-        Unique
+        Unique,
+        Mythos,
         // Other types?
     }
 }

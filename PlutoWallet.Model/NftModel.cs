@@ -39,7 +39,6 @@ namespace PlutoWallet.Model
 
     public class NftWrapper
     {
-        [PrimaryKey]
         public NftKey? Key => NftBase is not null ? (NftBase.Type, NftBase.CollectionId, NftBase.Id) : null;
         public INftBase? NftBase { get; set; }
         public Endpoint? Endpoint { get; set; }
@@ -91,6 +90,10 @@ namespace PlutoWallet.Model
 
         public static NftWrapper ToNftWrapper(INftBase nft)
         {
+            if (nft.Metadata is not null && nft.Metadata.Image is null)
+            {
+                nft.Metadata.Image = "noimage.png";
+            }
             return new NftWrapper
             {
                 NftBase = nft,
@@ -129,6 +132,7 @@ namespace PlutoWallet.Model
             NftTypeEnum.PolkadotAssetHub_NftsPallet => EndpointEnum.PolkadotAssetHub,
             NftTypeEnum.KusamaAssetHub_NftsPallet => EndpointEnum.KusamaAssetHub,
             NftTypeEnum.Unique => EndpointEnum.Unique,
+            NftTypeEnum.Mythos => EndpointEnum.Mythos,
             _ => throw new NotImplementedException(),
         };
     }

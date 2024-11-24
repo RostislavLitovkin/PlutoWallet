@@ -55,7 +55,7 @@ namespace UniqueryPlus.Collections
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
         public MetadataBase? Metadata { get; set; }
-        public string KodaLink => $"https://koda.art/ahp/collection/{CollectionId}";
+        public string KodaLink => $"https://koda.art/ahk/collection/{CollectionId}";
         public KusamaAssetHubNftsPalletCollection(SubstrateClientExt client)
         {
             this.client = client;
@@ -241,7 +241,7 @@ namespace UniqueryPlus.Collections
                     continue;
                 }
 
-                metadatas.Add(await IpfsModel.GetMetadataAsync<MetadataBase>(ipfsLink, token).ConfigureAwait(false));
+                metadatas.Add(await IpfsModel.GetMetadataAsync<MetadataBase>(ipfsLink, Constants.KODA_IPFS_ENDPOINT, token).ConfigureAwait(false));
             };
 
             return metadatas;

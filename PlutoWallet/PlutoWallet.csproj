@@ -68,7 +68,8 @@
 		<MauiImage Include="Resources\Images\*jpg" />
 		<MauiImage Include="Resources\Images\NetworkIcons\*svg" />
 		<MauiImage Include="Resources\Images\NetworkIcons\*png" />
-		<MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
+    <MauiImage Include="Resources\Images\NetworkIcons\*jpg" />
+    <MauiImage Include="Resources\Images\PredefinedLayouts\*svg" />
 		<MauiImage Include="Resources\Images\PredefinedLayouts\*png" />
 		<MauiImage Include="Resources\Images\GalaxyLogicGame\*svg" />
 		<MauiImage Include="Resources\Images\GalaxyLogicGame\*png" />
@@ -83,6 +84,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.VisualStudio.VsixColorCompiler" Version="17.0.31709.430" />
 		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="3.0.0-preview.7" />
 		<PackageReference Include="websocketsharp.core" Version="1.0.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
@@ -122,13 +124,16 @@
 	  <None Remove="Resources\Images\expandwhite.svg" />
 	  <None Remove="Resources\Images\hotblack.svg" />
 	  <None Remove="Resources\Images\hotwhite.svg" />
+	  <None Remove="Resources\Images\imageloading.png" />
 	  <None Remove="Resources\Images\kodablack.svg" />
 	  <None Remove="Resources\Images\kodawhite.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\hydration.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamaassethub.svg" />
+	  <None Remove="Resources\Images\NetworkIcons\mythos.png" />
 	  <None Remove="Resources\Images\NetworkIcons\polkadotassethub.svg" />
 	  <None Remove="Resources\Images\nftblack.svg" />
 	  <None Remove="Resources\Images\nftwhite.svg" />
+	  <None Remove="Resources\Images\noimage.png" />
 	  <None Remove="Resources\Images\plutowalletclearwhite.png" />
 	  <None Remove="Resources\Images\plutowalleticonwhite.png" />
 	  <None Remove="Resources\Images\subscan.png" />
@@ -178,7 +183,7 @@
 	  <None Remove="Resources\Images\NetworkIcons\alephzerotestnet.png" />
 	  <None Remove="Resources\Images\NetworkIcons\litmus.png" />
 	  <None Remove="Resources\Images\NetworkIcons\shibuya.png" />
-	  <None Remove="Resources\Images\menuwhite.svg" />
+    <None Remove="Resources\Images\menuwhite.svg" />
 	  <None Remove="Resources\Images\menublack.svg" />
 	  <None Remove="Resources\Images\NetworkIcons\kusamawhite.png" />
 	  <None Remove="Resources\Images\NetworkIcons\acala.png" />
@@ -315,7 +320,8 @@
 	  <BundleResource Include="Resources\Images\NetworkIcons\alephzerotestnet.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\litmus.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\shibuya.png" />
-	  <BundleResource Include="Resources\Images\menuwhite.svg" />
+    <BundleResource Include="Resources\Images\NetworkIcons\mythos.jpg" />
+    <BundleResource Include="Resources\Images\menuwhite.svg" />
 	  <BundleResource Include="Resources\Images\menublack.svg" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\kusamawhite.png" />
 	  <BundleResource Include="Resources\Images\NetworkIcons\acala.png" />
@@ -460,6 +466,9 @@
 	  <MauiXaml Update="Components\Nft\CollectionDetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Nft\CollectionListPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\CollectionThumbnailView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -506,9 +515,6 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Nft\NftTransferView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Components\Nft\NoNftsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Settings\DeveloperSettingsPage.xaml">

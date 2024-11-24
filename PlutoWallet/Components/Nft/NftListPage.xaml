@@ -10,6 +10,7 @@
          xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
          xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
          xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+             xmlns:customlayouts="clr-namespace:PlutoWallet.Components.CustomLayouts"
          BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
@@ -20,18 +21,23 @@
 
         <CollectionView AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
                         ItemSizingStrategy="MeasureAllItems"
-                        ItemsSource="{Binding Nfts}"
+                        ItemsSource="{Binding Items}"
                         RemainingItemsThreshold="1"
-                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreNftsCommand}">
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}">
             <CollectionView.Header>
                 <AbsoluteLayout HeightRequest="45"
                                 WidthRequest="10">
 
-                </AbsoluteLayout>
+                </AbsoluteLayout>   
             </CollectionView.Header>
             <CollectionView.Footer>
                 <StackLayout HeightRequest="200">
-                    <nft:NoNftsView Margin="20, 0, 20, 0" IsVisible="False"/>
+                    <customlayouts:LoadingItemView HeightRequest="80" 
+                                                   Margin="20, 0, 20, 0"
+                                                    IsVisible="{Binding Loading}"/>
+                    <customlayouts:TransparentItemView Text="No NFTs"
+                                                       Margin="20, 0, 20, 0"
+                                                       IsVisible="{Binding NoItems}" />
                 </StackLayout>
             </CollectionView.Footer>
             <CollectionView.ItemsLayout>
@@ -50,6 +56,6 @@
 
         <txanalyzer:TransactionAnalyzerConfirmationView />
 
-        <navigationbar:TopNavigationBar Title="Nfts" />
+        <navigationbar:TopNavigationBar Title="{Binding Title}" />
     </AbsoluteLayout>
 </ContentPage>

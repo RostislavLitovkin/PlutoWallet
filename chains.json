@@ -39,6 +39,10 @@
     {
       "name": "KusamaAssetHub",
       "websocket": "wss://sys.dotters.network/statemine"
+    },
+    {
+      "name": "Mythos",
+      "websocket": "wss://polkadot-mythos-rpc.polkadot.io"
     }
   ]
 }

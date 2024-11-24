@@ -43,7 +43,6 @@
                     </customlayouts:CategoryHeaderView.ImageSource>
                 </customlayouts:CategoryHeaderView>
                 <VerticalStackLayout
-                    IsVisible="{Binding AnyFavouriteNfts}"
                                     HorizontalOptions="Center"
                                     Spacing="15"
                                     BindableLayout.ItemsSource="{Binding FavouriteNfts}">
@@ -61,12 +60,17 @@
                 <customlayouts:LoadingItemView HeightRequest="80" 
                                                IsVisible="{Binding LoadingFavouriteNfts}"/>
 
-                <customlayouts:TransparentItemView Text="No Favourite Nfts"
+                <customlayouts:TransparentItemView Text="No Favourite NFTs"
                                                    IsVisible="{Binding NoFavouriteNfts}" />
 
+                <buttons:ElevatedButton Text="All Favourite NFTs"
+                                        Command="{Binding ShowAllFavouriteNftsCommand}"
+                                        ButtonState="Enabled"
+                                        />
+                
                 <customlayouts:CategoryHeaderView TitleText="Owned: "
                                                   ImageSource="{AppThemeBinding Light=nftblack.png, Dark=nftwhite.png}"/>
-                <VerticalStackLayout IsVisible="{Binding AnyOwnedNfts}"
+                <VerticalStackLayout
                                     HorizontalOptions="Center"
                                     Spacing="15"
                                     BindableLayout.ItemsSource="{Binding OwnedNfts}">
@@ -85,8 +89,13 @@
                 <customlayouts:LoadingItemView HeightRequest="80" 
                                IsVisible="{Binding LoadingOwnedNfts}"/>
 
-                <customlayouts:TransparentItemView Text="No Owned Nfts"
+                <customlayouts:TransparentItemView Text="No Owned NFTs"
                                                     IsVisible="{Binding NoOwnedNfts}" />
+
+                <buttons:ElevatedButton Text="All Owned NFTs"
+                        Command="{Binding ShowAllOwnedNftsCommand}"
+                        ButtonState="Enabled"
+                        />
 
                 <customlayouts:CategoryHeaderView TitleText="Favourite Collections: ">
                     <customlayouts:CategoryHeaderView.ImageSource>
@@ -97,7 +106,7 @@
                     </customlayouts:CategoryHeaderView.ImageSource>
                 </customlayouts:CategoryHeaderView>
                   
-                <VerticalStackLayout IsVisible="{Binding AnyFavouriteCollections}"
+                <VerticalStackLayout
                                     HorizontalOptions="Center"
                                     Spacing="15"
                                     BindableLayout.ItemsSource="{Binding FavouriteCollections}">
@@ -113,14 +122,19 @@
                 </VerticalStackLayout>
 
                 <customlayouts:LoadingItemView HeightRequest="80" 
-                               IsVisible="{Binding LoadingFavouriteCollections}"/>
+                                                IsVisible="{Binding LoadingFavouriteCollections}"/>
 
                 <customlayouts:TransparentItemView Text="No Favourite Collections"
                                                     IsVisible="{Binding NoFavouriteCollections}" />
+
+                <buttons:ElevatedButton Text="All Favourite Collections"
+                                        Command="{Binding ShowAllFavouriteCollectionsCommand}"
+                                        ButtonState="Enabled"
+                                        />
                 
                 <customlayouts:CategoryHeaderView TitleText="Owned Collections: "
                                                   ImageSource="{AppThemeBinding Light=collectionblack.png, Dark=collectionwhite.png}"/>
-                <VerticalStackLayout IsVisible="{Binding AnyOwnedCollections}"
+                <VerticalStackLayout
                                     HorizontalOptions="Center"
                                     Spacing="15"
                                     BindableLayout.ItemsSource="{Binding OwnedCollections}">
@@ -140,6 +154,10 @@
                 <customlayouts:TransparentItemView Text="No Owned Collections"
                                     IsVisible="{Binding NoOwnedCollections}" />
 
+                <buttons:ElevatedButton Text="All Owned Collections"
+                        Command="{Binding ShowAllOwnedCollectionsCommand}"
+                        ButtonState="Enabled"
+                        />
             </VerticalStackLayout>
         </ScrollView>
 

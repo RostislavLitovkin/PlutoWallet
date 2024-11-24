@@ -5,6 +5,7 @@ namespace PlutoWallet.Components.Nft;
 
 public partial class NftIdView : ContentView
 {
+    private bool isIdSet = false;
     public static readonly BindableProperty CollectionIdProperty = BindableProperty.Create(
         nameof(CollectionId), typeof(BigInteger), typeof(NftIdView),
         defaultBindingMode: BindingMode.TwoWay,
@@ -12,7 +13,10 @@ public partial class NftIdView : ContentView
             var control = (NftIdView)bindable;
 
             // Assign only if id has not been assigned yet
-            control.idLabel.Text ??= $"# {(BigInteger)newValue}";
+            if (!control.isIdSet)
+            {
+                control.idLabel.Text = $"# {(BigInteger)newValue}";
+            }
         });
 
     public static readonly BindableProperty IdProperty = BindableProperty.Create(
@@ -21,6 +25,8 @@ public partial class NftIdView : ContentView
         propertyChanging: (bindable, oldValue, newValue) =>
         {
             var control = (NftIdView)bindable;
+
+            control.isIdSet = true;
 
             control.idLabel.Text = $"# {(BigInteger)newValue}";
         });

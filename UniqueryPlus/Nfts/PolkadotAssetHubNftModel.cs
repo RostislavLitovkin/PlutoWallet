@@ -287,7 +287,9 @@ namespace UniqueryPlus.Nfts
 
                 string ipfsLink = System.Text.Encoding.UTF8.GetString(nftMetadata.Data.Value.Bytes);
 
-                metadatas.Add(await IpfsModel.GetMetadataAsync<MetadataBase>(ipfsLink, token).ConfigureAwait(false));
+                Console.WriteLine(ipfsLink);
+
+                metadatas.Add(await IpfsModel.GetMetadataAsync<MetadataBase>(ipfsLink, Constants.KODA_IPFS_ENDPOINT, token).ConfigureAwait(false));
             };
 
             return metadatas;

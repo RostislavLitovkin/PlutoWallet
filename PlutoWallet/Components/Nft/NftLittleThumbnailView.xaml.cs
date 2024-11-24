@@ -3,6 +3,7 @@ using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.SQLite;
+using System.Collections.ObjectModel;
 using UniqueryPlus.Collections;
 using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
@@ -26,7 +27,7 @@ public partial class NftLittleThumbnailView : ContentView
             control.image.Source = nftBase.Metadata?.Image[0..4] switch
             {
                 // Default image
-                null => "darkbackground2.png",
+                null => "noimage.png",
                 "http" => new UriImageSource
                 {
                     Uri = new Uri(nftBase.Metadata.Image),
@@ -133,7 +134,7 @@ public partial class NftLittleThumbnailView : ContentView
     void OnFavouriteClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
         Favourite = !Favourite;
-        Task save = NftDatabase.UpdateItemAsync(new NftWrapper
+        Task save = NftDatabase.SaveItemAsync(new NftWrapper
         {
             Endpoint = Endpoint,
             NftBase = NftBase,
@@ -143,6 +144,7 @@ public partial class NftLittleThumbnailView : ContentView
 
     async void OnMoreClicked(System.Object sender, Microsoft.Maui.Controls.TappedEventArgs e)
     {
+        CancellationToken token = CancellationToken.None;
         try
         {
             var viewModel = new NftDetailViewModel();
@@ -153,27 +155,43 @@ public partial class NftLittleThumbnailView : ContentView
             viewModel.Favourite = this.Favourite;
             viewModel.OwnerAddress = this.NftBase.Owner;
 
-            UpdateViewModel(viewModel, this.NftBase);
+            var savedCollection = await CollectionDatabase.GetCollectionAsync($"{this.NftBase.Type}-{this.NftBase.CollectionId}");
 
-            if (this.Endpoint.Name == "Aleph Zero Testnet")
+            if (savedCollection is not null)
             {
-                viewModel.AzeroIdReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(this.NftBase.Metadata.Name);
+                viewModel.CollectionFavourite = savedCollection.Favourite;
+                viewModel.CollectionBase = savedCollection.CollectionBase;
+                viewModel.CollectionNftImages = savedCollection.NftImages;
+            }
+
+            await UpdateViewModelAsync(viewModel, this.NftBase, token);
+
+            if (this.Endpoint.Key == EndpointEnum.AzeroTestnet)
+            {
+                viewModel.AzeroIdReservedUntil = await Model.AzeroId.AzeroIdModel.GetReservedUntilStringForName(this.NftBase.Metadata.Name).ConfigureAwait(false);
             }
 
             await Navigation.PushAsync(new NftDetailPage(viewModel));
 
             // load these details after
-            viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.NftBase.CollectionId);
+            viewModel.KodadotUnlockableUrl = await Model.Kodadot.UnlockablesModel.FetchKeywiseAsync(this.Endpoint, this.NftBase.CollectionId).ConfigureAwait(false);
 
-            CancellationToken token = CancellationToken.None;
+            ICollectionBase fullCollection;
+            if (savedCollection is null)
+            {
+                var collection = await Model.CollectionModel.ToCollectionWrapperAsync(await this.NftBase.GetCollectionAsync(token).ConfigureAwait(false), CancellationToken.None).ConfigureAwait(false);
 
-            var collection = await Model.CollectionModel.ToCollectionWrapperAsync(await this.NftBase.GetCollectionAsync(token), CancellationToken.None);
+                viewModel.CollectionBase = collection.CollectionBase;
+                viewModel.CollectionNftImages = collection.NftImages;
 
-            viewModel.CollectionBase = collection.CollectionBase;
-            viewModel.CollectionFavourite = false; //NftsStorageModel.IsCollectionFavourite(collection);
-            viewModel.CollectionNftImages = collection.NftImages;
+                fullCollection = await collection.CollectionBase.GetFullAsync(token).ConfigureAwait(false);
 
-            var fullCollection = await collection.CollectionBase.GetFullAsync(token);
+            }
+            else
+            {
+                fullCollection = await savedCollection.CollectionBase.GetFullAsync(token).ConfigureAwait(false);
+            }
+
             if (fullCollection is ICollectionStats)
             {
                 viewModel.FloorPrice = ((ICollectionStats)fullCollection).FloorPrice;
@@ -184,7 +202,7 @@ public partial class NftLittleThumbnailView : ContentView
             // These can be implemented only on the full variant...
             var fullNft = await this.NftBase.GetFullAsync(token);
 
-            UpdateViewModel(viewModel, fullNft);
+            await UpdateViewModelAsync(viewModel, fullNft, token);
         }
         catch (Exception ex)
         {
@@ -192,9 +210,10 @@ public partial class NftLittleThumbnailView : ContentView
         }
     }
 
-    private void UpdateViewModel(NftDetailViewModel viewModel, INftBase nft)
+    private async Task UpdateViewModelAsync(NftDetailViewModel viewModel, INftBase nft, CancellationToken token)
     {
-        Console.WriteLine("Is for sale: " + (nft is INftBuyable));
+        viewModel.NftBase = nft;
+
         viewModel.Price = (nft is INftBuyable && ((INftBuyable)nft).IsForSale) ? ((INftBuyable)nft).Price ?? 0 : 0;
         viewModel.IsForSale = nft is INftBuyable && ((INftBuyable)nft).IsForSale;
         viewModel.KodaIsVisible = nft is IKodaLink;
@@ -205,6 +224,10 @@ public partial class NftLittleThumbnailView : ContentView
         viewModel.ModifyButtonState = ButtonStateEnum.Disabled; // Maybe later
         viewModel.BurnButtonState = nft is INftBurnable && ((INftBurnable)nft).IsBurnable ? ButtonStateEnum.Enabled : ButtonStateEnum.Disabled;
 
-        viewModel.NftBase = nft;
+        if (nft is INftNestable && !viewModel.IsNestable)
+        {
+            viewModel.IsNestable = true;
+            viewModel.NestedNfts = new ObservableCollection<NftWrapper>((await ((INftNestable)nft).GetNestedNftsAsync(token).ConfigureAwait(false)).Select(nestedNftWrapper => Model.NftModel.ToNftWrapper(nestedNftWrapper.NftBase)));
+        }
     }
 }

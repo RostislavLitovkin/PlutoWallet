@@ -30,6 +30,7 @@
 
                         <Image 
                                x:Name="image" Aspect="AspectFill"
+                            Source="imageloading.png"
                                HeightRequest="60"
                                WidthRequest="60"
                                 AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All"
@@ -71,9 +72,9 @@
                     </Grid>
 
                     <Grid AbsoluteLayout.LayoutBounds=".5, 1, 1, 30"
-                                 AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
-                                 BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
-                       Margin="0, 0, 0, 5">
+                          AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional"
+                          BackgroundColor="{AppThemeBinding Light=White, Dark=Black}"
+                          Margin="0, 0, 0, 5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="30" />
@@ -89,13 +90,13 @@
                                                       HorizontalOptions="Center"/>
 
                         <Image WidthRequest="20"
-                            HeightRequest="20"
-                            VerticalOptions="Center" 
-                            HorizontalOptions="Center"
-                            Aspect="AspectFit"
-                            IsVisible="false"
-                            x:Name="filledFavouriteIcon"
-                            Grid.Column="1">
+                                HeightRequest="20"
+                                VerticalOptions="Center" 
+                                HorizontalOptions="Center"
+                                Aspect="AspectFit"
+                                IsVisible="false"
+                                x:Name="filledFavouriteIcon"
+                                Grid.Column="1">
 
                             <Image.Source>
                                 <FontImageSource Color="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"

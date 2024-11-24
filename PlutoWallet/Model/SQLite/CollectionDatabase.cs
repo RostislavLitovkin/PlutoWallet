@@ -6,7 +6,6 @@ using UniqueryPlus.Metadata;
 using UniqueryPlus.Nfts;
 using UniqueryPlus;
 using System.Numerics;
-using Nethereum.JsonRpc.Client;
 using PlutoWallet.Constants;
 
 namespace PlutoWallet.Model.SQLite
@@ -115,6 +114,18 @@ namespace PlutoWallet.Model.SQLite
             var result = await Database.CreateTableAsync<CollectionDatabaseItem>().ConfigureAwait(false);
         }
 
+        public static async Task<CollectionWrapper?> GetCollectionAsync(string key)
+        {
+            var collection = await Database.FindAsync<CollectionDatabaseItem>(key).ConfigureAwait(false);
+
+            // This avoids implicit casting, which would lead to System.NullReferenceException
+            if (collection is null)
+            {
+                return null;
+            }
+
+            return collection;
+        }
         public static async Task<IEnumerable<CollectionWrapper>> GetCollectionsAsync()
         {
             await InitAsync().ConfigureAwait(false);
@@ -140,24 +151,31 @@ namespace PlutoWallet.Model.SQLite
 
             return saved.Select(p => (CollectionWrapper)p).Where(t => t.CollectionBase != null && t.CollectionBase.Owner == address);
         }
-
-        public static async Task<int> UpdateItemAsync(CollectionWrapper item)
+        public static async Task<IEnumerable<CollectionWrapper>> GetCollectionsOwnedByAsync(string address)
         {
             await InitAsync().ConfigureAwait(false);
-            return await Database.UpdateAsync(item.ToCollectionDatabaseItem()).ConfigureAwait(false);
+
+            var saved = await Database.Table<CollectionDatabaseItem>().ToListAsync().ConfigureAwait(false);
+            
+            return saved.Select(p => (CollectionWrapper)p).Where(t => t.CollectionBase != null && t.CollectionBase.Owner == address);
         }
-        public static async Task<int> AddItemAsync(CollectionWrapper item)
+        public static async Task<int> SaveItemAsync(CollectionWrapper item)
         {
             var databaseItem = item.ToCollectionDatabaseItem();
+
+            await InitAsync().ConfigureAwait(false);
+
+            var exists = (await Database.FindAsync<CollectionDatabaseItem>(databaseItem.Key).ConfigureAwait(false)) is not null;
+
             Console.WriteLine("Adding: " + databaseItem.Key);
-            try
+
+            if (exists)
             {
-                await InitAsync().ConfigureAwait(false);
-                return await Database.InsertAsync(databaseItem).ConfigureAwait(false);
+                return await Database.UpdateAsync(item.ToCollectionDatabaseItem()).ConfigureAwait(false);
             }
-            catch
+            else
             {
-                return -1;
+                return await Database.InsertAsync(databaseItem).ConfigureAwait(false);
             }
         }
         public static async Task<int> DeleteItemAsync(CollectionWrapper item)

@@ -35,9 +35,9 @@ namespace PlutoWallet;
 
 public partial class App : Application
 {
-	public App()
-	{
-		InitializeComponent();
+    public App()
+    {
+        InitializeComponent();
 
         DependencyService.Register<MainViewModel>();
 
@@ -79,8 +79,6 @@ public partial class App : Application
 
         DependencyService.Register<MessageSignRequestViewModel>();
 
-        DependencyService.Register<NftViewModel>();
-
         DependencyService.Register<AzeroPrimaryNameViewModel>();
 
         DependencyService.Register<AssetSelectViewModel>();
@@ -102,8 +100,6 @@ public partial class App : Application
         DependencyService.Register<ChangeLayoutRequestViewModel>();
 
         DependencyService.Register<NetworkSelectPopupViewModel>();
-
-        DependencyService.Register<NftGalleryViewModel>();
 
         DependencyService.Register<NavigationBarViewModel>();
 
@@ -130,6 +126,7 @@ public partial class App : Application
         DependencyService.Register<NftSellViewModel>();
 
         DependencyService.Register<NftMainViewModel>();
+
 
         if (Preferences.ContainsKey("publicKey"))
         {

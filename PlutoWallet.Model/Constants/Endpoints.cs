@@ -14,6 +14,7 @@ namespace PlutoWallet.Constants
         Ajuna,
         Bajun,
         Manta,
+        Mythos,
         Westend,
         KusamaAssetHub,
         PolkadotAssetHub,
@@ -47,6 +48,7 @@ namespace PlutoWallet.Constants
             { "0xe358eb1d11b31255a286c12e44fe6780b7edb171d657905a97e39f71d9c6c3ee", EndpointEnum.Ajuna },
             { "0x35a06bfec2edf0ff4be89a6428ccd9ff5bd0167d618c5a0d4341f9600a458d14", EndpointEnum.Bajun },
             { "0xf3c7ad88f6a80f366c4be216691411ef0622e8b809b1046ea297ef106058d4eb", EndpointEnum.Manta },
+            { "0xf6ee56e9c5277df5b4ce6ae9983ee88f3cbed27d31beeb98f9f84f997a1ab0b9", EndpointEnum.Mythos },
             { "0xe143f23803ac50e8f6f8e62695d1ce9e4e1d68aa36c1cd2cfd15340213f3423e", EndpointEnum.Westend },
             { "0x48239ef607d7928874027a43a67689209727dfb3d3dc5e5b03a39bdc2eda771a", EndpointEnum.KusamaAssetHub },
             { "0x68d56f15f85d3136970ec16946040bc1752654e906147f7e43e9d539d7c3de2f", EndpointEnum.PolkadotAssetHub },
@@ -176,6 +178,21 @@ namespace PlutoWallet.Constants
                 SS58Prefix = 77,
                 ChainType = ChainType.Substrate,
             } },
+            {
+                EndpointEnum.Mythos, new Endpoint
+                {
+                    Name = "Mythos",
+                    Key = EndpointEnum.Mythos,
+                    URLs = ["wss://polkadot-mythos-rpc.polkadot.io"],
+                    Icon = "mythos.png",
+                    DarkIcon = "mythos.png",
+                    SubscanChainName = "mythos",
+                    Unit = "MYTH",
+                    Decimals = 18,
+                    SS58Prefix = 29972,
+                    ChainType = ChainType.Substrate,
+                }
+            },
             /*{ EndpointEnum.Westend, new Endpoint
             {
                 Name = "Westend",

@@ -25,4 +25,8 @@
     <PackageReference Include="UniqueryPlus.Stick" Version="0.1.4" />
     <PackageReference Include="UniqueryPlus.UniqueSubquery" Version="0.1.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Generated\Mythos\Mythos.NetApi\Mythos.NetApi.csproj" />
+  </ItemGroup>
 </Project>
