@@ -31,12 +31,6 @@ namespace PlutoWallet.Components.AddressView
         {
             var endpoint = client.Endpoint;
 
-            if (endpoint.Name == "(Local)ws://127.0.0.1:9944")
-            {
-                IsVisible = false;
-                return;
-            }
-
             if (endpoint.Name.Length <= 10)
             {
                 ChainAddressName = endpoint.Name + " key";
@@ -46,15 +40,27 @@ namespace PlutoWallet.Components.AddressView
                 ChainAddressName = endpoint.Name.Split(" ")[0] + " key";
             }
 
-            Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
-
-            try
+            if (endpoint.ChainType == Constants.ChainType.Substrate)
             {
-                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix) + ":" + client.SubstrateClient.GenesisHash;
+                Address = Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
 
-            } catch {
-                QrAddress = "substrate:" + Utils.GetAddressFrom(KeysModel.GetPublicKeyBytes(), endpoint.SS58Prefix);
+                try
+                {
+                    QrAddress = "substrate:" + Address + ":" + client.SubstrateClient.GenesisHash;
+                }
+                catch
+                {
+                    QrAddress = "substrate:" + Address;
+                }
             }
+            else if (endpoint.ChainType == Constants.ChainType.Ethereum)
+            {
+                Address = Utils.Bytes2HexString(KeysModel.GetPublicKeyBytes()).Substring(0,42);
+
+                QrAddress = Address;
+            }
+
+
 
             IsVisible = true;
         }
