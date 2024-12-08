@@ -39,7 +39,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_ema_oracle.pallet
     }
     
     /// <summary>
-    /// >> 762 - Variant[pallet_ema_oracle.pallet.Error]
+    /// >> 766 - Variant[pallet_ema_oracle.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

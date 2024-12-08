@@ -46,7 +46,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.p
     }
     
     /// <summary>
-    /// >> 508 - Variant[polkadot_runtime_parachains.disputes.pallet.Event]
+    /// >> 480 - Variant[polkadot_runtime_parachains.disputes.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

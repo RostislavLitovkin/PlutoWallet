@@ -37,24 +37,24 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Asset"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Metadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "NextAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location), typeof(KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "NextAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location)));
         }
         
         /// <summary>
         /// >> AssetParams
         ///  Details of an asset.
         /// </summary>
-        public static string AssetParams(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key)
+        public static string AssetParams(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Asset", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -74,7 +74,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> Asset
         ///  Details of an asset.
         /// </summary>
-        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, string blockhash, CancellationToken token)
+        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.AssetParams(key);
             var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails>(parameters, blockhash, token);
@@ -85,7 +85,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> AccountParams
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -105,7 +105,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> Account
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
+        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.AccountParams(key);
             var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount>(parameters, blockhash, token);
@@ -118,7 +118,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Approvals", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -141,7 +141,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
+        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.ApprovalsParams(key);
             var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval>(parameters, blockhash, token);
@@ -152,7 +152,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> MetadataParams
         ///  Metadata of an asset.
         /// </summary>
-        public static string MetadataParams(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key)
+        public static string MetadataParams(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Metadata", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -172,7 +172,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> Metadata
         ///  Metadata of an asset.
         /// </summary>
-        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2> Metadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, string blockhash, CancellationToken token)
+        public async Task<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2> Metadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.MetadataParams(key);
             var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2>(parameters, blockhash, token);
@@ -217,10 +217,10 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         ///  The initial next asset ID can be set using the [`GenesisConfig`] or the
         ///  [SetNextAssetId](`migration::next_asset_id::SetNextAssetId`) migration.
         /// </summary>
-        public async Task<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> NextAssetId(string blockhash, CancellationToken token)
+        public async Task<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> NextAssetId(string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.NextAssetIdParams();
-            var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location>(parameters, blockhash, token);
             return result;
         }
     }
@@ -235,7 +235,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> create
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Create(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
+        public static Method Create(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -248,7 +248,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_create
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceCreate(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
+        public static Method ForceCreate(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -262,7 +262,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> start_destroy
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method StartDestroy(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method StartDestroy(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -273,7 +273,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> destroy_accounts
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method DestroyAccounts(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method DestroyAccounts(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -284,7 +284,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> destroy_approvals
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method DestroyApprovals(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method DestroyApprovals(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -295,7 +295,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> finish_destroy
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method FinishDestroy(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method FinishDestroy(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -306,7 +306,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> mint
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Mint(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Mint(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -319,7 +319,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> burn
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Burn(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Burn(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -332,7 +332,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Transfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Transfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -345,7 +345,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> transfer_keep_alive
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferKeepAlive(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferKeepAlive(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -358,7 +358,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceTransfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ForceTransfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -372,7 +372,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> freeze
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Freeze(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Freeze(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -384,7 +384,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> thaw
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Thaw(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Thaw(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -396,7 +396,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> freeze_asset
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method FreezeAsset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method FreezeAsset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -407,7 +407,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> thaw_asset
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ThawAsset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ThawAsset(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -418,7 +418,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> transfer_ownership
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferOwnership(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
+        public static Method TransferOwnership(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -430,7 +430,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> set_team
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetTeam(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
+        public static Method SetTeam(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -444,7 +444,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> set_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals)
+        public static Method SetMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -458,7 +458,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> clear_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ClearMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ClearMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -469,7 +469,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_set_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceSetMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
+        public static Method ForceSetMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -484,7 +484,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_clear_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceClearMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ForceClearMetadata(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -495,7 +495,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_asset_status
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceAssetStatus(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
+        public static Method ForceAssetStatus(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -513,7 +513,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> approve_transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ApproveTransfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ApproveTransfer(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -526,7 +526,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> cancel_approval
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method CancelApproval(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method CancelApproval(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -538,7 +538,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> force_cancel_approval
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceCancelApproval(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method ForceCancelApproval(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -551,7 +551,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> transfer_approved
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferApproved(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferApproved(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -565,7 +565,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> touch
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Touch(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method Touch(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -576,7 +576,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> refund
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Refund(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Primitive.Bool allow_burn)
+        public static Method Refund(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Primitive.Bool allow_burn)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -588,7 +588,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> set_min_balance
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMinBalance(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
+        public static Method SetMinBalance(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -600,7 +600,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> touch_other
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TouchOther(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method TouchOther(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -612,7 +612,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> refund_other
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RefundOther(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method RefundOther(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -624,7 +624,7 @@ namespace KusamaAssetHub.NetApi.Generated.Storage
         /// >> block
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Block(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Block(KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, KusamaAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());

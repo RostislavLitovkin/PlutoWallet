@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -33,17 +33,6 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         /// The dispatch origin for this call must be `Signed` by the transactor.
         /// </summary>
         transfer_allow_death = 0,
-        
-        /// <summary>
-        /// >> set_balance_deprecated
-        /// Set the regular balance of a given account; it also takes a reserved balance but this
-        /// must be the same as the account's current reserved balance.
-        /// 
-        /// The dispatch origin for this call is `root`.
-        /// 
-        /// WARNING: This call is DEPRECATED! Use `force_set_balance` instead.
-        /// </summary>
-        set_balance_deprecated = 1,
         
         /// <summary>
         /// >> force_transfer
@@ -100,17 +89,9 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         /// 
         /// This will waive the transaction fee if at least all but 10% of the accounts needed to
         /// be upgraded. (We let some not have to be upgraded just in order to allow for the
-        /// possibililty of churn).
+        /// possibility of churn).
         /// </summary>
         upgrade_accounts = 6,
-        
-        /// <summary>
-        /// >> transfer
-        /// Alias for `transfer_allow_death`, provided only for name-wise compatibility.
-        /// 
-        /// WARNING: DEPRECATED! Will be released in approximately 3 months.
-        /// </summary>
-        transfer = 7,
         
         /// <summary>
         /// >> force_set_balance
@@ -119,11 +100,33 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         /// The dispatch origin for this call is `root`.
         /// </summary>
         force_set_balance = 8,
+        
+        /// <summary>
+        /// >> force_adjust_total_issuance
+        /// Adjust the total issuance in a saturating way.
+        /// 
+        /// Can only be called by root and always needs a positive `delta`.
+        /// 
+        /// # Example
+        /// </summary>
+        force_adjust_total_issuance = 9,
+        
+        /// <summary>
+        /// >> burn
+        /// Burn the specified liquid free balance from the origin account.
+        /// 
+        /// If the origin's account ends up below the existential deposit as a result
+        /// of the burn and `keep_alive` is false, the account will be reaped.
+        /// 
+        /// Unlike sending funds to a _burn_ address, which merely makes the funds inaccessible,
+        /// this `burn` operation will reduce total issuance by the amount _burned_.
+        /// </summary>
+        burn = 10,
     }
     
     /// <summary>
-    /// >> 160 - Variant[pallet_balances.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 194 - Variant[pallet_balances.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {
@@ -134,14 +137,14 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         public EnumCall()
         {
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.transfer_allow_death);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.set_balance_deprecated);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.force_transfer);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.transfer_keep_alive);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.transfer_all);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Primitive.U128>>(Call.force_unreserve);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Call.upgrade_accounts);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.transfer);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.force_set_balance);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.pallet_balances.types.EnumAdjustmentDirection, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>>>(Call.force_adjust_total_issuance);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.burn);
         }
     }
 }

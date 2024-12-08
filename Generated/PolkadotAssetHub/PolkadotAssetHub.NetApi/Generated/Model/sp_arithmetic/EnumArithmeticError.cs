@@ -38,7 +38,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.sp_arithmetic
     }
     
     /// <summary>
-    /// >> 28 - Variant[sp_arithmetic.ArithmeticError]
+    /// >> 29 - Variant[sp_arithmetic.ArithmeticError]
     /// </summary>
     public sealed class EnumArithmeticError : BaseEnum<ArithmeticError>
     {

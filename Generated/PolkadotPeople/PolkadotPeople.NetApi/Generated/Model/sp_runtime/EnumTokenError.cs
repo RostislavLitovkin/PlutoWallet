@@ -73,7 +73,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 27 - Variant[sp_runtime.TokenError]
+    /// >> 28 - Variant[sp_runtime.TokenError]
     /// </summary>
     public sealed class EnumTokenError : BaseEnum<TokenError>
     {

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.sp_core.crypto
     
     
     /// <summary>
-    /// >> 742 - Composite[sp_core.crypto.KeyTypeId]
+    /// >> 746 - Composite[sp_core.crypto.KeyTypeId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class KeyTypeId : BaseType

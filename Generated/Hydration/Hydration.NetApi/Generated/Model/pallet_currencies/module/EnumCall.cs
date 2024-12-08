@@ -24,19 +24,27 @@ namespace Hydration.NetApi.Generated.Model.pallet_currencies.module
         
         /// <summary>
         /// >> transfer
-        /// See [`Pallet::transfer`].
+        /// Transfer some balance to another account under `currency_id`.
+        /// 
+        /// The dispatch origin for this call must be `Signed` by the
+        /// transactor.
         /// </summary>
         transfer = 0,
         
         /// <summary>
         /// >> transfer_native_currency
-        /// See [`Pallet::transfer_native_currency`].
+        /// Transfer some native currency to another account.
+        /// 
+        /// The dispatch origin for this call must be `Signed` by the
+        /// transactor.
         /// </summary>
         transfer_native_currency = 1,
         
         /// <summary>
         /// >> update_balance
-        /// See [`Pallet::update_balance`].
+        /// update amount of account `who` under `currency_id`.
+        /// 
+        /// The dispatch origin of this call must be _Root_.
         /// </summary>
         update_balance = 2,
     }

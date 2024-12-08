@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes
     }
     
     /// <summary>
-    /// >> 510 - Variant[polkadot_runtime_parachains.disputes.DisputeResult]
+    /// >> 482 - Variant[polkadot_runtime_parachains.disputes.DisputeResult]
     /// </summary>
     public sealed class EnumDisputeResult : BaseEnum<DisputeResult>
     {

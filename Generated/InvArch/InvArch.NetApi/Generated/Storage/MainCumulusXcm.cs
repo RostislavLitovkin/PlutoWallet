@@ -52,11 +52,4 @@ namespace InvArch.NetApi.Generated.Storage
     public sealed class CumulusXcmConstants
     {
     }
-    
-    /// <summary>
-    /// >> CumulusXcmErrors
-    /// </summary>
-    public enum CumulusXcmErrors
-    {
-    }
 }

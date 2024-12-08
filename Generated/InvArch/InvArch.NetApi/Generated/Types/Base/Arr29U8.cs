@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Types.Base
     
     
     /// <summary>
-    /// >> 224 - Array
+    /// >> 290 - Array
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Array)]
     public sealed class Arr29U8 : BaseType

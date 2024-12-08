@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_message_queue
     
     
     /// <summary>
-    /// >> 727 - Composite[pallet_message_queue.Page]
+    /// >> 731 - Composite[pallet_message_queue.Page]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Page : BaseType
@@ -47,7 +47,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_message_queue
         /// <summary>
         /// >> heap
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT47 Heap { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT52 Heap { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -82,7 +82,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_message_queue
             First.Decode(byteArray, ref p);
             Last = new Substrate.NetApi.Model.Types.Primitive.U32();
             Last.Decode(byteArray, ref p);
-            Heap = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT47();
+            Heap = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT52();
             Heap.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

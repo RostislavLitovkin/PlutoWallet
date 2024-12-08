@@ -17,46 +17,45 @@ namespace InvArch.NetApi.Generated.Model.pallet_checked_inflation.pallet
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
         
         /// <summary>
         /// >> NewYear
+        /// Beginning of a new year.
         /// </summary>
         NewYear = 0,
         
         /// <summary>
         /// >> NewEra
+        /// Beginning of a new era.
         /// </summary>
         NewEra = 1,
         
         /// <summary>
         /// >> InflationMinted
+        /// Tokens minted due to inflation.
         /// </summary>
         InflationMinted = 2,
         
         /// <summary>
         /// >> OverInflationDetected
+        /// Total supply of the token is higher than expected by Checked Inflation.
         /// </summary>
         OverInflationDetected = 3,
         
         /// <summary>
         /// >> HaltChanged
+        /// Halt status changed.
         /// </summary>
         HaltChanged = 4,
     }
     
     /// <summary>
-    /// >> 112 - Variant[pallet_checked_inflation.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 145 - Variant[pallet_checked_inflation.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {

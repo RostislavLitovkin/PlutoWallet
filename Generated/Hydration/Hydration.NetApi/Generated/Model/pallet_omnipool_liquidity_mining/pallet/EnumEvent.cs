@@ -29,70 +29,76 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pall
         GlobalFarmCreated = 0,
         
         /// <summary>
+        /// >> GlobalFarmUpdated
+        /// Global farm was updated
+        /// </summary>
+        GlobalFarmUpdated = 1,
+        
+        /// <summary>
         /// >> GlobalFarmTerminated
         /// Global farm was terminated.
         /// </summary>
-        GlobalFarmTerminated = 1,
+        GlobalFarmTerminated = 2,
         
         /// <summary>
         /// >> YieldFarmCreated
         /// New yield farm was added to the farm.
         /// </summary>
-        YieldFarmCreated = 2,
+        YieldFarmCreated = 3,
         
         /// <summary>
         /// >> YieldFarmUpdated
         /// Yield farm multiplier was updated.
         /// </summary>
-        YieldFarmUpdated = 3,
+        YieldFarmUpdated = 4,
         
         /// <summary>
         /// >> YieldFarmStopped
         /// Yield farm for `asset_id` was stopped.
         /// </summary>
-        YieldFarmStopped = 4,
+        YieldFarmStopped = 5,
         
         /// <summary>
         /// >> YieldFarmResumed
         /// Yield farm for `asset_id` was resumed.
         /// </summary>
-        YieldFarmResumed = 5,
+        YieldFarmResumed = 6,
         
         /// <summary>
         /// >> YieldFarmTerminated
         /// Yield farm was terminated from the global farm.
         /// </summary>
-        YieldFarmTerminated = 6,
+        YieldFarmTerminated = 7,
         
         /// <summary>
         /// >> SharesDeposited
         /// New LP shares(LP position) were deposited.
         /// </summary>
-        SharesDeposited = 7,
+        SharesDeposited = 8,
         
         /// <summary>
         /// >> SharesRedeposited
         /// Already locked LP shares were redeposited to another yield farm.
         /// </summary>
-        SharesRedeposited = 8,
+        SharesRedeposited = 9,
         
         /// <summary>
         /// >> RewardClaimed
         /// Rewards were claimed.
         /// </summary>
-        RewardClaimed = 9,
+        RewardClaimed = 10,
         
         /// <summary>
         /// >> SharesWithdrawn
         /// LP shares were withdrawn.
         /// </summary>
-        SharesWithdrawn = 10,
+        SharesWithdrawn = 11,
         
         /// <summary>
         /// >> DepositDestroyed
         /// All LP shares were unlocked and NFT representing deposit was destroyed.
         /// </summary>
-        DepositDestroyed = 11,
+        DepositDestroyed = 12,
     }
     
     /// <summary>
@@ -108,6 +114,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pall
         public EnumEvent()
         {
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.per_things.Perquintill, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Event.GlobalFarmCreated);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.per_things.Perquintill, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.GlobalFarmUpdated);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.GlobalFarmTerminated);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128, Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types.LoyaltyCurve>>>(Event.YieldFarmCreated);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Hydration.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>>(Event.YieldFarmUpdated);

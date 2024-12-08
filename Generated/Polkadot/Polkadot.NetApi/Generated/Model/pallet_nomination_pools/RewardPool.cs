@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools
     
     
     /// <summary>
-    /// >> 730 - Composite[pallet_nomination_pools.RewardPool]
+    /// >> 691 - Composite[pallet_nomination_pools.RewardPool]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RewardPool : BaseType

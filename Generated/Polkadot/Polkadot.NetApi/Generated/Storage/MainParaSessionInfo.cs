@@ -36,14 +36,14 @@ namespace Polkadot.NetApi.Generated.Storage
         public ParaSessionInfoStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "AssignmentKeysUnsafe"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.assignment_app.Public>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "AssignmentKeysUnsafe"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.assignment_app.Public>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "EarliestStoredSession"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "Sessions"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.SessionInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.SessionInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "AccountKeys"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaSessionInfo", "SessionExecutorParams"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams)));
         }
         
         /// <summary>
@@ -72,10 +72,10 @@ namespace Polkadot.NetApi.Generated.Storage
         ///  Note that this API is private due to it being prone to 'off-by-one' at session boundaries.
         ///  When in doubt, use `Sessions` API instead.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.assignment_app.Public>> AssignmentKeysUnsafe(string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.assignment_app.Public>> AssignmentKeysUnsafe(string blockhash, CancellationToken token)
         {
             string parameters = ParaSessionInfoStorage.AssignmentKeysUnsafeParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.assignment_app.Public>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.assignment_app.Public>>(parameters, blockhash, token);
             return result;
         }
         
@@ -136,10 +136,10 @@ namespace Polkadot.NetApi.Generated.Storage
         ///  Should have an entry in range `EarliestStoredSession..=CurrentSessionIndex`.
         ///  Does not have any entries before the session index in the first session change notification.
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.SessionInfo> Sessions(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.SessionInfo> Sessions(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = ParaSessionInfoStorage.SessionsParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.SessionInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.SessionInfo>(parameters, blockhash, token);
             return result;
         }
         
@@ -198,10 +198,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> SessionExecutorParams
         ///  Executor parameter set for a given session index
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams> SessionExecutorParams(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams> SessionExecutorParams(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = ParaSessionInfoStorage.SessionExecutorParamsParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams>(parameters, blockhash, token);
             return result;
         }
     }

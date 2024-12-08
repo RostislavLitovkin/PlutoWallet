@@ -38,7 +38,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_nfts.types
     }
     
     /// <summary>
-    /// >> 361 - Variant[pallet_nfts.types.MintType]
+    /// >> 363 - Variant[pallet_nfts.types.MintType]
     /// </summary>
     public sealed class EnumMintType : BaseEnumRust<MintType>
     {

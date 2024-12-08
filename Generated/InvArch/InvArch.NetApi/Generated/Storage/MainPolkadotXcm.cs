@@ -36,6 +36,489 @@ namespace InvArch.NetApi.Generated.Storage
         public PolkadotXcmStorage(SubstrateClientExt client)
         {
             this._client = client;
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "QueryCounter"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U64)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "Queries"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U64), typeof(InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumQueryStatus)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "AssetTraps"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, typeof(InvArch.NetApi.Generated.Model.primitive_types.H256), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "SafeXcmVersion"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "SupportedVersion"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionNotifiers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>), typeof(Substrate.NetApi.Model.Types.Primitive.U64)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionNotifyTargets"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U32>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionDiscoveryQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT25)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "CurrentMigration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumVersionMigrationStage)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "RemoteLockedFungibles"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssetId>), typeof(InvArch.NetApi.Generated.Model.pallet_xcm.pallet.RemoteLockedFungibleRecord)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "LockedFungibles"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "XcmExecutionSuspended"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "ShouldRecordXcm"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "RecordedXcm"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.staging_xcm.v4.XcmT1)));
+        }
+        
+        /// <summary>
+        /// >> QueryCounterParams
+        ///  The latest available query index.
+        /// </summary>
+        public static string QueryCounterParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "QueryCounter", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> QueryCounterDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string QueryCounterDefault()
+        {
+            return "0x0000000000000000";
+        }
+        
+        /// <summary>
+        /// >> QueryCounter
+        ///  The latest available query index.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U64> QueryCounter(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.QueryCounterParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U64>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> QueriesParams
+        ///  The ongoing queries.
+        /// </summary>
+        public static string QueriesParams(Substrate.NetApi.Model.Types.Primitive.U64 key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "Queries", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> QueriesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string QueriesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> Queries
+        ///  The ongoing queries.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumQueryStatus> Queries(Substrate.NetApi.Model.Types.Primitive.U64 key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.QueriesParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumQueryStatus>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> AssetTrapsParams
+        ///  The existing asset traps.
+        /// 
+        ///  Key is the blake2 256 hash of (origin, versioned `Assets`) pair. Value is the number of
+        ///  times this pair has been trapped (usually just 1 if it exists at all).
+        /// </summary>
+        public static string AssetTrapsParams(InvArch.NetApi.Generated.Model.primitive_types.H256 key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "AssetTraps", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Identity}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> AssetTrapsDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string AssetTrapsDefault()
+        {
+            return "0x00000000";
+        }
+        
+        /// <summary>
+        /// >> AssetTraps
+        ///  The existing asset traps.
+        /// 
+        ///  Key is the blake2 256 hash of (origin, versioned `Assets`) pair. Value is the number of
+        ///  times this pair has been trapped (usually just 1 if it exists at all).
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> AssetTraps(InvArch.NetApi.Generated.Model.primitive_types.H256 key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.AssetTrapsParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> SafeXcmVersionParams
+        ///  Default version to encode XCM when latest version of destination is unknown. If `None`,
+        ///  then the destinations whose XCM version is unknown are considered unreachable.
+        /// </summary>
+        public static string SafeXcmVersionParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "SafeXcmVersion", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> SafeXcmVersionDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SafeXcmVersionDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> SafeXcmVersion
+        ///  Default version to encode XCM when latest version of destination is unknown. If `None`,
+        ///  then the destinations whose XCM version is unknown are considered unreachable.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> SafeXcmVersion(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.SafeXcmVersionParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> SupportedVersionParams
+        ///  The Latest versions that we know various locations support.
+        /// </summary>
+        public static string SupportedVersionParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "SupportedVersion", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, key.Value);
+        }
+        
+        /// <summary>
+        /// >> SupportedVersionDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SupportedVersionDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> SupportedVersion
+        ///  The Latest versions that we know various locations support.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> SupportedVersion(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.SupportedVersionParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> VersionNotifiersParams
+        ///  All locations that we have requested version notifications from.
+        /// </summary>
+        public static string VersionNotifiersParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "VersionNotifiers", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, key.Value);
+        }
+        
+        /// <summary>
+        /// >> VersionNotifiersDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string VersionNotifiersDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> VersionNotifiers
+        ///  All locations that we have requested version notifications from.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U64> VersionNotifiers(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.VersionNotifiersParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U64>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> VersionNotifyTargetsParams
+        ///  The target locations that are subscribed to our version changes, as well as the most recent
+        ///  of our versions we informed them of.
+        /// </summary>
+        public static string VersionNotifyTargetsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "VersionNotifyTargets", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, key.Value);
+        }
+        
+        /// <summary>
+        /// >> VersionNotifyTargetsDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string VersionNotifyTargetsDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> VersionNotifyTargets
+        ///  The target locations that are subscribed to our version changes, as well as the most recent
+        ///  of our versions we informed them of.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U32>> VersionNotifyTargets(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation> key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.VersionNotifyTargetsParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U32>>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> VersionDiscoveryQueueParams
+        ///  Destinations whose latest XCM version we would like to know. Duplicates not allowed, and
+        ///  the `u32` counter is the number of times that a send to the destination has been attempted,
+        ///  which is used as a prioritization.
+        /// </summary>
+        public static string VersionDiscoveryQueueParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "VersionDiscoveryQueue", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> VersionDiscoveryQueueDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string VersionDiscoveryQueueDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> VersionDiscoveryQueue
+        ///  Destinations whose latest XCM version we would like to know. Duplicates not allowed, and
+        ///  the `u32` counter is the number of times that a send to the destination has been attempted,
+        ///  which is used as a prioritization.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT25> VersionDiscoveryQueue(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.VersionDiscoveryQueueParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT25>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> CurrentMigrationParams
+        ///  The current migration's stage, if any.
+        /// </summary>
+        public static string CurrentMigrationParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "CurrentMigration", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> CurrentMigrationDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string CurrentMigrationDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> CurrentMigration
+        ///  The current migration's stage, if any.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumVersionMigrationStage> CurrentMigration(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.CurrentMigrationParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumVersionMigrationStage>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> RemoteLockedFungiblesParams
+        ///  Fungible assets which we know are locked on a remote chain.
+        /// </summary>
+        public static string RemoteLockedFungiblesParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssetId> key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "RemoteLockedFungibles", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, key.Value);
+        }
+        
+        /// <summary>
+        /// >> RemoteLockedFungiblesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string RemoteLockedFungiblesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> RemoteLockedFungibles
+        ///  Fungible assets which we know are locked on a remote chain.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.RemoteLockedFungibleRecord> RemoteLockedFungibles(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssetId> key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.RemoteLockedFungiblesParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.RemoteLockedFungibleRecord>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> LockedFungiblesParams
+        ///  Fungible assets which we know are locked on this chain.
+        /// </summary>
+        public static string LockedFungiblesParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "LockedFungibles", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> LockedFungiblesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string LockedFungiblesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> LockedFungibles
+        ///  Fungible assets which we know are locked on this chain.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27> LockedFungibles(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.LockedFungiblesParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT27>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> XcmExecutionSuspendedParams
+        ///  Global suspension state of the XCM executor.
+        /// </summary>
+        public static string XcmExecutionSuspendedParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "XcmExecutionSuspended", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> XcmExecutionSuspendedDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string XcmExecutionSuspendedDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> XcmExecutionSuspended
+        ///  Global suspension state of the XCM executor.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> XcmExecutionSuspended(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.XcmExecutionSuspendedParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcmParams
+        ///  Whether or not incoming XCMs (both executed locally and received) should be recorded.
+        ///  Only one XCM program will be recorded at a time.
+        ///  This is meant to be used in runtime APIs, and it's advised it stays false
+        ///  for all other use cases, so as to not degrade regular performance.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public static string ShouldRecordXcmParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "ShouldRecordXcm", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcmDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string ShouldRecordXcmDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcm
+        ///  Whether or not incoming XCMs (both executed locally and received) should be recorded.
+        ///  Only one XCM program will be recorded at a time.
+        ///  This is meant to be used in runtime APIs, and it's advised it stays false
+        ///  for all other use cases, so as to not degrade regular performance.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> ShouldRecordXcm(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.ShouldRecordXcmParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> RecordedXcmParams
+        ///  If [`ShouldRecordXcm`] is set to true, then the last XCM program executed locally
+        ///  will be stored here.
+        ///  Runtime APIs can fetch the XCM that was executed by accessing this value.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public static string RecordedXcmParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "RecordedXcm", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> RecordedXcmDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string RecordedXcmDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> RecordedXcm
+        ///  If [`ShouldRecordXcm`] is set to true, then the last XCM program executed locally
+        ///  will be stored here.
+        ///  Runtime APIs can fetch the XCM that was executed by accessing this value.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.staging_xcm.v4.XcmT1> RecordedXcm(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.RecordedXcmParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.staging_xcm.v4.XcmT1>(parameters, blockhash, token);
+            return result;
         }
     }
     
@@ -47,9 +530,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> send
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Send(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm message)
+        public static Method Send(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm message)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -59,9 +542,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> teleport_assets
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TeleportAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item)
+        public static Method TeleportAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -73,9 +556,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> reserve_transfer_assets
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ReserveTransferAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item)
+        public static Method ReserveTransferAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -87,7 +570,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> execute
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Execute(InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm message, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight max_weight)
         {
@@ -99,19 +582,19 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_xcm_version
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceXcmVersion(InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation location, Substrate.NetApi.Model.Types.Primitive.U32 xcm_version)
+        public static Method ForceXcmVersion(InvArch.NetApi.Generated.Model.staging_xcm.v4.location.Location location, Substrate.NetApi.Model.Types.Primitive.U32 version)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(location.Encode());
-            byteArray.AddRange(xcm_version.Encode());
+            byteArray.AddRange(version.Encode());
             return new Method(31, "PolkadotXcm", 4, "force_xcm_version", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> force_default_xcm_version
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceDefaultXcmVersion(Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> maybe_xcm_version)
         {
@@ -122,9 +605,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_subscribe_version_notify
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceSubscribeVersionNotify(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation location)
+        public static Method ForceSubscribeVersionNotify(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation location)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(location.Encode());
@@ -133,9 +616,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_unsubscribe_version_notify
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceUnsubscribeVersionNotify(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation location)
+        public static Method ForceUnsubscribeVersionNotify(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation location)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(location.Encode());
@@ -144,9 +627,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> limited_reserve_transfer_assets
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method LimitedReserveTransferAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
+        public static Method LimitedReserveTransferAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -159,9 +642,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> limited_teleport_assets
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method LimitedTeleportAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
+        public static Method LimitedTeleportAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());
@@ -174,13 +657,57 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_suspension
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceSuspension(Substrate.NetApi.Model.Types.Primitive.Bool suspended)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(suspended.Encode());
             return new Method(31, "PolkadotXcm", 10, "force_suspension", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> transfer_assets
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method TransferAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, Substrate.NetApi.Model.Types.Primitive.U32 fee_asset_item, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(dest.Encode());
+            byteArray.AddRange(beneficiary.Encode());
+            byteArray.AddRange(assets.Encode());
+            byteArray.AddRange(fee_asset_item.Encode());
+            byteArray.AddRange(weight_limit.Encode());
+            return new Method(31, "PolkadotXcm", 11, "transfer_assets", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> claim_assets
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ClaimAssets(InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation beneficiary)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(assets.Encode());
+            byteArray.AddRange(beneficiary.Encode());
+            return new Method(31, "PolkadotXcm", 12, "claim_assets", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> transfer_assets_using_type_and_then
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method TransferAssetsUsingTypeAndThen(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets assets, InvArch.NetApi.Generated.Model.staging_xcm_executor.traits.asset_transfer.EnumTransferType assets_transfer_type, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssetId remote_fees_id, InvArch.NetApi.Generated.Model.staging_xcm_executor.traits.asset_transfer.EnumTransferType fees_transfer_type, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm custom_xcm_on_dest, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit weight_limit)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(dest.Encode());
+            byteArray.AddRange(assets.Encode());
+            byteArray.AddRange(assets_transfer_type.Encode());
+            byteArray.AddRange(remote_fees_id.Encode());
+            byteArray.AddRange(fees_transfer_type.Encode());
+            byteArray.AddRange(custom_xcm_on_dest.Encode());
+            byteArray.AddRange(weight_limit.Encode());
+            return new Method(31, "PolkadotXcm", 13, "transfer_assets_using_type_and_then", byteArray.ToArray());
         }
     }
     
@@ -206,8 +733,8 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> SendFailure
-        /// There was some other issue (i.e. not to do with routing) in sending the message. Perhaps
-        /// a lack of space for buffering the message.
+        /// There was some other issue (i.e. not to do with routing) in sending the message.
+        /// Perhaps a lack of space for buffering the message.
         /// </summary>
         SendFailure,
         
@@ -225,7 +752,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> DestinationNotInvertible
-        /// The destination `MultiLocation` provided cannot be inverted.
+        /// The destination `Location` provided cannot be inverted.
         /// </summary>
         DestinationNotInvertible,
         
@@ -279,10 +806,10 @@ namespace InvArch.NetApi.Generated.Storage
         AlreadySubscribed,
         
         /// <summary>
-        /// >> InvalidAsset
-        /// Invalid asset for the operation.
+        /// >> CannotCheckOutTeleport
+        /// Could not check-out the assets for teleportation to the destination chain.
         /// </summary>
-        InvalidAsset,
+        CannotCheckOutTeleport,
         
         /// <summary>
         /// >> LowBalance
@@ -319,5 +846,29 @@ namespace InvArch.NetApi.Generated.Storage
         /// The unlock operation cannot succeed because there are still consumers of the lock.
         /// </summary>
         InUse,
+        
+        /// <summary>
+        /// >> InvalidAssetUnknownReserve
+        /// Invalid asset, reserve chain could not be determined for it.
+        /// </summary>
+        InvalidAssetUnknownReserve,
+        
+        /// <summary>
+        /// >> InvalidAssetUnsupportedReserve
+        /// Invalid asset, do not support remote asset reserves with different fees reserves.
+        /// </summary>
+        InvalidAssetUnsupportedReserve,
+        
+        /// <summary>
+        /// >> TooManyReserves
+        /// Too many assets with different reserve locations have been attempted for transfer.
+        /// </summary>
+        TooManyReserves,
+        
+        /// <summary>
+        /// >> LocalExecutionIncomplete
+        /// Local XCM execution incomplete.
+        /// </summary>
+        LocalExecutionIncomplete,
     }
 }

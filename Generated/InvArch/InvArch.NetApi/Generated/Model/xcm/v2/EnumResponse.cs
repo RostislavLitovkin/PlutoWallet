@@ -43,7 +43,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 175 - Variant[xcm.v2.Response]
+    /// >> 222 - Variant[xcm.v2.Response]
     /// </summary>
     public sealed class EnumResponse : BaseEnumRust<Response>
     {

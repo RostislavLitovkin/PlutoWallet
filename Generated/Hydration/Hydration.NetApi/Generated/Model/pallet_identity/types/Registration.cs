@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 491 - Composite[pallet_identity.types.Registration]
+    /// >> 494 - Composite[pallet_identity.types.Registration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Registration : BaseType
@@ -27,7 +27,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> judgements
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21 Judgements { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT26 Judgements { get; set; }
         /// <summary>
         /// >> deposit
         /// </summary>
@@ -57,7 +57,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Judgements = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21();
+            Judgements = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT26();
             Judgements.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);

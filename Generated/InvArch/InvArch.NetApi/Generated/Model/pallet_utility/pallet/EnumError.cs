@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_utility.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -33,11 +30,8 @@ namespace InvArch.NetApi.Generated.Model.pallet_utility.pallet
     }
     
     /// <summary>
-    /// >> 281 - Variant[pallet_utility.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 362 - Variant[pallet_utility.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

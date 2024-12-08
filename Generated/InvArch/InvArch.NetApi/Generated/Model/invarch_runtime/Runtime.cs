@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
     
     
     /// <summary>
-    /// >> 156 - Composite[invarch_runtime.Runtime]
+    /// >> 144 - Composite[invarch_runtime.Runtime]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Runtime : BaseType

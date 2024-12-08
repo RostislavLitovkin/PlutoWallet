@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 154 - Variant[cumulus_pallet_xcm.pallet.Origin]
+    /// >> 189 - Variant[cumulus_pallet_xcm.pallet.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnumRust<Origin>
     {
@@ -44,7 +44,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
         public EnumOrigin()
         {
 				AddTypeDecoder<BaseVoid>(Origin.Relay);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id>(Origin.SiblingParachain);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Origin.SiblingParachain);
         }
     }
 }

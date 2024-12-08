@@ -54,7 +54,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_scheduler.pallet
     }
     
     /// <summary>
-    /// >> 665 - Variant[pallet_scheduler.pallet.Error]
+    /// >> 670 - Variant[pallet_scheduler.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

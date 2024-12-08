@@ -24,37 +24,54 @@ namespace Hydration.NetApi.Generated.Model.pallet_asset_registry.pallet
         
         /// <summary>
         /// >> register
-        /// See [`Pallet::register`].
+        /// Register a new asset.
+        /// 
+        /// New asset is given `NextAssetId` - sequential asset id
+        /// 
+        /// Asset's id is optional and it can't be used by another asset if it's provided.
+        /// Provided `asset_id` must be from within reserved range.
+        /// If `asset_id` is `None`, new asset is given id for sequential ids.
+        /// 
+        /// Asset's name is optional and it can't be used by another asset if it's provided.
+        /// Adds mapping between `name` and assigned `asset_id` so asset id can be retrieved by name too (Note: this approach is used in AMM implementation (xyk))
+        /// 
+        /// Emits 'Registered` event when successful.
         /// </summary>
         register = 0,
         
         /// <summary>
         /// >> update
-        /// See [`Pallet::update`].
+        /// Update registered asset.
+        /// 
+        /// All parameteres are optional and value is not updated if param is `None`.
+        /// 
+        /// `decimals` - can be update by `UpdateOrigin` only if it wasn't set yet. Only
+        /// `RegistryOrigin` can update `decimals` if it was previously set.
+        /// 
+        /// `location` - can be updated only by `RegistryOrigin`.
+        /// 
+        /// Emits `Updated` event when successful.
         /// </summary>
         update = 1,
         
         /// <summary>
         /// >> register_external
-        /// See [`Pallet::register_external`].
         /// </summary>
         register_external = 4,
         
         /// <summary>
         /// >> ban_asset
-        /// See [`Pallet::ban_asset`].
         /// </summary>
         ban_asset = 5,
         
         /// <summary>
         /// >> unban_asset
-        /// See [`Pallet::unban_asset`].
         /// </summary>
         unban_asset = 6,
     }
     
     /// <summary>
-    /// >> 357 - Variant[pallet_asset_registry.pallet.Call]
+    /// >> 354 - Variant[pallet_asset_registry.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

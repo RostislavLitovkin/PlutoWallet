@@ -33,7 +33,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 387 - Variant[cumulus_pallet_xcm.pallet.Origin]
+    /// >> 386 - Variant[cumulus_pallet_xcm.pallet.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnumRust<Origin>
     {

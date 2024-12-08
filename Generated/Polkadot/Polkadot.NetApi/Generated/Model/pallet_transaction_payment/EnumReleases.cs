@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_transaction_payment
     }
     
     /// <summary>
-    /// >> 591 - Variant[pallet_transaction_payment.Releases]
+    /// >> 565 - Variant[pallet_transaction_payment.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

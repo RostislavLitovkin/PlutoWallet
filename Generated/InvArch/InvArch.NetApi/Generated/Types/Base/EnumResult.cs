@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Types.Base
     }
     
     /// <summary>
-    /// >> 33 - Variant[Result]
+    /// >> 34 - Variant[Result]
     /// </summary>
     public sealed class EnumResult : BaseEnumRust<Result>
     {

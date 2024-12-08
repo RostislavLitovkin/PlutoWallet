@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_s
     
     
     /// <summary>
-    /// >> 265 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.MessagingStateSnapshot]
+    /// >> 346 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.MessagingStateSnapshot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MessagingStateSnapshot : BaseType
@@ -29,17 +29,17 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_s
         /// </summary>
         public InvArch.NetApi.Generated.Model.primitive_types.H256 DmqMqcHead { get; set; }
         /// <summary>
-        /// >> relay_dispatch_queue_size
+        /// >> relay_dispatch_queue_remaining_capacity
         /// </summary>
-        public InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispachQueueSize RelayDispatchQueueSize { get; set; }
+        public InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispatchQueueRemainingCapacity RelayDispatchQueueRemainingCapacity { get; set; }
         /// <summary>
         /// >> ingress_channels
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHrmpChannel>> IngressChannels { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>> IngressChannels { get; set; }
         /// <summary>
         /// >> egress_channels
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHrmpChannel>> EgressChannels { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>> EgressChannels { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -52,7 +52,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_s
         {
             var result = new List<byte>();
             result.AddRange(DmqMqcHead.Encode());
-            result.AddRange(RelayDispatchQueueSize.Encode());
+            result.AddRange(RelayDispatchQueueRemainingCapacity.Encode());
             result.AddRange(IngressChannels.Encode());
             result.AddRange(EgressChannels.Encode());
             return result.ToArray();
@@ -64,11 +64,11 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_s
             var start = p;
             DmqMqcHead = new InvArch.NetApi.Generated.Model.primitive_types.H256();
             DmqMqcHead.Decode(byteArray, ref p);
-            RelayDispatchQueueSize = new InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispachQueueSize();
-            RelayDispatchQueueSize.Decode(byteArray, ref p);
-            IngressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHrmpChannel>>();
+            RelayDispatchQueueRemainingCapacity = new InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispatchQueueRemainingCapacity();
+            RelayDispatchQueueRemainingCapacity.Decode(byteArray, ref p);
+            IngressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>>();
             IngressChannels.Decode(byteArray, ref p);
-            EgressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHrmpChannel>>();
+            EgressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>>();
             EgressChannels.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

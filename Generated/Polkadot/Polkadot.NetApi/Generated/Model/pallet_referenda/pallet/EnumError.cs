@@ -99,10 +99,16 @@ namespace Polkadot.NetApi.Generated.Model.pallet_referenda.pallet
         /// The preimage does not exist.
         /// </summary>
         PreimageNotExist = 12,
+        
+        /// <summary>
+        /// >> PreimageStoredWithDifferentLength
+        /// The preimage is stored with a different length than the one provided.
+        /// </summary>
+        PreimageStoredWithDifferentLength = 13,
     }
     
     /// <summary>
-    /// >> 664 - Variant[pallet_referenda.pallet.Error]
+    /// >> 640 - Variant[pallet_referenda.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

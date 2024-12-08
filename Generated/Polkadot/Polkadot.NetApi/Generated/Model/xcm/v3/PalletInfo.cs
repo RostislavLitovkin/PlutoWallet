@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v3
     
     
     /// <summary>
-    /// >> 422 - Composite[xcm.v3.PalletInfo]
+    /// >> 388 - Composite[xcm.v3.PalletInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PalletInfo : BaseType
@@ -31,11 +31,11 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v3
         /// <summary>
         /// >> name
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9 Name { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 Name { get; set; }
         /// <summary>
         /// >> module_name
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9 ModuleName { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 ModuleName { get; set; }
         /// <summary>
         /// >> major
         /// </summary>
@@ -74,9 +74,9 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v3
             var start = p;
             Index = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Index.Decode(byteArray, ref p);
-            Name = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9();
+            Name = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
             Name.Decode(byteArray, ref p);
-            ModuleName = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9();
+            ModuleName = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7();
             ModuleName.Decode(byteArray, ref p);
             Major = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>();
             Major.Decode(byteArray, ref p);

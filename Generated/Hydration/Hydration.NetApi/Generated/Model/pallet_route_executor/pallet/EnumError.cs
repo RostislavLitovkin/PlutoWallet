@@ -65,10 +65,10 @@ namespace Hydration.NetApi.Generated.Model.pallet_route_executor.pallet
         RouteUpdateIsNotSuccessful = 6,
         
         /// <summary>
-        /// >> InsufficientAssetNotSupported
-        /// Insufficient asset is not supported for on chain routing
+        /// >> RouteHasNoOracle
+        /// Route contains assets that has no oracle data
         /// </summary>
-        InsufficientAssetNotSupported = 7,
+        RouteHasNoOracle = 7,
         
         /// <summary>
         /// >> InvalidRouteExecution
@@ -84,7 +84,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_route_executor.pallet
     }
     
     /// <summary>
-    /// >> 589 - Variant[pallet_route_executor.pallet.Error]
+    /// >> 593 - Variant[pallet_route_executor.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

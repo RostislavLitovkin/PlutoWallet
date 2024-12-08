@@ -90,15 +90,10 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
         /// >> Identity
         /// </summary>
         Identity = 50,
-        
-        /// <summary>
-        /// >> IdentityMigrator
-        /// </summary>
-        IdentityMigrator = 248,
     }
     
     /// <summary>
-    /// >> 20 - Variant[people_polkadot_runtime.RuntimeEvent]
+    /// >> 21 - Variant[people_polkadot_runtime.RuntimeEvent]
     /// </summary>
     public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
@@ -122,7 +117,6 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_multisig.pallet.EnumEvent>(RuntimeEvent.Multisig);
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_proxy.pallet.EnumEvent>(RuntimeEvent.Proxy);
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
-				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumEvent>(RuntimeEvent.IdentityMigrator);
         }
     }
 }

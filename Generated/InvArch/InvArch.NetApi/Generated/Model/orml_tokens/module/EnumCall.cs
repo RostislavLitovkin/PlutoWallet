@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -109,8 +109,8 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
     }
     
     /// <summary>
-    /// >> 243 - Variant[orml_tokens.module.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 313 - Variant[orml_tokens.module.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {

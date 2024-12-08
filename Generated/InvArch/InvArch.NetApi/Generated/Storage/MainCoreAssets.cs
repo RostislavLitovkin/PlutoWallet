@@ -40,13 +40,13 @@ namespace InvArch.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("CoreAssets", "Locks"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("CoreAssets", "Accounts"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.orml_tokens.AccountData)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.orml_tokens.AccountDataT2)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("CoreAssets", "Reserves"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38)));
         }
         
         /// <summary>
@@ -106,10 +106,10 @@ namespace InvArch.NetApi.Generated.Storage
         ///  Any liquidity locks of a token type under an account.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22> Locks(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37> Locks(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = CoreAssetsStorage.LocksParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37>(parameters, blockhash, token);
             return result;
         }
         
@@ -148,10 +148,10 @@ namespace InvArch.NetApi.Generated.Storage
         ///  NOTE: This is only used in the case that this module is used to store
         ///  balances.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.orml_tokens.AccountData> Accounts(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.orml_tokens.AccountDataT2> Accounts(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = CoreAssetsStorage.AccountsParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.orml_tokens.AccountData>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.orml_tokens.AccountDataT2>(parameters, blockhash, token);
             return result;
         }
         
@@ -179,10 +179,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Reserves
         ///  Named reserves on some account balances.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23> Reserves(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38> Reserves(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = CoreAssetsStorage.ReservesParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38>(parameters, blockhash, token);
             return result;
         }
     }
@@ -195,7 +195,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Transfer(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
@@ -208,7 +208,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer_all
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method TransferAll(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
@@ -221,7 +221,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer_keep_alive
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method TransferKeepAlive(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
@@ -234,7 +234,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_transfer
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceTransfer(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
@@ -248,7 +248,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_balance
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetBalance(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Primitive.U32 currency_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_reserved)
         {

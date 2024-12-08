@@ -193,10 +193,28 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet
         /// Cannot reset a ledger.
         /// </summary>
         CannotRestoreLedger = 27,
+        
+        /// <summary>
+        /// >> RewardDestinationRestricted
+        /// Provided reward destination is not allowed.
+        /// </summary>
+        RewardDestinationRestricted = 28,
+        
+        /// <summary>
+        /// >> NotEnoughFunds
+        /// Not enough funds available to withdraw.
+        /// </summary>
+        NotEnoughFunds = 29,
+        
+        /// <summary>
+        /// >> VirtualStakerNotAllowed
+        /// Operation not allowed for virtual stakers.
+        /// </summary>
+        VirtualStakerNotAllowed = 30,
     }
     
     /// <summary>
-    /// >> 613 - Variant[pallet_staking.pallet.pallet.Error]
+    /// >> 588 - Variant[pallet_staking.pallet.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_collator_selection.pallet
     
     
     /// <summary>
-    /// >> 310 - Composite[pallet_collator_selection.pallet.CandidateInfo]
+    /// >> 408 - Composite[pallet_collator_selection.pallet.CandidateInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidateInfo : BaseType

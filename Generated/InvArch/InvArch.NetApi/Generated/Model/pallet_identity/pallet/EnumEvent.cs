@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.pallet
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -85,14 +82,54 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.pallet
         /// main identity account to the sub-identity account.
         /// </summary>
         SubIdentityRevoked = 9,
+        
+        /// <summary>
+        /// >> AuthorityAdded
+        /// A username authority was added.
+        /// </summary>
+        AuthorityAdded = 10,
+        
+        /// <summary>
+        /// >> AuthorityRemoved
+        /// A username authority was removed.
+        /// </summary>
+        AuthorityRemoved = 11,
+        
+        /// <summary>
+        /// >> UsernameSet
+        /// A username was set for `who`.
+        /// </summary>
+        UsernameSet = 12,
+        
+        /// <summary>
+        /// >> UsernameQueued
+        /// A username was queued, but `who` must accept it prior to `expiration`.
+        /// </summary>
+        UsernameQueued = 13,
+        
+        /// <summary>
+        /// >> PreapprovalExpired
+        /// A queued username passed its expiration without being claimed and was removed.
+        /// </summary>
+        PreapprovalExpired = 14,
+        
+        /// <summary>
+        /// >> PrimaryUsernameSet
+        /// A username was set as a primary and can be looked up from `who`.
+        /// </summary>
+        PrimaryUsernameSet = 15,
+        
+        /// <summary>
+        /// >> DanglingUsernameRemoved
+        /// A dangling username (as in, a username corresponding to an account that has removed its
+        /// identity) has been removed.
+        /// </summary>
+        DanglingUsernameRemoved = 16,
     }
     
     /// <summary>
-    /// >> 111 - Variant[pallet_identity.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 140 - Variant[pallet_identity.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {
@@ -112,6 +149,13 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.pallet
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.SubIdentityAdded);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.SubIdentityRemoved);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.SubIdentityRevoked);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.AuthorityAdded);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.AuthorityRemoved);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>(Event.UsernameSet);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.UsernameQueued);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.PreapprovalExpired);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>(Event.PrimaryUsernameSet);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>(Event.DanglingUsernameRemoved);
         }
     }
 }

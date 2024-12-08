@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
     
     
     /// <summary>
-    /// >> 410 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
+    /// >> 412 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParachainInherentData : BaseType
@@ -27,7 +27,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         /// <summary>
         /// >> validation_data
         /// </summary>
-        public Hydration.NetApi.Generated.Model.polkadot_primitives.v6.PersistedValidationData ValidationData { get; set; }
+        public Hydration.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData ValidationData { get; set; }
         /// <summary>
         /// >> relay_chain_state
         /// </summary>
@@ -62,7 +62,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ValidationData = new Hydration.NetApi.Generated.Model.polkadot_primitives.v6.PersistedValidationData();
+            ValidationData = new Hydration.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData();
             ValidationData.Decode(byteArray, ref p);
             RelayChainState = new Hydration.NetApi.Generated.Model.sp_trie.storage_proof.StorageProof();
             RelayChainState.Decode(byteArray, ref p);

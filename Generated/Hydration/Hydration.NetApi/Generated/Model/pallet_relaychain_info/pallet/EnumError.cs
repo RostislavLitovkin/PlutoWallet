@@ -24,7 +24,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_relaychain_info.pallet
     }
     
     /// <summary>
-    /// >> 658 - Variant[pallet_relaychain_info.pallet.Error]
+    /// >> 662 - Variant[pallet_relaychain_info.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

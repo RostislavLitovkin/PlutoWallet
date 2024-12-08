@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.fp_self_contained.unchecked_extrinsic
     
     
     /// <summary>
-    /// >> 763 - Composite[fp_self_contained.unchecked_extrinsic.UncheckedExtrinsic]
+    /// >> 767 - Composite[fp_self_contained.unchecked_extrinsic.UncheckedExtrinsic]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UncheckedExtrinsic : BaseType

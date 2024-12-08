@@ -36,37 +36,112 @@ namespace InvArch.NetApi.Generated.Storage
         public ParachainSystemStorage(SubstrateClientExt client)
         {
             this._client = client;
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UnincludedSegment"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.Ancestor>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "AggregatedUnincludedSegment"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.SegmentTracker)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "PendingValidationCode"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "NewValidationCode"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "ValidationData"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.polkadot_primitives.v4.PersistedValidationData)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "ValidationData"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "DidSetValidationCode"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "LastRelayChainBlockNumber"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UpgradeRestrictionSignal"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.EnumUpgradeRestriction>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UpgradeRestrictionSignal"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeRestriction>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UpgradeGoAhead"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeGoAhead>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "RelayStateProof"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.sp_trie.storage_proof.StorageProof)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "RelevantMessagingState"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.MessagingStateSnapshot)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "HostConfiguration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHostConfiguration)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "HostConfiguration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHostConfiguration)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "LastDmqMqcHead"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent.MessageQueueChain)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "LastHrmpMqcHeads"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Types.Base.BTreeMapT3)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "LastHrmpMqcHeads"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Types.Base.BTreeMapT4)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "ProcessedDownwardMessages"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "HrmpWatermark"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "HrmpOutboundMessages"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.polkadot_core_primitives.OutboundHrmpMessage>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UpwardMessages"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "PendingUpwardMessages"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "UpwardDeliveryFeeFactor"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "AnnouncedHrmpMessagesPerCandidate"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "ReservedXcmpWeightOverride"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "ReservedDmpWeightOverride"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "AuthorizedUpgrade"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.CodeUpgradeAuthorization)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParachainSystem", "CustomValidationHeadData"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>)));
         }
         
         /// <summary>
+        /// >> UnincludedSegmentParams
+        ///  Latest included block descendants the runtime accepted. In other words, these are
+        ///  ancestors of the currently executing block which have not been included in the observed
+        ///  relay-chain state.
+        /// 
+        ///  The segment length is limited by the capacity returned from the [`ConsensusHook`] configured
+        ///  in the pallet.
+        /// </summary>
+        public static string UnincludedSegmentParams()
+        {
+            return RequestGenerator.GetStorage("ParachainSystem", "UnincludedSegment", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> UnincludedSegmentDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UnincludedSegmentDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> UnincludedSegment
+        ///  Latest included block descendants the runtime accepted. In other words, these are
+        ///  ancestors of the currently executing block which have not been included in the observed
+        ///  relay-chain state.
+        /// 
+        ///  The segment length is limited by the capacity returned from the [`ConsensusHook`] configured
+        ///  in the pallet.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.Ancestor>> UnincludedSegment(string blockhash, CancellationToken token)
+        {
+            string parameters = ParachainSystemStorage.UnincludedSegmentParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.Ancestor>>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> AggregatedUnincludedSegmentParams
+        ///  Storage field that keeps track of bandwidth used by the unincluded segment along with the
+        ///  latest HRMP watermark. Used for limiting the acceptance of new blocks with
+        ///  respect to relay chain constraints.
+        /// </summary>
+        public static string AggregatedUnincludedSegmentParams()
+        {
+            return RequestGenerator.GetStorage("ParachainSystem", "AggregatedUnincludedSegment", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> AggregatedUnincludedSegmentDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string AggregatedUnincludedSegmentDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> AggregatedUnincludedSegment
+        ///  Storage field that keeps track of bandwidth used by the unincluded segment along with the
+        ///  latest HRMP watermark. Used for limiting the acceptance of new blocks with
+        ///  respect to relay chain constraints.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.SegmentTracker> AggregatedUnincludedSegment(string blockhash, CancellationToken token)
+        {
+            string parameters = ParachainSystemStorage.AggregatedUnincludedSegmentParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.unincluded_segment.SegmentTracker>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
         /// >> PendingValidationCodeParams
-        ///  In case of a scheduled upgrade, this storage field contains the validation code to be applied.
+        ///  In case of a scheduled upgrade, this storage field contains the validation code to be
+        ///  applied.
         /// 
-        ///  As soon as the relay chain gives us the go-ahead signal, we will overwrite the [`:code`][well_known_keys::CODE]
-        ///  which will result the next block process with the new validation code. This concludes the upgrade process.
-        /// 
-        ///  [well_known_keys::CODE]: sp_core::storage::well_known_keys::CODE
+        ///  As soon as the relay chain gives us the go-ahead signal, we will overwrite the
+        ///  [`:code`][sp_core::storage::well_known_keys::CODE] which will result the next block process
+        ///  with the new validation code. This concludes the upgrade process.
         /// </summary>
         public static string PendingValidationCodeParams()
         {
@@ -84,12 +159,12 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> PendingValidationCode
-        ///  In case of a scheduled upgrade, this storage field contains the validation code to be applied.
+        ///  In case of a scheduled upgrade, this storage field contains the validation code to be
+        ///  applied.
         /// 
-        ///  As soon as the relay chain gives us the go-ahead signal, we will overwrite the [`:code`][well_known_keys::CODE]
-        ///  which will result the next block process with the new validation code. This concludes the upgrade process.
-        /// 
-        ///  [well_known_keys::CODE]: sp_core::storage::well_known_keys::CODE
+        ///  As soon as the relay chain gives us the go-ahead signal, we will overwrite the
+        ///  [`:code`][sp_core::storage::well_known_keys::CODE] which will result the next block process
+        ///  with the new validation code. This concludes the upgrade process.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> PendingValidationCode(string blockhash, CancellationToken token)
         {
@@ -161,10 +236,10 @@ namespace InvArch.NetApi.Generated.Storage
         ///  This value is expected to be set only once per block and it's never stored
         ///  in the trie.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.PersistedValidationData> ValidationData(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData> ValidationData(string blockhash, CancellationToken token)
         {
             string parameters = ParachainSystemStorage.ValidationDataParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.PersistedValidationData>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData>(parameters, blockhash, token);
             return result;
         }
         
@@ -200,6 +275,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// <summary>
         /// >> LastRelayChainBlockNumberParams
         ///  The relay chain block number associated with the last parachain block.
+        /// 
+        ///  This is updated in `on_finalize`.
         /// </summary>
         public static string LastRelayChainBlockNumberParams()
         {
@@ -218,6 +295,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// <summary>
         /// >> LastRelayChainBlockNumber
         ///  The relay chain block number associated with the last parachain block.
+        /// 
+        ///  This is updated in `on_finalize`.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> LastRelayChainBlockNumber(string blockhash, CancellationToken token)
         {
@@ -260,10 +339,47 @@ namespace InvArch.NetApi.Generated.Storage
         ///  relay-chain. This value is ephemeral which means it doesn't hit the storage. This value is
         ///  set after the inherent.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.EnumUpgradeRestriction>> UpgradeRestrictionSignal(string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeRestriction>> UpgradeRestrictionSignal(string blockhash, CancellationToken token)
         {
             string parameters = ParachainSystemStorage.UpgradeRestrictionSignalParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.EnumUpgradeRestriction>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeRestriction>>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> UpgradeGoAheadParams
+        ///  Optional upgrade go-ahead signal from the relay-chain.
+        /// 
+        ///  This storage item is a mirror of the corresponding value for the current parachain from the
+        ///  relay-chain. This value is ephemeral which means it doesn't hit the storage. This value is
+        ///  set after the inherent.
+        /// </summary>
+        public static string UpgradeGoAheadParams()
+        {
+            return RequestGenerator.GetStorage("ParachainSystem", "UpgradeGoAhead", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> UpgradeGoAheadDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UpgradeGoAheadDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> UpgradeGoAhead
+        ///  Optional upgrade go-ahead signal from the relay-chain.
+        /// 
+        ///  This storage item is a mirror of the corresponding value for the current parachain from the
+        ///  relay-chain. This value is ephemeral which means it doesn't hit the storage. This value is
+        ///  set after the inherent.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeGoAhead>> UpgradeGoAhead(string blockhash, CancellationToken token)
+        {
+            string parameters = ParachainSystemStorage.UpgradeGoAheadParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeGoAhead>>(parameters, blockhash, token);
             return result;
         }
         
@@ -379,10 +495,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// 
         ///  This data is also absent from the genesis.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHostConfiguration> HostConfiguration(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHostConfiguration> HostConfiguration(string blockhash, CancellationToken token)
         {
             string parameters = ParachainSystemStorage.HostConfigurationParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.polkadot_primitives.v4.AbridgedHostConfiguration>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHostConfiguration>(parameters, blockhash, token);
             return result;
         }
         
@@ -449,10 +565,10 @@ namespace InvArch.NetApi.Generated.Storage
         ///  This value is loaded before and saved after processing inbound downward messages carried
         ///  by the system inherent.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Types.Base.BTreeMapT3> LastHrmpMqcHeads(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Types.Base.BTreeMapT4> LastHrmpMqcHeads(string blockhash, CancellationToken token)
         {
             string parameters = ParachainSystemStorage.LastHrmpMqcHeadsParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Types.Base.BTreeMapT3>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Types.Base.BTreeMapT4>(parameters, blockhash, token);
             return result;
         }
         
@@ -618,6 +734,35 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
+        /// >> UpwardDeliveryFeeFactorParams
+        ///  The factor to multiply the base delivery fee by for UMP.
+        /// </summary>
+        public static string UpwardDeliveryFeeFactorParams()
+        {
+            return RequestGenerator.GetStorage("ParachainSystem", "UpwardDeliveryFeeFactor", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> UpwardDeliveryFeeFactorDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UpwardDeliveryFeeFactorDefault()
+        {
+            return "0x000064A7B3B6E00D0000000000000000";
+        }
+        
+        /// <summary>
+        /// >> UpwardDeliveryFeeFactor
+        ///  The factor to multiply the base delivery fee by for UMP.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128> UpwardDeliveryFeeFactor(string blockhash, CancellationToken token)
+        {
+            string parameters = ParachainSystemStorage.UpwardDeliveryFeeFactorParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.sp_arithmetic.fixed_point.FixedU128>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
         /// >> AnnouncedHrmpMessagesPerCandidateParams
         ///  The number of HRMP messages we observed in `on_initialize` and thus used that number for
         ///  announcing the weight of `on_initialize` and `on_finalize`.
@@ -711,39 +856,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> AuthorizedUpgradeParams
-        ///  The next authorized upgrade, if there is one.
-        /// </summary>
-        public static string AuthorizedUpgradeParams()
-        {
-            return RequestGenerator.GetStorage("ParachainSystem", "AuthorizedUpgrade", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
-        }
-        
-        /// <summary>
-        /// >> AuthorizedUpgradeDefault
-        /// Default value as hex string
-        /// </summary>
-        public static string AuthorizedUpgradeDefault()
-        {
-            return "0x00";
-        }
-        
-        /// <summary>
-        /// >> AuthorizedUpgrade
-        ///  The next authorized upgrade, if there is one.
-        /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.CodeUpgradeAuthorization> AuthorizedUpgrade(string blockhash, CancellationToken token)
-        {
-            string parameters = ParachainSystemStorage.AuthorizedUpgradeParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.CodeUpgradeAuthorization>(parameters, blockhash, token);
-            return result;
-        }
-        
-        /// <summary>
         /// >> CustomValidationHeadDataParams
         ///  A custom head data that should be returned as result of `validate_block`.
         /// 
-        ///  See [`Pallet::set_custom_validation_head_data`] for more information.
+        ///  See `Pallet::set_custom_validation_head_data` for more information.
         /// </summary>
         public static string CustomValidationHeadDataParams()
         {
@@ -763,7 +879,7 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> CustomValidationHeadData
         ///  A custom head data that should be returned as result of `validate_block`.
         /// 
-        ///  See [`Pallet::set_custom_validation_head_data`] for more information.
+        ///  See `Pallet::set_custom_validation_head_data` for more information.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> CustomValidationHeadData(string blockhash, CancellationToken token)
         {
@@ -781,7 +897,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_validation_data
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetValidationData(InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent.ParachainInherentData data)
         {
@@ -792,7 +908,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> sudo_send_upward_message
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SudoSendUpwardMessage(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> message)
         {
@@ -803,7 +919,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> authorize_upgrade
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method AuthorizeUpgrade(InvArch.NetApi.Generated.Model.primitive_types.H256 code_hash, Substrate.NetApi.Model.Types.Primitive.Bool check_version)
         {
@@ -815,7 +931,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> enact_authorized_upgrade
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method EnactAuthorizedUpgrade(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code)
         {
@@ -830,6 +946,17 @@ namespace InvArch.NetApi.Generated.Storage
     /// </summary>
     public sealed class ParachainSystemConstants
     {
+        
+        /// <summary>
+        /// >> SelfParaId
+        ///  Returns the parachain ID we are running with.
+        /// </summary>
+        public InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id SelfParaId()
+        {
+            var result = new InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id();
+            result.Create("0x0C0D0000");
+            return result;
+        }
     }
     
     /// <summary>

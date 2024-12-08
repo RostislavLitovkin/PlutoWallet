@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 397 - Composite[pallet_identity.types.AuthorityProperties]
+    /// >> 394 - Composite[pallet_identity.types.AuthorityProperties]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AuthorityProperties : BaseType
@@ -27,7 +27,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> suffix
         /// </summary>
-        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22 Suffix { get; set; }
+        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23 Suffix { get; set; }
         /// <summary>
         /// >> allocation
         /// </summary>
@@ -52,7 +52,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Suffix = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22();
+            Suffix = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23();
             Suffix.Decode(byteArray, ref p);
             Allocation = new Substrate.NetApi.Model.Types.Primitive.U32();
             Allocation.Decode(byteArray, ref p);

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_treasury
     
     
     /// <summary>
-    /// >> 629 - Composite[pallet_treasury.SpendStatus]
+    /// >> 605 - Composite[pallet_treasury.SpendStatus]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SpendStatus : BaseType

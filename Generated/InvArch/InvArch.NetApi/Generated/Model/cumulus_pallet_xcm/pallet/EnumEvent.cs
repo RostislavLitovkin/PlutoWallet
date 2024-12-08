@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -48,11 +45,8 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 108 - Variant[cumulus_pallet_xcm.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 133 - Variant[cumulus_pallet_xcm.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {
@@ -64,7 +58,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet
         {
 				AddTypeDecoder<InvArch.NetApi.Generated.Types.Base.Arr32U8>(Event.InvalidFormat);
 				AddTypeDecoder<InvArch.NetApi.Generated.Types.Base.Arr32U8>(Event.UnsupportedVersion);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Types.Base.Arr32U8, InvArch.NetApi.Generated.Model.xcm.v3.traits.EnumOutcome>>(Event.ExecutedDownward);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Types.Base.Arr32U8, InvArch.NetApi.Generated.Model.staging_xcm.v4.traits.EnumOutcome>>(Event.ExecutedDownward);
         }
     }
 }

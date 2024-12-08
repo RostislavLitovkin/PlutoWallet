@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Types.Base
     
     
     /// <summary>
-    /// >> 259 - Composite[Cow]
+    /// >> 329 - Composite[Cow]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Cow : BaseType

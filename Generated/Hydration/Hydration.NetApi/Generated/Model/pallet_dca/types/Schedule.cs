@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_dca.types
     
     
     /// <summary>
-    /// >> 406 - Composite[pallet_dca.types.Schedule]
+    /// >> 408 - Composite[pallet_dca.types.Schedule]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Schedule : BaseType

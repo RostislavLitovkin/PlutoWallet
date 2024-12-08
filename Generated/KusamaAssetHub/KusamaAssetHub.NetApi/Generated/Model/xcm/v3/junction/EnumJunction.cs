@@ -73,7 +73,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.xcm.v3.junction
     }
     
     /// <summary>
-    /// >> 39 - Variant[xcm.v3.junction.Junction]
+    /// >> 111 - Variant[xcm.v3.junction.Junction]
     /// </summary>
     public sealed class EnumJunction : BaseEnumRust<Junction>
     {

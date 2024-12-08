@@ -24,31 +24,53 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.
         
         /// <summary>
         /// >> set_validation_data
-        /// See [`Pallet::set_validation_data`].
+        /// Set the current validation data.
+        /// 
+        /// This should be invoked exactly once per block. It will panic at the finalization
+        /// phase if the call was not invoked.
+        /// 
+        /// The dispatch origin for this call must be `Inherent`
+        /// 
+        /// As a side effect, this function upgrades the current validation function
+        /// if the appropriate time has come.
         /// </summary>
         set_validation_data = 0,
         
         /// <summary>
         /// >> sudo_send_upward_message
-        /// See [`Pallet::sudo_send_upward_message`].
         /// </summary>
         sudo_send_upward_message = 1,
         
         /// <summary>
         /// >> authorize_upgrade
-        /// See [`Pallet::authorize_upgrade`].
+        /// Authorize an upgrade to a given `code_hash` for the runtime. The runtime can be supplied
+        /// later.
+        /// 
+        /// The `check_version` parameter sets a boolean flag for whether or not the runtime's spec
+        /// version and name should be verified on upgrade. Since the authorization only has a hash,
+        /// it cannot actually perform the verification.
+        /// 
+        /// This call requires Root origin.
         /// </summary>
         authorize_upgrade = 2,
         
         /// <summary>
         /// >> enact_authorized_upgrade
-        /// See [`Pallet::enact_authorized_upgrade`].
+        /// Provide the preimage (runtime binary) `code` for an upgrade that has been authorized.
+        /// 
+        /// If the authorization required a version check, this call will ensure the spec name
+        /// remains unchanged and that the spec version has increased.
+        /// 
+        /// Note that this function will not apply the new `code`, but only attempt to schedule the
+        /// upgrade with the Relay Chain.
+        /// 
+        /// All origins are allowed.
         /// </summary>
         enact_authorized_upgrade = 3,
     }
     
     /// <summary>
-    /// >> 186 - Variant[cumulus_pallet_parachain_system.pallet.Call]
+    /// >> 185 - Variant[cumulus_pallet_parachain_system.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

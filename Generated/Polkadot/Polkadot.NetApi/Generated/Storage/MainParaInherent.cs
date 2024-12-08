@@ -37,7 +37,7 @@ namespace Polkadot.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInherent", "Included"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInherent", "OnChainVotes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ScrapedOnChainVotes)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInherent", "OnChainVotes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ScrapedOnChainVotes)));
         }
         
         /// <summary>
@@ -101,10 +101,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> OnChainVotes
         ///  Scraped on chain data for extracting resolved disputes as well as backing votes.
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ScrapedOnChainVotes> OnChainVotes(string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ScrapedOnChainVotes> OnChainVotes(string blockhash, CancellationToken token)
         {
             string parameters = ParaInherentStorage.OnChainVotesParams();
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ScrapedOnChainVotes>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ScrapedOnChainVotes>(parameters, blockhash, token);
             return result;
         }
     }
@@ -119,7 +119,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> enter
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Enter(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.InherentData data)
+        public static Method Enter(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.InherentData data)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(data.Encode());
@@ -154,40 +154,17 @@ namespace Polkadot.NetApi.Generated.Storage
         InvalidParentHeader,
         
         /// <summary>
-        /// >> CandidateConcludedInvalid
-        /// Disputed candidate that was concluded invalid.
-        /// </summary>
-        CandidateConcludedInvalid,
-        
-        /// <summary>
         /// >> InherentOverweight
         /// The data given to the inherent will result in an overweight block.
         /// </summary>
         InherentOverweight,
         
         /// <summary>
-        /// >> DisputeStatementsUnsortedOrDuplicates
-        /// The ordering of dispute statements was invalid.
+        /// >> CandidatesFilteredDuringExecution
+        /// A candidate was filtered during inherent execution. This should have only been done
+        /// during creation.
         /// </summary>
-        DisputeStatementsUnsortedOrDuplicates,
-        
-        /// <summary>
-        /// >> DisputeInvalid
-        /// A dispute statement was invalid.
-        /// </summary>
-        DisputeInvalid,
-        
-        /// <summary>
-        /// >> BackedByDisabled
-        /// A candidate was backed by a disabled validator
-        /// </summary>
-        BackedByDisabled,
-        
-        /// <summary>
-        /// >> BackedOnUnscheduledCore
-        /// A candidate was backed even though the paraid was not scheduled.
-        /// </summary>
-        BackedOnUnscheduledCore,
+        CandidatesFilteredDuringExecution,
         
         /// <summary>
         /// >> UnscheduledCandidate

@@ -45,6 +45,11 @@ namespace Hydration.NetApi.Generated.Model.pallet_asset_registry.types
         /// >> External
         /// </summary>
         External = 4,
+        
+        /// <summary>
+        /// >> Erc20
+        /// </summary>
+        Erc20 = 5,
     }
     
     /// <summary>

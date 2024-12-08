@@ -24,25 +24,26 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm.pallet
         
         /// <summary>
         /// >> withdraw
-        /// See [`Pallet::withdraw`].
+        /// Withdraw balance from EVM into currency/balances pallet.
         /// </summary>
         withdraw = 0,
         
         /// <summary>
         /// >> call
-        /// See [`Pallet::call`].
+        /// Issue an EVM call operation. This is similar to a message call transaction in Ethereum.
         /// </summary>
         call = 1,
         
         /// <summary>
         /// >> create
-        /// See [`Pallet::create`].
+        /// Issue an EVM create operation. This is similar to a contract creation transaction in
+        /// Ethereum.
         /// </summary>
         create = 2,
         
         /// <summary>
         /// >> create2
-        /// See [`Pallet::create2`].
+        /// Issue an EVM create2 operation.
         /// </summary>
         create2 = 3,
     }

@@ -95,20 +95,14 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm.pallet
         TransactionMustComeFromEOA = 11,
         
         /// <summary>
-        /// >> InvalidTransaction
-        /// Invalid Transaction
-        /// </summary>
-        InvalidTransaction = 12,
-        
-        /// <summary>
         /// >> Undefined
         /// Undefined error.
         /// </summary>
-        Undefined = 13,
+        Undefined = 12,
     }
     
     /// <summary>
-    /// >> 630 - Variant[pallet_evm.pallet.Error]
+    /// >> 634 - Variant[pallet_evm.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

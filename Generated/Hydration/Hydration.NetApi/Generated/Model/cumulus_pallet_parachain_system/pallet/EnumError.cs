@@ -73,7 +73,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.palle
     }
     
     /// <summary>
-    /// >> 691 - Variant[cumulus_pallet_parachain_system.pallet.Error]
+    /// >> 696 - Variant[cumulus_pallet_parachain_system.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

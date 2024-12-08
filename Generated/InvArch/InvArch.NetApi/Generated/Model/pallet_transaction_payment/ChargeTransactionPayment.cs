@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_transaction_payment
     
     
     /// <summary>
-    /// >> 400 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
+    /// >> 535 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ChargeTransactionPayment : BaseType

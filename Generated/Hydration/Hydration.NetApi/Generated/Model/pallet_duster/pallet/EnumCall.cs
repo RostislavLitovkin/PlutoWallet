@@ -24,25 +24,31 @@ namespace Hydration.NetApi.Generated.Model.pallet_duster.pallet
         
         /// <summary>
         /// >> dust_account
-        /// See [`Pallet::dust_account`].
+        /// Dust specified account.
+        /// IF account balance is < min. existential deposit of given currency, and account is allowed to
+        /// be dusted, the remaining balance is transferred to selected account (usually treasury).
+        /// 
+        /// Caller is rewarded with chosen reward in native currency.
         /// </summary>
         dust_account = 0,
         
         /// <summary>
         /// >> add_nondustable_account
-        /// See [`Pallet::add_nondustable_account`].
+        /// Add account to list of non-dustable account. Account whihc are excluded from udsting.
+        /// If such account should be dusted - `AccountBlacklisted` error is returned.
+        /// Only root can perform this action.
         /// </summary>
         add_nondustable_account = 1,
         
         /// <summary>
         /// >> remove_nondustable_account
-        /// See [`Pallet::remove_nondustable_account`].
+        /// Remove account from list of non-dustable accounts. That means account can be dusted again.
         /// </summary>
         remove_nondustable_account = 2,
     }
     
     /// <summary>
-    /// >> 367 - Variant[pallet_duster.pallet.Call]
+    /// >> 364 - Variant[pallet_duster.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

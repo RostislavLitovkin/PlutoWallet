@@ -33,7 +33,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm
     }
     
     /// <summary>
-    /// >> 295 - Variant[xcm.VersionedAssetId]
+    /// >> 296 - Variant[xcm.VersionedAssetId]
     /// </summary>
     public sealed class EnumVersionedAssetId : BaseEnumRust<VersionedAssetId>
     {

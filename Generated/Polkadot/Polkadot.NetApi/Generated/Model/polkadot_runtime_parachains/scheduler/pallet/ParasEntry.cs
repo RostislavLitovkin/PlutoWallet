@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.scheduler.
     
     
     /// <summary>
-    /// >> 765 - Composite[polkadot_runtime_parachains.scheduler.pallet.ParasEntry]
+    /// >> 726 - Composite[polkadot_runtime_parachains.scheduler.pallet.ParasEntry]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParasEntry : BaseType

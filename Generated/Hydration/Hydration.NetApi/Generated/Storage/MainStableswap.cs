@@ -248,6 +248,19 @@ namespace Hydration.NetApi.Generated.Storage
             byteArray.AddRange(state.Encode());
             return new Method(70, "Stableswap", 9, "set_asset_tradable_state", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> remove_liquidity
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method RemoveLiquidity(Substrate.NetApi.Model.Types.Primitive.U32 pool_id, Substrate.NetApi.Model.Types.Primitive.U128 share_amount, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20 min_amounts_out)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(pool_id.Encode());
+            byteArray.AddRange(share_amount.Encode());
+            byteArray.AddRange(min_amounts_out.Encode());
+            return new Method(70, "Stableswap", 10, "remove_liquidity", byteArray.ToArray());
+        }
     }
     
     /// <summary>

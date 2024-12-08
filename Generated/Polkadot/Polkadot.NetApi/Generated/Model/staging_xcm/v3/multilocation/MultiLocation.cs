@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.staging_xcm.v3.multilocation
     
     
     /// <summary>
-    /// >> 66 - Composite[staging_xcm.v3.multilocation.MultiLocation]
+    /// >> 56 - Composite[staging_xcm.v3.multilocation.MultiLocation]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiLocation : BaseType

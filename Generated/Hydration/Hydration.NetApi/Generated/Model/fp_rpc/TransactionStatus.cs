@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.fp_rpc
     
     
     /// <summary>
-    /// >> 633 - Composite[fp_rpc.TransactionStatus]
+    /// >> 637 - Composite[fp_rpc.TransactionStatus]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class TransactionStatus : BaseType

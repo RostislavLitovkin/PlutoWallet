@@ -38,7 +38,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.types
     }
     
     /// <summary>
-    /// >> 285 - Variant[pallet_balances.types.Reasons]
+    /// >> 367 - Variant[pallet_balances.types.Reasons]
     /// </summary>
     public sealed class EnumReasons : BaseEnum<Reasons>
     {

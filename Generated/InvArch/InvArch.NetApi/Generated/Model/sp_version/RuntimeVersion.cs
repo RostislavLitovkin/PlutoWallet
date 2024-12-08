@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_version
     
     
     /// <summary>
-    /// >> 258 - Composite[sp_version.RuntimeVersion]
+    /// >> 328 - Composite[sp_version.RuntimeVersion]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeVersion : BaseType

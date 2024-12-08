@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_tx_pause.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -42,8 +42,8 @@ namespace InvArch.NetApi.Generated.Model.pallet_tx_pause.pallet
     }
     
     /// <summary>
-    /// >> 159 - Variant[pallet_tx_pause.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 193 - Variant[pallet_tx_pause.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {

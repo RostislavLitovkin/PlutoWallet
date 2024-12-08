@@ -36,104 +36,46 @@ namespace Polkadot.NetApi.Generated.Storage
         public ParaInclusionStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInclusion", "AvailabilityBitfields"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ValidatorIndex), typeof(Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.AvailabilityBitfieldRecord)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInclusion", "PendingAvailability"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id), typeof(Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInclusion", "PendingAvailabilityCommitments"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateCommitments)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParaInclusion", "V1"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id), typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability>)));
         }
         
         /// <summary>
-        /// >> AvailabilityBitfieldsParams
-        ///  The latest bitfield for each validator, referred to by their index in the validator set.
+        /// >> V1Params
+        ///  Candidates pending availability by `ParaId`. They form a chain starting from the latest
+        ///  included head of the para.
+        ///  Use a different prefix post-migration to v1, since the v0 `PendingAvailability` storage
+        ///  would otherwise have the exact same prefix which could cause undefined behaviour when doing
+        ///  the migration.
         /// </summary>
-        public static string AvailabilityBitfieldsParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ValidatorIndex key)
+        public static string V1Params(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key)
         {
-            return RequestGenerator.GetStorage("ParaInclusion", "AvailabilityBitfields", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+            return RequestGenerator.GetStorage("ParaInclusion", "V1", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
                         key});
         }
         
         /// <summary>
-        /// >> AvailabilityBitfieldsDefault
+        /// >> V1Default
         /// Default value as hex string
         /// </summary>
-        public static string AvailabilityBitfieldsDefault()
+        public static string V1Default()
         {
             return "0x00";
         }
         
         /// <summary>
-        /// >> AvailabilityBitfields
-        ///  The latest bitfield for each validator, referred to by their index in the validator set.
+        /// >> V1
+        ///  Candidates pending availability by `ParaId`. They form a chain starting from the latest
+        ///  included head of the para.
+        ///  Use a different prefix post-migration to v1, since the v0 `PendingAvailability` storage
+        ///  would otherwise have the exact same prefix which could cause undefined behaviour when doing
+        ///  the migration.
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.AvailabilityBitfieldRecord> AvailabilityBitfields(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.ValidatorIndex key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability>> V1(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key, string blockhash, CancellationToken token)
         {
-            string parameters = ParaInclusionStorage.AvailabilityBitfieldsParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.AvailabilityBitfieldRecord>(parameters, blockhash, token);
-            return result;
-        }
-        
-        /// <summary>
-        /// >> PendingAvailabilityParams
-        ///  Candidates pending availability by `ParaId`.
-        /// </summary>
-        public static string PendingAvailabilityParams(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key)
-        {
-            return RequestGenerator.GetStorage("ParaInclusion", "PendingAvailability", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
-                        key});
-        }
-        
-        /// <summary>
-        /// >> PendingAvailabilityDefault
-        /// Default value as hex string
-        /// </summary>
-        public static string PendingAvailabilityDefault()
-        {
-            return "0x00";
-        }
-        
-        /// <summary>
-        /// >> PendingAvailability
-        ///  Candidates pending availability by `ParaId`.
-        /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability> PendingAvailability(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key, string blockhash, CancellationToken token)
-        {
-            string parameters = ParaInclusionStorage.PendingAvailabilityParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability>(parameters, blockhash, token);
-            return result;
-        }
-        
-        /// <summary>
-        /// >> PendingAvailabilityCommitmentsParams
-        ///  The commitments of candidates pending availability, by `ParaId`.
-        /// </summary>
-        public static string PendingAvailabilityCommitmentsParams(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key)
-        {
-            return RequestGenerator.GetStorage("ParaInclusion", "PendingAvailabilityCommitments", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
-                        key});
-        }
-        
-        /// <summary>
-        /// >> PendingAvailabilityCommitmentsDefault
-        /// Default value as hex string
-        /// </summary>
-        public static string PendingAvailabilityCommitmentsDefault()
-        {
-            return "0x00";
-        }
-        
-        /// <summary>
-        /// >> PendingAvailabilityCommitments
-        ///  The commitments of candidates pending availability, by `ParaId`.
-        /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateCommitments> PendingAvailabilityCommitments(Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id key, string blockhash, CancellationToken token)
-        {
-            string parameters = ParaInclusionStorage.PendingAvailabilityCommitmentsParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateCommitments>(parameters, blockhash, token);
+            string parameters = ParaInclusionStorage.V1Params(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.CandidatePendingAvailability>>(parameters, blockhash, token);
             return result;
         }
     }
@@ -159,76 +101,16 @@ namespace Polkadot.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> UnsortedOrDuplicateValidatorIndices
-        /// Validator indices are out of order or contains duplicates.
-        /// </summary>
-        UnsortedOrDuplicateValidatorIndices,
-        
-        /// <summary>
-        /// >> UnsortedOrDuplicateDisputeStatementSet
-        /// Dispute statement sets are out of order or contain duplicates.
-        /// </summary>
-        UnsortedOrDuplicateDisputeStatementSet,
-        
-        /// <summary>
-        /// >> UnsortedOrDuplicateBackedCandidates
-        /// Backed candidates are out of order (core index) or contain duplicates.
-        /// </summary>
-        UnsortedOrDuplicateBackedCandidates,
-        
-        /// <summary>
-        /// >> UnexpectedRelayParent
-        /// A different relay parent was provided compared to the on-chain stored one.
-        /// </summary>
-        UnexpectedRelayParent,
-        
-        /// <summary>
-        /// >> WrongBitfieldSize
-        /// Availability bitfield has unexpected size.
-        /// </summary>
-        WrongBitfieldSize,
-        
-        /// <summary>
-        /// >> BitfieldAllZeros
-        /// Bitfield consists of zeros only.
-        /// </summary>
-        BitfieldAllZeros,
-        
-        /// <summary>
-        /// >> BitfieldDuplicateOrUnordered
-        /// Multiple bitfields submitted by same validator or validators out of order by index.
-        /// </summary>
-        BitfieldDuplicateOrUnordered,
-        
-        /// <summary>
         /// >> ValidatorIndexOutOfBounds
         /// Validator index out of bounds.
         /// </summary>
         ValidatorIndexOutOfBounds,
         
         /// <summary>
-        /// >> InvalidBitfieldSignature
-        /// Invalid signature
-        /// </summary>
-        InvalidBitfieldSignature,
-        
-        /// <summary>
         /// >> UnscheduledCandidate
         /// Candidate submitted but para not scheduled.
         /// </summary>
         UnscheduledCandidate,
-        
-        /// <summary>
-        /// >> CandidateScheduledBeforeParaFree
-        /// Candidate scheduled despite pending candidate already existing for the para.
-        /// </summary>
-        CandidateScheduledBeforeParaFree,
-        
-        /// <summary>
-        /// >> ScheduledOutOfOrder
-        /// Scheduled cores out of order.
-        /// </summary>
-        ScheduledOutOfOrder,
         
         /// <summary>
         /// >> HeadDataTooLarge
@@ -328,13 +210,5 @@ namespace Polkadot.NetApi.Generated.Storage
         /// para head in the commitments.
         /// </summary>
         ParaHeadMismatch,
-        
-        /// <summary>
-        /// >> BitfieldReferencesFreedCore
-        /// A bitfield that references a freed core,
-        /// either intentionally or as part of a concluded
-        /// invalid dispute.
-        /// </summary>
-        BitfieldReferencesFreedCore,
     }
 }

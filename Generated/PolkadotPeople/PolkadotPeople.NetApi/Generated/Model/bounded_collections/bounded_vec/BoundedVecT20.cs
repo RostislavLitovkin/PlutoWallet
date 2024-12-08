@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec
     
     
     /// <summary>
-    /// >> 388 - Composite[bounded_collections.bounded_vec.BoundedVecT20]
+    /// >> 379 - Composite[bounded_collections.bounded_vec.BoundedVecT20]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT20 : BaseType
@@ -27,7 +27,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec
         /// <summary>
         /// >> value
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement>> Value { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotPeople.NetApi.Generated.Model.pallet_proxy.Announcement> Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumJudgement>>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotPeople.NetApi.Generated.Model.pallet_proxy.Announcement>();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

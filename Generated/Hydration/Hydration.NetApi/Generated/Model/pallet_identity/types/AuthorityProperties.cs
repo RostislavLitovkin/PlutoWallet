@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 502 - Composite[pallet_identity.types.AuthorityProperties]
+    /// >> 505 - Composite[pallet_identity.types.AuthorityProperties]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AuthorityProperties : BaseType
@@ -27,7 +27,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> suffix
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT24 Suffix { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT29 Suffix { get; set; }
         /// <summary>
         /// >> allocation
         /// </summary>
@@ -52,7 +52,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Suffix = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT24();
+            Suffix = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT29();
             Suffix.Decode(byteArray, ref p);
             Allocation = new Substrate.NetApi.Model.Types.Primitive.U32();
             Allocation.Decode(byteArray, ref p);

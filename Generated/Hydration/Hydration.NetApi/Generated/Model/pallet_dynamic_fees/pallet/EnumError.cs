@@ -24,7 +24,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_dynamic_fees.pallet
     }
     
     /// <summary>
-    /// >> 592 - Variant[pallet_dynamic_fees.pallet.Error]
+    /// >> 596 - Variant[pallet_dynamic_fees.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -26,7 +26,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
         /// >> remark
         /// Make some on-chain remark.
         /// 
-        /// - `O(1)`
+        /// Can be executed by every `origin`.
         /// </summary>
         remark = 0,
         
@@ -45,6 +45,9 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
         /// <summary>
         /// >> set_code_without_checks
         /// Set the new runtime code without doing any checks of the given `code`.
+        /// 
+        /// Note that runtime upgrades will not run if this is called with a not-increasing spec
+        /// version!
         /// </summary>
         set_code_without_checks = 3,
         
@@ -74,11 +77,47 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
         /// Make some on-chain remark and emit event.
         /// </summary>
         remark_with_event = 7,
+        
+        /// <summary>
+        /// >> authorize_upgrade
+        /// Authorize an upgrade to a given `code_hash` for the runtime. The runtime can be supplied
+        /// later.
+        /// 
+        /// This call requires Root origin.
+        /// </summary>
+        authorize_upgrade = 9,
+        
+        /// <summary>
+        /// >> authorize_upgrade_without_checks
+        /// Authorize an upgrade to a given `code_hash` for the runtime. The runtime can be supplied
+        /// later.
+        /// 
+        /// WARNING: This authorizes an upgrade that will take place without any safety checks, for
+        /// example that the spec name remains the same and that the version number increases. Not
+        /// recommended for normal use. Use `authorize_upgrade` instead.
+        /// 
+        /// This call requires Root origin.
+        /// </summary>
+        authorize_upgrade_without_checks = 10,
+        
+        /// <summary>
+        /// >> apply_authorized_upgrade
+        /// Provide the preimage (runtime binary) `code` for an upgrade that has been authorized.
+        /// 
+        /// If the authorization required a version check, this call will ensure the spec name
+        /// remains unchanged and that the spec version has increased.
+        /// 
+        /// Depending on the runtime's `OnSetCode` configuration, this function may directly apply
+        /// the new `code` in the same block or attempt to schedule the upgrade.
+        /// 
+        /// All origins are allowed.
+        /// </summary>
+        apply_authorized_upgrade = 11,
     }
     
     /// <summary>
-    /// >> 127 - Variant[frame_system.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 161 - Variant[frame_system.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {
@@ -96,6 +135,9 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>>(Call.kill_storage);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.kill_prefix);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(Call.remark_with_event);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.primitive_types.H256>(Call.authorize_upgrade);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.primitive_types.H256>(Call.authorize_upgrade_without_checks);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>(Call.apply_authorized_upgrade);
         }
     }
 }

@@ -38,7 +38,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_checked_inflation.inflation
     }
     
     /// <summary>
-    /// >> 354 - Variant[pallet_checked_inflation.inflation.InflationMethod]
+    /// >> 495 - Variant[pallet_checked_inflation.inflation.InflationMethod]
     /// </summary>
     public sealed class EnumInflationMethod : BaseEnumRust<InflationMethod>
     {

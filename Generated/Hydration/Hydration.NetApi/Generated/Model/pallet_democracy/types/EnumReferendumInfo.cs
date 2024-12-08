@@ -33,7 +33,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_democracy.types
     }
     
     /// <summary>
-    /// >> 511 - Variant[pallet_democracy.types.ReferendumInfo]
+    /// >> 514 - Variant[pallet_democracy.types.ReferendumInfo]
     /// </summary>
     public sealed class EnumReferendumInfo : BaseEnumRust<ReferendumInfo>
     {

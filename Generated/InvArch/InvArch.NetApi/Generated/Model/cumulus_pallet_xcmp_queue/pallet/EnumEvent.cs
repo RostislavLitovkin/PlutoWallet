@@ -17,63 +17,21 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
         
         /// <summary>
-        /// >> Success
-        /// Some XCM was executed ok.
-        /// </summary>
-        Success = 0,
-        
-        /// <summary>
-        /// >> Fail
-        /// Some XCM failed.
-        /// </summary>
-        Fail = 1,
-        
-        /// <summary>
-        /// >> BadVersion
-        /// Bad XCM version used.
-        /// </summary>
-        BadVersion = 2,
-        
-        /// <summary>
-        /// >> BadFormat
-        /// Bad XCM format used.
-        /// </summary>
-        BadFormat = 3,
-        
-        /// <summary>
         /// >> XcmpMessageSent
         /// An HRMP message was sent to a sibling parachain.
         /// </summary>
-        XcmpMessageSent = 4,
-        
-        /// <summary>
-        /// >> OverweightEnqueued
-        /// An XCM exceeded the individual message weight budget.
-        /// </summary>
-        OverweightEnqueued = 5,
-        
-        /// <summary>
-        /// >> OverweightServiced
-        /// An XCM from the overweight queue was executed with the given actual weight used.
-        /// </summary>
-        OverweightServiced = 6,
+        XcmpMessageSent = 0,
     }
     
     /// <summary>
-    /// >> 50 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 96 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {
@@ -83,13 +41,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
         /// </summary>
         public EnumEvent()
         {
-				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Types.Base.Arr32U8>, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.Success);
-				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Types.Base.Arr32U8>, InvArch.NetApi.Generated.Model.xcm.v3.traits.EnumError, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.Fail);
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Types.Base.Arr32U8>>(Event.BadVersion);
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Types.Base.Arr32U8>>(Event.BadFormat);
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Types.Base.Arr32U8>>(Event.XcmpMessageSent);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U64, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.OverweightEnqueued);
-				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Event.OverweightServiced);
+				AddTypeDecoder<InvArch.NetApi.Generated.Types.Base.Arr32U8>(Event.XcmpMessageSent);
         }
     }
 }

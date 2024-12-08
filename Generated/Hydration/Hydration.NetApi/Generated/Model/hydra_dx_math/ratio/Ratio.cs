@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.hydra_dx_math.ratio
     
     
     /// <summary>
-    /// >> 751 - Composite[hydra_dx_math.ratio.Ratio]
+    /// >> 755 - Composite[hydra_dx_math.ratio.Ratio]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Ratio : BaseType

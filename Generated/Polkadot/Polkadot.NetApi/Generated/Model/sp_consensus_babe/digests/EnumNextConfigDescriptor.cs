@@ -28,7 +28,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests
     }
     
     /// <summary>
-    /// >> 117 - Variant[sp_consensus_babe.digests.NextConfigDescriptor]
+    /// >> 108 - Variant[sp_consensus_babe.digests.NextConfigDescriptor]
     /// </summary>
     public sealed class EnumNextConfigDescriptor : BaseEnumRust<NextConfigDescriptor>
     {

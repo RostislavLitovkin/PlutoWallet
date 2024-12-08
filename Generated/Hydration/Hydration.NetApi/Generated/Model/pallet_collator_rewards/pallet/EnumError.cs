@@ -24,7 +24,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_collator_rewards.pallet
     }
     
     /// <summary>
-    /// >> 562 - Variant[pallet_collator_rewards.pallet.Error]
+    /// >> 565 - Variant[pallet_collator_rewards.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

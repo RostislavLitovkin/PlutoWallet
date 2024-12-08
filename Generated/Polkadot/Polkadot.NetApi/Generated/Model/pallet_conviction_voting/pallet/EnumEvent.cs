@@ -36,7 +36,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_conviction_voting.pallet
     }
     
     /// <summary>
-    /// >> 98 - Variant[pallet_conviction_voting.pallet.Event]
+    /// >> 89 - Variant[pallet_conviction_voting.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

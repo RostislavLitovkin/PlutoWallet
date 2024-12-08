@@ -40,7 +40,10 @@ namespace InvArch.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Proposals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_treasury.Proposal)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Deactivated"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "SpendCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Treasury", "Spends"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_treasury.SpendStatus)));
         }
         
         /// <summary>
@@ -154,10 +157,70 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Approvals
         ///  Proposal indices that have been approved but not yet awarded.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13> Approvals(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17> Approvals(string blockhash, CancellationToken token)
         {
             string parameters = TreasuryStorage.ApprovalsParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT13>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> SpendCountParams
+        ///  The count of spends that have been made.
+        /// </summary>
+        public static string SpendCountParams()
+        {
+            return RequestGenerator.GetStorage("Treasury", "SpendCount", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> SpendCountDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SpendCountDefault()
+        {
+            return "0x00000000";
+        }
+        
+        /// <summary>
+        /// >> SpendCount
+        ///  The count of spends that have been made.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> SpendCount(string blockhash, CancellationToken token)
+        {
+            string parameters = TreasuryStorage.SpendCountParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> SpendsParams
+        ///  Spends that have been approved and being processed.
+        /// </summary>
+        public static string SpendsParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
+        {
+            return RequestGenerator.GetStorage("Treasury", "Spends", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> SpendsDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SpendsDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> Spends
+        ///  Spends that have been approved and being processed.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_treasury.SpendStatus> Spends(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = TreasuryStorage.SpendsParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_treasury.SpendStatus>(parameters, blockhash, token);
             return result;
         }
     }
@@ -169,60 +232,73 @@ namespace InvArch.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> propose_spend
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// >> spend_local
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ProposeSpend(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(value.Encode());
-            byteArray.AddRange(beneficiary.Encode());
-            return new Method(12, "Treasury", 0, "propose_spend", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> reject_proposal
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
-        /// </summary>
-        public static Method RejectProposal(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> proposal_id)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(proposal_id.Encode());
-            return new Method(12, "Treasury", 1, "reject_proposal", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> approve_proposal
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
-        /// </summary>
-        public static Method ApproveProposal(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> proposal_id)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(proposal_id.Encode());
-            return new Method(12, "Treasury", 2, "approve_proposal", byteArray.ToArray());
-        }
-        
-        /// <summary>
-        /// >> spend
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
-        /// </summary>
-        public static Method Spend(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary)
+        public static Method SpendLocal(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(amount.Encode());
             byteArray.AddRange(beneficiary.Encode());
-            return new Method(12, "Treasury", 3, "spend", byteArray.ToArray());
+            return new Method(12, "Treasury", 3, "spend_local", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> remove_approval
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method RemoveApproval(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> proposal_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(proposal_id.Encode());
             return new Method(12, "Treasury", 4, "remove_approval", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> spend
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method Spend(Substrate.NetApi.Model.Types.Base.BaseTuple asset_kind, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 beneficiary, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> valid_from)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(asset_kind.Encode());
+            byteArray.AddRange(amount.Encode());
+            byteArray.AddRange(beneficiary.Encode());
+            byteArray.AddRange(valid_from.Encode());
+            return new Method(12, "Treasury", 5, "spend", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> payout
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method Payout(Substrate.NetApi.Model.Types.Primitive.U32 index)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(index.Encode());
+            return new Method(12, "Treasury", 6, "payout", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> check_status
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method CheckStatus(Substrate.NetApi.Model.Types.Primitive.U32 index)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(index.Encode());
+            return new Method(12, "Treasury", 7, "check_status", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> void_spend
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method VoidSpend(Substrate.NetApi.Model.Types.Primitive.U32 index)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(index.Encode());
+            return new Method(12, "Treasury", 8, "void_spend", byteArray.ToArray());
         }
     }
     
@@ -231,40 +307,6 @@ namespace InvArch.NetApi.Generated.Storage
     /// </summary>
     public sealed class TreasuryConstants
     {
-        
-        /// <summary>
-        /// >> ProposalBond
-        ///  Fraction of a proposal's value that should be bonded in order to place the proposal.
-        ///  An accepted proposal gets these back. A rejected proposal does not.
-        /// </summary>
-        public InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Permill ProposalBond()
-        {
-            var result = new InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Permill();
-            result.Create("0x10270000");
-            return result;
-        }
-        
-        /// <summary>
-        /// >> ProposalBondMinimum
-        ///  Minimum amount of funds that should be placed in a deposit for making a proposal.
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 ProposalBondMinimum()
-        {
-            var result = new Substrate.NetApi.Model.Types.Primitive.U128();
-            result.Create("0x00407A10F35A00000000000000000000");
-            return result;
-        }
-        
-        /// <summary>
-        /// >> ProposalBondMaximum
-        ///  Maximum amount of funds that should be placed in a deposit for making a proposal.
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128> ProposalBondMaximum()
-        {
-            var result = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U128>();
-            result.Create("0x00");
-            return result;
-        }
         
         /// <summary>
         /// >> SpendPeriod
@@ -311,6 +353,17 @@ namespace InvArch.NetApi.Generated.Storage
             result.Create("0x64000000");
             return result;
         }
+        
+        /// <summary>
+        /// >> PayoutPeriod
+        ///  The period during which an approved treasury spend has to be claimed.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 PayoutPeriod()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0xC04B0300");
+            return result;
+        }
     }
     
     /// <summary>
@@ -320,14 +373,8 @@ namespace InvArch.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> InsufficientProposersBalance
-        /// Proposer's balance is too low.
-        /// </summary>
-        InsufficientProposersBalance,
-        
-        /// <summary>
         /// >> InvalidIndex
-        /// No proposal or bounty at that index.
+        /// No proposal, bounty or spend at that index.
         /// </summary>
         InvalidIndex,
         
@@ -349,5 +396,47 @@ namespace InvArch.NetApi.Generated.Storage
         /// Proposal has not been approved.
         /// </summary>
         ProposalNotApproved,
+        
+        /// <summary>
+        /// >> FailedToConvertBalance
+        /// The balance of the asset kind is not convertible to the balance of the native asset.
+        /// </summary>
+        FailedToConvertBalance,
+        
+        /// <summary>
+        /// >> SpendExpired
+        /// The spend has expired and cannot be claimed.
+        /// </summary>
+        SpendExpired,
+        
+        /// <summary>
+        /// >> EarlyPayout
+        /// The spend is not yet eligible for payout.
+        /// </summary>
+        EarlyPayout,
+        
+        /// <summary>
+        /// >> AlreadyAttempted
+        /// The payment has already been attempted.
+        /// </summary>
+        AlreadyAttempted,
+        
+        /// <summary>
+        /// >> PayoutError
+        /// There was some issue with the mechanism of payment.
+        /// </summary>
+        PayoutError,
+        
+        /// <summary>
+        /// >> NotAttempted
+        /// The payout was not yet attempted/claimed.
+        /// </summary>
+        NotAttempted,
+        
+        /// <summary>
+        /// >> Inconclusive
+        /// The payment has neither failed nor succeeded yet.
+        /// </summary>
+        Inconclusive,
     }
 }

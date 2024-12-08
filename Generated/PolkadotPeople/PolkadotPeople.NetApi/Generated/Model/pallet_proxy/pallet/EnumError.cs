@@ -72,7 +72,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_proxy.pallet
     }
     
     /// <summary>
-    /// >> 385 - Variant[pallet_proxy.pallet.Error]
+    /// >> 382 - Variant[pallet_proxy.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

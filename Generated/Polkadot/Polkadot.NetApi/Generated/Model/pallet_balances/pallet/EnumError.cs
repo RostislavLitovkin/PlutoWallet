@@ -96,7 +96,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_balances.pallet
     }
     
     /// <summary>
-    /// >> 590 - Variant[pallet_balances.pallet.Error]
+    /// >> 564 - Variant[pallet_balances.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

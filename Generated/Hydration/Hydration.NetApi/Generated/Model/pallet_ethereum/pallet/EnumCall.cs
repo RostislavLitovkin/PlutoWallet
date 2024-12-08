@@ -24,7 +24,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_ethereum.pallet
         
         /// <summary>
         /// >> transact
-        /// See [`Pallet::transact`].
+        /// Transact an Ethereum transaction.
         /// </summary>
         transact = 0,
     }

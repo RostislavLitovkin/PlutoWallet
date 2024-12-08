@@ -33,7 +33,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 284 - Variant[xcm.v2.multiasset.WildMultiAsset]
+    /// >> 285 - Variant[xcm.v2.multiasset.WildMultiAsset]
     /// </summary>
     public sealed class EnumWildMultiAsset : BaseEnumRust<WildMultiAsset>
     {

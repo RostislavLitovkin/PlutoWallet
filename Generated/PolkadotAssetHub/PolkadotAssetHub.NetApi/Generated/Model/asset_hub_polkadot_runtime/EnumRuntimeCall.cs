@@ -133,7 +133,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 346 - Variant[asset_hub_polkadot_runtime.RuntimeCall]
+    /// >> 348 - Variant[asset_hub_polkadot_runtime.RuntimeCall]
     /// </summary>
     public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {

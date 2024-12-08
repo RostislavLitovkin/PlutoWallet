@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool.types
     
     
     /// <summary>
-    /// >> 564 - Composite[pallet_omnipool.types.SimpleImbalance]
+    /// >> 567 - Composite[pallet_omnipool.types.SimpleImbalance]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SimpleImbalance : BaseType

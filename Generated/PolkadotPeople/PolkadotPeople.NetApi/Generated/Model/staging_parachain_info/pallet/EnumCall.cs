@@ -24,7 +24,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.staging_parachain_info.pallet
     }
     
     /// <summary>
-    /// >> 197 - Variant[staging_parachain_info.pallet.Call]
+    /// >> 196 - Variant[staging_parachain_info.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnum<Call>

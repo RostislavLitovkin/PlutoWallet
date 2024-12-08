@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2.multilocation
     
     
     /// <summary>
-    /// >> 98 - Composite[xcm.v2.multilocation.MultiLocation]
+    /// >> 54 - Composite[xcm.v2.multilocation.MultiLocation]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiLocation : BaseType

@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.orml_vesting
     
     
     /// <summary>
-    /// >> 45 - Composite[orml_vesting.VestingSchedule]
+    /// >> 46 - Composite[orml_vesting.VestingSchedule]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class VestingSchedule : BaseType

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_stableswap.types
     
     
     /// <summary>
-    /// >> 604 - Composite[pallet_stableswap.types.PoolInfo]
+    /// >> 608 - Composite[pallet_stableswap.types.PoolInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PoolInfo : BaseType
@@ -27,7 +27,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_stableswap.types
         /// <summary>
         /// >> assets
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37 Assets { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42 Assets { get; set; }
         /// <summary>
         /// >> initial_amplification
         /// </summary>
@@ -72,7 +72,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_stableswap.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Assets = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37();
+            Assets = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT42();
             Assets.Decode(byteArray, ref p);
             InitialAmplification = new Hydration.NetApi.Generated.Types.Base.NonZeroU16();
             InitialAmplification.Decode(byteArray, ref p);

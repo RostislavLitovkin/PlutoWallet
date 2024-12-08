@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_elections_phragmen
     
     
     /// <summary>
-    /// >> 525 - Composite[pallet_elections_phragmen.Voter]
+    /// >> 528 - Composite[pallet_elections_phragmen.Voter]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Voter : BaseType

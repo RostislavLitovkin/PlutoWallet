@@ -51,15 +51,17 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionNotifyTargets"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.xcm.EnumVersionedLocation>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U64, PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Primitive.U32>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionDiscoveryQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "VersionDiscoveryQueue"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "CurrentMigration"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm.pallet.EnumVersionMigrationStage)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "RemoteLockedFungibles"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.xcm.EnumVersionedAssetId>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_xcm.pallet.RemoteLockedFungibleRecord)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "LockedFungibles"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "XcmExecutionSuspended"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "ShouldRecordXcm"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PolkadotXcm", "RecordedXcm"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.XcmT1)));
         }
         
         /// <summary>
@@ -311,10 +313,10 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         ///  the `u32` counter is the number of times that a send to the destination has been attempted,
         ///  which is used as a prioritization.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17> VersionDiscoveryQueue(string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18> VersionDiscoveryQueue(string blockhash, CancellationToken token)
         {
             string parameters = PolkadotXcmStorage.VersionDiscoveryQueueParams();
-            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18>(parameters, blockhash, token);
             return result;
         }
         
@@ -403,10 +405,10 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> LockedFungibles
         ///  Fungible assets which we know are locked on this chain.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19> LockedFungibles(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20> LockedFungibles(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = PolkadotXcmStorage.LockedFungiblesParams(key);
-            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>(parameters, blockhash, token);
             return result;
         }
         
@@ -436,6 +438,86 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         {
             string parameters = PolkadotXcmStorage.XcmExecutionSuspendedParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcmParams
+        ///  Whether or not incoming XCMs (both executed locally and received) should be recorded.
+        ///  Only one XCM program will be recorded at a time.
+        ///  This is meant to be used in runtime APIs, and it's advised it stays false
+        ///  for all other use cases, so as to not degrade regular performance.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public static string ShouldRecordXcmParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "ShouldRecordXcm", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcmDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string ShouldRecordXcmDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> ShouldRecordXcm
+        ///  Whether or not incoming XCMs (both executed locally and received) should be recorded.
+        ///  Only one XCM program will be recorded at a time.
+        ///  This is meant to be used in runtime APIs, and it's advised it stays false
+        ///  for all other use cases, so as to not degrade regular performance.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> ShouldRecordXcm(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.ShouldRecordXcmParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> RecordedXcmParams
+        ///  If [`ShouldRecordXcm`] is set to true, then the last XCM program executed locally
+        ///  will be stored here.
+        ///  Runtime APIs can fetch the XCM that was executed by accessing this value.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public static string RecordedXcmParams()
+        {
+            return RequestGenerator.GetStorage("PolkadotXcm", "RecordedXcm", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> RecordedXcmDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string RecordedXcmDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> RecordedXcm
+        ///  If [`ShouldRecordXcm`] is set to true, then the last XCM program executed locally
+        ///  will be stored here.
+        ///  Runtime APIs can fetch the XCM that was executed by accessing this value.
+        /// 
+        ///  Only relevant if this pallet is being used as the [`xcm_executor::traits::RecordXcm`]
+        ///  implementation in the XCM executor configuration.
+        /// </summary>
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.XcmT1> RecordedXcm(string blockhash, CancellationToken token)
+        {
+            string parameters = PolkadotXcmStorage.RecordedXcmParams();
+            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.XcmT1>(parameters, blockhash, token);
             return result;
         }
     }
@@ -764,12 +846,6 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// The unlock operation cannot succeed because there are still consumers of the lock.
         /// </summary>
         InUse,
-        
-        /// <summary>
-        /// >> InvalidAssetNotConcrete
-        /// Invalid non-concrete asset.
-        /// </summary>
-        InvalidAssetNotConcrete,
         
         /// <summary>
         /// >> InvalidAssetUnknownReserve

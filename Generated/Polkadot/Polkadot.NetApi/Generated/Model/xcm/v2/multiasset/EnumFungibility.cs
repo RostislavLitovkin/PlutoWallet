@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 397 - Variant[xcm.v2.multiasset.Fungibility]
+    /// >> 362 - Variant[xcm.v2.multiasset.Fungibility]
     /// </summary>
     public sealed class EnumFungibility : BaseEnumRust<Fungibility>
     {

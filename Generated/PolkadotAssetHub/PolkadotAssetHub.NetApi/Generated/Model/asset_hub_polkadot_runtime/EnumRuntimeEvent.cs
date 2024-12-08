@@ -128,7 +128,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 20 - Variant[asset_hub_polkadot_runtime.RuntimeEvent]
+    /// >> 21 - Variant[asset_hub_polkadot_runtime.RuntimeEvent]
     /// </summary>
     public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {

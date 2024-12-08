@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_core.crypto
     
     
     /// <summary>
-    /// >> 231 - Composite[sp_core.crypto.KeyTypeId]
+    /// >> 229 - Composite[sp_core.crypto.KeyTypeId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class KeyTypeId : BaseType

@@ -39,6 +39,7 @@ namespace InvArch.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.frame_system.AccountInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "InherentsApplied"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AllExtrinsicsLen"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -56,6 +57,7 @@ namespace InvArch.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "UpgradedToU32RefCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "UpgradedToTripleRefCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExecutionPhase"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.frame_system.EnumPhase)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AuthorizedUpgrade"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.frame_system.CodeUpgradeAuthorization)));
         }
         
         /// <summary>
@@ -117,6 +119,35 @@ namespace InvArch.NetApi.Generated.Storage
         {
             string parameters = SystemStorage.ExtrinsicCountParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedParams
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public static string InherentsAppliedParams()
+        {
+            return RequestGenerator.GetStorage("System", "InherentsApplied", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string InherentsAppliedDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> InherentsApplied
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> InherentsApplied(string blockhash, CancellationToken token)
+        {
+            string parameters = SystemStorage.InherentsAppliedParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
             return result;
         }
         
@@ -406,7 +437,7 @@ namespace InvArch.NetApi.Generated.Storage
         ///  allows light-clients to leverage the changes trie storage tracking mechanism and
         ///  in case of changes fetch the list of events of interest.
         /// 
-        ///  The value has the type `(T::BlockNumber, EventIndex)` because if we used only just
+        ///  The value has the type `(BlockNumberFor<T>, EventIndex)` because if we used only just
         ///  the `EventIndex` then in case if the topic has the same contents on the next block
         ///  no notification will be triggered thus the event might be lost.
         /// </summary>
@@ -435,7 +466,7 @@ namespace InvArch.NetApi.Generated.Storage
         ///  allows light-clients to leverage the changes trie storage tracking mechanism and
         ///  in case of changes fetch the list of events of interest.
         /// 
-        ///  The value has the type `(T::BlockNumber, EventIndex)` because if we used only just
+        ///  The value has the type `(BlockNumberFor<T>, EventIndex)` because if we used only just
         ///  the `EventIndex` then in case if the topic has the same contents on the next block
         ///  no notification will be triggered thus the event might be lost.
         /// </summary>
@@ -563,6 +594,35 @@ namespace InvArch.NetApi.Generated.Storage
             var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.frame_system.EnumPhase>(parameters, blockhash, token);
             return result;
         }
+        
+        /// <summary>
+        /// >> AuthorizedUpgradeParams
+        ///  `Some` if a code upgrade has been authorized.
+        /// </summary>
+        public static string AuthorizedUpgradeParams()
+        {
+            return RequestGenerator.GetStorage("System", "AuthorizedUpgrade", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> AuthorizedUpgradeDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string AuthorizedUpgradeDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> AuthorizedUpgrade
+        ///  `Some` if a code upgrade has been authorized.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.frame_system.CodeUpgradeAuthorization> AuthorizedUpgrade(string blockhash, CancellationToken token)
+        {
+            string parameters = SystemStorage.AuthorizedUpgradeParams();
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.frame_system.CodeUpgradeAuthorization>(parameters, blockhash, token);
+            return result;
+        }
     }
     
     /// <summary>
@@ -573,7 +633,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> remark
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Remark(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> remark)
         {
@@ -584,7 +644,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_heap_pages
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetHeapPages(Substrate.NetApi.Model.Types.Primitive.U64 pages)
         {
@@ -595,7 +655,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_code
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetCode(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code)
         {
@@ -606,7 +666,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_code_without_checks
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetCodeWithoutChecks(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code)
         {
@@ -617,7 +677,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_storage
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetStorage(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>>> items)
         {
@@ -628,7 +688,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> kill_storage
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method KillStorage(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>> keys)
         {
@@ -639,7 +699,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> kill_prefix
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method KillPrefix(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> prefix, Substrate.NetApi.Model.Types.Primitive.U32 subkeys)
         {
@@ -651,13 +711,46 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> remark_with_event
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method RemarkWithEvent(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> remark)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(remark.Encode());
             return new Method(0, "System", 7, "remark_with_event", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> authorize_upgrade
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AuthorizeUpgrade(InvArch.NetApi.Generated.Model.primitive_types.H256 code_hash)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(code_hash.Encode());
+            return new Method(0, "System", 9, "authorize_upgrade", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> authorize_upgrade_without_checks
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AuthorizeUpgradeWithoutChecks(InvArch.NetApi.Generated.Model.primitive_types.H256 code_hash)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(code_hash.Encode());
+            return new Method(0, "System", 10, "authorize_upgrade_without_checks", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> apply_authorized_upgrade
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ApplyAuthorizedUpgrade(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> code)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(code.Encode());
+            return new Method(0, "System", 11, "apply_authorized_upgrade", byteArray.ToArray());
         }
     }
     
@@ -715,12 +808,12 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Version
-        ///  Get the chain's current version.
+        ///  Get the chain's in-code version.
         /// </summary>
         public InvArch.NetApi.Generated.Model.sp_version.RuntimeVersion Version()
         {
             var result = new InvArch.NetApi.Generated.Model.sp_version.RuntimeVersion();
-            result.Create(@"0x1C696E76617263681C696E76617263680100000007000000000000002CDD718D5CC53262D401000000DF6ACB689907609B0400000037E397FC7C91F5E40200000040FE3AD401F8959A06000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB52705903000000EA93E3F16F3D6962020000000100000001");
+            result.Create(@"0x1C696E76617263681C696E7661726368010000000A0000000000000038DD718D5CC53262D401000000D7BDD8A272CA0D6501000000DF6ACB689907609B0500000037E397FC7C91F5E40200000040FE3AD401F8959A06000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB5270590300000068B66BA122C93FA702000000EA93E3F16F3D696202000000FBC577B9D747EFD6010000000100000001");
             return result;
         }
         
@@ -785,5 +878,23 @@ namespace InvArch.NetApi.Generated.Storage
         /// The origin filter prevent the call to be dispatched.
         /// </summary>
         CallFiltered,
+        
+        /// <summary>
+        /// >> MultiBlockMigrationsOngoing
+        /// A multi-block migration is ongoing and prevents the current code from being replaced.
+        /// </summary>
+        MultiBlockMigrationsOngoing,
+        
+        /// <summary>
+        /// >> NothingAuthorized
+        /// No upgrade authorized.
+        /// </summary>
+        NothingAuthorized,
+        
+        /// <summary>
+        /// >> Unauthorized
+        /// The submitted code is not authorized.
+        /// </summary>
+        Unauthorized,
     }
 }

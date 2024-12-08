@@ -263,7 +263,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
     }
     
     /// <summary>
-    /// >> 190 - Variant[xcm.v3.Instruction]
+    /// >> 251 - Variant[xcm.v3.Instruction]
     /// </summary>
     public sealed class EnumInstruction : BaseEnumRust<Instruction>
     {
@@ -276,34 +276,34 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Instruction.WithdrawAsset);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Instruction.ReserveAssetDeposited);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Instruction.ReceiveTeleportedAsset);
-				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>, InvArch.NetApi.Generated.Model.xcm.v3.EnumResponse, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>>(Instruction.QueryResponse);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.TransferAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.TransferReserveAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v2.EnumOriginKind, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, InvArch.NetApi.Generated.Model.xcm.double_encoded.DoubleEncodedT2>>(Instruction.Transact);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>, InvArch.NetApi.Generated.Model.xcm.v3.EnumResponse, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>>(Instruction.QueryResponse);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.TransferAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.TransferReserveAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.EnumOriginKind, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight, InvArch.NetApi.Generated.Model.xcm.double_encoded.DoubleEncodedT2>>(Instruction.Transact);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Instruction.HrmpNewChannelOpenRequest);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>(Instruction.HrmpChannelAccepted);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32>>>(Instruction.HrmpChannelClosing);
 				AddTypeDecoder<BaseVoid>(Instruction.ClearOrigin);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.junctions.EnumJunctions>(Instruction.DescendOrigin);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.QueryResponseInfo>(Instruction.ReportError);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.DepositAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.DepositReserveAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.DepositAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.DepositReserveAsset);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, Substrate.NetApi.Model.Types.Primitive.Bool>>(Instruction.ExchangeAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.InitiateReserveWithdraw);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.InitiateTeleport);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.InitiateReserveWithdraw);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.InitiateTeleport);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.QueryResponseInfo, InvArch.NetApi.Generated.Model.xcm.v3.multiasset.EnumMultiAssetFilter>>(Instruction.ReportHolding);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Instruction.BuyExecution);
 				AddTypeDecoder<BaseVoid>(Instruction.RefundSurplus);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.XcmT2>(Instruction.SetErrorHandler);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.XcmT2>(Instruction.SetAppendix);
 				AddTypeDecoder<BaseVoid>(Instruction.ClearError);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.ClaimAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.ClaimAsset);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>(Instruction.Trap);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Instruction.SubscribeVersion);
 				AddTypeDecoder<BaseVoid>(Instruction.UnsubscribeVersion);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Instruction.BurnAsset);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAssets>(Instruction.ExpectAsset);
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.ExpectOrigin);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.ExpectOrigin);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.traits.EnumError>>>(Instruction.ExpectError);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.EnumMaybeErrorCode>(Instruction.ExpectTransactStatus);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8>, InvArch.NetApi.Generated.Model.xcm.v3.QueryResponseInfo>>(Instruction.QueryPallet);
@@ -312,15 +312,15 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
 				AddTypeDecoder<BaseVoid>(Instruction.ClearTransactStatus);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.junction.EnumJunction>(Instruction.UniversalOrigin);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.junction.EnumNetworkId, InvArch.NetApi.Generated.Model.xcm.v3.junctions.EnumJunctions, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Instruction.ExportMessage);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.LockAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.UnlockAsset);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.NoteUnlockable);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>(Instruction.RequestUnlock);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.LockAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.UnlockAsset);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.NoteUnlockable);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multiasset.MultiAsset, InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Instruction.RequestUnlock);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.Bool>(Instruction.SetFeesMode);
 				AddTypeDecoder<InvArch.NetApi.Generated.Types.Base.Arr32U8>(Instruction.SetTopic);
 				AddTypeDecoder<BaseVoid>(Instruction.ClearTopic);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>(Instruction.AliasOrigin);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>>>(Instruction.UnpaidExecution);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(Instruction.AliasOrigin);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>>(Instruction.UnpaidExecution);
         }
     }
 }

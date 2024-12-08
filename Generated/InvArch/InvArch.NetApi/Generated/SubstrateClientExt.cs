@@ -65,6 +65,11 @@ namespace InvArch.NetApi.Generated
         public TxPauseStorage TxPauseStorage;
         
         /// <summary>
+        /// RandomnessCollectiveFlipStorage storage calls.
+        /// </summary>
+        public RandomnessCollectiveFlipStorage RandomnessCollectiveFlipStorage;
+        
+        /// <summary>
         /// BalancesStorage storage calls.
         /// </summary>
         public BalancesStorage BalancesStorage;
@@ -83,6 +88,26 @@ namespace InvArch.NetApi.Generated
         /// VestingStorage storage calls.
         /// </summary>
         public VestingStorage VestingStorage;
+        
+        /// <summary>
+        /// AssetRegistryStorage storage calls.
+        /// </summary>
+        public AssetRegistryStorage AssetRegistryStorage;
+        
+        /// <summary>
+        /// CurrenciesStorage storage calls.
+        /// </summary>
+        public CurrenciesStorage CurrenciesStorage;
+        
+        /// <summary>
+        /// TokensStorage storage calls.
+        /// </summary>
+        public TokensStorage TokensStorage;
+        
+        /// <summary>
+        /// XTokensStorage storage calls.
+        /// </summary>
+        public XTokensStorage XTokensStorage;
         
         /// <summary>
         /// AuthorshipStorage storage calls.
@@ -125,19 +150,24 @@ namespace InvArch.NetApi.Generated
         public CumulusXcmStorage CumulusXcmStorage;
         
         /// <summary>
-        /// DmpQueueStorage storage calls.
-        /// </summary>
-        public DmpQueueStorage DmpQueueStorage;
-        
-        /// <summary>
         /// OrmlXcmStorage storage calls.
         /// </summary>
         public OrmlXcmStorage OrmlXcmStorage;
         
         /// <summary>
+        /// MessageQueueStorage storage calls.
+        /// </summary>
+        public MessageQueueStorage MessageQueueStorage;
+        
+        /// <summary>
         /// IdentityStorage storage calls.
         /// </summary>
         public IdentityStorage IdentityStorage;
+        
+        /// <summary>
+        /// ContractsStorage storage calls.
+        /// </summary>
+        public ContractsStorage ContractsStorage;
         
         /// <summary>
         /// CheckedInflationStorage storage calls.
@@ -170,10 +200,15 @@ namespace InvArch.NetApi.Generated
             this.SudoStorage = new SudoStorage(this);
             this.UtilityStorage = new UtilityStorage(this);
             this.TxPauseStorage = new TxPauseStorage(this);
+            this.RandomnessCollectiveFlipStorage = new RandomnessCollectiveFlipStorage(this);
             this.BalancesStorage = new BalancesStorage(this);
             this.TransactionPaymentStorage = new TransactionPaymentStorage(this);
             this.TreasuryStorage = new TreasuryStorage(this);
             this.VestingStorage = new VestingStorage(this);
+            this.AssetRegistryStorage = new AssetRegistryStorage(this);
+            this.CurrenciesStorage = new CurrenciesStorage(this);
+            this.TokensStorage = new TokensStorage(this);
+            this.XTokensStorage = new XTokensStorage(this);
             this.AuthorshipStorage = new AuthorshipStorage(this);
             this.CollatorSelectionStorage = new CollatorSelectionStorage(this);
             this.SessionStorage = new SessionStorage(this);
@@ -182,9 +217,10 @@ namespace InvArch.NetApi.Generated
             this.XcmpQueueStorage = new XcmpQueueStorage(this);
             this.PolkadotXcmStorage = new PolkadotXcmStorage(this);
             this.CumulusXcmStorage = new CumulusXcmStorage(this);
-            this.DmpQueueStorage = new DmpQueueStorage(this);
             this.OrmlXcmStorage = new OrmlXcmStorage(this);
+            this.MessageQueueStorage = new MessageQueueStorage(this);
             this.IdentityStorage = new IdentityStorage(this);
+            this.ContractsStorage = new ContractsStorage(this);
             this.CheckedInflationStorage = new CheckedInflationStorage(this);
             this.OcifStakingStorage = new OcifStakingStorage(this);
             this.INV4Storage = new INV4Storage(this);

@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 29 - Variant[sp_runtime.TransactionalError]
+    /// >> 30 - Variant[sp_runtime.TransactionalError]
     /// </summary>
     public sealed class EnumTransactionalError : BaseEnum<TransactionalError>
     {

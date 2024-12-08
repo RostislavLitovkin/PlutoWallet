@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.frame_support.traits.tokens.misc
     }
     
     /// <summary>
-    /// >> 41 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
+    /// >> 42 - Variant[frame_support.traits.tokens.misc.BalanceStatus]
     /// </summary>
     public sealed class EnumBalanceStatus : BaseEnum<BalanceStatus>
     {

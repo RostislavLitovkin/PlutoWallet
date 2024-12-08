@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -76,11 +73,8 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet
     }
     
     /// <summary>
-    /// >> 279 - Variant[cumulus_pallet_parachain_system.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 360 - Variant[cumulus_pallet_parachain_system.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

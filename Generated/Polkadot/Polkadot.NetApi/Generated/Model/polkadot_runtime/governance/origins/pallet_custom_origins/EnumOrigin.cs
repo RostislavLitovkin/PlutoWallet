@@ -98,7 +98,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime.governance.origins.pa
     }
     
     /// <summary>
-    /// >> 172 - Variant[polkadot_runtime.governance.origins.pallet_custom_origins.Origin]
+    /// >> 161 - Variant[polkadot_runtime.governance.origins.pallet_custom_origins.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnum<Origin>
     {

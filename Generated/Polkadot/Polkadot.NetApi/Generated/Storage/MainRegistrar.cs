@@ -365,10 +365,10 @@ namespace Polkadot.NetApi.Generated.Storage
         NotReserved,
         
         /// <summary>
-        /// >> EmptyCode
-        /// Registering parachain with empty code is not allowed.
+        /// >> InvalidCode
+        /// The validation code is invalid.
         /// </summary>
-        EmptyCode,
+        InvalidCode,
         
         /// <summary>
         /// >> CannotSwap

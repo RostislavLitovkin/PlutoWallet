@@ -48,7 +48,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
     }
     
     /// <summary>
-    /// >> 151 - Variant[invarch_runtime.OriginCaller]
+    /// >> 186 - Variant[invarch_runtime.OriginCaller]
     /// </summary>
     public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {
@@ -61,7 +61,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.frame_support.dispatch.EnumRawOrigin>(OriginCaller.system);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumOrigin>(OriginCaller.PolkadotXcm);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumOrigin>(OriginCaller.CumulusXcm);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_inv4.origin.EnumINV4Origin>(OriginCaller.INV4);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_dao_manager.origin.EnumDaoOrigin>(OriginCaller.INV4);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseVoid>(OriginCaller.Void);
         }
     }

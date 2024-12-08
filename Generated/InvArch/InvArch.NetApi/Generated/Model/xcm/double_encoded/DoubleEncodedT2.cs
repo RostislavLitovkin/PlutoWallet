@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.double_encoded
     
     
     /// <summary>
-    /// >> 187 - Composite[xcm.double_encoded.DoubleEncodedT2]
+    /// >> 248 - Composite[xcm.double_encoded.DoubleEncodedT2]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DoubleEncodedT2 : BaseType

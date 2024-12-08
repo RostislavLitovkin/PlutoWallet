@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_ema_oracle.types
     
     
     /// <summary>
-    /// >> 750 - Composite[pallet_ema_oracle.types.OracleEntry]
+    /// >> 754 - Composite[pallet_ema_oracle.types.OracleEntry]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OracleEntry : BaseType

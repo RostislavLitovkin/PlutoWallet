@@ -71,7 +71,7 @@ namespace Hydration.NetApi.Generated.Model.orml_tokens.module
     }
     
     /// <summary>
-    /// >> 624 - Variant[orml_tokens.module.Error]
+    /// >> 628 - Variant[orml_tokens.module.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

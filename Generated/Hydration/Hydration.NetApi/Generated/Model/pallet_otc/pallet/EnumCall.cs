@@ -24,31 +24,78 @@ namespace Hydration.NetApi.Generated.Model.pallet_otc.pallet
         
         /// <summary>
         /// >> place_order
-        /// See [`Pallet::place_order`].
+        /// Create a new OTC order
+        ///  
+        /// Parameters:
+        /// - `asset_in`: Asset which is being bought
+        /// - `asset_out`: Asset which is being sold
+        /// - `amount_in`: Amount that the order is seeking to buy
+        /// - `amount_out`: Amount that the order is selling
+        /// - `partially_fillable`: Flag indicating whether users can fill the order partially
+        /// 
+        /// Validations:
+        /// - asset_in must be registered
+        /// - amount_in must be higher than the existential deposit of asset_in multiplied by
+        ///   ExistentialDepositMultiplier
+        /// - amount_out must be higher than the existential deposit of asset_out multiplied by
+        ///   ExistentialDepositMultiplier
+        /// 
+        /// Events:
+        /// - `Placed` event when successful.
         /// </summary>
         place_order = 0,
         
         /// <summary>
         /// >> partial_fill_order
-        /// See [`Pallet::partial_fill_order`].
+        /// Fill an OTC order (partially)
+        ///  
+        /// Parameters:
+        /// - `order_id`: ID of the order
+        /// - `amount_in`: Amount with which the order is being filled
+        /// 
+        /// Validations:
+        /// - order must be partially_fillable
+        /// - after the partial_fill, the remaining order.amount_in must be higher than the existential deposit
+        ///   of asset_in multiplied by ExistentialDepositMultiplier
+        /// - after the partial_fill, the remaining order.amount_out must be higher than the existential deposit
+        ///   of asset_out multiplied by ExistentialDepositMultiplier
+        /// 
+        /// Events:
+        /// `PartiallyFilled` event when successful.
         /// </summary>
         partial_fill_order = 1,
         
         /// <summary>
         /// >> fill_order
-        /// See [`Pallet::fill_order`].
+        /// Fill an OTC order (completely)
+        ///  
+        /// Parameters:
+        /// - `order_id`: ID of the order
+        /// 
+        /// Events:
+        /// `Filled` event when successful.
         /// </summary>
         fill_order = 2,
         
         /// <summary>
         /// >> cancel_order
-        /// See [`Pallet::cancel_order`].
+        /// Cancel an open OTC order
+        ///  
+        /// Parameters:
+        /// - `order_id`: ID of the order
+        /// - `asset`: Asset which is being filled
+        /// - `amount`: Amount which is being filled
+        /// 
+        /// Validations:
+        /// - caller is order owner
+        /// 
+        /// Emits `Cancelled` event when successful.
         /// </summary>
         cancel_order = 3,
     }
     
     /// <summary>
-    /// >> 370 - Variant[pallet_otc.pallet.Call]
+    /// >> 369 - Variant[pallet_otc.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

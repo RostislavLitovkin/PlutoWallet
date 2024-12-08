@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_message_queue
     
     
     /// <summary>
-    /// >> 311 - Composite[pallet_message_queue.Neighbours]
+    /// >> 312 - Composite[pallet_message_queue.Neighbours]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Neighbours : BaseType

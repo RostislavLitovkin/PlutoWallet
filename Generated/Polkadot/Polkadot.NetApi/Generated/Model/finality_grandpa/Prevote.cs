@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.finality_grandpa
     
     
     /// <summary>
-    /// >> 154 - Composite[finality_grandpa.Prevote]
+    /// >> 144 - Composite[finality_grandpa.Prevote]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Prevote : BaseType

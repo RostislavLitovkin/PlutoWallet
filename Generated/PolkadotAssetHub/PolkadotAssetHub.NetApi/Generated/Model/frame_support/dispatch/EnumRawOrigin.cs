@@ -38,7 +38,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.frame_support.dispatch
     }
     
     /// <summary>
-    /// >> 385 - Variant[frame_support.dispatch.RawOrigin]
+    /// >> 384 - Variant[frame_support.dispatch.RawOrigin]
     /// </summary>
     public sealed class EnumRawOrigin : BaseEnumRust<RawOrigin>
     {

@@ -115,5 +115,19 @@ namespace PolkadotPeople.NetApi.Generated.Storage
     /// </summary>
     public sealed class AuraConstants
     {
+        
+        /// <summary>
+        /// >> SlotDuration
+        ///  The slot duration Aura should run with, expressed in milliseconds.
+        ///  The effective value of this type should not change while the chain is running.
+        /// 
+        ///  For backwards compatibility either use [`MinimumPeriodTimesTwo`] or a const.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U64 SlotDuration()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U64();
+            result.Create("0xE02E000000000000");
+            return result;
+        }
     }
 }

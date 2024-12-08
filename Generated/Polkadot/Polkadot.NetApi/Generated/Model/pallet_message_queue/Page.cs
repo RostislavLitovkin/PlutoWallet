@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_message_queue
     
     
     /// <summary>
-    /// >> 850 - Composite[pallet_message_queue.Page]
+    /// >> 834 - Composite[pallet_message_queue.Page]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Page : BaseType
@@ -47,7 +47,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_message_queue
         /// <summary>
         /// >> heap
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT44 Heap { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39 Heap { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -82,7 +82,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_message_queue
             First.Decode(byteArray, ref p);
             Last = new Substrate.NetApi.Model.Types.Primitive.U32();
             Last.Decode(byteArray, ref p);
-            Heap = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT44();
+            Heap = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39();
             Heap.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_authority_discovery.app
     
     
     /// <summary>
-    /// >> 146 - Composite[sp_authority_discovery.app.Public]
+    /// >> 137 - Composite[sp_authority_discovery.app.Public]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Public : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_authority_discovery.app
         /// <summary>
         /// >> value
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.sp_core.sr25519.Public Value { get; set; }
+        public Polkadot.NetApi.Generated.Types.Base.Arr32U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_authority_discovery.app
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Polkadot.NetApi.Generated.Model.sp_core.sr25519.Public();
+            Value = new Polkadot.NetApi.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

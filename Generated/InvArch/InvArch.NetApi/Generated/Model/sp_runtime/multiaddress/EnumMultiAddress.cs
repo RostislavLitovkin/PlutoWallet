@@ -48,7 +48,7 @@ namespace InvArch.NetApi.Generated.Model.sp_runtime.multiaddress
     }
     
     /// <summary>
-    /// >> 146 - Variant[sp_runtime.multiaddress.MultiAddress]
+    /// >> 181 - Variant[sp_runtime.multiaddress.MultiAddress]
     /// </summary>
     public sealed class EnumMultiAddress : BaseEnumRust<MultiAddress>
     {

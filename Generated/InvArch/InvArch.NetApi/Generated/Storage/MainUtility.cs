@@ -47,7 +47,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> batch
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Batch(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall> calls)
         {
@@ -58,7 +58,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> as_derivative
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method AsDerivative(Substrate.NetApi.Model.Types.Primitive.U16 index, InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall call)
         {
@@ -70,7 +70,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> batch_all
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method BatchAll(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall> calls)
         {
@@ -81,7 +81,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> dispatch_as
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method DispatchAs(InvArch.NetApi.Generated.Model.invarch_runtime.EnumOriginCaller as_origin, InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall call)
         {
@@ -93,7 +93,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_batch
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceBatch(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall> calls)
         {
@@ -104,7 +104,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> with_weight
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method WithWeight(InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall call, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight weight)
         {

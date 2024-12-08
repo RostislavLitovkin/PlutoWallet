@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras
     }
     
     /// <summary>
-    /// >> 773 - Variant[polkadot_runtime_parachains.paras.PvfCheckCause]
+    /// >> 734 - Variant[polkadot_runtime_parachains.paras.PvfCheckCause]
     /// </summary>
     public sealed class EnumPvfCheckCause : BaseEnumRust<PvfCheckCause>
     {
@@ -44,7 +44,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras
         public EnumPvfCheckCause()
         {
 				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(PvfCheckCause.Onboarding);
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumSetGoAhead>>(PvfCheckCause.Upgrade);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.EnumUpgradeStrategy>>(PvfCheckCause.Upgrade);
         }
     }
 }

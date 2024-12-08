@@ -36,7 +36,8 @@ namespace InvArch.NetApi.Generated.Storage
         public AuraExtStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("AuraExt", "SlotInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_consensus_slots.Slot, Substrate.NetApi.Model.Types.Primitive.U32>)));
         }
         
         /// <summary>
@@ -44,8 +45,8 @@ namespace InvArch.NetApi.Generated.Storage
         ///  Serves as cache for the authorities.
         /// 
         ///  The authorities in AuRa are overwritten in `on_initialize` when we switch to a new session,
-        ///  but we require the old authorities to verify the seal when validating a PoV. This will always
-        ///  be updated to the latest AuRa authorities in `on_finalize`.
+        ///  but we require the old authorities to verify the seal when validating a PoV. This will
+        ///  always be updated to the latest AuRa authorities in `on_finalize`.
         /// </summary>
         public static string AuthoritiesParams()
         {
@@ -66,13 +67,46 @@ namespace InvArch.NetApi.Generated.Storage
         ///  Serves as cache for the authorities.
         /// 
         ///  The authorities in AuRa are overwritten in `on_initialize` when we switch to a new session,
-        ///  but we require the old authorities to verify the seal when validating a PoV. This will always
-        ///  be updated to the latest AuRa authorities in `on_finalize`.
+        ///  but we require the old authorities to verify the seal when validating a PoV. This will
+        ///  always be updated to the latest AuRa authorities in `on_finalize`.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17> Authorities(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23> Authorities(string blockhash, CancellationToken token)
         {
             string parameters = AuraExtStorage.AuthoritiesParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> SlotInfoParams
+        ///  Current slot paired with a number of authored blocks.
+        /// 
+        ///  Updated on each block initialization.
+        /// </summary>
+        public static string SlotInfoParams()
+        {
+            return RequestGenerator.GetStorage("AuraExt", "SlotInfo", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> SlotInfoDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SlotInfoDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> SlotInfo
+        ///  Current slot paired with a number of authored blocks.
+        /// 
+        ///  Updated on each block initialization.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_consensus_slots.Slot, Substrate.NetApi.Model.Types.Primitive.U32>> SlotInfo(string blockhash, CancellationToken token)
+        {
+            string parameters = AuraExtStorage.SlotInfoParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_consensus_slots.Slot, Substrate.NetApi.Model.Types.Primitive.U32>>(parameters, blockhash, token);
             return result;
         }
     }

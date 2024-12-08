@@ -68,7 +68,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2.junction
     }
     
     /// <summary>
-    /// >> 100 - Variant[xcm.v2.junction.Junction]
+    /// >> 56 - Variant[xcm.v2.junction.Junction]
     /// </summary>
     public sealed class EnumJunction : BaseEnumRust<Junction>
     {

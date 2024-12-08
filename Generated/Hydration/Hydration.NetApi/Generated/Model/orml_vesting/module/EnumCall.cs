@@ -24,25 +24,21 @@ namespace Hydration.NetApi.Generated.Model.orml_vesting.module
         
         /// <summary>
         /// >> claim
-        /// See [`Pallet::claim`].
         /// </summary>
         claim = 0,
         
         /// <summary>
         /// >> vested_transfer
-        /// See [`Pallet::vested_transfer`].
         /// </summary>
         vested_transfer = 1,
         
         /// <summary>
         /// >> update_vesting_schedules
-        /// See [`Pallet::update_vesting_schedules`].
         /// </summary>
         update_vesting_schedules = 2,
         
         /// <summary>
         /// >> claim_for
-        /// See [`Pallet::claim_for`].
         /// </summary>
         claim_for = 3,
     }

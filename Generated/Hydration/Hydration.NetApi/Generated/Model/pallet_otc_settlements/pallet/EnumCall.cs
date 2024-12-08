@@ -24,7 +24,26 @@ namespace Hydration.NetApi.Generated.Model.pallet_otc_settlements.pallet
         
         /// <summary>
         /// >> settle_otc_order
-        /// See [`Pallet::settle_otc_order`].
+        /// Close an existing OTC arbitrage opportunity.
+        /// 
+        /// Executes a trade between an OTC order and some route.
+        /// If the OTC order is partially fillable, the extrinsic fails if the existing arbitrage
+        /// opportunity is not closed or reduced after the trade.
+        /// If the OTC order is not partially fillable, fails if there is no profit after the trade.
+        /// 
+        /// `Origin` calling this extrinsic is not paying or receiving anything.
+        /// 
+        /// The profit made by closing the arbitrage is transferred to `FeeReceiver`.
+        /// 
+        /// Parameters:
+        /// - `origin`: Signed or unsigned origin. Unsigned origin doesn't pay the TX fee,
+        /// 			but can be submitted only by a collator.
+        /// - `otc_id`: ID of the OTC order with existing arbitrage opportunity.
+        /// - `amount`: Amount necessary to close the arb.
+        /// - `route`: The route we trade against. Required for the fee calculation.
+        /// 
+        /// Emits `Executed` event when successful.
+        /// 
         /// </summary>
         settle_otc_order = 0,
     }

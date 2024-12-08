@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.extensions.check_tx_versio
     
     
     /// <summary>
-    /// >> 394 - Composite[frame_system.extensions.check_tx_version.CheckTxVersion]
+    /// >> 529 - Composite[frame_system.extensions.check_tx_version.CheckTxVersion]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckTxVersion : BaseType

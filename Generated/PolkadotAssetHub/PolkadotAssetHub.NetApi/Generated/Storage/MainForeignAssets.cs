@@ -37,23 +37,24 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Asset"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Approvals"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "Metadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("ForeignAssets", "NextAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location)));
         }
         
         /// <summary>
         /// >> AssetParams
         ///  Details of an asset.
         /// </summary>
-        public static string AssetParams(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key)
+        public static string AssetParams(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Asset", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -73,7 +74,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> Asset
         ///  Details of an asset.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails> Asset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.AssetParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails>(parameters, blockhash, token);
@@ -84,7 +85,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> AccountParams
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string AccountParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Account", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -104,7 +105,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> Account
         ///  The holdings of a specific account for a specific asset.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount> Account(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.AccountParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount>(parameters, blockhash, token);
@@ -117,7 +118,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
+        public static string ApprovalsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Approvals", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
@@ -140,7 +141,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         ///  is the amount of `T::Currency` reserved for storing this.
         ///  First key is the asset ID, second key is the owner and third key is the delegate.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval> Approvals(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.ApprovalsParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval>(parameters, blockhash, token);
@@ -151,7 +152,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> MetadataParams
         ///  Metadata of an asset.
         /// </summary>
-        public static string MetadataParams(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key)
+        public static string MetadataParams(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key)
         {
             return RequestGenerator.GetStorage("ForeignAssets", "Metadata", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -171,10 +172,55 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> Metadata
         ///  Metadata of an asset.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2> Metadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2> Metadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location key, string blockhash, CancellationToken token)
         {
             string parameters = ForeignAssetsStorage.MetadataParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT2>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> NextAssetIdParams
+        ///  The asset ID enforced for the next asset creation, if any present. Otherwise, this storage
+        ///  item has no effect.
+        /// 
+        ///  This can be useful for setting up constraints for IDs of the new assets. For example, by
+        ///  providing an initial [`NextAssetId`] and using the [`crate::AutoIncAssetId`] callback, an
+        ///  auto-increment model can be applied to all new asset IDs.
+        /// 
+        ///  The initial next asset ID can be set using the [`GenesisConfig`] or the
+        ///  [SetNextAssetId](`migration::next_asset_id::SetNextAssetId`) migration.
+        /// </summary>
+        public static string NextAssetIdParams()
+        {
+            return RequestGenerator.GetStorage("ForeignAssets", "NextAssetId", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> NextAssetIdDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string NextAssetIdDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> NextAssetId
+        ///  The asset ID enforced for the next asset creation, if any present. Otherwise, this storage
+        ///  item has no effect.
+        /// 
+        ///  This can be useful for setting up constraints for IDs of the new assets. For example, by
+        ///  providing an initial [`NextAssetId`] and using the [`crate::AutoIncAssetId`] callback, an
+        ///  auto-increment model can be applied to all new asset IDs.
+        /// 
+        ///  The initial next asset ID can be set using the [`GenesisConfig`] or the
+        ///  [SetNextAssetId](`migration::next_asset_id::SetNextAssetId`) migration.
+        /// </summary>
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> NextAssetId(string blockhash, CancellationToken token)
+        {
+            string parameters = ForeignAssetsStorage.NextAssetIdParams();
+            var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location>(parameters, blockhash, token);
             return result;
         }
     }
@@ -189,7 +235,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> create
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Create(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
+        public static Method Create(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -202,7 +248,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_create
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceCreate(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
+        public static Method ForceCreate(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -216,7 +262,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> start_destroy
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method StartDestroy(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method StartDestroy(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -227,7 +273,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> destroy_accounts
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method DestroyAccounts(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method DestroyAccounts(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -238,7 +284,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> destroy_approvals
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method DestroyApprovals(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method DestroyApprovals(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -249,7 +295,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> finish_destroy
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method FinishDestroy(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method FinishDestroy(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -260,7 +306,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> mint
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Mint(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Mint(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress beneficiary, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -273,7 +319,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> burn
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Burn(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Burn(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -286,7 +332,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Transfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method Transfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -299,7 +345,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> transfer_keep_alive
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferKeepAlive(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferKeepAlive(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress target, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -312,7 +358,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceTransfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ForceTransfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -326,7 +372,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> freeze
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Freeze(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Freeze(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -338,7 +384,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> thaw
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Thaw(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Thaw(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -350,7 +396,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> freeze_asset
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method FreezeAsset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method FreezeAsset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -361,7 +407,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> thaw_asset
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ThawAsset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ThawAsset(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -372,7 +418,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> transfer_ownership
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferOwnership(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
+        public static Method TransferOwnership(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -384,7 +430,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> set_team
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetTeam(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
+        public static Method SetTeam(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -398,7 +444,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> set_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals)
+        public static Method SetMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -412,7 +458,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> clear_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ClearMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ClearMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -423,7 +469,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_set_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceSetMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
+        public static Method ForceSetMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> name, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> symbol, Substrate.NetApi.Model.Types.Primitive.U8 decimals, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -438,7 +484,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_clear_metadata
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceClearMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method ForceClearMetadata(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -449,7 +495,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_asset_status
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceAssetStatus(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
+        public static Method ForceAssetStatus(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress issuer, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress admin, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress freezer, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> min_balance, Substrate.NetApi.Model.Types.Primitive.Bool is_sufficient, Substrate.NetApi.Model.Types.Primitive.Bool is_frozen)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -467,7 +513,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> approve_transfer
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ApproveTransfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method ApproveTransfer(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -480,7 +526,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> cancel_approval
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method CancelApproval(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method CancelApproval(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -492,7 +538,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> force_cancel_approval
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ForceCancelApproval(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
+        public static Method ForceCancelApproval(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress @delegate)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -505,7 +551,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> transfer_approved
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TransferApproved(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
+        public static Method TransferApproved(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress owner, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress destination, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -519,7 +565,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> touch
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Touch(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id)
+        public static Method Touch(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -530,7 +576,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> refund
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Refund(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Primitive.Bool allow_burn)
+        public static Method Refund(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Primitive.Bool allow_burn)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -542,7 +588,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> set_min_balance
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetMinBalance(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
+        public static Method SetMinBalance(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, Substrate.NetApi.Model.Types.Primitive.U128 min_balance)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -554,7 +600,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> touch_other
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method TouchOther(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method TouchOther(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -566,7 +612,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> refund_other
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RefundOther(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method RefundOther(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -578,7 +624,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> block
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Block(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
+        public static Method Block(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location id, PolkadotAssetHub.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(id.Encode());
@@ -803,5 +849,11 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// Callback action resulted in error
         /// </summary>
         CallbackFailed,
+        
+        /// <summary>
+        /// >> BadAssetId
+        /// The asset ID must be equal to the [`NextAssetId`].
+        /// </summary>
+        BadAssetId,
     }
 }

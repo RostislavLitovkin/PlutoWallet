@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_vesting
     }
     
     /// <summary>
-    /// >> 669 - Variant[pallet_vesting.Releases]
+    /// >> 645 - Variant[pallet_vesting.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

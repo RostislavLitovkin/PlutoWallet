@@ -24,13 +24,15 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initialize
         
         /// <summary>
         /// >> force_approve
-        /// See [`Pallet::force_approve`].
+        /// Issue a signal to the consensus engine to forcibly act as though all parachain
+        /// blocks in all relay chain blocks up to and including the given number in the current
+        /// chain are valid and should be finalized.
         /// </summary>
         force_approve = 0,
     }
     
     /// <summary>
-    /// >> 367 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
+    /// >> 324 - Variant[polkadot_runtime_parachains.initializer.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

@@ -43,11 +43,11 @@ namespace InvArch.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Locks"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT2)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Reserves"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Holds"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Balances", "Freezes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16)));
         }
         
         /// <summary>
@@ -190,6 +190,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> LocksParams
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public static string LocksParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -211,6 +213,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Locks
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public async Task<InvArch.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT2> Locks(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
@@ -222,6 +226,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// <summary>
         /// >> ReservesParams
         ///  Named reserves on some account balances.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public static string ReservesParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -242,11 +248,13 @@ namespace InvArch.NetApi.Generated.Storage
         /// <summary>
         /// >> Reserves
         ///  Named reserves on some account balances.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10> Reserves(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14> Reserves(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = BalancesStorage.ReservesParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14>(parameters, blockhash, token);
             return result;
         }
         
@@ -274,10 +282,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Holds
         ///  Holds on account balances.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11> Holds(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15> Holds(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = BalancesStorage.HoldsParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15>(parameters, blockhash, token);
             return result;
         }
         
@@ -305,10 +313,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Freezes
         ///  Freeze locks on account balances.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12> Freezes(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16> Freezes(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = BalancesStorage.FreezesParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT16>(parameters, blockhash, token);
             return result;
         }
     }
@@ -321,7 +329,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer_allow_death
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method TransferAllowDeath(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
@@ -332,21 +340,8 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> set_balance_deprecated
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
-        /// </summary>
-        public static Method SetBalanceDeprecated(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> old_reserved)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(who.Encode());
-            byteArray.AddRange(new_free.Encode());
-            byteArray.AddRange(old_reserved.Encode());
-            return new Method(10, "Balances", 1, "set_balance_deprecated", byteArray.ToArray());
-        }
-        
-        /// <summary>
         /// >> force_transfer
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceTransfer(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress source, InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
@@ -359,7 +354,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer_keep_alive
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method TransferKeepAlive(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
@@ -371,7 +366,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> transfer_all
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method TransferAll(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
@@ -383,7 +378,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> force_unreserve
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceUnreserve(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Primitive.U128 amount)
         {
@@ -395,7 +390,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> upgrade_accounts
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method UpgradeAccounts(Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> who)
         {
@@ -405,20 +400,8 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> transfer
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
-        /// </summary>
-        public static Method Transfer(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
-        {
-            System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(dest.Encode());
-            byteArray.AddRange(value.Encode());
-            return new Method(10, "Balances", 7, "transfer", byteArray.ToArray());
-        }
-        
-        /// <summary>
         /// >> force_set_balance
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ForceSetBalance(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> new_free)
         {
@@ -426,6 +409,30 @@ namespace InvArch.NetApi.Generated.Storage
             byteArray.AddRange(who.Encode());
             byteArray.AddRange(new_free.Encode());
             return new Method(10, "Balances", 8, "force_set_balance", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> force_adjust_total_issuance
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ForceAdjustTotalIssuance(InvArch.NetApi.Generated.Model.pallet_balances.types.EnumAdjustmentDirection direction, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> delta)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(direction.Encode());
+            byteArray.AddRange(delta.Encode());
+            return new Method(10, "Balances", 9, "force_adjust_total_issuance", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> burn
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method Burn(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(value.Encode());
+            byteArray.AddRange(keep_alive.Encode());
+            return new Method(10, "Balances", 10, "burn", byteArray.ToArray());
         }
     }
     
@@ -457,6 +464,8 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> MaxLocks
         ///  The maximum number of locks that should exist on an account.
         ///  Not strictly enforced, but used for weight estimation.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxLocks()
         {
@@ -468,22 +477,13 @@ namespace InvArch.NetApi.Generated.Storage
         /// <summary>
         /// >> MaxReserves
         ///  The maximum number of named reserves that can exist on an account.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxReserves()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x32000000");
-            return result;
-        }
-        
-        /// <summary>
-        /// >> MaxHolds
-        ///  The maximum number of holds that can exist on an account at any time.
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxHolds()
-        {
-            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
-            result.Create("0x01000000");
             return result;
         }
         
@@ -494,7 +494,7 @@ namespace InvArch.NetApi.Generated.Storage
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxFreezes()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
-            result.Create("0x00000000");
+            result.Create("0x32000000");
             return result;
         }
     }
@@ -555,7 +555,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> TooManyHolds
-        /// Number of holds exceed `MaxHolds`.
+        /// Number of holds exceed `VariantCountOf<T::RuntimeHoldReason>`.
         /// </summary>
         TooManyHolds,
         
@@ -564,5 +564,17 @@ namespace InvArch.NetApi.Generated.Storage
         /// Number of freezes exceed `MaxFreezes`.
         /// </summary>
         TooManyFreezes,
+        
+        /// <summary>
+        /// >> IssuanceDeactivated
+        /// The issuance cannot be modified since it is already deactivated.
+        /// </summary>
+        IssuanceDeactivated,
+        
+        /// <summary>
+        /// >> DeltaZero
+        /// The delta cannot be zero.
+        /// </summary>
+        DeltaZero,
     }
 }

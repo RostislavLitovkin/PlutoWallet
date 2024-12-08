@@ -24,13 +24,13 @@ namespace Hydration.NetApi.Generated.Model.pallet_claims.pallet
         
         /// <summary>
         /// >> claim
-        /// See [`Pallet::claim`].
+        /// Claim xHDX by providing signed message with Ethereum address.
         /// </summary>
         claim = 0,
     }
     
     /// <summary>
-    /// >> 361 - Variant[pallet_claims.pallet.Call]
+    /// >> 358 - Variant[pallet_claims.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

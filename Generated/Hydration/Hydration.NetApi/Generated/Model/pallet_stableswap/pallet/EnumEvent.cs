@@ -66,9 +66,15 @@ namespace Hydration.NetApi.Generated.Model.pallet_stableswap.pallet
         
         /// <summary>
         /// >> AmplificationChanging
-        /// AAmplification of a pool has been scheduled to change.
+        /// Amplification of a pool has been scheduled to change.
         /// </summary>
         AmplificationChanging = 7,
+        
+        /// <summary>
+        /// >> PoolDestroyed
+        /// A pool has been destroyed.
+        /// </summary>
+        PoolDestroyed = 8,
     }
     
     /// <summary>
@@ -91,6 +97,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_stableswap.pallet
 				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.BuyExecuted);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Model.pallet_stableswap.types.Tradability>>(Event.TradableStateUpdated);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Hydration.NetApi.Generated.Types.Base.NonZeroU16, Hydration.NetApi.Generated.Types.Base.NonZeroU16, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.AmplificationChanging);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.PoolDestroyed);
         }
     }
 }

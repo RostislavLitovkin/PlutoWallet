@@ -28,7 +28,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_ethereum
     }
     
     /// <summary>
-    /// >> 476 - Variant[pallet_ethereum.RawOrigin]
+    /// >> 479 - Variant[pallet_ethereum.RawOrigin]
     /// </summary>
     public sealed class EnumRawOrigin : BaseEnumRust<RawOrigin>
     {

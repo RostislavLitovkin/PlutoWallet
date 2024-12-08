@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.finality_grandpa
     
     
     /// <summary>
-    /// >> 160 - Composite[finality_grandpa.Precommit]
+    /// >> 149 - Composite[finality_grandpa.Precommit]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Precommit : BaseType

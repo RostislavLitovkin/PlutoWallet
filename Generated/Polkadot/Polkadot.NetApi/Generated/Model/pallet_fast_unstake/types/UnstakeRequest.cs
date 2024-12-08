@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_fast_unstake.types
     
     
     /// <summary>
-    /// >> 740 - Composite[pallet_fast_unstake.types.UnstakeRequest]
+    /// >> 701 - Composite[pallet_fast_unstake.types.UnstakeRequest]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UnstakeRequest : BaseType
@@ -27,11 +27,11 @@ namespace Polkadot.NetApi.Generated.Model.pallet_fast_unstake.types
         /// <summary>
         /// >> stashes
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39 Stashes { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT33 Stashes { get; set; }
         /// <summary>
         /// >> checked
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40 Checked { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34 Checked { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -52,9 +52,9 @@ namespace Polkadot.NetApi.Generated.Model.pallet_fast_unstake.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Stashes = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39();
+            Stashes = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT33();
             Stashes.Decode(byteArray, ref p);
-            Checked = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40();
+            Checked = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34();
             Checked.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

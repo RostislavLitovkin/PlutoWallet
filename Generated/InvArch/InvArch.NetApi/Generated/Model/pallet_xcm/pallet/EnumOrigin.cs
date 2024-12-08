@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 153 - Variant[pallet_xcm.pallet.Origin]
+    /// >> 188 - Variant[pallet_xcm.pallet.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnumRust<Origin>
     {
@@ -43,8 +43,8 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// </summary>
         public EnumOrigin()
         {
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>(Origin.Xcm);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>(Origin.Response);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_xcm.v4.location.Location>(Origin.Xcm);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_xcm.v4.location.Location>(Origin.Response);
         }
     }
 }

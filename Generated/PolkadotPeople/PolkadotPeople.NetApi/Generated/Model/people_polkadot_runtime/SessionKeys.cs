@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
     
     
     /// <summary>
-    /// >> 226 - Composite[people_polkadot_runtime.SessionKeys]
+    /// >> 225 - Composite[people_polkadot_runtime.SessionKeys]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SessionKeys : BaseType

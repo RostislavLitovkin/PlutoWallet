@@ -49,7 +49,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     }
     
     /// <summary>
-    /// >> 515 - Variant[pallet_state_trie_migration.pallet.Event]
+    /// >> 489 - Variant[pallet_state_trie_migration.pallet.Event]
     /// Inner events of this pallet.
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

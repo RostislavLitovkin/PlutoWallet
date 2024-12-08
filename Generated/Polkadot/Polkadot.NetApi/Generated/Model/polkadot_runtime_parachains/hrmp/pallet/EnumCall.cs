@@ -24,73 +24,146 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.palle
         
         /// <summary>
         /// >> hrmp_init_open_channel
-        /// See [`Pallet::hrmp_init_open_channel`].
+        /// Initiate opening a channel from a parachain to a given recipient with given channel
+        /// parameters.
+        /// 
+        /// - `proposed_max_capacity` - specifies how many messages can be in the channel at once.
+        /// - `proposed_max_message_size` - specifies the maximum size of the messages.
+        /// 
+        /// These numbers are a subject to the relay-chain configuration limits.
+        /// 
+        /// The channel can be opened only after the recipient confirms it and only on a session
+        /// change.
         /// </summary>
         hrmp_init_open_channel = 0,
         
         /// <summary>
         /// >> hrmp_accept_open_channel
-        /// See [`Pallet::hrmp_accept_open_channel`].
+        /// Accept a pending open channel request from the given sender.
+        /// 
+        /// The channel will be opened only on the next session boundary.
         /// </summary>
         hrmp_accept_open_channel = 1,
         
         /// <summary>
         /// >> hrmp_close_channel
-        /// See [`Pallet::hrmp_close_channel`].
+        /// Initiate unilateral closing of a channel. The origin must be either the sender or the
+        /// recipient in the channel being closed.
+        /// 
+        /// The closure can only happen on a session change.
         /// </summary>
         hrmp_close_channel = 2,
         
         /// <summary>
         /// >> force_clean_hrmp
-        /// See [`Pallet::force_clean_hrmp`].
+        /// This extrinsic triggers the cleanup of all the HRMP storage items that a para may have.
+        /// Normally this happens once per session, but this allows you to trigger the cleanup
+        /// immediately for a specific parachain.
+        /// 
+        /// Number of inbound and outbound channels for `para` must be provided as witness data.
+        /// 
+        /// Origin must be the `ChannelManager`.
         /// </summary>
         force_clean_hrmp = 3,
         
         /// <summary>
         /// >> force_process_hrmp_open
-        /// See [`Pallet::force_process_hrmp_open`].
+        /// Force process HRMP open channel requests.
+        /// 
+        /// If there are pending HRMP open channel requests, you can use this function to process
+        /// all of those requests immediately.
+        /// 
+        /// Total number of opening channels must be provided as witness data.
+        /// 
+        /// Origin must be the `ChannelManager`.
         /// </summary>
         force_process_hrmp_open = 4,
         
         /// <summary>
         /// >> force_process_hrmp_close
-        /// See [`Pallet::force_process_hrmp_close`].
+        /// Force process HRMP close channel requests.
+        /// 
+        /// If there are pending HRMP close channel requests, you can use this function to process
+        /// all of those requests immediately.
+        /// 
+        /// Total number of closing channels must be provided as witness data.
+        /// 
+        /// Origin must be the `ChannelManager`.
         /// </summary>
         force_process_hrmp_close = 5,
         
         /// <summary>
         /// >> hrmp_cancel_open_request
-        /// See [`Pallet::hrmp_cancel_open_request`].
+        /// This cancels a pending open channel request. It can be canceled by either of the sender
+        /// or the recipient for that request. The origin must be either of those.
+        /// 
+        /// The cancellation happens immediately. It is not possible to cancel the request if it is
+        /// already accepted.
+        /// 
+        /// Total number of open requests (i.e. `HrmpOpenChannelRequestsList`) must be provided as
+        /// witness data.
         /// </summary>
         hrmp_cancel_open_request = 6,
         
         /// <summary>
         /// >> force_open_hrmp_channel
-        /// See [`Pallet::force_open_hrmp_channel`].
+        /// Open a channel from a `sender` to a `recipient` `ParaId`. Although opened by governance,
+        /// the `max_capacity` and `max_message_size` are still subject to the Relay Chain's
+        /// configured limits.
+        /// 
+        /// Expected use is when one (and only one) of the `ParaId`s involved in the channel is
+        /// governed by the system, e.g. a system parachain.
+        /// 
+        /// Origin must be the `ChannelManager`.
         /// </summary>
         force_open_hrmp_channel = 7,
         
         /// <summary>
         /// >> establish_system_channel
-        /// See [`Pallet::establish_system_channel`].
+        /// Establish an HRMP channel between two system chains. If the channel does not already
+        /// exist, the transaction fees will be refunded to the caller. The system does not take
+        /// deposits for channels between system chains, and automatically sets the message number
+        /// and size limits to the maximum allowed by the network's configuration.
+        /// 
+        /// Arguments:
+        /// 
+        /// - `sender`: A system chain, `ParaId`.
+        /// - `recipient`: A system chain, `ParaId`.
+        /// 
+        /// Any signed origin can call this function, but _both_ inputs MUST be system chains. If
+        /// the channel does not exist yet, there is no fee.
         /// </summary>
         establish_system_channel = 8,
         
         /// <summary>
         /// >> poke_channel_deposits
-        /// See [`Pallet::poke_channel_deposits`].
+        /// Update the deposits held for an HRMP channel to the latest `Configuration`. Channels
+        /// with system chains do not require a deposit.
+        /// 
+        /// Arguments:
+        /// 
+        /// - `sender`: A chain, `ParaId`.
+        /// - `recipient`: A chain, `ParaId`.
+        /// 
+        /// Any signed origin can call this function.
         /// </summary>
         poke_channel_deposits = 9,
         
         /// <summary>
         /// >> establish_channel_with_system
-        /// See [`Pallet::establish_channel_with_system`].
+        /// Establish a bidirectional HRMP channel between a parachain and a system chain.
+        /// 
+        /// Arguments:
+        /// 
+        /// - `target_system_chain`: A system chain, `ParaId`.
+        /// 
+        /// The origin needs to be the parachain origin.
         /// </summary>
         establish_channel_with_system = 10,
     }
     
     /// <summary>
-    /// >> 368 - Variant[polkadot_runtime_parachains.hrmp.pallet.Call]
+    /// >> 325 - Variant[polkadot_runtime_parachains.hrmp.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

@@ -55,7 +55,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_proxy.pallet
     }
     
     /// <summary>
-    /// >> 491 - Variant[pallet_proxy.pallet.Event]
+    /// >> 463 - Variant[pallet_proxy.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

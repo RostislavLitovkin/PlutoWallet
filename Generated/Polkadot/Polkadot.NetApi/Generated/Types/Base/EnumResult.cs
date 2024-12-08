@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Types.Base
     }
     
     /// <summary>
-    /// >> 483 - Variant[Result]
+    /// >> 450 - Variant[Result]
     /// </summary>
     public sealed class EnumResult : BaseEnumRust<Result>
     {

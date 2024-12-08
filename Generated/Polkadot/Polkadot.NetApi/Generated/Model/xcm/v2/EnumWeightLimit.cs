@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 408 - Variant[xcm.v2.WeightLimit]
+    /// >> 374 - Variant[xcm.v2.WeightLimit]
     /// </summary>
     public sealed class EnumWeightLimit : BaseEnumRust<WeightLimit>
     {

@@ -45,10 +45,20 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
         /// >> BondedStashKilledPrematurely
         /// </summary>
         BondedStashKilledPrematurely = 4,
+        
+        /// <summary>
+        /// >> DelegationUnsupported
+        /// </summary>
+        DelegationUnsupported = 5,
+        
+        /// <summary>
+        /// >> SlashNotApplied
+        /// </summary>
+        SlashNotApplied = 6,
     }
     
     /// <summary>
-    /// >> 739 - Variant[pallet_nomination_pools.pallet.DefensiveError]
+    /// >> 700 - Variant[pallet_nomination_pools.pallet.DefensiveError]
     /// </summary>
     public sealed class EnumDefensiveError : BaseEnum<DefensiveError>
     {

@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_runtime.generic.unchecked_extrinsic
     
     
     /// <summary>
-    /// >> 384 - Composite[sp_runtime.generic.unchecked_extrinsic.UncheckedExtrinsic]
+    /// >> 525 - Composite[sp_runtime.generic.unchecked_extrinsic.UncheckedExtrinsic]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class UncheckedExtrinsic : BaseType

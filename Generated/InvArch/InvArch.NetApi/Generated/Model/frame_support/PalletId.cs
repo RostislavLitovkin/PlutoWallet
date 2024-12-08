@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_support
     
     
     /// <summary>
-    /// >> 304 - Composite[frame_support.PalletId]
+    /// >> 390 - Composite[frame_support.PalletId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PalletId : BaseType

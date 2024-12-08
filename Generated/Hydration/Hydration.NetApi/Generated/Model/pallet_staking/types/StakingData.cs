@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.types
     
     
     /// <summary>
-    /// >> 593 - Composite[pallet_staking.types.StakingData]
+    /// >> 597 - Composite[pallet_staking.types.StakingData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StakingData : BaseType

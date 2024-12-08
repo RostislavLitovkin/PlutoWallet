@@ -24,289 +24,305 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
         
         /// <summary>
         /// >> set_validation_upgrade_cooldown
-        /// See [`Pallet::set_validation_upgrade_cooldown`].
+        /// Set the validation upgrade cooldown.
         /// </summary>
         set_validation_upgrade_cooldown = 0,
         
         /// <summary>
         /// >> set_validation_upgrade_delay
-        /// See [`Pallet::set_validation_upgrade_delay`].
+        /// Set the validation upgrade delay.
         /// </summary>
         set_validation_upgrade_delay = 1,
         
         /// <summary>
         /// >> set_code_retention_period
-        /// See [`Pallet::set_code_retention_period`].
+        /// Set the acceptance period for an included candidate.
         /// </summary>
         set_code_retention_period = 2,
         
         /// <summary>
         /// >> set_max_code_size
-        /// See [`Pallet::set_max_code_size`].
+        /// Set the max validation code size for incoming upgrades.
         /// </summary>
         set_max_code_size = 3,
         
         /// <summary>
         /// >> set_max_pov_size
-        /// See [`Pallet::set_max_pov_size`].
+        /// Set the max POV block size for incoming upgrades.
         /// </summary>
         set_max_pov_size = 4,
         
         /// <summary>
         /// >> set_max_head_data_size
-        /// See [`Pallet::set_max_head_data_size`].
+        /// Set the max head data size for paras.
         /// </summary>
         set_max_head_data_size = 5,
         
         /// <summary>
         /// >> set_coretime_cores
-        /// See [`Pallet::set_coretime_cores`].
+        /// Set the number of coretime execution cores.
+        /// 
+        /// NOTE: that this configuration is managed by the coretime chain. Only manually change
+        /// this, if you really know what you are doing!
         /// </summary>
         set_coretime_cores = 6,
         
         /// <summary>
-        /// >> set_on_demand_retries
-        /// See [`Pallet::set_on_demand_retries`].
+        /// >> set_max_availability_timeouts
+        /// Set the max number of times a claim may timeout on a core before it is abandoned
         /// </summary>
-        set_on_demand_retries = 7,
+        set_max_availability_timeouts = 7,
         
         /// <summary>
         /// >> set_group_rotation_frequency
-        /// See [`Pallet::set_group_rotation_frequency`].
+        /// Set the parachain validator-group rotation frequency
         /// </summary>
         set_group_rotation_frequency = 8,
         
         /// <summary>
         /// >> set_paras_availability_period
-        /// See [`Pallet::set_paras_availability_period`].
+        /// Set the availability period for paras.
         /// </summary>
         set_paras_availability_period = 9,
         
         /// <summary>
         /// >> set_scheduling_lookahead
-        /// See [`Pallet::set_scheduling_lookahead`].
+        /// Set the scheduling lookahead, in expected number of blocks at peak throughput.
         /// </summary>
         set_scheduling_lookahead = 11,
         
         /// <summary>
         /// >> set_max_validators_per_core
-        /// See [`Pallet::set_max_validators_per_core`].
+        /// Set the maximum number of validators to assign to any core.
         /// </summary>
         set_max_validators_per_core = 12,
         
         /// <summary>
         /// >> set_max_validators
-        /// See [`Pallet::set_max_validators`].
+        /// Set the maximum number of validators to use in parachain consensus.
         /// </summary>
         set_max_validators = 13,
         
         /// <summary>
         /// >> set_dispute_period
-        /// See [`Pallet::set_dispute_period`].
+        /// Set the dispute period, in number of sessions to keep for disputes.
         /// </summary>
         set_dispute_period = 14,
         
         /// <summary>
         /// >> set_dispute_post_conclusion_acceptance_period
-        /// See [`Pallet::set_dispute_post_conclusion_acceptance_period`].
+        /// Set the dispute post conclusion acceptance period.
         /// </summary>
         set_dispute_post_conclusion_acceptance_period = 15,
         
         /// <summary>
         /// >> set_no_show_slots
-        /// See [`Pallet::set_no_show_slots`].
+        /// Set the no show slots, in number of number of consensus slots.
+        /// Must be at least 1.
         /// </summary>
         set_no_show_slots = 18,
         
         /// <summary>
         /// >> set_n_delay_tranches
-        /// See [`Pallet::set_n_delay_tranches`].
+        /// Set the total number of delay tranches.
         /// </summary>
         set_n_delay_tranches = 19,
         
         /// <summary>
         /// >> set_zeroth_delay_tranche_width
-        /// See [`Pallet::set_zeroth_delay_tranche_width`].
+        /// Set the zeroth delay tranche width.
         /// </summary>
         set_zeroth_delay_tranche_width = 20,
         
         /// <summary>
         /// >> set_needed_approvals
-        /// See [`Pallet::set_needed_approvals`].
+        /// Set the number of validators needed to approve a block.
         /// </summary>
         set_needed_approvals = 21,
         
         /// <summary>
         /// >> set_relay_vrf_modulo_samples
-        /// See [`Pallet::set_relay_vrf_modulo_samples`].
+        /// Set the number of samples to do of the `RelayVRFModulo` approval assignment criterion.
         /// </summary>
         set_relay_vrf_modulo_samples = 22,
         
         /// <summary>
         /// >> set_max_upward_queue_count
-        /// See [`Pallet::set_max_upward_queue_count`].
+        /// Sets the maximum items that can present in a upward dispatch queue at once.
         /// </summary>
         set_max_upward_queue_count = 23,
         
         /// <summary>
         /// >> set_max_upward_queue_size
-        /// See [`Pallet::set_max_upward_queue_size`].
+        /// Sets the maximum total size of items that can present in a upward dispatch queue at
+        /// once.
         /// </summary>
         set_max_upward_queue_size = 24,
         
         /// <summary>
         /// >> set_max_downward_message_size
-        /// See [`Pallet::set_max_downward_message_size`].
+        /// Set the critical downward message size.
         /// </summary>
         set_max_downward_message_size = 25,
         
         /// <summary>
         /// >> set_max_upward_message_size
-        /// See [`Pallet::set_max_upward_message_size`].
+        /// Sets the maximum size of an upward message that can be sent by a candidate.
         /// </summary>
         set_max_upward_message_size = 27,
         
         /// <summary>
         /// >> set_max_upward_message_num_per_candidate
-        /// See [`Pallet::set_max_upward_message_num_per_candidate`].
+        /// Sets the maximum number of messages that a candidate can contain.
         /// </summary>
         set_max_upward_message_num_per_candidate = 28,
         
         /// <summary>
         /// >> set_hrmp_open_request_ttl
-        /// See [`Pallet::set_hrmp_open_request_ttl`].
+        /// Sets the number of sessions after which an HRMP open channel request expires.
         /// </summary>
         set_hrmp_open_request_ttl = 29,
         
         /// <summary>
         /// >> set_hrmp_sender_deposit
-        /// See [`Pallet::set_hrmp_sender_deposit`].
+        /// Sets the amount of funds that the sender should provide for opening an HRMP channel.
         /// </summary>
         set_hrmp_sender_deposit = 30,
         
         /// <summary>
         /// >> set_hrmp_recipient_deposit
-        /// See [`Pallet::set_hrmp_recipient_deposit`].
+        /// Sets the amount of funds that the recipient should provide for accepting opening an HRMP
+        /// channel.
         /// </summary>
         set_hrmp_recipient_deposit = 31,
         
         /// <summary>
         /// >> set_hrmp_channel_max_capacity
-        /// See [`Pallet::set_hrmp_channel_max_capacity`].
+        /// Sets the maximum number of messages allowed in an HRMP channel at once.
         /// </summary>
         set_hrmp_channel_max_capacity = 32,
         
         /// <summary>
         /// >> set_hrmp_channel_max_total_size
-        /// See [`Pallet::set_hrmp_channel_max_total_size`].
+        /// Sets the maximum total size of messages in bytes allowed in an HRMP channel at once.
         /// </summary>
         set_hrmp_channel_max_total_size = 33,
         
         /// <summary>
         /// >> set_hrmp_max_parachain_inbound_channels
-        /// See [`Pallet::set_hrmp_max_parachain_inbound_channels`].
+        /// Sets the maximum number of inbound HRMP channels a parachain is allowed to accept.
         /// </summary>
         set_hrmp_max_parachain_inbound_channels = 34,
         
         /// <summary>
         /// >> set_hrmp_channel_max_message_size
-        /// See [`Pallet::set_hrmp_channel_max_message_size`].
+        /// Sets the maximum size of a message that could ever be put into an HRMP channel.
         /// </summary>
         set_hrmp_channel_max_message_size = 36,
         
         /// <summary>
         /// >> set_hrmp_max_parachain_outbound_channels
-        /// See [`Pallet::set_hrmp_max_parachain_outbound_channels`].
+        /// Sets the maximum number of outbound HRMP channels a parachain is allowed to open.
         /// </summary>
         set_hrmp_max_parachain_outbound_channels = 37,
         
         /// <summary>
         /// >> set_hrmp_max_message_num_per_candidate
-        /// See [`Pallet::set_hrmp_max_message_num_per_candidate`].
+        /// Sets the maximum number of outbound HRMP messages can be sent by a candidate.
         /// </summary>
         set_hrmp_max_message_num_per_candidate = 39,
         
         /// <summary>
         /// >> set_pvf_voting_ttl
-        /// See [`Pallet::set_pvf_voting_ttl`].
+        /// Set the number of session changes after which a PVF pre-checking voting is rejected.
         /// </summary>
         set_pvf_voting_ttl = 42,
         
         /// <summary>
         /// >> set_minimum_validation_upgrade_delay
-        /// See [`Pallet::set_minimum_validation_upgrade_delay`].
+        /// Sets the minimum delay between announcing the upgrade block for a parachain until the
+        /// upgrade taking place.
+        /// 
+        /// See the field documentation for information and constraints for the new value.
         /// </summary>
         set_minimum_validation_upgrade_delay = 43,
         
         /// <summary>
         /// >> set_bypass_consistency_check
-        /// See [`Pallet::set_bypass_consistency_check`].
+        /// Setting this to true will disable consistency checks for the configuration setters.
+        /// Use with caution.
         /// </summary>
         set_bypass_consistency_check = 44,
         
         /// <summary>
         /// >> set_async_backing_params
-        /// See [`Pallet::set_async_backing_params`].
+        /// Set the asynchronous backing parameters.
         /// </summary>
         set_async_backing_params = 45,
         
         /// <summary>
         /// >> set_executor_params
-        /// See [`Pallet::set_executor_params`].
+        /// Set PVF executor parameters.
         /// </summary>
         set_executor_params = 46,
         
         /// <summary>
         /// >> set_on_demand_base_fee
-        /// See [`Pallet::set_on_demand_base_fee`].
+        /// Set the on demand (parathreads) base fee.
         /// </summary>
         set_on_demand_base_fee = 47,
         
         /// <summary>
         /// >> set_on_demand_fee_variability
-        /// See [`Pallet::set_on_demand_fee_variability`].
+        /// Set the on demand (parathreads) fee variability.
         /// </summary>
         set_on_demand_fee_variability = 48,
         
         /// <summary>
         /// >> set_on_demand_queue_max_size
-        /// See [`Pallet::set_on_demand_queue_max_size`].
+        /// Set the on demand (parathreads) queue max size.
         /// </summary>
         set_on_demand_queue_max_size = 49,
         
         /// <summary>
         /// >> set_on_demand_target_queue_utilization
-        /// See [`Pallet::set_on_demand_target_queue_utilization`].
+        /// Set the on demand (parathreads) fee variability.
         /// </summary>
         set_on_demand_target_queue_utilization = 50,
         
         /// <summary>
         /// >> set_on_demand_ttl
-        /// See [`Pallet::set_on_demand_ttl`].
+        /// Set the on demand (parathreads) ttl in the claimqueue.
         /// </summary>
         set_on_demand_ttl = 51,
         
         /// <summary>
         /// >> set_minimum_backing_votes
-        /// See [`Pallet::set_minimum_backing_votes`].
+        /// Set the minimum backing votes threshold.
         /// </summary>
         set_minimum_backing_votes = 52,
         
         /// <summary>
         /// >> set_node_feature
-        /// See [`Pallet::set_node_feature`].
+        /// Set/Unset a node feature.
         /// </summary>
         set_node_feature = 53,
         
         /// <summary>
         /// >> set_approval_voting_params
-        /// See [`Pallet::set_approval_voting_params`].
+        /// Set approval-voting-params.
         /// </summary>
         set_approval_voting_params = 54,
+        
+        /// <summary>
+        /// >> set_scheduler_params
+        /// Set scheduler-params.
+        /// </summary>
+        set_scheduler_params = 55,
     }
     
     /// <summary>
-    /// >> 320 - Variant[polkadot_runtime_parachains.configuration.pallet.Call]
+    /// >> 276 - Variant[polkadot_runtime_parachains.configuration.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -324,7 +340,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_pov_size);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_head_data_size);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_coretime_cores);
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_retries);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_max_availability_timeouts);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_group_rotation_frequency);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_paras_availability_period);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_scheduling_lookahead);
@@ -354,8 +370,8 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_pvf_voting_ttl);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_minimum_validation_upgrade_delay);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.Bool>(Call.set_bypass_consistency_check);
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams>(Call.set_async_backing_params);
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams>(Call.set_executor_params);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.async_backing.AsyncBackingParams>(Call.set_async_backing_params);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams>(Call.set_executor_params);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Call.set_on_demand_base_fee);
 				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill>(Call.set_on_demand_fee_variability);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_queue_max_size);
@@ -363,7 +379,8 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_on_demand_ttl);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_minimum_backing_votes);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.Bool>>(Call.set_node_feature);
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams>(Call.set_approval_voting_params);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ApprovalVotingParams>(Call.set_approval_voting_params);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.SchedulerParams>(Call.set_scheduler_params);
         }
     }
 }

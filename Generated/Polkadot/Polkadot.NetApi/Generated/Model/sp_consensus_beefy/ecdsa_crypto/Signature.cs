@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_beefy.ecdsa_crypto
     
     
     /// <summary>
-    /// >> 472 - Composite[sp_consensus_beefy.ecdsa_crypto.Signature]
+    /// >> 439 - Composite[sp_consensus_beefy.ecdsa_crypto.Signature]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Signature : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_beefy.ecdsa_crypto
         /// <summary>
         /// >> value
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.sp_core.ecdsa.Signature Value { get; set; }
+        public Polkadot.NetApi.Generated.Types.Base.Arr65U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_beefy.ecdsa_crypto
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Polkadot.NetApi.Generated.Model.sp_core.ecdsa.Signature();
+            Value = new Polkadot.NetApi.Generated.Types.Base.Arr65U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

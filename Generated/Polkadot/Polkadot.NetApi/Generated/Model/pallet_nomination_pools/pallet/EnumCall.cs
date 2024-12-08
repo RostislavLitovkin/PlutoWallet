@@ -24,145 +24,379 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
         
         /// <summary>
         /// >> join
-        /// See [`Pallet::join`].
+        /// Stake funds with a pool. The amount to bond is transferred from the member to the
+        /// pools account and immediately increases the pools bond.
+        /// 
+        /// # Note
+        /// 
+        /// * An account can only be a member of a single pool.
+        /// * An account cannot join the same pool multiple times.
+        /// * This call will *not* dust the member account, so the member must have at least
+        ///   `existential deposit + amount` in their account.
+        /// * Only a pool with [`PoolState::Open`] can be joined
         /// </summary>
         join = 0,
         
         /// <summary>
         /// >> bond_extra
-        /// See [`Pallet::bond_extra`].
+        /// Bond `extra` more funds from `origin` into the pool to which they already belong.
+        /// 
+        /// Additional funds can come from either the free balance of the account, of from the
+        /// accumulated rewards, see [`BondExtra`].
+        /// 
+        /// Bonding extra funds implies an automatic payout of all pending rewards as well.
+        /// See `bond_extra_other` to bond pending rewards of `other` members.
         /// </summary>
         bond_extra = 1,
         
         /// <summary>
         /// >> claim_payout
-        /// See [`Pallet::claim_payout`].
+        /// A bonded member can use this to claim their payout based on the rewards that the pool
+        /// has accumulated since their last claimed payout (OR since joining if this is their first
+        /// time claiming rewards). The payout will be transferred to the member's account.
+        /// 
+        /// The member will earn rewards pro rata based on the members stake vs the sum of the
+        /// members in the pools stake. Rewards do not "expire".
+        /// 
+        /// See `claim_payout_other` to claim rewards on behalf of some `other` pool member.
         /// </summary>
         claim_payout = 2,
         
         /// <summary>
         /// >> unbond
-        /// See [`Pallet::unbond`].
+        /// Unbond up to `unbonding_points` of the `member_account`'s funds from the pool. It
+        /// implicitly collects the rewards one last time, since not doing so would mean some
+        /// rewards would be forfeited.
+        /// 
+        /// Under certain conditions, this call can be dispatched permissionlessly (i.e. by any
+        /// account).
+        /// 
+        /// # Conditions for a permissionless dispatch.
+        /// 
+        /// * The pool is blocked and the caller is either the root or bouncer. This is refereed to
+        ///   as a kick.
+        /// * The pool is destroying and the member is not the depositor.
+        /// * The pool is destroying, the member is the depositor and no other members are in the
+        ///   pool.
+        /// 
+        /// ## Conditions for permissioned dispatch (i.e. the caller is also the
+        /// `member_account`):
+        /// 
+        /// * The caller is not the depositor.
+        /// * The caller is the depositor, the pool is destroying and no other members are in the
+        ///   pool.
+        /// 
+        /// # Note
+        /// 
+        /// If there are too many unlocking chunks to unbond with the pool account,
+        /// [`Call::pool_withdraw_unbonded`] can be called to try and minimize unlocking chunks.
+        /// The [`StakingInterface::unbond`] will implicitly call [`Call::pool_withdraw_unbonded`]
+        /// to try to free chunks if necessary (ie. if unbound was called and no unlocking chunks
+        /// are available). However, it may not be possible to release the current unlocking chunks,
+        /// in which case, the result of this call will likely be the `NoMoreChunks` error from the
+        /// staking system.
         /// </summary>
         unbond = 3,
         
         /// <summary>
         /// >> pool_withdraw_unbonded
-        /// See [`Pallet::pool_withdraw_unbonded`].
+        /// Call `withdraw_unbonded` for the pools account. This call can be made by any account.
+        /// 
+        /// This is useful if there are too many unlocking chunks to call `unbond`, and some
+        /// can be cleared by withdrawing. In the case there are too many unlocking chunks, the user
+        /// would probably see an error like `NoMoreChunks` emitted from the staking system when
+        /// they attempt to unbond.
         /// </summary>
         pool_withdraw_unbonded = 4,
         
         /// <summary>
         /// >> withdraw_unbonded
-        /// See [`Pallet::withdraw_unbonded`].
+        /// Withdraw unbonded funds from `member_account`. If no bonded funds can be unbonded, an
+        /// error is returned.
+        /// 
+        /// Under certain conditions, this call can be dispatched permissionlessly (i.e. by any
+        /// account).
+        /// 
+        /// # Conditions for a permissionless dispatch
+        /// 
+        /// * The pool is in destroy mode and the target is not the depositor.
+        /// * The target is the depositor and they are the only member in the sub pools.
+        /// * The pool is blocked and the caller is either the root or bouncer.
+        /// 
+        /// # Conditions for permissioned dispatch
+        /// 
+        /// * The caller is the target and they are not the depositor.
+        /// 
+        /// # Note
+        /// 
+        /// - If the target is the depositor, the pool will be destroyed.
+        /// - If the pool has any pending slash, we also try to slash the member before letting them
+        /// withdraw. This calculation adds some weight overhead and is only defensive. In reality,
+        /// pool slashes must have been already applied via permissionless [`Call::apply_slash`].
         /// </summary>
         withdraw_unbonded = 5,
         
         /// <summary>
         /// >> create
-        /// See [`Pallet::create`].
+        /// Create a new delegation pool.
+        /// 
+        /// # Arguments
+        /// 
+        /// * `amount` - The amount of funds to delegate to the pool. This also acts of a sort of
+        ///   deposit since the pools creator cannot fully unbond funds until the pool is being
+        ///   destroyed.
+        /// * `index` - A disambiguation index for creating the account. Likely only useful when
+        ///   creating multiple pools in the same extrinsic.
+        /// * `root` - The account to set as [`PoolRoles::root`].
+        /// * `nominator` - The account to set as the [`PoolRoles::nominator`].
+        /// * `bouncer` - The account to set as the [`PoolRoles::bouncer`].
+        /// 
+        /// # Note
+        /// 
+        /// In addition to `amount`, the caller will transfer the existential deposit; so the caller
+        /// needs at have at least `amount + existential_deposit` transferable.
         /// </summary>
         create = 6,
         
         /// <summary>
         /// >> create_with_pool_id
-        /// See [`Pallet::create_with_pool_id`].
+        /// Create a new delegation pool with a previously used pool id
+        /// 
+        /// # Arguments
+        /// 
+        /// same as `create` with the inclusion of
+        /// * `pool_id` - `A valid PoolId.
         /// </summary>
         create_with_pool_id = 7,
         
         /// <summary>
         /// >> nominate
-        /// See [`Pallet::nominate`].
+        /// Nominate on behalf of the pool.
+        /// 
+        /// The dispatch origin of this call must be signed by the pool nominator or the pool
+        /// root role.
+        /// 
+        /// This directly forward the call to the staking pallet, on behalf of the pool bonded
+        /// account.
+        /// 
+        /// # Note
+        /// 
+        /// In addition to a `root` or `nominator` role of `origin`, pool's depositor needs to have
+        /// at least `depositor_min_bond` in the pool to start nominating.
         /// </summary>
         nominate = 8,
         
         /// <summary>
         /// >> set_state
-        /// See [`Pallet::set_state`].
+        /// Set a new state for the pool.
+        /// 
+        /// If a pool is already in the `Destroying` state, then under no condition can its state
+        /// change again.
+        /// 
+        /// The dispatch origin of this call must be either:
+        /// 
+        /// 1. signed by the bouncer, or the root role of the pool,
+        /// 2. if the pool conditions to be open are NOT met (as described by `ok_to_be_open`), and
+        ///    then the state of the pool can be permissionlessly changed to `Destroying`.
         /// </summary>
         set_state = 9,
         
         /// <summary>
         /// >> set_metadata
-        /// See [`Pallet::set_metadata`].
+        /// Set a new metadata for the pool.
+        /// 
+        /// The dispatch origin of this call must be signed by the bouncer, or the root role of the
+        /// pool.
         /// </summary>
         set_metadata = 10,
         
         /// <summary>
         /// >> set_configs
-        /// See [`Pallet::set_configs`].
+        /// Update configurations for the nomination pools. The origin for this call must be
+        /// [`Config::AdminOrigin`].
+        /// 
+        /// # Arguments
+        /// 
+        /// * `min_join_bond` - Set [`MinJoinBond`].
+        /// * `min_create_bond` - Set [`MinCreateBond`].
+        /// * `max_pools` - Set [`MaxPools`].
+        /// * `max_members` - Set [`MaxPoolMembers`].
+        /// * `max_members_per_pool` - Set [`MaxPoolMembersPerPool`].
+        /// * `global_max_commission` - Set [`GlobalMaxCommission`].
         /// </summary>
         set_configs = 11,
         
         /// <summary>
         /// >> update_roles
-        /// See [`Pallet::update_roles`].
+        /// Update the roles of the pool.
+        /// 
+        /// The root is the only entity that can change any of the roles, including itself,
+        /// excluding the depositor, who can never change.
+        /// 
+        /// It emits an event, notifying UIs of the role change. This event is quite relevant to
+        /// most pool members and they should be informed of changes to pool roles.
         /// </summary>
         update_roles = 12,
         
         /// <summary>
         /// >> chill
-        /// See [`Pallet::chill`].
+        /// Chill on behalf of the pool.
+        /// 
+        /// The dispatch origin of this call can be signed by the pool nominator or the pool
+        /// root role, same as [`Pallet::nominate`].
+        /// 
+        /// Under certain conditions, this call can be dispatched permissionlessly (i.e. by any
+        /// account).
+        /// 
+        /// # Conditions for a permissionless dispatch:
+        /// * When pool depositor has less than `MinNominatorBond` staked, otherwise  pool members
+        ///   are unable to unbond.
+        /// 
+        /// # Conditions for permissioned dispatch:
+        /// * The caller has a nominator or root role of the pool.
+        /// This directly forward the call to the staking pallet, on behalf of the pool bonded
+        /// account.
         /// </summary>
         chill = 13,
         
         /// <summary>
         /// >> bond_extra_other
-        /// See [`Pallet::bond_extra_other`].
+        /// `origin` bonds funds from `extra` for some pool member `member` into their respective
+        /// pools.
+        /// 
+        /// `origin` can bond extra funds from free balance or pending rewards when `origin ==
+        /// other`.
+        /// 
+        /// In the case of `origin != other`, `origin` can only bond extra pending rewards of
+        /// `other` members assuming set_claim_permission for the given member is
+        /// `PermissionlessCompound` or `PermissionlessAll`.
         /// </summary>
         bond_extra_other = 14,
         
         /// <summary>
         /// >> set_claim_permission
-        /// See [`Pallet::set_claim_permission`].
+        /// Allows a pool member to set a claim permission to allow or disallow permissionless
+        /// bonding and withdrawing.
+        /// 
+        /// # Arguments
+        /// 
+        /// * `origin` - Member of a pool.
+        /// * `permission` - The permission to be applied.
         /// </summary>
         set_claim_permission = 15,
         
         /// <summary>
         /// >> claim_payout_other
-        /// See [`Pallet::claim_payout_other`].
+        /// `origin` can claim payouts on some pool member `other`'s behalf.
+        /// 
+        /// Pool member `other` must have a `PermissionlessWithdraw` or `PermissionlessAll` claim
+        /// permission for this call to be successful.
         /// </summary>
         claim_payout_other = 16,
         
         /// <summary>
         /// >> set_commission
-        /// See [`Pallet::set_commission`].
+        /// Set the commission of a pool.
+        /// Both a commission percentage and a commission payee must be provided in the `current`
+        /// tuple. Where a `current` of `None` is provided, any current commission will be removed.
+        /// 
+        /// - If a `None` is supplied to `new_commission`, existing commission will be removed.
         /// </summary>
         set_commission = 17,
         
         /// <summary>
         /// >> set_commission_max
-        /// See [`Pallet::set_commission_max`].
+        /// Set the maximum commission of a pool.
+        /// 
+        /// - Initial max can be set to any `Perbill`, and only smaller values thereafter.
+        /// - Current commission will be lowered in the event it is higher than a new max
+        ///   commission.
         /// </summary>
         set_commission_max = 18,
         
         /// <summary>
         /// >> set_commission_change_rate
-        /// See [`Pallet::set_commission_change_rate`].
+        /// Set the commission change rate for a pool.
+        /// 
+        /// Initial change rate is not bounded, whereas subsequent updates can only be more
+        /// restrictive than the current.
         /// </summary>
         set_commission_change_rate = 19,
         
         /// <summary>
         /// >> claim_commission
-        /// See [`Pallet::claim_commission`].
+        /// Claim pending commission.
+        /// 
+        /// The dispatch origin of this call must be signed by the `root` role of the pool. Pending
+        /// commission is paid out and added to total claimed commission`. Total pending commission
+        /// is reset to zero. the current.
         /// </summary>
         claim_commission = 20,
         
         /// <summary>
         /// >> adjust_pool_deposit
-        /// See [`Pallet::adjust_pool_deposit`].
+        /// Top up the deficit or withdraw the excess ED from the pool.
+        /// 
+        /// When a pool is created, the pool depositor transfers ED to the reward account of the
+        /// pool. ED is subject to change and over time, the deposit in the reward account may be
+        /// insufficient to cover the ED deficit of the pool or vice-versa where there is excess
+        /// deposit to the pool. This call allows anyone to adjust the ED deposit of the
+        /// pool by either topping up the deficit or claiming the excess.
         /// </summary>
         adjust_pool_deposit = 21,
         
         /// <summary>
         /// >> set_commission_claim_permission
-        /// See [`Pallet::set_commission_claim_permission`].
+        /// Set or remove a pool's commission claim permission.
+        /// 
+        /// Determines who can claim the pool's pending commission. Only the `Root` role of the pool
+        /// is able to configure commission claim permissions.
         /// </summary>
         set_commission_claim_permission = 22,
+        
+        /// <summary>
+        /// >> apply_slash
+        /// Apply a pending slash on a member.
+        /// 
+        /// Fails unless [`crate::pallet::Config::StakeAdapter`] is of strategy type:
+        /// [`adapter::StakeStrategyType::Delegate`].
+        /// 
+        /// This call can be dispatched permissionlessly (i.e. by any account). If the member has
+        /// slash to be applied, caller may be rewarded with the part of the slash.
+        /// </summary>
+        apply_slash = 23,
+        
+        /// <summary>
+        /// >> migrate_delegation
+        /// Migrates delegated funds from the pool account to the `member_account`.
+        /// 
+        /// Fails unless [`crate::pallet::Config::StakeAdapter`] is of strategy type:
+        /// [`adapter::StakeStrategyType::Delegate`].
+        /// 
+        /// This is a permission-less call and refunds any fee if claim is successful.
+        /// 
+        /// If the pool has migrated to delegation based staking, the staked tokens of pool members
+        /// can be moved and held in their own account. See [`adapter::DelegateStake`]
+        /// </summary>
+        migrate_delegation = 24,
+        
+        /// <summary>
+        /// >> migrate_pool_to_delegate_stake
+        /// Migrate pool from [`adapter::StakeStrategyType::Transfer`] to
+        /// [`adapter::StakeStrategyType::Delegate`].
+        /// 
+        /// Fails unless [`crate::pallet::Config::StakeAdapter`] is of strategy type:
+        /// [`adapter::StakeStrategyType::Delegate`].
+        /// 
+        /// This call can be dispatched permissionlessly, and refunds any fee if successful.
+        /// 
+        /// If the pool has already migrated to delegation based staking, this call will fail.
+        /// </summary>
+        migrate_pool_to_delegate_stake = 25,
     }
     
     /// <summary>
-    /// >> 306 - Variant[pallet_nomination_pools.pallet.Call]
+    /// >> 262 - Variant[pallet_nomination_pools.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -196,6 +430,9 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.claim_commission);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.adjust_pool_deposit);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Polkadot.NetApi.Generated.Model.pallet_nomination_pools.EnumCommissionClaimPermission>>>(Call.set_commission_claim_permission);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.apply_slash);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.migrate_delegation);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.migrate_pool_to_delegate_stake);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     
     
     /// <summary>
-    /// >> 385 - Composite[pallet_state_trie_migration.pallet.MigrationTask]
+    /// >> 350 - Composite[pallet_state_trie_migration.pallet.MigrationTask]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MigrationTask : BaseType

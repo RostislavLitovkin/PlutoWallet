@@ -48,7 +48,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_beefy.pallet
     }
     
     /// <summary>
-    /// >> 856 - Variant[pallet_beefy.pallet.Error]
+    /// >> 840 - Variant[pallet_beefy.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
     
     
     /// <summary>
-    /// >> 132 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
+    /// >> 166 - Composite[cumulus_primitives_parachain_inherent.ParachainInherentData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ParachainInherentData : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         /// <summary>
         /// >> validation_data
         /// </summary>
-        public InvArch.NetApi.Generated.Model.polkadot_primitives.v4.PersistedValidationData ValidationData { get; set; }
+        public InvArch.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData ValidationData { get; set; }
         /// <summary>
         /// >> relay_chain_state
         /// </summary>
@@ -62,7 +62,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            ValidationData = new InvArch.NetApi.Generated.Model.polkadot_primitives.v4.PersistedValidationData();
+            ValidationData = new InvArch.NetApi.Generated.Model.polkadot_primitives.v7.PersistedValidationData();
             ValidationData.Decode(byteArray, ref p);
             RelayChainState = new InvArch.NetApi.Generated.Model.sp_trie.storage_proof.StorageProof();
             RelayChainState.Decode(byteArray, ref p);

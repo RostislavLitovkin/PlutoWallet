@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.p
         /// A solution was stored with the given compute.
         /// 
         /// The `origin` indicates the origin of the solution. If `origin` is `Some(AccountId)`,
-        /// the stored solution was submited in the signed phase by a miner with the `AccountId`.
+        /// the stored solution was submitted in the signed phase by a miner with the `AccountId`.
         /// Otherwise, the solution was stored either during the unsigned phase or by
         /// `T::ForceOrigin`. The `bool` is `true` when a previous solution was ejected to make
         /// room for this one.
@@ -68,7 +68,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.p
     }
     
     /// <summary>
-    /// >> 495 - Variant[pallet_election_provider_multi_phase.pallet.Event]
+    /// >> 467 - Variant[pallet_election_provider_multi_phase.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

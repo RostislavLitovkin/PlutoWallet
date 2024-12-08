@@ -24,27 +24,81 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet
         
         /// <summary>
         /// >> bind_evm_address
-        /// See [`Pallet::bind_evm_address`].
+        /// Binds a Substrate address to EVM address.
+        /// After binding, the EVM is able to convert an EVM address to the original Substrate address.
+        /// Without binding, the EVM converts an EVM address to a truncated Substrate address, which doesn't correspond
+        /// to the origin address.
+        /// 
+        /// Binding an address is not necessary for interacting with the EVM.
+        /// 
+        /// Parameters:
+        /// - `origin`: Substrate account binding an address
+        /// 
+        /// Emits `EvmAccountBound` event when successful.
         /// </summary>
         bind_evm_address = 0,
         
         /// <summary>
         /// >> add_contract_deployer
-        /// See [`Pallet::add_contract_deployer`].
+        /// Adds an EVM address to the list of addresses that are allowed to deploy smart contracts.
+        /// 
+        /// Parameters:
+        /// - `origin`: Substrate account whitelisting an address. Must be `ControllerOrigin`.
+        /// - `address`: EVM address that is whitelisted
+        /// 
+        /// Emits `DeployerAdded` event when successful.
         /// </summary>
         add_contract_deployer = 1,
         
         /// <summary>
         /// >> remove_contract_deployer
-        /// See [`Pallet::remove_contract_deployer`].
+        /// Removes an EVM address from the list of addresses that are allowed to deploy smart contracts.
+        /// 
+        /// Parameters:
+        /// - `origin`: Substrate account removing the EVM address from the whitelist. Must be `ControllerOrigin`.
+        /// - `address`: EVM address that is removed from the whitelist
+        /// 
+        /// Emits `DeployerRemoved` event when successful.
         /// </summary>
         remove_contract_deployer = 2,
         
         /// <summary>
         /// >> renounce_contract_deployer
-        /// See [`Pallet::renounce_contract_deployer`].
+        /// Removes the account's EVM address from the list of addresses that are allowed to deploy smart contracts.
+        /// Based on the best practices, this extrinsic can be called by any whitelisted account to renounce their own permission.
+        /// 
+        /// Parameters:
+        /// - `origin`: Substrate account removing their EVM address from the whitelist.
+        /// 
+        /// Emits `DeployerRemoved` event when successful.
         /// </summary>
         renounce_contract_deployer = 3,
+        
+        /// <summary>
+        /// >> approve_contract
+        /// Adds address of the contract to the list of approved contracts to manage balances.
+        /// 
+        /// Effectively giving it allowance to for any balances and tokens.
+        /// 
+        /// Parameters:
+        /// - `origin`:  Must be `ControllerOrigin`.
+        /// - `address`: Contract address that will be approved
+        /// 
+        /// Emits `ContractApproved` event when successful.
+        /// </summary>
+        approve_contract = 4,
+        
+        /// <summary>
+        /// >> disapprove_contract
+        /// Removes address of the contract from the list of approved contracts to manage balances.
+        /// 
+        /// Parameters:
+        /// - `origin`:  Must be `ControllerOrigin`.
+        /// - `address`: Contract address that will be disapproved
+        /// 
+        /// Emits `ContractDisapproved` event when successful.
+        /// </summary>
+        disapprove_contract = 5,
     }
     
     /// <summary>
@@ -63,6 +117,8 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet
 				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.add_contract_deployer);
 				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.remove_contract_deployer);
 				AddTypeDecoder<BaseVoid>(Call.renounce_contract_deployer);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.approve_contract);
+				AddTypeDecoder<Hydration.NetApi.Generated.Model.primitive_types.H160>(Call.disapprove_contract);
         }
     }
 }

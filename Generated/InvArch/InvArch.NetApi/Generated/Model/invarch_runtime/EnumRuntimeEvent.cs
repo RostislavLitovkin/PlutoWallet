@@ -67,6 +67,21 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         Vesting = 13,
         
         /// <summary>
+        /// >> AssetRegistry
+        /// </summary>
+        AssetRegistry = 14,
+        
+        /// <summary>
+        /// >> Tokens
+        /// </summary>
+        Tokens = 16,
+        
+        /// <summary>
+        /// >> XTokens
+        /// </summary>
+        XTokens = 17,
+        
+        /// <summary>
         /// >> CollatorSelection
         /// </summary>
         CollatorSelection = 21,
@@ -92,19 +107,24 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         CumulusXcm = 32,
         
         /// <summary>
-        /// >> DmpQueue
-        /// </summary>
-        DmpQueue = 33,
-        
-        /// <summary>
         /// >> OrmlXcm
         /// </summary>
         OrmlXcm = 34,
         
         /// <summary>
+        /// >> MessageQueue
+        /// </summary>
+        MessageQueue = 35,
+        
+        /// <summary>
         /// >> Identity
         /// </summary>
         Identity = 40,
+        
+        /// <summary>
+        /// >> Contracts
+        /// </summary>
+        Contracts = 41,
         
         /// <summary>
         /// >> CheckedInflation
@@ -128,7 +148,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
     }
     
     /// <summary>
-    /// >> 20 - Variant[invarch_runtime.RuntimeEvent]
+    /// >> 21 - Variant[invarch_runtime.RuntimeEvent]
     /// </summary>
     public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {
@@ -147,17 +167,21 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_transaction_payment.pallet.EnumEvent>(RuntimeEvent.TransactionPayment);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_treasury.pallet.EnumEvent>(RuntimeEvent.Treasury);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_vesting.module.EnumEvent>(RuntimeEvent.Vesting);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_asset_registry.module.EnumEvent>(RuntimeEvent.AssetRegistry);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_tokens.module.EnumEvent>(RuntimeEvent.Tokens);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_xtokens.module.EnumEvent>(RuntimeEvent.XTokens);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumEvent>(RuntimeEvent.CollatorSelection);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_session.pallet.EnumEvent>(RuntimeEvent.Session);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumEvent>(RuntimeEvent.XcmpQueue);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumEvent>(RuntimeEvent.PolkadotXcm);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumEvent>(RuntimeEvent.CumulusXcm);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumEvent>(RuntimeEvent.DmpQueue);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_xcm.module.EnumEvent>(RuntimeEvent.OrmlXcm);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_message_queue.pallet.EnumEvent>(RuntimeEvent.MessageQueue);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_identity.pallet.EnumEvent>(RuntimeEvent.Identity);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_contracts.pallet.EnumEvent>(RuntimeEvent.Contracts);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_checked_inflation.pallet.EnumEvent>(RuntimeEvent.CheckedInflation);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_ocif_staking.pallet.EnumEvent>(RuntimeEvent.OcifStaking);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_inv4.pallet.EnumEvent>(RuntimeEvent.INV4);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_dao_staking.pallet.EnumEvent>(RuntimeEvent.OcifStaking);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_dao_manager.pallet.EnumEvent>(RuntimeEvent.INV4);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_tokens.module.EnumEvent>(RuntimeEvent.CoreAssets);
         }
     }

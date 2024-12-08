@@ -43,7 +43,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 101 - Variant[xcm.v2.NetworkId]
+    /// >> 58 - Variant[xcm.v2.NetworkId]
     /// </summary>
     public sealed class EnumNetworkId : BaseEnumRust<NetworkId>
     {

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_proxy
     
     
     /// <summary>
-    /// >> 537 - Composite[pallet_proxy.ProxyDefinition]
+    /// >> 540 - Composite[pallet_proxy.ProxyDefinition]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ProxyDefinition : BaseType

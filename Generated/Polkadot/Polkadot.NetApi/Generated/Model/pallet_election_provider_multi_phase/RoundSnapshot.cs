@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
     
     
     /// <summary>
-    /// >> 709 - Composite[pallet_election_provider_multi_phase.RoundSnapshot]
+    /// >> 670 - Composite[pallet_election_provider_multi_phase.RoundSnapshot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RoundSnapshot : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
         /// <summary>
         /// >> voters
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U64, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22>> Voters { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U64, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>> Voters { get; set; }
         /// <summary>
         /// >> targets
         /// </summary>
@@ -52,7 +52,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Voters = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U64, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22>>();
+            Voters = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U64, Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>>();
             Voters.Decode(byteArray, ref p);
             Targets = new Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>();
             Targets.Decode(byteArray, ref p);

@@ -24,43 +24,89 @@ namespace Hydration.NetApi.Generated.Model.pallet_scheduler.pallet
         
         /// <summary>
         /// >> schedule
-        /// See [`Pallet::schedule`].
+        /// Anonymously schedule a task.
         /// </summary>
         schedule = 0,
         
         /// <summary>
         /// >> cancel
-        /// See [`Pallet::cancel`].
+        /// Cancel an anonymously scheduled task.
         /// </summary>
         cancel = 1,
         
         /// <summary>
         /// >> schedule_named
-        /// See [`Pallet::schedule_named`].
+        /// Schedule a named task.
         /// </summary>
         schedule_named = 2,
         
         /// <summary>
         /// >> cancel_named
-        /// See [`Pallet::cancel_named`].
+        /// Cancel a named scheduled task.
         /// </summary>
         cancel_named = 3,
         
         /// <summary>
         /// >> schedule_after
-        /// See [`Pallet::schedule_after`].
+        /// Anonymously schedule a task after a delay.
         /// </summary>
         schedule_after = 4,
         
         /// <summary>
         /// >> schedule_named_after
-        /// See [`Pallet::schedule_named_after`].
+        /// Schedule a named task after a delay.
         /// </summary>
         schedule_named_after = 5,
+        
+        /// <summary>
+        /// >> set_retry
+        /// Set a retry configuration for a task so that, in case its scheduled run fails, it will
+        /// be retried after `period` blocks, for a total amount of `retries` retries or until it
+        /// succeeds.
+        /// 
+        /// Tasks which need to be scheduled for a retry are still subject to weight metering and
+        /// agenda space, same as a regular task. If a periodic task fails, it will be scheduled
+        /// normally while the task is retrying.
+        /// 
+        /// Tasks scheduled as a result of a retry for a periodic task are unnamed, non-periodic
+        /// clones of the original task. Their retry configuration will be derived from the
+        /// original task's configuration, but will have a lower value for `remaining` than the
+        /// original `total_retries`.
+        /// </summary>
+        set_retry = 6,
+        
+        /// <summary>
+        /// >> set_retry_named
+        /// Set a retry configuration for a named task so that, in case its scheduled run fails, it
+        /// will be retried after `period` blocks, for a total amount of `retries` retries or until
+        /// it succeeds.
+        /// 
+        /// Tasks which need to be scheduled for a retry are still subject to weight metering and
+        /// agenda space, same as a regular task. If a periodic task fails, it will be scheduled
+        /// normally while the task is retrying.
+        /// 
+        /// Tasks scheduled as a result of a retry for a periodic task are unnamed, non-periodic
+        /// clones of the original task. Their retry configuration will be derived from the
+        /// original task's configuration, but will have a lower value for `remaining` than the
+        /// original `total_retries`.
+        /// </summary>
+        set_retry_named = 7,
+        
+        /// <summary>
+        /// >> cancel_retry
+        /// Removes the retry configuration of a task.
+        /// </summary>
+        cancel_retry = 8,
+        
+        /// <summary>
+        /// >> cancel_retry_named
+        /// Cancel the retry configuration of a named task.
+        /// </summary>
+        cancel_retry_named = 9,
     }
     
     /// <summary>
-    /// >> 408 - Variant[pallet_scheduler.pallet.Call]
+    /// >> 410 - Variant[pallet_scheduler.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -77,6 +123,10 @@ namespace Hydration.NetApi.Generated.Model.pallet_scheduler.pallet
 				AddTypeDecoder<Hydration.NetApi.Generated.Types.Base.Arr32U8>(Call.cancel_named);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>, Substrate.NetApi.Model.Types.Primitive.U8, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall>>(Call.schedule_after);
 				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>, Substrate.NetApi.Model.Types.Primitive.U8, Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall>>(Call.schedule_named_after);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.set_retry);
+				AddTypeDecoder<BaseTuple<Hydration.NetApi.Generated.Types.Base.Arr32U8, Substrate.NetApi.Model.Types.Primitive.U8, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.set_retry_named);
+				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.cancel_retry);
+				AddTypeDecoder<Hydration.NetApi.Generated.Types.Base.Arr32U8>(Call.cancel_retry_named);
         }
     }
 }

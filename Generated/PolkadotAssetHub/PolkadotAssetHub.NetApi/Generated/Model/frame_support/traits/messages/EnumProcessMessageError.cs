@@ -45,6 +45,11 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.frame_support.traits.messages
         /// >> Yield
         /// </summary>
         Yield = 4,
+        
+        /// <summary>
+        /// >> StackLimitReached
+        /// </summary>
+        StackLimitReached = 5,
     }
     
     /// <summary>
@@ -63,6 +68,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.frame_support.traits.messages
 				AddTypeDecoder<BaseVoid>(ProcessMessageError.Unsupported);
 				AddTypeDecoder<PolkadotAssetHub.NetApi.Generated.Model.sp_weights.weight_v2.Weight>(ProcessMessageError.Overweight);
 				AddTypeDecoder<BaseVoid>(ProcessMessageError.Yield);
+				AddTypeDecoder<BaseVoid>(ProcessMessageError.StackLimitReached);
         }
     }
 }

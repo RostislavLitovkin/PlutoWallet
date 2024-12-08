@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_transaction_payment
     
     
     /// <summary>
-    /// >> 772 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
+    /// >> 777 - Composite[pallet_transaction_payment.ChargeTransactionPayment]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ChargeTransactionPayment : BaseType

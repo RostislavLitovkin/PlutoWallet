@@ -24,25 +24,45 @@ namespace Polkadot.NetApi.Generated.Model.pallet_bags_list.pallet
         
         /// <summary>
         /// >> rebag
-        /// See [`Pallet::rebag`].
+        /// Declare that some `dislocated` account has, through rewards or penalties, sufficiently
+        /// changed its score that it should properly fall into a different bag than its current
+        /// one.
+        /// 
+        /// Anyone can call this function about any potentially dislocated account.
+        /// 
+        /// Will always update the stored score of `dislocated` to the correct score, based on
+        /// `ScoreProvider`.
+        /// 
+        /// If `dislocated` does not exists, it returns an error.
         /// </summary>
         rebag = 0,
         
         /// <summary>
         /// >> put_in_front_of
-        /// See [`Pallet::put_in_front_of`].
+        /// Move the caller's Id directly in front of `lighter`.
+        /// 
+        /// The dispatch origin for this call must be _Signed_ and can only be called by the Id of
+        /// the account going in front of `lighter`. Fee is payed by the origin under all
+        /// circumstances.
+        /// 
+        /// Only works if:
+        /// 
+        /// - both nodes are within the same bag,
+        /// - and `origin` has a greater `Score` than `lighter`.
         /// </summary>
         put_in_front_of = 1,
         
         /// <summary>
         /// >> put_in_front_of_other
-        /// See [`Pallet::put_in_front_of_other`].
+        /// Same as [`Pallet::put_in_front_of`], but it can be called by anyone.
+        /// 
+        /// Fee is paid by the origin under all circumstances.
         /// </summary>
         put_in_front_of_other = 2,
     }
     
     /// <summary>
-    /// >> 305 - Variant[pallet_bags_list.pallet.Call]
+    /// >> 261 - Variant[pallet_bags_list.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

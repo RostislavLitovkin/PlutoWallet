@@ -24,13 +24,13 @@ namespace Hydration.NetApi.Generated.Model.orml_xcm.module
         
         /// <summary>
         /// >> send_as_sovereign
-        /// See [`Pallet::send_as_sovereign`].
+        /// Send an XCM message as parachain sovereign.
         /// </summary>
         send_as_sovereign = 0,
     }
     
     /// <summary>
-    /// >> 462 - Variant[orml_xcm.module.Call]
+    /// >> 466 - Variant[orml_xcm.module.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

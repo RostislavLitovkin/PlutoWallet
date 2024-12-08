@@ -24,13 +24,13 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inhe
         
         /// <summary>
         /// >> enter
-        /// See [`Pallet::enter`].
+        /// Enter the paras inherent. This will process bitfields and backed candidates.
         /// </summary>
         enter = 0,
     }
     
     /// <summary>
-    /// >> 330 - Variant[polkadot_runtime_parachains.paras_inherent.pallet.Call]
+    /// >> 287 - Variant[polkadot_runtime_parachains.paras_inherent.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -41,7 +41,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras_inhe
         /// </summary>
         public EnumCall()
         {
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.InherentData>(Call.enter);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.InherentData>(Call.enter);
         }
     }
 }

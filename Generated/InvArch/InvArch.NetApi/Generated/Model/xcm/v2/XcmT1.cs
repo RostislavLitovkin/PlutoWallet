@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2
     
     
     /// <summary>
-    /// >> 172 - Composite[xcm.v2.XcmT1]
+    /// >> 219 - Composite[xcm.v2.XcmT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class XcmT1 : BaseType

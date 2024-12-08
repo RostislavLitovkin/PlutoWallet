@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_traits.oracle
     
     
     /// <summary>
-    /// >> 753 - Composite[hydradx_traits.oracle.Liquidity]
+    /// >> 757 - Composite[hydradx_traits.oracle.Liquidity]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Liquidity : BaseType

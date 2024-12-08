@@ -36,8 +36,38 @@ namespace Hydration.NetApi.Generated.Storage
         public RouterStorage(SubstrateClientExt client)
         {
             this._client = client;
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Router", "SkipEd"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Hydration.NetApi.Generated.Model.pallet_route_executor.types.EnumSkipEd)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Router", "Routes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Hydration.NetApi.Generated.Model.hydradx_traits.router.AssetPair), typeof(Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7)));
+        }
+        
+        /// <summary>
+        /// >> SkipEdParams
+        /// Flag to indicate when to skip ED handling
+        /// </summary>
+        public static string SkipEdParams()
+        {
+            return RequestGenerator.GetStorage("Router", "SkipEd", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> SkipEdDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string SkipEdDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> SkipEd
+        /// Flag to indicate when to skip ED handling
+        /// </summary>
+        public async Task<Hydration.NetApi.Generated.Model.pallet_route_executor.types.EnumSkipEd> SkipEd(string blockhash, CancellationToken token)
+        {
+            string parameters = RouterStorage.SkipEdParams();
+            var result = await _client.GetStorageAsync<Hydration.NetApi.Generated.Model.pallet_route_executor.types.EnumSkipEd>(parameters, blockhash, token);
+            return result;
         }
         
         /// <summary>
@@ -131,6 +161,20 @@ namespace Hydration.NetApi.Generated.Storage
             byteArray.AddRange(new_route.Encode());
             return new Method(67, "Router", 3, "force_insert_route", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> sell_all
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method SellAll(Substrate.NetApi.Model.Types.Primitive.U32 asset_in, Substrate.NetApi.Model.Types.Primitive.U32 asset_out, Substrate.NetApi.Model.Types.Primitive.U128 min_amount_out, Substrate.NetApi.Model.Types.Base.BaseVec<Hydration.NetApi.Generated.Model.hydradx_traits.router.Trade> route)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(asset_in.Encode());
+            byteArray.AddRange(asset_out.Encode());
+            byteArray.AddRange(min_amount_out.Encode());
+            byteArray.AddRange(route.Encode());
+            return new Method(67, "Router", 4, "sell_all", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -147,6 +191,17 @@ namespace Hydration.NetApi.Generated.Storage
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x00000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> OraclePeriod
+        ///  Oracle's price aggregation period.
+        /// </summary>
+        public Hydration.NetApi.Generated.Model.hydradx_traits.oracle.EnumOraclePeriod OraclePeriod()
+        {
+            var result = new Hydration.NetApi.Generated.Model.hydradx_traits.oracle.EnumOraclePeriod();
+            result.Create("0x02");
             return result;
         }
     }
@@ -200,10 +255,10 @@ namespace Hydration.NetApi.Generated.Storage
         RouteUpdateIsNotSuccessful,
         
         /// <summary>
-        /// >> InsufficientAssetNotSupported
-        /// Insufficient asset is not supported for on chain routing
+        /// >> RouteHasNoOracle
+        /// Route contains assets that has no oracle data
         /// </summary>
-        InsufficientAssetNotSupported,
+        RouteHasNoOracle,
         
         /// <summary>
         /// >> InvalidRouteExecution

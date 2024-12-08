@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_utility.pallet
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -64,11 +61,8 @@ namespace InvArch.NetApi.Generated.Model.pallet_utility.pallet
     }
     
     /// <summary>
-    /// >> 36 - Variant[pallet_utility.pallet.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 37 - Variant[pallet_utility.pallet.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {

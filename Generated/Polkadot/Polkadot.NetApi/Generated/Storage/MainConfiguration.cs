@@ -56,7 +56,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// </summary>
         public static string ActiveConfigDefault()
         {
-            return @"0x0000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001027000080B2E60E80C3C90180969800000000000000000000000000050000000100000001000000010000000000060000006400000001000000000000000000000000000000000000000200000002000000020000000001000000";
+            return @"0x00003000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000600000064000000010000000100000000000000000000000000000002000000020000000200000000010000000100000001000000000100000000000000000000001027000080B2E60E80C3C9018096980000000000000000000000000005000000";
         }
         
         /// <summary>
@@ -227,14 +227,14 @@ namespace Polkadot.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> set_on_demand_retries
+        /// >> set_max_availability_timeouts
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetOnDemandRetries(Substrate.NetApi.Model.Types.Primitive.U32 @new)
+        public static Method SetMaxAvailabilityTimeouts(Substrate.NetApi.Model.Types.Primitive.U32 @new)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(@new.Encode());
-            return new Method(51, "Configuration", 7, "set_on_demand_retries", byteArray.ToArray());
+            return new Method(51, "Configuration", 7, "set_max_availability_timeouts", byteArray.ToArray());
         }
         
         /// <summary>
@@ -560,7 +560,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> set_async_backing_params
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetAsyncBackingParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams @new)
+        public static Method SetAsyncBackingParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.async_backing.AsyncBackingParams @new)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(@new.Encode());
@@ -571,7 +571,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> set_executor_params
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetExecutorParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams @new)
+        public static Method SetExecutorParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams @new)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(@new.Encode());
@@ -660,11 +660,22 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> set_approval_voting_params
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetApprovalVotingParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams @new)
+        public static Method SetApprovalVotingParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ApprovalVotingParams @new)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(@new.Encode());
             return new Method(51, "Configuration", 54, "set_approval_voting_params", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> set_scheduler_params
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method SetSchedulerParams(Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.SchedulerParams @new)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(@new.Encode());
+            return new Method(51, "Configuration", 55, "set_scheduler_params", byteArray.ToArray());
         }
     }
     

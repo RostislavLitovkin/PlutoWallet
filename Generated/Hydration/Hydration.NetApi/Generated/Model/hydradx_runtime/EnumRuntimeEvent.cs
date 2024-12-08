@@ -313,7 +313,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime
     }
     
     /// <summary>
-    /// >> 20 - Variant[hydradx_runtime.RuntimeEvent]
+    /// >> 21 - Variant[hydradx_runtime.RuntimeEvent]
     /// </summary>
     public sealed class EnumRuntimeEvent : BaseEnumRust<RuntimeEvent>
     {

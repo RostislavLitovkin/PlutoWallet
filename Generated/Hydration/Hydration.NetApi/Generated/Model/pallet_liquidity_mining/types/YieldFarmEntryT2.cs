@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types
     
     
     /// <summary>
-    /// >> 655 - Composite[pallet_liquidity_mining.types.YieldFarmEntryT2]
+    /// >> 659 - Composite[pallet_liquidity_mining.types.YieldFarmEntryT2]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class YieldFarmEntryT2 : BaseType

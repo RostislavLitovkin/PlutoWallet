@@ -38,7 +38,7 @@ namespace Hydration.NetApi.Generated.Model.ethereum.receipt
     }
     
     /// <summary>
-    /// >> 638 - Variant[ethereum.receipt.ReceiptV3]
+    /// >> 642 - Variant[ethereum.receipt.ReceiptV3]
     /// </summary>
     public sealed class EnumReceiptV3 : BaseEnumRust<ReceiptV3>
     {

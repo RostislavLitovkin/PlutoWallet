@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_balances.types
     }
     
     /// <summary>
-    /// >> 126 - Variant[pallet_balances.types.AdjustmentDirection]
+    /// >> 117 - Variant[pallet_balances.types.AdjustmentDirection]
     /// </summary>
     public sealed class EnumAdjustmentDirection : BaseEnum<AdjustmentDirection>
     {

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_slots
     
     
     /// <summary>
-    /// >> 112 - Composite[sp_consensus_slots.EquivocationProof]
+    /// >> 103 - Composite[sp_consensus_slots.EquivocationProof]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EquivocationProof : BaseType

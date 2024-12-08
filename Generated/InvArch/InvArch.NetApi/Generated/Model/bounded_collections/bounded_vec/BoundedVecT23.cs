@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec
     
     
     /// <summary>
-    /// >> 380 - Composite[bounded_collections.bounded_vec.BoundedVecT23]
+    /// >> 416 - Composite[bounded_collections.bounded_vec.BoundedVecT23]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT23 : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec
         /// <summary>
         /// >> value
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.orml_tokens.ReserveData> Value { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public> Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.orml_tokens.ReserveData>();
+            Value = new Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr25519.Public>();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

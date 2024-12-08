@@ -37,7 +37,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetConversion", "Pools"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.types.PoolInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.types.PoolInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("AssetConversion", "NextPoolAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
         }
         
@@ -46,7 +46,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         ///  Map from `PoolAssetId` to `PoolInfo`. This establishes whether a pool has been officially
         ///  created rather than people sending tokens directly to a pool's public account.
         /// </summary>
-        public static string PoolsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> key)
+        public static string PoolsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> key)
         {
             return RequestGenerator.GetStorage("AssetConversion", "Pools", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -67,7 +67,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         ///  Map from `PoolAssetId` to `PoolInfo`. This establishes whether a pool has been officially
         ///  created rather than people sending tokens directly to a pool's public account.
         /// </summary>
-        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.types.PoolInfo> Pools(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> key, string blockhash, CancellationToken token)
+        public async Task<PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.types.PoolInfo> Pools(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> key, string blockhash, CancellationToken token)
         {
             string parameters = AssetConversionStorage.PoolsParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_asset_conversion.types.PoolInfo>(parameters, blockhash, token);
@@ -116,7 +116,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> create_pool
         /// Pallet's callable functions.
         /// </summary>
-        public static Method CreatePool(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset2)
+        public static Method CreatePool(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset2)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset1.Encode());
@@ -128,7 +128,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> add_liquidity
         /// Pallet's callable functions.
         /// </summary>
-        public static Method AddLiquidity(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset2, Substrate.NetApi.Model.Types.Primitive.U128 amount1_desired, Substrate.NetApi.Model.Types.Primitive.U128 amount2_desired, Substrate.NetApi.Model.Types.Primitive.U128 amount1_min, Substrate.NetApi.Model.Types.Primitive.U128 amount2_min, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 mint_to)
+        public static Method AddLiquidity(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset2, Substrate.NetApi.Model.Types.Primitive.U128 amount1_desired, Substrate.NetApi.Model.Types.Primitive.U128 amount2_desired, Substrate.NetApi.Model.Types.Primitive.U128 amount1_min, Substrate.NetApi.Model.Types.Primitive.U128 amount2_min, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 mint_to)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset1.Encode());
@@ -145,7 +145,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> remove_liquidity
         /// Pallet's callable functions.
         /// </summary>
-        public static Method RemoveLiquidity(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation asset2, Substrate.NetApi.Model.Types.Primitive.U128 lp_token_burn, Substrate.NetApi.Model.Types.Primitive.U128 amount1_min_receive, Substrate.NetApi.Model.Types.Primitive.U128 amount2_min_receive, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 withdraw_to)
+        public static Method RemoveLiquidity(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset2, Substrate.NetApi.Model.Types.Primitive.U128 lp_token_burn, Substrate.NetApi.Model.Types.Primitive.U128 amount1_min_receive, Substrate.NetApi.Model.Types.Primitive.U128 amount2_min_receive, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 withdraw_to)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(asset1.Encode());
@@ -161,7 +161,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> swap_exact_tokens_for_tokens
         /// Pallet's callable functions.
         /// </summary>
-        public static Method SwapExactTokensForTokens(Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> path, Substrate.NetApi.Model.Types.Primitive.U128 amount_in, Substrate.NetApi.Model.Types.Primitive.U128 amount_out_min, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 send_to, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
+        public static Method SwapExactTokensForTokens(Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> path, Substrate.NetApi.Model.Types.Primitive.U128 amount_in, Substrate.NetApi.Model.Types.Primitive.U128 amount_out_min, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 send_to, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(path.Encode());
@@ -176,7 +176,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> swap_tokens_for_exact_tokens
         /// Pallet's callable functions.
         /// </summary>
-        public static Method SwapTokensForExactTokens(Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> path, Substrate.NetApi.Model.Types.Primitive.U128 amount_out, Substrate.NetApi.Model.Types.Primitive.U128 amount_in_max, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 send_to, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
+        public static Method SwapTokensForExactTokens(Substrate.NetApi.Model.Types.Base.BaseVec<PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> path, Substrate.NetApi.Model.Types.Primitive.U128 amount_out, Substrate.NetApi.Model.Types.Primitive.U128 amount_in_max, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 send_to, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(path.Encode());
@@ -185,6 +185,18 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
             byteArray.AddRange(send_to.Encode());
             byteArray.AddRange(keep_alive.Encode());
             return new Method(55, "AssetConversion", 4, "swap_tokens_for_exact_tokens", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> touch
+        /// Pallet's callable functions.
+        /// </summary>
+        public static Method Touch(PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset1, PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location asset2)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(asset1.Encode());
+            byteArray.AddRange(asset2.Encode());
+            return new Method(55, "AssetConversion", 5, "touch", byteArray.ToArray());
         }
     }
     
@@ -220,9 +232,9 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> PoolSetupFeeAsset
         ///  Asset class from [`Config::Assets`] used to pay the [`Config::PoolSetupFee`].
         /// </summary>
-        public PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation PoolSetupFeeAsset()
+        public PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location PoolSetupFeeAsset()
         {
-            var result = new PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation();
+            var result = new PolkadotAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location();
             result.Create("0x0100");
             return result;
         }

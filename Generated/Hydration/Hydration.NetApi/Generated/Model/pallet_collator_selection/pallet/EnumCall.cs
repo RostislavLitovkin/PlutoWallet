@@ -24,61 +24,108 @@ namespace Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet
         
         /// <summary>
         /// >> set_invulnerables
-        /// See [`Pallet::set_invulnerables`].
+        /// Set the list of invulnerable (fixed) collators. These collators must do some
+        /// preparation, namely to have registered session keys.
+        /// 
+        /// The call will remove any accounts that have not registered keys from the set. That is,
+        /// it is non-atomic; the caller accepts all `AccountId`s passed in `new` _individually_ as
+        /// acceptable Invulnerables, and is not proposing a _set_ of new Invulnerables.
+        /// 
+        /// This call does not maintain mutual exclusivity of `Invulnerables` and `Candidates`. It
+        /// is recommended to use a batch of `add_invulnerable` and `remove_invulnerable` instead. A
+        /// `batch_all` can also be used to enforce atomicity. If any candidates are included in
+        /// `new`, they should be removed with `remove_invulnerable_candidate` after execution.
+        /// 
+        /// Must be called by the `UpdateOrigin`.
         /// </summary>
         set_invulnerables = 0,
         
         /// <summary>
         /// >> set_desired_candidates
-        /// See [`Pallet::set_desired_candidates`].
+        /// Set the ideal number of non-invulnerable collators. If lowering this number, then the
+        /// number of running collators could be higher than this figure. Aside from that edge case,
+        /// there should be no other way to have more candidates than the desired number.
+        /// 
+        /// The origin for this call must be the `UpdateOrigin`.
         /// </summary>
         set_desired_candidates = 1,
         
         /// <summary>
         /// >> set_candidacy_bond
-        /// See [`Pallet::set_candidacy_bond`].
+        /// Set the candidacy bond amount.
+        /// 
+        /// If the candidacy bond is increased by this call, all current candidates which have a
+        /// deposit lower than the new bond will be kicked from the list and get their deposits
+        /// back.
+        /// 
+        /// The origin for this call must be the `UpdateOrigin`.
         /// </summary>
         set_candidacy_bond = 2,
         
         /// <summary>
         /// >> register_as_candidate
-        /// See [`Pallet::register_as_candidate`].
+        /// Register this account as a collator candidate. The account must (a) already have
+        /// registered session keys and (b) be able to reserve the `CandidacyBond`.
+        /// 
+        /// This call is not available to `Invulnerable` collators.
         /// </summary>
         register_as_candidate = 3,
         
         /// <summary>
         /// >> leave_intent
-        /// See [`Pallet::leave_intent`].
+        /// Deregister `origin` as a collator candidate. Note that the collator can only leave on
+        /// session change. The `CandidacyBond` will be unreserved immediately.
+        /// 
+        /// This call will fail if the total number of candidates would drop below
+        /// `MinEligibleCollators`.
         /// </summary>
         leave_intent = 4,
         
         /// <summary>
         /// >> add_invulnerable
-        /// See [`Pallet::add_invulnerable`].
+        /// Add a new account `who` to the list of `Invulnerables` collators. `who` must have
+        /// registered session keys. If `who` is a candidate, they will be removed.
+        /// 
+        /// The origin for this call must be the `UpdateOrigin`.
         /// </summary>
         add_invulnerable = 5,
         
         /// <summary>
         /// >> remove_invulnerable
-        /// See [`Pallet::remove_invulnerable`].
+        /// Remove an account `who` from the list of `Invulnerables` collators. `Invulnerables` must
+        /// be sorted.
+        /// 
+        /// The origin for this call must be the `UpdateOrigin`.
         /// </summary>
         remove_invulnerable = 6,
         
         /// <summary>
         /// >> update_bond
-        /// See [`Pallet::update_bond`].
+        /// Update the candidacy bond of collator candidate `origin` to a new amount `new_deposit`.
+        /// 
+        /// Setting a `new_deposit` that is lower than the current deposit while `origin` is
+        /// occupying a top-`DesiredCandidates` slot is not allowed.
+        /// 
+        /// This call will fail if `origin` is not a collator candidate, the updated bond is lower
+        /// than the minimum candidacy bond, and/or the amount cannot be reserved.
         /// </summary>
         update_bond = 7,
         
         /// <summary>
         /// >> take_candidate_slot
-        /// See [`Pallet::take_candidate_slot`].
+        /// The caller `origin` replaces a candidate `target` in the collator candidate list by
+        /// reserving `deposit`. The amount `deposit` reserved by the caller must be greater than
+        /// the existing bond of the target it is trying to replace.
+        /// 
+        /// This call will fail if the caller is already a collator candidate or invulnerable, the
+        /// caller does not have registered session keys, the target is not a collator candidate,
+        /// and/or the `deposit` amount cannot be reserved.
         /// </summary>
         take_candidate_slot = 8,
     }
     
     /// <summary>
-    /// >> 466 - Variant[pallet_collator_selection.pallet.Call]
+    /// >> 470 - Variant[pallet_collator_selection.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

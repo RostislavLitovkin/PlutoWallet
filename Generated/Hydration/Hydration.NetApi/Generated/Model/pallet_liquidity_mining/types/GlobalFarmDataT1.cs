@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types
     
     
     /// <summary>
-    /// >> 571 - Composite[pallet_liquidity_mining.types.GlobalFarmDataT1]
+    /// >> 574 - Composite[pallet_liquidity_mining.types.GlobalFarmDataT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class GlobalFarmDataT1 : BaseType

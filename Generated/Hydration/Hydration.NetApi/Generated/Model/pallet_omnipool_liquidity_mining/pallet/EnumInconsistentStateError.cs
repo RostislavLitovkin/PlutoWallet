@@ -33,7 +33,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool_liquidity_mining.pall
     }
     
     /// <summary>
-    /// >> 583 - Variant[pallet_omnipool_liquidity_mining.pallet.InconsistentStateError]
+    /// >> 586 - Variant[pallet_omnipool_liquidity_mining.pallet.InconsistentStateError]
     /// </summary>
     public sealed class EnumInconsistentStateError : BaseEnum<InconsistentStateError>
     {

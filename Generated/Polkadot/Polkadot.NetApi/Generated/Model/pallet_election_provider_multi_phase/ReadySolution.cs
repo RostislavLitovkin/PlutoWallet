@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
     
     
     /// <summary>
-    /// >> 707 - Composite[pallet_election_provider_multi_phase.ReadySolution]
+    /// >> 668 - Composite[pallet_election_provider_multi_phase.ReadySolution]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReadySolution : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
         /// <summary>
         /// >> supports
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36 Supports { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30 Supports { get; set; }
         /// <summary>
         /// >> score
         /// </summary>
@@ -57,7 +57,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Supports = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36();
+            Supports = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30();
             Supports.Decode(byteArray, ref p);
             Score = new Polkadot.NetApi.Generated.Model.sp_npos_elections.ElectionScore();
             Score.Decode(byteArray, ref p);

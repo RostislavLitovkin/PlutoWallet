@@ -69,10 +69,16 @@ namespace Polkadot.NetApi.Generated.Model.pallet_preimage.pallet
         /// Too few hashes were requested to be upgraded (i.e. zero).
         /// </summary>
         TooFew = 7,
+        
+        /// <summary>
+        /// >> NoCost
+        /// No ticket with a cost was returned by [`Config::Consideration`] to store the preimage.
+        /// </summary>
+        NoCost = 8,
     }
     
     /// <summary>
-    /// >> 553 - Variant[pallet_preimage.pallet.Error]
+    /// >> 527 - Variant[pallet_preimage.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

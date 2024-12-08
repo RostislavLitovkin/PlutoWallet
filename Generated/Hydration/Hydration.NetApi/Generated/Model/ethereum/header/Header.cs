@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.ethereum.header
     
     
     /// <summary>
-    /// >> 641 - Composite[ethereum.header.Header]
+    /// >> 645 - Composite[ethereum.header.Header]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Header : BaseType

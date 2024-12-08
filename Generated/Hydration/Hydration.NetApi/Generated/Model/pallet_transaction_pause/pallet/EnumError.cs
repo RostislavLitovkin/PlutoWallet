@@ -42,7 +42,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet
     }
     
     /// <summary>
-    /// >> 569 - Variant[pallet_transaction_pause.pallet.Error]
+    /// >> 572 - Variant[pallet_transaction_pause.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -41,8 +41,8 @@ namespace PolkadotPeople.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SuperOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.EnumData>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SubsOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "UsernameAuthorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(PolkadotPeople.NetApi.Generated.Model.pallet_identity.types.AuthorityProperties)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "AccountOfUsername"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -153,10 +153,10 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>> SubsOf(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18>> SubsOf(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.SubsOfParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18>>(parameters, blockhash, token);
             return result;
         }
         
@@ -188,10 +188,10 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         /// 
         ///  The index into this can be cast to `RegistrarIndex` to get a valid value.
         /// </summary>
-        public async Task<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21> Registrars(string blockhash, CancellationToken token)
+        public async Task<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22> Registrars(string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.RegistrarsParams();
-            var result = await _client.GetStorageAsync<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22>(parameters, blockhash, token);
             return result;
         }
         
@@ -621,7 +621,7 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxRegistrars
-        ///  Maxmimum number of registrars allowed in the system. Needed to bound the complexity
+        ///  Maximum number of registrars allowed in the system. Needed to bound the complexity
         ///  of, e.g., updating judgements.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxRegistrars()

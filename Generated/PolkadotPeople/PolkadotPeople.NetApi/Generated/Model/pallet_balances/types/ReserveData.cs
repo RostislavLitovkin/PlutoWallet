@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_balances.types
     
     
     /// <summary>
-    /// >> 203 - Composite[pallet_balances.types.ReserveData]
+    /// >> 202 - Composite[pallet_balances.types.ReserveData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReserveData : BaseType

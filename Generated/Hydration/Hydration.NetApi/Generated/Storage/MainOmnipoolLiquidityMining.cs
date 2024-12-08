@@ -222,6 +222,57 @@ namespace Hydration.NetApi.Generated.Storage
             byteArray.AddRange(yield_farm_id.Encode());
             return new Method(63, "OmnipoolLiquidityMining", 11, "withdraw_shares", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> update_global_farm
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method UpdateGlobalFarm(Substrate.NetApi.Model.Types.Primitive.U32 global_farm_id, Substrate.NetApi.Model.Types.Primitive.U32 planned_yielding_periods, Hydration.NetApi.Generated.Model.sp_arithmetic.per_things.Perquintill yield_per_period, Substrate.NetApi.Model.Types.Primitive.U128 min_deposit)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(global_farm_id.Encode());
+            byteArray.AddRange(planned_yielding_periods.Encode());
+            byteArray.AddRange(yield_per_period.Encode());
+            byteArray.AddRange(min_deposit.Encode());
+            return new Method(63, "OmnipoolLiquidityMining", 12, "update_global_farm", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> join_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method JoinFarms(Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18 farm_entries, Substrate.NetApi.Model.Types.Primitive.U128 position_id)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(farm_entries.Encode());
+            byteArray.AddRange(position_id.Encode());
+            return new Method(63, "OmnipoolLiquidityMining", 13, "join_farms", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> add_liquidity_and_join_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AddLiquidityAndJoinFarms(Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18 farm_entries, Substrate.NetApi.Model.Types.Primitive.U32 asset, Substrate.NetApi.Model.Types.Primitive.U128 amount)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(farm_entries.Encode());
+            byteArray.AddRange(asset.Encode());
+            byteArray.AddRange(amount.Encode());
+            return new Method(63, "OmnipoolLiquidityMining", 14, "add_liquidity_and_join_farms", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> exit_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ExitFarms(Substrate.NetApi.Model.Types.Primitive.U128 deposit_id, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19 yield_farm_ids)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(deposit_id.Encode());
+            byteArray.AddRange(yield_farm_ids.Encode());
+            return new Method(63, "OmnipoolLiquidityMining", 15, "exit_farms", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -306,5 +357,17 @@ namespace Hydration.NetApi.Generated.Storage
         /// Oracle providing `price_adjustment` could not be found for requested assets.
         /// </summary>
         PriceAdjustmentNotAvailable,
+        
+        /// <summary>
+        /// >> Disabled
+        /// The extrinsic is disabled for now.
+        /// </summary>
+        Disabled,
+        
+        /// <summary>
+        /// >> NoFarmEntriesSpecified
+        /// No farms specified to join
+        /// </summary>
+        NoFarmEntriesSpecified,
     }
 }

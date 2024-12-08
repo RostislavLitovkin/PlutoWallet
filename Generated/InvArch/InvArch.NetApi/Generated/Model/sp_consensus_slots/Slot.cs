@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_consensus_slots
     
     
     /// <summary>
-    /// >> 320 - Composite[sp_consensus_slots.Slot]
+    /// >> 418 - Composite[sp_consensus_slots.Slot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Slot : BaseType

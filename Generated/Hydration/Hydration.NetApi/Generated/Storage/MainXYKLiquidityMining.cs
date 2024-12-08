@@ -168,6 +168,34 @@ namespace Hydration.NetApi.Generated.Storage
         }
         
         /// <summary>
+        /// >> join_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method JoinFarms(Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21 farm_entries, Hydration.NetApi.Generated.Model.pallet_xyk.types.AssetPair asset_pair, Substrate.NetApi.Model.Types.Primitive.U128 shares_amount)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(farm_entries.Encode());
+            byteArray.AddRange(asset_pair.Encode());
+            byteArray.AddRange(shares_amount.Encode());
+            return new Method(95, "XYKLiquidityMining", 12, "join_farms", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> add_liquidity_and_join_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method AddLiquidityAndJoinFarms(Substrate.NetApi.Model.Types.Primitive.U32 asset_a, Substrate.NetApi.Model.Types.Primitive.U32 asset_b, Substrate.NetApi.Model.Types.Primitive.U128 amount_a, Substrate.NetApi.Model.Types.Primitive.U128 amount_b_max_limit, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21 farm_entries)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(asset_a.Encode());
+            byteArray.AddRange(asset_b.Encode());
+            byteArray.AddRange(amount_a.Encode());
+            byteArray.AddRange(amount_b_max_limit.Encode());
+            byteArray.AddRange(farm_entries.Encode());
+            return new Method(95, "XYKLiquidityMining", 13, "add_liquidity_and_join_farms", byteArray.ToArray());
+        }
+        
+        /// <summary>
         /// >> redeposit_shares
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
@@ -204,6 +232,19 @@ namespace Hydration.NetApi.Generated.Storage
             byteArray.AddRange(yield_farm_id.Encode());
             byteArray.AddRange(asset_pair.Encode());
             return new Method(95, "XYKLiquidityMining", 11, "withdraw_shares", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> exit_farms
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ExitFarms(Substrate.NetApi.Model.Types.Primitive.U128 deposit_id, Hydration.NetApi.Generated.Model.pallet_xyk.types.AssetPair asset_pair, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22 farm_entries)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(deposit_id.Encode());
+            byteArray.AddRange(asset_pair.Encode());
+            byteArray.AddRange(farm_entries.Encode());
+            return new Method(95, "XYKLiquidityMining", 14, "exit_farms", byteArray.ToArray());
         }
     }
     
@@ -296,5 +337,17 @@ namespace Hydration.NetApi.Generated.Storage
         /// Failed to calculate `pot`'s account.
         /// </summary>
         FailToGetPotId,
+        
+        /// <summary>
+        /// >> Disabled
+        /// Extrinsic is disasbled for now
+        /// </summary>
+        Disabled,
+        
+        /// <summary>
+        /// >> NoFarmsSpecified
+        /// No global farm - yield farm pairs specified to join
+        /// </summary>
+        NoFarmsSpecified,
     }
 }

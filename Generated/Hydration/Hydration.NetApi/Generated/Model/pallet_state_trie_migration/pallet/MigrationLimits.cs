@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet
     
     
     /// <summary>
-    /// >> 353 - Composite[pallet_state_trie_migration.pallet.MigrationLimits]
+    /// >> 350 - Composite[pallet_state_trie_migration.pallet.MigrationLimits]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MigrationLimits : BaseType

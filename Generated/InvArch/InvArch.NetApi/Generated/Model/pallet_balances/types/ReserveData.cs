@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.types
     
     
     /// <summary>
-    /// >> 288 - Composite[pallet_balances.types.ReserveData]
+    /// >> 370 - Composite[pallet_balances.types.ReserveData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ReserveData : BaseType

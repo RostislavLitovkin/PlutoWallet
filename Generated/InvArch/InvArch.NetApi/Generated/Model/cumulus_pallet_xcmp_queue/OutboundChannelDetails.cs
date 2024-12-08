@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     
     
     /// <summary>
-    /// >> 329 - Composite[cumulus_pallet_xcmp_queue.OutboundChannelDetails]
+    /// >> 424 - Composite[cumulus_pallet_xcmp_queue.OutboundChannelDetails]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class OutboundChannelDetails : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
         /// <summary>
         /// >> recipient
         /// </summary>
-        public InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id Recipient { get; set; }
+        public InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id Recipient { get; set; }
         /// <summary>
         /// >> state
         /// </summary>
@@ -67,7 +67,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Recipient = new InvArch.NetApi.Generated.Model.polkadot_parachain.primitives.Id();
+            Recipient = new InvArch.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id();
             Recipient.Decode(byteArray, ref p);
             State = new InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.EnumOutboundState();
             State.Decode(byteArray, ref p);

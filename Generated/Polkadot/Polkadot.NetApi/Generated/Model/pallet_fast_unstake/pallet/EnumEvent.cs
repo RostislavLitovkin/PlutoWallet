@@ -57,7 +57,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_fast_unstake.pallet
     }
     
     /// <summary>
-    /// >> 501 - Variant[pallet_fast_unstake.pallet.Event]
+    /// >> 473 - Variant[pallet_fast_unstake.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

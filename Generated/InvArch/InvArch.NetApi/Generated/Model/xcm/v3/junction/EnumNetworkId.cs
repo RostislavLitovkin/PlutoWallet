@@ -70,10 +70,15 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.junction
         /// >> BitcoinCash
         /// </summary>
         BitcoinCash = 9,
+        
+        /// <summary>
+        /// >> PolkadotBulletin
+        /// </summary>
+        PolkadotBulletin = 10,
     }
     
     /// <summary>
-    /// >> 60 - Variant[xcm.v3.junction.NetworkId]
+    /// >> 67 - Variant[xcm.v3.junction.NetworkId]
     /// </summary>
     public sealed class EnumNetworkId : BaseEnumRust<NetworkId>
     {
@@ -93,6 +98,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.junction
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>>(NetworkId.Ethereum);
 				AddTypeDecoder<BaseVoid>(NetworkId.BitcoinCore);
 				AddTypeDecoder<BaseVoid>(NetworkId.BitcoinCash);
+				AddTypeDecoder<BaseVoid>(NetworkId.PolkadotBulletin);
         }
     }
 }

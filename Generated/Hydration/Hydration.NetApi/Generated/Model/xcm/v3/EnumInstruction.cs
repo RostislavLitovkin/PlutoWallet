@@ -263,7 +263,7 @@ namespace Hydration.NetApi.Generated.Model.xcm.v3
     }
     
     /// <summary>
-    /// >> 456 - Variant[xcm.v3.Instruction]
+    /// >> 458 - Variant[xcm.v3.Instruction]
     /// </summary>
     public sealed class EnumInstruction : BaseEnumRust<Instruction>
     {

@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -92,54 +89,99 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.pallet
         InvalidTarget = 10,
         
         /// <summary>
-        /// >> TooManyFields
-        /// Too many additional fields.
-        /// </summary>
-        TooManyFields = 11,
-        
-        /// <summary>
         /// >> TooManyRegistrars
         /// Maximum amount of registrars reached. Cannot add any more.
         /// </summary>
-        TooManyRegistrars = 12,
+        TooManyRegistrars = 11,
         
         /// <summary>
         /// >> AlreadyClaimed
         /// Account ID is already named.
         /// </summary>
-        AlreadyClaimed = 13,
+        AlreadyClaimed = 12,
         
         /// <summary>
         /// >> NotSub
         /// Sender is not a sub-account.
         /// </summary>
-        NotSub = 14,
+        NotSub = 13,
         
         /// <summary>
         /// >> NotOwned
         /// Sub-account isn't owned by sender.
         /// </summary>
-        NotOwned = 15,
+        NotOwned = 14,
         
         /// <summary>
         /// >> JudgementForDifferentIdentity
         /// The provided judgement was for a different identity.
         /// </summary>
-        JudgementForDifferentIdentity = 16,
+        JudgementForDifferentIdentity = 15,
         
         /// <summary>
         /// >> JudgementPaymentFailed
         /// Error that occurs when there is an issue paying for judgement.
         /// </summary>
-        JudgementPaymentFailed = 17,
+        JudgementPaymentFailed = 16,
+        
+        /// <summary>
+        /// >> InvalidSuffix
+        /// The provided suffix is too long.
+        /// </summary>
+        InvalidSuffix = 17,
+        
+        /// <summary>
+        /// >> NotUsernameAuthority
+        /// The sender does not have permission to issue a username.
+        /// </summary>
+        NotUsernameAuthority = 18,
+        
+        /// <summary>
+        /// >> NoAllocation
+        /// The authority cannot allocate any more usernames.
+        /// </summary>
+        NoAllocation = 19,
+        
+        /// <summary>
+        /// >> InvalidSignature
+        /// The signature on a username was not valid.
+        /// </summary>
+        InvalidSignature = 20,
+        
+        /// <summary>
+        /// >> RequiresSignature
+        /// Setting this username requires a signature, but none was provided.
+        /// </summary>
+        RequiresSignature = 21,
+        
+        /// <summary>
+        /// >> InvalidUsername
+        /// The username does not meet the requirements.
+        /// </summary>
+        InvalidUsername = 22,
+        
+        /// <summary>
+        /// >> UsernameTaken
+        /// The username is already taken.
+        /// </summary>
+        UsernameTaken = 23,
+        
+        /// <summary>
+        /// >> NoUsername
+        /// The requested username does not exist.
+        /// </summary>
+        NoUsername = 24,
+        
+        /// <summary>
+        /// >> NotExpired
+        /// The username cannot be forcefully removed because it can still be accepted.
+        /// </summary>
+        NotExpired = 25,
     }
     
     /// <summary>
-    /// >> 353 - Variant[pallet_identity.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 471 - Variant[pallet_identity.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

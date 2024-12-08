@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -75,7 +72,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         
         /// <summary>
         /// >> TooManyHolds
-        /// Number of holds exceed `MaxHolds`.
+        /// Number of holds exceed `VariantCountOf<T::RuntimeHoldReason>`.
         /// </summary>
         TooManyHolds = 8,
         
@@ -84,14 +81,23 @@ namespace InvArch.NetApi.Generated.Model.pallet_balances.pallet
         /// Number of freezes exceed `MaxFreezes`.
         /// </summary>
         TooManyFreezes = 9,
+        
+        /// <summary>
+        /// >> IssuanceDeactivated
+        /// The issuance cannot be modified since it is already deactivated.
+        /// </summary>
+        IssuanceDeactivated = 10,
+        
+        /// <summary>
+        /// >> DeltaZero
+        /// The delta cannot be zero.
+        /// </summary>
+        DeltaZero = 11,
     }
     
     /// <summary>
-    /// >> 296 - Variant[pallet_balances.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 382 - Variant[pallet_balances.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

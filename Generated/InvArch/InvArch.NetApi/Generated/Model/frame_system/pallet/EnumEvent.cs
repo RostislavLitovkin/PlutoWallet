@@ -57,10 +57,16 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
         /// On on-chain remark happened.
         /// </summary>
         Remarked = 5,
+        
+        /// <summary>
+        /// >> UpgradeAuthorized
+        /// An upgrade was authorized.
+        /// </summary>
+        UpgradeAuthorized = 6,
     }
     
     /// <summary>
-    /// >> 21 - Variant[frame_system.pallet.Event]
+    /// >> 22 - Variant[frame_system.pallet.Event]
     /// Event for the System pallet.
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
@@ -77,6 +83,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.pallet
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.NewAccount);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(Event.KilledAccount);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.primitive_types.H256>>(Event.Remarked);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.primitive_types.H256, Substrate.NetApi.Model.Types.Primitive.Bool>>(Event.UpgradeAuthorized);
         }
     }
 }

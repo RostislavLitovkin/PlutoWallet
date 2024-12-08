@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote
     
     
     /// <summary>
-    /// >> 636 - Composite[pallet_conviction_voting.vote.Casting]
+    /// >> 612 - Composite[pallet_conviction_voting.vote.Casting]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Casting : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote
         /// <summary>
         /// >> votes
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT24 Votes { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22 Votes { get; set; }
         /// <summary>
         /// >> delegations
         /// </summary>
@@ -57,7 +57,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_conviction_voting.vote
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Votes = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT24();
+            Votes = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22();
             Votes.Decode(byteArray, ref p);
             Delegations = new Polkadot.NetApi.Generated.Model.pallet_conviction_voting.types.Delegations();
             Delegations.Decode(byteArray, ref p);

@@ -80,7 +80,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> pause
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Pause(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1> full_name)
         {
@@ -91,7 +91,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> unpause
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Unpause(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT1> ident)
         {

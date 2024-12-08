@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 71 - Variant[xcm.v3.multiasset.Fungibility]
+    /// >> 131 - Variant[xcm.v3.multiasset.Fungibility]
     /// </summary>
     public sealed class EnumFungibility : BaseEnumRust<Fungibility>
     {

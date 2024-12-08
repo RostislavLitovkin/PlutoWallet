@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.pr
     
     
     /// <summary>
-    /// >> 167 - Composite[polkadot_parachain_primitives.primitives.HeadData]
+    /// >> 166 - Composite[polkadot_parachain_primitives.primitives.HeadData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HeadData : BaseType

@@ -24,31 +24,72 @@ namespace Hydration.NetApi.Generated.Model.pallet_referrals.pallet
         
         /// <summary>
         /// >> register_code
-        /// See [`Pallet::register_code`].
+        /// Register new referral code.
+        /// 
+        /// `origin` pays the registration fee.
+        /// `code` is assigned to the given `account`.
+        /// 
+        /// Length of the `code` must be at least `T::MinCodeLength`.
+        /// Maximum length is limited to `T::CodeLength`.
+        /// `code` must contain only alfa-numeric characters and all characters will be converted to upper case.
+        /// 
+        /// Parameters:
+        /// - `code`: Code to register. Must follow the restrictions.
+        /// 
+        /// Emits `CodeRegistered` event when successful.
         /// </summary>
         register_code = 0,
         
         /// <summary>
         /// >> link_code
-        /// See [`Pallet::link_code`].
+        /// Link a code to an account.
+        /// 
+        /// `Code` must be valid registered code. Otherwise `InvalidCode` is returned.
+        /// 
+        /// Signer account is linked to the referral account of the code.
+        /// 
+        /// Parameters:
+        /// - `code`: Code to use to link the signer account to.
+        /// 
+        /// Emits `CodeLinked` event when successful.
         /// </summary>
         link_code = 1,
         
         /// <summary>
         /// >> convert
-        /// See [`Pallet::convert`].
+        /// Convert accrued asset amount to reward currency.
+        /// 
+        /// Parameters:
+        /// - `asset_id`: Id of an asset to convert to RewardAsset.
+        /// 
+        /// Emits `Converted` event when successful.
         /// </summary>
         convert = 2,
         
         /// <summary>
         /// >> claim_rewards
-        /// See [`Pallet::claim_rewards`].
+        /// Claim accumulated rewards
+        /// 
+        /// IF there is any asset in the reward pot, all is converted to RewardCurrency first.
+        /// 
+        /// Reward amount is calculated based on the shares of the signer account.
+        /// 
+        /// if the signer account is referrer account, total accumulated rewards is updated as well as referrer level if reached.
+        /// 
+        /// Emits `Claimed` event when successful.
         /// </summary>
         claim_rewards = 3,
         
         /// <summary>
         /// >> set_reward_percentage
-        /// See [`Pallet::set_reward_percentage`].
+        /// Set asset reward percentages
+        /// 
+        /// Parameters:
+        /// - `asset_id`: asset id
+        /// - `level`: level
+        /// - `rewards`: reward fee percentages
+        /// 
+        /// Emits `AssetRewardsUpdated` event when successful.
         /// </summary>
         set_reward_percentage = 4,
     }

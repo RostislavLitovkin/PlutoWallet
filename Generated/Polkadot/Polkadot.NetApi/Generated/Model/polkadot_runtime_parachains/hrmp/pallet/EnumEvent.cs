@@ -66,7 +66,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.hrmp.palle
     }
     
     /// <summary>
-    /// >> 507 - Variant[polkadot_runtime_parachains.hrmp.pallet.Event]
+    /// >> 479 - Variant[polkadot_runtime_parachains.hrmp.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

@@ -43,7 +43,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 85 - Variant[xcm.v2.OriginKind]
+    /// >> 226 - Variant[xcm.v2.OriginKind]
     /// </summary>
     public sealed class EnumOriginKind : BaseEnum<OriginKind>
     {

@@ -190,6 +190,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> LocksParams
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public static string LocksParams(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -211,6 +213,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> Locks
         ///  Any liquidity locks on some account balances.
         ///  NOTE: Should only be accessed when setting, changing and freeing a lock.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.weak_bounded_vec.WeakBoundedVecT2> Locks(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
@@ -222,6 +226,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// <summary>
         /// >> ReservesParams
         ///  Named reserves on some account balances.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public static string ReservesParams(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -242,6 +248,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// <summary>
         /// >> Reserves
         ///  Named reserves on some account balances.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public async Task<PolkadotAssetHub.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8> Reserves(PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
@@ -414,6 +422,18 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
             byteArray.AddRange(delta.Encode());
             return new Method(10, "Balances", 9, "force_adjust_total_issuance", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> burn
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method Burn(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value, Substrate.NetApi.Model.Types.Primitive.Bool keep_alive)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(value.Encode());
+            byteArray.AddRange(keep_alive.Encode());
+            return new Method(10, "Balances", 10, "burn", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -444,6 +464,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// >> MaxLocks
         ///  The maximum number of locks that should exist on an account.
         ///  Not strictly enforced, but used for weight estimation.
+        /// 
+        ///  Use of locks is deprecated in favour of freezes. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxLocks()
         {
@@ -455,6 +477,8 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// <summary>
         /// >> MaxReserves
         ///  The maximum number of named reserves that can exist on an account.
+        /// 
+        ///  Use of reserves is deprecated in favour of holds. See `https://github.com/paritytech/substrate/pull/12951/`
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxReserves()
         {

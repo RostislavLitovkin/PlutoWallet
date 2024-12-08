@@ -17,81 +17,117 @@ namespace InvArch.NetApi.Generated.Model.pallet_collator_selection.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
         
         /// <summary>
         /// >> TooManyCandidates
-        /// Too many candidates
+        /// The pallet has too many candidates.
         /// </summary>
         TooManyCandidates = 0,
         
         /// <summary>
-        /// >> TooFewCandidates
-        /// Too few candidates
+        /// >> TooFewEligibleCollators
+        /// Leaving would result in too few candidates.
         /// </summary>
-        TooFewCandidates = 1,
-        
-        /// <summary>
-        /// >> Unknown
-        /// Unknown error
-        /// </summary>
-        Unknown = 2,
-        
-        /// <summary>
-        /// >> Permission
-        /// Permission issue
-        /// </summary>
-        Permission = 3,
+        TooFewEligibleCollators = 1,
         
         /// <summary>
         /// >> AlreadyCandidate
-        /// User is already a candidate
+        /// Account is already a candidate.
         /// </summary>
-        AlreadyCandidate = 4,
+        AlreadyCandidate = 2,
         
         /// <summary>
         /// >> NotCandidate
-        /// User is not a candidate
+        /// Account is not a candidate.
         /// </summary>
-        NotCandidate = 5,
+        NotCandidate = 3,
         
         /// <summary>
         /// >> TooManyInvulnerables
-        /// Too many invulnerables
+        /// There are too many Invulnerables.
         /// </summary>
-        TooManyInvulnerables = 6,
+        TooManyInvulnerables = 4,
         
         /// <summary>
         /// >> AlreadyInvulnerable
-        /// User is already an Invulnerable
+        /// Account is already an Invulnerable.
         /// </summary>
-        AlreadyInvulnerable = 7,
+        AlreadyInvulnerable = 5,
+        
+        /// <summary>
+        /// >> NotInvulnerable
+        /// Account is not an Invulnerable.
+        /// </summary>
+        NotInvulnerable = 6,
         
         /// <summary>
         /// >> NoAssociatedValidatorId
-        /// Account has no associated validator ID
+        /// Account has no associated validator ID.
         /// </summary>
-        NoAssociatedValidatorId = 8,
+        NoAssociatedValidatorId = 7,
         
         /// <summary>
         /// >> ValidatorNotRegistered
-        /// Validator ID is not yet registered
+        /// Validator ID is not yet registered.
         /// </summary>
-        ValidatorNotRegistered = 9,
+        ValidatorNotRegistered = 8,
+        
+        /// <summary>
+        /// >> InsertToCandidateListFailed
+        /// Could not insert in the candidate list.
+        /// </summary>
+        InsertToCandidateListFailed = 9,
+        
+        /// <summary>
+        /// >> RemoveFromCandidateListFailed
+        /// Could not remove from the candidate list.
+        /// </summary>
+        RemoveFromCandidateListFailed = 10,
+        
+        /// <summary>
+        /// >> DepositTooLow
+        /// New deposit amount would be below the minimum candidacy bond.
+        /// </summary>
+        DepositTooLow = 11,
+        
+        /// <summary>
+        /// >> UpdateCandidateListFailed
+        /// Could not update the candidate list.
+        /// </summary>
+        UpdateCandidateListFailed = 12,
+        
+        /// <summary>
+        /// >> InsufficientBond
+        /// Deposit amount is too low to take the target's slot in the candidate list.
+        /// </summary>
+        InsufficientBond = 13,
+        
+        /// <summary>
+        /// >> TargetIsNotCandidate
+        /// The target account to be replaced in the candidate list is not a candidate.
+        /// </summary>
+        TargetIsNotCandidate = 14,
+        
+        /// <summary>
+        /// >> IdenticalDeposit
+        /// The updated deposit amount is equal to the amount already reserved.
+        /// </summary>
+        IdenticalDeposit = 15,
+        
+        /// <summary>
+        /// >> InvalidUnreserve
+        /// Cannot lower candidacy bond while occupying a future collator slot in the list.
+        /// </summary>
+        InvalidUnreserve = 16,
     }
     
     /// <summary>
-    /// >> 312 - Variant[pallet_collator_selection.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 410 - Variant[pallet_collator_selection.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

@@ -216,7 +216,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool.pallet
     }
     
     /// <summary>
-    /// >> 566 - Variant[pallet_omnipool.pallet.Error]
+    /// >> 569 - Variant[pallet_omnipool.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

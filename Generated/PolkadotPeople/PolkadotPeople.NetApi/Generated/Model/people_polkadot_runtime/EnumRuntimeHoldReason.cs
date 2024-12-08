@@ -23,7 +23,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
     }
     
     /// <summary>
-    /// >> 207 - Variant[people_polkadot_runtime.RuntimeHoldReason]
+    /// >> 206 - Variant[people_polkadot_runtime.RuntimeHoldReason]
     /// </summary>
     public sealed class EnumRuntimeHoldReason : BaseEnum<RuntimeHoldReason>
     {

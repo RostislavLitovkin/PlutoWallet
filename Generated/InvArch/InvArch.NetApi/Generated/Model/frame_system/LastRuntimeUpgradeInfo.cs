@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system
     
     
     /// <summary>
-    /// >> 249 - Composite[frame_system.LastRuntimeUpgradeInfo]
+    /// >> 319 - Composite[frame_system.LastRuntimeUpgradeInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class LastRuntimeUpgradeInfo : BaseType

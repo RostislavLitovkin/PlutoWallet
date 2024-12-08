@@ -130,6 +130,11 @@ namespace Polkadot.NetApi.Generated
         public WhitelistStorage WhitelistStorage;
         
         /// <summary>
+        /// ParametersStorage storage calls.
+        /// </summary>
+        public ParametersStorage ParametersStorage;
+        
+        /// <summary>
         /// ClaimsStorage storage calls.
         /// </summary>
         public ClaimsStorage ClaimsStorage;
@@ -143,11 +148,6 @@ namespace Polkadot.NetApi.Generated
         /// UtilityStorage storage calls.
         /// </summary>
         public UtilityStorage UtilityStorage;
-        
-        /// <summary>
-        /// IdentityStorage storage calls.
-        /// </summary>
-        public IdentityStorage IdentityStorage;
         
         /// <summary>
         /// ProxyStorage storage calls.
@@ -255,9 +255,14 @@ namespace Polkadot.NetApi.Generated
         public ParasSlashingStorage ParasSlashingStorage;
         
         /// <summary>
-        /// ParaAssignmentProviderStorage storage calls.
+        /// OnDemandStorage storage calls.
         /// </summary>
-        public ParaAssignmentProviderStorage ParaAssignmentProviderStorage;
+        public OnDemandStorage OnDemandStorage;
+        
+        /// <summary>
+        /// CoretimeAssignmentProviderStorage storage calls.
+        /// </summary>
+        public CoretimeAssignmentProviderStorage CoretimeAssignmentProviderStorage;
         
         /// <summary>
         /// RegistrarStorage storage calls.
@@ -278,6 +283,11 @@ namespace Polkadot.NetApi.Generated
         /// CrowdloanStorage storage calls.
         /// </summary>
         public CrowdloanStorage CrowdloanStorage;
+        
+        /// <summary>
+        /// CoretimeStorage storage calls.
+        /// </summary>
+        public CoretimeStorage CoretimeStorage;
         
         /// <summary>
         /// StateTrieMigrationStorage storage calls.
@@ -314,11 +324,6 @@ namespace Polkadot.NetApi.Generated
         /// </summary>
         public BeefyMmrLeafStorage BeefyMmrLeafStorage;
         
-        /// <summary>
-        /// IdentityMigratorStorage storage calls.
-        /// </summary>
-        public IdentityMigratorStorage IdentityMigratorStorage;
-        
         public SubstrateClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) : 
                 base(uri, chargeType)
         {
@@ -343,10 +348,10 @@ namespace Polkadot.NetApi.Generated
             this.ReferendaStorage = new ReferendaStorage(this);
             this.OriginsStorage = new OriginsStorage(this);
             this.WhitelistStorage = new WhitelistStorage(this);
+            this.ParametersStorage = new ParametersStorage(this);
             this.ClaimsStorage = new ClaimsStorage(this);
             this.VestingStorage = new VestingStorage(this);
             this.UtilityStorage = new UtilityStorage(this);
-            this.IdentityStorage = new IdentityStorage(this);
             this.ProxyStorage = new ProxyStorage(this);
             this.MultisigStorage = new MultisigStorage(this);
             this.BountiesStorage = new BountiesStorage(this);
@@ -368,11 +373,13 @@ namespace Polkadot.NetApi.Generated
             this.ParaSessionInfoStorage = new ParaSessionInfoStorage(this);
             this.ParasDisputesStorage = new ParasDisputesStorage(this);
             this.ParasSlashingStorage = new ParasSlashingStorage(this);
-            this.ParaAssignmentProviderStorage = new ParaAssignmentProviderStorage(this);
+            this.OnDemandStorage = new OnDemandStorage(this);
+            this.CoretimeAssignmentProviderStorage = new CoretimeAssignmentProviderStorage(this);
             this.RegistrarStorage = new RegistrarStorage(this);
             this.SlotsStorage = new SlotsStorage(this);
             this.AuctionsStorage = new AuctionsStorage(this);
             this.CrowdloanStorage = new CrowdloanStorage(this);
+            this.CoretimeStorage = new CoretimeStorage(this);
             this.StateTrieMigrationStorage = new StateTrieMigrationStorage(this);
             this.XcmPalletStorage = new XcmPalletStorage(this);
             this.MessageQueueStorage = new MessageQueueStorage(this);
@@ -380,7 +387,6 @@ namespace Polkadot.NetApi.Generated
             this.BeefyStorage = new BeefyStorage(this);
             this.MmrStorage = new MmrStorage(this);
             this.BeefyMmrLeafStorage = new BeefyMmrLeafStorage(this);
-            this.IdentityMigratorStorage = new IdentityMigratorStorage(this);
         }
     }
 }

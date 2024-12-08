@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_treasury
     
     
     /// <summary>
-    /// >> 299 - Composite[pallet_treasury.Proposal]
+    /// >> 384 - Composite[pallet_treasury.Proposal]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Proposal : BaseType

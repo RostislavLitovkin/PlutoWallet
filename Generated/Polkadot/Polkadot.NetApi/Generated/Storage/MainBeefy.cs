@@ -36,9 +36,9 @@ namespace Polkadot.NetApi.Generated.Storage
         public BeefyStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "ValidatorSetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U64)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "NextAuthorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "NextAuthorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "SetIdSession"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U64), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Beefy", "GenesisBlock"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>)));
@@ -66,10 +66,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> Authorities
         ///  The current authorities set
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45> Authorities(string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40> Authorities(string blockhash, CancellationToken token)
         {
             string parameters = BeefyStorage.AuthoritiesParams();
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40>(parameters, blockhash, token);
             return result;
         }
         
@@ -124,10 +124,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> NextAuthorities
         ///  Authorities set scheduled to be used with the next session
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45> NextAuthorities(string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40> NextAuthorities(string blockhash, CancellationToken token)
         {
             string parameters = BeefyStorage.NextAuthoritiesParams();
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT40>(parameters, blockhash, token);
             return result;
         }
         
@@ -224,7 +224,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> report_equivocation
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ReportEquivocation(Polkadot.NetApi.Generated.Model.sp_consensus_beefy.EquivocationProof equivocation_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
+        public static Method ReportEquivocation(Polkadot.NetApi.Generated.Model.sp_consensus_beefy.DoubleVotingProof equivocation_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(equivocation_proof.Encode());
@@ -236,7 +236,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> report_equivocation_unsigned
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ReportEquivocationUnsigned(Polkadot.NetApi.Generated.Model.sp_consensus_beefy.EquivocationProof equivocation_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
+        public static Method ReportEquivocationUnsigned(Polkadot.NetApi.Generated.Model.sp_consensus_beefy.DoubleVotingProof equivocation_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(equivocation_proof.Encode());

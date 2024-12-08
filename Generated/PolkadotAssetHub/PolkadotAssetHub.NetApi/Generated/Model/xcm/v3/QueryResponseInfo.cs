@@ -18,7 +18,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm.v3
     
     
     /// <summary>
-    /// >> 316 - Composite[xcm.v3.QueryResponseInfo]
+    /// >> 318 - Composite[xcm.v3.QueryResponseInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class QueryResponseInfo : BaseType

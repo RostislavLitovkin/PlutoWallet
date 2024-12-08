@@ -24,19 +24,17 @@ namespace Hydration.NetApi.Generated.Model.pallet_transaction_pause.pallet
         
         /// <summary>
         /// >> pause_transaction
-        /// See [`Pallet::pause_transaction`].
         /// </summary>
         pause_transaction = 0,
         
         /// <summary>
         /// >> unpause_transaction
-        /// See [`Pallet::unpause_transaction`].
         /// </summary>
         unpause_transaction = 1,
     }
     
     /// <summary>
-    /// >> 366 - Variant[pallet_transaction_pause.pallet.Call]
+    /// >> 363 - Variant[pallet_transaction_pause.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

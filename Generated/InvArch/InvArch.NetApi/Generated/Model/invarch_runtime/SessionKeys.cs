@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
     
     
     /// <summary>
-    /// >> 166 - Composite[invarch_runtime.SessionKeys]
+    /// >> 214 - Composite[invarch_runtime.SessionKeys]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SessionKeys : BaseType

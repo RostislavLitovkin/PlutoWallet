@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
     }
     
     /// <summary>
-    /// >> 92 - Variant[xcm.v3.WeightLimit]
+    /// >> 119 - Variant[xcm.v3.WeightLimit]
     /// </summary>
     public sealed class EnumWeightLimit : BaseEnumRust<WeightLimit>
     {

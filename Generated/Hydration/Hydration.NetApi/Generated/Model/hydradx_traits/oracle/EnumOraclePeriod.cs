@@ -53,7 +53,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_traits.oracle
     }
     
     /// <summary>
-    /// >> 581 - Variant[hydradx_traits.oracle.OraclePeriod]
+    /// >> 584 - Variant[hydradx_traits.oracle.OraclePeriod]
     /// </summary>
     public sealed class EnumOraclePeriod : BaseEnum<OraclePeriod>
     {

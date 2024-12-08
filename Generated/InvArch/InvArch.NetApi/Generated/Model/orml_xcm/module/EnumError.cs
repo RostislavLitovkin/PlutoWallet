@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_xcm.module
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -48,11 +45,8 @@ namespace InvArch.NetApi.Generated.Model.orml_xcm.module
     }
     
     /// <summary>
-    /// >> 342 - Variant[orml_xcm.module.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 450 - Variant[orml_xcm.module.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

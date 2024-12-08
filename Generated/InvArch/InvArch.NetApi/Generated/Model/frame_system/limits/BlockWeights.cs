@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.limits
     
     
     /// <summary>
-    /// >> 251 - Composite[frame_system.limits.BlockWeights]
+    /// >> 321 - Composite[frame_system.limits.BlockWeights]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BlockWeights : BaseType

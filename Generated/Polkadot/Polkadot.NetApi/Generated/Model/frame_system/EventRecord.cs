@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.frame_system
     
     
     /// <summary>
-    /// >> 19 - Composite[frame_system.EventRecord]
+    /// >> 20 - Composite[frame_system.EventRecord]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EventRecord : BaseType

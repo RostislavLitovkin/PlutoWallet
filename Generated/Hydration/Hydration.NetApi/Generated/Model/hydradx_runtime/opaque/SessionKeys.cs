@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime.opaque
     
     
     /// <summary>
-    /// >> 468 - Composite[hydradx_runtime.opaque.SessionKeys]
+    /// >> 472 - Composite[hydradx_runtime.opaque.SessionKeys]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SessionKeys : BaseType

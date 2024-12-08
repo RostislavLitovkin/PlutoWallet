@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay
     
     
     /// <summary>
-    /// >> 679 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispatchQueueRemainingCapacity]
+    /// >> 684 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispatchQueueRemainingCapacity]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RelayDispatchQueueRemainingCapacity : BaseType

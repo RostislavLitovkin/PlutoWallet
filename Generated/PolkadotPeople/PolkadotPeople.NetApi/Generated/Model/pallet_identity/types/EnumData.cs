@@ -213,7 +213,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_identity.types
     }
     
     /// <summary>
-    /// >> 326 - Variant[pallet_identity.types.Data]
+    /// >> 327 - Variant[pallet_identity.types.Data]
     /// </summary>
     public sealed class EnumData : BaseEnumRust<Data>
     {

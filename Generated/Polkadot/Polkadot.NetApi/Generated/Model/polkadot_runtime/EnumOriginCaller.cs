@@ -48,7 +48,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     }
     
     /// <summary>
-    /// >> 170 - Variant[polkadot_runtime.OriginCaller]
+    /// >> 159 - Variant[polkadot_runtime.OriginCaller]
     /// </summary>
     public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {

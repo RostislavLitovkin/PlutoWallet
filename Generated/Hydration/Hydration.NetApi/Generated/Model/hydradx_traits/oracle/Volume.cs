@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_traits.oracle
     
     
     /// <summary>
-    /// >> 752 - Composite[hydradx_traits.oracle.Volume]
+    /// >> 756 - Composite[hydradx_traits.oracle.Volume]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Volume : BaseType

@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_vesting.module
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -63,11 +60,8 @@ namespace InvArch.NetApi.Generated.Model.orml_vesting.module
     }
     
     /// <summary>
-    /// >> 307 - Variant[orml_vesting.module.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 393 - Variant[orml_vesting.module.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

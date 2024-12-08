@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_claims.traits
     
     
     /// <summary>
-    /// >> 362 - Composite[pallet_claims.traits.EcdsaSignature]
+    /// >> 359 - Composite[pallet_claims.traits.EcdsaSignature]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EcdsaSignature : BaseType

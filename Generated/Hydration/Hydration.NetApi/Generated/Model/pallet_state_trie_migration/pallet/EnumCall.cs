@@ -24,43 +24,81 @@ namespace Hydration.NetApi.Generated.Model.pallet_state_trie_migration.pallet
         
         /// <summary>
         /// >> control_auto_migration
-        /// See [`Pallet::control_auto_migration`].
+        /// Control the automatic migration.
+        /// 
+        /// The dispatch origin of this call must be [`Config::ControlOrigin`].
         /// </summary>
         control_auto_migration = 0,
         
         /// <summary>
         /// >> continue_migrate
-        /// See [`Pallet::continue_migrate`].
+        /// Continue the migration for the given `limits`.
+        /// 
+        /// The dispatch origin of this call can be any signed account.
+        /// 
+        /// This transaction has NO MONETARY INCENTIVES. calling it will not reward anyone. Albeit,
+        /// Upon successful execution, the transaction fee is returned.
+        /// 
+        /// The (potentially over-estimated) of the byte length of all the data read must be
+        /// provided for up-front fee-payment and weighing. In essence, the caller is guaranteeing
+        /// that executing the current `MigrationTask` with the given `limits` will not exceed
+        /// `real_size_upper` bytes of read data.
+        /// 
+        /// The `witness_task` is merely a helper to prevent the caller from being slashed or
+        /// generally trigger a migration that they do not intend. This parameter is just a message
+        /// from caller, saying that they believed `witness_task` was the last state of the
+        /// migration, and they only wish for their transaction to do anything, if this assumption
+        /// holds. In case `witness_task` does not match, the transaction fails.
+        /// 
+        /// Based on the documentation of [`MigrationTask::migrate_until_exhaustion`], the
+        /// recommended way of doing this is to pass a `limit` that only bounds `count`, as the
+        /// `size` limit can always be overwritten.
         /// </summary>
         continue_migrate = 1,
         
         /// <summary>
         /// >> migrate_custom_top
-        /// See [`Pallet::migrate_custom_top`].
+        /// Migrate the list of top keys by iterating each of them one by one.
+        /// 
+        /// This does not affect the global migration process tracker ([`MigrationProcess`]), and
+        /// should only be used in case any keys are leftover due to a bug.
         /// </summary>
         migrate_custom_top = 2,
         
         /// <summary>
         /// >> migrate_custom_child
-        /// See [`Pallet::migrate_custom_child`].
+        /// Migrate the list of child keys by iterating each of them one by one.
+        /// 
+        /// All of the given child keys must be present under one `child_root`.
+        /// 
+        /// This does not affect the global migration process tracker ([`MigrationProcess`]), and
+        /// should only be used in case any keys are leftover due to a bug.
         /// </summary>
         migrate_custom_child = 3,
         
         /// <summary>
         /// >> set_signed_max_limits
-        /// See [`Pallet::set_signed_max_limits`].
+        /// Set the maximum limit of the signed migration.
         /// </summary>
         set_signed_max_limits = 4,
         
         /// <summary>
         /// >> force_set_progress
-        /// See [`Pallet::force_set_progress`].
+        /// Forcefully set the progress the running migration.
+        /// 
+        /// This is only useful in one case: the next key to migrate is too big to be migrated with
+        /// a signed account, in a parachain context, and we simply want to skip it. A reasonable
+        /// example of this would be `:code:`, which is both very expensive to migrate, and commonly
+        /// used, so probably it is already migrated.
+        /// 
+        /// In case you mess things up, you can also, in principle, use this to reset the migration
+        /// process.
         /// </summary>
         force_set_progress = 5,
     }
     
     /// <summary>
-    /// >> 351 - Variant[pallet_state_trie_migration.pallet.Call]
+    /// >> 348 - Variant[pallet_state_trie_migration.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

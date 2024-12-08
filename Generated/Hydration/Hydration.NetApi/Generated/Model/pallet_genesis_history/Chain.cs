@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_genesis_history
     
     
     /// <summary>
-    /// >> 560 - Composite[pallet_genesis_history.Chain]
+    /// >> 563 - Composite[pallet_genesis_history.Chain]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Chain : BaseType

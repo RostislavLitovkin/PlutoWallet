@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_trie.storage_proof
     
     
     /// <summary>
-    /// >> 135 - Composite[sp_trie.storage_proof.StorageProof]
+    /// >> 169 - Composite[sp_trie.storage_proof.StorageProof]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StorageProof : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.sp_trie.storage_proof
         /// <summary>
         /// >> trie_nodes
         /// </summary>
-        public InvArch.NetApi.Generated.Types.Base.BTreeSet TrieNodes { get; set; }
+        public InvArch.NetApi.Generated.Types.Base.BTreeSetT1 TrieNodes { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace InvArch.NetApi.Generated.Model.sp_trie.storage_proof
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            TrieNodes = new InvArch.NetApi.Generated.Types.Base.BTreeSet();
+            TrieNodes = new InvArch.NetApi.Generated.Types.Base.BTreeSetT1();
             TrieNodes.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

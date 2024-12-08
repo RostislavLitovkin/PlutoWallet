@@ -38,7 +38,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system
     }
     
     /// <summary>
-    /// >> 245 - Variant[frame_system.Phase]
+    /// >> 315 - Variant[frame_system.Phase]
     /// </summary>
     public sealed class EnumPhase : BaseEnumRust<Phase>
     {

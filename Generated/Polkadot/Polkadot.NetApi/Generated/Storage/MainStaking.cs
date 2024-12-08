@@ -56,6 +56,9 @@ namespace Polkadot.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "Nominators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Polkadot.NetApi.Generated.Model.pallet_staking.Nominations)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "CounterForNominators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "VirtualStakers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "CounterForVirtualStakers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "MaxNominatorsCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "CurrentEra"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "ActiveEra"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.pallet_staking.ActiveEraInfo)));
@@ -87,6 +90,7 @@ namespace Polkadot.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "ErasTotalStake"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "ForceEra"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.pallet_staking.EnumForcing)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "MaxStakedRewards"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "SlashRewardFraction"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "CanceledSlashPayout"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U128)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "UnappliedSlashes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -103,7 +107,7 @@ namespace Polkadot.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "SpanSlash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(Polkadot.NetApi.Generated.Model.pallet_staking.slashing.SpanRecord)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "CurrentPlannedSession"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "OffendingValidators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "DisabledValidators"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Staking", "ChillThreshold"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent)));
         }
         
@@ -614,6 +618,76 @@ namespace Polkadot.NetApi.Generated.Storage
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> CounterForNominators(string blockhash, CancellationToken token)
         {
             string parameters = StakingStorage.CounterForNominatorsParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> VirtualStakersParams
+        ///  Stakers whose funds are managed by other pallets.
+        /// 
+        ///  This pallet does not apply any locks on them, therefore they are only virtually bonded. They
+        ///  are expected to be keyless accounts and hence should not be allowed to mutate their ledger
+        ///  directly via this pallet. Instead, these accounts are managed by other pallets and accessed
+        ///  via low level apis. We keep track of them to do minimal integrity checks.
+        /// </summary>
+        public static string VirtualStakersParams(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
+        {
+            return RequestGenerator.GetStorage("Staking", "VirtualStakers", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> VirtualStakersDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string VirtualStakersDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> VirtualStakers
+        ///  Stakers whose funds are managed by other pallets.
+        /// 
+        ///  This pallet does not apply any locks on them, therefore they are only virtually bonded. They
+        ///  are expected to be keyless accounts and hence should not be allowed to mutate their ledger
+        ///  directly via this pallet. Instead, these accounts are managed by other pallets and accessed
+        ///  via low level apis. We keep track of them to do minimal integrity checks.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> VirtualStakers(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = StakingStorage.VirtualStakersParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> CounterForVirtualStakersParams
+        /// Counter for the related counted storage map
+        /// </summary>
+        public static string CounterForVirtualStakersParams()
+        {
+            return RequestGenerator.GetStorage("Staking", "CounterForVirtualStakers", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> CounterForVirtualStakersDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string CounterForVirtualStakersDefault()
+        {
+            return "0x00000000";
+        }
+        
+        /// <summary>
+        /// >> CounterForVirtualStakers
+        /// Counter for the related counted storage map
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> CounterForVirtualStakers(string blockhash, CancellationToken token)
+        {
+            string parameters = StakingStorage.CounterForVirtualStakersParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
             return result;
         }
@@ -1170,6 +1244,39 @@ namespace Polkadot.NetApi.Generated.Storage
         }
         
         /// <summary>
+        /// >> MaxStakedRewardsParams
+        ///  Maximum staked rewards, i.e. the percentage of the era inflation that
+        ///  is used for stake rewards.
+        ///  See [Era payout](./index.html#era-payout).
+        /// </summary>
+        public static string MaxStakedRewardsParams()
+        {
+            return RequestGenerator.GetStorage("Staking", "MaxStakedRewards", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> MaxStakedRewardsDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string MaxStakedRewardsDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> MaxStakedRewards
+        ///  Maximum staked rewards, i.e. the percentage of the era inflation that
+        ///  is used for stake rewards.
+        ///  See [Era payout](./index.html#era-payout).
+        /// </summary>
+        public async Task<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent> MaxStakedRewards(string blockhash, CancellationToken token)
+        {
+            string parameters = StakingStorage.MaxStakedRewardsParams();
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Percent>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
         /// >> SlashRewardFractionParams
         ///  The percentage of the slash that is distributed to reporters.
         /// 
@@ -1461,47 +1568,43 @@ namespace Polkadot.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> OffendingValidatorsParams
-        ///  Indices of validators that have offended in the active era and whether they are currently
-        ///  disabled.
+        /// >> DisabledValidatorsParams
+        ///  Indices of validators that have offended in the active era. The offenders are disabled for a
+        ///  whole era. For this reason they are kept here - only staking pallet knows about eras. The
+        ///  implementor of [`DisablingStrategy`] defines if a validator should be disabled which
+        ///  implicitly means that the implementor also controls the max number of disabled validators.
         /// 
-        ///  This value should be a superset of disabled validators since not all offences lead to the
-        ///  validator being disabled (if there was no slash). This is needed to track the percentage of
-        ///  validators that have offended in the current era, ensuring a new era is forced if
-        ///  `OffendingValidatorsThreshold` is reached. The vec is always kept sorted so that we can find
-        ///  whether a given validator has previously offended using binary search. It gets cleared when
-        ///  the era ends.
+        ///  The vec is always kept sorted so that we can find whether a given validator has previously
+        ///  offended using binary search.
         /// </summary>
-        public static string OffendingValidatorsParams()
+        public static string DisabledValidatorsParams()
         {
-            return RequestGenerator.GetStorage("Staking", "OffendingValidators", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+            return RequestGenerator.GetStorage("Staking", "DisabledValidators", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
         }
         
         /// <summary>
-        /// >> OffendingValidatorsDefault
+        /// >> DisabledValidatorsDefault
         /// Default value as hex string
         /// </summary>
-        public static string OffendingValidatorsDefault()
+        public static string DisabledValidatorsDefault()
         {
             return "0x00";
         }
         
         /// <summary>
-        /// >> OffendingValidators
-        ///  Indices of validators that have offended in the active era and whether they are currently
-        ///  disabled.
+        /// >> DisabledValidators
+        ///  Indices of validators that have offended in the active era. The offenders are disabled for a
+        ///  whole era. For this reason they are kept here - only staking pallet knows about eras. The
+        ///  implementor of [`DisablingStrategy`] defines if a validator should be disabled which
+        ///  implicitly means that the implementor also controls the max number of disabled validators.
         /// 
-        ///  This value should be a superset of disabled validators since not all offences lead to the
-        ///  validator being disabled (if there was no slash). This is needed to track the percentage of
-        ///  validators that have offended in the current era, ensuring a new era is forced if
-        ///  `OffendingValidatorsThreshold` is reached. The vec is always kept sorted so that we can find
-        ///  whether a given validator has previously offended using binary search. It gets cleared when
-        ///  the era ends.
+        ///  The vec is always kept sorted so that we can find whether a given validator has previously
+        ///  offended using binary search.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>>> OffendingValidators(string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>> DisabledValidators(string blockhash, CancellationToken token)
         {
-            string parameters = StakingStorage.OffendingValidatorsParams();
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.Bool>>>(parameters, blockhash, token);
+            string parameters = StakingStorage.DisabledValidatorsParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U32>>(parameters, blockhash, token);
             return result;
         }
         
@@ -1791,7 +1894,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> set_staking_configs
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SetStakingConfigs(Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_nominator_bond, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_validator_bond, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp max_nominator_count, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp max_validator_count, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp chill_threshold, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_commission)
+        public static Method SetStakingConfigs(Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_nominator_bond, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_validator_bond, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp max_nominator_count, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp max_validator_count, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp chill_threshold, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp min_commission, Polkadot.NetApi.Generated.Model.pallet_staking.pallet.pallet.EnumConfigOp max_staked_rewards)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(min_nominator_bond.Encode());
@@ -1800,6 +1903,7 @@ namespace Polkadot.NetApi.Generated.Storage
             byteArray.AddRange(max_validator_count.Encode());
             byteArray.AddRange(chill_threshold.Encode());
             byteArray.AddRange(min_commission.Encode());
+            byteArray.AddRange(max_staked_rewards.Encode());
             return new Method(7, "Staking", 22, "set_staking_configs", byteArray.ToArray());
         }
         
@@ -2177,5 +2281,23 @@ namespace Polkadot.NetApi.Generated.Storage
         /// Cannot reset a ledger.
         /// </summary>
         CannotRestoreLedger,
+        
+        /// <summary>
+        /// >> RewardDestinationRestricted
+        /// Provided reward destination is not allowed.
+        /// </summary>
+        RewardDestinationRestricted,
+        
+        /// <summary>
+        /// >> NotEnoughFunds
+        /// Not enough funds available to withdraw.
+        /// </summary>
+        NotEnoughFunds,
+        
+        /// <summary>
+        /// >> VirtualStakerNotAllowed
+        /// Operation not allowed for virtual stakers.
+        /// </summary>
+        VirtualStakerNotAllowed,
     }
 }

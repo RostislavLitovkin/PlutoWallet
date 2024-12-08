@@ -24,31 +24,27 @@ namespace Polkadot.NetApi.Generated.Model.pallet_whitelist.pallet
         
         /// <summary>
         /// >> whitelist_call
-        /// See [`Pallet::whitelist_call`].
         /// </summary>
         whitelist_call = 0,
         
         /// <summary>
         /// >> remove_whitelisted_call
-        /// See [`Pallet::remove_whitelisted_call`].
         /// </summary>
         remove_whitelisted_call = 1,
         
         /// <summary>
         /// >> dispatch_whitelisted_call
-        /// See [`Pallet::dispatch_whitelisted_call`].
         /// </summary>
         dispatch_whitelisted_call = 2,
         
         /// <summary>
         /// >> dispatch_whitelisted_call_with_preimage
-        /// See [`Pallet::dispatch_whitelisted_call_with_preimage`].
         /// </summary>
         dispatch_whitelisted_call_with_preimage = 3,
     }
     
     /// <summary>
-    /// >> 179 - Variant[pallet_whitelist.pallet.Call]
+    /// >> 168 - Variant[pallet_whitelist.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

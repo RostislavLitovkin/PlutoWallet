@@ -17,26 +17,21 @@ namespace InvArch.NetApi.Generated.Model.pallet_checked_inflation.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
         
         /// <summary>
         /// >> NoHaltChange
+        /// The pallet is already in the state that the user is trying to change it to.
         /// </summary>
         NoHaltChange = 0,
     }
     
     /// <summary>
-    /// >> 355 - Variant[pallet_checked_inflation.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 496 - Variant[pallet_checked_inflation.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

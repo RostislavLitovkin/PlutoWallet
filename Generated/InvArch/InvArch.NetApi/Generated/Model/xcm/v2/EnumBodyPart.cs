@@ -48,7 +48,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 104 - Variant[xcm.v2.BodyPart]
+    /// >> 62 - Variant[xcm.v2.BodyPart]
     /// </summary>
     public sealed class EnumBodyPart : BaseEnumRust<BodyPart>
     {

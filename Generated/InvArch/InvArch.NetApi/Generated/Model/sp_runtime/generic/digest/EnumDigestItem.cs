@@ -48,7 +48,7 @@ namespace InvArch.NetApi.Generated.Model.sp_runtime.generic.digest
     }
     
     /// <summary>
-    /// >> 16 - Variant[sp_runtime.generic.digest.DigestItem]
+    /// >> 17 - Variant[sp_runtime.generic.digest.DigestItem]
     /// </summary>
     public sealed class EnumDigestItem : BaseEnumRust<DigestItem>
     {

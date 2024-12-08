@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
     
     
     /// <summary>
-    /// >> 87 - Composite[xcm.v3.QueryResponseInfo]
+    /// >> 240 - Composite[xcm.v3.QueryResponseInfo]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class QueryResponseInfo : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
         /// <summary>
         /// >> destination
         /// </summary>
-        public InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation Destination { get; set; }
+        public InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation Destination { get; set; }
         /// <summary>
         /// >> query_id
         /// </summary>
@@ -57,7 +57,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Destination = new InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation();
+            Destination = new InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation();
             Destination.Decode(byteArray, ref p);
             QueryId = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U64>();
             QueryId.Decode(byteArray, ref p);

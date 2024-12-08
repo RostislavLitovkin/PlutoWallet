@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.uninc
     
     
     /// <summary>
-    /// >> 667 - Composite[cumulus_pallet_parachain_system.unincluded_segment.Ancestor]
+    /// >> 672 - Composite[cumulus_pallet_parachain_system.unincluded_segment.Ancestor]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Ancestor : BaseType
@@ -35,7 +35,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.uninc
         /// <summary>
         /// >> consumed_go_ahead_signal
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.polkadot_primitives.v6.EnumUpgradeGoAhead> ConsumedGoAheadSignal { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeGoAhead> ConsumedGoAheadSignal { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -61,7 +61,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_parachain_system.uninc
             UsedBandwidth.Decode(byteArray, ref p);
             ParaHeadHash = new Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.primitive_types.H256>();
             ParaHeadHash.Decode(byteArray, ref p);
-            ConsumedGoAheadSignal = new Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.polkadot_primitives.v6.EnumUpgradeGoAhead>();
+            ConsumedGoAheadSignal = new Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.polkadot_primitives.v7.EnumUpgradeGoAhead>();
             ConsumedGoAheadSignal.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

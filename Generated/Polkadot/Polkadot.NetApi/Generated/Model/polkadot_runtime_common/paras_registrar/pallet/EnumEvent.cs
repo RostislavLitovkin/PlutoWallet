@@ -44,7 +44,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_common.paras_registra
     }
     
     /// <summary>
-    /// >> 511 - Variant[polkadot_runtime_common.paras_registrar.pallet.Event]
+    /// >> 484 - Variant[polkadot_runtime_common.paras_registrar.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

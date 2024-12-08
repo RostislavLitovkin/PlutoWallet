@@ -38,7 +38,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types
     }
     
     /// <summary>
-    /// >> 404 - Variant[pallet_assets.types.AssetStatus]
+    /// >> 403 - Variant[pallet_assets.types.AssetStatus]
     /// </summary>
     public sealed class EnumAssetStatus : BaseEnum<AssetStatus>
     {

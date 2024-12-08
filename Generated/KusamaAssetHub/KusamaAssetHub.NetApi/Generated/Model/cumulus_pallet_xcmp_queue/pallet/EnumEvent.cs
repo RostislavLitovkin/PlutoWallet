@@ -30,7 +30,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
     }
     
     /// <summary>
-    /// >> 51 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
+    /// >> 59 - Variant[cumulus_pallet_xcmp_queue.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

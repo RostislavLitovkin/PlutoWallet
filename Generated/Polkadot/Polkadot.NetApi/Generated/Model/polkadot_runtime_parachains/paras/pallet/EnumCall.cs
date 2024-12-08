@@ -24,61 +24,81 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pall
         
         /// <summary>
         /// >> force_set_current_code
-        /// See [`Pallet::force_set_current_code`].
+        /// Set the storage for the parachain validation code immediately.
         /// </summary>
         force_set_current_code = 0,
         
         /// <summary>
         /// >> force_set_current_head
-        /// See [`Pallet::force_set_current_head`].
+        /// Set the storage for the current parachain head data immediately.
         /// </summary>
         force_set_current_head = 1,
         
         /// <summary>
         /// >> force_schedule_code_upgrade
-        /// See [`Pallet::force_schedule_code_upgrade`].
+        /// Schedule an upgrade as if it was scheduled in the given relay parent block.
         /// </summary>
         force_schedule_code_upgrade = 2,
         
         /// <summary>
         /// >> force_note_new_head
-        /// See [`Pallet::force_note_new_head`].
+        /// Note a new block head for para within the context of the current block.
         /// </summary>
         force_note_new_head = 3,
         
         /// <summary>
         /// >> force_queue_action
-        /// See [`Pallet::force_queue_action`].
+        /// Put a parachain directly into the next session's action queue.
+        /// We can't queue it any sooner than this without going into the
+        /// initializer...
         /// </summary>
         force_queue_action = 4,
         
         /// <summary>
         /// >> add_trusted_validation_code
-        /// See [`Pallet::add_trusted_validation_code`].
+        /// Adds the validation code to the storage.
+        /// 
+        /// The code will not be added if it is already present. Additionally, if PVF pre-checking
+        /// is running for that code, it will be instantly accepted.
+        /// 
+        /// Otherwise, the code will be added into the storage. Note that the code will be added
+        /// into storage with reference count 0. This is to account the fact that there are no users
+        /// for this code yet. The caller will have to make sure that this code eventually gets
+        /// used by some parachain or removed from the storage to avoid storage leaks. For the
+        /// latter prefer to use the `poke_unused_validation_code` dispatchable to raw storage
+        /// manipulation.
+        /// 
+        /// This function is mainly meant to be used for upgrading parachains that do not follow
+        /// the go-ahead signal while the PVF pre-checking feature is enabled.
         /// </summary>
         add_trusted_validation_code = 5,
         
         /// <summary>
         /// >> poke_unused_validation_code
-        /// See [`Pallet::poke_unused_validation_code`].
+        /// Remove the validation code from the storage iff the reference count is 0.
+        /// 
+        /// This is better than removing the storage directly, because it will not remove the code
+        /// that was suddenly got used by some parachain while this dispatchable was pending
+        /// dispatching.
         /// </summary>
         poke_unused_validation_code = 6,
         
         /// <summary>
         /// >> include_pvf_check_statement
-        /// See [`Pallet::include_pvf_check_statement`].
+        /// Includes a statement for a PVF pre-checking vote. Potentially, finalizes the vote and
+        /// enacts the results if that was the last vote before achieving the supermajority.
         /// </summary>
         include_pvf_check_statement = 7,
         
         /// <summary>
         /// >> force_set_most_recent_context
-        /// See [`Pallet::force_set_most_recent_context`].
+        /// Set the storage for the current parachain head data immediately.
         /// </summary>
         force_set_most_recent_context = 8,
     }
     
     /// <summary>
-    /// >> 365 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
+    /// >> 322 - Variant[polkadot_runtime_parachains.paras.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -96,7 +116,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pall
 				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id>(Call.force_queue_action);
 				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCode>(Call.add_trusted_validation_code);
 				AddTypeDecoder<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.ValidationCodeHash>(Call.poke_unused_validation_code);
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.PvfCheckStatement, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Signature>>(Call.include_pvf_check_statement);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.PvfCheckStatement, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Signature>>(Call.include_pvf_check_statement);
 				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_set_most_recent_context);
         }
     }

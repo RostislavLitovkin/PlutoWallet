@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_runtime
     
     
     /// <summary>
-    /// >> 26 - Composite[sp_runtime.ModuleError]
+    /// >> 27 - Composite[sp_runtime.ModuleError]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ModuleError : BaseType

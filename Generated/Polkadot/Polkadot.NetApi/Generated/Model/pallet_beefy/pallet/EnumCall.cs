@@ -24,25 +24,39 @@ namespace Polkadot.NetApi.Generated.Model.pallet_beefy.pallet
         
         /// <summary>
         /// >> report_equivocation
-        /// See [`Pallet::report_equivocation`].
+        /// Report voter equivocation/misbehavior. This method will verify the
+        /// equivocation proof and validate the given key ownership proof
+        /// against the extracted offender. If both are valid, the offence
+        /// will be reported.
         /// </summary>
         report_equivocation = 0,
         
         /// <summary>
         /// >> report_equivocation_unsigned
-        /// See [`Pallet::report_equivocation_unsigned`].
+        /// Report voter equivocation/misbehavior. This method will verify the
+        /// equivocation proof and validate the given key ownership proof
+        /// against the extracted offender. If both are valid, the offence
+        /// will be reported.
+        /// 
+        /// This extrinsic must be called unsigned and it is expected that only
+        /// block authors will call it (validated in `ValidateUnsigned`), as such
+        /// if the block author is defined it will be defined as the equivocation
+        /// reporter.
         /// </summary>
         report_equivocation_unsigned = 1,
         
         /// <summary>
         /// >> set_new_genesis
-        /// See [`Pallet::set_new_genesis`].
+        /// Reset BEEFY consensus by setting a new BEEFY genesis at `delay_in_blocks` blocks in the
+        /// future.
+        /// 
+        /// Note: `delay_in_blocks` has to be at least 1.
         /// </summary>
         set_new_genesis = 2,
     }
     
     /// <summary>
-    /// >> 470 - Variant[pallet_beefy.pallet.Call]
+    /// >> 437 - Variant[pallet_beefy.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -53,8 +67,8 @@ namespace Polkadot.NetApi.Generated.Model.pallet_beefy.pallet
         /// </summary>
         public EnumCall()
         {
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_beefy.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation);
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_beefy.EquivocationProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation_unsigned);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_beefy.DoubleVotingProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.sp_consensus_beefy.DoubleVotingProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_equivocation_unsigned);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Call.set_new_genesis);
         }
     }

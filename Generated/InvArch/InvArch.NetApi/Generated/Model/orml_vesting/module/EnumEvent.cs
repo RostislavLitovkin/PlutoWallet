@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_vesting.module
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -45,11 +42,8 @@ namespace InvArch.NetApi.Generated.Model.orml_vesting.module
     }
     
     /// <summary>
-    /// >> 44 - Variant[orml_vesting.module.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 45 - Variant[orml_vesting.module.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {

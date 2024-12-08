@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initialize
     
     
     /// <summary>
-    /// >> 788 - Composite[polkadot_runtime_parachains.initializer.BufferedSessionChange]
+    /// >> 749 - Composite[polkadot_runtime_parachains.initializer.BufferedSessionChange]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BufferedSessionChange : BaseType
@@ -27,11 +27,11 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initialize
         /// <summary>
         /// >> validators
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public> Validators { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public> Validators { get; set; }
         /// <summary>
         /// >> queued
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public> Queued { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public> Queued { get; set; }
         /// <summary>
         /// >> session_index
         /// </summary>
@@ -57,9 +57,9 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.initialize
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public>();
+            Validators = new Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public>();
             Validators.Decode(byteArray, ref p);
-            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public>();
+            Queued = new Substrate.NetApi.Model.Types.Base.BaseVec<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public>();
             Queued.Decode(byteArray, ref p);
             SessionIndex = new Substrate.NetApi.Model.Types.Primitive.U32();
             SessionIndex.Decode(byteArray, ref p);

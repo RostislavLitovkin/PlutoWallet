@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.frame_support
     
     
     /// <summary>
-    /// >> 632 - Composite[frame_support.PalletId]
+    /// >> 608 - Composite[frame_support.PalletId]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PalletId : BaseType

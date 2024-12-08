@@ -18,7 +18,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     
     
     /// <summary>
-    /// >> 270 - Composite[cumulus_pallet_xcmp_queue.QueueConfigData]
+    /// >> 271 - Composite[cumulus_pallet_xcmp_queue.QueueConfigData]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class QueueConfigData : BaseType

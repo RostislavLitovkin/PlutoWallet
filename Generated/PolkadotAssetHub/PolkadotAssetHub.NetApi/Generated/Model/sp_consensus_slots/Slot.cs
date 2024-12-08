@@ -18,7 +18,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.sp_consensus_slots
     
     
     /// <summary>
-    /// >> 261 - Composite[sp_consensus_slots.Slot]
+    /// >> 260 - Composite[sp_consensus_slots.Slot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Slot : BaseType

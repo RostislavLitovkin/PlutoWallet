@@ -18,7 +18,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.xcm.double_encoded
     
     
     /// <summary>
-    /// >> 90 - Composite[xcm.double_encoded.DoubleEncodedT1]
+    /// >> 85 - Composite[xcm.double_encoded.DoubleEncodedT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DoubleEncodedT1 : BaseType

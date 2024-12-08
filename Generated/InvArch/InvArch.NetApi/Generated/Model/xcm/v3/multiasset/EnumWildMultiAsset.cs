@@ -43,7 +43,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 89 - Variant[xcm.v3.multiasset.WildMultiAsset]
+    /// >> 242 - Variant[xcm.v3.multiasset.WildMultiAsset]
     /// </summary>
     public sealed class EnumWildMultiAsset : BaseEnumRust<WildMultiAsset>
     {

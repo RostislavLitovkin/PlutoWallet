@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr
     
     
     /// <summary>
-    /// >> 227 - Composite[sp_consensus_aura.sr25519.app_sr25519.Public]
+    /// >> 226 - Composite[sp_consensus_aura.sr25519.app_sr25519.Public]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Public : BaseType
@@ -27,7 +27,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr
         /// <summary>
         /// >> value
         /// </summary>
-        public PolkadotPeople.NetApi.Generated.Model.sp_core.sr25519.Public Value { get; set; }
+        public PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_consensus_aura.sr25519.app_sr
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PolkadotPeople.NetApi.Generated.Model.sp_core.sr25519.Public();
+            Value = new PolkadotPeople.NetApi.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

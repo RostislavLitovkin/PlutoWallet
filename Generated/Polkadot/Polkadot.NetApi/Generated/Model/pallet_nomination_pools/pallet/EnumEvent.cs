@@ -150,7 +150,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
     }
     
     /// <summary>
-    /// >> 500 - Variant[pallet_nomination_pools.pallet.Event]
+    /// >> 472 - Variant[pallet_nomination_pools.pallet.Event]
     /// Events of this pallet.
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

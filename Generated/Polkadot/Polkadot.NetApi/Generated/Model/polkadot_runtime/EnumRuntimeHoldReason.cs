@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     }
     
     /// <summary>
-    /// >> 581 - Variant[polkadot_runtime.RuntimeHoldReason]
+    /// >> 555 - Variant[polkadot_runtime.RuntimeHoldReason]
     /// </summary>
     public sealed class EnumRuntimeHoldReason : BaseEnumRust<RuntimeHoldReason>
     {

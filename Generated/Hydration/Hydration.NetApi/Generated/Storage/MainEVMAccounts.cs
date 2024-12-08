@@ -40,6 +40,8 @@ namespace Hydration.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Hydration.NetApi.Generated.Model.primitive_types.H160), typeof(Hydration.NetApi.Generated.Types.Base.Arr12U8)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("EVMAccounts", "ContractDeployer"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Hydration.NetApi.Generated.Model.primitive_types.H160), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("EVMAccounts", "ApprovedContract"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Hydration.NetApi.Generated.Model.primitive_types.H160), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
         }
         
         /// <summary>
@@ -103,6 +105,37 @@ namespace Hydration.NetApi.Generated.Storage
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, blockhash, token);
             return result;
         }
+        
+        /// <summary>
+        /// >> ApprovedContractParams
+        ///  Whitelisted contracts that are allowed to manage balances and tokens.
+        /// </summary>
+        public static string ApprovedContractParams(Hydration.NetApi.Generated.Model.primitive_types.H160 key)
+        {
+            return RequestGenerator.GetStorage("EVMAccounts", "ApprovedContract", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> ApprovedContractDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string ApprovedContractDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> ApprovedContract
+        ///  Whitelisted contracts that are allowed to manage balances and tokens.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> ApprovedContract(Hydration.NetApi.Generated.Model.primitive_types.H160 key, string blockhash, CancellationToken token)
+        {
+            string parameters = EVMAccountsStorage.ApprovedContractParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, blockhash, token);
+            return result;
+        }
     }
     
     /// <summary>
@@ -152,6 +185,28 @@ namespace Hydration.NetApi.Generated.Storage
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             return new Method(93, "EVMAccounts", 3, "renounce_contract_deployer", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> approve_contract
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ApproveContract(Hydration.NetApi.Generated.Model.primitive_types.H160 address)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(address.Encode());
+            return new Method(93, "EVMAccounts", 4, "approve_contract", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> disapprove_contract
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method DisapproveContract(Hydration.NetApi.Generated.Model.primitive_types.H160 address)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(address.Encode());
+            return new Method(93, "EVMAccounts", 5, "disapprove_contract", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -180,7 +235,7 @@ namespace Hydration.NetApi.Generated.Storage
         
         /// <summary>
         /// >> TruncatedAccountAlreadyUsed
-        /// EVM Account's nonce is not zero
+        /// Active EVM account cannot be bound
         /// </summary>
         TruncatedAccountAlreadyUsed,
         

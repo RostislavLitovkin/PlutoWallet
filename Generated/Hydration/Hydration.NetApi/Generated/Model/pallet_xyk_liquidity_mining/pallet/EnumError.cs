@@ -87,10 +87,22 @@ namespace Hydration.NetApi.Generated.Model.pallet_xyk_liquidity_mining.pallet
         /// Failed to calculate `pot`'s account.
         /// </summary>
         FailToGetPotId = 10,
+        
+        /// <summary>
+        /// >> Disabled
+        /// Extrinsic is disasbled for now
+        /// </summary>
+        Disabled = 11,
+        
+        /// <summary>
+        /// >> NoFarmsSpecified
+        /// No global farm - yield farm pairs specified to join
+        /// </summary>
+        NoFarmsSpecified = 12,
     }
     
     /// <summary>
-    /// >> 649 - Variant[pallet_xyk_liquidity_mining.pallet.Error]
+    /// >> 653 - Variant[pallet_xyk_liquidity_mining.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

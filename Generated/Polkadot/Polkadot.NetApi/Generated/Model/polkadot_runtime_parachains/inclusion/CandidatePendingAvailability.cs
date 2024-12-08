@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
     
     
     /// <summary>
-    /// >> 754 - Composite[polkadot_runtime_parachains.inclusion.CandidatePendingAvailability]
+    /// >> 715 - Composite[polkadot_runtime_parachains.inclusion.CandidatePendingAvailability]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CandidatePendingAvailability : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
         /// <summary>
         /// >> core
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex Core { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CoreIndex Core { get; set; }
         /// <summary>
         /// >> hash
         /// </summary>
@@ -35,7 +35,11 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
         /// <summary>
         /// >> descriptor
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateDescriptor Descriptor { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateDescriptor Descriptor { get; set; }
+        /// <summary>
+        /// >> commitments
+        /// </summary>
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateCommitments Commitments { get; set; }
         /// <summary>
         /// >> availability_votes
         /// </summary>
@@ -55,7 +59,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
         /// <summary>
         /// >> backing_group
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex BackingGroup { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.GroupIndex BackingGroup { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -70,6 +74,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
             result.AddRange(Core.Encode());
             result.AddRange(Hash.Encode());
             result.AddRange(Descriptor.Encode());
+            result.AddRange(Commitments.Encode());
             result.AddRange(AvailabilityVotes.Encode());
             result.AddRange(Backers.Encode());
             result.AddRange(RelayParentNumber.Encode());
@@ -82,12 +87,14 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Core = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex();
+            Core = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CoreIndex();
             Core.Decode(byteArray, ref p);
             Hash = new Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash();
             Hash.Decode(byteArray, ref p);
-            Descriptor = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateDescriptor();
+            Descriptor = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateDescriptor();
             Descriptor.Decode(byteArray, ref p);
+            Commitments = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateCommitments();
+            Commitments.Decode(byteArray, ref p);
             AvailabilityVotes = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Polkadot.NetApi.Generated.Model.bitvec.order.Lsb0>();
             AvailabilityVotes.Decode(byteArray, ref p);
             Backers = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Polkadot.NetApi.Generated.Model.bitvec.order.Lsb0>();
@@ -96,7 +103,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion
             RelayParentNumber.Decode(byteArray, ref p);
             BackedInNumber = new Substrate.NetApi.Model.Types.Primitive.U32();
             BackedInNumber.Decode(byteArray, ref p);
-            BackingGroup = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex();
+            BackingGroup = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.GroupIndex();
             BackingGroup.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

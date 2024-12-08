@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     }
     
     /// <summary>
-    /// >> 330 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
+    /// >> 425 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
     /// </summary>
     public sealed class EnumOutboundState : BaseEnum<OutboundState>
     {

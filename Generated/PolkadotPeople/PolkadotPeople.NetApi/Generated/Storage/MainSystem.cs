@@ -39,6 +39,7 @@ namespace PolkadotPeople.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(PolkadotPeople.NetApi.Generated.Model.frame_system.AccountInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "InherentsApplied"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(PolkadotPeople.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AllExtrinsicsLen"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -118,6 +119,35 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         {
             string parameters = SystemStorage.ExtrinsicCountParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedParams
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public static string InherentsAppliedParams()
+        {
+            return RequestGenerator.GetStorage("System", "InherentsApplied", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string InherentsAppliedDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> InherentsApplied
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> InherentsApplied(string blockhash, CancellationToken token)
+        {
+            string parameters = SystemStorage.InherentsAppliedParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
             return result;
         }
         
@@ -737,9 +767,9 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         public PolkadotPeople.NetApi.Generated.Model.frame_system.limits.BlockWeights BlockWeights()
         {
             var result = new PolkadotPeople.NetApi.Generated.Model.frame_system.limits.BlockWeights();
-            result.Create("0x025B1F5D00070010A5D4E813FFFFFFFFFFFFFFFFC2A0A91D000107D07B9A4F97136666666666666" +
-                    "6A6010700CC7B9FAE13FFFFFFFFFFFFFFBF010000C2A0A91D000107D0BFC384D1136666666666666" +
-                    "6E601070010A5D4E813FFFFFFFFFFFFFFFF0107004429353A130000000000000040C2A0A91D00000" +
+            result.Create("0x624D186C00070010A5D4E813FFFFFFFFFFFFFFFF424787190001073012A35097136666666666666" +
+                    "6A6010700CC7B9FAE13FFFFFFFFFFFFFFBF010000424787190001073056CC85D1136666666666666" +
+                    "6E601070010A5D4E813FFFFFFFFFFFFFFFF0107004429353A1300000000000000404247871900000" +
                     "000");
             return result;
         }
@@ -779,12 +809,12 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Version
-        ///  Get the chain's current version.
+        ///  Get the chain's in-code version.
         /// </summary>
         public PolkadotPeople.NetApi.Generated.Model.sp_version.RuntimeVersion Version()
         {
             var result = new PolkadotPeople.NetApi.Generated.Model.sp_version.RuntimeVersion();
-            result.Create(@"0x3C70656F706C652D706F6C6B61646F743C70656F706C652D706F6C6B61646F7401000000174A0F000000000034DD718D5CC53262D401000000D7BDD8A272CA0D6501000000DF6ACB689907609B0400000037E397FC7C91F5E40200000040FE3AD401F8959A06000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB52705903000000EA93E3F16F3D696202000000FBC577B9D747EFD6010000000000000001");
+            result.Create(@"0x3C70656F706C652D706F6C6B61646F743C70656F706C652D706F6C6B61646F7401000000FB4D0F000000000040DD718D5CC53262D401000000D7BDD8A272CA0D6501000000DF6ACB689907609B0500000037E397FC7C91F5E40200000040FE3AD401F8959A06000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB527059030000006FF52EE858E6C5BD0100000091B1C8B16328EB92010000009FFB505AA738D69C01000000EA93E3F16F3D696202000000FBC577B9D747EFD6010000000000000001");
             return result;
         }
         
@@ -849,6 +879,12 @@ namespace PolkadotPeople.NetApi.Generated.Storage
         /// The origin filter prevent the call to be dispatched.
         /// </summary>
         CallFiltered,
+        
+        /// <summary>
+        /// >> MultiBlockMigrationsOngoing
+        /// A multi-block migration is ongoing and prevents the current code from being replaced.
+        /// </summary>
+        MultiBlockMigrationsOngoing,
         
         /// <summary>
         /// >> NothingAuthorized

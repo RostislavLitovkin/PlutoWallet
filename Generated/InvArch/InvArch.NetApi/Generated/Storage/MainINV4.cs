@@ -38,12 +38,12 @@ namespace InvArch.NetApi.Generated.Storage
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("INV4", "NextCoreId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("INV4", "CoreStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.invarch_primitives.CoreInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.invarch_primitives.DaoInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("INV4", "CoreByAccount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("INV4", "Multisig"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.primitive_types.H256>), typeof(InvArch.NetApi.Generated.Model.pallet_inv4.multisig.MultisigOperation)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.primitive_types.H256>), typeof(InvArch.NetApi.Generated.Model.pallet_dao_manager.multisig.MultisigOperation)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("INV4", "CoreMembers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
@@ -51,7 +51,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> NextCoreIdParams
-        ///  Next available Core ID.
+        ///  Next available DAO ID.
         /// </summary>
         public static string NextCoreIdParams()
         {
@@ -69,7 +69,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> NextCoreId
-        ///  Next available Core ID.
+        ///  Next available DAO ID.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> NextCoreId(string blockhash, CancellationToken token)
         {
@@ -80,7 +80,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CoreStorageParams
-        ///  Core info storage.
+        ///  DAO info storage.
         /// </summary>
         public static string CoreStorageParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
         {
@@ -100,18 +100,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CoreStorage
-        ///  Core info storage.
+        ///  DAO info storage.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.invarch_primitives.CoreInfo> CoreStorage(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.invarch_primitives.DaoInfo> CoreStorage(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = INV4Storage.CoreStorageParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.invarch_primitives.CoreInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.invarch_primitives.DaoInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> CoreByAccountParams
-        ///  Mapping of account id -> core id.
+        ///  Mapping of account id -> dao id.
         /// </summary>
         public static string CoreByAccountParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -131,7 +131,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CoreByAccount
-        ///  Mapping of account id -> core id.
+        ///  Mapping of account id -> dao id.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> CoreByAccount(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
@@ -144,7 +144,7 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> MultisigParams
         ///  Details of a multisig call.
         /// 
-        ///  Key: (Core ID, call hash)
+        ///  Key: (Dao ID, call hash)
         /// </summary>
         public static string MultisigParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.primitive_types.H256> key)
         {
@@ -166,18 +166,18 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Multisig
         ///  Details of a multisig call.
         /// 
-        ///  Key: (Core ID, call hash)
+        ///  Key: (Dao ID, call hash)
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_inv4.multisig.MultisigOperation> Multisig(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.primitive_types.H256> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_manager.multisig.MultisigOperation> Multisig(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.primitive_types.H256> key, string blockhash, CancellationToken token)
         {
             string parameters = INV4Storage.MultisigParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_inv4.multisig.MultisigOperation>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_manager.multisig.MultisigOperation>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> CoreMembersParams
-        ///  Stores a list of members for each Core.
+        ///  Stores a list of members for each DAO.
         ///  This storage should be always handled by the runtime and mutated by CoreAssets hooks.
         /// </summary>
         public static string CoreMembersParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
@@ -198,7 +198,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CoreMembers
-        ///  Stores a list of members for each Core.
+        ///  Stores a list of members for each DAO.
         ///  This storage should be always handled by the runtime and mutated by CoreAssets hooks.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> CoreMembers(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
@@ -216,17 +216,17 @@ namespace InvArch.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> create_core
+        /// >> create_dao
         /// Dispatch functions
         /// </summary>
-        public static Method CreateCore(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9 metadata, InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill minimum_support, InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill required_approval, InvArch.NetApi.Generated.Model.pallet_inv4.fee_handling.EnumFeeAsset creation_fee_asset)
+        public static Method CreateDao(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12 metadata, InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill minimum_support, InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill required_approval, InvArch.NetApi.Generated.Model.pallet_dao_manager.fee_handling.EnumFeeAsset creation_fee_asset)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(metadata.Encode());
             byteArray.AddRange(minimum_support.Encode());
             byteArray.AddRange(required_approval.Encode());
             byteArray.AddRange(creation_fee_asset.Encode());
-            return new Method(71, "INV4", 0, "create_core", byteArray.ToArray());
+            return new Method(71, "INV4", 0, "create_dao", byteArray.ToArray());
         }
         
         /// <summary>
@@ -257,10 +257,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> operate_multisig
         /// Dispatch functions
         /// </summary>
-        public static Method OperateMultisig(Substrate.NetApi.Model.Types.Primitive.U32 core_id, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9> metadata, InvArch.NetApi.Generated.Model.pallet_inv4.fee_handling.EnumFeeAsset fee_asset, InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall call)
+        public static Method OperateMultisig(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12> metadata, InvArch.NetApi.Generated.Model.pallet_dao_manager.fee_handling.EnumFeeAsset fee_asset, InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall call)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(metadata.Encode());
             byteArray.AddRange(fee_asset.Encode());
             byteArray.AddRange(call.Encode());
@@ -271,10 +271,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> vote_multisig
         /// Dispatch functions
         /// </summary>
-        public static Method VoteMultisig(Substrate.NetApi.Model.Types.Primitive.U32 core_id, InvArch.NetApi.Generated.Model.primitive_types.H256 call_hash, Substrate.NetApi.Model.Types.Primitive.Bool aye)
+        public static Method VoteMultisig(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, InvArch.NetApi.Generated.Model.primitive_types.H256 call_hash, Substrate.NetApi.Model.Types.Primitive.Bool aye)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(call_hash.Encode());
             byteArray.AddRange(aye.Encode());
             return new Method(71, "INV4", 4, "vote_multisig", byteArray.ToArray());
@@ -284,10 +284,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> withdraw_vote_multisig
         /// Dispatch functions
         /// </summary>
-        public static Method WithdrawVoteMultisig(Substrate.NetApi.Model.Types.Primitive.U32 core_id, InvArch.NetApi.Generated.Model.primitive_types.H256 call_hash)
+        public static Method WithdrawVoteMultisig(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, InvArch.NetApi.Generated.Model.primitive_types.H256 call_hash)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(call_hash.Encode());
             return new Method(71, "INV4", 5, "withdraw_vote_multisig", byteArray.ToArray());
         }
@@ -307,7 +307,7 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> set_parameters
         /// Dispatch functions
         /// </summary>
-        public static Method SetParameters(Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT9> metadata, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> minimum_support, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> required_approval, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool> frozen_tokens)
+        public static Method SetParameters(Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT12> metadata, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> minimum_support, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill> required_approval, Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.Bool> frozen_tokens)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(metadata.Encode());
@@ -337,7 +337,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxMetadata
-        ///  The maximum length of the core metadata and the metadata of multisig proposals
+        ///  The maximum length of the dao metadata and the metadata of multisig proposals
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxMetadata()
         {
@@ -347,10 +347,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> CoreSeedBalance
-        ///  Base voting token balance to give callers when creating a core
+        /// >> DaoSeedBalance
+        ///  Base voting token balance to give callers when creating a DAO
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 CoreSeedBalance()
+        public Substrate.NetApi.Model.Types.Primitive.U128 DaoSeedBalance()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
             result.Create("0x40420F00000000000000000000000000");
@@ -358,10 +358,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> CoreCreationFee
-        ///  Fee for creating a core in the native token
+        /// >> DaoCreationFee
+        ///  Fee for creating a dao in the native token
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 CoreCreationFee()
+        public Substrate.NetApi.Model.Types.Primitive.U128 DaoCreationFee()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
             result.Create("0x0080C6A47E8D03000000000000000000");
@@ -369,10 +369,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> RelayCoreCreationFee
-        ///  Fee for creating a core in the relay token
+        /// >> RelayDaoCreationFee
+        ///  Fee for creating a dao in the relay token
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 RelayCoreCreationFee()
+        public Substrate.NetApi.Model.Types.Primitive.U128 RelayDaoCreationFee()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
             result.Create("0x0010A5D4E80000000000000000000000");
@@ -409,20 +409,20 @@ namespace InvArch.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> NoAvailableCoreId
-        /// No available Core ID
+        /// >> NoAvailableDaoId
+        /// No available DAO ID
         /// </summary>
-        NoAvailableCoreId,
+        NoAvailableDaoId,
         
         /// <summary>
-        /// >> CoreNotFound
-        /// Core not found
+        /// >> DaoNotFound
+        /// DAO not found
         /// </summary>
-        CoreNotFound,
+        DaoNotFound,
         
         /// <summary>
         /// >> NoPermission
-        /// The caller has no permissions in the core
+        /// The caller has no permissions in the DAO
         /// </summary>
         NoPermission,
         

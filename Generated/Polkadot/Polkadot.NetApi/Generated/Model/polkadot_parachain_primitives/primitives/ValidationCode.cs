@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitiv
     
     
     /// <summary>
-    /// >> 352 - Composite[polkadot_parachain_primitives.primitives.ValidationCode]
+    /// >> 309 - Composite[polkadot_parachain_primitives.primitives.ValidationCode]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class ValidationCode : BaseType

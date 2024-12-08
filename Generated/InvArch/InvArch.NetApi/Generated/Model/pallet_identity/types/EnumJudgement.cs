@@ -58,7 +58,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.types
     }
     
     /// <summary>
-    /// >> 233 - Variant[pallet_identity.types.Judgement]
+    /// >> 297 - Variant[pallet_identity.types.Judgement]
     /// </summary>
     public sealed class EnumJudgement : BaseEnumRust<Judgement>
     {

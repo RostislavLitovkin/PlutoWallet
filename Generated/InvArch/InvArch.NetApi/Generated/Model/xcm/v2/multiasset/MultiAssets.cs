@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2.multiasset
     
     
     /// <summary>
-    /// >> 94 - Composite[xcm.v2.multiasset.MultiAssets]
+    /// >> 121 - Composite[xcm.v2.multiasset.MultiAssets]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MultiAssets : BaseType

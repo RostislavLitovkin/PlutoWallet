@@ -108,13 +108,13 @@ namespace Polkadot.NetApi.Generated.Model.pallet_election_provider_multi_phase.p
         
         /// <summary>
         /// >> PreDispatchDifferentRound
-        /// Sumission was prepared for a different round.
+        /// Submission was prepared for a different round.
         /// </summary>
         PreDispatchDifferentRound = 14,
     }
     
     /// <summary>
-    /// >> 716 - Variant[pallet_election_provider_multi_phase.pallet.Error]
+    /// >> 677 - Variant[pallet_election_provider_multi_phase.pallet.Error]
     /// Error of the pallet that can be returned in response to dispatches.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

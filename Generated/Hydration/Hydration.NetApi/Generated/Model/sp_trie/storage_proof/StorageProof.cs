@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.sp_trie.storage_proof
     
     
     /// <summary>
-    /// >> 413 - Composite[sp_trie.storage_proof.StorageProof]
+    /// >> 415 - Composite[sp_trie.storage_proof.StorageProof]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StorageProof : BaseType

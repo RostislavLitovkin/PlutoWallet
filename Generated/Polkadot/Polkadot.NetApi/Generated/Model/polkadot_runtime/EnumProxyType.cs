@@ -42,11 +42,6 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
         Staking = 3,
         
         /// <summary>
-        /// >> IdentityJudgement
-        /// </summary>
-        IdentityJudgement = 5,
-        
-        /// <summary>
         /// >> CancelProxy
         /// </summary>
         CancelProxy = 6,
@@ -63,7 +58,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     }
     
     /// <summary>
-    /// >> 238 - Variant[polkadot_runtime.ProxyType]
+    /// >> 194 - Variant[polkadot_runtime.ProxyType]
     /// </summary>
     public sealed class EnumProxyType : BaseEnum<ProxyType>
     {

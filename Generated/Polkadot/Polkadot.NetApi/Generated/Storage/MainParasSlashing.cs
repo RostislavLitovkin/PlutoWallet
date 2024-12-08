@@ -38,7 +38,7 @@ namespace Polkadot.NetApi.Generated.Storage
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParasSlashing", "UnappliedSlashes"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash>), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.PendingSlashes)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash>), typeof(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.slashing.PendingSlashes)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("ParasSlashing", "ValidatorSetCounts"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
         }
@@ -67,10 +67,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> UnappliedSlashes
         ///  Validators pending dispute slashes.
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.PendingSlashes> UnappliedSlashes(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash> key, string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.slashing.PendingSlashes> UnappliedSlashes(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Polkadot.NetApi.Generated.Model.polkadot_core_primitives.CandidateHash> key, string blockhash, CancellationToken token)
         {
             string parameters = ParasSlashingStorage.UnappliedSlashesParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.PendingSlashes>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.slashing.PendingSlashes>(parameters, blockhash, token);
             return result;
         }
         
@@ -116,7 +116,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> report_dispute_lost_unsigned
         /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ReportDisputeLostUnsigned(Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.DisputeProof dispute_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
+        public static Method ReportDisputeLostUnsigned(Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.slashing.DisputeProof dispute_proof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof key_owner_proof)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dispute_proof.Encode());

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.types
     
     
     /// <summary>
-    /// >> 595 - Composite[pallet_staking.types.Voting]
+    /// >> 599 - Composite[pallet_staking.types.Voting]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Voting : BaseType
@@ -27,7 +27,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.types
         /// <summary>
         /// >> votes
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36 Votes { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41 Votes { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Votes = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT36();
+            Votes = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41();
             Votes.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

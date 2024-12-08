@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_grandpa.app
     
     
     /// <summary>
-    /// >> 155 - Composite[sp_consensus_grandpa.app.Signature]
+    /// >> 145 - Composite[sp_consensus_grandpa.app.Signature]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Signature : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_grandpa.app
         /// <summary>
         /// >> value
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.sp_core.ed25519.Signature Value { get; set; }
+        public Polkadot.NetApi.Generated.Types.Base.Arr64U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_grandpa.app
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new Polkadot.NetApi.Generated.Model.sp_core.ed25519.Signature();
+            Value = new Polkadot.NetApi.Generated.Types.Base.Arr64U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

@@ -221,10 +221,34 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
         /// No imbalance in the ED deposit for the pool.
         /// </summary>
         NothingToAdjust = 31,
+        
+        /// <summary>
+        /// >> NothingToSlash
+        /// No slash pending that can be applied to the member.
+        /// </summary>
+        NothingToSlash = 32,
+        
+        /// <summary>
+        /// >> AlreadyMigrated
+        /// The pool or member delegation has already migrated to delegate stake.
+        /// </summary>
+        AlreadyMigrated = 33,
+        
+        /// <summary>
+        /// >> NotMigrated
+        /// The pool or member delegation has not migrated yet to delegate stake.
+        /// </summary>
+        NotMigrated = 34,
+        
+        /// <summary>
+        /// >> NotSupported
+        /// This call is not allowed in the current state of the pallet.
+        /// </summary>
+        NotSupported = 35,
     }
     
     /// <summary>
-    /// >> 738 - Variant[pallet_nomination_pools.pallet.Error]
+    /// >> 699 - Variant[pallet_nomination_pools.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnumRust<Error>
@@ -267,6 +291,10 @@ namespace Polkadot.NetApi.Generated.Model.pallet_nomination_pools.pallet
 				AddTypeDecoder<BaseVoid>(Error.InvalidPoolId);
 				AddTypeDecoder<BaseVoid>(Error.BondExtraRestricted);
 				AddTypeDecoder<BaseVoid>(Error.NothingToAdjust);
+				AddTypeDecoder<BaseVoid>(Error.NothingToSlash);
+				AddTypeDecoder<BaseVoid>(Error.AlreadyMigrated);
+				AddTypeDecoder<BaseVoid>(Error.NotMigrated);
+				AddTypeDecoder<BaseVoid>(Error.NotSupported);
         }
     }
 }

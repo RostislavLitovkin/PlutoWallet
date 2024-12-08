@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types
     
     
     /// <summary>
-    /// >> 653 - Composite[pallet_liquidity_mining.types.DepositDataT2]
+    /// >> 657 - Composite[pallet_liquidity_mining.types.DepositDataT2]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DepositDataT2 : BaseType
@@ -35,7 +35,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types
         /// <summary>
         /// >> yield_farm_entries
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41 YieldFarmEntries { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT46 YieldFarmEntries { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -61,7 +61,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_liquidity_mining.types
             Shares.Decode(byteArray, ref p);
             AmmPoolId = new Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             AmmPoolId.Decode(byteArray, ref p);
-            YieldFarmEntries = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT41();
+            YieldFarmEntries = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT46();
             YieldFarmEntries.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

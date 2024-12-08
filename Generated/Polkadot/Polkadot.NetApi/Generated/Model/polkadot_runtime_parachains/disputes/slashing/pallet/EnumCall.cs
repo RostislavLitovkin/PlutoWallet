@@ -24,13 +24,12 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.s
         
         /// <summary>
         /// >> report_dispute_lost_unsigned
-        /// See [`Pallet::report_dispute_lost_unsigned`].
         /// </summary>
         report_dispute_lost_unsigned = 0,
     }
     
     /// <summary>
-    /// >> 371 - Variant[polkadot_runtime_parachains.disputes.slashing.pallet.Call]
+    /// >> 328 - Variant[polkadot_runtime_parachains.disputes.slashing.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
@@ -41,7 +40,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.s
         /// </summary>
         public EnumCall()
         {
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.slashing.DisputeProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_dispute_lost_unsigned);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.slashing.DisputeProof, Polkadot.NetApi.Generated.Model.sp_session.MembershipProof>>(Call.report_dispute_lost_unsigned);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.types
     
     
     /// <summary>
-    /// >> 598 - Composite[pallet_staking.types.Vote]
+    /// >> 602 - Composite[pallet_staking.types.Vote]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Vote : BaseType

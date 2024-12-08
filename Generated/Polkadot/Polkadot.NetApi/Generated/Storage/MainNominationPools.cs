@@ -56,7 +56,7 @@ namespace Polkadot.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.pallet_nomination_pools.SubPools)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("NominationPools", "CounterForSubPoolsStorage"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("NominationPools", "Metadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("NominationPools", "CounterForMetadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("NominationPools", "LastPoolId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("NominationPools", "ReversePoolIdLookup"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -426,7 +426,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// <summary>
         /// >> RewardPoolsParams
         ///  Reward pools. This is where there rewards for each pool accumulate. When a members payout is
-        ///  claimed, the balance comes out fo the reward pool. Keyed by the bonded pools account.
+        ///  claimed, the balance comes out of the reward pool. Keyed by the bonded pools account.
         /// </summary>
         public static string RewardPoolsParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
         {
@@ -447,7 +447,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// <summary>
         /// >> RewardPools
         ///  Reward pools. This is where there rewards for each pool accumulate. When a members payout is
-        ///  claimed, the balance comes out fo the reward pool. Keyed by the bonded pools account.
+        ///  claimed, the balance comes out of the reward pool. Keyed by the bonded pools account.
         /// </summary>
         public async Task<Polkadot.NetApi.Generated.Model.pallet_nomination_pools.RewardPool> RewardPools(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
@@ -571,10 +571,10 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> Metadata
         ///  Metadata for the pool.
         /// </summary>
-        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38> Metadata(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32> Metadata(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = NominationPoolsStorage.MetadataParams(key);
-            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT38>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32>(parameters, blockhash, token);
             return result;
         }
         
@@ -640,8 +640,8 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> ReversePoolIdLookupParams
         ///  A reverse lookup from the pool's account id to its id.
         /// 
-        ///  This is only used for slashing. In all other instances, the pool id is used, and the
-        ///  accounts are deterministically derived from it.
+        ///  This is only used for slashing and on automatic withdraw update. In all other instances, the
+        ///  pool id is used, and the accounts are deterministically derived from it.
         /// </summary>
         public static string ReversePoolIdLookupParams(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -663,8 +663,8 @@ namespace Polkadot.NetApi.Generated.Storage
         /// >> ReversePoolIdLookup
         ///  A reverse lookup from the pool's account id to its id.
         /// 
-        ///  This is only used for slashing. In all other instances, the pool id is used, and the
-        ///  accounts are deterministically derived from it.
+        ///  This is only used for slashing and on automatic withdraw update. In all other instances, the
+        ///  pool id is used, and the accounts are deterministically derived from it.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> ReversePoolIdLookup(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
@@ -719,7 +719,7 @@ namespace Polkadot.NetApi.Generated.Storage
         /// </summary>
         public static string ClaimPermissionsDefault()
         {
-            return "0x00";
+            return "0x02";
         }
         
         /// <summary>
@@ -1018,6 +1018,39 @@ namespace Polkadot.NetApi.Generated.Storage
             byteArray.AddRange(permission.Encode());
             return new Method(39, "NominationPools", 22, "set_commission_claim_permission", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> apply_slash
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method ApplySlash(Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress member_account)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(member_account.Encode());
+            return new Method(39, "NominationPools", 23, "apply_slash", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> migrate_delegation
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method MigrateDelegation(Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress member_account)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(member_account.Encode());
+            return new Method(39, "NominationPools", 24, "migrate_delegation", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> migrate_pool_to_delegate_stake
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
+        /// </summary>
+        public static Method MigratePoolToDelegateStake(Substrate.NetApi.Model.Types.Primitive.U32 pool_id)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(pool_id.Encode());
+            return new Method(39, "NominationPools", 25, "migrate_pool_to_delegate_stake", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -1276,5 +1309,29 @@ namespace Polkadot.NetApi.Generated.Storage
         /// No imbalance in the ED deposit for the pool.
         /// </summary>
         NothingToAdjust,
+        
+        /// <summary>
+        /// >> NothingToSlash
+        /// No slash pending that can be applied to the member.
+        /// </summary>
+        NothingToSlash,
+        
+        /// <summary>
+        /// >> AlreadyMigrated
+        /// The pool or member delegation has already migrated to delegate stake.
+        /// </summary>
+        AlreadyMigrated,
+        
+        /// <summary>
+        /// >> NotMigrated
+        /// The pool or member delegation has not migrated yet to delegate stake.
+        /// </summary>
+        NotMigrated,
+        
+        /// <summary>
+        /// >> NotSupported
+        /// This call is not allowed in the current state of the pallet.
+        /// </summary>
+        NotSupported,
     }
 }

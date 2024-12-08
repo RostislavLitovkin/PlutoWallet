@@ -142,5 +142,11 @@ namespace Polkadot.NetApi.Generated.Storage
         /// The given asset ID already has an assigned conversion rate and cannot be re-created.
         /// </summary>
         AlreadyExists,
+        
+        /// <summary>
+        /// >> Overflow
+        /// Overflow ocurred when calculating the inverse rate.
+        /// </summary>
+        Overflow,
     }
 }

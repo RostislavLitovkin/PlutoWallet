@@ -223,7 +223,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.traits
     }
     
     /// <summary>
-    /// >> 51 - Variant[xcm.v3.traits.Error]
+    /// >> 99 - Variant[xcm.v3.traits.Error]
     /// </summary>
     public sealed class EnumError : BaseEnumRust<Error>
     {

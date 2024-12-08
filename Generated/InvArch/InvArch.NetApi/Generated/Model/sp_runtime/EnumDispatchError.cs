@@ -93,7 +93,7 @@ namespace InvArch.NetApi.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 25 - Variant[sp_runtime.DispatchError]
+    /// >> 26 - Variant[sp_runtime.DispatchError]
     /// </summary>
     public sealed class EnumDispatchError : BaseEnumRust<DispatchError>
     {

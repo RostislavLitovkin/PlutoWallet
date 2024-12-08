@@ -47,9 +47,9 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> send_as_sovereign
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method SendAsSovereign(InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm message)
+        public static Method SendAsSovereign(InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation dest, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm message)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(dest.Encode());

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking.slashing
     
     
     /// <summary>
-    /// >> 609 - Composite[pallet_staking.slashing.SlashingSpans]
+    /// >> 586 - Composite[pallet_staking.slashing.SlashingSpans]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SlashingSpans : BaseType

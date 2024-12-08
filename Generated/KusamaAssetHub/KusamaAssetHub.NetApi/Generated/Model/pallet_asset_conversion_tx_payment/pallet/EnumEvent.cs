@@ -48,7 +48,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.pallet_asset_conversion_tx_payme
         /// </summary>
         public EnumEvent()
         {
-				AddTypeDecoder<BaseTuple<KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>>(Event.AssetTxFeePaid);
+				AddTypeDecoder<BaseTuple<KusamaAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128, Substrate.NetApi.Model.Types.Primitive.U128, KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location>>(Event.AssetTxFeePaid);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.AssetRefundFailed);
         }
     }

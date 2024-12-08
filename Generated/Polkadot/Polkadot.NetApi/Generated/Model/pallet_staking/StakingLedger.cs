@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
     
     
     /// <summary>
-    /// >> 592 - Composite[pallet_staking.StakingLedger]
+    /// >> 566 - Composite[pallet_staking.StakingLedger]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class StakingLedger : BaseType
@@ -43,7 +43,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
         /// <summary>
         /// >> legacy_claimed_rewards
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21 LegacyClaimedRewards { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19 LegacyClaimedRewards { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -75,7 +75,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
             Active.Decode(byteArray, ref p);
             Unlocking = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2();
             Unlocking.Decode(byteArray, ref p);
-            LegacyClaimedRewards = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT21();
+            LegacyClaimedRewards = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19();
             LegacyClaimedRewards.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

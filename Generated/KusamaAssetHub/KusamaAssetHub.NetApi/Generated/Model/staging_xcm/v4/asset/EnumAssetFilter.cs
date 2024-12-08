@@ -33,7 +33,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.asset
     }
     
     /// <summary>
-    /// >> 92 - Variant[staging_xcm.v4.asset.AssetFilter]
+    /// >> 87 - Variant[staging_xcm.v4.asset.AssetFilter]
     /// </summary>
     public sealed class EnumAssetFilter : BaseEnumRust<AssetFilter>
     {

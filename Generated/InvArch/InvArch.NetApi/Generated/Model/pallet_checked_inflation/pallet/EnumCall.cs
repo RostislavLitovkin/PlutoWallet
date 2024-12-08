@@ -17,25 +17,33 @@ namespace InvArch.NetApi.Generated.Model.pallet_checked_inflation.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
         
         /// <summary>
         /// >> set_first_year_supply
+        /// This call is used for configuring the inflation mechanism and sets the token's `YearStartIssuance` to its current total issuance.
+        /// 
+        /// The origin has to have `root` access.
         /// </summary>
         set_first_year_supply = 0,
         
         /// <summary>
         /// >> halt_unhalt_pallet
+        /// Halts or unhalts the inflation process.
+        /// 
+        /// The origin has to have `root` access.
+        /// 
+        /// - `halt`: `true` to halt the inflation process, `false` to unhalt it.
         /// </summary>
         halt_unhalt_pallet = 1,
     }
     
     /// <summary>
-    /// >> 234 - Variant[pallet_checked_inflation.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 305 - Variant[pallet_checked_inflation.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {

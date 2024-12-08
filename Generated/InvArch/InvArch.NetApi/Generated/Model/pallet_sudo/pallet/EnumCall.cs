@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -25,11 +25,6 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
         /// <summary>
         /// >> sudo
         /// Authenticates the sudo key and dispatches a function call with `Root` origin.
-        /// 
-        /// The dispatch origin for this call must be _Signed_.
-        /// 
-        /// ## Complexity
-        /// - O(1).
         /// </summary>
         sudo = 0,
         
@@ -40,9 +35,6 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
         /// Sudo user to specify the weight of the call.
         /// 
         /// The dispatch origin for this call must be _Signed_.
-        /// 
-        /// ## Complexity
-        /// - O(1).
         /// </summary>
         sudo_unchecked_weight = 1,
         
@@ -50,11 +42,6 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
         /// >> set_key
         /// Authenticates the current sudo key and sets the given AccountId (`new`) as the new sudo
         /// key.
-        /// 
-        /// The dispatch origin for this call must be _Signed_.
-        /// 
-        /// ## Complexity
-        /// - O(1).
         /// </summary>
         set_key = 2,
         
@@ -64,16 +51,21 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
         /// a given account.
         /// 
         /// The dispatch origin for this call must be _Signed_.
-        /// 
-        /// ## Complexity
-        /// - O(1).
         /// </summary>
         sudo_as = 3,
+        
+        /// <summary>
+        /// >> remove_key
+        /// Permanently removes the sudo key.
+        /// 
+        /// **This cannot be un-done.**
+        /// </summary>
+        remove_key = 4,
     }
     
     /// <summary>
-    /// >> 145 - Variant[pallet_sudo.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 180 - Variant[pallet_sudo.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {
@@ -87,6 +79,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_sudo.pallet
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.sudo_unchecked_weight);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress>(Call.set_key);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress, InvArch.NetApi.Generated.Model.invarch_runtime.EnumRuntimeCall>>(Call.sudo_as);
+				AddTypeDecoder<BaseVoid>(Call.remove_key);
         }
     }
 }

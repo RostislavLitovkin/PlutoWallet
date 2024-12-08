@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_arithmetic.per_things
     
     
     /// <summary>
-    /// >> 302 - Composite[sp_arithmetic.per_things.Permill]
+    /// >> 389 - Composite[sp_arithmetic.per_things.Permill]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Permill : BaseType

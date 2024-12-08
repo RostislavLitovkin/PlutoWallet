@@ -200,6 +200,17 @@ namespace Hydration.NetApi.Generated.Storage
             result.Create("0x00000000");
             return result;
         }
+        
+        /// <summary>
+        /// >> TreasuryAccountId
+        ///  Default account for `reward_account` and `dust_account` in genesis config.
+        /// </summary>
+        public Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32 TreasuryAccountId()
+        {
+            var result = new Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32();
+            result.Create("0x6D6F646C70792F74727372790000000000000000000000000000000000000000");
+            return result;
+        }
     }
     
     /// <summary>

@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.sp_arithmetic.per_things
     
     
     /// <summary>
-    /// >> 116 - Composite[sp_arithmetic.per_things.Perbill]
+    /// >> 150 - Composite[sp_arithmetic.per_things.Perbill]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Perbill : BaseType

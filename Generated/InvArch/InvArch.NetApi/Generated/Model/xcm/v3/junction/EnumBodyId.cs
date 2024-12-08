@@ -73,7 +73,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.junction
     }
     
     /// <summary>
-    /// >> 62 - Variant[xcm.v3.junction.BodyId]
+    /// >> 68 - Variant[xcm.v3.junction.BodyId]
     /// </summary>
     public sealed class EnumBodyId : BaseEnumRust<BodyId>
     {

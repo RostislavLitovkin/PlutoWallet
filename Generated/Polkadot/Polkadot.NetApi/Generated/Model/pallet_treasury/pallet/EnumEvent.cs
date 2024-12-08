@@ -23,93 +23,81 @@ namespace Polkadot.NetApi.Generated.Model.pallet_treasury.pallet
     {
         
         /// <summary>
-        /// >> Proposed
-        /// New proposal.
-        /// </summary>
-        Proposed = 0,
-        
-        /// <summary>
         /// >> Spending
         /// We have ended a spend period and will now allocate funds.
         /// </summary>
-        Spending = 1,
+        Spending = 0,
         
         /// <summary>
         /// >> Awarded
         /// Some funds have been allocated.
         /// </summary>
-        Awarded = 2,
-        
-        /// <summary>
-        /// >> Rejected
-        /// A proposal was rejected; funds were slashed.
-        /// </summary>
-        Rejected = 3,
+        Awarded = 1,
         
         /// <summary>
         /// >> Burnt
         /// Some of our funds have been burnt.
         /// </summary>
-        Burnt = 4,
+        Burnt = 2,
         
         /// <summary>
         /// >> Rollover
         /// Spending has finished; this is the amount that rolls over until next spend.
         /// </summary>
-        Rollover = 5,
+        Rollover = 3,
         
         /// <summary>
         /// >> Deposit
         /// Some funds have been deposited.
         /// </summary>
-        Deposit = 6,
+        Deposit = 4,
         
         /// <summary>
         /// >> SpendApproved
         /// A new spend proposal has been approved.
         /// </summary>
-        SpendApproved = 7,
+        SpendApproved = 5,
         
         /// <summary>
         /// >> UpdatedInactive
         /// The inactive funds of the pallet have been updated.
         /// </summary>
-        UpdatedInactive = 8,
+        UpdatedInactive = 6,
         
         /// <summary>
         /// >> AssetSpendApproved
         /// A new asset spend proposal has been approved.
         /// </summary>
-        AssetSpendApproved = 9,
+        AssetSpendApproved = 7,
         
         /// <summary>
         /// >> AssetSpendVoided
         /// An approved spend was voided.
         /// </summary>
-        AssetSpendVoided = 10,
+        AssetSpendVoided = 8,
         
         /// <summary>
         /// >> Paid
         /// A payment happened.
         /// </summary>
-        Paid = 11,
+        Paid = 9,
         
         /// <summary>
         /// >> PaymentFailed
         /// A payment failed and can be retried.
         /// </summary>
-        PaymentFailed = 12,
+        PaymentFailed = 10,
         
         /// <summary>
         /// >> SpendProcessed
         /// A spend was processed and removed from the storage. It might have been successfully
         /// paid or it may have expired.
         /// </summary>
-        SpendProcessed = 13,
+        SpendProcessed = 11,
     }
     
     /// <summary>
-    /// >> 64 - Variant[pallet_treasury.pallet.Event]
+    /// >> 54 - Variant[pallet_treasury.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
@@ -120,10 +108,8 @@ namespace Polkadot.NetApi.Generated.Model.pallet_treasury.pallet
         /// </summary>
         public EnumEvent()
         {
-				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U32>(Event.Proposed);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.Spending);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128, Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.Awarded);
-				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Rejected);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.Burnt);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.Rollover);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.U128>(Event.Deposit);

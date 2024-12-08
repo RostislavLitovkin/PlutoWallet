@@ -30,10 +30,15 @@ namespace InvArch.NetApi.Generated.Model.xcm
         /// >> V3
         /// </summary>
         V3 = 3,
+        
+        /// <summary>
+        /// >> V4
+        /// </summary>
+        V4 = 4,
     }
     
     /// <summary>
-    /// >> 183 - Variant[xcm.VersionedXcm]
+    /// >> 244 - Variant[xcm.VersionedXcm]
     /// </summary>
     public sealed class EnumVersionedXcm : BaseEnumRust<VersionedXcm>
     {
@@ -45,6 +50,7 @@ namespace InvArch.NetApi.Generated.Model.xcm
         {
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v2.XcmT2>(VersionedXcm.V2);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.XcmT2>(VersionedXcm.V3);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_xcm.v4.XcmT2>(VersionedXcm.V4);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -31,17 +31,20 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// >> teleport_assets
         /// Teleport some assets from the local chain to some destination chain.
         /// 
+        /// **This function is deprecated: Use `limited_teleport_assets` instead.**
+        /// 
         /// Fee payment on the destination side is made from the asset in the `assets` vector of
         /// index `fee_asset_item`. The weight limit for fees is not provided and thus is unlimited,
         /// with all fees taken as needed from the asset.
         /// 
         /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
-        /// - `dest`: Destination context for the assets. Will typically be `X2(Parent, Parachain(..))` to send
-        ///   from parachain to parachain, or `X1(Parachain(..))` to send from relay to parachain.
-        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will generally be
-        ///   an `AccountId32` value.
-        /// - `assets`: The assets to be withdrawn. The first item should be the currency used to to pay the fee on the
-        ///   `dest` side. May not be empty.
+        /// - `dest`: Destination context for the assets. Will typically be `[Parent,
+        ///   Parachain(..)]` to send from parachain to parachain, or `[Parachain(..)]` to send from
+        ///   relay to parachain.
+        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will
+        ///   generally be an `AccountId32` value.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` chain.
         /// - `fee_asset_item`: The index into `assets` of the item which should be used to pay
         ///   fees.
         /// </summary>
@@ -49,20 +52,34 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         
         /// <summary>
         /// >> reserve_transfer_assets
-        /// Transfer some assets from the local chain to the sovereign account of a destination
-        /// chain and forward a notification XCM.
+        /// Transfer some assets from the local chain to the destination chain through their local,
+        /// destination or remote reserve.
+        /// 
+        /// `assets` must have same reserve location and may not be teleportable to `dest`.
+        ///  - `assets` have local reserve: transfer assets to sovereign account of destination
+        ///    chain and forward a notification XCM to `dest` to mint and deposit reserve-based
+        ///    assets to `beneficiary`.
+        ///  - `assets` have destination reserve: burn local assets and forward a notification to
+        ///    `dest` chain to withdraw the reserve assets from this chain's sovereign account and
+        ///    deposit them to `beneficiary`.
+        ///  - `assets` have remote reserve: burn local assets, forward XCM to reserve chain to move
+        ///    reserves from this chain's SA to `dest` chain's SA, and forward another XCM to `dest`
+        ///    to mint and deposit reserve-based assets to `beneficiary`.
+        /// 
+        /// **This function is deprecated: Use `limited_reserve_transfer_assets` instead.**
         /// 
         /// Fee payment on the destination side is made from the asset in the `assets` vector of
         /// index `fee_asset_item`. The weight limit for fees is not provided and thus is unlimited,
         /// with all fees taken as needed from the asset.
         /// 
         /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
-        /// - `dest`: Destination context for the assets. Will typically be `X2(Parent, Parachain(..))` to send
-        ///   from parachain to parachain, or `X1(Parachain(..))` to send from relay to parachain.
-        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will generally be
-        ///   an `AccountId32` value.
-        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the fee on the
-        ///   `dest` side.
+        /// - `dest`: Destination context for the assets. Will typically be `[Parent,
+        ///   Parachain(..)]` to send from parachain to parachain, or `[Parachain(..)]` to send from
+        ///   relay to parachain.
+        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will
+        ///   generally be an `AccountId32` value.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` (and possibly reserve) chains.
         /// - `fee_asset_item`: The index into `assets` of the item which should be used to pay
         ///   fees.
         /// </summary>
@@ -75,12 +92,9 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// An event is deposited indicating whether `msg` could be executed completely or only
         /// partially.
         /// 
-        /// No more than `max_weight` will be used in its attempted execution. If this is less than the
-        /// maximum amount of weight that the message could take to be executed, then no execution
-        /// attempt will be made.
-        /// 
-        /// NOTE: A successful return to this does *not* imply that the `msg` was executed successfully
-        /// to completion; only that *some* of it was executed.
+        /// No more than `max_weight` will be used in its attempted execution. If this is less than
+        /// the maximum amount of weight that the message could take to be executed, then no
+        /// execution attempt will be made.
         /// </summary>
         execute = 3,
         
@@ -127,21 +141,33 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         
         /// <summary>
         /// >> limited_reserve_transfer_assets
-        /// Transfer some assets from the local chain to the sovereign account of a destination
-        /// chain and forward a notification XCM.
+        /// Transfer some assets from the local chain to the destination chain through their local,
+        /// destination or remote reserve.
+        /// 
+        /// `assets` must have same reserve location and may not be teleportable to `dest`.
+        ///  - `assets` have local reserve: transfer assets to sovereign account of destination
+        ///    chain and forward a notification XCM to `dest` to mint and deposit reserve-based
+        ///    assets to `beneficiary`.
+        ///  - `assets` have destination reserve: burn local assets and forward a notification to
+        ///    `dest` chain to withdraw the reserve assets from this chain's sovereign account and
+        ///    deposit them to `beneficiary`.
+        ///  - `assets` have remote reserve: burn local assets, forward XCM to reserve chain to move
+        ///    reserves from this chain's SA to `dest` chain's SA, and forward another XCM to `dest`
+        ///    to mint and deposit reserve-based assets to `beneficiary`.
         /// 
         /// Fee payment on the destination side is made from the asset in the `assets` vector of
         /// index `fee_asset_item`, up to enough to pay for `weight_limit` of weight. If more weight
-        /// is needed than `weight_limit`, then the operation will fail and the assets send may be
+        /// is needed than `weight_limit`, then the operation will fail and the sent assets may be
         /// at risk.
         /// 
         /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
-        /// - `dest`: Destination context for the assets. Will typically be `X2(Parent, Parachain(..))` to send
-        ///   from parachain to parachain, or `X1(Parachain(..))` to send from relay to parachain.
-        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will generally be
-        ///   an `AccountId32` value.
-        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the fee on the
-        ///   `dest` side.
+        /// - `dest`: Destination context for the assets. Will typically be `[Parent,
+        ///   Parachain(..)]` to send from parachain to parachain, or `[Parachain(..)]` to send from
+        ///   relay to parachain.
+        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will
+        ///   generally be an `AccountId32` value.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` (and possibly reserve) chains.
         /// - `fee_asset_item`: The index into `assets` of the item which should be used to pay
         ///   fees.
         /// - `weight_limit`: The remote-side weight limit, if any, for the XCM fee purchase.
@@ -154,16 +180,17 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// 
         /// Fee payment on the destination side is made from the asset in the `assets` vector of
         /// index `fee_asset_item`, up to enough to pay for `weight_limit` of weight. If more weight
-        /// is needed than `weight_limit`, then the operation will fail and the assets send may be
+        /// is needed than `weight_limit`, then the operation will fail and the sent assets may be
         /// at risk.
         /// 
         /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
-        /// - `dest`: Destination context for the assets. Will typically be `X2(Parent, Parachain(..))` to send
-        ///   from parachain to parachain, or `X1(Parachain(..))` to send from relay to parachain.
-        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will generally be
-        ///   an `AccountId32` value.
-        /// - `assets`: The assets to be withdrawn. The first item should be the currency used to to pay the fee on the
-        ///   `dest` side. May not be empty.
+        /// - `dest`: Destination context for the assets. Will typically be `[Parent,
+        ///   Parachain(..)]` to send from parachain to parachain, or `[Parachain(..)]` to send from
+        ///   relay to parachain.
+        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will
+        ///   generally be an `AccountId32` value.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` chain.
         /// - `fee_asset_item`: The index into `assets` of the item which should be used to pay
         ///   fees.
         /// - `weight_limit`: The remote-side weight limit, if any, for the XCM fee purchase.
@@ -178,11 +205,113 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// - `suspended`: `true` to suspend, `false` to resume.
         /// </summary>
         force_suspension = 10,
+        
+        /// <summary>
+        /// >> transfer_assets
+        /// Transfer some assets from the local chain to the destination chain through their local,
+        /// destination or remote reserve, or through teleports.
+        /// 
+        /// Fee payment on the destination side is made from the asset in the `assets` vector of
+        /// index `fee_asset_item` (hence referred to as `fees`), up to enough to pay for
+        /// `weight_limit` of weight. If more weight is needed than `weight_limit`, then the
+        /// operation will fail and the sent assets may be at risk.
+        /// 
+        /// `assets` (excluding `fees`) must have same reserve location or otherwise be teleportable
+        /// to `dest`, no limitations imposed on `fees`.
+        ///  - for local reserve: transfer assets to sovereign account of destination chain and
+        ///    forward a notification XCM to `dest` to mint and deposit reserve-based assets to
+        ///    `beneficiary`.
+        ///  - for destination reserve: burn local assets and forward a notification to `dest` chain
+        ///    to withdraw the reserve assets from this chain's sovereign account and deposit them
+        ///    to `beneficiary`.
+        ///  - for remote reserve: burn local assets, forward XCM to reserve chain to move reserves
+        ///    from this chain's SA to `dest` chain's SA, and forward another XCM to `dest` to mint
+        ///    and deposit reserve-based assets to `beneficiary`.
+        ///  - for teleports: burn local assets and forward XCM to `dest` chain to mint/teleport
+        ///    assets and deposit them to `beneficiary`.
+        /// 
+        /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
+        /// - `dest`: Destination context for the assets. Will typically be `X2(Parent,
+        ///   Parachain(..))` to send from parachain to parachain, or `X1(Parachain(..))` to send
+        ///   from relay to parachain.
+        /// - `beneficiary`: A beneficiary location for the assets in the context of `dest`. Will
+        ///   generally be an `AccountId32` value.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` (and possibly reserve) chains.
+        /// - `fee_asset_item`: The index into `assets` of the item which should be used to pay
+        ///   fees.
+        /// - `weight_limit`: The remote-side weight limit, if any, for the XCM fee purchase.
+        /// </summary>
+        transfer_assets = 11,
+        
+        /// <summary>
+        /// >> claim_assets
+        /// Claims assets trapped on this pallet because of leftover assets during XCM execution.
+        /// 
+        /// - `origin`: Anyone can call this extrinsic.
+        /// - `assets`: The exact assets that were trapped. Use the version to specify what version
+        /// was the latest when they were trapped.
+        /// - `beneficiary`: The location/account where the claimed assets will be deposited.
+        /// </summary>
+        claim_assets = 12,
+        
+        /// <summary>
+        /// >> transfer_assets_using_type_and_then
+        /// Transfer assets from the local chain to the destination chain using explicit transfer
+        /// types for assets and fees.
+        /// 
+        /// `assets` must have same reserve location or may be teleportable to `dest`. Caller must
+        /// provide the `assets_transfer_type` to be used for `assets`:
+        ///  - `TransferType::LocalReserve`: transfer assets to sovereign account of destination
+        ///    chain and forward a notification XCM to `dest` to mint and deposit reserve-based
+        ///    assets to `beneficiary`.
+        ///  - `TransferType::DestinationReserve`: burn local assets and forward a notification to
+        ///    `dest` chain to withdraw the reserve assets from this chain's sovereign account and
+        ///    deposit them to `beneficiary`.
+        ///  - `TransferType::RemoteReserve(reserve)`: burn local assets, forward XCM to `reserve`
+        ///    chain to move reserves from this chain's SA to `dest` chain's SA, and forward another
+        ///    XCM to `dest` to mint and deposit reserve-based assets to `beneficiary`. Typically
+        ///    the remote `reserve` is Asset Hub.
+        ///  - `TransferType::Teleport`: burn local assets and forward XCM to `dest` chain to
+        ///    mint/teleport assets and deposit them to `beneficiary`.
+        /// 
+        /// On the destination chain, as well as any intermediary hops, `BuyExecution` is used to
+        /// buy execution using transferred `assets` identified by `remote_fees_id`.
+        /// Make sure enough of the specified `remote_fees_id` asset is included in the given list
+        /// of `assets`. `remote_fees_id` should be enough to pay for `weight_limit`. If more weight
+        /// is needed than `weight_limit`, then the operation will fail and the sent assets may be
+        /// at risk.
+        /// 
+        /// `remote_fees_id` may use different transfer type than rest of `assets` and can be
+        /// specified through `fees_transfer_type`.
+        /// 
+        /// The caller needs to specify what should happen to the transferred assets once they reach
+        /// the `dest` chain. This is done through the `custom_xcm_on_dest` parameter, which
+        /// contains the instructions to execute on `dest` as a final step.
+        ///   This is usually as simple as:
+        ///   `Xcm(vec![DepositAsset { assets: Wild(AllCounted(assets.len())), beneficiary }])`,
+        ///   but could be something more exotic like sending the `assets` even further.
+        /// 
+        /// - `origin`: Must be capable of withdrawing the `assets` and executing XCM.
+        /// - `dest`: Destination context for the assets. Will typically be `[Parent,
+        ///   Parachain(..)]` to send from parachain to parachain, or `[Parachain(..)]` to send from
+        ///   relay to parachain, or `(parents: 2, (GlobalConsensus(..), ..))` to send from
+        ///   parachain across a bridge to another ecosystem destination.
+        /// - `assets`: The assets to be withdrawn. This should include the assets used to pay the
+        ///   fee on the `dest` (and possibly reserve) chains.
+        /// - `assets_transfer_type`: The XCM `TransferType` used to transfer the `assets`.
+        /// - `remote_fees_id`: One of the included `assets` to be used to pay fees.
+        /// - `fees_transfer_type`: The XCM `TransferType` used to transfer the `fees` assets.
+        /// - `custom_xcm_on_dest`: The XCM to be executed on `dest` chain as the last step of the
+        ///   transfer, which also determines what happens to the assets on the destination chain.
+        /// - `weight_limit`: The remote-side weight limit, if any, for the XCM fee purchase.
+        /// </summary>
+        transfer_assets_using_type_and_then = 13,
     }
     
     /// <summary>
-    /// >> 170 - Variant[pallet_xcm.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 217 - Variant[pallet_xcm.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {
@@ -192,17 +321,20 @@ namespace InvArch.NetApi.Generated.Model.pallet_xcm.pallet
         /// </summary>
         public EnumCall()
         {
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm>>(Call.send);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.teleport_assets);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.reserve_transfer_assets);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm>>(Call.send);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.teleport_assets);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.reserve_transfer_assets);
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm, InvArch.NetApi.Generated.Model.sp_weights.weight_v2.Weight>>(Call.execute);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_xcm_version);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.staging_xcm.v4.location.Location, Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_xcm_version);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>>(Call.force_default_xcm_version);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation>(Call.force_subscribe_version_notify);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation>(Call.force_unsubscribe_version_notify);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_reserve_transfer_assets);
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedMultiAssets, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_teleport_assets);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>(Call.force_subscribe_version_notify);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>(Call.force_unsubscribe_version_notify);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_reserve_transfer_assets);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.limited_teleport_assets);
 				AddTypeDecoder<Substrate.NetApi.Model.Types.Primitive.Bool>(Call.force_suspension);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_assets);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation>>(Call.claim_assets);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.EnumVersionedLocation, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssets, InvArch.NetApi.Generated.Model.staging_xcm_executor.traits.asset_transfer.EnumTransferType, InvArch.NetApi.Generated.Model.xcm.EnumVersionedAssetId, InvArch.NetApi.Generated.Model.staging_xcm_executor.traits.asset_transfer.EnumTransferType, InvArch.NetApi.Generated.Model.xcm.EnumVersionedXcm, InvArch.NetApi.Generated.Model.xcm.v3.EnumWeightLimit>>(Call.transfer_assets_using_type_and_then);
         }
     }
 }

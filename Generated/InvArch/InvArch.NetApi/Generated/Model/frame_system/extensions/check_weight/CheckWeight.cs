@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.extensions.check_weight
     
     
     /// <summary>
-    /// >> 399 - Composite[frame_system.extensions.check_weight.CheckWeight]
+    /// >> 534 - Composite[frame_system.extensions.check_weight.CheckWeight]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckWeight : BaseType

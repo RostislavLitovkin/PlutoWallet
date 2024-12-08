@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec
     
     
     /// <summary>
-    /// >> 39 - Composite[bounded_collections.bounded_vec.BoundedVecT1]
+    /// >> 40 - Composite[bounded_collections.bounded_vec.BoundedVecT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class BoundedVecT1 : BaseType

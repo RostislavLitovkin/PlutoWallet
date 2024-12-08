@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_democracy.types
     
     
     /// <summary>
-    /// >> 513 - Composite[pallet_democracy.types.Tally]
+    /// >> 516 - Composite[pallet_democracy.types.Tally]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Tally : BaseType

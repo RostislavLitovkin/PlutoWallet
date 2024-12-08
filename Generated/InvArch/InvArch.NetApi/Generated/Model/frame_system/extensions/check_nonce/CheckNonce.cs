@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_system.extensions.check_nonce
     
     
     /// <summary>
-    /// >> 398 - Composite[frame_system.extensions.check_nonce.CheckNonce]
+    /// >> 533 - Composite[frame_system.extensions.check_nonce.CheckNonce]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckNonce : BaseType

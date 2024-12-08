@@ -17,51 +17,45 @@ namespace InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
         
         /// <summary>
-        /// >> FailedToSend
-        /// Failed to send XCM message.
+        /// >> BadQueueConfig
+        /// Setting the queue config failed since one of its values was invalid.
         /// </summary>
-        FailedToSend = 0,
+        BadQueueConfig = 0,
         
         /// <summary>
-        /// >> BadXcmOrigin
-        /// Bad XCM origin.
+        /// >> AlreadySuspended
+        /// The execution is already suspended.
         /// </summary>
-        BadXcmOrigin = 1,
+        AlreadySuspended = 1,
         
         /// <summary>
-        /// >> BadXcm
-        /// Bad XCM data.
+        /// >> AlreadyResumed
+        /// The execution is already resumed.
         /// </summary>
-        BadXcm = 2,
+        AlreadyResumed = 2,
         
         /// <summary>
-        /// >> BadOverweightIndex
-        /// Bad overweight index.
+        /// >> TooManyActiveOutboundChannels
+        /// There are too many active outbound channels.
         /// </summary>
-        BadOverweightIndex = 3,
+        TooManyActiveOutboundChannels = 3,
         
         /// <summary>
-        /// >> WeightOverLimit
-        /// Provided weight is possibly not enough to execute the message.
+        /// >> TooBig
+        /// The message is too big.
         /// </summary>
-        WeightOverLimit = 4,
+        TooBig = 4,
     }
     
     /// <summary>
-    /// >> 334 - Variant[cumulus_pallet_xcmp_queue.pallet.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 430 - Variant[cumulus_pallet_xcmp_queue.pallet.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

@@ -39,6 +39,7 @@ namespace Polkadot.NetApi.Generated.Storage
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "Account"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Polkadot.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Polkadot.NetApi.Generated.Model.frame_system.AccountInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "ExtrinsicCount"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "InherentsApplied"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockWeight"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Polkadot.NetApi.Generated.Model.frame_support.dispatch.PerDispatchClassT1)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "AllExtrinsicsLen"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("System", "BlockHash"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
@@ -118,6 +119,35 @@ namespace Polkadot.NetApi.Generated.Storage
         {
             string parameters = SystemStorage.ExtrinsicCountParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedParams
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public static string InherentsAppliedParams()
+        {
+            return RequestGenerator.GetStorage("System", "InherentsApplied", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> InherentsAppliedDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string InherentsAppliedDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> InherentsApplied
+        ///  Whether all inherents have been applied.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> InherentsApplied(string blockhash, CancellationToken token)
+        {
+            string parameters = SystemStorage.InherentsAppliedParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
             return result;
         }
         
@@ -776,12 +806,12 @@ namespace Polkadot.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Version
-        ///  Get the chain's current version.
+        ///  Get the chain's in-code version.
         /// </summary>
         public Polkadot.NetApi.Generated.Model.sp_version.RuntimeVersion Version()
         {
             var result = new Polkadot.NetApi.Generated.Model.sp_version.RuntimeVersion();
-            result.Create(@"0x20706F6C6B61646F743C7061726974792D706F6C6B61646F7400000000174A0F00000000004CDF6ACB689907609B0400000037E397FC7C91F5E40200000040FE3AD401F8959A0600000017A6BC0D0062AEB30100000018EF58A3B67BA77001000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AF2C0297A23E6D3D0A00000049EAAF1B548A0CB00300000091D5DF18B0D2CF58020000002A5E924655399E6001000000ED99C5ACB25EEDF503000000CBCA25E39F14238702000000687AD44AD37F03C201000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB52705903000000FBC577B9D747EFD6010000001A00000001");
+            result.Create(@"0x20706F6C6B61646F743C7061726974792D706F6C6B61646F7400000000FC4D0F00000000005CC51FF1FA3F5D0CCA01000000DF6ACB689907609B0500000037E397FC7C91F5E40200000040FE3AD401F8959A0600000017A6BC0D0062AEB30100000018EF58A3B67BA77001000000D2BC9897EED08F1503000000F78B278BE53F454C02000000AF2C0297A23E6D3D0B00000049EAAF1B548A0CB00300000091D5DF18B0D2CF58020000002A5E924655399E6001000000ED99C5ACB25EEDF503000000CBCA25E39F14238702000000687AD44AD37F03C201000000AB3C0572291FEB8B01000000BC9D89904F5B923F0100000037C8BB1350A9A2A804000000F3FF14D5AB527059030000006FF52EE858E6C5BD0100000091B1C8B16328EB92010000009FFB505AA738D69C01000000FBC577B9D747EFD6010000001A00000001");
             return result;
         }
         
@@ -846,6 +876,12 @@ namespace Polkadot.NetApi.Generated.Storage
         /// The origin filter prevent the call to be dispatched.
         /// </summary>
         CallFiltered,
+        
+        /// <summary>
+        /// >> MultiBlockMigrationsOngoing
+        /// A multi-block migration is ongoing and prevents the current code from being replaced.
+        /// </summary>
+        MultiBlockMigrationsOngoing,
         
         /// <summary>
         /// >> NothingAuthorized

@@ -47,6 +47,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32, PolkadotAssetHub.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.Approval)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("PoolAssets", "Metadata"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT3)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("PoolAssets", "NextAssetId"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
         }
         
         /// <summary>
@@ -175,6 +176,51 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         {
             string parameters = PoolAssetsStorage.MetadataParams(key);
             var result = await _client.GetStorageAsync<PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT3>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> NextAssetIdParams
+        ///  The asset ID enforced for the next asset creation, if any present. Otherwise, this storage
+        ///  item has no effect.
+        /// 
+        ///  This can be useful for setting up constraints for IDs of the new assets. For example, by
+        ///  providing an initial [`NextAssetId`] and using the [`crate::AutoIncAssetId`] callback, an
+        ///  auto-increment model can be applied to all new asset IDs.
+        /// 
+        ///  The initial next asset ID can be set using the [`GenesisConfig`] or the
+        ///  [SetNextAssetId](`migration::next_asset_id::SetNextAssetId`) migration.
+        /// </summary>
+        public static string NextAssetIdParams()
+        {
+            return RequestGenerator.GetStorage("PoolAssets", "NextAssetId", Substrate.NetApi.Model.Meta.Storage.Type.Plain);
+        }
+        
+        /// <summary>
+        /// >> NextAssetIdDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string NextAssetIdDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> NextAssetId
+        ///  The asset ID enforced for the next asset creation, if any present. Otherwise, this storage
+        ///  item has no effect.
+        /// 
+        ///  This can be useful for setting up constraints for IDs of the new assets. For example, by
+        ///  providing an initial [`NextAssetId`] and using the [`crate::AutoIncAssetId`] callback, an
+        ///  auto-increment model can be applied to all new asset IDs.
+        /// 
+        ///  The initial next asset ID can be set using the [`GenesisConfig`] or the
+        ///  [SetNextAssetId](`migration::next_asset_id::SetNextAssetId`) migration.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Primitive.U32> NextAssetId(string blockhash, CancellationToken token)
+        {
+            string parameters = PoolAssetsStorage.NextAssetIdParams();
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.U32>(parameters, blockhash, token);
             return result;
         }
     }
@@ -803,5 +849,11 @@ namespace PolkadotAssetHub.NetApi.Generated.Storage
         /// Callback action resulted in error
         /// </summary>
         CallbackFailed,
+        
+        /// <summary>
+        /// >> BadAssetId
+        /// The asset ID must be equal to the [`NextAssetId`].
+        /// </summary>
+        BadAssetId,
     }
 }

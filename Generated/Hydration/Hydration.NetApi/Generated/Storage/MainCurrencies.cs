@@ -124,5 +124,11 @@ namespace Hydration.NetApi.Generated.Storage
         /// Deposit result is not expected
         /// </summary>
         DepositFailed,
+        
+        /// <summary>
+        /// >> NotSupported
+        /// Operation is not supported for this currency
+        /// </summary>
+        NotSupported,
     }
 }

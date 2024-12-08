@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
     
     
     /// <summary>
-    /// >> 594 - Composite[pallet_staking.Nominations]
+    /// >> 568 - Composite[pallet_staking.Nominations]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Nominations : BaseType
@@ -27,7 +27,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
         /// <summary>
         /// >> targets
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22 Targets { get; set; }
+        public Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20 Targets { get; set; }
         /// <summary>
         /// >> submitted_in
         /// </summary>
@@ -57,7 +57,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_staking
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Targets = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT22();
+            Targets = new Polkadot.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20();
             Targets.Decode(byteArray, ref p);
             SubmittedIn = new Substrate.NetApi.Model.Types.Primitive.U32();
             SubmittedIn.Decode(byteArray, ref p);

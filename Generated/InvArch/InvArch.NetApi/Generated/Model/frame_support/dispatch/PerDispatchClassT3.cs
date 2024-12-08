@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.frame_support.dispatch
     
     
     /// <summary>
-    /// >> 256 - Composite[frame_support.dispatch.PerDispatchClassT3]
+    /// >> 326 - Composite[frame_support.dispatch.PerDispatchClassT3]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class PerDispatchClassT3 : BaseType

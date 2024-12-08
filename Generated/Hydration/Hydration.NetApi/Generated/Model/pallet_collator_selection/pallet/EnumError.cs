@@ -126,7 +126,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_collator_selection.pallet
     }
     
     /// <summary>
-    /// >> 738 - Variant[pallet_collator_selection.pallet.Error]
+    /// >> 742 - Variant[pallet_collator_selection.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

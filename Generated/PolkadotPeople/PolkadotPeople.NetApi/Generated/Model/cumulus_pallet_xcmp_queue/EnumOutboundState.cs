@@ -33,7 +33,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     }
     
     /// <summary>
-    /// >> 243 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
+    /// >> 241 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
     /// </summary>
     public sealed class EnumOutboundState : BaseEnum<OutboundState>
     {

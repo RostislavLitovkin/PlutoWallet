@@ -78,7 +78,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.xcm.v3.junction
     }
     
     /// <summary>
-    /// >> 42 - Variant[xcm.v3.junction.NetworkId]
+    /// >> 113 - Variant[xcm.v3.junction.NetworkId]
     /// </summary>
     public sealed class EnumNetworkId : BaseEnumRust<NetworkId>
     {

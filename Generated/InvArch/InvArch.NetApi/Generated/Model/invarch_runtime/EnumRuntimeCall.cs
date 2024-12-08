@@ -37,6 +37,11 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         Timestamp = 2,
         
         /// <summary>
+        /// >> ParachainInfo
+        /// </summary>
+        ParachainInfo = 3,
+        
+        /// <summary>
         /// >> Sudo
         /// </summary>
         Sudo = 4,
@@ -67,6 +72,26 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         Vesting = 13,
         
         /// <summary>
+        /// >> AssetRegistry
+        /// </summary>
+        AssetRegistry = 14,
+        
+        /// <summary>
+        /// >> Currencies
+        /// </summary>
+        Currencies = 15,
+        
+        /// <summary>
+        /// >> Tokens
+        /// </summary>
+        Tokens = 16,
+        
+        /// <summary>
+        /// >> XTokens
+        /// </summary>
+        XTokens = 17,
+        
+        /// <summary>
         /// >> CollatorSelection
         /// </summary>
         CollatorSelection = 21,
@@ -87,9 +112,9 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         PolkadotXcm = 31,
         
         /// <summary>
-        /// >> DmpQueue
+        /// >> CumulusXcm
         /// </summary>
-        DmpQueue = 33,
+        CumulusXcm = 32,
         
         /// <summary>
         /// >> OrmlXcm
@@ -97,9 +122,19 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
         OrmlXcm = 34,
         
         /// <summary>
+        /// >> MessageQueue
+        /// </summary>
+        MessageQueue = 35,
+        
+        /// <summary>
         /// >> Identity
         /// </summary>
         Identity = 40,
+        
+        /// <summary>
+        /// >> Contracts
+        /// </summary>
+        Contracts = 41,
         
         /// <summary>
         /// >> CheckedInflation
@@ -123,7 +158,7 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
     }
     
     /// <summary>
-    /// >> 126 - Variant[invarch_runtime.RuntimeCall]
+    /// >> 160 - Variant[invarch_runtime.RuntimeCall]
     /// </summary>
     public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
@@ -136,22 +171,29 @@ namespace InvArch.NetApi.Generated.Model.invarch_runtime
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.frame_system.pallet.EnumCall>(RuntimeCall.System);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_parachain_system.pallet.EnumCall>(RuntimeCall.ParachainSystem);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_timestamp.pallet.EnumCall>(RuntimeCall.Timestamp);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_parachain_info.pallet.EnumCall>(RuntimeCall.ParachainInfo);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_sudo.pallet.EnumCall>(RuntimeCall.Sudo);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_utility.pallet.EnumCall>(RuntimeCall.Utility);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_tx_pause.pallet.EnumCall>(RuntimeCall.TxPause);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_balances.pallet.EnumCall>(RuntimeCall.Balances);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_treasury.pallet.EnumCall>(RuntimeCall.Treasury);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_vesting.module.EnumCall>(RuntimeCall.Vesting);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_asset_registry.module.EnumCall>(RuntimeCall.AssetRegistry);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_currencies.module.EnumCall>(RuntimeCall.Currencies);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_tokens.module.EnumCall>(RuntimeCall.Tokens);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_xtokens.module.EnumCall>(RuntimeCall.XTokens);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_collator_selection.pallet.EnumCall>(RuntimeCall.CollatorSelection);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_session.pallet.EnumCall>(RuntimeCall.Session);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_xcmp_queue.pallet.EnumCall>(RuntimeCall.XcmpQueue);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_xcm.pallet.EnumCall>(RuntimeCall.PolkadotXcm);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_dmp_queue.pallet.EnumCall>(RuntimeCall.DmpQueue);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.cumulus_pallet_xcm.pallet.EnumCall>(RuntimeCall.CumulusXcm);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_xcm.module.EnumCall>(RuntimeCall.OrmlXcm);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_message_queue.pallet.EnumCall>(RuntimeCall.MessageQueue);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_contracts.pallet.EnumCall>(RuntimeCall.Contracts);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_checked_inflation.pallet.EnumCall>(RuntimeCall.CheckedInflation);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_ocif_staking.pallet.EnumCall>(RuntimeCall.OcifStaking);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_inv4.pallet.EnumCall>(RuntimeCall.INV4);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_dao_staking.pallet.EnumCall>(RuntimeCall.OcifStaking);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.pallet_dao_manager.pallet.EnumCall>(RuntimeCall.INV4);
 				AddTypeDecoder<InvArch.NetApi.Generated.Model.orml_tokens.module.EnumCall>(RuntimeCall.CoreAssets);
         }
     }

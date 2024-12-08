@@ -124,11 +124,6 @@ namespace PolkadotPeople.NetApi.Generated
         /// </summary>
         public IdentityStorage IdentityStorage;
         
-        /// <summary>
-        /// IdentityMigratorStorage storage calls.
-        /// </summary>
-        public IdentityMigratorStorage IdentityMigratorStorage;
-        
         public SubstrateClientExt(System.Uri uri, Substrate.NetApi.Model.Extrinsics.ChargeType chargeType) : 
                 base(uri, chargeType)
         {
@@ -152,7 +147,6 @@ namespace PolkadotPeople.NetApi.Generated
             this.MultisigStorage = new MultisigStorage(this);
             this.ProxyStorage = new ProxyStorage(this);
             this.IdentityStorage = new IdentityStorage(this);
-            this.IdentityMigratorStorage = new IdentityMigratorStorage(this);
         }
     }
 }

@@ -84,7 +84,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_message_queue.pallet
     }
     
     /// <summary>
-    /// >> 316 - Variant[pallet_message_queue.pallet.Error]
+    /// >> 317 - Variant[pallet_message_queue.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

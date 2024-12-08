@@ -37,17 +37,24 @@ namespace InvArch.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "IdentityOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.pallet_identity.types.Registration)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SuperOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, InvArch.NetApi.Generated.Model.pallet_identity.types.EnumData>)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "SubsOf"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19>)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30>)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "Registrars"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "UsernameAuthorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.pallet_identity.types.AuthorityProperties)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "AccountOfUsername"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6), typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Identity", "PendingUsernames"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>)));
         }
         
         /// <summary>
         /// >> IdentityOfParams
-        ///  Information that is pertinent to identify the entity behind an account.
+        ///  Information that is pertinent to identify the entity behind an account. First item is the
+        ///  registration, second is the account's primary username.
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
@@ -69,14 +76,15 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> IdentityOf
-        ///  Information that is pertinent to identify the entity behind an account.
+        ///  Information that is pertinent to identify the entity behind an account. First item is the
+        ///  registration, second is the account's primary username.
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_identity.types.Registration> IdentityOf(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>> IdentityOf(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.IdentityOfParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_identity.types.Registration>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.pallet_identity.types.Registration, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6>>>(parameters, blockhash, token);
             return result;
         }
         
@@ -145,10 +153,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// 
         ///  TWOX-NOTE: OK ��� `AccountId` is a secure hash.
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19>> SubsOf(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30>> SubsOf(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.SubsOfParams(key);
-            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT19>>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U128, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT30>>(parameters, blockhash, token);
             return result;
         }
         
@@ -180,10 +188,121 @@ namespace InvArch.NetApi.Generated.Storage
         /// 
         ///  The index into this can be cast to `RegistrarIndex` to get a valid value.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20> Registrars(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31> Registrars(string blockhash, CancellationToken token)
         {
             string parameters = IdentityStorage.RegistrarsParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT20>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT31>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> UsernameAuthoritiesParams
+        ///  A map of the accounts who are authorized to grant usernames.
+        /// </summary>
+        public static string UsernameAuthoritiesParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
+        {
+            return RequestGenerator.GetStorage("Identity", "UsernameAuthorities", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> UsernameAuthoritiesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UsernameAuthoritiesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> UsernameAuthorities
+        ///  A map of the accounts who are authorized to grant usernames.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_identity.types.AuthorityProperties> UsernameAuthorities(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = IdentityStorage.UsernameAuthoritiesParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_identity.types.AuthorityProperties>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> AccountOfUsernameParams
+        ///  Reverse lookup from `username` to the `AccountId` that has registered it. The value should
+        ///  be a key in the `IdentityOf` map, but it may not if the user has cleared their identity.
+        /// 
+        ///  Multiple usernames may map to the same `AccountId`, but `IdentityOf` will only map to one
+        ///  primary username.
+        /// </summary>
+        public static string AccountOfUsernameParams(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key)
+        {
+            return RequestGenerator.GetStorage("Identity", "AccountOfUsername", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> AccountOfUsernameDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string AccountOfUsernameDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> AccountOfUsername
+        ///  Reverse lookup from `username` to the `AccountId` that has registered it. The value should
+        ///  be a key in the `IdentityOf` map, but it may not if the user has cleared their identity.
+        /// 
+        ///  Multiple usernames may map to the same `AccountId`, but `IdentityOf` will only map to one
+        ///  primary username.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> AccountOfUsername(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, string blockhash, CancellationToken token)
+        {
+            string parameters = IdentityStorage.AccountOfUsernameParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> PendingUsernamesParams
+        ///  Usernames that an authority has granted, but that the account controller has not confirmed
+        ///  that they want it. Used primarily in cases where the `AccountId` cannot provide a signature
+        ///  because they are a pure proxy, multisig, etc. In order to confirm it, they should call
+        ///  [`Call::accept_username`].
+        /// 
+        ///  First tuple item is the account and second is the acceptance deadline.
+        /// </summary>
+        public static string PendingUsernamesParams(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key)
+        {
+            return RequestGenerator.GetStorage("Identity", "PendingUsernames", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> PendingUsernamesDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string PendingUsernamesDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> PendingUsernames
+        ///  Usernames that an authority has granted, but that the account controller has not confirmed
+        ///  that they want it. Used primarily in cases where the `AccountId` cannot provide a signature
+        ///  because they are a pure proxy, multisig, etc. In order to confirm it, they should call
+        ///  [`Call::accept_username`].
+        /// 
+        ///  First tuple item is the account and second is the acceptance deadline.
+        /// </summary>
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>> PendingUsernames(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 key, string blockhash, CancellationToken token)
+        {
+            string parameters = IdentityStorage.PendingUsernamesParams(key);
+            var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple<InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U32>>(parameters, blockhash, token);
             return result;
         }
     }
@@ -209,7 +328,7 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> set_identity
         /// Identity pallet declaration.
         /// </summary>
-        public static Method SetIdentity(InvArch.NetApi.Generated.Model.pallet_identity.types.IdentityInfo info)
+        public static Method SetIdentity(InvArch.NetApi.Generated.Model.pallet_identity.legacy.IdentityInfo info)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(info.Encode());
@@ -288,7 +407,7 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> set_fields
         /// Identity pallet declaration.
         /// </summary>
-        public static Method SetFields(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> index, InvArch.NetApi.Generated.Model.pallet_identity.types.BitFlags fields)
+        public static Method SetFields(Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> index, Substrate.NetApi.Model.Types.Primitive.U64 fields)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(index.Encode());
@@ -365,6 +484,87 @@ namespace InvArch.NetApi.Generated.Storage
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             return new Method(40, "Identity", 14, "quit_sub", byteArray.ToArray());
         }
+        
+        /// <summary>
+        /// >> add_username_authority
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method AddUsernameAuthority(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress authority, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> suffix, Substrate.NetApi.Model.Types.Primitive.U32 allocation)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(authority.Encode());
+            byteArray.AddRange(suffix.Encode());
+            byteArray.AddRange(allocation.Encode());
+            return new Method(40, "Identity", 15, "add_username_authority", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> remove_username_authority
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method RemoveUsernameAuthority(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress authority)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(authority.Encode());
+            return new Method(40, "Identity", 16, "remove_username_authority", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> set_username_for
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method SetUsernameFor(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> username, Substrate.NetApi.Model.Types.Base.BaseOpt<InvArch.NetApi.Generated.Model.sp_runtime.EnumMultiSignature> signature)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(who.Encode());
+            byteArray.AddRange(username.Encode());
+            byteArray.AddRange(signature.Encode());
+            return new Method(40, "Identity", 17, "set_username_for", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> accept_username
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method AcceptUsername(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 username)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(username.Encode());
+            return new Method(40, "Identity", 18, "accept_username", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> remove_expired_approval
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method RemoveExpiredApproval(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 username)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(username.Encode());
+            return new Method(40, "Identity", 19, "remove_expired_approval", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> set_primary_username
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method SetPrimaryUsername(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 username)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(username.Encode());
+            return new Method(40, "Identity", 20, "set_primary_username", byteArray.ToArray());
+        }
+        
+        /// <summary>
+        /// >> remove_dangling_username
+        /// Identity pallet declaration.
+        /// </summary>
+        public static Method RemoveDanglingUsername(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 username)
+        {
+            System.Collections.Generic.List<byte> byteArray = new List<byte>();
+            byteArray.AddRange(username.Encode());
+            return new Method(40, "Identity", 21, "remove_dangling_username", byteArray.ToArray());
+        }
     }
     
     /// <summary>
@@ -375,7 +575,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> BasicDeposit
-        ///  The amount held on deposit for a registered identity
+        ///  The amount held on deposit for a registered identity.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U128 BasicDeposit()
         {
@@ -385,13 +585,13 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> FieldDeposit
-        ///  The amount held on deposit per additional field for a registered identity.
+        /// >> ByteDeposit
+        ///  The amount held on deposit per encoded byte for a registered identity.
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 FieldDeposit()
+        public Substrate.NetApi.Model.Types.Primitive.U128 ByteDeposit()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
-            result.Create("0x00204AA9D10100000000000000000000");
+            result.Create("0x80969800000000000000000000000000");
             return result;
         }
         
@@ -420,26 +620,47 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> MaxAdditionalFields
-        ///  Maximum number of additional fields that may be stored in an ID. Needed to bound the I/O
-        ///  required to access an identity, but can be pretty high.
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxAdditionalFields()
-        {
-            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
-            result.Create("0x05000000");
-            return result;
-        }
-        
-        /// <summary>
         /// >> MaxRegistrars
-        ///  Maxmimum number of registrars allowed in the system. Needed to bound the complexity
+        ///  Maximum number of registrars allowed in the system. Needed to bound the complexity
         ///  of, e.g., updating judgements.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxRegistrars()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x0A000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> PendingUsernameExpiration
+        ///  The number of blocks within which a username grant must be accepted.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 PendingUsernameExpiration()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0x00000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> MaxSuffixLength
+        ///  The maximum length of a suffix.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxSuffixLength()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0x00000000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> MaxUsernameLength
+        ///  The maximum length of a username, including its suffix and any system-added delimiters.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxUsernameLength()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0x00000000");
             return result;
         }
     }
@@ -517,12 +738,6 @@ namespace InvArch.NetApi.Generated.Storage
         InvalidTarget,
         
         /// <summary>
-        /// >> TooManyFields
-        /// Too many additional fields.
-        /// </summary>
-        TooManyFields,
-        
-        /// <summary>
         /// >> TooManyRegistrars
         /// Maximum amount of registrars reached. Cannot add any more.
         /// </summary>
@@ -557,5 +772,59 @@ namespace InvArch.NetApi.Generated.Storage
         /// Error that occurs when there is an issue paying for judgement.
         /// </summary>
         JudgementPaymentFailed,
+        
+        /// <summary>
+        /// >> InvalidSuffix
+        /// The provided suffix is too long.
+        /// </summary>
+        InvalidSuffix,
+        
+        /// <summary>
+        /// >> NotUsernameAuthority
+        /// The sender does not have permission to issue a username.
+        /// </summary>
+        NotUsernameAuthority,
+        
+        /// <summary>
+        /// >> NoAllocation
+        /// The authority cannot allocate any more usernames.
+        /// </summary>
+        NoAllocation,
+        
+        /// <summary>
+        /// >> InvalidSignature
+        /// The signature on a username was not valid.
+        /// </summary>
+        InvalidSignature,
+        
+        /// <summary>
+        /// >> RequiresSignature
+        /// Setting this username requires a signature, but none was provided.
+        /// </summary>
+        RequiresSignature,
+        
+        /// <summary>
+        /// >> InvalidUsername
+        /// The username does not meet the requirements.
+        /// </summary>
+        InvalidUsername,
+        
+        /// <summary>
+        /// >> UsernameTaken
+        /// The username is already taken.
+        /// </summary>
+        UsernameTaken,
+        
+        /// <summary>
+        /// >> NoUsername
+        /// The requested username does not exist.
+        /// </summary>
+        NoUsername,
+        
+        /// <summary>
+        /// >> NotExpired
+        /// The username cannot be forcefully removed because it can still be accepted.
+        /// </summary>
+        NotExpired,
     }
 }

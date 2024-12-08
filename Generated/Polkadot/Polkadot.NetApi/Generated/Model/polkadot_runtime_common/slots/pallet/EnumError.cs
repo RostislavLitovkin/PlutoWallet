@@ -36,7 +36,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_common.slots.pallet
     }
     
     /// <summary>
-    /// >> 816 - Variant[polkadot_runtime_common.slots.pallet.Error]
+    /// >> 799 - Variant[polkadot_runtime_common.slots.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

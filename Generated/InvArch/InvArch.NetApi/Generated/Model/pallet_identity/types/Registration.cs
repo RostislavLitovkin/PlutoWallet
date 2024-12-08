@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.types
     
     
     /// <summary>
-    /// >> 343 - Composite[pallet_identity.types.Registration]
+    /// >> 459 - Composite[pallet_identity.types.Registration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Registration : BaseType
@@ -27,7 +27,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> judgements
         /// </summary>
-        public InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18 Judgements { get; set; }
+        public InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT29 Judgements { get; set; }
         /// <summary>
         /// >> deposit
         /// </summary>
@@ -35,7 +35,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.types
         /// <summary>
         /// >> info
         /// </summary>
-        public InvArch.NetApi.Generated.Model.pallet_identity.types.IdentityInfo Info { get; set; }
+        public InvArch.NetApi.Generated.Model.pallet_identity.legacy.IdentityInfo Info { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -57,11 +57,11 @@ namespace InvArch.NetApi.Generated.Model.pallet_identity.types
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Judgements = new InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18();
+            Judgements = new InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT29();
             Judgements.Decode(byteArray, ref p);
             Deposit = new Substrate.NetApi.Model.Types.Primitive.U128();
             Deposit.Decode(byteArray, ref p);
-            Info = new InvArch.NetApi.Generated.Model.pallet_identity.types.IdentityInfo();
+            Info = new InvArch.NetApi.Generated.Model.pallet_identity.legacy.IdentityInfo();
             Info.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

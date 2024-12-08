@@ -24,7 +24,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet
         
         /// <summary>
         /// >> TruncatedAccountAlreadyUsed
-        /// EVM Account's nonce is not zero
+        /// Active EVM account cannot be bound
         /// </summary>
         TruncatedAccountAlreadyUsed = 0,
         
@@ -48,7 +48,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_evm_accounts.pallet
     }
     
     /// <summary>
-    /// >> 648 - Variant[pallet_evm_accounts.pallet.Error]
+    /// >> 652 - Variant[pallet_evm_accounts.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

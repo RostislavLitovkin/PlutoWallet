@@ -53,7 +53,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 72 - Variant[xcm.v3.multiasset.AssetInstance]
+    /// >> 132 - Variant[xcm.v3.multiasset.AssetInstance]
     /// </summary>
     public sealed class EnumAssetInstance : BaseEnumRust<AssetInstance>
     {

@@ -206,15 +206,31 @@ namespace Hydration.NetApi.Generated.Storage
         /// <summary>
         /// >> ServiceWeight
         ///  The amount of weight (if any) which should be provided to the message queue for
-        ///  servicing enqueued items.
+        ///  servicing enqueued items `on_initialize`.
         /// 
         ///  This may be legitimately `None` in the case that you will call
-        ///  `ServiceQueues::service_queues` manually.
+        ///  `ServiceQueues::service_queues` manually or set [`Self::IdleMaxServiceWeight`] to have
+        ///  it run in `on_idle`.
         /// </summary>
         public Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight> ServiceWeight()
         {
             var result = new Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>();
             result.Create("0x010700A2941A1D02005000");
+            return result;
+        }
+        
+        /// <summary>
+        /// >> IdleMaxServiceWeight
+        ///  The maximum amount of weight (if any) to be used from remaining weight `on_idle` which
+        ///  should be provided to the message queue for servicing enqueued items `on_idle`.
+        ///  Useful for parachains to process messages at the same block they are received.
+        /// 
+        ///  If `None`, it will not call `ServiceQueues::service_queues` in `on_idle`.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight> IdleMaxServiceWeight()
+        {
+            var result = new Substrate.NetApi.Model.Types.Base.BaseOpt<Hydration.NetApi.Generated.Model.sp_weights.weight_v2.Weight>();
+            result.Create("0x00");
             return result;
         }
     }

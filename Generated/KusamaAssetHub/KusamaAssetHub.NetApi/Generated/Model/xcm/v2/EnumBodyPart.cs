@@ -48,7 +48,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 107 - Variant[xcm.v2.BodyPart]
+    /// >> 102 - Variant[xcm.v2.BodyPart]
     /// </summary>
     public sealed class EnumBodyPart : BaseEnumRust<BodyPart>
     {

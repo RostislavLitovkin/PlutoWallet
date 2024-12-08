@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
     
     /// <summary>
     /// >> Error
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// The `Error` enum of this pallet.
     /// </summary>
     public enum Error
     {
@@ -74,11 +71,8 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
     }
     
     /// <summary>
-    /// >> 383 - Variant[orml_tokens.module.Error]
-    /// 
-    ///			Custom [dispatch errors](https://docs.substrate.io/main-docs/build/events-errors/)
-    ///			of this pallet.
-    ///			
+    /// >> 524 - Variant[orml_tokens.module.Error]
+    /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>
     {

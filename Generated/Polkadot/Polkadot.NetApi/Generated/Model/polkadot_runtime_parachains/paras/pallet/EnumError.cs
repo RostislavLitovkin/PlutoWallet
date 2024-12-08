@@ -93,10 +93,16 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.paras.pall
         /// Parachain cannot currently schedule a code upgrade.
         /// </summary>
         CannotUpgradeCode = 11,
+        
+        /// <summary>
+        /// >> InvalidCode
+        /// Invalid validation code size.
+        /// </summary>
+        InvalidCode = 12,
     }
     
     /// <summary>
-    /// >> 786 - Variant[polkadot_runtime_parachains.paras.pallet.Error]
+    /// >> 747 - Variant[polkadot_runtime_parachains.paras.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

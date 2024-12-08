@@ -38,7 +38,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_runtime
     }
     
     /// <summary>
-    /// >> 381 - Variant[sp_runtime.MultiSigner]
+    /// >> 339 - Variant[sp_runtime.MultiSigner]
     /// </summary>
     public sealed class EnumMultiSigner : BaseEnumRust<MultiSigner>
     {
@@ -48,9 +48,9 @@ namespace Polkadot.NetApi.Generated.Model.sp_runtime
         /// </summary>
         public EnumMultiSigner()
         {
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.ed25519.Public>(MultiSigner.Ed25519);
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.sr25519.Public>(MultiSigner.Sr25519);
-				AddTypeDecoder<Polkadot.NetApi.Generated.Model.sp_core.ecdsa.Public>(MultiSigner.Ecdsa);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Types.Base.Arr32U8>(MultiSigner.Ed25519);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Types.Base.Arr32U8>(MultiSigner.Sr25519);
+				AddTypeDecoder<Polkadot.NetApi.Generated.Types.Base.Arr33U8>(MultiSigner.Ecdsa);
         }
     }
 }

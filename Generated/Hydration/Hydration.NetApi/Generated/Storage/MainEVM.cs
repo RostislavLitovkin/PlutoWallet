@@ -325,12 +325,6 @@ namespace Hydration.NetApi.Generated.Storage
         TransactionMustComeFromEOA,
         
         /// <summary>
-        /// >> InvalidTransaction
-        /// Invalid Transaction
-        /// </summary>
-        InvalidTransaction,
-        
-        /// <summary>
         /// >> Undefined
         /// Undefined error.
         /// </summary>

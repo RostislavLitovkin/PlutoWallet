@@ -58,7 +58,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_runtime
     }
     
     /// <summary>
-    /// >> 472 - Variant[hydradx_runtime.OriginCaller]
+    /// >> 475 - Variant[hydradx_runtime.OriginCaller]
     /// </summary>
     public sealed class EnumOriginCaller : BaseEnumRust<OriginCaller>
     {

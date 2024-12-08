@@ -1303,7 +1303,7 @@ namespace InvArch.NetApi.Generated.Model.sp_runtime.generic.era
     }
     
     /// <summary>
-    /// >> 397 - Variant[sp_runtime.generic.era.Era]
+    /// >> 532 - Variant[sp_runtime.generic.era.Era]
     /// </summary>
     public sealed class EnumEra : BaseEnumRust<Era>
     {

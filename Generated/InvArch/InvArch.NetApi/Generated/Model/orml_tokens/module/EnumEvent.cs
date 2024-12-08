@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -116,14 +113,21 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
         /// Some locked balance was freed.
         /// </summary>
         Unlocked = 14,
+        
+        /// <summary>
+        /// >> Issued
+        /// </summary>
+        Issued = 15,
+        
+        /// <summary>
+        /// >> Rescinded
+        /// </summary>
+        Rescinded = 16,
     }
     
     /// <summary>
-    /// >> 244 - Variant[orml_tokens.module.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 314 - Variant[orml_tokens.module.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {
@@ -148,6 +152,8 @@ namespace InvArch.NetApi.Generated.Model.orml_tokens.module
 				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Types.Base.Arr8U8, Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>>(Event.LockRemoved);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Locked);
 				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Unlocked);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Issued);
+				AddTypeDecoder<BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U128>>(Event.Rescinded);
         }
     }
 }

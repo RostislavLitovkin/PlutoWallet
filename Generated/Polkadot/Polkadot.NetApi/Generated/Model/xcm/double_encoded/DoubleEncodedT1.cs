@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.xcm.double_encoded
     
     
     /// <summary>
-    /// >> 404 - Composite[xcm.double_encoded.DoubleEncodedT1]
+    /// >> 370 - Composite[xcm.double_encoded.DoubleEncodedT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class DoubleEncodedT1 : BaseType

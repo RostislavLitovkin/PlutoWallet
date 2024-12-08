@@ -33,7 +33,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_preimage
     }
     
     /// <summary>
-    /// >> 545 - Variant[pallet_preimage.OldRequestStatus]
+    /// >> 519 - Variant[pallet_preimage.OldRequestStatus]
     /// </summary>
     public sealed class EnumOldRequestStatus : BaseEnumRust<OldRequestStatus>
     {

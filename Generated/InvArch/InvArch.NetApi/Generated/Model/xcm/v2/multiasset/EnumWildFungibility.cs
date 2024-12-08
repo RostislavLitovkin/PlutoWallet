@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v2.multiasset
     }
     
     /// <summary>
-    /// >> 181 - Variant[xcm.v2.multiasset.WildFungibility]
+    /// >> 229 - Variant[xcm.v2.multiasset.WildFungibility]
     /// </summary>
     public sealed class EnumWildFungibility : BaseEnum<WildFungibility>
     {

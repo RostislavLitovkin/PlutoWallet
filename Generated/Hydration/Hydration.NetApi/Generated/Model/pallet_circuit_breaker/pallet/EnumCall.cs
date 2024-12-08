@@ -24,25 +24,49 @@ namespace Hydration.NetApi.Generated.Model.pallet_circuit_breaker.pallet
         
         /// <summary>
         /// >> set_trade_volume_limit
-        /// See [`Pallet::set_trade_volume_limit`].
+        /// Set trade volume limit for an asset.
+        /// 
+        /// Parameters:
+        /// - `origin`: The dispatch origin for this call. Must be `TechnicalOrigin`
+        /// - `asset_id`: The identifier of an asset
+        /// - `trade_volume_limit`: New trade volume limit represented as a percentage
+        /// 
+        /// Emits `TradeVolumeLimitChanged` event when successful.
+        /// 
         /// </summary>
         set_trade_volume_limit = 0,
         
         /// <summary>
         /// >> set_add_liquidity_limit
-        /// See [`Pallet::set_add_liquidity_limit`].
+        /// Set add liquidity limit for an asset.
+        /// 
+        /// Parameters:
+        /// - `origin`: The dispatch origin for this call. Must be `TechnicalOrigin`
+        /// - `asset_id`: The identifier of an asset
+        /// - `liquidity_limit`: Optional add liquidity limit represented as a percentage
+        /// 
+        /// Emits `AddLiquidityLimitChanged` event when successful.
+        /// 
         /// </summary>
         set_add_liquidity_limit = 1,
         
         /// <summary>
         /// >> set_remove_liquidity_limit
-        /// See [`Pallet::set_remove_liquidity_limit`].
+        /// Set remove liquidity limit for an asset.
+        /// 
+        /// Parameters:
+        /// - `origin`: The dispatch origin for this call. Must be `TechnicalOrigin`
+        /// - `asset_id`: The identifier of an asset
+        /// - `liquidity_limit`: Optional remove liquidity limit represented as a percentage
+        /// 
+        /// Emits `RemoveLiquidityLimitChanged` event when successful.
+        /// 
         /// </summary>
         set_remove_liquidity_limit = 2,
     }
     
     /// <summary>
-    /// >> 371 - Variant[pallet_circuit_breaker.pallet.Call]
+    /// >> 370 - Variant[pallet_circuit_breaker.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

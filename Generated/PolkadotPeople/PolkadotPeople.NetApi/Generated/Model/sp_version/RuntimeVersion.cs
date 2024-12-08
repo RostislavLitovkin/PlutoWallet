@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.sp_version
     
     
     /// <summary>
-    /// >> 149 - Composite[sp_version.RuntimeVersion]
+    /// >> 148 - Composite[sp_version.RuntimeVersion]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RuntimeVersion : BaseType

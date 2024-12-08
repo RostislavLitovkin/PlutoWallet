@@ -33,7 +33,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 369 - Variant[pallet_xcm.pallet.Origin]
+    /// >> 366 - Variant[pallet_xcm.pallet.Origin]
     /// </summary>
     public sealed class EnumOrigin : BaseEnumRust<Origin>
     {

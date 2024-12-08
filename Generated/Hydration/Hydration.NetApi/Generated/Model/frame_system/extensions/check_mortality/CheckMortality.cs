@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.frame_system.extensions.check_mortali
     
     
     /// <summary>
-    /// >> 768 - Composite[frame_system.extensions.check_mortality.CheckMortality]
+    /// >> 773 - Composite[frame_system.extensions.check_mortality.CheckMortality]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class CheckMortality : BaseType

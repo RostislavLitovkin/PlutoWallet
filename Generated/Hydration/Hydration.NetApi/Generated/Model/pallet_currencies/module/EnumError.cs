@@ -39,10 +39,16 @@ namespace Hydration.NetApi.Generated.Model.pallet_currencies.module
         /// Deposit result is not expected
         /// </summary>
         DepositFailed = 2,
+        
+        /// <summary>
+        /// >> NotSupported
+        /// Operation is not supported for this currency
+        /// </summary>
+        NotSupported = 3,
     }
     
     /// <summary>
-    /// >> 625 - Variant[pallet_currencies.module.Error]
+    /// >> 629 - Variant[pallet_currencies.module.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

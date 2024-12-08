@@ -24,13 +24,12 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.disputes.p
         
         /// <summary>
         /// >> force_unfreeze
-        /// See [`Pallet::force_unfreeze`].
         /// </summary>
         force_unfreeze = 0,
     }
     
     /// <summary>
-    /// >> 370 - Variant[polkadot_runtime_parachains.disputes.pallet.Call]
+    /// >> 327 - Variant[polkadot_runtime_parachains.disputes.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnum<Call>

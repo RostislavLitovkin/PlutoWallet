@@ -24,7 +24,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.
     }
     
     /// <summary>
-    /// >> 329 - Variant[polkadot_runtime_parachains.inclusion.pallet.Call]
+    /// >> 286 - Variant[polkadot_runtime_parachains.inclusion.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnum<Call>

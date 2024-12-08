@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_transaction_payment
     }
     
     /// <summary>
-    /// >> 298 - Variant[pallet_transaction_payment.Releases]
+    /// >> 383 - Variant[pallet_transaction_payment.Releases]
     /// </summary>
     public sealed class EnumReleases : BaseEnum<Releases>
     {

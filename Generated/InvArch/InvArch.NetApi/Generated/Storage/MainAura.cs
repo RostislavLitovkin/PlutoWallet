@@ -36,7 +36,7 @@ namespace InvArch.NetApi.Generated.Storage
         public AuraStorage(SubstrateClientExt client)
         {
             this._client = client;
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "Authorities"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Aura", "CurrentSlot"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.sp_consensus_slots.Slot)));
         }
         
@@ -62,10 +62,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// >> Authorities
         ///  The current authority set.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17> Authorities(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23> Authorities(string blockhash, CancellationToken token)
         {
             string parameters = AuraStorage.AuthoritiesParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT23>(parameters, blockhash, token);
             return result;
         }
         
@@ -115,5 +115,19 @@ namespace InvArch.NetApi.Generated.Storage
     /// </summary>
     public sealed class AuraConstants
     {
+        
+        /// <summary>
+        /// >> SlotDuration
+        ///  The slot duration Aura should run with, expressed in milliseconds.
+        ///  The effective value of this type should not change while the chain is running.
+        /// 
+        ///  For backwards compatibility either use [`MinimumPeriodTimesTwo`] or a const.
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U64 SlotDuration()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U64();
+            result.Create("0x7017000000000000");
+            return result;
+        }
     }
 }

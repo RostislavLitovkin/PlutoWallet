@@ -33,7 +33,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.multiasset
     }
     
     /// <summary>
-    /// >> 70 - Variant[xcm.v3.multiasset.AssetId]
+    /// >> 130 - Variant[xcm.v3.multiasset.AssetId]
     /// </summary>
     public sealed class EnumAssetId : BaseEnumRust<AssetId>
     {
@@ -43,7 +43,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3.multiasset
         /// </summary>
         public EnumAssetId()
         {
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation>(AssetId.Concrete);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>(AssetId.Concrete);
 				AddTypeDecoder<InvArch.NetApi.Generated.Types.Base.Arr32U8>(AssetId.Abstract);
         }
     }

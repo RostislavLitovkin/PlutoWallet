@@ -31,7 +31,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.pallet_asset_conversion_tx_payme
         /// <summary>
         /// >> asset_id
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation> AssetId { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseOpt<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location> AssetId { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -54,7 +54,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.pallet_asset_conversion_tx_payme
             var start = p;
             Tip = new Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128>();
             Tip.Decode(byteArray, ref p);
-            AssetId = new Substrate.NetApi.Model.Types.Base.BaseOpt<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v3.multilocation.MultiLocation>();
+            AssetId = new Substrate.NetApi.Model.Types.Base.BaseOpt<KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.location.Location>();
             AssetId.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

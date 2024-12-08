@@ -38,7 +38,7 @@ namespace Polkadot.NetApi.Generated.Model.sp_consensus_babe.digests
     }
     
     /// <summary>
-    /// >> 560 - Variant[sp_consensus_babe.digests.PreDigest]
+    /// >> 534 - Variant[sp_consensus_babe.digests.PreDigest]
     /// </summary>
     public sealed class EnumPreDigest : BaseEnumRust<PreDigest>
     {

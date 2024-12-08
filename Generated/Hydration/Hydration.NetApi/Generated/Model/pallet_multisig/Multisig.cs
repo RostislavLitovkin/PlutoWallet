@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_multisig
     
     
     /// <summary>
-    /// >> 545 - Composite[pallet_multisig.Multisig]
+    /// >> 548 - Composite[pallet_multisig.Multisig]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Multisig : BaseType
@@ -39,7 +39,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_multisig
         /// <summary>
         /// >> approvals
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32 Approvals { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37 Approvals { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -68,7 +68,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_multisig
             Deposit.Decode(byteArray, ref p);
             Depositor = new Hydration.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Approvals = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT32();
+            Approvals = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT37();
             Approvals.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

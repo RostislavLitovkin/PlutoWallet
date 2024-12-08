@@ -63,16 +63,22 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.frame_system.pallet
         CallFiltered = 5,
         
         /// <summary>
+        /// >> MultiBlockMigrationsOngoing
+        /// A multi-block migration is ongoing and prevents the current code from being replaced.
+        /// </summary>
+        MultiBlockMigrationsOngoing = 6,
+        
+        /// <summary>
         /// >> NothingAuthorized
         /// No upgrade authorized.
         /// </summary>
-        NothingAuthorized = 6,
+        NothingAuthorized = 7,
         
         /// <summary>
         /// >> Unauthorized
         /// The submitted code is not authorized.
         /// </summary>
-        Unauthorized = 7,
+        Unauthorized = 8,
     }
     
     /// <summary>

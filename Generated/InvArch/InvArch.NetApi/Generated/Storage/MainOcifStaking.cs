@@ -37,25 +37,30 @@ namespace InvArch.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "Ledger"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.AccountLedger)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.AccountLedger)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "CurrentEra"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
-            _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "RewardAccumulator"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.RewardInfo)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "RewardAccumulator"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.RewardInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "NextEraStartingBlock"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.U32)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "RegisteredCore"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "GeneralEraInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.EraInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.EraInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "CoreEraStake"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreStakeInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32>), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "GeneralStakerInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                             Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat,
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.StakerInfo)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32>), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.StakerInfo)));
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "Halted"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(null, null, typeof(Substrate.NetApi.Model.Types.Primitive.Bool)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "UnregisteredCoreStakeInfo"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo)));
+            _client.StorageKeyDict.Add(new System.Tuple<string, string>("OcifStaking", "UnregisteredCoreStakers"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(Substrate.NetApi.Model.Types.Primitive.U32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT35)));
         }
         
         /// <summary>
         /// >> LedgerParams
+        ///  General information about the staker.
         /// </summary>
         public static string LedgerParams(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key)
         {
@@ -75,16 +80,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Ledger
+        ///  General information about the staker.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.AccountLedger> Ledger(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.AccountLedger> Ledger(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.LedgerParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.AccountLedger>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.AccountLedger>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> CurrentEraParams
+        ///  The current era index.
         /// </summary>
         public static string CurrentEraParams()
         {
@@ -102,6 +109,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CurrentEra
+        ///  The current era index.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> CurrentEra(string blockhash, CancellationToken token)
         {
@@ -112,6 +120,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RewardAccumulatorParams
+        ///  Accumulator for block rewards during an era. It is reset at every new era.
         /// </summary>
         public static string RewardAccumulatorParams()
         {
@@ -129,16 +138,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RewardAccumulator
+        ///  Accumulator for block rewards during an era. It is reset at every new era.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.RewardInfo> RewardAccumulator(string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.RewardInfo> RewardAccumulator(string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.RewardAccumulatorParams();
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.RewardInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.RewardInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> NextEraStartingBlockParams
+        ///  Stores the block number of when the next era starts.
         /// </summary>
         public static string NextEraStartingBlockParams()
         {
@@ -156,6 +167,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> NextEraStartingBlock
+        ///  Stores the block number of when the next era starts.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.U32> NextEraStartingBlock(string blockhash, CancellationToken token)
         {
@@ -166,6 +178,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RegisteredCoreParams
+        ///  Simple map where DaoId points to the respective dao information.
         /// </summary>
         public static string RegisteredCoreParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
         {
@@ -185,16 +198,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RegisteredCore
+        ///  Simple map where DaoId points to the respective dao information.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreInfo> RegisteredCore(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoInfo> RegisteredCore(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.RegisteredCoreParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> GeneralEraInfoParams
+        ///  General information about an era.
         /// </summary>
         public static string GeneralEraInfoParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
         {
@@ -214,16 +229,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> GeneralEraInfo
+        ///  General information about an era.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.EraInfo> GeneralEraInfo(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.EraInfo> GeneralEraInfo(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.GeneralEraInfoParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.EraInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.EraInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> CoreEraStakeParams
+        ///  Staking information about a dao in a particular era.
         /// </summary>
         public static string CoreEraStakeParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key)
         {
@@ -243,16 +260,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> CoreEraStake
+        ///  Staking information about a dao in a particular era.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreStakeInfo> CoreEraStake(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo> CoreEraStake(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> key, string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.CoreEraStakeParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.CoreStakeInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> GeneralStakerInfoParams
+        ///  Info about staker's stakes on a particular dao.
         /// </summary>
         public static string GeneralStakerInfoParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> key)
         {
@@ -272,16 +291,18 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> GeneralStakerInfo
+        ///  Info about staker's stakes on a particular dao.
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.StakerInfo> GeneralStakerInfo(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.StakerInfo> GeneralStakerInfo(Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32> key, string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.GeneralStakerInfoParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_ocif_staking.primitives.StakerInfo>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.StakerInfo>(parameters, blockhash, token);
             return result;
         }
         
         /// <summary>
         /// >> HaltedParams
+        ///  Denotes whether the pallet is halted (disabled).
         /// </summary>
         public static string HaltedParams()
         {
@@ -299,11 +320,74 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Halted
+        ///  Denotes whether the pallet is halted (disabled).
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> Halted(string blockhash, CancellationToken token)
         {
             string parameters = OcifStakingStorage.HaltedParams();
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Primitive.Bool>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakeInfoParams
+        ///  Placeholder for the dao being unregistered and its stake info.
+        /// </summary>
+        public static string UnregisteredCoreStakeInfoParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
+        {
+            return RequestGenerator.GetStorage("OcifStaking", "UnregisteredCoreStakeInfo", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakeInfoDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UnregisteredCoreStakeInfoDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakeInfo
+        ///  Placeholder for the dao being unregistered and its stake info.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo> UnregisteredCoreStakeInfo(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = OcifStakingStorage.UnregisteredCoreStakeInfoParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.pallet_dao_staking.primitives.DaoStakeInfo>(parameters, blockhash, token);
+            return result;
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakersParams
+        ///  Placeholder for the dao being unregistered and its stakers.
+        /// </summary>
+        public static string UnregisteredCoreStakersParams(Substrate.NetApi.Model.Types.Primitive.U32 key)
+        {
+            return RequestGenerator.GetStorage("OcifStaking", "UnregisteredCoreStakers", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
+                        Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, new Substrate.NetApi.Model.Types.IType[] {
+                        key});
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakersDefault
+        /// Default value as hex string
+        /// </summary>
+        public static string UnregisteredCoreStakersDefault()
+        {
+            return "0x00";
+        }
+        
+        /// <summary>
+        /// >> UnregisteredCoreStakers
+        ///  Placeholder for the dao being unregistered and its stakers.
+        /// </summary>
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT35> UnregisteredCoreStakers(Substrate.NetApi.Model.Types.Primitive.U32 key, string blockhash, CancellationToken token)
+        {
+            string parameters = OcifStakingStorage.UnregisteredCoreStakersParams(key);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT35>(parameters, blockhash, token);
             return result;
         }
     }
@@ -315,68 +399,68 @@ namespace InvArch.NetApi.Generated.Storage
     {
         
         /// <summary>
-        /// >> register_core
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// >> register_dao
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method RegisterCore(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 name, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 description, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 image)
+        public static Method RegisterDao(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 name, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10 description, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11 image)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(name.Encode());
             byteArray.AddRange(description.Encode());
             byteArray.AddRange(image.Encode());
-            return new Method(51, "OcifStaking", 0, "register_core", byteArray.ToArray());
+            return new Method(51, "OcifStaking", 0, "register_dao", byteArray.ToArray());
         }
         
         /// <summary>
-        /// >> unregister_core
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// >> unregister_dao
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method UnregisterCore()
+        public static Method UnregisterDao()
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            return new Method(51, "OcifStaking", 1, "unregister_core", byteArray.ToArray());
+            return new Method(51, "OcifStaking", 1, "unregister_dao", byteArray.ToArray());
         }
         
         /// <summary>
-        /// >> change_core_metadata
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// >> change_dao_metadata
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method ChangeCoreMetadata(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT6 name, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT7 description, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT8 image)
+        public static Method ChangeDaoMetadata(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT2 name, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT10 description, InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT11 image)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
             byteArray.AddRange(name.Encode());
             byteArray.AddRange(description.Encode());
             byteArray.AddRange(image.Encode());
-            return new Method(51, "OcifStaking", 2, "change_core_metadata", byteArray.ToArray());
+            return new Method(51, "OcifStaking", 2, "change_dao_metadata", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> stake
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Stake(Substrate.NetApi.Model.Types.Primitive.U32 core_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
+        public static Method Stake(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(value.Encode());
             return new Method(51, "OcifStaking", 3, "stake", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> unstake
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method Unstake(Substrate.NetApi.Model.Types.Primitive.U32 core_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
+        public static Method Unstake(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> value)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(value.Encode());
             return new Method(51, "OcifStaking", 4, "unstake", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> withdraw_unstaked
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method WithdrawUnstaked()
         {
@@ -386,30 +470,30 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> staker_claim_rewards
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method StakerClaimRewards(Substrate.NetApi.Model.Types.Primitive.U32 core_id)
+        public static Method StakerClaimRewards(Substrate.NetApi.Model.Types.Primitive.U32 dao_id)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             return new Method(51, "OcifStaking", 6, "staker_claim_rewards", byteArray.ToArray());
         }
         
         /// <summary>
-        /// >> core_claim_rewards
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// >> dao_claim_rewards
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method CoreClaimRewards(Substrate.NetApi.Model.Types.Primitive.U32 core_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> era)
+        public static Method DaoClaimRewards(Substrate.NetApi.Model.Types.Primitive.U32 dao_id, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U32> era)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(core_id.Encode());
+            byteArray.AddRange(dao_id.Encode());
             byteArray.AddRange(era.Encode());
-            return new Method(51, "OcifStaking", 7, "core_claim_rewards", byteArray.ToArray());
+            return new Method(51, "OcifStaking", 7, "dao_claim_rewards", byteArray.ToArray());
         }
         
         /// <summary>
         /// >> halt_unhalt_pallet
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method HaltUnhaltPallet(Substrate.NetApi.Model.Types.Primitive.Bool halt)
         {
@@ -420,14 +504,14 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> move_stake
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
-        public static Method MoveStake(Substrate.NetApi.Model.Types.Primitive.U32 from_core, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount, Substrate.NetApi.Model.Types.Primitive.U32 to_core)
+        public static Method MoveStake(Substrate.NetApi.Model.Types.Primitive.U32 from_dao, Substrate.NetApi.Model.Types.Base.BaseCom<Substrate.NetApi.Model.Types.Primitive.U128> amount, Substrate.NetApi.Model.Types.Primitive.U32 to_dao)
         {
             System.Collections.Generic.List<byte> byteArray = new List<byte>();
-            byteArray.AddRange(from_core.Encode());
+            byteArray.AddRange(from_dao.Encode());
             byteArray.AddRange(amount.Encode());
-            byteArray.AddRange(to_core.Encode());
+            byteArray.AddRange(to_dao.Encode());
             return new Method(51, "OcifStaking", 9, "move_stake", byteArray.ToArray());
         }
     }
@@ -440,6 +524,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> BlocksPerEra
+        ///  Number of blocks per era.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 BlocksPerEra()
         {
@@ -450,6 +535,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RegisterDeposit
+        ///  Deposit amount that will be reserved as part of new dao registration.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U128 RegisterDeposit()
         {
@@ -459,9 +545,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> MaxStakersPerCore
+        /// >> MaxStakersPerDao
+        ///  Maximum number of unique stakers per dao.
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 MaxStakersPerCore()
+        public Substrate.NetApi.Model.Types.Primitive.U32 MaxStakersPerDao()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U32();
             result.Create("0x10270000");
@@ -470,6 +557,8 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MinimumStakingAmount
+        ///  Minimum amount user must have staked on a dao.
+        ///  User can stake less if they already have the minimum staking amount staked.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U128 MinimumStakingAmount()
         {
@@ -480,6 +569,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> PotId
+        ///  Account Identifier from which the internal Pot is generated.
         /// </summary>
         public InvArch.NetApi.Generated.Model.frame_support.PalletId PotId()
         {
@@ -490,6 +580,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> ExistentialDeposit
+        ///  The minimum amount required to keep an account open.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U128 ExistentialDeposit()
         {
@@ -500,6 +591,8 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxUnlocking
+        ///  Max number of unlocking chunks per account Id <-> dao Id pairing.
+        ///  If value is zero, unlocking becomes impossible.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxUnlocking()
         {
@@ -510,6 +603,8 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> UnbondingPeriod
+        ///  Number of eras that need to pass until unstaked value can be withdrawn.
+        ///  When set to `0`, it's equal to having no unbonding period.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 UnbondingPeriod()
         {
@@ -520,6 +615,13 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxEraStakeValues
+        ///  Max number of unique `EraStake` values that can exist for a `(staker, dao)` pairing.
+        /// 
+        ///  When stakers claims rewards, they will either keep the number of `EraStake` values the same or they will reduce them by one.
+        ///  Stakers cannot add an additional `EraStake` value by calling `bond&stake` or `unbond&unstake` if they've reached the max number of values.
+        /// 
+        ///  This ensures that history doesn't grow indefinitely - if there are too many chunks, stakers should first claim their former rewards
+        ///  before adding additional `EraStake` values.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxEraStakeValues()
         {
@@ -530,6 +632,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> RewardRatio
+        ///  Reward ratio of the pot to be distributed between the dao and stakers, respectively.
         /// </summary>
         public Substrate.NetApi.Model.Types.Base.BaseTuple<Substrate.NetApi.Model.Types.Primitive.U32, Substrate.NetApi.Model.Types.Primitive.U32> RewardRatio()
         {
@@ -539,9 +642,10 @@ namespace InvArch.NetApi.Generated.Storage
         }
         
         /// <summary>
-        /// >> StakeThresholdForActiveCore
+        /// >> StakeThresholdForActiveDao
+        ///  Threshold of staked tokens necessary for a dao to become active.
         /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 StakeThresholdForActiveCore()
+        public Substrate.NetApi.Model.Types.Primitive.U128 StakeThresholdForActiveDao()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
             result.Create("0x0000D9E9AC2D78030000000000000000");
@@ -550,6 +654,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxNameLength
+        ///  Maximum length of a dao's name.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxNameLength()
         {
@@ -560,6 +665,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxDescriptionLength
+        ///  Maximum length of a dao's description.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxDescriptionLength()
         {
@@ -570,6 +676,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> MaxImageUrlLength
+        ///  Maximum length of a dao's image URL.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 MaxImageUrlLength()
         {
@@ -587,127 +694,146 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> StakingNothing
+        /// Staking nothing.
         /// </summary>
         StakingNothing,
         
         /// <summary>
         /// >> InsufficientBalance
+        /// Attempted to stake less than the minimum amount.
         /// </summary>
         InsufficientBalance,
         
         /// <summary>
         /// >> MaxStakersReached
+        /// Maximum number of stakers reached.
         /// </summary>
         MaxStakersReached,
         
         /// <summary>
-        /// >> CoreNotFound
+        /// >> DaoNotFound
+        /// DAO not found.
         /// </summary>
-        CoreNotFound,
+        DaoNotFound,
         
         /// <summary>
         /// >> NoStakeAvailable
+        /// No stake available for withdrawal.
         /// </summary>
         NoStakeAvailable,
         
         /// <summary>
-        /// >> NotUnregisteredCore
-        /// </summary>
-        NotUnregisteredCore,
-        
-        /// <summary>
         /// >> UnclaimedRewardsAvailable
+        /// Unclaimed rewards available.
         /// </summary>
         UnclaimedRewardsAvailable,
         
         /// <summary>
         /// >> UnstakingNothing
+        /// Unstaking nothing.
         /// </summary>
         UnstakingNothing,
         
         /// <summary>
         /// >> NothingToWithdraw
+        /// Nothing available for withdrawal.
         /// </summary>
         NothingToWithdraw,
         
         /// <summary>
-        /// >> CoreAlreadyRegistered
+        /// >> DaoAlreadyRegistered
+        /// DAO already registered.
         /// </summary>
-        CoreAlreadyRegistered,
+        DaoAlreadyRegistered,
         
         /// <summary>
         /// >> UnknownEraReward
+        /// Unknown rewards for era.
         /// </summary>
         UnknownEraReward,
         
         /// <summary>
         /// >> UnexpectedStakeInfoEra
+        /// Unexpected stake info for era.
         /// </summary>
         UnexpectedStakeInfoEra,
         
         /// <summary>
         /// >> TooManyUnlockingChunks
+        /// Too many unlocking chunks.
         /// </summary>
         TooManyUnlockingChunks,
         
         /// <summary>
         /// >> RewardAlreadyClaimed
+        /// Reward already claimed.
         /// </summary>
         RewardAlreadyClaimed,
         
         /// <summary>
         /// >> IncorrectEra
+        /// Incorrect era.
         /// </summary>
         IncorrectEra,
         
         /// <summary>
         /// >> TooManyEraStakeValues
+        /// Too many era stake values.
         /// </summary>
         TooManyEraStakeValues,
         
         /// <summary>
         /// >> NotAStaker
+        /// Not a staker.
         /// </summary>
         NotAStaker,
         
         /// <summary>
         /// >> NoPermission
+        /// No permission.
         /// </summary>
         NoPermission,
         
         /// <summary>
         /// >> MaxNameExceeded
+        /// Name exceeds maximum length.
         /// </summary>
         MaxNameExceeded,
         
         /// <summary>
         /// >> MaxDescriptionExceeded
+        /// Description exceeds maximum length.
         /// </summary>
         MaxDescriptionExceeded,
         
         /// <summary>
         /// >> MaxImageExceeded
+        /// Image URL exceeds maximum length.
         /// </summary>
         MaxImageExceeded,
         
         /// <summary>
         /// >> NotRegistered
+        /// DAO not registered.
         /// </summary>
         NotRegistered,
         
         /// <summary>
         /// >> Halted
+        /// Halted.
         /// </summary>
         Halted,
         
         /// <summary>
         /// >> NoHaltChange
+        /// No halt change.
         /// </summary>
         NoHaltChange,
         
         /// <summary>
-        /// >> MoveStakeToSameCore
+        /// >> MoveStakeToSameDao
+        /// Attempted to move stake to the same dao.
         /// </summary>
-        MoveStakeToSameCore,
+        MoveStakeToSameDao,
     }
 }

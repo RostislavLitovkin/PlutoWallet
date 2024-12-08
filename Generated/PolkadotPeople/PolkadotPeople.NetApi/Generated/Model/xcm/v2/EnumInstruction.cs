@@ -163,7 +163,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.xcm.v2
     }
     
     /// <summary>
-    /// >> 298 - Variant[xcm.v2.Instruction]
+    /// >> 299 - Variant[xcm.v2.Instruction]
     /// </summary>
     public sealed class EnumInstruction : BaseEnumRust<Instruction>
     {

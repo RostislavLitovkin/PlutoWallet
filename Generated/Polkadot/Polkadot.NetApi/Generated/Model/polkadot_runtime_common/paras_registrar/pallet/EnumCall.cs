@@ -24,61 +24,135 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_common.paras_registra
         
         /// <summary>
         /// >> register
-        /// See [`Pallet::register`].
+        /// Register head data and validation code for a reserved Para Id.
+        /// 
+        /// ## Arguments
+        /// - `origin`: Must be called by a `Signed` origin.
+        /// - `id`: The para ID. Must be owned/managed by the `origin` signing account.
+        /// - `genesis_head`: The genesis head data of the parachain/thread.
+        /// - `validation_code`: The initial validation code of the parachain/thread.
+        /// 
+        /// ## Deposits/Fees
+        /// The account with the originating signature must reserve a deposit.
+        /// 
+        /// The deposit is required to cover the costs associated with storing the genesis head
+        /// data and the validation code.
+        /// This accounts for the potential to store validation code of a size up to the
+        /// `max_code_size`, as defined in the configuration pallet
+        /// 
+        /// Anything already reserved previously for this para ID is accounted for.
+        /// 
+        /// ## Events
+        /// The `Registered` event is emitted in case of success.
         /// </summary>
         register = 0,
         
         /// <summary>
         /// >> force_register
-        /// See [`Pallet::force_register`].
+        /// Force the registration of a Para Id on the relay chain.
+        /// 
+        /// This function must be called by a Root origin.
+        /// 
+        /// The deposit taken can be specified for this registration. Any `ParaId`
+        /// can be registered, including sub-1000 IDs which are System Parachains.
         /// </summary>
         force_register = 1,
         
         /// <summary>
         /// >> deregister
-        /// See [`Pallet::deregister`].
+        /// Deregister a Para Id, freeing all data and returning any deposit.
+        /// 
+        /// The caller must be Root, the `para` owner, or the `para` itself. The para must be an
+        /// on-demand parachain.
         /// </summary>
         deregister = 2,
         
         /// <summary>
         /// >> swap
-        /// See [`Pallet::swap`].
+        /// Swap a lease holding parachain with another parachain, either on-demand or lease
+        /// holding.
+        /// 
+        /// The origin must be Root, the `para` owner, or the `para` itself.
+        /// 
+        /// The swap will happen only if there is already an opposite swap pending. If there is not,
+        /// the swap will be stored in the pending swaps map, ready for a later confirmatory swap.
+        /// 
+        /// The `ParaId`s remain mapped to the same head data and code so external code can rely on
+        /// `ParaId` to be a long-term identifier of a notional "parachain". However, their
+        /// scheduling info (i.e. whether they're an on-demand parachain or lease holding
+        /// parachain), auction information and the auction deposit are switched.
         /// </summary>
         swap = 3,
         
         /// <summary>
         /// >> remove_lock
-        /// See [`Pallet::remove_lock`].
+        /// Remove a manager lock from a para. This will allow the manager of a
+        /// previously locked para to deregister or swap a para without using governance.
+        /// 
+        /// Can only be called by the Root origin or the parachain.
         /// </summary>
         remove_lock = 4,
         
         /// <summary>
         /// >> reserve
-        /// See [`Pallet::reserve`].
+        /// Reserve a Para Id on the relay chain.
+        /// 
+        /// This function will reserve a new Para Id to be owned/managed by the origin account.
+        /// The origin account is able to register head data and validation code using `register` to
+        /// create an on-demand parachain. Using the Slots pallet, an on-demand parachain can then
+        /// be upgraded to a lease holding parachain.
+        /// 
+        /// ## Arguments
+        /// - `origin`: Must be called by a `Signed` origin. Becomes the manager/owner of the new
+        ///   para ID.
+        /// 
+        /// ## Deposits/Fees
+        /// The origin must reserve a deposit of `ParaDeposit` for the registration.
+        /// 
+        /// ## Events
+        /// The `Reserved` event is emitted in case of success, which provides the ID reserved for
+        /// use.
         /// </summary>
         reserve = 5,
         
         /// <summary>
         /// >> add_lock
-        /// See [`Pallet::add_lock`].
+        /// Add a manager lock from a para. This will prevent the manager of a
+        /// para to deregister or swap a para.
+        /// 
+        /// Can be called by Root, the parachain, or the parachain manager if the parachain is
+        /// unlocked.
         /// </summary>
         add_lock = 6,
         
         /// <summary>
         /// >> schedule_code_upgrade
-        /// See [`Pallet::schedule_code_upgrade`].
+        /// Schedule a parachain upgrade.
+        /// 
+        /// This will kick off a check of `new_code` by all validators. After the majority of the
+        /// validators have reported on the validity of the code, the code will either be enacted
+        /// or the upgrade will be rejected. If the code will be enacted, the current code of the
+        /// parachain will be overwritten directly. This means that any PoV will be checked by this
+        /// new code. The parachain itself will not be informed explicitly that the validation code
+        /// has changed.
+        /// 
+        /// Can be called by Root, the parachain, or the parachain manager if the parachain is
+        /// unlocked.
         /// </summary>
         schedule_code_upgrade = 7,
         
         /// <summary>
         /// >> set_current_head
-        /// See [`Pallet::set_current_head`].
+        /// Set the parachain's current head.
+        /// 
+        /// Can be called by Root, the parachain, or the parachain manager if the parachain is
+        /// unlocked.
         /// </summary>
         set_current_head = 8,
     }
     
     /// <summary>
-    /// >> 375 - Variant[polkadot_runtime_common.paras_registrar.pallet.Call]
+    /// >> 333 - Variant[polkadot_runtime_common.paras_registrar.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

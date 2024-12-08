@@ -48,7 +48,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_multisig.pallet
     }
     
     /// <summary>
-    /// >> 492 - Variant[pallet_multisig.pallet.Event]
+    /// >> 464 - Variant[pallet_multisig.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.
     
     
     /// <summary>
-    /// >> 172 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.MessagingStateSnapshot]
+    /// >> 171 - Composite[cumulus_pallet_parachain_system.relay_state_snapshot.MessagingStateSnapshot]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MessagingStateSnapshot : BaseType
@@ -35,11 +35,11 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.
         /// <summary>
         /// >> ingress_channels
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v6.AbridgedHrmpChannel>> IngressChannels { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>> IngressChannels { get; set; }
         /// <summary>
         /// >> egress_channels
         /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v6.AbridgedHrmpChannel>> EgressChannels { get; set; }
+        public Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>> EgressChannels { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -66,9 +66,9 @@ namespace PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.
             DmqMqcHead.Decode(byteArray, ref p);
             RelayDispatchQueueRemainingCapacity = new PolkadotPeople.NetApi.Generated.Model.cumulus_pallet_parachain_system.relay_state_snapshot.RelayDispatchQueueRemainingCapacity();
             RelayDispatchQueueRemainingCapacity.Decode(byteArray, ref p);
-            IngressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v6.AbridgedHrmpChannel>>();
+            IngressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>>();
             IngressChannels.Decode(byteArray, ref p);
-            EgressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v6.AbridgedHrmpChannel>>();
+            EgressChannels = new Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Base.BaseTuple<PolkadotPeople.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, PolkadotPeople.NetApi.Generated.Model.polkadot_primitives.v7.AbridgedHrmpChannel>>();
             EgressChannels.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

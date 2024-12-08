@@ -103,7 +103,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_staking.pallet
     }
     
     /// <summary>
-    /// >> 602 - Variant[pallet_staking.pallet.Error]
+    /// >> 606 - Variant[pallet_staking.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnumRust<Error>

@@ -30,7 +30,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_utility.pallet
     }
     
     /// <summary>
-    /// >> 372 - Variant[pallet_utility.pallet.Error]
+    /// >> 369 - Variant[pallet_utility.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_xcm.pallet
     
     
     /// <summary>
-    /// >> 706 - Composite[pallet_xcm.pallet.RemoteLockedFungibleRecord]
+    /// >> 710 - Composite[pallet_xcm.pallet.RemoteLockedFungibleRecord]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class RemoteLockedFungibleRecord : BaseType
@@ -39,7 +39,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_xcm.pallet
         /// <summary>
         /// >> consumers
         /// </summary>
-        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45 Consumers { get; set; }
+        public Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50 Consumers { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -68,7 +68,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_xcm.pallet
             Owner.Decode(byteArray, ref p);
             Locker = new Hydration.NetApi.Generated.Model.xcm.EnumVersionedLocation();
             Locker.Decode(byteArray, ref p);
-            Consumers = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT45();
+            Consumers = new Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT50();
             Consumers.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

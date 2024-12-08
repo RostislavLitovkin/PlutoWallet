@@ -273,7 +273,7 @@ namespace Hydration.NetApi.Generated.Storage
         public Substrate.NetApi.Model.Types.Primitive.U128 MinTotalFarmRewards()
         {
             var result = new Substrate.NetApi.Model.Types.Primitive.U128();
-            result.Create("0x00407A10F35A00000000000000000000");
+            result.Create("0x0010A5D4E80000000000000000000000");
             return result;
         }
         

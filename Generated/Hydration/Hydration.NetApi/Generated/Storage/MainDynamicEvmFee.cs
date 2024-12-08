@@ -54,7 +54,7 @@ namespace Hydration.NetApi.Generated.Storage
         /// </summary>
         public static string BaseFeePerGasDefault()
         {
-            return "0xC0E1E40000000000000000000000000000000000000000000000000000000000";
+            return "0x0024F40000000000000000000000000000000000000000000000000000000000";
         }
         
         /// <summary>

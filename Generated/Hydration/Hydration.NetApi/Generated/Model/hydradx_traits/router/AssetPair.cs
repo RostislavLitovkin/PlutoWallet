@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.hydradx_traits.router
     
     
     /// <summary>
-    /// >> 373 - Composite[hydradx_traits.router.AssetPair]
+    /// >> 372 - Composite[hydradx_traits.router.AssetPair]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class AssetPair : BaseType

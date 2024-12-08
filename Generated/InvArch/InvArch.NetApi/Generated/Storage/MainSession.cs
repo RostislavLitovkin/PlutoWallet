@@ -275,7 +275,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_keys
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetKeys(InvArch.NetApi.Generated.Model.invarch_runtime.SessionKeys keys, Substrate.NetApi.Model.Types.Base.BaseVec<Substrate.NetApi.Model.Types.Primitive.U8> proof)
         {
@@ -287,7 +287,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> purge_keys
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method PurgeKeys()
         {

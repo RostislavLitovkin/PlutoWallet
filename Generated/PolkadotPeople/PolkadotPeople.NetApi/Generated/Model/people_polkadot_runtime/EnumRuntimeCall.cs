@@ -95,15 +95,10 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
         /// >> Identity
         /// </summary>
         Identity = 50,
-        
-        /// <summary>
-        /// >> IdentityMigrator
-        /// </summary>
-        IdentityMigrator = 248,
     }
     
     /// <summary>
-    /// >> 319 - Variant[people_polkadot_runtime.RuntimeCall]
+    /// >> 320 - Variant[people_polkadot_runtime.RuntimeCall]
     /// </summary>
     public sealed class EnumRuntimeCall : BaseEnumRust<RuntimeCall>
     {
@@ -128,7 +123,6 @@ namespace PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_multisig.pallet.EnumCall>(RuntimeCall.Multisig);
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_proxy.pallet.EnumCall>(RuntimeCall.Proxy);
 				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.pallet_identity.pallet.EnumCall>(RuntimeCall.Identity);
-				AddTypeDecoder<PolkadotPeople.NetApi.Generated.Model.polkadot_runtime_common.identity_migrator.pallet.EnumCall>(RuntimeCall.IdentityMigrator);
         }
     }
 }

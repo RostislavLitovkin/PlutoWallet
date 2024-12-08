@@ -17,10 +17,7 @@ namespace InvArch.NetApi.Generated.Model.orml_xcm.module
     
     /// <summary>
     /// >> Event
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// The `Event` enum of this pallet
     /// </summary>
     public enum Event
     {
@@ -33,11 +30,8 @@ namespace InvArch.NetApi.Generated.Model.orml_xcm.module
     }
     
     /// <summary>
-    /// >> 110 - Variant[orml_xcm.module.Event]
-    /// 
-    ///			The [event](https://docs.substrate.io/main-docs/build/events-errors/) emitted
-    ///			by this pallet.
-    ///			
+    /// >> 134 - Variant[orml_xcm.module.Event]
+    /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
     {
@@ -47,7 +41,7 @@ namespace InvArch.NetApi.Generated.Model.orml_xcm.module
         /// </summary>
         public EnumEvent()
         {
-				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.xcm.v3.multilocation.MultiLocation, InvArch.NetApi.Generated.Model.xcm.v3.XcmT1>>(Event.Sent);
+				AddTypeDecoder<BaseTuple<InvArch.NetApi.Generated.Model.staging_xcm.v4.location.Location, InvArch.NetApi.Generated.Model.staging_xcm.v4.XcmT1>>(Event.Sent);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
     
     
     /// <summary>
-    /// >> 143 - Composite[polkadot_runtime.SessionKeys]
+    /// >> 134 - Composite[polkadot_runtime.SessionKeys]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class SessionKeys : BaseType
@@ -35,11 +35,11 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
         /// <summary>
         /// >> para_validator
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public ParaValidator { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public ParaValidator { get; set; }
         /// <summary>
         /// >> para_assignment
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.assignment_app.Public ParaAssignment { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.assignment_app.Public ParaAssignment { get; set; }
         /// <summary>
         /// >> authority_discovery
         /// </summary>
@@ -76,9 +76,9 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime
             Grandpa.Decode(byteArray, ref p);
             Babe = new Polkadot.NetApi.Generated.Model.sp_consensus_babe.app.Public();
             Babe.Decode(byteArray, ref p);
-            ParaValidator = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.validator_app.Public();
+            ParaValidator = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.validator_app.Public();
             ParaValidator.Decode(byteArray, ref p);
-            ParaAssignment = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.assignment_app.Public();
+            ParaAssignment = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.assignment_app.Public();
             ParaAssignment.Decode(byteArray, ref p);
             AuthorityDiscovery = new Polkadot.NetApi.Generated.Model.sp_authority_discovery.app.Public();
             AuthorityDiscovery.Decode(byteArray, ref p);

@@ -24,25 +24,34 @@ namespace Polkadot.NetApi.Generated.Model.pallet_asset_rate.pallet
         
         /// <summary>
         /// >> create
-        /// See [`Pallet::create`].
+        /// Initialize a conversion rate to native balance for the given asset.
+        /// 
+        /// ## Complexity
+        /// - O(1)
         /// </summary>
         create = 0,
         
         /// <summary>
         /// >> update
-        /// See [`Pallet::update`].
+        /// Update the conversion rate to native balance for the given asset.
+        /// 
+        /// ## Complexity
+        /// - O(1)
         /// </summary>
         update = 1,
         
         /// <summary>
         /// >> remove
-        /// See [`Pallet::remove`].
+        /// Remove an existing conversion rate to native balance for the given asset.
+        /// 
+        /// ## Complexity
+        /// - O(1)
         /// </summary>
         remove = 2,
     }
     
     /// <summary>
-    /// >> 468 - Variant[pallet_asset_rate.pallet.Call]
+    /// >> 435 - Variant[pallet_asset_rate.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

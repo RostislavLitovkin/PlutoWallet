@@ -17,7 +17,7 @@ namespace InvArch.NetApi.Generated.Model.pallet_timestamp.pallet
     
     /// <summary>
     /// >> Call
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public enum Call
     {
@@ -30,13 +30,17 @@ namespace InvArch.NetApi.Generated.Model.pallet_timestamp.pallet
         /// phase, if this call hasn't been invoked by that time.
         /// 
         /// The timestamp should be greater than the previous one by the amount specified by
-        /// `MinimumPeriod`.
+        /// [`Config::MinimumPeriod`].
         /// 
-        /// The dispatch origin for this call must be `Inherent`.
+        /// The dispatch origin for this call must be _None_.
+        /// 
+        /// This dispatch class is _Mandatory_ to ensure it gets executed in the block. Be aware
+        /// that changing the complexity of this call could result exhausting the resources in a
+        /// block to execute any other calls.
         /// 
         /// ## Complexity
         /// - `O(1)` (Note that implementations of `OnTimestampSet` must also be `O(1)`)
-        /// - 1 storage read and 1 storage mutation (codec `O(1)`). (because of `DidUpdate::take` in
+        /// - 1 storage read and 1 storage mutation (codec `O(1)` because of `DidUpdate::take` in
         ///   `on_finalize`)
         /// - 1 event handler `on_timestamp_set`. Must be `O(1)`.
         /// </summary>
@@ -44,8 +48,8 @@ namespace InvArch.NetApi.Generated.Model.pallet_timestamp.pallet
     }
     
     /// <summary>
-    /// >> 144 - Variant[pallet_timestamp.pallet.Call]
-    /// Contains one variant per dispatchable that can be called by an extrinsic.
+    /// >> 178 - Variant[pallet_timestamp.pallet.Call]
+    /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>
     {

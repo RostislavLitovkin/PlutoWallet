@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.cumulus_primitives_parachain_inherent
     
     
     /// <summary>
-    /// >> 272 - Composite[cumulus_primitives_parachain_inherent.MessageQueueChain]
+    /// >> 353 - Composite[cumulus_primitives_parachain_inherent.MessageQueueChain]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class MessageQueueChain : BaseType

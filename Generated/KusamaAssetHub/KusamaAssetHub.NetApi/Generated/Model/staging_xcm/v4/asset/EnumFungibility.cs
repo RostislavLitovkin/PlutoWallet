@@ -33,7 +33,7 @@ namespace KusamaAssetHub.NetApi.Generated.Model.staging_xcm.v4.asset
     }
     
     /// <summary>
-    /// >> 75 - Variant[staging_xcm.v4.asset.Fungibility]
+    /// >> 70 - Variant[staging_xcm.v4.asset.Fungibility]
     /// </summary>
     public sealed class EnumFungibility : BaseEnumRust<Fungibility>
     {

@@ -24,85 +24,258 @@ namespace Hydration.NetApi.Generated.Model.pallet_omnipool.pallet
         
         /// <summary>
         /// >> add_token
-        /// See [`Pallet::add_token`].
+        /// Add new token to omnipool in quantity `amount` at price `initial_price`
+        /// 
+        /// Initial liquidity must be transferred to pool's account for this new token manually prior to calling `add_token`.
+        /// 
+        /// Initial liquidity is pool's account balance of the token.
+        /// 
+        /// Position NFT token is minted for `position_owner`.
+        /// 
+        /// Parameters:
+        /// - `asset`: The identifier of the new asset added to the pool. Must be registered in Asset registry
+        /// - `initial_price`: Initial price
+        /// - `position_owner`: account id for which share are distributed in form on NFT
+        /// - `weight_cap`: asset weight cap
+        /// 
+        /// Emits `TokenAdded` event when successful.
+        /// 
         /// </summary>
         add_token = 1,
         
         /// <summary>
         /// >> add_liquidity
-        /// See [`Pallet::add_liquidity`].
+        /// Add liquidity of asset `asset` in quantity `amount` to Omnipool
+        /// 
+        /// `add_liquidity` adds specified asset amount to Omnipool and in exchange gives the origin
+        /// corresponding shares amount in form of NFT at current price.
+        /// 
+        /// Asset's tradable state must contain ADD_LIQUIDITY flag, otherwise `NotAllowed` error is returned.
+        /// 
+        /// NFT is minted using NTFHandler which implements non-fungibles traits from frame_support.
+        /// 
+        /// Asset weight cap must be respected, otherwise `AssetWeightExceeded` error is returned.
+        /// Asset weight is ratio between new HubAsset reserve and total reserve of Hub asset in Omnipool.
+        /// 
+        /// Add liquidity fails if price difference between spot price and oracle price is higher than allowed by `PriceBarrier`.
+        /// 
+        /// Parameters:
+        /// - `asset`: The identifier of the new asset added to the pool. Must be already in the pool
+        /// - `amount`: Amount of asset added to omnipool
+        /// 
+        /// Emits `LiquidityAdded` event when successful.
+        /// 
         /// </summary>
         add_liquidity = 2,
         
         /// <summary>
         /// >> add_liquidity_with_limit
-        /// See [`Pallet::add_liquidity_with_limit`].
+        /// Add liquidity of asset `asset` in quantity `amount` to Omnipool.
+        /// 
+        /// Limit protection is applied.
+        /// 
+        /// `add_liquidity` adds specified asset amount to Omnipool and in exchange gives the origin
+        /// corresponding shares amount in form of NFT at current price.
+        /// 
+        /// Asset's tradable state must contain ADD_LIQUIDITY flag, otherwise `NotAllowed` error is returned.
+        /// 
+        /// NFT is minted using NTFHandler which implements non-fungibles traits from frame_support.
+        /// 
+        /// Asset weight cap must be respected, otherwise `AssetWeightExceeded` error is returned.
+        /// Asset weight is ratio between new HubAsset reserve and total reserve of Hub asset in Omnipool.
+        /// 
+        /// Add liquidity fails if price difference between spot price and oracle price is higher than allowed by `PriceBarrier`.
+        /// 
+        /// Parameters:
+        /// - `asset`: The identifier of the new asset added to the pool. Must be already in the pool
+        /// - `amount`: Amount of asset added to omnipool
+        /// - `min_shares_limit`: The min amount of delta share asset the user should receive in the position
+        /// 
+        /// Emits `LiquidityAdded` event when successful.
+        /// 
         /// </summary>
         add_liquidity_with_limit = 13,
         
         /// <summary>
         /// >> remove_liquidity
-        /// See [`Pallet::remove_liquidity`].
+        /// Remove liquidity of asset `asset` in quantity `amount` from Omnipool
+        /// 
+        /// `remove_liquidity` removes specified shares amount from given PositionId (NFT instance).
+        /// 
+        /// Asset's tradable state must contain REMOVE_LIQUIDITY flag, otherwise `NotAllowed` error is returned.
+        /// 
+        /// if all shares from given position are removed, position is destroyed and NFT is burned.
+        /// 
+        /// Remove liquidity fails if price difference between spot price and oracle price is higher than allowed by `PriceBarrier`.
+        /// 
+        /// Dynamic withdrawal fee is applied if withdrawal is not safe. It is calculated using spot price and external price oracle.
+        /// Withdrawal is considered safe when trading is disabled.
+        /// 
+        /// Parameters:
+        /// - `position_id`: The identifier of position which liquidity is removed from.
+        /// - `amount`: Amount of shares removed from omnipool
+        /// 
+        /// Emits `LiquidityRemoved` event when successful.
+        /// 
         /// </summary>
         remove_liquidity = 3,
         
         /// <summary>
         /// >> remove_liquidity_with_limit
-        /// See [`Pallet::remove_liquidity_with_limit`].
+        /// Remove liquidity of asset `asset` in quantity `amount` from Omnipool
+        /// 
+        /// Limit protection is applied.
+        /// 
+        /// `remove_liquidity` removes specified shares amount from given PositionId (NFT instance).
+        /// 
+        /// Asset's tradable state must contain REMOVE_LIQUIDITY flag, otherwise `NotAllowed` error is returned.
+        /// 
+        /// if all shares from given position are removed, position is destroyed and NFT is burned.
+        /// 
+        /// Remove liquidity fails if price difference between spot price and oracle price is higher than allowed by `PriceBarrier`.
+        /// 
+        /// Dynamic withdrawal fee is applied if withdrawal is not safe. It is calculated using spot price and external price oracle.
+        /// Withdrawal is considered safe when trading is disabled.
+        /// 
+        /// Parameters:
+        /// - `position_id`: The identifier of position which liquidity is removed from.
+        /// - `amount`: Amount of shares removed from omnipool
+        /// - `min_limit`: The min amount of asset to be removed for the user
+        /// 
+        /// Emits `LiquidityRemoved` event when successful.
+        /// 
         /// </summary>
         remove_liquidity_with_limit = 14,
         
         /// <summary>
         /// >> sacrifice_position
-        /// See [`Pallet::sacrifice_position`].
+        /// Sacrifice LP position in favor of pool.
+        /// 
+        /// A position is destroyed and liquidity owned by LP becomes pool owned liquidity.
+        /// 
+        /// Only owner of position can perform this action.
+        /// 
+        /// Emits `PositionDestroyed`.
         /// </summary>
         sacrifice_position = 4,
         
         /// <summary>
         /// >> sell
-        /// See [`Pallet::sell`].
+        /// Execute a swap of `asset_in` for `asset_out`.
+        /// 
+        /// Price is determined by the Omnipool.
+        /// 
+        /// Hub asset is traded separately.
+        /// 
+        /// Asset's tradable states must contain SELL flag for asset_in and BUY flag for asset_out, otherwise `NotAllowed` error is returned.
+        /// 
+        /// Parameters:
+        /// - `asset_in`: ID of asset sold to the pool
+        /// - `asset_out`: ID of asset bought from the pool
+        /// - `amount`: Amount of asset sold
+        /// - `min_buy_amount`: Minimum amount required to receive
+        /// 
+        /// Emits `SellExecuted` event when successful.
+        /// 
         /// </summary>
         sell = 5,
         
         /// <summary>
         /// >> buy
-        /// See [`Pallet::buy`].
+        /// Execute a swap of `asset_out` for `asset_in`.
+        /// 
+        /// Price is determined by the Omnipool.
+        /// 
+        /// Hub asset is traded separately.
+        /// 
+        /// Asset's tradable states must contain SELL flag for asset_in and BUY flag for asset_out, otherwise `NotAllowed` error is returned.
+        /// 
+        /// Parameters:
+        /// - `asset_in`: ID of asset sold to the pool
+        /// - `asset_out`: ID of asset bought from the pool
+        /// - `amount`: Amount of asset sold
+        /// - `max_sell_amount`: Maximum amount to be sold.
+        /// 
+        /// Emits `BuyExecuted` event when successful.
+        /// 
         /// </summary>
         buy = 6,
         
         /// <summary>
         /// >> set_asset_tradable_state
-        /// See [`Pallet::set_asset_tradable_state`].
+        /// Update asset's tradable state.
+        /// 
+        /// Parameters:
+        /// - `asset_id`: asset id
+        /// - `state`: new state
+        /// 
+        /// Emits `TradableStateUpdated` event when successful.
+        /// 
         /// </summary>
         set_asset_tradable_state = 7,
         
         /// <summary>
         /// >> refund_refused_asset
-        /// See [`Pallet::refund_refused_asset`].
+        /// Refund given amount of asset to a recipient.
+        /// 
+        /// A refund is needed when a token is refused to be added to Omnipool, and initial liquidity of the asset has been already transferred to pool's account.
+        /// 
+        /// Transfer can be executed only if asset is not in Omnipool and pool's balance has sufficient amount.
+        /// 
+        /// Only `AuthorityOrigin` can perform this operation.
+        /// 
+        /// Emits `AssetRefunded`
         /// </summary>
         refund_refused_asset = 8,
         
         /// <summary>
         /// >> set_asset_weight_cap
-        /// See [`Pallet::set_asset_weight_cap`].
+        /// Update asset's weight cap
+        /// 
+        /// Parameters:
+        /// - `asset_id`: asset id
+        /// - `cap`: new weight cap
+        /// 
+        /// Emits `AssetWeightCapUpdated` event when successful.
+        /// 
         /// </summary>
         set_asset_weight_cap = 9,
         
         /// <summary>
         /// >> withdraw_protocol_liquidity
-        /// See [`Pallet::withdraw_protocol_liquidity`].
+        /// Removes protocol liquidity.
+        /// 
+        /// Protocol liquidity is liquidity from sacrificed positions. In order to remove protocol liquidity,
+        /// we need the know the price of the position at the time of sacrifice. Hence this specific call.
+        /// 
+        /// Only `AuthorityOrigin` can perform this call.
+        /// 
+        /// Note that sacrifice position will be deprecated in future. There is no longer a need for that.
+        /// 
+        /// It works the same way as remove liquidity call, but position is temporary reconstructed.
+        /// 
         /// </summary>
         withdraw_protocol_liquidity = 11,
         
         /// <summary>
         /// >> remove_token
-        /// See [`Pallet::remove_token`].
+        /// Removes token from Omnipool.
+        /// 
+        /// Asset's tradability must be FROZEN, otherwise `AssetNotFrozen` error is returned.
+        /// 
+        /// Remaining shares must belong to protocol, otherwise `SharesRemaining` error is returned.
+        /// 
+        /// Protocol's liquidity is transferred to the beneficiary account and hub asset amount is burned.
+        /// 
+        /// Only `AuthorityOrigin` can perform this call.
+        /// 
+        /// Emits `TokenRemoved` event when successful.
         /// </summary>
         remove_token = 12,
     }
     
     /// <summary>
-    /// >> 364 - Variant[pallet_omnipool.pallet.Call]
+    /// >> 361 - Variant[pallet_omnipool.pallet.Call]
     /// Contains a variant per dispatchable extrinsic that this pallet has.
     /// </summary>
     public sealed class EnumCall : BaseEnumRust<Call>

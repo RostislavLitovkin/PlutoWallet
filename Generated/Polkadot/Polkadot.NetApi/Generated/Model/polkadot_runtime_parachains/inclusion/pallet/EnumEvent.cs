@@ -48,7 +48,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.
     }
     
     /// <summary>
-    /// >> 502 - Variant[polkadot_runtime_parachains.inclusion.pallet.Event]
+    /// >> 474 - Variant[polkadot_runtime_parachains.inclusion.pallet.Event]
     /// The `Event` enum of this pallet
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>
@@ -59,9 +59,9 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.inclusion.
         /// </summary>
         public EnumEvent()
         {
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex>>(Event.CandidateBacked);
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.GroupIndex>>(Event.CandidateIncluded);
-				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.CoreIndex>>(Event.CandidateTimedOut);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CoreIndex, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.GroupIndex>>(Event.CandidateBacked);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CoreIndex, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.GroupIndex>>(Event.CandidateIncluded);
+				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CandidateReceipt, Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.HeadData, Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.CoreIndex>>(Event.CandidateTimedOut);
 				AddTypeDecoder<BaseTuple<Polkadot.NetApi.Generated.Model.polkadot_parachain_primitives.primitives.Id, Substrate.NetApi.Model.Types.Primitive.U32>>(Event.UpwardMessagesReceived);
         }
     }

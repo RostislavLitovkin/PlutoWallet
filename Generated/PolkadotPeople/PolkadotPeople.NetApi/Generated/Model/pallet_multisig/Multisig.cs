@@ -18,7 +18,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_multisig
     
     
     /// <summary>
-    /// >> 374 - Composite[pallet_multisig.Multisig]
+    /// >> 371 - Composite[pallet_multisig.Multisig]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class Multisig : BaseType
@@ -39,7 +39,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_multisig
         /// <summary>
         /// >> approvals
         /// </summary>
-        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17 Approvals { get; set; }
+        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18 Approvals { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -68,7 +68,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_multisig
             Deposit.Decode(byteArray, ref p);
             Depositor = new PolkadotPeople.NetApi.Generated.Model.sp_core.crypto.AccountId32();
             Depositor.Decode(byteArray, ref p);
-            Approvals = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT17();
+            Approvals = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18();
             Approvals.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

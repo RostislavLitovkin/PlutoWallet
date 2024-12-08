@@ -24,31 +24,61 @@ namespace Hydration.NetApi.Generated.Model.pallet_transaction_multi_payment.pall
         
         /// <summary>
         /// >> set_currency
-        /// See [`Pallet::set_currency`].
+        /// Set selected currency for given account.
+        /// 
+        /// This allows to set a currency for an account in which all transaction fees will be paid.
+        /// Account balance cannot be zero.
+        /// 
+        /// In case of sufficient asset, the chosen currency must be in the list of accepted currencies
+        /// In case of insufficient asset, the chosen currency must have a XYK pool with DOT
+        /// 
+        /// When currency is set, fixed fee is withdrawn from the account to pay for the currency change
+        /// 
+        /// EVM accounts are now allowed to change thier payment currency.
+        /// 
+        /// Emits `CurrencySet` event when successful.
         /// </summary>
         set_currency = 0,
         
         /// <summary>
         /// >> add_currency
-        /// See [`Pallet::add_currency`].
+        /// Add a currency to the list of accepted currencies.
+        /// 
+        /// Only member can perform this action.
+        /// 
+        /// Currency must not be already accepted. Core asset id cannot be explicitly added.
+        /// 
+        /// Emits `CurrencyAdded` event when successful.
         /// </summary>
         add_currency = 1,
         
         /// <summary>
         /// >> remove_currency
-        /// See [`Pallet::remove_currency`].
+        /// Remove currency from the list of supported currencies
+        /// Only selected members can perform this action
+        /// 
+        /// Core asset cannot be removed.
+        /// 
+        /// Emits `CurrencyRemoved` when successful.
         /// </summary>
         remove_currency = 2,
         
         /// <summary>
         /// >> reset_payment_currency
-        /// See [`Pallet::reset_payment_currency`].
+        /// Reset currency of the specified account to HDX.
+        /// If the account is EVM account, the payment currency is reset to WETH.
+        /// Only selected members can perform this action.
+        /// 
+        /// Emits `CurrencySet` when successful.
         /// </summary>
         reset_payment_currency = 3,
         
         /// <summary>
         /// >> dispatch_permit
-        /// See [`Pallet::dispatch_permit`].
+        /// Dispatch EVM permit.
+        /// The main purpose of this function is to allow EVM accounts to pay for the transaction fee in non-native currency
+        /// by allowing them to self-dispatch pre-signed permit.
+        /// The EVM fee is paid in the currency set for the account.
         /// </summary>
         dispatch_permit = 4,
     }

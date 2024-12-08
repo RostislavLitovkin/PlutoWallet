@@ -73,7 +73,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.xcm.v3.junction
     }
     
     /// <summary>
-    /// >> 45 - Variant[xcm.v3.junction.BodyId]
+    /// >> 46 - Variant[xcm.v3.junction.BodyId]
     /// </summary>
     public sealed class EnumBodyId : BaseEnumRust<BodyId>
     {

@@ -258,6 +258,17 @@ namespace Hydration.NetApi.Generated.Storage
         }
         
         /// <summary>
+        /// >> PolkadotNativeAssetId
+        ///  Polkadot Native Asset (DOT)
+        /// </summary>
+        public Substrate.NetApi.Model.Types.Primitive.U32 PolkadotNativeAssetId()
+        {
+            var result = new Substrate.NetApi.Model.Types.Primitive.U32();
+            result.Create("0x05000000");
+            return result;
+        }
+        
+        /// <summary>
         /// >> EvmAssetId
         ///  EVM Asset
         /// </summary>

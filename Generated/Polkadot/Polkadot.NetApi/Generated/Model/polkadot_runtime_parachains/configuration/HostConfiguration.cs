@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
     
     
     /// <summary>
-    /// >> 744 - Composite[polkadot_runtime_parachains.configuration.HostConfiguration]
+    /// >> 705 - Composite[polkadot_runtime_parachains.configuration.HostConfiguration]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class HostConfiguration : BaseType
@@ -63,7 +63,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
         /// <summary>
         /// >> async_backing_params
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams AsyncBackingParams { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.async_backing.AsyncBackingParams AsyncBackingParams { get; set; }
         /// <summary>
         /// >> max_pov_size
         /// </summary>
@@ -103,55 +103,11 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
         /// <summary>
         /// >> executor_params
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams ExecutorParams { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams ExecutorParams { get; set; }
         /// <summary>
         /// >> code_retention_period
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 CodeRetentionPeriod { get; set; }
-        /// <summary>
-        /// >> coretime_cores
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 CoretimeCores { get; set; }
-        /// <summary>
-        /// >> on_demand_retries
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandRetries { get; set; }
-        /// <summary>
-        /// >> on_demand_queue_max_size
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandQueueMaxSize { get; set; }
-        /// <summary>
-        /// >> on_demand_target_queue_utilization
-        /// </summary>
-        public Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill OnDemandTargetQueueUtilization { get; set; }
-        /// <summary>
-        /// >> on_demand_fee_variability
-        /// </summary>
-        public Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill OnDemandFeeVariability { get; set; }
-        /// <summary>
-        /// >> on_demand_base_fee
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U128 OnDemandBaseFee { get; set; }
-        /// <summary>
-        /// >> on_demand_ttl
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 OnDemandTtl { get; set; }
-        /// <summary>
-        /// >> group_rotation_frequency
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 GroupRotationFrequency { get; set; }
-        /// <summary>
-        /// >> paras_availability_period
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 ParasAvailabilityPeriod { get; set; }
-        /// <summary>
-        /// >> scheduling_lookahead
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Primitive.U32 SchedulingLookahead { get; set; }
-        /// <summary>
-        /// >> max_validators_per_core
-        /// </summary>
-        public Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32> MaxValidatorsPerCore { get; set; }
         /// <summary>
         /// >> max_validators
         /// </summary>
@@ -203,7 +159,11 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
         /// <summary>
         /// >> approval_voting_params
         /// </summary>
-        public Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams ApprovalVotingParams { get; set; }
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ApprovalVotingParams ApprovalVotingParams { get; set; }
+        /// <summary>
+        /// >> scheduler_params
+        /// </summary>
+        public Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.SchedulerParams SchedulerParams { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -236,17 +196,6 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
             result.AddRange(HrmpChannelMaxMessageSize.Encode());
             result.AddRange(ExecutorParams.Encode());
             result.AddRange(CodeRetentionPeriod.Encode());
-            result.AddRange(CoretimeCores.Encode());
-            result.AddRange(OnDemandRetries.Encode());
-            result.AddRange(OnDemandQueueMaxSize.Encode());
-            result.AddRange(OnDemandTargetQueueUtilization.Encode());
-            result.AddRange(OnDemandFeeVariability.Encode());
-            result.AddRange(OnDemandBaseFee.Encode());
-            result.AddRange(OnDemandTtl.Encode());
-            result.AddRange(GroupRotationFrequency.Encode());
-            result.AddRange(ParasAvailabilityPeriod.Encode());
-            result.AddRange(SchedulingLookahead.Encode());
-            result.AddRange(MaxValidatorsPerCore.Encode());
             result.AddRange(MaxValidators.Encode());
             result.AddRange(DisputePeriod.Encode());
             result.AddRange(DisputePostConclusionAcceptancePeriod.Encode());
@@ -260,6 +209,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
             result.AddRange(MinimumBackingVotes.Encode());
             result.AddRange(NodeFeatures.Encode());
             result.AddRange(ApprovalVotingParams.Encode());
+            result.AddRange(SchedulerParams.Encode());
             return result.ToArray();
         }
         
@@ -285,7 +235,7 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
             ValidationUpgradeCooldown.Decode(byteArray, ref p);
             ValidationUpgradeDelay = new Substrate.NetApi.Model.Types.Primitive.U32();
             ValidationUpgradeDelay.Decode(byteArray, ref p);
-            AsyncBackingParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.async_backing.AsyncBackingParams();
+            AsyncBackingParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.async_backing.AsyncBackingParams();
             AsyncBackingParams.Decode(byteArray, ref p);
             MaxPovSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             MaxPovSize.Decode(byteArray, ref p);
@@ -305,32 +255,10 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
             HrmpMaxParachainInboundChannels.Decode(byteArray, ref p);
             HrmpChannelMaxMessageSize = new Substrate.NetApi.Model.Types.Primitive.U32();
             HrmpChannelMaxMessageSize.Decode(byteArray, ref p);
-            ExecutorParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v6.executor_params.ExecutorParams();
+            ExecutorParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.executor_params.ExecutorParams();
             ExecutorParams.Decode(byteArray, ref p);
             CodeRetentionPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
             CodeRetentionPeriod.Decode(byteArray, ref p);
-            CoretimeCores = new Substrate.NetApi.Model.Types.Primitive.U32();
-            CoretimeCores.Decode(byteArray, ref p);
-            OnDemandRetries = new Substrate.NetApi.Model.Types.Primitive.U32();
-            OnDemandRetries.Decode(byteArray, ref p);
-            OnDemandQueueMaxSize = new Substrate.NetApi.Model.Types.Primitive.U32();
-            OnDemandQueueMaxSize.Decode(byteArray, ref p);
-            OnDemandTargetQueueUtilization = new Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill();
-            OnDemandTargetQueueUtilization.Decode(byteArray, ref p);
-            OnDemandFeeVariability = new Polkadot.NetApi.Generated.Model.sp_arithmetic.per_things.Perbill();
-            OnDemandFeeVariability.Decode(byteArray, ref p);
-            OnDemandBaseFee = new Substrate.NetApi.Model.Types.Primitive.U128();
-            OnDemandBaseFee.Decode(byteArray, ref p);
-            OnDemandTtl = new Substrate.NetApi.Model.Types.Primitive.U32();
-            OnDemandTtl.Decode(byteArray, ref p);
-            GroupRotationFrequency = new Substrate.NetApi.Model.Types.Primitive.U32();
-            GroupRotationFrequency.Decode(byteArray, ref p);
-            ParasAvailabilityPeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
-            ParasAvailabilityPeriod.Decode(byteArray, ref p);
-            SchedulingLookahead = new Substrate.NetApi.Model.Types.Primitive.U32();
-            SchedulingLookahead.Decode(byteArray, ref p);
-            MaxValidatorsPerCore = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
-            MaxValidatorsPerCore.Decode(byteArray, ref p);
             MaxValidators = new Substrate.NetApi.Model.Types.Base.BaseOpt<Substrate.NetApi.Model.Types.Primitive.U32>();
             MaxValidators.Decode(byteArray, ref p);
             DisputePeriod = new Substrate.NetApi.Model.Types.Primitive.U32();
@@ -355,8 +283,10 @@ namespace Polkadot.NetApi.Generated.Model.polkadot_runtime_parachains.configurat
             MinimumBackingVotes.Decode(byteArray, ref p);
             NodeFeatures = new Substrate.NetApi.Model.Types.Base.BaseBitSeq<Substrate.NetApi.Model.Types.Primitive.U8, Polkadot.NetApi.Generated.Model.bitvec.order.Lsb0>();
             NodeFeatures.Decode(byteArray, ref p);
-            ApprovalVotingParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.ApprovalVotingParams();
+            ApprovalVotingParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.v7.ApprovalVotingParams();
             ApprovalVotingParams.Decode(byteArray, ref p);
+            SchedulerParams = new Polkadot.NetApi.Generated.Model.polkadot_primitives.vstaging.SchedulerParams();
+            SchedulerParams.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;
             Bytes = new byte[bytesLength];

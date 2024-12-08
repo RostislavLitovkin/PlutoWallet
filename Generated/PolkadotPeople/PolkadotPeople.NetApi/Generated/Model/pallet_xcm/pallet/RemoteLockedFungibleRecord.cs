@@ -39,7 +39,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_xcm.pallet
         /// <summary>
         /// >> consumers
         /// </summary>
-        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14 Consumers { get; set; }
+        public PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15 Consumers { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -68,7 +68,7 @@ namespace PolkadotPeople.NetApi.Generated.Model.pallet_xcm.pallet
             Owner.Decode(byteArray, ref p);
             Locker = new PolkadotPeople.NetApi.Generated.Model.xcm.EnumVersionedLocation();
             Locker.Decode(byteArray, ref p);
-            Consumers = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14();
+            Consumers = new PolkadotPeople.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT15();
             Consumers.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

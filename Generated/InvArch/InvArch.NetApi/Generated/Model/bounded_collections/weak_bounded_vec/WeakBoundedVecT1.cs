@@ -18,7 +18,7 @@ namespace InvArch.NetApi.Generated.Model.bounded_collections.weak_bounded_vec
     
     
     /// <summary>
-    /// >> 102 - Composite[bounded_collections.weak_bounded_vec.WeakBoundedVecT1]
+    /// >> 59 - Composite[bounded_collections.weak_bounded_vec.WeakBoundedVecT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class WeakBoundedVecT1 : BaseType

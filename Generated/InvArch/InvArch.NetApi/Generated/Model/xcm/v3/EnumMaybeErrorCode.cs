@@ -38,7 +38,7 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
     }
     
     /// <summary>
-    /// >> 82 - Variant[xcm.v3.MaybeErrorCode]
+    /// >> 110 - Variant[xcm.v3.MaybeErrorCode]
     /// </summary>
     public sealed class EnumMaybeErrorCode : BaseEnumRust<MaybeErrorCode>
     {
@@ -49,8 +49,8 @@ namespace InvArch.NetApi.Generated.Model.xcm.v3
         public EnumMaybeErrorCode()
         {
 				AddTypeDecoder<BaseVoid>(MaybeErrorCode.Success);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(MaybeErrorCode.Error);
-				AddTypeDecoder<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT4>(MaybeErrorCode.TruncatedError);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>(MaybeErrorCode.Error);
+				AddTypeDecoder<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT5>(MaybeErrorCode.TruncatedError);
         }
     }
 }

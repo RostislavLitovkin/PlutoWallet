@@ -161,7 +161,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> HaltedParams
-        ///  Wheter or not the inflation process should be halted.
+        ///  Whether the inflation process is halted.
         /// </summary>
         public static string HaltedParams()
         {
@@ -179,7 +179,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Halted
-        ///  Wheter or not the inflation process should be halted.
+        ///  Whether the inflation process is halted.
         /// </summary>
         public async Task<Substrate.NetApi.Model.Types.Primitive.Bool> Halted(string blockhash, CancellationToken token)
         {
@@ -197,7 +197,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> set_first_year_supply
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method SetFirstYearSupply()
         {
@@ -207,7 +207,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> halt_unhalt_pallet
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method HaltUnhaltPallet(Substrate.NetApi.Model.Types.Primitive.Bool halt)
         {
@@ -225,6 +225,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> BlocksPerEra
+        ///  Number of blocks per era.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 BlocksPerEra()
         {
@@ -235,6 +236,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> ErasPerYear
+        ///  Number of eras per year.
         /// </summary>
         public Substrate.NetApi.Model.Types.Primitive.U32 ErasPerYear()
         {
@@ -245,6 +247,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> Inflation
+        ///  The inflation method and its amount.
         /// </summary>
         public InvArch.NetApi.Generated.Model.pallet_checked_inflation.inflation.EnumInflationMethod Inflation()
         {
@@ -262,6 +265,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> NoHaltChange
+        /// The pallet is already in the state that the user is trying to change it to.
         /// </summary>
         NoHaltChange,
     }

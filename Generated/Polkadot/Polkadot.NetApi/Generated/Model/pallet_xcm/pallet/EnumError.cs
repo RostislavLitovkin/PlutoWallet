@@ -146,12 +146,6 @@ namespace Polkadot.NetApi.Generated.Model.pallet_xcm.pallet
         InUse = 19,
         
         /// <summary>
-        /// >> InvalidAssetNotConcrete
-        /// Invalid non-concrete asset.
-        /// </summary>
-        InvalidAssetNotConcrete = 20,
-        
-        /// <summary>
         /// >> InvalidAssetUnknownReserve
         /// Invalid asset, reserve chain could not be determined for it.
         /// </summary>
@@ -177,7 +171,7 @@ namespace Polkadot.NetApi.Generated.Model.pallet_xcm.pallet
     }
     
     /// <summary>
-    /// >> 845 - Variant[pallet_xcm.pallet.Error]
+    /// >> 829 - Variant[pallet_xcm.pallet.Error]
     /// The `Error` enum of this pallet.
     /// </summary>
     public sealed class EnumError : BaseEnum<Error>

@@ -37,7 +37,7 @@ namespace Hydration.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("TransactionPause", "PausedTransactions"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, typeof(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39>), typeof(Substrate.NetApi.Model.Types.Base.BaseTuple)));
         }
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace Hydration.NetApi.Generated.Storage
         /// 
         ///  map (PalletNameBytes, FunctionNameBytes) => Option<()>
         /// </summary>
-        public static string PausedTransactionsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34> key)
+        public static string PausedTransactionsParams(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39> key)
         {
             return RequestGenerator.GetStorage("TransactionPause", "PausedTransactions", Substrate.NetApi.Model.Meta.Storage.Type.Map, new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
                         Substrate.NetApi.Model.Meta.Storage.Hasher.Twox64Concat}, new Substrate.NetApi.Model.Types.IType[] {
@@ -68,7 +68,7 @@ namespace Hydration.NetApi.Generated.Storage
         /// 
         ///  map (PalletNameBytes, FunctionNameBytes) => Option<()>
         /// </summary>
-        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> PausedTransactions(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT34> key, string blockhash, CancellationToken token)
+        public async Task<Substrate.NetApi.Model.Types.Base.BaseTuple> PausedTransactions(Substrate.NetApi.Model.Types.Base.BaseTuple<Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39, Hydration.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT39> key, string blockhash, CancellationToken token)
         {
             string parameters = TransactionPauseStorage.PausedTransactionsParams(key);
             var result = await _client.GetStorageAsync<Substrate.NetApi.Model.Types.Base.BaseTuple>(parameters, blockhash, token);

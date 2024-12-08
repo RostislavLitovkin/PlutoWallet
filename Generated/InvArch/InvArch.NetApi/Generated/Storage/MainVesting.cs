@@ -37,7 +37,7 @@ namespace InvArch.NetApi.Generated.Storage
         {
             this._client = client;
             _client.StorageKeyDict.Add(new System.Tuple<string, string>("Vesting", "VestingSchedules"), new System.Tuple<Substrate.NetApi.Model.Meta.Storage.Hasher[], System.Type, System.Type>(new Substrate.NetApi.Model.Meta.Storage.Hasher[] {
-                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14)));
+                            Substrate.NetApi.Model.Meta.Storage.Hasher.BlakeTwo128Concat}, typeof(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32), typeof(InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18)));
         }
         
         /// <summary>
@@ -68,10 +68,10 @@ namespace InvArch.NetApi.Generated.Storage
         /// 
         ///  VestingSchedules: map AccountId => Vec<VestingSchedule>
         /// </summary>
-        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14> VestingSchedules(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
+        public async Task<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18> VestingSchedules(InvArch.NetApi.Generated.Model.sp_core.crypto.AccountId32 key, string blockhash, CancellationToken token)
         {
             string parameters = VestingStorage.VestingSchedulesParams(key);
-            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT14>(parameters, blockhash, token);
+            var result = await _client.GetStorageAsync<InvArch.NetApi.Generated.Model.bounded_collections.bounded_vec.BoundedVecT18>(parameters, blockhash, token);
             return result;
         }
     }
@@ -84,7 +84,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> claim
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method Claim()
         {
@@ -94,7 +94,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> vested_transfer
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method VestedTransfer(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest, InvArch.NetApi.Generated.Model.orml_vesting.VestingSchedule schedule)
         {
@@ -106,7 +106,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> update_vesting_schedules
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method UpdateVestingSchedules(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress who, Substrate.NetApi.Model.Types.Base.BaseVec<InvArch.NetApi.Generated.Model.orml_vesting.VestingSchedule> vesting_schedules)
         {
@@ -118,7 +118,7 @@ namespace InvArch.NetApi.Generated.Storage
         
         /// <summary>
         /// >> claim_for
-        /// Contains one variant per dispatchable that can be called by an extrinsic.
+        /// Contains a variant per dispatchable extrinsic that this pallet has.
         /// </summary>
         public static Method ClaimFor(InvArch.NetApi.Generated.Model.sp_runtime.multiaddress.EnumMultiAddress dest)
         {

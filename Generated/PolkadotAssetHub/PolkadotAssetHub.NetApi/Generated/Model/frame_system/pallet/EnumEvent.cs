@@ -66,7 +66,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.frame_system.pallet
     }
     
     /// <summary>
-    /// >> 21 - Variant[frame_system.pallet.Event]
+    /// >> 22 - Variant[frame_system.pallet.Event]
     /// Event for the System pallet.
     /// </summary>
     public sealed class EnumEvent : BaseEnumRust<Event>

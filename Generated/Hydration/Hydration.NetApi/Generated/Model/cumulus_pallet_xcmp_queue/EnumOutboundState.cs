@@ -33,7 +33,7 @@ namespace Hydration.NetApi.Generated.Model.cumulus_pallet_xcmp_queue
     }
     
     /// <summary>
-    /// >> 719 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
+    /// >> 723 - Variant[cumulus_pallet_xcmp_queue.OutboundState]
     /// </summary>
     public sealed class EnumOutboundState : BaseEnum<OutboundState>
     {

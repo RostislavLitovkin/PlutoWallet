@@ -27,7 +27,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.sp_consensus_aura.ed25519.app_
         /// <summary>
         /// >> value
         /// </summary>
-        public PolkadotAssetHub.NetApi.Generated.Model.sp_core.ed25519.Public Value { get; set; }
+        public PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8 Value { get; set; }
         
         /// <inheritdoc/>
         public override string TypeName()
@@ -47,7 +47,7 @@ namespace PolkadotAssetHub.NetApi.Generated.Model.sp_consensus_aura.ed25519.app_
         public override void Decode(byte[] byteArray, ref int p)
         {
             var start = p;
-            Value = new PolkadotAssetHub.NetApi.Generated.Model.sp_core.ed25519.Public();
+            Value = new PolkadotAssetHub.NetApi.Generated.Types.Base.Arr32U8();
             Value.Decode(byteArray, ref p);
             var bytesLength = p - start;
             TypeSize = bytesLength;

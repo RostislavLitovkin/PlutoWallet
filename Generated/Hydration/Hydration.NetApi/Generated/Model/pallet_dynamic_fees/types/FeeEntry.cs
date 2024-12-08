@@ -18,7 +18,7 @@ namespace Hydration.NetApi.Generated.Model.pallet_dynamic_fees.types
     
     
     /// <summary>
-    /// >> 590 - Composite[pallet_dynamic_fees.types.FeeEntry]
+    /// >> 594 - Composite[pallet_dynamic_fees.types.FeeEntry]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class FeeEntry : BaseType

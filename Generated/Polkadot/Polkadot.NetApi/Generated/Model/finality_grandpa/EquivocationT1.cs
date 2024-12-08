@@ -18,7 +18,7 @@ namespace Polkadot.NetApi.Generated.Model.finality_grandpa
     
     
     /// <summary>
-    /// >> 153 - Composite[finality_grandpa.EquivocationT1]
+    /// >> 143 - Composite[finality_grandpa.EquivocationT1]
     /// </summary>
     [SubstrateNodeType(TypeDefEnum.Composite)]
     public sealed class EquivocationT1 : BaseType
