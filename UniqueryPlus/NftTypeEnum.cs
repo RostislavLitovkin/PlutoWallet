@@ -6,6 +6,8 @@
         KusamaAssetHub_NftsPallet,
 
         Unique,
+        Opal,
+
         Mythos,
         // Other types?
     }

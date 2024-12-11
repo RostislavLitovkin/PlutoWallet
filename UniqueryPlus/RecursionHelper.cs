@@ -151,6 +151,8 @@ namespace UniqueryPlus
                 PolkadotAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.PolkadotAssetHub_NftsPallet],
                 KusamaAssetHub.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.KusamaAssetHub_NftsPallet],
                 Unique.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.Unique],
+                Opal.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.Opal],
+                Mythos.NetApi.Generated.SubstrateClientExt => [NftTypeEnum.Mythos],
                 _ => []
             };
         }

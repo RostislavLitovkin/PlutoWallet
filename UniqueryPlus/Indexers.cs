@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using OpalSubquery;
 using StrawberryShake.Serialization;
 using UniqueryPlus.Speck;
 using UniqueryPlus.Stick;
@@ -47,6 +48,21 @@ namespace UniqueryPlus
             IServiceProvider services = serviceCollection.BuildServiceProvider();
 
             return services.GetRequiredService<IUniqueSubquery>();
+        }
+
+        public static IOpalSubquery GetOpalSubqueryClient()
+        {
+            var serviceCollection = new ServiceCollection();
+
+            serviceCollection
+                .AddOpalSubquery()
+                .ConfigureHttpClient(client => client.BaseAddress = new Uri("https://api-opal.uniquescan.io/v1/graphql"));
+
+            serviceCollection.AddSerializer(new JsonSerializer("JSON"));
+
+            IServiceProvider services = serviceCollection.BuildServiceProvider();
+
+            return services.GetRequiredService<IOpalSubquery>();
         }
     }
 }

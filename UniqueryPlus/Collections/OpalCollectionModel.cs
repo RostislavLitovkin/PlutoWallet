@@ -4,27 +4,26 @@ using Substrate.NetApi;
 using System.Numerics;
 using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
-using Unique.NetApi.Generated;
-using Unique.NetApi.Generated.Storage;
-using Unique.NetApi.Generated.Model.up_data_structs;
+using Opal.NetApi.Generated;
+using Opal.NetApi.Generated.Storage;
+using Opal.NetApi.Generated.Model.up_data_structs;
 using UniqueryPlus.Ipfs;
-using Unique.NetApi.Generated.Model.sp_core.crypto;
-using Unique.NetApi.Generated.Model.bounded_collections.bounded_vec;
+using Opal.NetApi.Generated.Model.sp_core.crypto;
+using Opal.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
-using Substrate.NetApi.Model.Rpc;
 using System.Collections.Immutable;
 using UniqueryPlus.Metadata;
 
 namespace UniqueryPlus.Collections
 {
-    public record UniqueCollectionFull : UniqueCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
+    public record OpalCollectionFull : OpalCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
     {
         private SubstrateClientExt client;
         public required BigInteger HighestSale { get; set; }
         public required BigInteger FloorPrice { get; set; }
         public required BigInteger Volume { get; set; }
         public required DateTimeOffset CreatedAt { get; set; }
-        public UniqueCollectionFull(SubstrateClientExt client) : base(client)
+        public OpalCollectionFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
         }
@@ -41,10 +40,10 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    public record UniqueCollection : ICollectionBase, IUniqueMarketplaceLink, ICollectionMintConfig, ICollectionNestable
+    public record OpalCollection : ICollectionBase, ICollectionMintConfig, ICollectionNestable
     {
         private SubstrateClientExt client;
-        public NftTypeEnum Type => NftTypeEnum.Unique;
+        public NftTypeEnum Type => NftTypeEnum.Opal;
         public required BigInteger CollectionId { get; set; }
         public required string Owner { get; set; }
         public required uint NftCount { get; set; }
@@ -54,11 +53,10 @@ namespace UniqueryPlus.Collections
         public BigInteger? MintStartBlock { get; set; }
         public BigInteger? MintEndBlock { get; set; }
         public BigInteger? MintPrice { get; set; }
-        public string UniqueMarketplaceLink => $"https://unqnft.io/unique/collection/{CollectionId}";
         public required bool IsNestableByTokenOwner { get; set; }
         public required bool IsNestableByCollectionOwner { get; set; }
         public IEnumerable<BigInteger>? RestrictedByCollectionIds { get; set; }
-        public UniqueCollection(SubstrateClientExt client)
+        public OpalCollection(SubstrateClientExt client)
         {
             this.client = client;
         }
@@ -69,7 +67,7 @@ namespace UniqueryPlus.Collections
                 return [];
             }
 
-            var result = await UniqueNftModel.GetNftsInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token).ConfigureAwait(false);
+            var result = await OpalNftModel.GetNftsInCollectionAsync(client, (uint)CollectionId, limit, lastKey, token).ConfigureAwait(false);
 
             return result.Items;
         }
@@ -81,7 +79,7 @@ namespace UniqueryPlus.Collections
                 return [];
             }
 
-            var result = await UniqueNftModel.GetNftsInCollectionOwnedByAsync(client, (uint)CollectionId, owner, limit, lastKey, token).ConfigureAwait(false);
+            var result = await OpalNftModel.GetNftsInCollectionOwnedByAsync(client, (uint)CollectionId, owner, limit, lastKey, token).ConfigureAwait(false);
 
             return result.Items;
         }
@@ -94,7 +92,7 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    class UniqueCollectionModel
+    class OpalCollectionModel
     {
         internal static async Task<ICollectionBase> GetCollectionByCollectionIdAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
         {
@@ -115,7 +113,7 @@ namespace UniqueryPlus.Collections
             var collectionDetails = await GetCollectionCollectionByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
             var collectionMetadatas = await GetCollectionMetadataNftsPalletByCollectionIdKeysAsync(client, collectionIdKeys, token).ConfigureAwait(false);
             var nftCounts = await GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(client, collectionIds, token).ConfigureAwait(false);
-            
+
             return new RecursiveReturn<ICollectionBase>
             {
                 Items = collectionIds.Zip(collectionDetails, (BigInteger collectionId, Collection? details) =>
@@ -133,7 +131,7 @@ namespace UniqueryPlus.Collections
                     return details switch
                     {
                         // Should never be null
-                        null => new UniqueCollection(client)
+                        null => new OpalCollection(client)
                         {
                             CollectionId = collectionId,
                             Owner = "Unknown",
@@ -147,7 +145,7 @@ namespace UniqueryPlus.Collections
                             IsNestableByTokenOwner = false,
                             IsNestableByCollectionOwner = false,
                         },
-                        _ => new UniqueCollection(client)
+                        _ => new OpalCollection(client)
                         {
                             CollectionId = collectionId,
                             Owner = Utils.GetAddressFrom(details.Owner.Encode()),
@@ -188,11 +186,11 @@ namespace UniqueryPlus.Collections
                             RestrictedByCollectionIds = details.Permissions.Nesting.OptionFlag ? (details.Permissions.Nesting.Value.Restricted.OptionFlag ? details.Permissions.Nesting.Value.Restricted.Value.Value.Value.Value.Value.Select(collectionId => (BigInteger)collectionId.Value.Value) : null) : null,
                         },
                     };
-                }).Zip(nftCounts, (UniqueCollection collectionBase, uint nftCount) =>
+                }).Zip(nftCounts, (OpalCollection collectionBase, uint nftCount) =>
                 {
                     collectionBase.NftCount = nftCount;
                     return collectionBase;
-                }).Zip(collectionMetadatas, (UniqueCollection collectionBase, MetadataBase? metadata) =>
+                }).Zip(collectionMetadatas, (OpalCollection collectionBase, MetadataBase? metadata) =>
                 {
                     if (metadata is null || collectionBase.Metadata is null)
                     {
@@ -222,7 +220,7 @@ namespace UniqueryPlus.Collections
             Dictionary<string, string[]> collectionStorageSets = new Dictionary<string, string[]>();
 
             int i = 0;
-            foreach(var storageChangeSet in storageChangeSets.First().Changes)
+            foreach (var storageChangeSet in storageChangeSets.First().Changes)
             {
                 while (collectionStorageSets.ContainsKey(collectionKeysArray[i]))
                 {
@@ -313,7 +311,7 @@ namespace UniqueryPlus.Collections
 
         internal static async Task<int> GetTotalCountOfNftsInCollectionOnChainAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
         {
-            var fullKeys = await UniqueNftModel.GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token).ConfigureAwait(false);
+            var fullKeys = await OpalNftModel.GetNftsInCollectionFullKeysAsync(client, collectionId, 1000, null, token).ConfigureAwait(false);
 
             return fullKeys.Count();
         }
@@ -321,11 +319,11 @@ namespace UniqueryPlus.Collections
         internal static async Task<IEnumerable<uint>> GetTotalCountOfNftsInCollectionByCollectionIdKeysAsync(SubstrateClientExt client, IEnumerable<BigInteger> collectionIds, CancellationToken token)
         {
             List<uint> nftCounts = new List<uint>();
-            var uniqueSubqueryClient = Indexers.GetUniqueSubqueryClient();
+            var opalSubqueryClient = Indexers.GetOpalSubqueryClient();
 
             foreach (BigInteger collectionId in collectionIds)
             {
-                var result = await uniqueSubqueryClient.GetNftsInCollection.ExecuteAsync((double)collectionId, 0, 0).ConfigureAwait(false);
+                var result = await opalSubqueryClient.GetNftsInCollection.ExecuteAsync((double)collectionId, 0, 0).ConfigureAwait(false);
 
                 if (
                     result is null ||

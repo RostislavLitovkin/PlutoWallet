@@ -1,0 +1,1018 @@
+schema {
+  query: Query
+}
+
+type AccountDataResponse {
+  count: Int!
+  data: [account!]
+  timestamp: Float!
+}
+
+input AccountOrderByParams {
+  account_id: GQLOrderByParamsArgs
+  available_balance: GQLOrderByParamsArgs
+  balances: GQLOrderByParamsArgs
+  block_height: GQLOrderByParamsArgs
+  free_balance: GQLOrderByParamsArgs
+  locked_balance: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+}
+
+input AccountWhereParams {
+  _and: [AccountWhereParams!]
+  _or: [AccountWhereParams!]
+  account_id: GQLWhereOpsString
+  account_id_normalized: GQLWhereOpsString
+  balances: GQLWhereOpsString
+  block_height: GQLWhereOpsString
+}
+
+type AllEventsResponseDto {
+  items: [AllEventsResponseItemDto!]!
+}
+
+type AllEventsResponseItemDto {
+  count: Float!
+  method: String!
+  section: String!
+}
+
+input AttributeV1FilterValue {
+  "The 'key' of attribute from 'attributes' object from the attributes query"
+  key: String!
+  "The 'raw_value' of the attribute value from 'attributes[key].values[N]' object from the attributes query"
+  raw_value: String!
+}
+
+type AttributesDataResponse {
+  count: Int!
+  data: [attribute!]
+  timestamp: Float!
+}
+
+input AttributesOrderByParams {
+  collection_id: GQLOrderByParamsArgs
+  token_id: GQLOrderByParamsArgs
+  trait_type: GQLOrderByParamsArgs
+  value: GQLOrderByParamsArgs
+  value_number: GQLOrderByParamsArgs
+  value_string: GQLOrderByParamsArgs
+}
+
+type AttributesV1DataResponse {
+  count: Int!
+  data: [attribute_v1!]
+  timestamp: Float!
+}
+
+input AttributesV1OrderByParams {
+  key: GQLOrderByParamsArgs
+  name: GQLOrderByParamsArgs
+}
+
+input AttributesV1WhereParams {
+  collection_id: GQLWhereOpsIntEq!
+}
+
+input AttributesWhereParams {
+  collection_id: GQLWhereOpsIntEq
+  token_id: GQLWhereOpsIntEq
+}
+
+type BlockDataResponse {
+  count: Int!
+  data: [block!]
+  timestamp: Float!
+}
+
+type BlockNumbersResponseDto {
+  groupByInterval: GroupByIntervalEnum!
+  items: [BlockNumbersResponseItemDto!]!
+  timestampType: TimestampTypeEnum!
+}
+
+type BlockNumbersResponseItemDto {
+  firstBlockNumber: Float!
+  intervalTimestamp: Float!
+  lastBlockNumber: Float!
+}
+
+input BlockOrderByParams {
+  block_hash: GQLOrderByParamsArgs
+  block_number: GQLOrderByParamsArgs
+  extrinsics_root: GQLOrderByParamsArgs
+  parent_hash: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+  total_events: GQLOrderByParamsArgs
+  total_extrinsics: GQLOrderByParamsArgs
+}
+
+input BlockWhereParams {
+  _and: [BlockWhereParams!]
+  _or: [BlockWhereParams!]
+  block_hash: GQLWhereOpsString
+  block_number: GQLWhereOpsInt
+  extrinsics_root: GQLWhereOpsString
+  parent_hash: GQLWhereOpsString
+  total_events: GQLWhereOpsInt
+  total_extrinsics: GQLWhereOpsInt
+}
+
+type CollectionDataResponse {
+  count: Int!
+  data: [CollectionEntity!]
+  timestamp: Float!
+}
+
+type CollectionEntity {
+  actions_count: Int!
+  attributes_schema: JSON
+  burned: Boolean!
+  collection_cover: String
+  collection_id: Int!
+  const_chain_schema: JSON
+  created_at_block_hash: String
+  created_at_block_number: Int
+  customizing: JSONObject
+  date_of_creation: Int
+  default_token_image: JSONObject
+  description: String
+  holders_count: Int!
+  limits_account_ownership: Int
+  limits_sponsore_data_rate: Float
+  limits_sponsore_data_size: Float
+  mint_mode: Boolean!
+  mode: String!
+  name: String!
+  nesting_enabled: Boolean!
+  offchain_schema: String
+  original_schema_version: String
+  owner: String!
+  owner_can_destroy: Boolean
+  owner_can_transfer: Boolean
+  owner_normalized: String!
+  permissions: JSONObject
+  potential_attributes: JSON
+  properties: JSON
+  schema_v2: JSONObject
+  schema_version: String
+  sponsorship: String
+  token_limit: Float!
+  token_prefix: String!
+  token_property_permissions: JSON
+  tokens(attributes_v1_filter: [AttributeV1FilterValue!] distinct_on: TokenEnum limit: Int offset: Int order_by: TokenOrderByParams where: TokenWhereParams): [token!]
+  tokens_count: Int!
+  transfers_count: Int!
+  updated_at_block_hash: String
+  updated_at_block_number: Int
+  variable_on_chain_schema: JSON
+}
+
+enum CollectionEnum {
+  collection_id
+  name
+  owner
+  owner_normalized
+  token_prefix
+}
+
+type CollectionEventDataResponse {
+  count: Int!
+  data: [collection_event!]
+  timestamp: Float!
+}
+
+input CollectionEventOrderByParams {
+  action: GQLOrderByParamsArgs
+  collection_id: GQLOrderByParamsArgs
+  fee: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+}
+
+input CollectionEventWhereParams {
+  _and: [CollectionEventWhereParams!]
+  _or: [CollectionEventWhereParams!]
+  action: GQLWhereOpsString
+  author: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  result: GQLWhereOpsBoolean
+}
+
+input CollectionOrderByParams {
+  actions_count: GQLOrderByParamsArgs
+  collection_cover: GQLOrderByParamsArgs
+  collection_id: GQLOrderByParamsArgs
+  created_at_block_number: GQLOrderByParamsArgs
+  date_of_creation: GQLOrderByParamsArgs
+  description: GQLOrderByParamsArgs
+  holders_count: GQLOrderByParamsArgs
+  limits_account_ownership: GQLOrderByParamsArgs
+  limits_sponsore_data_rate: GQLOrderByParamsArgs
+  limits_sponsore_data_size: GQLOrderByParamsArgs
+  name: GQLOrderByParamsArgs
+  nesting_enabled: GQLOrderByParamsArgs
+  owner: GQLOrderByParamsArgs
+  owner_can_transfer: GQLOrderByParamsArgs
+  owner_normalized: GQLOrderByParamsArgs
+  token_limit: GQLOrderByParamsArgs
+  tokens_count: GQLOrderByParamsArgs
+  transfers_count: GQLOrderByParamsArgs
+  updated_at_block_number: GQLOrderByParamsArgs
+}
+
+input CollectionWhereParams {
+  _and: [CollectionWhereParams!]
+  _or: [CollectionWhereParams!]
+  burned: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  created_at_block_hash: GQLWhereOpsString
+  created_at_block_number: GQLWhereOpsInt
+  description: GQLWhereOpsString
+  mint_mode: GQLWhereOpsString
+  mode: GQLWhereOpsString
+  name: GQLWhereOpsString
+  nesting_enabled: GQLWhereOpsString
+  owner: GQLWhereOpsString
+  owner_normalized: GQLWhereOpsString
+  token_prefix: GQLWhereOpsString
+  tokens: TokenWhereParams
+  tokens_count: GQLWhereOpsInt
+  updated_at_block_hash: GQLWhereOpsString
+  updated_at_block_number: GQLWhereOpsInt
+}
+
+"A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."
+scalar DateTime
+
+type EmvTransactionDataResponse {
+  count: Int!
+  data: [evmTransaction!]
+  timestamp: Float!
+}
+
+type EventDataResponse {
+  count: Int!
+  data: [event!]
+  timestamp: Float!
+}
+
+input EventOrderByParams {
+  amount: GQLOrderByParamsArgs
+  block_index: GQLOrderByParamsArgs
+  block_number: GQLOrderByParamsArgs
+  fee: GQLOrderByParamsArgs
+}
+
+input EventWhereParams {
+  _and: [EventWhereParams!]
+  _or: [EventWhereParams!]
+  amount: GQLWhereOpsString
+  block_index: GQLWhereOpsString
+  block_number: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  fee: GQLWhereOpsString
+  method: GQLWhereOpsString
+  section: GQLWhereOpsString
+  token_id: GQLWhereOpsInt
+}
+
+input EvmTransactionOrderByParams {
+  block_number: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+}
+
+input EvmTransactionWhereParams {
+  _and: [EvmTransactionWhereParams!]
+  _or: [EvmTransactionWhereParams!]
+  block_hash: GQLWhereOpsString
+  block_number: GQLWhereOpsInt
+  from: GQLWhereOpsString
+  to: GQLWhereOpsString
+  transaction_hash: GQLWhereOpsString
+}
+
+type ExtrinsicDataResponse {
+  count: Int!
+  data: [extrinsic!]
+  timestamp: Float!
+}
+
+input ExtrinsicOrderByParams {
+  amount: GQLOrderByParamsArgs
+  block_index: GQLOrderByParamsArgs
+  block_number: GQLOrderByParamsArgs
+  fee: GQLOrderByParamsArgs
+  from_owner: GQLOrderByParamsArgs
+  from_owner_normalized: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+  to_owner: GQLOrderByParamsArgs
+  to_owner_normalized: GQLOrderByParamsArgs
+}
+
+input ExtrinsicWhereParams {
+  _and: [ExtrinsicWhereParams!]
+  _or: [ExtrinsicWhereParams!]
+  amount: GQLWhereOpsInt
+  block_index: GQLWhereOpsString
+  block_number: GQLWhereOpsString
+  fee: GQLWhereOpsInt
+  from_owner: GQLWhereOpsString
+  from_owner_normalized: GQLWhereOpsString
+  hash: GQLWhereOpsString
+  method: GQLWhereOpsString
+  section: GQLWhereOpsString
+  timestamp: GQLWhereOpsString
+  to_owner: GQLWhereOpsString
+  to_owner_normalized: GQLWhereOpsString
+}
+
+enum ExtrinsicsStatsTypeEnum {
+  COINS
+  TOKENS
+}
+
+enum GQLOrderByParamsArgs {
+  asc
+  asc_nulls_first
+  asc_nulls_last
+  desc
+  desc_nulls_first
+  desc_nulls_last
+}
+
+input GQLWhereOpsBoolean {
+  _eq: Boolean
+  _neq: String
+}
+
+input GQLWhereOpsInt {
+  _eq: Float
+  _ilike: Float
+  _in: [Float!]
+  _is_null: Boolean
+  _like: Float
+  _neq: Float
+}
+
+input GQLWhereOpsIntEq {
+  _eq: Float!
+}
+
+input GQLWhereOpsString {
+  _eq: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _neq: String
+}
+
+input GQLWhereTokensType {
+  _eq: TokenTypeEnum
+  _in: [TokenTypeEnum!]
+  _neq: TokenTypeEnum
+}
+
+enum GroupByIntervalEnum {
+  day
+  hour
+  month
+  week
+  year
+}
+
+type GroupedEventsResponseDto {
+  groupByInterval: GroupByIntervalEnum!
+  items: [GroupedEventsResponseItemDto!]!
+  timestampType: TimestampTypeEnum!
+}
+
+type GroupedEventsResponseItemDto {
+  count: Float!
+  intervalTimestamp: Float!
+}
+
+type HolderDataResponse {
+  count: Int!
+  data: [holder!]
+  timestamp: Float!
+}
+
+input HolderOrderByParams {
+  collection_id: GQLOrderByParamsArgs
+  count: GQLOrderByParamsArgs
+  owner: GQLOrderByParamsArgs
+  owner_normalized: GQLOrderByParamsArgs
+}
+
+input HolderWhereParams {
+  _and: [HolderWhereParams!]
+  _or: [HolderWhereParams!]
+  collection_id: GQLWhereOpsInt
+  owner: GQLWhereOpsString
+  owner_normalized: GQLWhereOpsString
+}
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http:\/\/www.ecma-international.org\/publications\/files\/ECMA-ST\/ECMA-404.pdf)."
+scalar JSON
+
+"The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http:\/\/www.ecma-international.org\/publications\/files\/ECMA-ST\/ECMA-404.pdf)."
+scalar JSONObject
+
+input NestingArgs {
+  collection_id: Int!
+  token_id: Int!
+}
+
+type NestingToken {
+  amount: String
+  animation_details: JSONObject
+  animation_url: String
+  attributes: JSON
+  attributes_v1: JSONObject
+  background_color: String
+  bundle_created: Int
+  burned: Boolean!
+  children_count: Int
+  collection_id: Int!
+  created_by: String
+  customizing: JSONObject
+  customizing_overrides: JSONObject
+  date_of_creation: Int
+  description: String
+  external_url: String
+  image: String
+  image_details: JSONObject
+  image_v1: JSONObject
+  is_sold: Boolean!
+  locale: String
+  media: JSONObject
+  name: String
+  nested: Boolean!
+  nestingChildren: [NestingToken!]
+  owner: String!
+  owner_normalized: String!
+  parent_id: String
+  properties: JSON
+  royalties: JSONObject
+  token_id: Int!
+  token_name: String
+  token_prefix: String!
+  total_pieces: String
+  type: TokenTypeEnum
+  youtube_url: String
+}
+
+type Query {
+  accounts(limit: Int offset: Int order_by: AccountOrderByParams where: AccountWhereParams): AccountDataResponse!
+  accountsStatistics(fromDate: DateTime toDate: DateTime): StatisticDataResponse!
+  allEvents: AllEventsResponseDto!
+  allExtrinsics: AllEventsResponseDto!
+  attributes(limit: Int offset: Int order_by: AttributesOrderByParams where: AttributesWhereParams): AttributesDataResponse!
+  attributes_v1(order_by: AttributesV1OrderByParams where: AttributesV1WhereParams!): AttributesV1DataResponse!
+  block(limit: Int offset: Int order_by: BlockOrderByParams where: BlockWhereParams): BlockDataResponse!
+  blockNumbersByInterval(from: Float groupByInterval: GroupByIntervalEnum timestampType: TimestampTypeEnum to: Float): BlockNumbersResponseDto!
+  bundleTree(input: NestingArgs!): NestingToken
+  collection_events(limit: Int offset: Int order_by: CollectionEventOrderByParams where: CollectionEventWhereParams): CollectionEventDataResponse!
+  collections(distinct_on: CollectionEnum limit: Int offset: Int order_by: CollectionOrderByParams where: CollectionWhereParams): CollectionDataResponse!
+  collectionsStatistics(fromDate: DateTime toDate: DateTime): StatisticDataResponse!
+  events(limit: Int offset: Int order_by: EventOrderByParams where: EventWhereParams): EventDataResponse!
+  eventsGroupedByInterval(from: Float groupByInterval: GroupByIntervalEnum methodIn: [String!] methodNotIn: [String!] sectionIn: [String!] sectionNotIn: [String!] timestampType: TimestampTypeEnum to: Float): GroupedEventsResponseDto!
+  evmTransactions(limit: Int offset: Int order_by: EvmTransactionOrderByParams where: EvmTransactionWhereParams): EmvTransactionDataResponse!
+  extrinsics(limit: Int offset: Int order_by: ExtrinsicOrderByParams where: ExtrinsicWhereParams): ExtrinsicDataResponse!
+  extrinsicsGroupedByInterval(from: Float groupByInterval: GroupByIntervalEnum methodIn: [String!] methodNotIn: [String!] sectionIn: [String!] sectionNotIn: [String!] timestampType: TimestampTypeEnum to: Float): GroupedEventsResponseDto!
+  extrinsicsStatistics(fromDate: DateTime toDate: DateTime type: ExtrinsicsStatsTypeEnum): StatisticDataResponse!
+  holders(limit: Int offset: Int order_by: HolderOrderByParams where: HolderWhereParams): HolderDataResponse!
+  statistics(limit: Int offset: Int order_by: StatisticsOrderByParams where: StatisticsWhereParams): StatisticsDataResponse!
+  tokenBundles(attributes_v1_filter: [AttributeV1FilterValue!] distinct_on: TokenEnum limit: Int offset: Int order_by: TokenOrderByParams where: TokenWhereParams): TokenDataResponse!
+  tokenStatistics(fromDate: DateTime toDate: DateTime): StatisticDataResponse!
+  tokenTransactions(limit: Int offset: Int order_by: TransactionsOrderByParams where: TransactionWhereParams): TransactionsDataResponse!
+  token_events(limit: Int offset: Int order_by: TokenEventOrderByParams where: TokenEventWhereParams): TokenEventDataResponse!
+  token_owners(distinct_on: TokenOwnersEnum limit: Int offset: Int order_by: TokenOwnersOrderByParams where: TokenOwnersWhereParams): TokenOwnersDataResponse!
+  tokens(attributes_v1_filter: [AttributeV1FilterValue!] distinct_on: TokenEnum limit: Int offset: Int order_by: TokenOrderByParams where: TokenWhereParams): TokenDataResponse!
+  transfers(limit: Int offset: Int order_by: TransferOrderByParams where: TransferWhereParams): TransferDataResponse!
+}
+
+type StatisticDataEntity {
+  count: Int!
+  date: DateTime
+}
+
+type StatisticDataResponse {
+  data: [StatisticDataEntity!]
+}
+
+type StatisticsDataResponse {
+  count: Int!
+  data: [statistics!]
+  timestamp: Float!
+}
+
+input StatisticsOrderByParams {
+  count: GQLOrderByParamsArgs
+  name: GQLOrderByParamsArgs
+}
+
+input StatisticsWhereParams {
+  _and: [StatisticsWhereParams!]
+  _or: [StatisticsWhereParams!]
+  count: GQLWhereOpsInt
+  name: GQLWhereOpsString
+}
+
+enum TimestampTypeEnum {
+  MILLISECONDS
+  UNIX
+}
+
+type TokenDataResponse {
+  count: Int!
+  data: [TokenEntity!]
+  timestamp: Float!
+}
+
+type TokenEntity {
+  amount: String
+  animation_details: JSONObject
+  animation_url: String
+  attributes: JSON
+  attributes_v1: JSONObject
+  background_color: String
+  bundle_created: Int
+  burned: Boolean!
+  children_count: Int
+  collection: collection
+  collection_cover: String
+  collection_description: String
+  collection_id: Int!
+  collection_name: String!
+  collection_owner: String
+  collection_owner_normalized: String
+  created_at_block_hash: String
+  created_at_block_number: Int
+  created_by: String
+  customizing: JSONObject
+  customizing_overrides: JSONObject
+  date_of_creation: Int
+  description: String
+  external_url: String
+  image: String
+  image_details: JSONObject
+  image_v1: JSONObject
+  is_sold: Boolean!
+  locale: String
+  media: JSONObject
+  name: String
+  nested: Boolean!
+  owner: String!
+  owner_normalized: String!
+  parent_id: String
+  properties: JSON
+  royalties: JSONObject
+  schema_v2: JSONObject
+  token_id: Int!
+  token_name: String
+  token_prefix: String!
+  tokensOwners: tokens_owners
+  tokens_amount: String
+  tokens_children: [JSONObject!]
+  tokens_owner: String
+  tokens_parent: String
+  total_pieces: String
+  transfers_count: Int
+  type: TokenTypeEnum
+  updated_at_block_hash: String
+  updated_at_block_number: Int
+  youtube_url: String
+}
+
+enum TokenEnum {
+  collection_id
+  collection_name
+  owner
+  owner_normalized
+  token_id
+  token_name
+  token_prefix
+  tokens_owner
+}
+
+type TokenEventDataResponse {
+  count: Int!
+  data: [token_event!]
+  timestamp: Float!
+}
+
+input TokenEventOrderByParams {
+  action: GQLOrderByParamsArgs
+  collection_id: GQLOrderByParamsArgs
+  fee: GQLOrderByParamsArgs
+  result: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+  token_id: GQLOrderByParamsArgs
+  token_name: GQLOrderByParamsArgs
+  type: GQLOrderByParamsArgs
+}
+
+input TokenEventWhereParams {
+  _and: [TokenEventWhereParams!]
+  _or: [TokenEventWhereParams!]
+  action: GQLWhereOpsString
+  author: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  data: GQLWhereOpsString
+  result: GQLWhereOpsBoolean
+  token_id: GQLWhereOpsInt
+  type: GQLWhereOpsString
+}
+
+input TokenOrderByParams {
+  amount: GQLOrderByParamsArgs
+  bundle_created: GQLOrderByParamsArgs
+  children_count: GQLOrderByParamsArgs
+  collection_id: GQLOrderByParamsArgs
+  collection_name: GQLOrderByParamsArgs
+  created_at_block_number: GQLOrderByParamsArgs
+  date_of_creation: GQLOrderByParamsArgs
+  is_sold: GQLOrderByParamsArgs
+  owner: GQLOrderByParamsArgs
+  owner_normalized: GQLOrderByParamsArgs
+  parent_id: GQLOrderByParamsArgs
+  token_id: GQLOrderByParamsArgs
+  token_name: GQLOrderByParamsArgs
+  tokens_amount: GQLOrderByParamsArgs
+  tokens_children: GQLOrderByParamsArgs
+  tokens_owner: GQLOrderByParamsArgs
+  tokens_parent: GQLOrderByParamsArgs
+  total_pieces: GQLOrderByParamsArgs
+  transfers_count: GQLOrderByParamsArgs
+  updated_at_block_number: GQLOrderByParamsArgs
+}
+
+type TokenOwnersDataResponse {
+  count: Int!
+  data: [tokens_owners!]
+  timestamp: Float!
+}
+
+enum TokenOwnersEnum {
+  amount
+  collection_id
+  date_created
+  owner
+  owner_normalized
+  token_id
+}
+
+input TokenOwnersOrderByParams {
+  amount: GQLOrderByParamsArgs
+  collection_id: GQLOrderByParamsArgs
+  date_of_creation: GQLOrderByParamsArgs
+  owner: GQLOrderByParamsArgs
+  owner_normalized: GQLOrderByParamsArgs
+  token_id: GQLOrderByParamsArgs
+}
+
+input TokenOwnersWhereParams {
+  _and: [TokenOwnersWhereParams!]
+  _or: [TokenOwnersWhereParams!]
+  amount: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  owner: GQLWhereOpsString
+  owner_normalized: GQLWhereOpsString
+  token_id: GQLWhereOpsInt
+}
+
+enum TokenTypeEnum {
+  FRACTIONAL
+  NFT
+  RFT
+}
+
+input TokenWhereParams {
+  _and: [TokenWhereParams!]
+  _or: [TokenWhereParams!]
+  burned: GQLWhereOpsString
+  collection_id: GQLWhereOpsInt
+  collection_name: GQLWhereOpsString
+  collection_owner: GQLWhereOpsString
+  collection_owner_normalized: GQLWhereOpsString
+  created_at_block_hash: GQLWhereOpsString
+  created_at_block_number: GQLWhereOpsInt
+  is_sold: GQLWhereOpsString
+  nested: GQLWhereOpsString
+  owner: GQLWhereOpsString
+  owner_normalized: GQLWhereOpsString
+  parent_id: GQLWhereOpsString
+  token_id: GQLWhereOpsInt
+  token_name: GQLWhereOpsString
+  token_prefix: GQLWhereOpsString
+  tokens_amount: GQLWhereOpsString
+  tokens_owner: GQLWhereOpsString
+  tokens_parent: GQLWhereOpsString
+  total_pieces: GQLWhereOpsString
+  type: GQLWhereTokensType
+  updated_at_block_hash: GQLWhereOpsString
+  updated_at_block_number: GQLWhereOpsInt
+}
+
+input TransactionWhereParams {
+  _and: [TransactionWhereParams!]
+  _or: [TransactionWhereParams!]
+  block_index: GQLWhereOpsString
+  owner: GQLWhereOpsString
+  owner_normalized: GQLWhereOpsString
+  to_owner: GQLWhereOpsString
+  to_owner_normalized: GQLWhereOpsString
+}
+
+type TransactionsDataResponse {
+  count: Int!
+  data: [transaction!]
+  timestamp: Float!
+}
+
+input TransactionsOrderByParams {
+  block_index: GQLOrderByParamsArgs
+  owner: GQLOrderByParamsArgs
+  owner_normalized: GQLOrderByParamsArgs
+  timestamp: GQLOrderByParamsArgs
+  to_owner: GQLOrderByParamsArgs
+  to_owner_normalized: GQLOrderByParamsArgs
+}
+
+type TransferDataResponse {
+  count: Int!
+  data: [transfer!]
+  timestamp: Float!
+}
+
+input TransferOrderByParams {
+  block_index: GQLOrderByParamsArgs
+  method: GQLOrderByParamsArgs
+  section: GQLOrderByParamsArgs
+}
+
+input TransferWhereParams {
+  _and: [TransferWhereParams!]
+  _or: [TransferWhereParams!]
+  block_index: GQLWhereOpsString
+  method: GQLWhereOpsString
+  section: GQLWhereOpsString
+}
+
+type account {
+  account_id: String!
+  account_id_normalized: String!
+  available_balance: String!
+  block_height: Int!
+  free_balance: String!
+  locked_balance: String!
+  timestamp: Int!
+}
+
+type attribute {
+  collection_id: Int!
+  display_type: String
+  token_id: Int!
+  trait_type: String!
+  value_number: Float
+  value_string: String
+}
+
+type attribute_v1 {
+  key: String!
+  name: JSONObject!
+  values: [attribute_v1_value!]!
+}
+
+type attribute_v1_value {
+  raw_value: String
+  tokens_count: Int
+  value: JSONObject
+}
+
+type block {
+  block_hash: String
+  block_number: Int
+  extrinsics_root: String
+  new_accounts: Int
+  num_transfers: Int
+  parent_hash: String
+  spec_name: String
+  spec_version: Int
+  state_root: String
+  timestamp: Int
+  total_events: Int
+  total_extrinsics: Int
+}
+
+type collection {
+  actions_count: Int!
+  attributes_schema: JSON
+  burned: Boolean!
+  collection_cover: String
+  collection_id: Int!
+  const_chain_schema: JSON
+  created_at_block_hash: String
+  created_at_block_number: Int
+  customizing: JSONObject
+  date_of_creation: Int
+  default_token_image: JSONObject
+  description: String
+  holders_count: Int!
+  limits_account_ownership: Int
+  limits_sponsore_data_rate: Float
+  limits_sponsore_data_size: Float
+  mint_mode: Boolean!
+  mode: String!
+  name: String!
+  nesting_enabled: Boolean!
+  offchain_schema: String
+  original_schema_version: String
+  owner: String!
+  owner_can_destroy: Boolean
+  owner_can_transfer: Boolean
+  owner_normalized: String!
+  permissions: JSONObject
+  potential_attributes: JSON
+  properties: JSON
+  schema_v2: JSONObject
+  schema_version: String
+  sponsorship: String
+  token_limit: Float!
+  token_prefix: String!
+  token_property_permissions: JSON
+  tokens_count: Int!
+  transfers_count: Int!
+  updated_at_block_hash: String
+  updated_at_block_number: Int
+  variable_on_chain_schema: JSON
+}
+
+type collection_event {
+  action: String!
+  author: String
+  collection_id: Int!
+  fee: Float
+  result: Boolean!
+  timestamp: Float!
+}
+
+type event {
+  amount: Float
+  block_index: String
+  block_number: String!
+  collection_id: Int
+  fee: Float
+  method: String!
+  section: String!
+  token_id: Int
+}
+
+type evmTransaction {
+  block_hash: String!
+  block_number: Int!
+  byzantium: Boolean!
+  confirmations: Int!
+  contract_address: String
+  cumulative_gas_used: Float!
+  effective_gas_price: Float!
+  from: String!
+  gas_used: Float!
+  logs_bloom: String!
+  status: Int!
+  timestamp: Int
+  to: String!
+  transaction_hash: String!
+  transaction_index: Int!
+  type: Int!
+}
+
+type extrinsic {
+  amount: Float
+  block_index: String!
+  block_number: String!
+  fee: Float
+  from_owner: String
+  from_owner_normalized: String
+  hash: String!
+  method: String!
+  section: String!
+  success: Boolean!
+  timestamp: Int!
+  to_owner: String
+  to_owner_normalized: String
+}
+
+type holder {
+  collection_id: Int!
+  count: Int!
+  owner: String!
+  owner_normalized: String!
+}
+
+type statistics {
+  count: Float
+  name: String
+}
+
+type token {
+  amount: String
+  animation_details: JSONObject
+  animation_url: String
+  attributes: JSON
+  attributes_v1: JSONObject
+  background_color: String
+  bundle_created: Int
+  burned: Boolean!
+  children_count: Int
+  collection_cover: String
+  collection_description: String
+  collection_id: Int!
+  collection_name: String!
+  collection_owner: String
+  collection_owner_normalized: String
+  created_at_block_hash: String
+  created_at_block_number: Int
+  created_by: String
+  customizing: JSONObject
+  customizing_overrides: JSONObject
+  date_of_creation: Int
+  description: String
+  external_url: String
+  image: String
+  image_details: JSONObject
+  image_v1: JSONObject
+  is_sold: Boolean!
+  locale: String
+  media: JSONObject
+  name: String
+  nested: Boolean!
+  owner: String!
+  owner_normalized: String!
+  parent_id: String
+  properties: JSON
+  royalties: JSONObject
+  schema_v2: JSONObject
+  token_id: Int!
+  token_name: String
+  token_prefix: String!
+  tokens_amount: String
+  tokens_children: [JSONObject!]
+  tokens_owner: String
+  tokens_parent: String
+  total_pieces: String
+  transfers_count: Int
+  type: TokenTypeEnum
+  updated_at_block_hash: String
+  updated_at_block_number: Int
+  youtube_url: String
+}
+
+type token_event {
+  action: String!
+  author: String
+  collection_id: Int!
+  data: JSON
+  fee: Float
+  result: Boolean
+  timestamp: Float!
+  token_id: Int
+  token_name: String
+  tokens: JSON
+  type: TokenTypeEnum
+  values: JSONObject
+}
+
+type tokens_owners {
+  amount: String!
+  collection_id: Int!
+  date_created: String
+  id: String!
+  owner: String!
+  owner_normalized: String!
+  token_id: Int!
+}
+
+type transaction {
+  block_index: String!
+  collection_id: Int!
+  collection_name: String
+  image: String
+  owner: String!
+  owner_normalized: String!
+  timestamp: Int
+  to_owner: String!
+  to_owner_normalized: String!
+  token_id: Int!
+  token_name: String
+  token_prefix: String
+}
+
+type transfer {
+  block_index: String!
+  data: String!
+  method: String!
+  section: String!
+}

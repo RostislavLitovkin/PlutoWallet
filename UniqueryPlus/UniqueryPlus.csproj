@@ -28,5 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Generated\Mythos\Mythos.NetApi\Mythos.NetApi.csproj" />
+    <ProjectReference Include="..\Generated\Opal\Opal.NetApi\Opal.NetApi.csproj" />
+    <ProjectReference Include="..\OpalSubquery\OpalSubquery.csproj" />
   </ItemGroup>
 </Project>

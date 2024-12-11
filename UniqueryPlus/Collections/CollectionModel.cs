@@ -13,6 +13,8 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetCollectionsNftsPalletOwnedByAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetCollectionsNftsPalletOwnedByAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
+                // NftTypeEnum.Unique => UniqueCollectionModel.GetCollections
+                // NftTypeEnum.Opal
                 NftTypeEnum.Mythos => MythosCollectionModel.GetCollectionsOwnedByAsync((Mythos.NetApi.Generated.SubstrateClientExt)client, owner, limit, lastKey, token),
                 _ => throw new NotImplementedException()
             };
@@ -38,6 +40,7 @@ namespace UniqueryPlus.Collections
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetCollectionNftsPalletByCollectionIdAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
                 NftTypeEnum.Unique => UniqueCollectionModel.GetCollectionByCollectionIdAsync((Unique.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
+                NftTypeEnum.Opal => OpalCollectionModel.GetCollectionByCollectionIdAsync((Opal.NetApi.Generated.SubstrateClientExt)client, (uint)collectionId, token),
                 NftTypeEnum.Mythos => MythosCollectionModel.GetCollectionByCollectionIdAsync((Mythos.NetApi.Generated.SubstrateClientExt)client, collectionId, token),
                 _ => throw new NotImplementedException()
             };
@@ -49,6 +52,8 @@ namespace UniqueryPlus.Collections
             {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.CreateCollectionNftsPallet(adminAddress, config),
+                // NftTypeEnum.Unique
+                // NftTypeEnum.Opal
                 NftTypeEnum.Mythos => MythosCollectionModel.CreateCollection(adminAddress, config),
                 _ => throw new NotImplementedException(),
             };
@@ -59,6 +64,7 @@ namespace UniqueryPlus.Collections
             return type switch {
                 NftTypeEnum.PolkadotAssetHub_NftsPallet => PolkadotAssetHubCollectionModel.GetTotalCountOfCollectionsAsync((PolkadotAssetHub.NetApi.Generated.SubstrateClientExt)client, token),
                 NftTypeEnum.KusamaAssetHub_NftsPallet => KusamaAssetHubCollectionModel.GetNumberOfCollectionsAsync((KusamaAssetHub.NetApi.Generated.SubstrateClientExt)client, token),
+                // Needs to be indexed for other chains
                 _ => throw new NotImplementedException(),
             };
         }

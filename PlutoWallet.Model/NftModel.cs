@@ -8,8 +8,6 @@ using PlutoWallet.Types;
 using UniqueryPlus.Metadata;
 
 using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
-using SQLite;
-using System.Text.Json;
 
 namespace PlutoWallet.Model
 {
@@ -132,6 +130,7 @@ namespace PlutoWallet.Model
             NftTypeEnum.PolkadotAssetHub_NftsPallet => EndpointEnum.PolkadotAssetHub,
             NftTypeEnum.KusamaAssetHub_NftsPallet => EndpointEnum.KusamaAssetHub,
             NftTypeEnum.Unique => EndpointEnum.Unique,
+            NftTypeEnum.Opal => EndpointEnum.Opal,
             NftTypeEnum.Mythos => EndpointEnum.Mythos,
             _ => throw new NotImplementedException(),
         };

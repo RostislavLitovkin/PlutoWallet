@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlus.Stick", "Stick
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mythos.NetApi", "Generated\Mythos\Mythos.NetApi\Mythos.NetApi.csproj", "{2323D31D-5F02-4FDC-91AB-16F225A9D613}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UniqueryPlus.UniqueSubquery", "..\..\source\repos\PlutoWallet\UniqueryPlus.UniqueSubquery\UniqueryPlus.UniqueSubquery.csproj", "{09F0CD13-86D8-437F-993E-123E9E9EAF17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpalSubquery", "OpalSubquery\OpalSubquery.csproj", "{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +125,14 @@ Global
 		{2323D31D-5F02-4FDC-91AB-16F225A9D613}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2323D31D-5F02-4FDC-91AB-16F225A9D613}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2323D31D-5F02-4FDC-91AB-16F225A9D613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F0CD13-86D8-437F-993E-123E9E9EAF17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F0CD13-86D8-437F-993E-123E9E9EAF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F0CD13-86D8-437F-993E-123E9E9EAF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F0CD13-86D8-437F-993E-123E9E9EAF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -139,6 +151,8 @@ Global
 		{3A1395DD-A8F5-4976-B958-085451DC3D4A} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{9B402EF1-6509-46EC-81C1-044815103561} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 		{2323D31D-5F02-4FDC-91AB-16F225A9D613} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
+		{09F0CD13-86D8-437F-993E-123E9E9EAF17} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
+		{4E1696A8-8DB5-4B5D-8D1A-0E00CD3CB4E9} = {DE803AF8-673E-41FD-8FC0-F81DEEEBE554}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
