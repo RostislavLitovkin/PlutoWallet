@@ -13,10 +13,14 @@ using Opal.NetApi.Generated.Model.bounded_collections.bounded_vec;
 using Newtonsoft.Json;
 using System.Collections.Immutable;
 using UniqueryPlus.Metadata;
+using UniqueryPlus.EVM;
+using Nethereum.Contracts;
+using Nethereum.Web3;
+using Microsoft.VisualStudio.Threading;
 
 namespace UniqueryPlus.Collections
 {
-    public record OpalCollectionFull : OpalCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable
+    public record OpalCollectionFull : OpalCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable, ICollectionEVMClaimable
     {
         private SubstrateClientExt client;
         public required BigInteger HighestSale { get; set; }
@@ -38,6 +42,25 @@ namespace UniqueryPlus.Collections
 
             return UniqueCalls.ChangeCollectionOwner(uniqueCollectionId, accountId);
         }
+        public async Task<EventConfig?> GetEventInfoAsync(CancellationToken token)
+        {
+            var web3 = new Web3(Constants.OPAL_EVM_RPC);
+            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.OPAL_EVENT_MANAGER_CONTRACT_ADDRESS);
+
+            var getEventConfigFunction = new GetEventConfigFunction();
+            getEventConfigFunction.CollectionAddress = EVM.Helpers.GetCollectionAddress((uint)CollectionId);
+            var getEventConfigOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetEventConfigFunction, GetEventConfigOutputDTO>(getEventConfigFunction).WithCancellation(token).ConfigureAwait(false);
+
+            return getEventConfigOutputDTO?.ReturnValue1;
+        }
+
+        public Method Claim(string sender) => EVM.Helpers.GetOpalEVMCallMethod(
+            sender,
+            UniqueContracts.OPAL_EVENT_MANAGER_CONTRACT_ADDRESS,
+            OpalCollectionModel.GetCreateTokenFunctionEncoded(EVM.Helpers.GetCollectionAddress((uint)CollectionId), sender),
+            0
+        );
+
     }
 
     public record OpalCollection : ICollectionBase, ICollectionMintConfig, ICollectionNestable
@@ -92,7 +115,7 @@ namespace UniqueryPlus.Collections
         }
     }
 
-    class OpalCollectionModel
+    public class OpalCollectionModel
     {
         internal static async Task<ICollectionBase> GetCollectionByCollectionIdAsync(SubstrateClientExt client, uint collectionId, CancellationToken token)
         {
@@ -340,6 +363,15 @@ namespace UniqueryPlus.Collections
             }
 
             return nftCounts;
+        }
+
+        internal static byte[] GetCreateTokenFunctionEncoded(string collectionAddress, string receiverAddress)
+        {
+            var createTokenFunction = new CreateTokenFunction();
+            createTokenFunction.CollectionAddress = collectionAddress;
+            createTokenFunction.Owner = EVM.Helpers.ToCrossAddress(receiverAddress);
+
+            return createTokenFunction.GetCallData();
         }
     }
 }

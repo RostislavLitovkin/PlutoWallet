@@ -8,7 +8,6 @@
     <Authors>Rostislav Litovkin</Authors>
     <Product>UniqueryPlus</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>

@@ -566,9 +566,6 @@ namespace UniqueryPlus.Nfts
 
         public static byte[] GetBuyEVMFunctionEncoded(uint collectionId, uint id, string receiverAddress)
         {
-            var web3 = new Web3(Constants.UNIQUE_EVM_RPC);
-            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS);
-
             var buyFunction = new BuyFunction();
             buyFunction.CollectionId = collectionId;
             buyFunction.TokenId = id;
@@ -581,9 +578,6 @@ namespace UniqueryPlus.Nfts
 
         public static byte[] GetSellEVMFunctionEncoded(uint collectionId, uint id, BigInteger price, string sellerAddress)
         {
-            var web3 = new Web3(Constants.UNIQUE_EVM_RPC);
-            var contractHandler = web3.Eth.GetContractHandler(UniqueContracts.UNIQUE_SELL_CONTRACT_ADDRESS);
-
             var putFunction = new PutFunction();
             putFunction.CollectionId = collectionId;
             putFunction.TokenId = id;

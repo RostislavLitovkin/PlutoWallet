@@ -11,5 +11,6 @@
         public const string DEFAULT_IPFS_ENDPOINT = "https://ipfs.io/ipfs/";
 
         public const string UNIQUE_EVM_RPC = "https://rpc.unique.network";
+        public const string OPAL_EVM_RPC = "https://rpc-opal.unique.network/";
     }
 }
