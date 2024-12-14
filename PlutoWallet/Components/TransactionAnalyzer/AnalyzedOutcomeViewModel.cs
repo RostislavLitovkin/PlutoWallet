@@ -26,7 +26,11 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
             var walletAddress = Model.KeysModel.GetSubstrateKey();
 
-            Console.WriteLine("Total of " + assetChanges[walletAddress].Values);
+            if (!assetChanges.ContainsKey(walletAddress))
+            {
+                return;
+            }
+
             foreach (Asset a in assetChanges[walletAddress].Values)
             {
                 Console.WriteLine(a.Symbol);
@@ -65,6 +69,11 @@ namespace PlutoWallet.Components.TransactionAnalyzer
             var tempNfts = new ObservableCollection<NftAssetWrapperExpanded>();
 
             var walletAddress = Model.KeysModel.GetSubstrateKey();
+
+            if (!nftChanges.ContainsKey(walletAddress))
+            {
+                return;
+            }
 
             foreach (var nft in nftChanges[walletAddress].Values)
             {
