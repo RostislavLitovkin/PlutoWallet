@@ -2,7 +2,6 @@
 using Substrate.NetApi.Model.Types.Primitive;
 using Substrate.NetApi;
 using System.Numerics;
-using UniqueryPlus.External;
 using UniqueryPlus.Nfts;
 using Opal.NetApi.Generated;
 using Opal.NetApi.Generated.Storage;
@@ -20,13 +19,9 @@ using Microsoft.VisualStudio.Threading;
 
 namespace UniqueryPlus.Collections
 {
-    public record OpalCollectionFull : OpalCollection, ICollectionStats, ICollectionCreatedAt, ICollectionTransferable, ICollectionEVMClaimable
+    public record OpalCollectionFull : OpalCollection, ICollectionTransferable, ICollectionEVMClaimable
     {
         private SubstrateClientExt client;
-        public required BigInteger HighestSale { get; set; }
-        public required BigInteger FloorPrice { get; set; }
-        public required BigInteger Volume { get; set; }
-        public required DateTimeOffset CreatedAt { get; set; }
         public OpalCollectionFull(SubstrateClientExt client) : base(client)
         {
             this.client = client;
@@ -51,7 +46,18 @@ namespace UniqueryPlus.Collections
             getEventConfigFunction.CollectionAddress = EVM.Helpers.GetCollectionAddress((uint)CollectionId);
             var getEventConfigOutputDTO = await contractHandler.QueryDeserializingToObjectAsync<GetEventConfigFunction, GetEventConfigOutputDTO>(getEventConfigFunction).WithCancellation(token).ConfigureAwait(false);
 
-            return getEventConfigOutputDTO?.ReturnValue1;
+            if (getEventConfigOutputDTO is null)
+            {
+                return null;
+            }
+
+            var returnValue = getEventConfigOutputDTO.ReturnValue1;
+            if ((returnValue.Owner.Eth == "0x0000000000000000000000000000000000000000" && returnValue.Owner.Sub == 0) && returnValue.EndTimestamp == 0)
+            {
+                return null;
+            }
+
+            return returnValue;
         }
 
         public Method Claim(string sender) => EVM.Helpers.GetOpalEVMCallMethod(
@@ -111,7 +117,21 @@ namespace UniqueryPlus.Collections
         public async Task<ICollectionBase> GetFullAsync(CancellationToken token)
 #pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
-            return this;
+            return new OpalCollectionFull(client)
+            {
+                CollectionId = CollectionId,
+                Owner = Owner,
+                NftCount = NftCount,
+                Metadata = Metadata,
+                MintType = MintType,
+                NftMaxSuply = NftMaxSuply,
+                MintStartBlock = MintStartBlock,
+                MintEndBlock = MintEndBlock,
+                MintPrice = MintPrice,
+                IsNestableByTokenOwner = IsNestableByTokenOwner,
+                IsNestableByCollectionOwner = IsNestableByCollectionOwner,
+                RestrictedByCollectionIds = RestrictedByCollectionIds
+            };
         }
     }
 

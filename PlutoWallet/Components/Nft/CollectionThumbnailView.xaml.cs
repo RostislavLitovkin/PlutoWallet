@@ -1,3 +1,4 @@
+using Nethereum.Util;
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
@@ -144,13 +145,13 @@ public partial class CollectionThumbnailView : ContentView
             viewModel.Favourite = this.Favourite;
             viewModel.OwnerAddress = this.CollectionBase.Owner;
 
-            UpdateViewModel(viewModel, this.CollectionBase);
+            await UpdateViewModelAsync(viewModel, this.CollectionBase, token);
 
             await Navigation.PushAsync(new CollectionDetailPage(viewModel));
 
             var fullCollection = await this.CollectionBase.GetFullAsync(token);
-           
-            UpdateViewModel(viewModel, fullCollection);
+
+            await UpdateViewModelAsync(viewModel, fullCollection, token);
 
             viewModel.Nfts = new ObservableCollection<NftWrapper>((await fullCollection.GetNftsAsync(25, null, token)).Select(Model.NftModel.ToNftWrapper));
         }
@@ -159,7 +160,7 @@ public partial class CollectionThumbnailView : ContentView
             Console.WriteLine(ex);
         }
     }
-    private void UpdateViewModel(CollectionDetailViewModel viewModel, ICollectionBase collection)
+    public static async Task UpdateViewModelAsync(CollectionDetailViewModel viewModel, ICollectionBase collection, CancellationToken token)
     {
         if (collection is ICollectionStats)
         {
@@ -175,5 +176,26 @@ public partial class CollectionThumbnailView : ContentView
         viewModel.ModifyButtonState = ButtonStateEnum.Disabled; // Maybe later
 
         viewModel.CollectionBase = collection;
+
+        if (collection is ICollectionEVMClaimable)
+        {
+            var eventInfo = await ((ICollectionEVMClaimable)collection).GetEventInfoAsync(token).ConfigureAwait(false);
+
+            if (eventInfo is not null)
+            {
+                viewModel.EventStartTimestamp = (long)eventInfo.StartTimestamp;
+                viewModel.EventEndTimestamp = (long)eventInfo.EndTimestamp;
+
+                var timestampNow = DateTime.Now.ToUnixTimestamp();
+
+                var canBeClaimed = (eventInfo.StartTimestamp <= timestampNow && timestampNow < eventInfo.EndTimestamp);
+                Console.WriteLine("Can be claimed" + canBeClaimed);
+                viewModel.ClaimButtonState = canBeClaimed ? ButtonStateEnum.Enabled : ButtonStateEnum.Disabled;
+            }
+            else
+            {
+                Console.WriteLine("EVM event info was null");
+            }
+        }
     }
 }

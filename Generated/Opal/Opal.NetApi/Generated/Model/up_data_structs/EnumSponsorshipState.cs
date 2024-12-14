@@ -49,8 +49,8 @@ namespace Opal.NetApi.Generated.Model.up_data_structs
         public EnumSponsorshipState()
         {
 				AddTypeDecoder<BaseVoid>(SponsorshipState.Disabled);
-				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Unconfirmed);
-				AddTypeDecoder<Opal.NetApi.Generated.Model.pallet_evm.account.EnumBasicCrossAccountIdRepr>(SponsorshipState.Confirmed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(SponsorshipState.Unconfirmed);
+				AddTypeDecoder<Opal.NetApi.Generated.Model.sp_core.crypto.AccountId32>(SponsorshipState.Confirmed);
         }
     }
 }

@@ -9,6 +9,7 @@ public partial class ElevatedButton : Button
         {
             var control = (ElevatedButton)bindable;
 
+            control.IsVisible = (ButtonStateEnum)newValue != ButtonStateEnum.Invisible;
             switch ((ButtonStateEnum)newValue)
             {
                 case ButtonStateEnum.Enabled:
@@ -33,9 +34,6 @@ public partial class ElevatedButton : Button
                     control.IsEnabled = true;
                     control.BackgroundColor = Colors.Red;
                     control.TextColor = Colors.White;
-                    break;
-                case ButtonStateEnum.Invisible:
-                    control.IsVisible = false;
                     break;
             }
         },

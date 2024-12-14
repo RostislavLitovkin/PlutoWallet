@@ -4,9 +4,6 @@ using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Types.Base;
 using Substrate.NetApi.Model.Types.Primitive;
 using System.Numerics;
-using Unique.NetApi.Generated.Model.primitive_types;
-using Unique.NetApi.Generated.Storage;
-using Unique.NetApi.Generated.Types.Base;
 using U256 = Substrate.NetApi.Model.Types.Primitive.U256;
 
 namespace UniqueryPlus.EVM
@@ -40,20 +37,19 @@ namespace UniqueryPlus.EVM
         public static Method GetUniqueEVMCallMethod(string substrateAddress, string contractAddress, byte[] calldata, BigInteger? amountToSend)
         {
             int p = 0;
-            var source = new H160();
+            var source = new Unique.NetApi.Generated.Model.primitive_types.H160();
             source.Decode(Utils.GetPublicKeyFrom(substrateAddress), ref p);
 
             p = 0;
-            var target = new H160();
+            var target = new Unique.NetApi.Generated.Model.primitive_types.H160();
             target.Decode(Utils.HexToByteArray(contractAddress), ref p);
 
             p = 0;
-            BaseVec<U8> input = new BaseVec<U8>();
-            input.Decode(calldata, ref p);
+            BaseVec<U8> input = new BaseVec<U8>(calldata.Select(v => new U8(v)).ToArray());
 
             p = 0;
             var value = new Unique.NetApi.Generated.Model.primitive_types.U256();
-            var valueArray = new Arr4U64();
+            var valueArray = new Unique.NetApi.Generated.Types.Base.Arr4U64();
             valueArray.Decode(new U256(amountToSend ?? 0).Encode(), ref p);
             value.Value = valueArray;
 
@@ -69,13 +65,14 @@ namespace UniqueryPlus.EVM
 
             var nonce = new BaseOpt<Unique.NetApi.Generated.Model.primitive_types.U256>();
 
-            var accessList = new Substrate.NetApi.Model.Types.Base.BaseVec<BaseTuple<H160, BaseVec<H256>>>();
+            var accessList = new Substrate.NetApi.Model.Types.Base.BaseVec<BaseTuple<Unique.NetApi.Generated.Model.primitive_types.H160, BaseVec<Unique.NetApi.Generated.Model.primitive_types.H256>>>([]);
 
-            return EVMCalls.Call(source, target, input, value, gasLimit, maxFeePerGas, maxFeePerGas, nonce, accessList);
+            return Unique.NetApi.Generated.Storage.EVMCalls.Call(source, target, input, value, gasLimit, maxFeePerGas, maxFeePerGas, nonce, accessList);
         }
 
         public static Method GetOpalEVMCallMethod(string substrateAddress, string contractAddress, byte[] calldata, BigInteger? amountToSend)
         {
+            Console.WriteLine("Call data: " + Utils.Bytes2HexString(calldata));
             int p = 0;
             var source = new Opal.NetApi.Generated.Model.primitive_types.H160();
             source.Decode(Utils.GetPublicKeyFrom(substrateAddress), ref p);
@@ -84,9 +81,7 @@ namespace UniqueryPlus.EVM
             var target = new Opal.NetApi.Generated.Model.primitive_types.H160();
             target.Decode(Utils.HexToByteArray(contractAddress), ref p);
 
-            p = 0;
-            BaseVec<U8> input = new BaseVec<U8>();
-            input.Decode(calldata, ref p);
+            BaseVec<U8> input = new BaseVec<U8>(calldata.Select(v => new U8(v)).ToArray());
 
             p = 0;
             var value = new Opal.NetApi.Generated.Model.primitive_types.U256();
@@ -106,7 +101,7 @@ namespace UniqueryPlus.EVM
 
             var nonce = new BaseOpt<Opal.NetApi.Generated.Model.primitive_types.U256>();
 
-            var accessList = new Substrate.NetApi.Model.Types.Base.BaseVec<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, BaseVec<Opal.NetApi.Generated.Model.primitive_types.H256>>>();
+            var accessList = new BaseVec<BaseTuple<Opal.NetApi.Generated.Model.primitive_types.H160, BaseVec<Opal.NetApi.Generated.Model.primitive_types.H256>>>([]);
 
             return Opal.NetApi.Generated.Storage.EVMCalls.Call(source, target, input, value, gasLimit, maxFeePerGas, maxFeePerGas, nonce, accessList);
         }

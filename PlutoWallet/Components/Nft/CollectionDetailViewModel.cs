@@ -2,13 +2,16 @@
 using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.AddressView;
 using PlutoWallet.Components.Buttons;
+using PlutoWallet.Components.TransactionAnalyzer;
 using PlutoWallet.Components.WebView;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
+using Substrate.NetApi.Model.Extrinsics;
 using System.Collections.ObjectModel;
 using System.Numerics;
 using UniqueryPlus.Collections;
 using UniqueryPlus.Metadata;
+using UniqueryPlus.Nfts;
 
 namespace PlutoWallet.Components.Nft
 {
@@ -115,6 +118,45 @@ namespace PlutoWallet.Components.Nft
         [NotifyPropertyChangedFor(nameof(IsModifiable))]
         private ButtonStateEnum modifyButtonState = ButtonStateEnum.Disabled;
         public bool IsModifiable => ModifyButtonState == ButtonStateEnum.Enabled;
+
+        [ObservableProperty]
+        private long eventStartTimestamp;
+
+        [ObservableProperty]
+        private long eventEndTimestamp;
+
+        [ObservableProperty]
+        [NotifyPropertyChangedFor(nameof(IsClaimable))]
+        private ButtonStateEnum claimButtonState = ButtonStateEnum.Invisible;
+        public bool IsClaimable => ClaimButtonState != ButtonStateEnum.Invisible;
+
+        [RelayCommand]
+        public async Task ClaimAsync()
+        {
+            var clientExt = await Model.AjunaClientModel.GetOrAddSubstrateClientAsync(Endpoint.Key);
+
+            var client = clientExt.SubstrateClient;
+
+            if (CollectionBase is not ICollectionEVMClaimable)
+            {
+                Console.WriteLine("It was not EVM claimable");
+                return;
+            }
+
+            try
+            {
+                Method claim = ((ICollectionEVMClaimable)CollectionBase).Claim(KeysModel.GetSubstrateKey());
+
+                var transactionAnalyzerConfirmationViewModel = DependencyService.Get<TransactionAnalyzerConfirmationViewModel>();
+
+                await transactionAnalyzerConfirmationViewModel.LoadAsync(clientExt, claim, false);
+            }
+            catch (Exception ex)
+            {
+                //errorLabel.Text = ex.Message;
+                Console.WriteLine(ex);
+            }
+        }
 
         public CollectionDetailViewModel()
         {

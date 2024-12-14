@@ -25,6 +25,10 @@
                             Spacing="15"
                             Padding="20, 15, 20, 200">
 
+                <buttons:ElevatedButton Text="Claim Diamonds POAP"
+                                        Clicked="OnClaimDiamondsClicked"
+                        ButtonState="Enabled"
+                        />
                 <customlayouts:CategoryHeaderView TitleText="Featured: "
                                                   ImageSource="{AppThemeBinding Light=hotblack.png, Dark=hotwhite.png}"/>
                 <nft:NftGalleryView Nfts="{Binding FeaturedNfts}"

@@ -67,6 +67,11 @@ namespace UniqueryPlus.Ipfs
         }
         public static string ToIpfsLink(string ipfsLink, string ipfsEndpoint = Constants.DEFAULT_IPFS_ENDPOINT)
         {
+            if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://"))
+            {
+                return ipfsLink.Substring(ipfsLink.IndexOf("http"));
+            }
+
             if (ipfsLink.Contains("ipfs//"))
             {
                 return ipfsEndpoint + ipfsLink.Remove(0, "ipfs//".Length + ipfsLink.IndexOf("ipfs//"));
@@ -80,12 +85,6 @@ namespace UniqueryPlus.Ipfs
             if (ipfsLink.Contains("ipfs://"))
             {
                 return ipfsEndpoint + ipfsLink.Remove(0, "ipfs://".Length + ipfsLink.IndexOf("ipfs://"));
-            }
-
-            if (ipfsLink.Contains("http://") || ipfsLink.Contains("https://"))
-            {
-
-                return ipfsLink.Substring(ipfsLink.IndexOf("http"));
             }
 
             return ipfsEndpoint + RemoveNonHexadecimalCharacters(ipfsLink);

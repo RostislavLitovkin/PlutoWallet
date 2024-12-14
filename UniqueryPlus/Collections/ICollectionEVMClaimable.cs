@@ -3,7 +3,7 @@ using UniqueryPlus.EVM;
 
 namespace UniqueryPlus.Collections
 {
-    internal interface ICollectionEVMClaimable
+    public interface ICollectionEVMClaimable
     {
         public Task<EventConfig?> GetEventInfoAsync(CancellationToken token);
         public Method Claim(string sender);

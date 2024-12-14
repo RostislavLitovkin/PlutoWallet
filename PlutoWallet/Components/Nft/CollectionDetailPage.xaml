@@ -11,6 +11,7 @@
              xmlns:txanalyzer="clr-namespace:PlutoWallet.Components.TransactionAnalyzer"
              xmlns:confirmtransaction="clr-namespace:PlutoWallet.Components.ConfirmTransaction"
              xmlns:model="clr-namespace:PlutoWallet.Model;assembly=PlutoWallet.Model"
+             xmlns:date="clr-namespace:PlutoWallet.Components.Date"
             BackgroundColor="Black">
     <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
@@ -43,6 +44,19 @@
                                         ButtonState="{Binding TransferButtonState}"
                                         />
                 </Grid>
+
+                <date:DateView Title="Event start"
+                               UnixTimestampValue="{Binding EventStartTimestamp}"
+                               IsVisible="{Binding IsClaimable}" />
+
+                <date:DateView Title="Event end"
+                                UnixTimestampValue="{Binding EventEndTimestamp}"
+                                IsVisible="{Binding IsClaimable}" />
+
+                <buttons:ElevatedButton Text="Claim"
+                                        Command="{Binding ClaimCommand}"
+                                        ButtonState="{Binding ClaimButtonState}"
+                    />
 
                 <nft:NftTitleView 
                           Endpoint="{Binding Endpoint}"

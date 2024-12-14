@@ -448,6 +448,9 @@
 	  <MauiXaml Update="Components\CustomLayouts\TransparentItemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Date\DateView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Events\EventItemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
