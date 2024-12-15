@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PlutoWallet.Components.Extrinsic.CallParameterView"
+            HeightRequest="30">
+    <Border StrokeThickness="0"
+        BackgroundColor="{AppThemeBinding Light=#fdfdfd, Dark=#0a0a0a}"
+        Padding="10, 0, 10, 0"
+        x:Name="border"
+        >
+        <Border.Shadow>
+            <Shadow x:Name="shadow"
+                Brush="Black"
+                Offset="0,2" 
+                Radius="3"
+                Opacity="0.2" />
+
+        </Border.Shadow>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15" />
+
+        </Border.StrokeShape>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="nameLabel"
+    HorizontalTextAlignment="Start"
+    VerticalTextAlignment="Center"
+    Grid.Column="0"
+    TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+    />
+            <Label Text=": "
+        HorizontalTextAlignment="Start"
+        VerticalTextAlignment="Center"
+        Grid.Column="1"
+        FontAttributes="Bold"
+        FontFamily="SourceCode"
+        TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+    />
+            <Label x:Name="valueLabel"
+    HorizontalTextAlignment="Start"
+    VerticalTextAlignment="Center"
+    Grid.Column="2"
+    FontAttributes="Bold"
+    FontFamily="SourceCode"
+    TextColor="{AppThemeBinding Dark=#fdfdfd, Light=#0a0a0a}"
+    />
+        </Grid>
+    </Border>
+</ContentView>

@@ -94,10 +94,31 @@ namespace PlutoWallet.Model
 
                     var eventParameter = type.Name switch
                     {
+                        "EnumMultiAddress" => (int)(parameter.GetProperty("Value") ?? -1) switch
+                        {
+                            0 => new EventParameter
+                            {
+                                Name = eventTypeField.Name,
+                                Value = Utils.GetAddressFrom(((IType)parameter.GetProperty("Value2")).Encode()),
+                                EncodedValue = parameter.Encode(),
+                            },
+                            _ => new EventParameter
+                            {
+                                Name = eventTypeField.Name,
+                                Value = parameter.ToString(),
+                                EncodedValue = parameter.Encode(),
+                            }
+                        },
                         "AccountId32" => new EventParameter
                         {
                             Name = eventTypeField.Name,
                             Value = Utils.GetAddressFrom(((IType)parameter.GetProperty("Value")).Encode()),
+                            EncodedValue = parameter.Encode(),
+                        },
+                        "BaseCom`1" => new EventParameter
+                        {
+                            Name = eventTypeField.Name,
+                            Value = parameter.GetProperty("Value").GetProperty("Value").ToString(),
                             EncodedValue = parameter.Encode(),
                         },
                         "Arr32U8" => new EventParameter

@@ -46,8 +46,8 @@
             </Grid>
             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" >
                 <VerticalStackLayout Margin="0, 5, 0, 5"
-                                        x:Name="eventParametersStackLayout"
-                                         Spacing="-3">
+                                     x:Name="eventParametersStackLayout"
+                                     Spacing="-3">
                 </VerticalStackLayout>
             </ScrollView>
         </VerticalStackLayout>

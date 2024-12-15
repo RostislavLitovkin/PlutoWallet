@@ -14,6 +14,16 @@ public partial class PalletCallView : ContentView
            control.palletCallLabel.Text = (string)newValue;
        });
 
+    public static readonly BindableProperty ExpandIconIsVisibleProperty = BindableProperty.Create(
+      nameof(ExpandIconIsVisible), typeof(bool), typeof(PalletCallView),
+      defaultBindingMode: BindingMode.TwoWay,
+      propertyChanging: (bindable, oldValue, newValue) =>
+      {
+          var control = (PalletCallView)bindable;
+
+          control.expandIcon.IsVisible = (bool)newValue;
+      });
+
     public static readonly BindableProperty EndpointProperty = BindableProperty.Create(
        nameof(Endpoint), typeof(Endpoint), typeof(PalletCallView),
        defaultBindingMode: BindingMode.TwoWay,
@@ -38,6 +48,11 @@ public partial class PalletCallView : ContentView
         set => SetValue(PalletCallNameProperty, value);
     }
 
+    public bool ExpandIconIsVisible
+    {
+        get => (bool)GetValue(ExpandIconIsVisibleProperty);
+        set => SetValue(ExpandIconIsVisibleProperty, value);
+    }
     public Endpoint Endpoint
     {
         get => (Endpoint)GetValue(EndpointProperty);

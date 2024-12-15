@@ -460,7 +460,16 @@
 	  <MauiXaml Update="Components\Events\EventsListView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\CallDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\CallParameterView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Components\Extrinsic\ExtrinsicDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Components\Extrinsic\CallParametersView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Components\Koda\OpenKodaButton.xaml">
@@ -663,6 +672,9 @@
 	  </Compile>
 	  <Compile Update="Components\AssetSelect\NativeAssetInputView.xaml.cs">
 	    <DependentUpon>NativeAssetInputView.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Components\Extrinsic\CallParametersView.xaml.cs">
+	    <DependentUpon>CallParametersView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Components\Nft\NftGalleryView.xaml.cs">
 	    <DependentUpon>NftGalleryView.xaml</DependentUpon>

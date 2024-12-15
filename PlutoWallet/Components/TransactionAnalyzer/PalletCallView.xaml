@@ -5,8 +5,8 @@
              xmlns:network="clr-namespace:PlutoWallet.Components.NetworkSelect"
              x:Class="PlutoWallet.Components.TransactionAnalyzer.PalletCallView"
              HeightRequest="40">
-    <card:Card IsThin="True">
-        <card:Card.View>
+    <card:ClickableCard IsThin="True">
+        <card:ClickableCard.View>
             <AbsoluteLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
                             AbsoluteLayout.LayoutFlags="All">
 
@@ -22,8 +22,7 @@
                 <Label x:Name="palletCallLabel"
                        VerticalOptions="Center" 
                        HorizontalOptions="StartAndExpand"
-                        FontAttributes="Bold"
-                       >
+                        FontAttributes="Bold">
                 </Label>
 
 
@@ -43,11 +42,13 @@
                        VerticalOptions="Center" 
                        HorizontalOptions="End"
                        Grid.Column="2"
+                       x:Name="expandIcon"
+                       IsVisible="False"
                        Source="{AppThemeBinding Light=expandblack.png, Dark=expandwhite.png}">
                 </Image>
 
             </Grid>
             </AbsoluteLayout>
-        </card:Card.View>
-    </card:Card>
+        </card:ClickableCard.View>
+    </card:ClickableCard>
 </ContentView>

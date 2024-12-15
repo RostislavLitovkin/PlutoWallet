@@ -84,7 +84,7 @@ namespace PlutoWallet.Components.Vault
                 CallIndex = "(" + method.CallIndex.ToString() + " index)";
             }
 
-            Parameters = Model.PalletCallModel.GetJsonMethod(clientExt, method);
+            Parameters = "";//Model.PalletCallModel.GetMethodUnified(clientExt, method);
 
             AjunaMethod = method;
 

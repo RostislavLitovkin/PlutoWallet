@@ -15,8 +15,7 @@
 
                 <VerticalStackLayout AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1" AbsoluteLayout.LayoutFlags="All">
 
-                    <Label
-                            HeightRequest="30"
+                    <Label HeightRequest="30"
                             VerticalTextAlignment="Center"
                             Text="Analyzed outcome"
                             FontAttributes="Bold"
@@ -44,15 +43,15 @@
                                      Spacing="10">
                     <VerticalStackLayout
                                             WidthRequest="{Binding Source={x:Reference absoluteLayout}, Path=Width}"
-                                     BindableLayout.ItemsSource="{Binding Assets}"
-                                     Spacing="10">
+                                             BindableLayout.ItemsSource="{Binding Assets}"
+                                             Spacing="10">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <balance:AssetAmountView Amount="{Binding Amount}"
-                                    Symbol="{Binding Symbol}"
-                                    UsdValue="{Binding UsdValue}"
-                                    ChainIcon="{Binding ChainIcon}"
-                                    UsdColor="{Binding UsdColor}"
+                                                        Symbol="{Binding Symbol}"
+                                                        UsdValue="{Binding UsdValue}"
+                                                        ChainIcon="{Binding ChainIcon}"
+                                                        UsdColor="{Binding UsdColor}"
                                          />
 
                             </DataTemplate>

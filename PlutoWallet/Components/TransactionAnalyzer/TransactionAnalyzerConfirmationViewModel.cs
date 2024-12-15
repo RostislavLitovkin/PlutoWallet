@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using PlutoWallet.Components.Buttons;
 using PlutoWallet.Components.DAppConnectionView;
+using PlutoWallet.Components.Extrinsic;
 using PlutoWallet.Constants;
 using PlutoWallet.Model;
 using PlutoWallet.Model.AjunaExt;
@@ -8,6 +10,7 @@ using PlutoWallet.Types;
 using Substrate.NetApi.Model.Extrinsics;
 using Substrate.NetApi.Model.Rpc;
 using Substrate.NetApi.Model.Types;
+using System.Collections.ObjectModel;
 using AssetKey = (PlutoWallet.Constants.EndpointEnum, PlutoWallet.Types.AssetPallet, System.Numerics.BigInteger);
 using NftKey = (UniqueryPlus.NftTypeEnum, System.Numerics.BigInteger, System.Numerics.BigInteger);
 
@@ -282,6 +285,22 @@ namespace PlutoWallet.Components.TransactionAnalyzer
 
             var analyzedOutcomeViewModel = DependencyService.Get<AnalyzedOutcomeViewModel>();
             analyzedOutcomeViewModel.SetToDefault();
+        }
+
+        [RelayCommand]
+        public async Task ExpandExtrinsicInfoAsync()
+        {
+            Console.WriteLine("Clicked on expand extrinsic info");
+            var methodUnified = PalletCallModel.GetMethodUnified(await AjunaClientModel.GetOrAddSubstrateClientAsync(Endpoint.Key), Payload.Call);
+
+            var viewModel = new CallDetailViewModel {
+                PalletCallName = methodUnified.PalletName + "." + methodUnified.EventName,
+                CallParameters = new ObservableCollection<EventParameter>(methodUnified.Parameters),
+                Endpoint = Endpoint,
+
+            };
+
+            await Application.Current.MainPage.Navigation.PushAsync(new CallDetailPage(viewModel));
         }
     }
 }

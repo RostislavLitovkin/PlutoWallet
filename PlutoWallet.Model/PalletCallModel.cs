@@ -6,6 +6,9 @@ using PlutoWallet.Types;
 using Substrate.NetApi.Model.Meta;
 using PlutoWallet.Model.AjunaExt;
 using Polkadot.NetApi.Generated.Model.sp_runtime.multiaddress;
+using PlutoWallet.Constants;
+using Newtonsoft.Json;
+using Nethereum.Contracts;
 
 namespace PlutoWallet.Model
 {
@@ -44,9 +47,7 @@ namespace PlutoWallet.Model
     }
 
     public class PalletCallModel
-	{
-
-
+    {
         /// <summary>
         /// Method that returns the pallet index and call index for the respective pallet and call names
         /// </summary>
@@ -57,7 +58,7 @@ namespace PlutoWallet.Model
         /// <exception cref="PalletNotFoundException"></exception>
         /// <exception cref="CallNotFoundException"></exception>
         public static (byte, byte) GetPalletAndCallIndex(SubstrateClientExt client, string palletName, string callName)
-		{
+        {
             var pallets = client.SubstrateClient.MetaData.NodeMetadata.Modules.Values.ToList<PalletModule>();
 
             int palletIndex = -1;
@@ -124,7 +125,67 @@ namespace PlutoWallet.Model
             return (palletName, callName);
         }
 
-        
+        public static BaseType? GetCall(EndpointEnum endpointKey, byte[] encodedCall)
+        {
+            BaseType? runtimeCall = endpointKey switch
+            {
+                EndpointEnum.Polkadot => new Polkadot.NetApi.Generated.Model.polkadot_runtime.EnumRuntimeCall(),
+                EndpointEnum.PolkadotAssetHub => new PolkadotAssetHub.NetApi.Generated.Model.asset_hub_polkadot_runtime.EnumRuntimeCall(),
+                EndpointEnum.Hydration => new Hydration.NetApi.Generated.Model.hydradx_runtime.EnumRuntimeCall(),
+                EndpointEnum.Bifrost => new Bifrost.NetApi.Generated.Model.bifrost_polkadot_runtime.EnumRuntimeCall(),
+                EndpointEnum.Bajun => new Bajun.NetApi.Generated.Model.bajun_runtime.EnumRuntimeCall(),
+                EndpointEnum.PolkadotPeople => new PolkadotPeople.NetApi.Generated.Model.people_polkadot_runtime.EnumRuntimeCall(),
+                EndpointEnum.KusamaAssetHub => new KusamaAssetHub.NetApi.Generated.Model.asset_hub_kusama_runtime.EnumRuntimeCall(),
+                EndpointEnum.Unique => new Unique.NetApi.Generated.Model.unique_runtime.EnumRuntimeCall(),
+                EndpointEnum.Opal => new Opal.NetApi.Generated.Model.opal_runtime.EnumRuntimeCall(),
+                EndpointEnum.Mythos => new Mythos.NetApi.Generated.Model.mainnet_runtime.EnumRuntimeCall(),
+                _ => null,
+            };
+
+            if (runtimeCall is null)
+            {
+                return null;
+            }
+
+            int p = 0;
+            runtimeCall.Decode(encodedCall, ref p);
+            return runtimeCall;
+
+        }
+
+
+        public static ExtrinsicEvent GetMethodUnified(SubstrateClientExt substrateClient, Method method)
+        {
+            var call = GetCall(substrateClient.Endpoint.Key, method.Encode());
+
+            if (call is null)
+            {
+                return new ExtrinsicEvent("Unknown", "Unknown", []);
+            }
+
+            byte palletIndex = Convert.ToByte(call.GetProperty("Value"));
+            string palletName = call.GetValueString();
+            object? palletValue2 = call.GetProperty("Value2");
+            byte callIndex = Convert.ToByte(palletValue2.GetProperty("Value"));
+            string callName = palletValue2.GetValueString();
+            object? parameters = palletValue2.GetProperty("Value2");
+
+
+            string _palletName = substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Name;
+
+            TypeField[]? callTypeFields = null;
+
+            foreach (var variant in substrateClient.CustomMetadata.NodeMetadata.Types[substrateClient.CustomMetadata.NodeMetadata.Modules[palletIndex.ToString()].Calls.TypeId.ToString()].Variants)
+            {
+                if (variant.Index == callIndex)
+                {
+                    callTypeFields = variant.TypeFields;
+                    break;
+                }
+            }
+
+            return new ExtrinsicEvent(palletName, callName, EventsModel.GetParametersList(parameters, callTypeFields ?? []));
+        }
 
         /// <summary>
         /// Finds and formats a Method in a JSON format according to the Metadata found in the supplied SubstrateClient
@@ -132,7 +193,7 @@ namespace PlutoWallet.Model
         /// <param name="client">SubstrateClient</param>
         /// <param name="method">Method</param>
         /// <returns>JSON string</returns>
-        public static string GetJsonMethod(SubstrateClientExt client, Method method)
+        public static string GetJsonMethodOld(SubstrateClientExt client, Method method)
         {
             string palletName = client.CustomMetadata.NodeMetadata.Modules[method.ModuleIndex.ToString()].Name;
 
@@ -275,7 +336,7 @@ namespace PlutoWallet.Model
                 }
                 parameters = parameters.Substring(0, parameters.Length - 1);
             }
-            
+
         Unsupported:
 
             // Construct the final JSON
