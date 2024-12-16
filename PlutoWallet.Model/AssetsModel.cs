@@ -94,6 +94,7 @@ namespace PlutoWallet.Model
 
             try
             {
+                
                 foreach ((BigInteger, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetDetails, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetMetadataT1, PolkadotAssetHub.NetApi.Generated.Model.pallet_assets.types.AssetAccount) asset in await GetPolkadotAssetHubAssetsAsync(client.SubstrateClient, substrateAddress, 1000, CancellationToken.None))
                 {
                     var symbol = Model.ToStringModel.VecU8ToString(asset.Item3.Symbol.Value);
@@ -101,7 +102,7 @@ namespace PlutoWallet.Model
 
                     double assetBalance = asset.Item4 != null ? (double)asset.Item4.Balance.Value / Math.Pow(10, asset.Item3.Decimals.Value) : 0.0;
 
-                    AssetsDict[(endpoint.Key, AssetPallet.Native, asset.Item1)] = new Asset
+                    AssetsDict[(endpoint.Key, AssetPallet.Assets, asset.Item1)] = new Asset
                     {
                         Amount = assetBalance,
                         Symbol = symbol,
@@ -114,6 +115,7 @@ namespace PlutoWallet.Model
                         Decimals = asset.Item3.Decimals.Value,
                     };
                 }
+
             }
             catch (Exception ex)
             {
@@ -126,7 +128,13 @@ namespace PlutoWallet.Model
                 {
                     foreach (HydrationTokenData tokenData in await GetHydrationTokensBalance(client.SubstrateClient, substrateAddress, CancellationToken.None))
                     {
-                        var symbol = Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value);
+                        // Skip tokens without Symbol
+                        if (!tokenData.AssetMetadata.Symbol.OptionFlag)
+                        {
+                            continue;
+                        }
+
+                        var symbol = tokenData.AssetMetadata.Symbol.OptionFlag ? Model.ToStringModel.VecU8ToString(tokenData.AssetMetadata.Symbol.Value.Value) : "";
                         double spotPrice = Model.HydraDX.Sdk.GetSpotPrice(symbol);
 
                         double assetBalance = (double)tokenData.AccountData.Free.Value / Math.Pow(10, tokenData.AssetMetadata.Decimals.Value);
